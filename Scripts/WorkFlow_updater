@@ -1,0 +1,3 @@
+#!/bin/bash
+cp /home/erik/Documents/latex/Computer_todo.pdf /home/erik/Documents/latex/Computer_start.pdf 
+cp /home/erik/Documents/latex/Master_todo.pdf /home/erik/Documents/latex/Master_start.pdf 

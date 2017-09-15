@@ -1,0 +1,13 @@
+#!/usr/bin/env python
+import os
+with open('/home/erik/.config/xfce4/terminal/terminalrc') as f_in:
+    with open('/home/erik/.config/xfce4/terminal/terminalrc_TMP','w') as f_out:
+        for line in f_in:
+            if "FontName" in line:
+                f_out.write("FontName=Monospace 1"+str( (int(line[20])+1)%10 )+"\n")
+            else:
+                f_out.write(line)
+
+# rename files
+os.rename('/home/erik/.config/xfce4/terminal/terminalrc', '/home/erik/.config/xfce4/terminal/terminalrc_old')
+os.rename('/home/erik/.config/xfce4/terminal/terminalrc_TMP', '/home/erik/.config/xfce4/terminal/terminalrc')

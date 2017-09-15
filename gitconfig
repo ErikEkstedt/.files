@@ -1,0 +1,9 @@
+[user]
+	email = eeckee@gmail.com
+	name = Erik
+[core]
+	editor = vim
+[push]
+	default = simple
+[web]
+	browser = google-chrome

@@ -1,0 +1,25 @@
+// Calendar i3-Layout
+{
+    "percent": 0.45,
+    "border": "1pixel",
+    "type": "con",
+    "name": "CalMonth",
+    "swallows": [{"class": "Xfce4-terminal"}]
+}
+{
+    "percent": 0.35,
+    "border": "1pixel",
+    "type": "con",
+    "name": "CalWeek",
+    "swallows": [{"class": "Xfce4-terminal"}]
+}
+{
+    "percent": 0.20,
+    "border": "1pixel",
+    "type": "con",
+    "name": "CalDay",
+    "swallows": [{"class": "Xfce4-terminal"}]
+}
+
+
+

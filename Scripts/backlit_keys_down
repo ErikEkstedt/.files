@@ -1,0 +1,11 @@
+#!/bin/bash
+var=$(cat /sys/class/leds/asus::kbd_backlight/brightness )
+echo $var
+a=1
+if [ $var -gt 0 ] 
+then
+    echo $(($var - $a)) > /sys/class/leds/asus::kbd_backlight/brightness 
+fi
+cat /sys/class/leds/asus::kbd_backlight/brightness 
+
+

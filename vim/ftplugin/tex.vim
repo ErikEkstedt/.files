@@ -1,0 +1,1 @@
+/home/erik/.config/Sync_files/tex.vim
