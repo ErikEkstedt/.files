@@ -49,7 +49,6 @@ echo "Downloading all config files from github..."
 
 
 
-
 ############################################################################
 echo Installing i3 and i3-gaps...
 # i3 (From https://i3wm.org/docs/repositories.html)

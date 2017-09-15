@@ -4,27 +4,33 @@ execute pathogen#infect()
 filetype plugin indent on
 filetype plugin on
 
-"SLIMUX
+" HEEEEJJJJJ
+
+" slimux.vim
 nnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>
 vnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>gv<Esc>zz
 vnoremap <C-c><C-s> :SlimuxREPLSendSelection<CR>gv<Esc>zz
 nnoremap <C-c><C-x> :SlimuxREPLConfigure<CR>
 vnoremap <C-c><C-x> :SlimuxREPLConfigure<CR>
 
-" Calendar
+" Calendar.vim
 let g:calendar_google_calendar = 1
 let g:calendar_google_task = 1
 
-" latex-live-preview
+" vimtex.vim
 let g:latex_view_general_viewer = 'zathura'
 let g:vimtex_view_method = "zathura"
 "let g:latex_view_general_options = shellescape("-s -x '" . exepath(v:progpath) . " --servername " . v:servername . " +{%line} {%input}'")
 let g:vimtex_complete_recursive_bib = 2
 
-" Ctrl P
+" ctrlp.vim
 let g:ctrlp_show_hidden = 2
 let g:ctrlp_map = '<c-f>'
 let g:ctrlp_cmd = 'CtrlP /home/erik/com_sci'
+
+"fugitive.vim
+nnoremap <Leader>gc :Gcommit
+nnoremap <Leader>gp :Gpush
 
 " SETTINGS"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set laststatus=3
