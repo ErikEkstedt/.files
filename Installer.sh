@@ -5,36 +5,51 @@
 #           Anaconda
 #           tensorflow/pytorch...
 #       
-
 # Require sudo right
 if [[ $UID != 0 ]]; then
     echo "Please run this script with sudo :"
     echo "sudo $0 $*"
     exit 1
 fi
+
 # Upgrading
 echo Upgrading (apt-get update/upgrade/dist-upgrade)
 apt-get update
 apt-get upgrade
 apt-get dist-upgrade
 
-# notify-send
+# notify-send, working version (otherwise the -t flag did not do anything)
 add-apt-repository ppa:leolik/leolik 
 apt-get update
 apt-get upgrade
 apt-get install libnotify-bin
 pkill notify-osd
 
+# (some extra functions recommended in solition to the above.
 add-apt-repository ppa:nilarimogard/webupd8
 apt update
 apt-get install notifyosdconfig
 
 # Install needed programs
-echo Installing programs (git/tmuc and the like)
+echo "########################################################"
+echo
+echo Installing programs (git/tmux and the like...)
 apt-get install git tmux xclip zsh feh curl unclutter vim-gtk udiskie zathura xfce4-terminal ranger -y
 echo Done!
+echo "########################################################"
+echo 
 
-#############################################################################
+echo Creating default directories
+mkdir ~/com_sci ~/com_sci/Master_code ~/Documents/latex ~/Documents/Papers \
+    ~/Pictures/wallpaper 
+
+echo "########################################################"
+echo 
+echo "Downloading all config files from github..."
+
+
+
+############################################################################
 echo Installing i3 and i3-gaps...
 # i3 (From https://i3wm.org/docs/repositories.html)
 echo Installing i3...
