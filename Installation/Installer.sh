@@ -40,7 +40,7 @@ echo "########################################################"
 echo 
 
 echo Creating default directories
-mkdir ~/com_sci ~/com_sci/Master_code ~/Documents/latex ~/Documents/Papers \
+mkdir ~/com_sci ~/com_sci/Master_code ~/Documents/Papers \
     ~/Pictures/wallpaper 
 
 echo "########################################################"

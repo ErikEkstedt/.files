@@ -11,5 +11,3 @@
 | Scripts       | Description   | 
 | ------------- |:-------------:| 
 | Link-maker      | Makes links to all important configuration files. | 
-| hej      | centered      | 
-| zebra stripes | are neat      | 
