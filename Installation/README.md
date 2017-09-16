@@ -7,10 +7,9 @@
 
 ## Scripts
 
-* Link_maker:
 
 | Scripts       | Description   | 
 | ------------- |:-------------:| 
-| col 3 is      | right-aligned | 
-| col 2 is      | centered      | 
+| Link-maker      | Makes links to all important configuration files. | 
+| hej      | centered      | 
 | zebra stripes | are neat      | 
