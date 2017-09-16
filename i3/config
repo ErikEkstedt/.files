@@ -6,6 +6,7 @@ font pango:monospace 12
 floating_modifier $mod
 bindsym $mod+Shift+q kill
 
+
 # Lock computer
 bindsym $mod2+l exec bash -c "gnome-screensaver-command -l"
 bindsym $mod2+F1 exec bash -c "systemctl suspend"
@@ -13,7 +14,7 @@ bindsym $mod2+F1 exec bash -c "systemctl suspend"
 # SET VARIABLES
 #set $term urxvt
 #set $term2 xfce4-terminal
-#
+
 set $term xfce4-terminal
 set $term2 urxvt
 
@@ -100,16 +101,16 @@ bindsym $mod2+m move workspace to output up
 #bindsym $mod2+F8 exec bash -c "xrandr --output eDP-1 --auto --output HDMI-2 --auto --above eDP-1; feh --bg-scale ~/.config/wall.png"
 #bindsym $mod2+F7 exec bash -c "xrandr --output eDP-1 --auto --output HDMI-2 --off; feh --bg-scale ~/.config/wall.png"
 
-bindsym $mod2+F8 exec --no-startup-id /home/erik/.config/own_scripts/toggle_screen.sh
+bindsym $mod2+F8 exec --no-startup-id ~/.files/Scripts/toggle_screen.sh
 
 ## STARTUP
 exec_always feh --bg-scale ~/.config/wall.png
-#exec_always --no-startup-id compton --config /home/erik/.config/.compton.conf
+#exec_always --no-startup-id compton --config /.config/.compton.conf
 exec --no-startup-id gnome-sound-applet
 exec --no-startup-id gnome-settings-daemon
 exec --no-startup-id nm-applet
 exec --no-startup-id udiskie
-exec ~/.config/autostart/start_up.sh
+exec ~/.files/Scripts/start_up.sh
 
 #exec $term -T "News" -x bash -c "stty -ixon && newsbeuter"
 #for_window [class="Xfce4-terminal" title="News"] move container workspace $ws5; workspace $ws5
@@ -126,7 +127,7 @@ bindsym $mod+y $term2
 # Fast Access
 bindsym $mod+g focus parent exec $browser 
 bindsym $mod+s exec spotify; workspace $ws9
-bindsym $mod+a exec bash ~/.config/own_scripts/touchpad_onoff.sh
+bindsym $mod+a exec bash ~/.files/Scripts/touchpad_onoff.sh
 
 # Normal Access
 bindsym $mod+Shift+n exec nautilus --no-desktop
@@ -149,8 +150,8 @@ bindsym $mod+n exec ~/.config/i3/latexflow.sh
 bindsym $mod+c exec ~/.config/i3/Calendar.sh
 
 # Log
-bindsym $mod+d exec $term -x bash -c "stty -ixon && sh ~/.config/own_scripts/new_log.sh"
-bindsym $mod+Shift+d exec bash ~/.config/own_scripts/open_last_log.sh
+bindsym $mod+d exec $term -x bash -c "stty -ixon && sh ~/.files/Scripts/new_log.sh"
+bindsym $mod+Shift+d exec bash ~/.files/Scripts/open_last_log.sh
 
 # Open a floating ranger terminal
 bindsym $mod+Shift+r exec $term -T "rangerTerm" -x bash -c "stty -ixon && ranger"
@@ -172,38 +173,30 @@ resize grow down 250, resize grow up 250
 ###################################################################################
 
 # Open WorkFlow latex document for todo:s
-bindsym $mod+w exec $term -T "Master_todo-term" -x bash -c "stty -ixon && vim /home/erik/Documents/latex/Master_todo.tex"
+bindsym $mod+w exec $term -T "Master_todo-term" -x bash -c "stty -ixon && vim ~/Documents/latex/Master_todo.tex"
 for_window [class="Xfce4-terminal" title="Master_todo-term"] floating enable, \
 resize grow left 20, resize grow right 300, \
 resize grow down 200, resize grow up 250 
 
 # Open Master Thesis document 
-bindsym $mod+m exec $term -T "Master-term" -x bash -c "stty -ixon && vim /home/erik/Documents/latex/Master.tex"
+bindsym $mod+m exec $term -T "Master-term" -x bash -c "stty -ixon && vim ~/Documents/latex/Master.tex"
 for_window [class="Xfce4-terminal" title="Master-term"] floating enable, \
-resize grow left 20, resize grow right 300, \
-resize grow down 200, resize grow up 250  
-
-# Open Ideas latex-document 
-bindsym $mod+i exec $term -T "Ideas-term" -x bash -c "stty -ixon && vim /home/erik/Documents/latex/Ideas.tex"
-for_window [class="Xfce4-terminal" title="Ideas-term"] floating enable, \
 resize grow left 20, resize grow right 300, \
 resize grow down 200, resize grow up 250  
 
 # Open Project Plan 
-bindsym $mod+p exec $term -T "Master-term" -x bash -c "stty -ixon && vim /home/erik/Documents/latex/Project_Plan.tex"
+bindsym $mod+p exec $term -T "Master-term" -x bash -c "stty -ixon && vim ~/Documents/latex/Project_Plan.tex"
 for_window [class="Xfce4-terminal" title="Master-term"] floating enable, \
 resize grow left 20, resize grow right 300, \
 resize grow down 200, resize grow up 250  
 
-# Open Computer todo document 
-# bindsym $mod+c exec $term -T "Computer-term" -x bash -c "stty -ixon && vim /home/erik/Documents/latex/Computer_todo.tex"
-# for_window [class="Xfce4-terminal" title="Computer-term"] floating enable,  \
-# resize grow left 20, resize grow right 300,  \
-# resize grow down 200, resize grow up 250 
+
+# Open Installer.sh Computer todo document 
+bindsym $mod+i exec $term -T "Installer" -x bash -c "stty -ixon && vim ~/.files/Installation/Installer.sh", split horizontal, exec $term -T "Readme" -x bash -c "stty -ixon && vim /home/erik/.files/Installation/README.md"
 # PDF
-bindsym $mod+Shift+c exec zathura /home/erik/Documents/latex/Computer_todo.pdf
+bindsym $mod+Shift+c exec zathura ~/Documents/latex/Computer_todo.pdf
 # Open bibtex document 
-bindsym $mod+b exec $term -T "bib-term" -x bash -c "stty -ixon && vim /home/erik/Documents/latex/References.bib"
+bindsym $mod+b exec $term -T "bib-term" -x bash -c "stty -ixon && vim ~/Documents/latex/References.bib"
 for_window [class="Xfce4-terminal" title="bib-term"] floating enable, \
 resize grow left 20, resize grow right 300, \
 resize grow down 200, resize grow up 250 
@@ -267,11 +260,11 @@ bindsym $mod+Ctrl+g gaps inner current set 0, gaps outer current set 0
 
 # Shell that rewrites xfce4-terminal rc file.
 # Terminal Transparancy
-bindsym $mod+Ctrl+t exec ~/.config/own_scripts/term_transpar_up
-bindsym $mod+Ctrl+Shift+t  exec ~/.config/own_scripts/term_transpar_down
+bindsym $mod+Ctrl+t exec ~/.files/Scripts/term_transpar_up
+bindsym $mod+Ctrl+Shift+t  exec ~/.files/Scripts/term_transpar_down
 # Termnal FontSize
-bindsym $mod+Ctrl+Shift+f exec ~/.config/own_scripts/Font_decrease
-bindsym $mod+Ctrl+f exec ~/.config/own_scripts/Font_increase
+bindsym $mod+Ctrl+Shift+f exec ~/.files/Scripts/Font_decrease
+bindsym $mod+Ctrl+f exec ~/.files/Scripts/Font_increase
 
 #Pulse Audio controls
 # special keyboard commands
@@ -287,16 +280,16 @@ bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 
 # Scripts that change brightness settings on my laptop
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec ~/.config/own_scripts/screen_bright -u
-bindsym XF86MonBrightnessDown exec ~/.config/own_scripts/screen_bright -d
+bindsym XF86MonBrightnessUp exec ~/.files/Scripts/screen_bright -u
+bindsym XF86MonBrightnessDown exec ~/.files/Scripts/screen_bright -d
 
-bindsym Shift+XF86MonBrightnessDown exec sudo ~/.config/own_scripts/intel_screen_bright_min 
-bindsym Ctrl+XF86MonBrightnessDown exec sudo ~/.config/own_scripts/intel_screen_bright_mid 
-bindsym Shift+XF86MonBrightnessUp exec sudo ~/.config/own_scripts/intel_screen_bright_max
+bindsym Shift+XF86MonBrightnessDown exec sudo ~/.files/Scripts/intel_screen_bright_min 
+bindsym Ctrl+XF86MonBrightnessDown exec sudo ~/.files/Scripts/intel_screen_bright_mid 
+bindsym Shift+XF86MonBrightnessUp exec sudo ~/.files/Scripts/intel_screen_bright_max
 
 # Keyboard brightness controls
-bindsym XF86KbdBrightnessUp exec sudo ~/.config/own_scripts/backlit_keys_up
-bindsym XF86KbdBrightnessDown exec sudo ~/.config/own_scripts/backlit_keys_down
+bindsym XF86KbdBrightnessUp exec sudo ~/.files/Scripts/backlit_keys_up
+bindsym XF86KbdBrightnessDown exec sudo ~/.files/Scripts/backlit_keys_down
 
 # Hibernate
 bindsym XF86Sleep exec systemctl hybrid-sleep
@@ -324,11 +317,12 @@ bar {
 	status_command i3status -c ~/.config/i3/i3status.conf
 }
 
+# TODO : scripts that syncs github on exit/Start
 # Create Log out, Reboot, Poweroff bindings
 mode "Exit (L)ogout, (R)eboot, (P)oweroff" {
-        bindsym $mod+r exec /home/erik/.config/own_scripts/WorkFlow_updater, exec systemctl reboot
-        bindsym $mod+l exec /home/erik/.config/own_scripts/WorkFlow_updater, exit 
-        bindsym $mod+p exec /home/erik/.config/own_scripts/WorkFlow_updater, exec systemctl poweroff
+        bindsym $mod+r exec ~/.config/own_scripts/WorkFlow_updater, exec systemctl reboot
+        bindsym $mod+l exec ~/.config/own_scripts/WorkFlow_updater, exit 
+        bindsym $mod+p exec ~/.config/own_scripts/WorkFlow_updater, exec systemctl poweroff
         # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"

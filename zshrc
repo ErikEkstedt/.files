@@ -67,7 +67,7 @@ alias tnote="sh ~/.files/Scripts/new_note.sh " "$1"
 
 # shortcut for simple git routines
 function ag() { # auto git
-	git a .
+	git add .
 	git commit -m "$1"
 	git push
 }
