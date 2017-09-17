@@ -27,8 +27,20 @@ let g:ctrlp_map = '<c-f>'
 let g:ctrlp_cmd = 'CtrlP /home/erik/com_sci'
 
 "fugitive.vim
-nnoremap <Leader>gc :Gcommit
-nnoremap <Leader>gp :Gpush
+nnoremap <Leader>ga :Gwrite<CR>
+nnoremap <Leader>gc :Gcommit<CR>
+nnoremap <Leader>gp :Gpush<CR>
+
+" vim-netrw
+let g:netrw_banner = 0
+" absolute width of netrw window
+let g:netrw_winsize = -28
+" tree-view
+let g:netrw_liststyle = 3
+" sort is affecting only: directories on the top, files below
+let g:netrw_sort_sequence = '[\/]$,*'
+" open file in a new tab
+let g:netrw_browse_split = 3
 
 " SETTINGS"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set laststatus=3
