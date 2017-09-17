@@ -69,13 +69,14 @@ bindsym $mod2+m move workspace to output up
 bindsym $mod2+F8 exec --no-startup-id ~/.files/Scripts/toggle_screen.sh
 
 ## STARTUP
-#exec_always feh --bg-scale ~/.config/wall.png
 exec_always --no-startup-id compton --config ~/.files/compton/config
+exec_always feh --bg-scale ~/.config/wall.png
+exec ~/.files/Scripts/start_up.sh
+#exec_always --no-startup-id ~/.files/i3/scripts/polybar.sh
 exec --no-startup-id gnome-sound-applet
 exec --no-startup-id gnome-settings-daemon
 exec --no-startup-id nm-applet
 exec --no-startup-id udiskie
-exec ~/.files/Scripts/start_up.sh
 
 #exec $term -T "News" -e bash -c "stty -ixon && newsbeuter"
 #for_window [class="URxvt" title="News"] move container workspace $ws5; workspace $ws5
@@ -84,12 +85,13 @@ exec $term -T "scratchTerm"
 for_window [class="URxvt" title="scratchTerm"] move scratchpad
 
 # TERMINAL
-bindsym $mod+Return exec $term
+bindsym $mod+Return exec $term 
 bindsym $mod+Shift+Return exec $term -T "scratchTerm"
 bindsym $mod+y exec $term2
 
 # Open a ranger terminal
 bindsym $mod+r exec $term -e bash -c "stty -ixon && ranger"
+bindsym $mod2+r exec $term -e bash -c "stty -ixon && sudo ranger"
 
 # Open a floating ranger terminal
 bindsym $mod+Shift+r exec $term -T "rangerTerm" -e bash -c "stty -ixon && ranger"
@@ -324,13 +326,30 @@ bar {
 
 # TODO : scripts that syncs github on exit/Start
 # Create Log out, Reboot, Poweroff bindings
-mode "Exit (L)ogout, (R)eboot, (P)oweroff" {
+set $reboot_choice "Exit (L)ogout, (R)eboot, (P)oweroff"
+mode $reboot_choice{
         bindsym $mod+r exec ~/.config/own_scripts/WorkFlow_updater, exec systemctl reboot
         bindsym $mod+l exec ~/.config/own_scripts/WorkFlow_updater, exit 
         bindsym $mod+p exec ~/.config/own_scripts/WorkFlow_updater, exec systemctl poweroff
+
         # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
 
-bindsym $mod+Shift+e mode "Exit (L)ogout, (R)eboot, (P)oweroff"
+bindsym $mod+Shift+e mode $reboot_choice
+
+# Mode to select config files
+
+set $config_choice "Config: (i)3, (V)im, (R)anger, (Z)sh"
+mode $config_choice{
+        bindsym $mod+v exec $term -T "Vim-config" -e bash -c "stty -ixon && vim ~/.files/vimrc", mode "default"
+        bindsym $mod+r exec $term -T "Vim-config" -e bash -c "stty -ixon && vim ~/.files/ranger/rc.conf", mode "default"
+        bindsym $mod+z exec $term -T "Vim-config" -e bash -c "stty -ixon && vim ~/.files/zshrc", mode "default"
+        bindsym $mod+i exec $term -T "Vim-config" -e bash -c "stty -ixon && vim ~/.files/i3/config", mode "default"
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+Ctrl+e mode $config_choice

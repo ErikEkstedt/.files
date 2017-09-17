@@ -3,7 +3,7 @@ cd ~/.vim/bundle
 
 git clone https://github.com/tomtom/tcomment_vim.git
 git clone https://github.com/kien/ctrlp.vim.git
-git clone https://github.com/sheerun/vim-polyglot.git
+#git clone https://github.com/sheerun/vim-polyglot.git
 git clone https://github.com/godlygeek/tabular.git
 git clone <++>
 git clone <++>

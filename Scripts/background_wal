@@ -1,0 +1,4 @@
+#!/bin/bash
+F=$PWD/$1
+cp $F ~/.config/wall.png && feh --bg-scale $F
+~/anaconda3/bin/wal -i $F -a 70
