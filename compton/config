@@ -21,7 +21,10 @@ shadow-offset-y = -7;		# The top offset for shadows. (default -15)
 shadow-exclude = [
  "! name~=''",
  "n:e:Notification",
+ "name = 'Notification'",
  "g:e:Synapse",
+ "class_g ?= 'Notify-osd'",
+ "class_g ?= 'Cairo-dock'",
  "class_g ?= 'Notify-osd'",
  "class_g ?= 'Cairo-dock'",
  "class_g ?= 'Xfce4-notifyd'",

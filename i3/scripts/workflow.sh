@@ -6,7 +6,7 @@ DISPLAY=:0 notify-send -t 1000 --urgency=critical --icon=/usr/share/icons/gnome/
 i3-msg append_layout "$WS_LAYOUT_FILE"
 
 urxvt -e htop &
-urxvt -e ranger &
-urxvt -e ranger &
+urxvt -e bash -c "stty -ixon && ranger" &
+urxvt -e bash -c "stty -ixon && ranger" &
 
 

@@ -7,7 +7,6 @@ filetype plugin on
 " slimux.vim
 nnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>
 vnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>gv<Esc>zz
-vnoremap <C-c><C-s> :SlimuxREPLSendSelection<CR>gv<Esc>zz
 nnoremap <C-c><C-x> :SlimuxREPLConfigure<CR>
 vnoremap <C-c><C-x> :SlimuxREPLConfigure<CR>
 
@@ -18,13 +17,13 @@ let g:calendar_google_task = 1
 " vimtex.vim
 let g:latex_view_general_viewer = 'zathura'
 let g:vimtex_view_method = "zathura"
-"let g:latex_view_general_options = shellescape("-s -x '" . exepath(v:progpath) . " --servername " . v:servername . " +{%line} {%input}'")
+"let g:latex_view_general_options = shellescape("-s -e '" . exepath(v:progpath) . " --servername " . v:servername . " +{%line} {%input}'")
 let g:vimtex_complete_recursive_bib = 2
 
-" ctrlp.vim
-let g:ctrlp_show_hidden = 2
-let g:ctrlp_map = '<c-f>'
-let g:ctrlp_cmd = 'CtrlP /home/erik/com_sci'
+" CtrlP.vim
+let g:ctrlp_show_hidden = 2 
+nnoremap <Leader>f :CtrlP<CR>
+nnoremap <Leader>fm :CtrlPMRU<CR>
 
 "fugitive.vim
 nnoremap <Leader>ga :Gwrite<CR>
@@ -32,20 +31,26 @@ nnoremap <Leader>gc :Gcommit<CR>
 nnoremap <Leader>gp :Gpush<CR>
 
 " vim-netrw
-let g:netrw_banner = 0
-" absolute width of netrw window
-let g:netrw_winsize = -28
-" tree-view
-let g:netrw_liststyle = 3
-" sort is affecting only: directories on the top, files below
-let g:netrw_sort_sequence = '[\/]$,*'
-" open file in a new tab
-let g:netrw_browse_split = 3
+let g:netrw_banner = 0 "no banner
+let g:netrw_winsize = 35 " absolute width of netrw window tree-view
+let g:netrw_liststyle = 3 
+let g:netrw_sort_sequence = '[\/]$,*' " sort is affecting only: directories on the top, files below
+let g:netrw_browse_split = 3 " open file in a new tab
+nnoremap <Leader>ee :Sex<CR>
+
+" lightline - statusline
+let g:lightline = {'colorscheme': 'wombat',}
 
 " SETTINGS"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set laststatus=3
+let mapleader = ','
+nnoremap <C-s> :w<CR>
+inoremap <C-s> <Esc>:w<CR>
+nnoremap <C-q> :wq<CR>
+inoremap <C-q> <Esc>:wq<CR>
+
+set laststatus=2 "always show status bar
 set t_Co=256 "Colormode
-set term=screen-256color
+set term=xterm-256color
 colorscheme monokai-phoenix
 set number "number lines
 set timeoutlen=1001 ttimeoutlen=0 " making mode change faster ?
@@ -131,8 +136,6 @@ map <CR> o<Esc>
 
 " Copy / Paste
 set pastetoggle=<F2> " System clipboard pastes preserves indentation
-nnoremap <C-s> :w<CR>
-inoremap <C-s> <Esc>:w<CR>
 nnoremap <C-a> ggvG$
 vnoremap <S-u> <C-A>
 nnoremap <S-u> <C-A>

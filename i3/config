@@ -156,9 +156,11 @@ resize grow left 20, resize grow right 300, \
 resize grow down 200, resize grow up 250  
 
 # Open Installer.sh Computer todo document 
-bindsym $mod+i exec $term -T "Installer" -e bash -c "stty -ixon && vim ~/.files/Installation/Installer.sh", split horizontal, exec $term -T "Readme" -e bash -c "stty -ixon && vim /home/erik/.files/Installation/README.md"
+bindsym $mod+i exec $term -T "Installer" -e bash -c "stty -ixon && vim ~/.files/Installation/Installer.sh", split horizontal, exec $term -T "Readme" -e bash -c "stty -ixon && vim /home/erik/.files/Installation/README.md",
+
 # PDF
-bindsym $mod+Shift+c exec zathura ~/Documents/latex/Computer_todo.pdf
+bindsym $mod+Shift+c exec $term -T "Todo" -e bash -c "stty -ixon && vim /home/erik/Documents/latex/Misc/Computer_todo.tex"
+
 # Open bibtex document 
 bindsym $mod+b exec $term -T "bib-term" -e bash -c "stty -ixon && vim ~/Documents/latex/References.bib"
 for_window [class="URxvt" title="bib-term"] floating enable, \
