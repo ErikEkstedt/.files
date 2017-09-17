@@ -14,6 +14,3 @@
 | Link_maker      | Makes links to all important configuration files. | 
 | pywal_install | Installs dependencies for pywal and clones the pywal repo <br> into ~/Programs/pywal and installs | 
 
-| Scripts       | Description   | 
-| ------------- |:-------------:| 
-| Link-maker      | Makes links to all important configuration files. | 

@@ -6,7 +6,7 @@
 Scripts that installs everything from the ground up.
 
 
-### Scripts
+### [Scripts](https://github.com/eeckee/.files/tree/master/Scripts "Scripts directory")
 Here are all small scripts that are used from laptop settings to log entries.
 
 ### compton

@@ -5,19 +5,11 @@
     "nodes": [
         {
             "border": "1pixel",
-            "name": "htop",
-            "percent": 0.25,
+            "percent": 0.75,
             "type": "con",
+            "name": "ranger",
             "swallows": [{"class": "URxvt"}]
         },
-
-        //{
-        //    "border": "1pixel",
-        //    "percent": 0.75,
-        //    "type": "con",
-        //    "name": "ranger",
-        //    "swallows": [{"class": "URxvt"}]
-        //},
         {
             "border": "1pixel",
             "name": "htop",
