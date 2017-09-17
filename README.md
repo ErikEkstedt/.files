@@ -1,15 +1,26 @@
 # All my config files and scripts in one place
 
-## Installer.sh
-Scripts that installs everything
-run as sudo
+## Directories
+### Installation
+[Installation](https://github.com/eeckee/.files/tree/master/Installation "Installation directory")
 
-<<<<<<< HEAD
-=======
-vim - pathogen -> slimux, nerdtree, vim-airline, auto-pairs, supertab
-zsh - ( $ chmod -s /bin/zsh ) -> oh-my-zsh
+Scripts that installs everything from the ground up.
 
-### Ipython downgrade:
-pip install --force-reinstall ipython==4.2.1
->>>>>>> 0ecfc020567eda1c23de2d918c3c379906862b98
 
+### Scripts
+Here are all small scripts that are used from laptop settings to log entries.
+
+### compton
+Contains compton config file. (maybe compton is advanced so it got its own directory.. That might change)
+
+### i3
+All my dear i3 configurations
+
+### ranger
+Ranger files
+
+### vim
+Oh how I love you.
+
+## Config files
+All config files that I use. I think.
