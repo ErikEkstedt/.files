@@ -30,28 +30,35 @@ nnoremap <Leader>ga :Gwrite<CR>
 nnoremap <Leader>gc :Gcommit<CR>
 nnoremap <Leader>gp :Gpush<CR>
 
-" vim-netrw
+" " vim-netrw
 let g:netrw_banner = 0 "no banner
-let g:netrw_winsize = 35 " absolute width of netrw window tree-view
 let g:netrw_liststyle = 3 
 let g:netrw_sort_sequence = '[\/]$,*' " sort is affecting only: directories on the top, files below
-let g:netrw_browse_split = 3 " open file in a new tab
-nnoremap <Leader>ee :Sex<CR>
+nnoremap <Leader>tt :Texplore<CR>
+nnoremap <Leader>ee :Explore<CR>
 
 " lightline - statusline
 let g:lightline = {'colorscheme': 'wombat',}
+set noshowmode
+
+" Tabular
+vnoremap <silent> <Leader>ce :Tabularize /=<CR>
+vnoremap <silent> <Leader>ct :Tabularize /#<CR>
 
 " SETTINGS"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = ','
+
 nnoremap <C-s> :w<CR>
 inoremap <C-s> <Esc>:w<CR>
 nnoremap <C-q> :wq<CR>
 inoremap <C-q> <Esc>:wq<CR>
-
+" when sudo rights are needed but you did not sudo. 
+cmap w!! %!sudo tee > /dev/null %
 set laststatus=2 "always show status bar
 set t_Co=256 "Colormode
 set term=xterm-256color
 colorscheme monokai-phoenix
+
 set number "number lines
 set timeoutlen=1001 ttimeoutlen=0 " making mode change faster ?
 set mouse=a "mouse functionality (like gvim!)
@@ -67,6 +74,7 @@ set ai! "auto indent
 set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,resize
 set expandtab "no tab characters, spaces instead except with makefiles
 autocmd BufReadPost,FileReadPost,BufNewFile [Mm]ake{file,} setlocal noexpandtab
+
 " vim writes swap files. Disable
 set nobackup
 set nowritebackup

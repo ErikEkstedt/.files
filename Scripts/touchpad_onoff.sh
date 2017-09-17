@@ -7,11 +7,12 @@
 # Use device number matching touchpad, in this case 14
 T=2000
 Img="/usr/share/icons/gnome/256x256/status/user-available.png"
+Img2="/usr/share/icons/gnome/256x256/status/user-busy.png"
 if [[ $(xinput list 12 | grep -Ec "disabled") -eq 1 ]]; then
     xinput enable 12
     DISPLAY=:0 notify-send -t $T --urgency=critical --icon=$Img "Touchpad enabled"
 else
     xinput disable 12
-    DISPLAY=:0 notify-send -t $T --urgency=critical --icon=$Img "Touchpad disabled"
+    DISPLAY=:0 notify-send -t $T --urgency=critical --icon=$Img2 "Touchpad disabled"
 fi
 exit 0

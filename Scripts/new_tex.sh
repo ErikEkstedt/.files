@@ -13,16 +13,17 @@ else
     exit 1
 fi
 
+Img=/usr/share/icons/gnome/256x256/apps/accessories-text-editor.png
 cd ~/Documents/latex/Misc/
 # checks if file already exists
 if [ -f $FILE ]; then
     #File exists, open file
-    DISPLAY=:0 notify-send -t 2000 --urgency=critical --icon=/usr/share/icons/gnome/256x256/status/user-available.png "File already exists. Open existing file."
+    DISPLAY=:0 notify-send -t 2000 --urgency=critical --icon=$Img "File already exists. Open existing file."
     vim $FILE
 else
     cp ~/Documents/latex/LaTeX/standard.tex ~/Documents/latex/Misc/"$1".tex
 
-    DISPLAY=:0 notify-send -t 2000 --urgency=critical --icon=/usr/share/icons/gnome/256x256/status/user-available.png "Created "$1".tex"
+    DISPLAY=:0 notify-send -t 2000 --urgency=critical --icon=$Img "Created "$1".tex"
 
     vim ~/Documents/latex/Misc"$1".tex
 fi

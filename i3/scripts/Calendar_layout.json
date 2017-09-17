@@ -6,6 +6,7 @@
     "name": "CalMonth",
     "swallows": [{"class": "URxvt"}]
 }
+
 {
     "percent": 0.35,
     "border": "1pixel",
@@ -13,6 +14,7 @@
     "name": "CalWeek",
     "swallows": [{"class": "URxvt"}]
 }
+
 {
     "percent": 0.20,
     "border": "1pixel",
