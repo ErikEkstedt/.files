@@ -1,8 +1,7 @@
 # All my config files and scripts in one place
 
 ## Directories
-### Installation
-[Installation](https://github.com/eeckee/.files/tree/master/Installation "Installation directory")
+### [Installation](https://github.com/eeckee/.files/tree/master/Installation "Installation directory")
 
 Scripts that installs everything from the ground up.
 
