@@ -18,10 +18,58 @@ floating_modifier $mod
 bindsym $mod+Shift+q kill
 font pango:monospace 12
 
+
 # Lock computer
 bindsym $mod2+l exec bash -c "gnome-screensaver-command -l"
 bindsym $mod2+F1 exec bash -c "systemctl suspend"
 
+<<<<<<< HEAD
+=======
+# SET VARIABLES
+#set $term urxvt
+#set $term2 xfce4-terminal
+
+set $term xfce4-terminal
+set $term2 urxvt
+
+set $browser google-chrome
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# change workspace
+bindsym $mod+Ctrl+l workspace next
+bindsym $mod+Ctrl+h workspace prev
+
+# resize
+bindsym $mod+Shift+y resize shrink width 2 px or 2 ppt
+bindsym $mod+Shift+i resize grow height 2 px or 2 ppt
+bindsym $mod+Shift+u resize shrink height 5 px or 2 ppt
+bindsym $mod+Shift+o resize grow width 2 px or 2 ppt
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# split in horizontal orientation
+bindsym $mod+Shift+v split h
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+popup_during_fullscreen smart
+bindsym $mod+f fullscreen toggle
+bindsym $mod+e layout toggle split
+
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+bindsym $mod+Shift+z focus parent
+bindsym $mod+z focus child
+
+>>>>>>> 0ecfc020567eda1c23de2d918c3c379906862b98
 # WORKSPACES
 set $ws1 "1:Web 1"
 set $ws2 "2:Web 2"
@@ -66,11 +114,22 @@ bindsym Mod1+Shift+Tab move scratchpad
 # Monitor Setup
 # Move workspace to different monitor
 bindsym $mod2+m move workspace to output up
+<<<<<<< HEAD
 bindsym $mod2+F8 exec --no-startup-id ~/.files/Scripts/toggle_screen.sh
 
 ## STARTUP
 #exec_always feh --bg-scale ~/.config/wall.png
 exec_always --no-startup-id compton --config ~/.files/compton/config
+=======
+#bindsym $mod2+F8 exec bash -c "xrandr --output eDP-1 --auto --output HDMI-2 --auto --above eDP-1; feh --bg-scale ~/.config/wall.png"
+#bindsym $mod2+F7 exec bash -c "xrandr --output eDP-1 --auto --output HDMI-2 --off; feh --bg-scale ~/.config/wall.png"
+
+bindsym $mod2+F8 exec --no-startup-id ~/.files/Scripts/toggle_screen.sh
+
+## STARTUP
+exec_always feh --bg-scale ~/.config/wall.png
+#exec_always --no-startup-id compton --config /.config/.compton.conf
+>>>>>>> 0ecfc020567eda1c23de2d918c3c379906862b98
 exec --no-startup-id gnome-sound-applet
 exec --no-startup-id gnome-settings-daemon
 exec --no-startup-id nm-applet
@@ -106,12 +165,18 @@ resize grow down 250, resize grow up 250
 
 # APPLICATIONS and SETINGS
 # Fast Access
+<<<<<<< HEAD
 bindsym $mod+g exec $Browser 
 bindsym $mod+s exec $Music; workspace $ws9
 bindsym $mod+a exec bash ~/.files/Scripts/touchpad_onoff.sh
 
 # Calendar 
 bindsym $mod+c exec ~/.config/i3/Calendar.sh
+=======
+bindsym $mod+g focus parent exec $browser 
+bindsym $mod+s exec spotify; workspace $ws9
+bindsym $mod+a exec bash ~/.files/Scripts/touchpad_onoff.sh
+>>>>>>> 0ecfc020567eda1c23de2d918c3c379906862b98
 
 # Normal Access
 bindsym $mod+Shift+n exec nautilus --no-desktop
@@ -130,26 +195,57 @@ bindsym $mod+q exec ~/.files/i3/scripts/workflow.sh
 bindsym $mod+n exec ~/.files/i3/scripts/latexflow.sh
 
 # Log
+<<<<<<< HEAD
 bindsym $mod+d exec $term -e bash -c "stty -ixon && sh ~/.files/Scripts/new_log.sh"
 bindsym $mod+Shift+d exec bash ~/.files/Scripts/open_last_log.sh
+=======
+bindsym $mod+d exec $term -x bash -c "stty -ixon && sh ~/.files/Scripts/new_log.sh"
+bindsym $mod+Shift+d exec bash ~/.files/Scripts/open_last_log.sh
+
+# Open a floating ranger terminal
+bindsym $mod+Shift+r exec $term -T "rangerTerm" -x bash -c "stty -ixon && ranger"
+for_window [class="Xfce4-terminal" title="rangerTerm"] floating enable, \
+resize grow left 300, resize grow right 300, \
+resize grow down 150, resize grow up 100 
+#
+# Open a ranger terminal
+bindsym $mod+r exec $term -x bash -c "stty -ixon && ranger"
+
+# Open floating terminal
+bindsym $mod+t exec --no-startup-id $term -T "metaTerm"
+for_window [class="Xfce4-terminal" title="metaTerm"] floating enable, \
+resize grow left 120, resize grow right 120, \
+resize grow down 250, resize grow up 250
+>>>>>>> 0ecfc020567eda1c23de2d918c3c379906862b98
 
 ###################################################################################
 # LATEX - Documents
 ###################################################################################
 
 # Open WorkFlow latex document for todo:s
+<<<<<<< HEAD
 bindsym $mod+w exec $term -T "Master_todo-term" -e bash -c "stty -ixon && vim ~/Documents/latex/Master_todo.tex"
 for_window [class="URxvt" title="Master_todo-term"] floating enable, \
+=======
+bindsym $mod+w exec $term -T "Master_todo-term" -x bash -c "stty -ixon && vim ~/Documents/latex/Master_todo.tex"
+for_window [class="Xfce4-terminal" title="Master_todo-term"] floating enable, \
+>>>>>>> 0ecfc020567eda1c23de2d918c3c379906862b98
 resize grow left 20, resize grow right 300, \
 resize grow down 200, resize grow up 250 
 
 # Open Master Thesis document 
+<<<<<<< HEAD
 bindsym $mod+m exec $term -T "Master-term" -e bash -c "stty -ixon && vim ~/Documents/latex/Master.tex"
 for_window [class="URxvt" title="Master-term"] floating enable, \
+=======
+bindsym $mod+m exec $term -T "Master-term" -x bash -c "stty -ixon && vim ~/Documents/latex/Master.tex"
+for_window [class="Xfce4-terminal" title="Master-term"] floating enable, \
+>>>>>>> 0ecfc020567eda1c23de2d918c3c379906862b98
 resize grow left 20, resize grow right 300, \
 resize grow down 200, resize grow up 250  
 
 # Open Project Plan 
+<<<<<<< HEAD
 bindsym $mod+p exec $term -T "Master-term" -e bash -c "stty -ixon && vim ~/Documents/latex/Project_Plan.tex"
 for_window [class="URxvt" title="Master-term"] floating enable, \
 resize grow left 20, resize grow right 300, \
@@ -162,6 +258,21 @@ bindsym $mod+Shift+c exec zathura ~/Documents/latex/Computer_todo.pdf
 # Open bibtex document 
 bindsym $mod+b exec $term -T "bib-term" -e bash -c "stty -ixon && vim ~/Documents/latex/References.bib"
 for_window [class="URxvt" title="bib-term"] floating enable, \
+=======
+bindsym $mod+p exec $term -T "Master-term" -x bash -c "stty -ixon && vim ~/Documents/latex/Project_Plan.tex"
+for_window [class="Xfce4-terminal" title="Master-term"] floating enable, \
+resize grow left 20, resize grow right 300, \
+resize grow down 200, resize grow up 250  
+
+
+# Open Installer.sh Computer todo document 
+bindsym $mod+i exec $term -T "Installer" -x bash -c "stty -ixon && vim ~/.files/Installation/Installer.sh", split horizontal, exec $term -T "Readme" -x bash -c "stty -ixon && vim /home/erik/.files/Installation/README.md"
+# PDF
+bindsym $mod+Shift+c exec zathura ~/Documents/latex/Computer_todo.pdf
+# Open bibtex document 
+bindsym $mod+b exec $term -T "bib-term" -x bash -c "stty -ixon && vim ~/Documents/latex/References.bib"
+for_window [class="Xfce4-terminal" title="bib-term"] floating enable, \
+>>>>>>> 0ecfc020567eda1c23de2d918c3c379906862b98
 resize grow left 20, resize grow right 300, \
 resize grow down 200, resize grow up 250 
 

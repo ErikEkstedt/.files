@@ -38,6 +38,18 @@ echo Installing programs (git/tmux and the like...)
 apt-get install git tmux xclip zsh feh curl unclutter vim-gtk udiskie zathura xfce4-terminal ranger -y
 echo Done!
 echo "########################################################"
+<<<<<<< HEAD:Installation/Installer.sh
+=======
+echo 
+
+echo Creating default directories
+mkdir ~/com_sci ~/com_sci/Master_code ~/Documents/Papers \
+    ~/Pictures/wallpaper 
+
+echo "########################################################"
+echo 
+echo "Downloading all config files from github..."
+>>>>>>> 0ecfc020567eda1c23de2d918c3c379906862b98:Installation/Installer.sh
 
 ############################################################################
 echo Installing i3 and i3-gaps...
