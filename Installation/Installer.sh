@@ -1,10 +1,11 @@
 #!/bin/sh
 #
-#
 #       Todo:
 #           Anaconda
 #           tensorflow/pytorch...
-#       
+#       ML:
+#           pip tensorflow torch
+#
 # Require sudo right
 if [[ $UID != 0 ]]; then
     echo "Please run this script with sudo :"
@@ -37,20 +38,10 @@ echo Installing programs (git/tmux and the like...)
 apt-get install git tmux xclip zsh feh curl unclutter vim-gtk udiskie zathura xfce4-terminal ranger -y
 echo Done!
 echo "########################################################"
-echo 
-
-echo Creating default directories
-mkdir ~/com_sci ~/com_sci/Master_code ~/Documents/latex ~/Documents/Papers \
-    ~/Pictures/wallpaper 
-
-echo "########################################################"
-echo 
-echo "Downloading all config files from github..."
-
-
 
 ############################################################################
 echo Installing i3 and i3-gaps...
+# Perahps add dependency installation for i3
 # i3 (From https://i3wm.org/docs/repositories.html)
 echo Installing i3...
 apt-get install i3 -y
@@ -91,7 +82,15 @@ make
 make install
 echo Finished installing i3-gaps.
 
-##########################################################################
+echo "########################################################"
+echo Creating default directories
+mkdir ~/com_sci ~/com_sci/Master_code \
+    ~/Documents/Papers ~/Pictures/wallpaper 
+
+echo "########################################################"
+echo 
+echo "Downloading all config files from github..."
+
 echo Creating my deafault directory setup...
 mkdir -p ~/com_sci
 mkdir -p ~/Documents/latex
@@ -100,15 +99,13 @@ mkdir -p ~/git-clones
 #################################################
 # TODO 
 # Get .files and configs and important stuff from github.
-
 # Programs
-
 
 # Anaconda 
 # TODO ...............................................
 
 # Machine Learning frameworks
-apt-get install tensorflow
+# conda/pipinstall tensorflow
 
 
 

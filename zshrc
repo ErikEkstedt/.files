@@ -6,6 +6,11 @@
 #so as not to be disturbed by Ctrl-S ctrl-Q in terminals:
 stty -ixon
 
+# Import colorscheme from 'wal'
+# &   # Run the process in the background.
+# ( ) # Hide shell job control messages.
+(~/anaconda3/bin/wal -r &)
+
 # Export Variables
 export ZSH=/home/erik/.oh-my-zsh
 export KEYTIMEOUT=1
@@ -61,24 +66,15 @@ alias ru="xrdb ~/.Xresources"
 alias umountusb="udiskie-umount /media/erik/*"
 
 # LATEX
-function ntex() {
-    if [ -n "$1" ]; then
-        cp ~/Documents/latex/LaTeX/Article_Base.tex ~/Documents/latex/"$1".tex
-        cd ~/Documents/latex
-        vim "$1".tex
-    else     
-        echo No name given...
-    fi
-}
+alias tlog="sh ~/.files/Scripts/new_log.sh " "$1"
+alias tnew="sh ~/.files/Scripts/new_tex.sh " "$1"
+alias tnote="sh ~/.files/Scripts/new_note.sh " "$1"
 
-function tnote() {
-    if [ -n "$1" ]; then
-        cp ~/Documents/latex/LaTeX/Notes_base.tex ~/Documents/latex/Notes_"$1".tex
-        cd ~/Documents/latex
-        vim Notes_"$1".tex
-    else     
-        echo No name given...
-    fi
+# shortcut for simple git routines
+function ag() { # auto git
+	git add .
+	git commit -m "$1"
+	git push
 }
 
 alias tma="cd ~/Documents/latex; vim Master.tex"

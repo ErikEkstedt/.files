@@ -1,0 +1,26 @@
+#!/bin/bash
+# Installer for pywal
+# Clones the repo into ~/Programs/pywal
+cd ~/Programs
+echo Cloning pywal repository in to:
+echo "   $PWD/pywal"
+read -p "Continue? (y/n)" ans
+if [ "$ans" == n ]; then
+    exit 
+elif [ "$ans" == y ];then
+    git clone https://github.com/dylanaraps/pywal.git
+    echo Installing dependencies...
+    sudo apt-get install -y \
+        imagemagick \
+        feh
+    cd pywal
+    echo pip install..
+    pip install .
+else
+    echo Bad answer. Exit...
+fi
+
+
+
+
+

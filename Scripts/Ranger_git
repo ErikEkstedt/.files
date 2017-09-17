@@ -1,0 +1,12 @@
+#!/bin/bash
+# Script that pushes all files in directory onto git
+read -p $'Please Enter a commit comment: \n>' line
+
+if [ "$line" == "" ];then
+    line="update"
+fi
+
+git add .
+git commit -m "$line"
+git push
+

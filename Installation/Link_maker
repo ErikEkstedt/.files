@@ -1,0 +1,58 @@
+#!/bin/bash
+# Script that makes links 
+
+# Conf files
+ln -sf ~/.files/vimrc ~/.vimrc
+ln -sf ~/.files/zshrc ~/.zshrc
+ln -sf ~/.files/inputrc ~/.inputrc
+ln -sf ~/.files/bashrc ~/.bashrc
+ln -sf ~/.files/zathurarc ~/.config/zathura/zathurarc
+ln -sf ~/.files/tmux.conf ~/.tmux.conf
+ln -sf ~/.files/gitignore ~/.gitignore
+ln -sf ~/.files/gitconfig ~/.gitconfig
+ln -sf ~/.files/xinitrc ~/.xinitrc
+ln -sf ~/.files/Xresources ~/.Xresources
+ln -sf ~/.files/Xdefaults ~/.Xdefaults
+
+# i3
+ln -sf ~/.files/i3/i3status.conf ~/.config/i3/i3status.conf
+ln -sf ~/.files/i3/config ~/.config/i3/config
+
+# ranger
+ln -sf ~/.files/ranger/rc.conf ~/.config/ranger/rc.conf
+ln -sf ~/.files/ranger/rifle.conf ~/.config/ranger/rifle.conf
+ln -sf ~/.files/ranger/scope.sh ~/.config/ranger/scope.sh
+ln -sf ~/.files/ranger/commands.py ~/.config/ranger/commands.py
+ln -sf ~/.files/ranger/colorschemes ~/.config/ranger/colorschemes
+
+# Compton
+ln -sf ~/.files/compton/config ~/.config/compton/config
+
+
+echo Made the following links:
+echo CONFIG files:
+echo ~/.files/vimrc ~/.vimrc
+echo ~/.files/zshrc ~/.zshrc
+echo ~/.files/inputrc ~/.inputrc
+echo ~/.files/bashrc ~/.bashrc
+echo ~/.files/zathurarc ~/.config/zathura/zathurarc
+echo ~/.files/tmux.conf ~/.tmux.conf
+echo ~/.files/gitignore ~/.gitignore
+echo ~/.files/gitconfig ~/.gitconfig
+echo ~/.files/xinitrc ~/.xinitrc
+echo ~/.files/Xresources ~/.Xresources
+echo ~/.files/Xdefaults ~/.Xdefaults
+echo
+echo i3
+echo ~/.files/i3/i3status.conf ~/.config/i3/i3status.conf
+echo ~/.files/i3/config ~/.config/i3/config
+echo
+echo ranger:
+echo ~/.files/ranger/rc.conf ~/.config/ranger/rc.conf
+echo ~/.files/ranger/rifle.conf ~/.config/ranger/rifle.conf
+echo ~/.files/ranger/scope.sh ~/.config/ranger/scope.sh
+echo ~/.files/ranger/commands.py ~/.config/ranger/commands.py
+echo ~/.files/ranger/colorschemes ~/.config/ranger/colorschemes
+echo
+echo Compton:
+echo ~/.files/compton/config ~/.config/compton/config

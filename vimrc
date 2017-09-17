@@ -4,8 +4,6 @@ execute pathogen#infect()
 filetype plugin indent on
 filetype plugin on
 
-" HEEEEJJJJJ
-
 " slimux.vim
 nnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>
 vnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>gv<Esc>zz
@@ -42,6 +40,7 @@ set timeoutlen=1001 ttimeoutlen=0 " making mode change faster ?
 set mouse=a "mouse functionality (like gvim!)
 set tw=10001 "no wrapping text onto the next line
 set listchars+=precedes:<,extends:> "when nowrap is set-has carroots when a line extends beyond the edge
+
 syntax on "colours!
 set backspace=indent,eol,start "makes backspace work in Vim 7.3
 set hls "highlighting!
@@ -51,9 +50,11 @@ set ai! "auto indent
 set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,resize
 set expandtab "no tab characters, spaces instead except with makefiles
 autocmd BufReadPost,FileReadPost,BufNewFile [Mm]ake{file,} setlocal noexpandtab
+" vim writes swap files. Disable
 set nobackup
 set nowritebackup
 set noswapfile
+
 set nocompatible
 " (in)Case sensitive search
 set ignorecase
@@ -113,12 +114,16 @@ nnoremap <Leader>ebib :tabnew ~/Documents/latex/References.bib<CR>
 nnoremap <Leader>epy :tabnew ~/.vim/ftplugin/python.vim<CR>
 nnoremap <Leader>ete :tabnew ~/.vim/ftplugin/tex.vim<CR>
 
+" add extra line in command mode. 
+map <CR> o<Esc>
+
 " Copy / Paste
 set pastetoggle=<F2> " System clipboard pastes preserves indentation
 nnoremap <C-s> :w<CR>
 inoremap <C-s> <Esc>:w<CR>
 nnoremap <C-a> ggvG$
 vnoremap <S-u> <C-A>
+nnoremap <S-u> <C-A>
 nnoremap Y y$
 nnoremap pw "_viwp
 nnoremap pp p
@@ -173,5 +178,6 @@ vnoremap <S-Tab> <LT>gv
 "Spellcheck
 " Functionality
 map <F6> :setlocal spell! spelllang=en_us<CR>
+" h <space> becomes tab help <space> as to open help in new tab (instead of split)
 cnoreabbrev <expr> h getcmdtype() == ":" && getcmdline() == 'h' ? 'tab help' : 'h'
 

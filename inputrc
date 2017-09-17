@@ -1,4 +1,4 @@
-# Vi-keys in ipython ?
+# Vi-keys in ipython
 set editing-mode vi
 set keymap vi
 set convert-meta on
