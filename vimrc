@@ -1,50 +1,3 @@
-"""""""""""Plugins""""""""""""""""""""""""""
-"pathogen vim modules stuff
-execute pathogen#infect()
-filetype plugin indent on
-filetype plugin on
-
-" slimux.vim
-nnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>
-vnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>gv<Esc>zz
-nnoremap <C-c><C-x> :SlimuxREPLConfigure<CR>
-vnoremap <C-c><C-x> :SlimuxREPLConfigure<CR>
-
-" Calendar.vim
-let g:calendar_google_calendar = 1
-let g:calendar_google_task = 1
-
-" vimtex.vim
-let g:latex_view_general_viewer = 'zathura'
-let g:vimtex_view_method = "zathura"
-"let g:latex_view_general_options = shellescape("-s -e '" . exepath(v:progpath) . " --servername " . v:servername . " +{%line} {%input}'")
-let g:vimtex_complete_recursive_bib = 2
-
-" CtrlP.vim
-let g:ctrlp_show_hidden = 2 
-nnoremap <Leader>f :CtrlP<CR>
-nnoremap <Leader>fm :CtrlPMRU<CR>
-
-"fugitive.vim
-nnoremap <Leader>ga :Gwrite<CR>
-nnoremap <Leader>gc :Gcommit<CR>
-nnoremap <Leader>gp :Gpush<CR>
-
-" " vim-netrw
-let g:netrw_banner = 0 "no banner
-let g:netrw_liststyle = 3 
-let g:netrw_sort_sequence = '[\/]$,*' " sort is affecting only: directories on the top, files below
-nnoremap <Leader>tt :Texplore<CR>
-nnoremap <Leader>ee :Explore<CR>
-
-" lightline - statusline
-let g:lightline = {'colorscheme': 'wombat',}
-set noshowmode
-
-" Tabular
-vnoremap <silent> <Leader>ce :Tabularize /=<CR>
-vnoremap <silent> <Leader>ct :Tabularize /#<CR>
-
 " SETTINGS"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = ','
 
@@ -54,10 +7,21 @@ nnoremap <C-q> :wq<CR>
 inoremap <C-q> <Esc>:wq<CR>
 " when sudo rights are needed but you did not sudo. 
 cmap w!! %!sudo tee > /dev/null %
+
 set laststatus=2 "always show status bar
 set t_Co=256 "Colormode
 set term=xterm-256color
-colorscheme monokai-phoenix
+
+" autocmd. (put here becausedependent on pugin? )
+autocmd!
+autocmd BufEnter * colorscheme monokai-phoenix
+autocmd BufEnter *.tex call SetTexColor()
+
+function! SetTexColor()
+    set background=light
+    let g:solarized_termcolors=256
+    colorscheme solarized
+endfunction
 
 set number "number lines
 set timeoutlen=1001 ttimeoutlen=0 " making mode change faster ?
@@ -204,4 +168,52 @@ vnoremap <S-Tab> <LT>gv
 map <F6> :setlocal spell! spelllang=en_us<CR>
 " h <space> becomes tab help <space> as to open help in new tab (instead of split)
 cnoreabbrev <expr> h getcmdtype() == ":" && getcmdline() == 'h' ? 'tab help' : 'h'
+
+"""""""""""Plugins""""""""""""""""""""""""""
+"pathogen vim modules stuff
+execute pathogen#infect()
+filetype plugin indent on
+filetype plugin on
+
+" slimux.vim
+nnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>
+vnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>gv<Esc>zz
+nnoremap <C-c><C-x> :SlimuxREPLConfigure<CR>
+vnoremap <C-c><C-x> :SlimuxREPLConfigure<CR>
+
+" Calendar.vim
+let g:calendar_google_calendar = 1
+let g:calendar_google_task = 1
+
+" vimtex.vim
+let g:latex_view_general_viewer = 'zathura'
+let g:vimtex_view_method = "zathura"
+"let g:latex_view_general_options = shellescape("-s -e '" . exepath(v:progpath) . " --servername " . v:servername . " +{%line} {%input}'")
+let g:vimtex_complete_recursive_bib = 2
+
+" CtrlP.vim
+let g:ctrlp_show_hidden = 2 
+nnoremap <Leader>f :CtrlP<CR>
+nnoremap <Leader>fm :CtrlPMRU<CR>
+
+"fugitive.vim
+nnoremap <Leader>ga :Gwrite<CR>
+nnoremap <Leader>gc :Gcommit<CR>
+nnoremap <Leader>gp :Gpush<CR>
+
+" " vim-netrw
+let g:netrw_banner = 0 "no banner
+let g:netrw_liststyle = 3 
+let g:netrw_sort_sequence = '[\/]$,*' " sort is affecting only: directories on the top, files below
+nnoremap <Leader>tt :Texplore<CR>
+nnoremap <Leader>ee :Explore<CR>
+
+" lightline - statusline
+let g:lightline = {'colorscheme': 'wombat',}
+set noshowmode
+
+" Tabular
+vnoremap <silent> <Leader>ce :Tabularize /=<CR>
+vnoremap <silent> <Leader>ct :Tabularize /#<CR>
+
 
