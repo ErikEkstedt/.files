@@ -69,7 +69,7 @@ bindsym $mod2+m move workspace to output up
 bindsym $mod2+F8 exec --no-startup-id ~/.files/Scripts/toggle_screen.sh
 
 ## STARTUP
-exec_always --no-startup-id compton --config ~/.files/compton/config
+#exec_always --no-startup-id compton --config ~/.files/compton/config
 exec_always feh --bg-scale ~/.config/wall.png
 exec ~/.files/Scripts/start_up.sh
 #exec_always --no-startup-id ~/.files/i3/scripts/polybar.sh

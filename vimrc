@@ -12,16 +12,27 @@ set laststatus=2 "always show status bar
 set t_Co=256 "Colormode
 set term=xterm-256color
 
-" autocmd. (put here becausedependent on pugin? )
+" autocmd. 
 autocmd!
-autocmd BufEnter * colorscheme monokai-phoenix
+colorscheme monokai-phoenix
+"autocmd BufEnter * colorscheme monokai-phoenix
 autocmd BufEnter *.tex call SetTexColor()
 
 function! SetTexColor()
     set background=light
     let g:solarized_termcolors=256
+    " use lightline-solarized in lightline
+    let g:lightline = {
+        \ 'colorscheme': 'lightline_solarized',
+        \ }
     colorscheme solarized
 endfunction
+
+hi TabLineFill ctermfg=LightGreen ctermbg=DarkGreen
+hi TabLine ctermfg=Blue ctermbg=Yellow
+hi TabLineSel ctermfg=Red ctermbg=Yellow
+hi Title ctermfg=LightBlue ctermbg=Magenta
+
 
 set number "number lines
 set timeoutlen=1001 ttimeoutlen=0 " making mode change faster ?
