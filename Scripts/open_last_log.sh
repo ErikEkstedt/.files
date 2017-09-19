@@ -21,7 +21,7 @@ do
         then
             
             DISPLAY=:0 notify-send -t 2000 --urgency=critical --icon=$img "Yesterdays Log entry"
-            zathura $pdf
+            zathura $pdf 
             break
         else
             DISPLAY=:0 notify-send -t 2000 --urgency=critical --icon=$img "Yesterdays Log entry"

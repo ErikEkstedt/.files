@@ -22,6 +22,10 @@ font pango:monospace 12
 bindsym $mod2+l exec bash -c "gnome-screensaver-command -l"
 bindsym $mod2+F1 exec bash -c "systemctl suspend"
 
+# test key- for testing different scripts
+#bindsym $mod2+t exec ~/.files/Scripts/advanced/yesnobox.sh
+#bindsym $mod2+t exec $term
+
 # WORKSPACES
 set $ws1 "1:Web 1"
 set $ws2 "2:Web 2"
@@ -66,7 +70,7 @@ bindsym Mod1+Shift+Tab move scratchpad
 # Monitor Setup
 # Move workspace to different monitor
 bindsym $mod2+m move workspace to output up
-bindsym $mod2+F8 exec --no-startup-id ~/.files/Scripts/toggle_screen.sh
+bindsym $mod2+F8 exec ~/.files/Scripts/monitor_togglemove workspace to output up
 
 ## STARTUP
 #exec_always --no-startup-id compton --config ~/.files/compton/config
@@ -131,13 +135,14 @@ run -font "ubuntu mono 18" -fg "#505050"  \
 bindsym $mod+q exec ~/.files/i3/scripts/workflow.sh
 bindsym $mod+n exec ~/.files/i3/scripts/latexflow.sh
 
-# Log
-bindsym $mod+d exec $term -e bash -c "stty -ixon && sh ~/.files/Scripts/new_log.sh"
-bindsym $mod+Shift+d exec bash ~/.files/Scripts/open_last_log.sh
-
 ###################################################################################
 # LATEX - Documents
 ###################################################################################
+
+# Log
+#bindsym $mod+d exec $term -e bash -c "stty -ixon && sh ~/.files/Scripts/new_log.sh"
+bindsym $mod+d exec ~/.files/Scripts/new_log
+bindsym $mod+Shift+d exec bash ~/.files/Scripts/open_last_log.sh
 
 # Open WorkFlow latex document for todo:s
 bindsym $mod+w exec $term -T "Master_todo-term" -e bash -c "stty -ixon && vim ~/Documents/latex/Master_todo.tex"
@@ -300,7 +305,6 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+Shift+z focus parent
 bindsym $mod+z focus child
 
-
 # Start i3bar to display a workspace bar (plus the system information i3status
 bar {
 	colors {
@@ -340,7 +344,6 @@ mode $reboot_choice{
 bindsym $mod+Ctrl+e mode $reboot_choice
 
 # Mode to select config files
-
 set $config_choice "Config: (i)3, (V)im, (R)anger, (Z)sh, (X)defaults, (P)ython.vim, (T)ex.vim, t(M)ux "
 mode $config_choice{
         bindsym $mod+v exec $term -T "Vim-config" -e bash -c "stty -ixon && vim ~/.files/vimrc", mode "default"
@@ -355,5 +358,4 @@ mode $config_choice{
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
 bindsym $mod+Shift+e mode $config_choice

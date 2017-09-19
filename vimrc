@@ -1,6 +1,5 @@
 " SETTINGS"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = ','
-
 nnoremap <C-s> :w<CR>
 inoremap <C-s> <Esc>:w<CR>
 nnoremap <C-q> :wq<CR>
@@ -15,7 +14,6 @@ set term=xterm-256color
 " autocmd. 
 autocmd!
 colorscheme monokai-phoenix
-"autocmd BufEnter * colorscheme monokai-phoenix
 autocmd BufEnter *.tex call SetTexColor()
 
 function! SetTexColor()
@@ -27,6 +25,12 @@ function! SetTexColor()
         \ }
     colorscheme solarized
 endfunction
+
+" Compile on initialization, cleanup on quit
+augroup vimtex_event_1
+    au!
+    au User VimtexEventQuit     call vimtex#compiler#clean(0)
+augroup END
 
 hi TabLineFill ctermfg=LightGreen ctermbg=DarkGreen
 hi TabLine ctermfg=Blue ctermbg=Yellow

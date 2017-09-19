@@ -1,17 +1,25 @@
-#/bin/bash
+#!/bin/bash
+# Gets todays date as filename
 DATE=`date +%Y-%m-%d`
 FILE=$DATE".tex"     
+# define notification image
 Img=/usr/share/icons/gnome/256x256/apps/accessories-text-editor.png
+
 cd ~/Documents/latex/Logs/
+# todo: change htop here to "Week overview"
+#   sleep 2 command is not nice. force zathura to name windows
 if [ -f $FILE ]; then
     #File exists, open file
     DISPLAY=:0 notify-send -t 2000 --urgency=critical --icon=$Img "Todays Log entry"
-
-    vim $FILE
+    urxvt -e bash -c "stty -ixon && vim $FILE" &
 else
     # File does not exist, create file
     DISPLAY=:0 notify-send -t 2000 --urgency=critical --icon=$Img "Todays Log entry"
-
     cp ~/Documents/latex/LaTeX/Log_base.tex ~/Documents/latex/Logs/"$FILE"
-    vim $FILE
+    urxvt -e bash -c "stty -ixon && vim $FILE" &
 fi
+
+
+
+
+

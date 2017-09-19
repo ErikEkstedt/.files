@@ -1,0 +1,32 @@
+{
+    // splitv split container with 2 children
+    "layout": "splith",
+    "percent": 1.0,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "none",
+            "name": "htop",
+            "percent": 0.45,
+            "type": "con",
+            "swallows": [
+                {
+                    "class": "Zathura"
+                }
+            ]
+        },
+        {
+            "border": "none",
+            "name": "ranger",
+            "percent": 0.55,
+            "type": "con",
+            "swallows": [
+                {
+                    "class": "^URxvt$",
+                    "title": "^bash$"
+                }
+            ]
+        }
+    ]
+}
+
