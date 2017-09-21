@@ -3,9 +3,28 @@ cd ~/.vim/bundle
 
 git clone https://github.com/tomtom/tcomment_vim.git
 git clone https://github.com/kien/ctrlp.vim.git
-#git clone https://github.com/sheerun/vim-polyglot.git
 git clone https://github.com/godlygeek/tabular.git
-git clone <++>
-git clone <++>
-git clone <++>
+git clone https://github.com/itchyny/calendar.vim.git
+git clone https://github.com/PotatoesMaster/i3-vim-syntax.git
+git clone https://github.com/epeli/slimux.git
+git clone https://github.com/itchyny/lightline.vim.git
+git clone https://github.com/tpope/vim-fugitive.git
+git clone https://github.com/lervag/vimtex.git
+
+# YouCompleteMe
+apt-get install build-essetial cmake -y
+apt-get install python-dev python3-dev
+git clone https://github.com/Valloric/YouCompleteMe.git
+cd YouCompleteMe
+git submodule update --init --recursive
+./install.py -clang-completer
+
+echo "###############################################"
+echo
+cd ..
+mkdir colors && cd colors 
+git clone https://github.com/Reewr/vim-monokai-phoenix.git
+git clone https://github.com/nightsense/carbonized.git
+
+
 

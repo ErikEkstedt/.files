@@ -2,6 +2,7 @@
 # Script that makes links 
 
 # Conf files
+
 ln -sf ~/.files/vimrc ~/.vimrc
 ln -sf ~/.files/zshrc ~/.zshrc
 ln -sf ~/.files/inputrc ~/.inputrc
