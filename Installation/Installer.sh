@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 #       Todo:
 #           Anaconda
@@ -15,7 +15,7 @@ if [[ $UID != 0 ]]; then
 fi
 
 # Upgrading
-echo Upgrading (apt-get update/upgrade/dist-upgrade)
+echo Upgrading "(apt-get update/upgrade/dist-upgrade)"
 apt-get update
 apt-get upgrade
 apt-get dist-upgrade
