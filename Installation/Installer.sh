@@ -36,13 +36,17 @@ apt-get install notifyosdconfig
 echo "########################################################"
 echo
 echo Installing programs (git/tmux and the like...)
-apt-get install git tmux xclip zsh feh curl unclutter vim-gtk udiskie zathura rxvt-unicode-256color ranger -y
+apt-get install git tmux xclip zsh feh curl unclutter vim-gtk udiskie zathura rxvt-unicode-256color ranger wget curl -y
 echo Done!
 echo "########################################################"
 echo 
 
-# ZSH 
-# zsh - ( $ chmod -s /bin/zsh ) -> oh-my-zsh
+echo Installing chrome...
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+dpkg -i --force-depends google-chrome-stable_current_amd64.deb
+apt-get install -f -y
+echo "########################################################"
+echo Done!
 
 echo "########################################################"
 echo 
@@ -88,7 +92,7 @@ apt-get install libxcb-xrm-dev
 echo Download and make i3-gaps in ~/i3-gaps...
 # I want to install to ~/i3-gaps
 echo Creating directory...
-mkdir -p ~/i3-gaps 
+mkdir ~/i3-gaps 
 cd ~/i3-gaps
 
 # clone the repository
@@ -108,6 +112,12 @@ mkdir -p build && cd build/
 make
 make install
 echo Finished installing i3-gaps.
+
+echo Setting new shell to Zsh
+chmod -s /bin/zsh
+# ZSH 
+# zsh - ( $ chmod -s /bin/zsh ) -> oh-my-zsh
+
 
 #################################################
 # TODO 
