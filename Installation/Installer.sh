@@ -36,7 +36,7 @@ apt-get install notifyosdconfig -y
 echo "########################################################"
 echo
 echo Installing programs "(git/tmux and the like...)"
-apt-get install git tmux xclip zsh feh curl unclutter vim-gtk udiskie zathura rxvt-unicode-256color ranger wget curl -y
+apt-get install git tmux xclip zsh feh curl unclutter vim-gtk udiskie zathura rxvt-unicode-256color ranger wget curl autoconf -y
 echo Done!
 echo "########################################################"
 echo 
@@ -81,7 +81,7 @@ apt-get install i3 -y
 # Dependencies
 # Ubuntu (>= 14.04 LTS, <= 16.04)
 echo Installing i3-gaps dependencies...
-apt-get install bxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf libxcb-xrm-dev -y
+apt-get install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf libxcb-xrm-dev -y
 
 # extra dependency
 add-apt-repository ppa:aguignard/ppa
@@ -90,13 +90,9 @@ apt-get install libxcb-xrm-dev -y
 
 # Install (https://github.com/Airblader/i3/wiki/Compiling-&-Installing)
 echo Download and make i3-gaps in ~/i3-gaps...
-# I want to install to ~/i3-gaps
-echo Creating directory...
-mkdir ~/i3-gaps 
-cd ~/i3-gaps
-
 # clone the repository
 echo Download i3-gaps...
+cd ~
 git clone https://www.github.com/Airblader/i3 i3-gaps
 cd i3-gaps
 
