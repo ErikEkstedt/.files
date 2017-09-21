@@ -118,6 +118,9 @@ chmod -s /bin/zsh
 # ZSH 
 # zsh - ( $ chmod -s /bin/zsh ) -> oh-my-zsh
 
+echo Create links for config files...
+cd ~/.files/Installation
+./Link_maker
 
 #################################################
 # TODO 
