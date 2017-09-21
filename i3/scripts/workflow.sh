@@ -8,5 +8,6 @@ i3-msg append_layout "$WS_LAYOUT_FILE"
 urxvt -e bash -c "stty -ixon && ranger" &
 urxvt -e htop &
 urxvt -e bash -c "stty -ixon && ranger" &
+urxvt -e bash -c "stty -ixon && ranger" &
 
 

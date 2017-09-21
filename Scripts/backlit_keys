@@ -1,0 +1,18 @@
+#!/bin/bash
+# if input is "down" then decreases backlight otherwise increases
+var=$(cat /sys/class/leds/asus::kbd_backlight/brightness )
+if [ $1 == "down" ]; then
+    if [ $var -gt 0 ]; then
+        bright=$((var - 1))
+        echo $bright > /sys/class/leds/asus::kbd_backlight/brightness 
+    fi
+else
+    if [ $var -lt 3 ]; then
+        bright=$((var + 1))
+        echo $bright > /sys/class/leds/asus::kbd_backlight/brightness 
+   fi
+fi
+# Notification
+Img="/usr/share/icons/gnome/256x256/status/user-available.png"
+T=1000
+DISPLAY=:0 notify-send -t $T --urgency=critical --icon=$Img "Key brightness: $bright "

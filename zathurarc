@@ -13,8 +13,8 @@ set scroll-step 100
 set zoom-min 10
 set guioptions ""
 
-map <C-i> zoom in
-map <C-o> zoom out
+map <C-+> zoom in
+map <C--> zoom out
 # zathurarc-dark
 #set font "inconsolata 15"
 set default-bg "#000000" #00

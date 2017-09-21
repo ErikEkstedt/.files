@@ -210,6 +210,7 @@ let g:vimtex_complete_recursive_bib = 2
 let g:ctrlp_show_hidden = 2 
 nnoremap <Leader>f :CtrlP<CR>
 nnoremap <Leader>fm :CtrlPMRU<CR>
+let g:ctrlp_map = ''
 
 "fugitive.vim
 nnoremap <Leader>ga :Gwrite<CR>

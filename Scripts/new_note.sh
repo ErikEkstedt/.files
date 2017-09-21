@@ -2,7 +2,7 @@
 # Creates a "Notes" tex file with the name of the first argument passed to the script
 # Uses a Note-template
 if [ -n "$1" ]; then
-    FILE="$1"".tex"     
+    FILE="Notes_""$1"".tex"     
     echo $FILE
 else     
     echo "No file name given."

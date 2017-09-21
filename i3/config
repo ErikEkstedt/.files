@@ -70,7 +70,7 @@ bindsym Mod1+Shift+Tab move scratchpad
 # Monitor Setup
 # Move workspace to different monitor
 bindsym $mod2+m move workspace to output up
-bindsym $mod2+F8 exec ~/.files/Scripts/monitor_togglemove workspace to output up
+bindsym $mod2+F8 exec ~/.files/Scripts/monitor_toggle
 
 ## STARTUP
 #exec_always --no-startup-id compton --config ~/.files/compton/config
@@ -133,7 +133,6 @@ run -font "ubuntu mono 18" -fg "#505050"  \
 
 # Workflow
 bindsym $mod+q exec ~/.files/i3/scripts/workflow.sh
-bindsym $mod+n exec ~/.files/i3/scripts/latexflow.sh
 
 ###################################################################################
 # LATEX - Documents
@@ -143,6 +142,9 @@ bindsym $mod+n exec ~/.files/i3/scripts/latexflow.sh
 #bindsym $mod+d exec $term -e bash -c "stty -ixon && sh ~/.files/Scripts/new_log.sh"
 bindsym $mod+d exec ~/.files/Scripts/new_log
 bindsym $mod+Shift+d exec bash ~/.files/Scripts/open_last_log.sh
+
+# Notes
+bindsym $mod+n exec ~/.files/Scripts/new_note
 
 # Open WorkFlow latex document for todo:s
 bindsym $mod+w exec $term -T "Master_todo-term" -e bash -c "stty -ixon && vim ~/Documents/latex/Master_todo.tex"
@@ -261,8 +263,8 @@ bindsym Ctrl+XF86MonBrightnessDown exec sudo ~/.files/Scripts/intel_screen_brigh
 bindsym Shift+XF86MonBrightnessUp exec sudo ~/.files/Scripts/intel_screen_bright_max
 
 # Keyboard brightness controls
-bindsym XF86KbdBrightnessUp exec sudo ~/.files/Scripts/backlit_keys_up
-bindsym XF86KbdBrightnessDown exec sudo ~/.files/Scripts/backlit_keys_down
+bindsym XF86KbdBrightnessUp exec sudo ~/.files/Scripts/backlit_keys 
+bindsym XF86KbdBrightnessDown exec sudo ~/.files/Scripts/backlit_keys down
 
 # Hibernate
 bindsym XF86Sleep exec systemctl hybrid-sleep
