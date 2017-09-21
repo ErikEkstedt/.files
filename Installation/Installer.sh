@@ -7,6 +7,7 @@
 #           pip tensorflow torch
 #
 # Require sudo right
+
 if [[ $UID != 0 ]]; then
     echo "Please run this script with sudo :"
     echo "sudo $0 $*"
@@ -35,7 +36,7 @@ apt-get install notifyosdconfig
 echo "########################################################"
 echo
 echo Installing programs (git/tmux and the like...)
-apt-get install git tmux xclip zsh feh curl unclutter vim-gtk udiskie zathura xfce4-terminal ranger -y
+apt-get install git tmux xclip zsh feh curl unclutter vim-gtk udiskie zathura rxvt-unicode-256color ranger -y
 echo Done!
 echo "########################################################"
 echo 
@@ -43,14 +44,27 @@ echo
 # ZSH 
 # zsh - ( $ chmod -s /bin/zsh ) -> oh-my-zsh
 
+echo "########################################################"
+echo 
+echo Cloning Git Repositories
+echo Cloning .files...
+cd  
+git clone https://github.com/ErikEkstedt/.files.git
 
-echo Creating default directories
-mkdir ~/com_sci ~/com_sci/Master_code ~/Documents/Papers \
-    ~/Pictures/wallpaper 
+echo "########################################################"
+echo
+echo Cloning Latex files...
+cd ~/Documents
+git clone https://github.com/ErikEkstedt/LatexDocs.git
+
+echo "########################################################"
+echo
+echo Cloning Robot Project...
+cd; mkdir com_sci; cd com_sci
+git clone https://github.com/ErikEkstedt/Robot.git
 
 echo "########################################################"
 echo 
-echo "Downloading all config files from github..."
 
 ############################################################################
 echo Installing i3 and i3-gaps...
@@ -95,20 +109,6 @@ make
 make install
 echo Finished installing i3-gaps.
 
-echo "########################################################"
-echo Creating default directories
-mkdir ~/com_sci ~/com_sci/Master_code \
-    ~/Documents/Papers ~/Pictures/wallpaper 
-
-echo "########################################################"
-echo 
-echo "Downloading all config files from github..."
-
-echo Creating my deafault directory setup...
-mkdir -p ~/com_sci
-mkdir -p ~/Documents/latex
-mkdir -p ~/Pictures/wallpaper
-mkdir -p ~/git-clones
 #################################################
 # TODO 
 # Get .files and configs and important stuff from github.
