@@ -5,16 +5,15 @@ if [[ $UID != 0 ]]; then
     echo "sudo $0 $*"
     exit 1
 fi
-
-
+echo "########################################################"
+echo "########################################################"
+echo "########################################################"
+echo "########################################################"
 echo "########################################################"
 echo
-echo
-echo Downloading Anaconda
-cd ~
-wget https://repo.continuum.io/archive/Anaconda3-4.4.0-Linux-x86_64.sh
-chmod +x Anaconda3-4.4.0-Linux-x86_64.sh
-sudo -u erik bash -c './Anaconda3-4.4.0-Linux-x86_64.sh'
+echo Installing vim plugins and color.
+sudo ~/.files/Installation/install_scripts/Vim_plugin_install
+
 
 echo "########################################################"
 echo
@@ -32,22 +31,18 @@ apt-get dist-upgrade -y
 
 echo "########################################################"
 echo
-echo Create links for config files...
-~/.files/Installation/Link_maker
+echo
+echo Downloading Anaconda
+cd ~
+wget https://repo.continuum.io/archive/Anaconda3-4.4.0-Linux-x86_64.sh
+chmod +x Anaconda3-4.4.0-Linux-x86_64.sh
+sudo -u erik bash -c './Anaconda3-4.4.0-Linux-x86_64.sh'
+
 
 echo "########################################################"
 echo
 echo Installing pywal
 sudo ~/.files/Installation/install_scripts/pywal_install
-
-echo "########################################################"
-echo "########################################################"
-echo "########################################################"
-echo "########################################################"
-echo "########################################################"
-echo
-echo Installing vim plugins and color.
-sudo ~/.files/Installation/install_scripts/Vim_plugin_install
 
 echo "########################################################"
 echo "########################################################"
