@@ -1,5 +1,5 @@
-#!bin/bash
-mkdir .vim
+#!/bin/bash
+mkdir -p .vim
 mkdir -p ~/.vim/autoload ~/.vim/bundle && \
     curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
@@ -14,8 +14,8 @@ git clone https://github.com/tpope/vim-fugitive.git
 git clone https://github.com/lervag/vimtex.git
 
 # YouCompleteMe
-apt-get install build-essetial cmake -y
-apt-get install python-dev python3-dev
+sudo apt-get install build-essetial cmake -y
+sudo apt-get install python-dev python3-dev
 git clone https://github.com/Valloric/YouCompleteMe.git
 cd YouCompleteMe
 git submodule update --init --recursive
@@ -24,7 +24,7 @@ git submodule update --init --recursive
 echo "###############################################"
 echo
 cd ~/.vim
-mkdir colors && cd colors 
+mkdir -p colors && cd colors 
 git clone https://github.com/Reewr/vim-monokai-phoenix.git
 git clone https://github.com/nightsense/carbonized.git
 

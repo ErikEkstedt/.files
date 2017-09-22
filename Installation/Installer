@@ -1,0 +1,144 @@
+#!/bin/bash
+# Upgrading
+echo Upgrading "(apt-get update/upgrade/dist-upgrade)"
+echo "########################################################"
+echo "########################################################"
+# -qq will not show anything in terminal
+# -yy will answer yes to everything even if errors
+echo                Update  
+sudo apt-get update -yyqq 
+echo "########################################################"
+echo "########################################################"
+echo                Upgrade
+sudo apt-get upgrade -yyqq
+echo "########################################################"
+echo "########################################################"
+echo                Dist-upgrade
+sudo apt-get dist-upgrade -yyqq
+
+# Install needed programs
+echo "########################################################"
+echo "########################################################"
+echo "########################################################"
+echo "########################################################"
+echo            Installing programs "(git/tmux and the like...)"
+sudo apt-get install -yyqq git tmux xclip\
+    zsh feh curl unclutter vim-gtk udiskie zathura\
+    rxvt-unicode-256color ranger wget curl\
+    autoconf gnome-session-bin python-pip latexmk 
+# notify-send, working version (otherwise the -t flag did not do anything)
+# (with some extra functions recommended in solition to the above.
+echo "########################################################"
+echo            Additional installs for libnotify
+sudo add-apt-repository ppa:leolik/leolik -yy
+sudo add-apt-repository ppa:nilarimogard/webupd8 -yy
+sudo apt-get update -yyqq
+sudo apt-get install libnotify-bin -yy
+sudo apt-get install notifyosdconfig -yy
+pkill notify-osd
+
+echo "########################################################"
+echo "########################################################"
+echo                        Done!
+echo "########################################################"
+echo 
+echo                Installing chrome...
+cd ~/Downloads
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i --force-depends google-chrome-stable_current_amd64.deb
+sudo apt-get install -f -yyqq
+sudo rm google-chrome-stable_current_amd64.deb
+cd ~
+echo "########################################################"
+echo                        Done!
+echo "########################################################"
+echo 
+echo                Installing Spotify...
+# From spotify install guide
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886 0DF731E45CE24F27EEEB1450EFDC8610341D9410
+echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
+sudo apt-get update -yyqq
+sudo apt-get install spotify-client -yyqq
+echo "########################################################"
+echo                        Done!
+############################################################################
+echo "\n \n \n"
+echo "########################################################"
+echo "########################################################"
+echo "########################################################"
+echo "########################################################"
+echo        Installing i3-gaps dependencies...
+# i3 (From https://i3wm.org/docs/repositories.html)
+sudo apt-get install -yyqq libxcb1-dev libxcb-keysyms1-dev \
+    libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev \
+    libyajl-dev libstartup-notification0-dev \
+    libxcb-randr0-dev libev-dev libxcb-cursor-dev \
+    libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev \
+    libxkbcommon-x11-dev autoconf libxcb-xrm-dev 
+# extra dependency
+sudo add-apt-repository ppa:aguignard/ppa -yy
+sudo apt-get update -yyqq
+sudo apt-get install libxcb-xrm-dev -yyqq
+echo "########################################################"
+echo "########################################################"
+echo "########################################################"
+echo "########################################################"
+echo "########################################################"
+echo
+echo                    Installing i3...
+sudo apt-get install i3 -yyq
+echo "########################################################"
+echo "########################################################"
+echo "########################################################"
+echo
+echo                   i3 installed!  
+echo
+echo "########################################################"
+echo "########################################################"
+echo
+echo                Download i3-gaps...
+cd ~
+# Git clone NOT in sudo!
+git clone https://www.github.com/Airblader/i3 i3-gaps
+echo
+echo "########################################################"
+echo "########################################################"
+echo
+echo            Compile and install i3-gaps...
+cd i3-gaps
+autoreconf --force --install
+sudo rm -rf build/
+sudo mkdir -p build && cd build/
+echo "########################################################"
+echo "########################################################"
+echo "###################     MAKE    ########################"
+echo "########################################################"
+echo "########################################################"
+../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
+make -j8
+make install
+echo "########################################################"
+echo Finished installing i3-gaps.
+echo "########################################################"
+echo "########################################################"
+echo "########################################################"
+echo "########################################################"
+echo            Create links for config files...
+~/.files/Installation/Link_maker
+echo
+echo "########################################################"
+echo            Restarting in 10 seconds
+echo "########################################################"
+sleep 1
+echo 9; sleep 1
+echo 8; sleep 1
+echo 7; sleep 1
+echo 6; sleep 1
+echo 5; sleep 1
+echo 4; sleep 1
+echo 3; sleep 1
+echo 2; sleep 1
+echo 1; sleep 1
+sudo shutdown -r 0
+
+
