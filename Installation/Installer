@@ -26,7 +26,8 @@ sudo apt-get install -yyqq git tmux htop xclip\
     zsh feh curl unclutter vim-gtk udiskie zathura\
     rxvt-unicode-256color ranger wget curl\
     autoconf gnome-session-bin python-pip\
-    latexmk libappindicator1 wakeonlan
+    latexmk libappindicator1 wakeonlan \
+    rofi
 # notify-send, working version (otherwise the -t flag did not do anything)
 # (with some extra functions recommended in solition to the above.
 echo "########################################################"
