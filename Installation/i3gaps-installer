@@ -34,9 +34,9 @@ echo "########################################################"
 echo "###################     MAKE    ########################"
 echo "########################################################"
 echo "########################################################"
-../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
-make -j8
-make install
+sudo ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
+sudo make -j8
+sudo make install
 echo "########################################################"
 echo            Finished installing i3-gaps.
 echo "########################################################"
