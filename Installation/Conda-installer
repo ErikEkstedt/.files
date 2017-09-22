@@ -1,0 +1,11 @@
+#!/bin/bash
+echo "########################################################"
+echo
+echo                Downloading Anaconda
+cd ~
+wget https://repo.continuum.io/archive/Anaconda3-4.4.0-Linux-x86_64.sh
+chmod +x Anaconda3-4.4.0-Linux-x86_64.sh
+sudo -u erik bash -c './Anaconda3-4.4.0-Linux-x86_64.sh'
+echo "########################################################"
+echo
+

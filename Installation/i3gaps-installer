@@ -1,0 +1,46 @@
+#!/bin/bash
+echo "########################################################"
+echo "########################################################"
+echo    Installing i3-gaps dependencies. Again. To be safe...
+# i3 (From https://i3wm.org/docs/repositories.html)
+sudo apt-get install -yyqq libxcb1-dev libxcb-keysyms1-dev \
+    libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev \
+    libyajl-dev libstartup-notification0-dev \
+    libxcb-randr0-dev libev-dev libxcb-cursor-dev \
+    libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev \
+    libxkbcommon-x11-dev autoconf libxcb-xrm-dev 
+# extra dependency
+sudo add-apt-repository ppa:aguignard/ppa -yy
+sudo apt-get update -yyqq
+sudo apt-get install libxcb-xrm-dev -yyqq
+echo "########################################################"
+echo "########################################################"
+echo
+echo                Download i3-gaps...
+cd ~
+# Git clone NOT in sudo!
+git clone https://www.github.com/Airblader/i3 i3-gaps
+echo
+echo "########################################################"
+echo "########################################################"
+echo
+echo            Compile and install i3-gaps...
+cd i3-gaps
+autoreconf --force --install
+sudo rm -rf build/
+mkdir -p build && cd build/
+echo "########################################################"
+echo "########################################################"
+echo "###################     MAKE    ########################"
+echo "########################################################"
+echo "########################################################"
+../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
+make -j8
+make install
+echo "########################################################"
+echo            Finished installing i3-gaps.
+echo "########################################################"
+echo "########################################################"
+echo            Please restart computer.
+
+

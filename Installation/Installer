@@ -22,10 +22,11 @@ echo "########################################################"
 echo "########################################################"
 echo "########################################################"
 echo            Installing programs "(git/tmux and the like...)"
-sudo apt-get install -yyqq git tmux xclip\
+sudo apt-get install -yyqq git tmux htop xclip\
     zsh feh curl unclutter vim-gtk udiskie zathura\
     rxvt-unicode-256color ranger wget curl\
-    autoconf gnome-session-bin python-pip latexmk 
+    autoconf gnome-session-bin python-pip\
+    latexmk libappindicator1
 # notify-send, working version (otherwise the -t flag did not do anything)
 # (with some extra functions recommended in solition to the above.
 echo "########################################################"
@@ -84,8 +85,20 @@ echo "########################################################"
 echo "########################################################"
 echo "########################################################"
 echo "########################################################"
+echo "########################################################"
+echo
+echo                    Setting new shell to Zsh
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
+sudo chsh -s $(which zsh)
+
+echo "########################################################"
+echo "########################################################"
+echo "########################################################"
+echo "########################################################"
+echo "########################################################"
 echo
 echo                    Installing i3...
+sleep 2
 sudo apt-get install i3 -yyq
 echo "########################################################"
 echo "########################################################"
@@ -95,50 +108,51 @@ echo                   i3 installed!
 echo
 echo "########################################################"
 echo "########################################################"
-echo
-echo                Download i3-gaps...
-cd ~
-# Git clone NOT in sudo!
-git clone https://www.github.com/Airblader/i3 i3-gaps
-echo
-echo "########################################################"
-echo "########################################################"
-echo
-echo            Compile and install i3-gaps...
-cd i3-gaps
-autoreconf --force --install
-sudo rm -rf build/
-sudo mkdir -p build && cd build/
-echo "########################################################"
-echo "########################################################"
-echo "###################     MAKE    ########################"
-echo "########################################################"
-echo "########################################################"
-../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
-make -j8
-make install
-echo "########################################################"
-echo Finished installing i3-gaps.
-echo "########################################################"
-echo "########################################################"
-echo "########################################################"
 echo "########################################################"
 echo            Create links for config files...
-~/.files/Installation/Link_maker
+ln -sf ~/.files/vimrc ~/.vimrc
+ln -sf ~/.files/zshrc ~/.zshrc
+ln -sf ~/.files/inputrc ~/.inputrc
+ln -sf ~/.files/bashrc ~/.bashrc
+ln -sf ~/.files/tmux.conf ~/.tmux.conf
+ln -sf ~/.files/gitignore ~/.gitignore
+ln -sf ~/.files/gitconfig ~/.gitconfig
+ln -sf ~/.files/xinitrc ~/.xinitrc
+ln -sf ~/.files/Xresources ~/.Xresources
+ln -sf ~/.files/Xdefaults ~/.Xdefaults
+mkdir -p ~/.config/zathura
+ln -sf ~/.files/zathurarc ~/.config/zathura/zathurarc
+# i3
+mkdir -p ~/.config/i3
+ln -sf ~/.files/i3/i3status.conf ~/.config/i3/i3status.conf
+ln -sf ~/.files/i3/config ~/.config/i3/config
+# ranger
+mkdir -p ~/.config/ranger
+ln -sf ~/.files/ranger/rc.conf ~/.config/ranger/rc.conf
+ln -sf ~/.files/ranger/rifle.conf ~/.config/ranger/rifle.conf
+ln -sf ~/.files/ranger/scope.sh ~/.config/ranger/scope.sh
+ln -sf ~/.files/ranger/commands.py ~/.config/ranger/commands.py
+ln -sf ~/.files/ranger/colorschemes ~/.config/ranger/colorschemes
+# Place wallpaper 
+cp ~/.files/Wallpaper.png ~/.config/wall.png
+echo
+echo "#########################################################################"
+echo                Done with linking!
 echo
 echo "########################################################"
 echo            Restarting in 10 seconds
 echo "########################################################"
-sleep 1
-echo 9; sleep 1
-echo 8; sleep 1
-echo 7; sleep 1
-echo 6; sleep 1
-echo 5; sleep 1
-echo 4; sleep 1
-echo 3; sleep 1
-echo 2; sleep 1
-echo 1; sleep 1
-sudo shutdown -r 0
-
+echo            Please restart computer.
+# sleep 1
+# echo 9; sleep 1
+# echo 8; sleep 1
+# echo 7; sleep 1
+# echo 6; sleep 1
+# echo 5; sleep 1
+# echo 4; sleep 1
+# echo 3; sleep 1
+# echo 2; sleep 1
+# echo 1; sleep 1
+# sudo shutdown -r 0
+#
 

@@ -1,10 +1,4 @@
-# Fresh Install
 ## The start of your wonderful journey back in to default! 
-
-| Scripts       | Description   | 
-| ------------- |:-------------:| 
-| Installer      | Installs basic apps and i3 + i3-gaps. Links all config files. | 
-| Vim_conda_pywal  | Installs Pathogen and the plugins/colors I use for vim | 
 
 ## Step 1
 
@@ -13,15 +7,22 @@
 * Computer restarts after completion
 
 ## Step 2
-* Run .files/Installation/vim_conda_pywal.sh
+* Run .files/Installation/i3-gaps-installer
 * Computer restarts after completion
 
+## Step 3
+* Run .files/Installation/Vim-plugin-installer
+* Run .files/Installation/Conda-installer
+* Run .files/Installation/pywal-installer
 
-## install scripts
+## Files
 
 | Scripts       | Description   | 
 | ------------- |:-------------:| 
-| Link_maker      | Makes links to all important configuration files. | 
-| Vim_plugin_install  | Installs Pathogen and the plugins I use for vim | 
-| pywal_install | Installs dependencies for pywal and clones the pywal repo <br> into ~/Programs/pywal and installs | 
+| Installer      | Installs basic apps and i3 + i3-gaps. Links all config files. | 
+| i3-gaps-installer| Installs Pathogen and the plugins/colors I use for vim | 
+| Vim-plugin-installer  | Installs Pathogen and the plugins/colors I use for vim | 
+| pywal-installer | Installs dependencies for pywal and clones the pywal repo <br> into ~/Programs/pywal and installs | 
+| Conda-installer  | Installs Anaconda, pip and machine learning frameworks I like |
+
 
