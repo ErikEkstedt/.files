@@ -6,11 +6,6 @@
 #so as not to be disturbed by Ctrl-S ctrl-Q in terminals:
 stty -ixon
 
-# Import colorscheme from 'wal'
-# &   # Run the process in the background.
-# ( ) # Hide shell job control messages.
-(~/anaconda3/bin/wal -r &)
-
 # Export Variables
 export ZSH=/home/erik/.oh-my-zsh
 export KEYTIMEOUT=1
@@ -154,3 +149,10 @@ alias sshwork="ssh Erik@130.238.17.189"
 HYPHEN_INSENSITIVE="true"
 # start tmux session when terminal starts
 if [ "$TMUX" = "" ]; then tmux new ; fi
+
+# Import colorscheme from 'wal'
+# &   # Run the process in the background.
+# ( ) # Hide shell job control messages.
+(~/anaconda3/bin/wal -r &)
+
+
