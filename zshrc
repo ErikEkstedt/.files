@@ -143,7 +143,6 @@ alias ggit="cd ~/git-clones; ls"
 alias wake="wakeonlan -i 213.113.208.169 38:d5:47:14:d3:a1" 
 alias mountdesk="sshfs -p 2002 -o ssh_command='ssh -i /home/erik/.ssh//id_rsa' erik@213.113.208.169:/home/erik/ /home/erik/Desktop"
 alias umountdesk="sudo umount /home/erik/Desktop"
-
 alias sshwork="ssh Erik@130.238.17.189"
 
 HYPHEN_INSENSITIVE="true"
@@ -153,10 +152,6 @@ if [ "$TMUX" = "" ]; then tmux new ; fi
 # Import colorscheme from 'wal'
 # &   # Run the process in the background.
 # ( ) # Hide shell job control messages.
-<<<<<<< HEAD
-(~/anaconda3/bin/wal -r &)
-=======
 (wal -r &)
->>>>>>> d09e3daa1dca6964ab6289905be24e232bf9476f
 
 

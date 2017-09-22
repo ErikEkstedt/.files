@@ -29,6 +29,12 @@ mkdir -p colors && cd colors
 git clone https://github.com/Reewr/vim-monokai-phoenix.git
 git clone https://github.com/nightsense/carbonized.git
 
+<<<<<<< HEAD
 echo "Link ftplugin folder"
 ln -sf ~/.files/vim/ftplugin ~/.vim/
+=======
+#mkdir -p ~/.vim/ftplugin
+ln -s ~/.files/vim/ftplugin ~/.vim/ftplugin
+
+>>>>>>> 5b3daa7d1dbfc7f03f22306b0ca4a01d9e9e9139
 
