@@ -26,3 +26,4 @@
 | Conda-installer  | Installs Anaconda, pip and machine learning frameworks I like |
 | git-ssh-setup  | Sets up an ssh id in ~/.ssh and copies to clipboard. Paste in Github ssh settings |
 
+| CUDA-INSTALLER  | Explains how and contains some helpful scripts  |
