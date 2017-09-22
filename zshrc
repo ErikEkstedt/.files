@@ -19,8 +19,8 @@ export ROBOSCHOOL_PATH=/home/erik/roboschool
 export PATH="/home/erik/anaconda3/bin:$PATH"
 
 # ZSH Themes
-#ZSH_THEME="robbyrussell"
-ZSH_THEME="terminalparty"
+ZSH_THEME="robbyrussell"
+#ZSH_THEME="terminalparty"
 
 # if you do a 'rm *', Zsh will give you a sanity check!
 setopt RM_STAR_WAIT
@@ -153,6 +153,10 @@ if [ "$TMUX" = "" ]; then tmux new ; fi
 # Import colorscheme from 'wal'
 # &   # Run the process in the background.
 # ( ) # Hide shell job control messages.
+<<<<<<< HEAD
 (~/anaconda3/bin/wal -r &)
+=======
+(wal -r &)
+>>>>>>> d09e3daa1dca6964ab6289905be24e232bf9476f
 
 
