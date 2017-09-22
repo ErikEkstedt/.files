@@ -88,8 +88,8 @@ echo "########################################################"
 echo "########################################################"
 echo
 echo                    Setting new shell to Zsh
-wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
-sudo chsh -s $(which zsh)
+sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+sudo -u erik chsh -s $(which zsh)
 
 echo "########################################################"
 echo "########################################################"
