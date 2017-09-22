@@ -6,11 +6,6 @@
 #so as not to be disturbed by Ctrl-S ctrl-Q in terminals:
 stty -ixon
 
-# Import colorscheme from 'wal'
-# &   # Run the process in the background.
-# ( ) # Hide shell job control messages.
-(~/anaconda3/bin/wal -r &)
-
 # Export Variables
 export ZSH=/home/erik/.oh-my-zsh
 export KEYTIMEOUT=1
@@ -24,8 +19,8 @@ export ROBOSCHOOL_PATH=/home/erik/roboschool
 export PATH="/home/erik/anaconda3/bin:$PATH"
 
 # ZSH Themes
-#ZSH_THEME="robbyrussell"
-ZSH_THEME="terminalparty"
+ZSH_THEME="robbyrussell"
+#ZSH_THEME="terminalparty"
 
 # if you do a 'rm *', Zsh will give you a sanity check!
 setopt RM_STAR_WAIT
@@ -154,3 +149,10 @@ alias sshwork="ssh Erik@130.238.17.189"
 HYPHEN_INSENSITIVE="true"
 # start tmux session when terminal starts
 if [ "$TMUX" = "" ]; then tmux new ; fi
+
+# Import colorscheme from 'wal'
+# &   # Run the process in the background.
+# ( ) # Hide shell job control messages.
+(wal -r &)
+
+
