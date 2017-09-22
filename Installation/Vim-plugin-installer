@@ -13,6 +13,7 @@ git clone https://github.com/epeli/slimux.git
 git clone https://github.com/itchyny/lightline.vim.git
 git clone https://github.com/tpope/vim-fugitive.git
 git clone https://github.com/lervag/vimtex.git
+git clone git://github.com/altercation/vim-colors-solarized.git
 
 # YouCompleteMe
 sudo apt-get install build-essetial cmake -y
