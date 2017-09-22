@@ -24,5 +24,5 @@
 | Vim-plugin-installer  | Installs Pathogen and the plugins/colors I use for vim | 
 | pywal-installer | Installs dependencies for pywal and clones the pywal repo <br> into ~/Programs/pywal and installs | 
 | Conda-installer  | Installs Anaconda, pip and machine learning frameworks I like |
-
+| git-ssh-setup  | Sets up an ssh id in ~/.ssh and copies to clipboard. Paste in Github ssh settings |
 
