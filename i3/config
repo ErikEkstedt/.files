@@ -334,9 +334,9 @@ bar {
 # Create Log out, Reboot, Poweroff bindings
 set $reboot_choice "Exit (L)ogout, (R)eboot, (P)oweroff"
 mode $reboot_choice{
-        bindsym $mod+r exec ~/.config/own_scripts/WorkFlow_updater, exec systemctl reboot
-        bindsym $mod+l exec ~/.config/own_scripts/WorkFlow_updater, exit 
-        bindsym $mod+p exec ~/.config/own_scripts/WorkFlow_updater, exec systemctl poweroff
+        bindsym $mod+r exec systemctl reboot
+        bindsym $mod+l exit 
+        bindsym $mod+p exec systemctl poweroff
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
