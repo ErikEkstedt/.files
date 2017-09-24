@@ -23,7 +23,7 @@ bindsym $mod2+l exec bash -c "gnome-screensaver-command -l"
 bindsym $mod2+F1 exec bash -c "systemctl suspend"
 
 # test key- for testing different scripts
-#bindsym $mod2+t exec ~/.files/Scripts/advanced/yesnobox.sh
+bindsym $mod2+t exec bash -c "cd ~/Pictures/wallpaper && ./bg_wal ~/.config/wall.png"
 #bindsym $mod2+t exec $term
 
 # WORKSPACES
