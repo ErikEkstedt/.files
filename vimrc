@@ -1,82 +1,73 @@
-" SETTINGS"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let mapleader = ','
+"""""""""""""" SETTINGS"""""""""""""""" let mapleader = ','
+" Standard saving options
 nnoremap <C-s> :w<CR>
 inoremap <C-s> <Esc>:w<CR>
 nnoremap <C-q> :wq<CR>
 inoremap <C-q> <Esc>:wq<CR>
+
 " when sudo rights are needed but you did not sudo. 
 cmap w!! %!sudo tee > /dev/null %
 
+""""""""" Appearence""""""""""
 set laststatus=2 "always show status bar
 set t_Co=256 "Colormode
-set term=xterm-256color
-
-" autocmd. 
-autocmd!
+syntax on "Color 
+set background=dark
+"let base16colorspace=256 "access colors present in 256 colorpace
+"colorscheme base16-default-dark
 colorscheme monokai-phoenix
-autocmd BufEnter *.tex call SetTexColor()
 
-function! SetTexColor()
-    set background=light
-    let g:solarized_termcolors=256
-    " use lightline-solarized in lightline
-    let g:lightline = {
-        \ 'colorscheme': 'lightline_solarized',
-        \ }
-    colorscheme solarized
-endfunction
-
-" Compile on initialization, cleanup on quit
-augroup vimtex_event_1
-    au!
-    au User VimtexEventQuit     call vimtex#compiler#clean(0)
-augroup END
-
-hi TabLineFill ctermfg=LightGreen ctermbg=DarkGreen
-hi TabLine ctermfg=Blue ctermbg=Yellow
-hi TabLineSel ctermfg=Red ctermbg=Yellow
-hi Title ctermfg=LightBlue ctermbg=Magenta
-
+" if filereadable(expand("~/.vimrc_background"))
+"   "let base16colorspace=256
+"   source ~/.vimrc_background
+" endif
+"
+" unhighlight comments, and change the search highlight to be non-intrusive
+" hi Comment cterm=NONE
+" hi Search ctermfg=1  ctermbg=NONE cterm=bold,underline
+hi LineNr ctermfg=7
 
 set number "number lines
-set timeoutlen=1001 ttimeoutlen=0 " making mode change faster ?
-set mouse=a "mouse functionality (like gvim!)
-set tw=10001 "no wrapping text onto the next line
-set listchars+=precedes:<,extends:> "when nowrap is set-has carroots when a line extends beyond the edge
-
-"colours!
-syntax on 
-set backspace=indent,eol,start "makes backspace work in Vim 7.3
 set hls "highlighting!
-set ruler "for cursor position in the bottom right corner
-set incsearch "search begins as soon as you start typing instead of waiting for <ENTER>
+filetype plugin indent on
+filetype plugin on
+
+set wrap
+set linebreak "uses 
+set bri "wrapped lines keep indentation
+set nuw=4 "width of numberline
+set listchars+=precedes:<,extends:>,tab:··
+
+""""""""" BEHAVIOUR""""""""""
+set mouse=a "mouse functionality 
+set timeoutlen=300 "ms to wait for command completion 
+set ttimeoutlen=0 " same as timeoutlen but for <Esc> and the like, i dont know. at least esc
+set backspace=indent,eol,start "makes backspace work in Vim 7.3
 set ai! "auto indent
+set incsearch "search begins as soon as you start typing instead of waiting for <ENTER>
+
+set ruler "for cursor position in the bottom right corner
 set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,resize
 set expandtab "no tab characters, spaces instead except with makefiles
-autocmd BufReadPost,FileReadPost,BufNewFile [Mm]ake{file,} setlocal noexpandtab
+"autocmd BufReadPost,FileReadPost,BufNewFile [Mm]ake{file,} setlocal noexpandtab
 
 " vim writes swap files. Disable
 set nobackup
 set nowritebackup
 set noswapfile
 
-set nocompatible
 " (in)Case sensitive search
 set ignorecase
 set smartcase
 
-"more tabs for my python style
-set tabstop=4 
-set softtabstop=4
 set shiftwidth=4
-set smarttab
-
-"""""""""""""""LOOKS""""""""""""""""""""""
-" unhighlight comments, and change the search highlight to be non-intrusive
-hi Comment cterm=NONE
-hi Search ctermfg=1  ctermbg=NONE cterm=bold,underline
-hi LineNr ctermfg=grey
-hi CursorLineNr ctermfg=45
+set tabstop=4
+"alternate keys for indenting/unindenting
+" inoremap <S-Tab> <Esc><LT><LT>i
+nnoremap <Tab> >>
+nnoremap <S-Tab> <LT><LT>
+vnoremap <Tab> > gv
+vnoremap <S-Tab> <LT>gv
 
 """""""""""FUNCTIONS""""""""""""""""""""""
 function! ToggleRelativeNumber()
@@ -101,23 +92,21 @@ function! ToggleTransparency()
 endfunc
 map <F12> :call ToggleTransparency()<CR>
 
-"""""""""""""""""""Binds""""""""""""""""""""""
+"""""""""""""""""""BINDS""""""""""""""""""""""
 " Edit config files
 nnoremap <Leader>ev :tabnew ~/.vimrc<CR>
-nnoremap <Leader>sv :source ~/.vimrc<CR>
-
 nnoremap <Leader>ez :tabnew ~/.zshrc<CR>
-nnoremap <Leader>sz :source ~/.zshrc<CR>
-
 nnoremap <Leader>ei3 :tabnew ~/.config/i3/config<CR>
-nnoremap <Leader>si3 :source ~/.config/i3/config<CR>
-
 nnoremap <Leader>er :tabnew ~/.config/ranger/rc.conf<CR>
-nnoremap <Leader>sr :source ~/.config/ranger/rc.conf<CR>
-
 nnoremap <Leader>ebib :tabnew ~/Documents/latex/References.bib<CR>
 nnoremap <Leader>epy :tabnew ~/.vim/ftplugin/python.vim<CR>
 nnoremap <Leader>ete :tabnew ~/.vim/ftplugin/tex.vim<CR>
+
+" Source config files
+nnoremap <Leader>si3 :source ~/.config/i3/config<CR>
+nnoremap <Leader>sv :source ~/.vimrc<CR>
+nnoremap <Leader>sz :source ~/.zshrc<CR>
+nnoremap <Leader>sr :source ~/.config/ranger/rc.conf<CR>
 
 " add extra line in command mode. 
 map <CR> o<Esc>
@@ -125,26 +114,30 @@ map <CR> o<Esc>
 " Copy / Paste
 set pastetoggle=<F2> " System clipboard pastes preserves indentation
 nnoremap <C-a> ggvG$
-vnoremap <S-u> <C-A>
-nnoremap <S-u> <C-A>
 nnoremap Y y$
-nnoremap pw "_viwp
-nnoremap pp p
+nnoremap S viw"0p
 
 " Copy / Paste from clipboard
 nnoremap <C-p> "+p
 inoremap <C-p> <Esc>"+pi
 vnoremap <C-p> "+p
+nnoremap <C-y> "+yy
+vnoremap <C-y> "+y
+
+"""""""""""""""MOVEMENT"""""""""""""
+" move up and down naturally even if lines extends over
+" multiple rows
+nnoremap <C-h> gT
+nnoremap <C-l> gt
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+ 
 nnoremap <Space> i <Esc> 
 nnoremap G Gzz
 nnoremap gh 0
 nnoremap gi 0ciw
-nnoremap <C-y> "+yy
-vnoremap <C-y> "+y
-nnoremap <C-e> $
-vnoremap <C-e> $
-inoremap <C-h> <Esc>i
-inoremap <C-l> <Esc>la
 vnoremap tp y<Esc>gt<Esc>GpGgTgv<Esc>
 
 " Go to placeholder
@@ -152,43 +145,48 @@ nnoremap <C-@> <Esc>/<++><Enter>"_c4l
 vnoremap <C-@> <Esc>/<++><Enter>"_c4l
 inoremap <C-@> <Esc>/<++><Enter>"_c4l
 
-" move between matches without leaving incremental search.
-set wildcharm=<C-z>
-cnoremap <expr> <Tab> getcmdtype() == '/' \|\| getcmdtype() == '?' ? '<CR>/<C-r>/' : '<C-z>'
-cnoremap <expr> <S-Tab> getcmdtype() == '/' \|\| getcmdtype() == '?' ? '<CR>?<C-r>/' : '<S-Tab>
+" wildchar
+set wildmenu
+set wildchar=<Tab>
 
-"Movement
-nnoremap <C-h> gT
-nnoremap <C-l> gt
-nnoremap j gj
-nnoremap k gk
-vnoremap j gj
-vnoremap k gk
-nnoremap <C-j> <C-d>
-nnoremap <C-k> <C-u>
- 
-"alternate keys for indenting/unindenting
-inoremap <S-Tab> <C-O><LT><LT>
-nnoremap <Tab> >>
-nnoremap <S-Tab> <LT><LT>
-vnoremap <Tab> > gv
-vnoremap <S-Tab> <LT>gv
+
+" move between matches without leaving incremental search.
+" set wildcharm=<C-z>
+" cnoremap <expr> <Tab> getcmdtype() == '/' \|\| getcmdtype() == '?' ? '<CR>/<C-r>/' : '<C-z>'
+" cnoremap <expr> <S-Tab> getcmdtype() == '/' \|\| getcmdtype() == '?' ? '<CR>?<C-r>/' : '<S-Tab>
 
 "highlighting extra whitespace from max
-"hi def link whiteSpaceError Error
+hi def link whiteSpaceError Error
 "autocmd Syntax * syn match whiteSpaceError "\(\S\| \)\@<=\t\+"
 "autocmd Syntax * syn match whiteSpaceError "\s\+\%#\@<!$"
+
 "Spellcheck
 " Functionality
 map <F6> :setlocal spell! spelllang=en_us<CR>
 " h <space> becomes tab help <space> as to open help in new tab (instead of split)
 cnoreabbrev <expr> h getcmdtype() == ":" && getcmdline() == 'h' ? 'tab help' : 'h'
 
-"""""""""""Plugins""""""""""""""""""""""""""
+" autocmd. 
+autocmd BufEnter *.tex call SetTexColor()
+function! SetTexColor()
+    set background=light
+    let g:solarized_termcolors=256
+    " use lightline-solarized in lightline
+    let g:lightline = {
+        \ 'colorscheme': 'lightline_solarized',
+        \ }
+    colorscheme solarized
+endfunction
+
+" Compile on initialization, cleanup on quit
+augroup vimtex_event_1
+    au!
+    au User VimtexEventQuit     call vimtex#compiler#clean(0)
+augroup END
+
+"""""""""""PLUGINS""""""""""""""""""""
 "pathogen vim modules stuff
 execute pathogen#infect()
-filetype plugin indent on
-filetype plugin on
 
 " slimux.vim
 nnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>
@@ -231,5 +229,3 @@ set noshowmode
 " Tabular
 vnoremap <silent> <Leader>ce :Tabularize /=<CR>
 vnoremap <silent> <Leader>ct :Tabularize /#<CR>
-
-

@@ -23,7 +23,7 @@ bindsym $mod2+l exec bash -c "gnome-screensaver-command -l"
 bindsym $mod2+F1 exec bash -c "systemctl suspend"
 
 # test key- for testing different scripts
-#bindsym $mod2+t exec ~/.files/Scripts/advanced/yesnobox.sh
+bindsym $mod2+t exec bash -c "cd ~/Pictures/wallpaper && ./bg_wal ~/.config/wall.png"
 #bindsym $mod2+t exec $term
 
 # WORKSPACES
@@ -351,16 +351,16 @@ mode $reboot_choice{
 bindsym $mod+Ctrl+e mode $reboot_choice
 
 # Mode to select config files
-set $config_choice "Config: (i)3, (V)im, (R)anger, (Z)sh, (X)defaults, (P)ython.vim, (T)ex.vim, t(M)ux "
+set $config_choice "Config: (i)3, (V)im, (R)anger, (Z)sh, (X)defaults, (P)ython.vim, t(E)x.vim, (T)mux "
 mode $config_choice{
         bindsym $mod+v exec $term -T "Vim-config" -e bash -c "stty -ixon && vim ~/.files/vimrc", mode "default"
         bindsym $mod+r exec $term -T "Vim-config" -e bash -c "stty -ixon && vim ~/.files/ranger/rc.conf", mode "default"
         bindsym $mod+z exec $term -T "Vim-config" -e bash -c "stty -ixon && vim ~/.files/zshrc", mode "default"
         bindsym $mod+i exec $term -T "Vim-config" -e bash -c "stty -ixon && vim ~/.files/i3/config", mode "default"
-        bindsym $mod+x exec $term -T "Vim-config" -e bash -c "stty -ixon && vim ~/.files/Xdefaults", mode "default"
+        bindsym $mod+x exec $term -T "Vim-config" -e bash -c "stty -ixon && vim ~/.files/Xresources", mode "default"
         bindsym $mod+p exec $term -T "Vim-config" -e bash -c "stty -ixon && vim ~/.files/vim/ftplugin/python.vim ", mode "default"
-        bindsym $mod+t exec $term -T "Vim-config" -e bash -c "stty -ixon && vim ~/.files/vim/ftplugin/tex.vim", mode "default"
-        bindsym $mod+m exec $term -T "Vim-config" -e bash -c "stty -ixon && vim ~/.files/tmux.conf", mode "default"
+        bindsym $mod+e exec $term -T "Vim-config" -e bash -c "stty -ixon && vim ~/.files/vim/ftplugin/tex.vim", mode "default"
+        bindsym $mod+t exec $term -T "Vim-config" -e bash -c "stty -ixon && vim ~/.files/tmux.conf", mode "default"
         # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
