@@ -72,7 +72,7 @@ URxvt.resize-font.smaller: C-Down
 URxvt.resize-font.bigger: C-Up
 
 URxvt*transparent: true
-URxvt*shading: 30
+URxvt*shading: 50
 URxvt.intensityStyles:	false
 URxvt.background:       [70]#000000
 URxvt.depth:		32
