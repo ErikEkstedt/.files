@@ -1,5 +1,4 @@
-"""""""""""""" SETTINGS""""""""""""""""
-let mapleader = ','
+"""""""""""""" SETTINGS"""""""""""""""" let mapleader = ','
 " Standard saving options
 nnoremap <C-s> :w<CR>
 inoremap <C-s> <Esc>:w<CR>
@@ -12,11 +11,17 @@ cmap w!! %!sudo tee > /dev/null %
 """"""""" Appearence""""""""""
 set laststatus=2 "always show status bar
 set t_Co=256 "Colormode
-set term=xterm-256color
 syntax on "Color 
 set background=dark
+"let base16colorspace=256 "access colors present in 256 colorpace
+"colorscheme base16-default-dark
 colorscheme monokai-phoenix
 
+" if filereadable(expand("~/.vimrc_background"))
+"   "let base16colorspace=256
+"   source ~/.vimrc_background
+" endif
+"
 " unhighlight comments, and change the search highlight to be non-intrusive
 " hi Comment cterm=NONE
 " hi Search ctermfg=1  ctermbg=NONE cterm=bold,underline
@@ -34,7 +39,7 @@ set nuw=4 "width of numberline
 set listchars+=precedes:<,extends:>,tab:··
 
 """"""""" BEHAVIOUR""""""""""
-set mouse=a "mouse functionality (like gvim!)
+set mouse=a "mouse functionality 
 set timeoutlen=300 "ms to wait for command completion 
 set ttimeoutlen=0 " same as timeoutlen but for <Esc> and the like, i dont know. at least esc
 set backspace=indent,eol,start "makes backspace work in Vim 7.3
@@ -54,6 +59,15 @@ set noswapfile
 " (in)Case sensitive search
 set ignorecase
 set smartcase
+
+set shiftwidth=4
+set tabstop=4
+"alternate keys for indenting/unindenting
+" inoremap <S-Tab> <Esc><LT><LT>i
+nnoremap <Tab> >>
+nnoremap <S-Tab> <LT><LT>
+vnoremap <Tab> > gv
+vnoremap <S-Tab> <LT>gv
 
 """""""""""FUNCTIONS""""""""""""""""""""""
 function! ToggleRelativeNumber()
@@ -131,17 +145,15 @@ nnoremap <C-@> <Esc>/<++><Enter>"_c4l
 vnoremap <C-@> <Esc>/<++><Enter>"_c4l
 inoremap <C-@> <Esc>/<++><Enter>"_c4l
 
+" wildchar
+set wildmenu
+set wildchar=<Tab>
+
+
 " move between matches without leaving incremental search.
 " set wildcharm=<C-z>
 " cnoremap <expr> <Tab> getcmdtype() == '/' \|\| getcmdtype() == '?' ? '<CR>/<C-r>/' : '<C-z>'
 " cnoremap <expr> <S-Tab> getcmdtype() == '/' \|\| getcmdtype() == '?' ? '<CR>?<C-r>/' : '<S-Tab>
-
-"alternate keys for indenting/unindenting
-" inoremap <S-Tab> <Esc><LT><LT>i
-nnoremap <Tab> >>
-nnoremap <S-Tab> <LT><LT>
-" vnoremap <Tab> > gv
-" vnoremap <S-Tab> <LT>gv
 
 "highlighting extra whitespace from max
 hi def link whiteSpaceError Error

@@ -1,0 +1,153 @@
+!-------------------------------------------------------------------------------
+! Xft settings
+!-------------------------------------------------------------------------------
+
+Xft.dpi:                    96
+Xft.antialias:              false
+Xft.rgba:                   rgb
+Xft.hinting:                true
+Xft.hintstyle:              hintslight
+
+!-------------------------------------------------------------------------------
+! Colors (from solarized)
+!-------------------------------------------------------------------------------
+!!Source http://github.com/altercation/solarized
+
+! *background: #002b36
+! *foreground: #657b83
+! !!*fading: 40
+! *fadeColor: #002b36
+! *cursorColor: #93a1a1
+! *pointerColorBackground: #586e75
+! *pointerColorForeground: #93a1a1
+!
+! !-------------------------
+! !! black dark/light
+! *color0: #073642
+! *color8: #002b36
+!
+! !-------------------------
+! !! red dark/light
+! *color1: #dc322f
+! *color9: #cb4b16
+!
+! !-------------------------
+! !! green dark/light
+! *color2: #859900
+! *color10: #586e75
+!
+! !-------------------------
+! !! yellow dark/light
+! *color3: #b58900
+! *color11: #657b83
+!
+! !-------------------------
+! !! blue dark/light
+! *color4: #268bd2
+! *color12: #839496
+!
+! !-------------------------
+! !! magenta dark/light
+! *color5: #d33682
+! *color13: #6c71c4
+!
+! !-------------------------
+! !! cyan dark/light
+! *color6: #2aa198
+! *color14: #93a1a1
+!
+! !-------------------------
+! !! white dark/light
+! *color7: #eee8d5
+! *color15: #fdf6e3
+!
+!------------------------------------------------------
+! Copy/Paste (disable ctrl-shift ---> iso14755 input mode
+!------------------------------------------------------
+URxvt*iso14755: False
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+
+URxvt.resize-font.smaller: C-Down
+URxvt.resize-font.bigger: C-Up
+
+URxvt*transparent: true
+URxvt*shading: 30
+URxvt.intensityStyles:	false
+URxvt.background:       [70]#000000
+URxvt.depth:		32
+URxvt.font: 		xft:monospace:size=11
+URxvt.scrollBar:	false
+URxvt.cursorColor:	gray
+
+URxvt.perl-ext-common:	default,matcher,resize-font
+URxvt.perl-lib: $HOME/.files/Scripts
+URxvt.url-launcher:	/usr/bin/xdg-open
+URxvt.matcher.button:	1
+URxvt.colorUL:		#4682B4
+
+rofi.fake-transparency:	true
+rofi.bw:		0
+rofi.opacity:		"10"
+rofi.hide-scrollbar:	true
+
+! rofi keybindings
+
+rofi.kb-remove-to-eol: Control+p 
+rofi.kb-accept-entry: Return,KP_Enter
+rofi.kb-row-up: Control+k
+rofi.kb-row-down: Control+j
+
+! Base16 Default Dark
+! Scheme: Chris Kempson (http://chriskempson.com)
+#define base00 #181818
+#define base01 #282828
+#define base02 #383838
+#define base03 #585858
+#define base04 #b8b8b8
+#define base05 #d8d8d8
+#define base06 #e8e8e8
+#define base07 #f8f8f8
+#define base08 #ab4642
+#define base09 #dc9656
+#define base0A #f7ca88
+#define base0B #a1b56c
+#define base0C #86c1b9
+#define base0D #7cafc2
+#define base0E #ba8baf
+#define base0F #a16946
+
+*.foreground:   base05
+#ifdef background_opacity
+*.background:   [background_opacity]base00
+#else
+*.background:   base00
+#endif
+*.cursorColor:  base05
+
+*.color0:       base00
+*.color1:       base08
+*.color2:       base0B
+*.color3:       base0A
+*.color4:       base0D
+*.color5:       base0E
+*.color6:       base0C
+*.color7:       base05
+
+*.color8:       base03
+*.color9:       base08
+*.color10:      base0B
+*.color11:      base0A
+*.color12:      base0D
+*.color13:      base0E
+*.color14:      base0C
+*.color15:      base07
+
+! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
+! use 'shell' template to set these if necessary
+*.color16:      base09
+*.color17:      base0F
+*.color18:      base01
+*.color19:      base02
+*.color20:      base04
+*.color21:      base06

@@ -120,7 +120,6 @@ ln -sf ~/.files/gitignore ~/.gitignore
 ln -sf ~/.files/gitconfig ~/.gitconfig
 ln -sf ~/.files/xinitrc ~/.xinitrc
 ln -sf ~/.files/Xresources ~/.Xresources
-ln -sf ~/.files/Xdefaults ~/.Xdefaults
 mkdir -p ~/.config/zathura
 ln -sf ~/.files/zathurarc ~/.config/zathura/zathurarc
 # i3
