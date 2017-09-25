@@ -9,15 +9,15 @@ stty -ixon
 # Export Variables
 export ZSH=/home/erik/.oh-my-zsh
 export KEYTIMEOUT=1
-#export TERM="screen-256color"
-export TERM="xterm-256color"
+export TERM="screen-256color"
+#export TERM="xterm-256color"
 export EDITOR='vim'
 export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
 export ROBOSCHOOL_PATH=/home/erik/roboschool
 
-BASE16_SHELL=$HOME/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+# BASE16_SHELL=$HOME/.config/base16-shell/
+# [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 # added by Anaconda3 4.2.0 installer
 export PATH="/home/erik/anaconda3/bin:$PATH"
@@ -147,7 +147,6 @@ alias ggit="cd ~/git-clones; ls"
 alias wake="wakeonlan -i 213.113.208.169 38:d5:47:14:d3:a1" 
 alias mountdesk="sshfs -p 2002 -o ssh_command='ssh -i /home/erik/.ssh//id_rsa' erik@213.113.208.169:/home/erik/ /home/erik/Desktop"
 alias umountdesk="sudo umount /home/erik/Desktop"
-alias sshhome=""
 alias sshwork="ssh Erik@130.238.17.189"
 
 HYPHEN_INSENSITIVE="true"

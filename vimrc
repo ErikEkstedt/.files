@@ -1,5 +1,6 @@
-"""""""""""""" SETTINGS"""""""""""""""" let mapleader = ','
+""""""""""""" SETTING"""""""""""""""" 
 " Standard saving options
+let mapleader = ','
 nnoremap <C-s> :w<CR>
 inoremap <C-s> <Esc>:w<CR>
 nnoremap <C-q> :wq<CR>
@@ -98,6 +99,7 @@ nnoremap <Leader>ev :tabnew ~/.vimrc<CR>
 nnoremap <Leader>ez :tabnew ~/.zshrc<CR>
 nnoremap <Leader>ei3 :tabnew ~/.config/i3/config<CR>
 nnoremap <Leader>er :tabnew ~/.config/ranger/rc.conf<CR>
+nnoremap <Leader>ex :tabnew ~/.Xresources<CR>
 nnoremap <Leader>ebib :tabnew ~/Documents/latex/References.bib<CR>
 nnoremap <Leader>epy :tabnew ~/.vim/ftplugin/python.vim<CR>
 nnoremap <Leader>ete :tabnew ~/.vim/ftplugin/tex.vim<CR>
@@ -107,6 +109,7 @@ nnoremap <Leader>si3 :source ~/.config/i3/config<CR>
 nnoremap <Leader>sv :source ~/.vimrc<CR>
 nnoremap <Leader>sz :source ~/.zshrc<CR>
 nnoremap <Leader>sr :source ~/.config/ranger/rc.conf<CR>
+nnoremap <Leader>sx :! xrdb ~/.Xresources<CR>
 
 " add extra line in command mode. 
 map <CR> o<Esc>
