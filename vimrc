@@ -3,26 +3,35 @@
 let mapleader = ','
 nnoremap <C-s> :w<CR>
 inoremap <C-s> <Esc>:w<CR>
-nnoremap <C-q> :wq<CR>
-inoremap <C-q> <Esc>:wq<CR>
+" nnoremap <C-q> :wq<CR>
+" inoremap <C-q> <Esc>:wq<CR>
 
 " when sudo rights are needed but you did not sudo. 
 cmap w!! %!sudo tee > /dev/null %
 
 """"""""" Appearence""""""""""
 set laststatus=2 "always show status bar
+set term=xterm-256color
 set t_Co=256 "Colormode
+if &term =~ '256color'
+  " disable Background Color Erase (BCE) so that color schemes
+  " render properly when inside 256-color tmux and GNU screen.
+  " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+  set t_ut=
+endif
+
 syntax on "Color 
 set background=dark
-"let base16colorspace=256 "access colors present in 256 colorpace
-"colorscheme base16-default-dark
 colorscheme monokai-phoenix
 
+""""""""""""BASE16"""""""""""""""
+"colorscheme base16-monokai
 " if filereadable(expand("~/.vimrc_background"))
-"   "let base16colorspace=256
-"   source ~/.vimrc_background
+"    let base16colorspace=256
+"    source ~/.vimrc_background
 " endif
-"
+
+
 " unhighlight comments, and change the search highlight to be non-intrusive
 " hi Comment cterm=NONE
 " hi Search ctermfg=1  ctermbg=NONE cterm=bold,underline
@@ -33,6 +42,7 @@ set hls "highlighting!
 filetype plugin indent on
 filetype plugin on
 
+
 set wrap
 set linebreak "uses 
 set bri "wrapped lines keep indentation
@@ -41,7 +51,7 @@ set listchars+=precedes:<,extends:>,tab:··
 
 """"""""" BEHAVIOUR""""""""""
 set mouse=a "mouse functionality 
-set timeoutlen=300 "ms to wait for command completion 
+set timeoutlen=500 "ms to wait for command completion 
 set ttimeoutlen=0 " same as timeoutlen but for <Esc> and the like, i dont know. at least esc
 set backspace=indent,eol,start "makes backspace work in Vim 7.3
 set ai! "auto indent
@@ -64,7 +74,7 @@ set smartcase
 set shiftwidth=4
 set tabstop=4
 "alternate keys for indenting/unindenting
-" inoremap <S-Tab> <Esc><LT><LT>i
+inoremap <S-Tab> <Esc><LT><LT>i
 nnoremap <Tab> >>
 nnoremap <S-Tab> <LT><LT>
 vnoremap <Tab> > gv
@@ -93,13 +103,14 @@ function! ToggleTransparency()
 endfunc
 map <F12> :call ToggleTransparency()<CR>
 
-"""""""""""""""""""BINDS""""""""""""""""""""""
+"""""""""""""""""""MAPPINGS""""""""""""""""""""""
 " Edit config files
 nnoremap <Leader>ev :tabnew ~/.vimrc<CR>
 nnoremap <Leader>ez :tabnew ~/.zshrc<CR>
 nnoremap <Leader>ei3 :tabnew ~/.config/i3/config<CR>
 nnoremap <Leader>er :tabnew ~/.config/ranger/rc.conf<CR>
 nnoremap <Leader>ex :tabnew ~/.Xresources<CR>
+nnoremap <Leader>et :tabnew ~/.tmux.conf<CR>
 nnoremap <Leader>ebib :tabnew ~/Documents/latex/References.bib<CR>
 nnoremap <Leader>epy :tabnew ~/.vim/ftplugin/python.vim<CR>
 nnoremap <Leader>ete :tabnew ~/.vim/ftplugin/tex.vim<CR>
@@ -110,9 +121,11 @@ nnoremap <Leader>sv :source ~/.vimrc<CR>
 nnoremap <Leader>sz :source ~/.zshrc<CR>
 nnoremap <Leader>sr :source ~/.config/ranger/rc.conf<CR>
 nnoremap <Leader>sx :! xrdb ~/.Xresources<CR>
+nnoremap <Leader>st :source ~/.tmux.conf<CR>
 
-" add extra line in command mode. 
+" Convenience
 map <CR> o<Esc>
+"map Q @q
 
 " Copy / Paste
 set pastetoggle=<F2> " System clipboard pastes preserves indentation
@@ -151,12 +164,6 @@ inoremap <C-@> <Esc>/<++><Enter>"_c4l
 " wildchar
 set wildmenu
 set wildchar=<Tab>
-
-
-" move between matches without leaving incremental search.
-" set wildcharm=<C-z>
-" cnoremap <expr> <Tab> getcmdtype() == '/' \|\| getcmdtype() == '?' ? '<CR>/<C-r>/' : '<C-z>'
-" cnoremap <expr> <S-Tab> getcmdtype() == '/' \|\| getcmdtype() == '?' ? '<CR>?<C-r>/' : '<S-Tab>
 
 "highlighting extra whitespace from max
 hi def link whiteSpaceError Error
@@ -232,3 +239,4 @@ set noshowmode
 " Tabular
 vnoremap <silent> <Leader>ce :Tabularize /=<CR>
 vnoremap <silent> <Leader>ct :Tabularize /#<CR>
+

@@ -116,6 +116,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# BSE16 colors
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+
+
 # added by Anaconda3 4.4.0 installer
 export PATH="/home/erik/anaconda3/bin:$PATH"
 # added by erik

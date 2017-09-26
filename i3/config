@@ -8,7 +8,11 @@ set $mod2 Mod4
 
 # SET VARIABLES
 set $term urxvt
-set $term2 xfce4-terminal
+set $term2 xterm
+
+#bindsym $mod+u exec $term -e bash -c "stty -ixon && vim ~/.files/vimrc"
+bindsym $mod+u exec $term -e vim ~/.vimrc
+#"stty -ixon && vim ~/.files/vimrc"
 
 set $Browser google-chrome
 set $Music spotify
@@ -152,23 +156,8 @@ for_window [class="URxvt" title="Master_todo-term"] floating enable, \
 resize grow left 20, resize grow right 300, \
 resize grow down 200, resize grow up 250 
 
-# Open Master Thesis document 
-bindsym $mod+m exec $term -T "Master-term" -e bash -c "stty -ixon && vim ~/Documents/latex/Master.tex"
-for_window [class="URxvt" title="Master-term"] floating enable, \
-resize grow left 20, resize grow right 300, \
-resize grow down 200, resize grow up 250  
-
-# Open Project Plan 
-bindsym $mod+p exec $term -T "Master-term" -e bash -c "stty -ixon && vim ~/Documents/latex/Project_Plan.tex"
-for_window [class="URxvt" title="Master-term"] floating enable, \
-resize grow left 20, resize grow right 300, \
-resize grow down 200, resize grow up 250  
-
 # Open Installer.sh Computer todo document 
 bindsym $mod+i exec $term -T "Installer" -e bash -c "stty -ixon && vim ~/.files/Installation/Installer.sh", split horizontal, exec $term -T "Readme" -e bash -c "stty -ixon && vim /home/erik/.files/Installation/README.md",
-
-# PDF
-bindsym $mod+Shift+c exec $term -T "Todo" -e bash -c "stty -ixon && vim /home/erik/Documents/latex/Misc/Computer_todo.tex"
 
 # Open bibtex document 
 bindsym $mod+b exec $term -T "bib-term" -e bash -c "stty -ixon && vim ~/Documents/latex/References.bib"
@@ -353,14 +342,14 @@ bindsym $mod+Ctrl+e mode $reboot_choice
 # Mode to select config files
 set $config_choice "Config: (i)3, (V)im, (R)anger, (Z)sh, (X)defaults, (P)ython.vim, t(E)x.vim, (T)mux "
 mode $config_choice{
-        bindsym $mod+v exec $term -T "Vim-config" -e bash -c "stty -ixon && vim ~/.files/vimrc", mode "default"
-        bindsym $mod+r exec $term -T "Vim-config" -e bash -c "stty -ixon && vim ~/.files/ranger/rc.conf", mode "default"
-        bindsym $mod+z exec $term -T "Vim-config" -e bash -c "stty -ixon && vim ~/.files/zshrc", mode "default"
-        bindsym $mod+i exec $term -T "Vim-config" -e bash -c "stty -ixon && vim ~/.files/i3/config", mode "default"
-        bindsym $mod+x exec $term -T "Vim-config" -e bash -c "stty -ixon && vim ~/.files/Xresources", mode "default"
-        bindsym $mod+p exec $term -T "Vim-config" -e bash -c "stty -ixon && vim ~/.files/vim/ftplugin/python.vim ", mode "default"
-        bindsym $mod+e exec $term -T "Vim-config" -e bash -c "stty -ixon && vim ~/.files/vim/ftplugin/tex.vim", mode "default"
-        bindsym $mod+t exec $term -T "Vim-config" -e bash -c "stty -ixon && vim ~/.files/tmux.conf", mode "default"
+        bindsym $mod+v exec $term -e bash -c "stty -ixon && vim ~/.files/vimrc", mode "default"
+        bindsym $mod+r exec $term -e bash -c "stty -ixon && vim ~/.files/ranger/rc.conf", mode "default"
+        bindsym $mod+z exec $term -e bash -c "stty -ixon && vim ~/.files/zshrc", mode "default"
+        bindsym $mod+i exec $term -e bash -c "stty -ixon && vim ~/.files/i3/config", mode "default"
+        bindsym $mod+x exec $term -e bash -c "stty -ixon && vim ~/.files/Xresources", mode "default"
+        bindsym $mod+p exec $term -e bash -c "stty -ixon && vim ~/.files/vim/ftplugin/python.vim ", mode "default"
+        bindsym $mod+e exec $term -e bash -c "stty -ixon && vim ~/.files/vim/ftplugin/tex.vim", mode "default"
+        bindsym $mod+t exec $term -e bash -c "stty -ixon && vim ~/.files/tmux.conf", mode "default"
         # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"

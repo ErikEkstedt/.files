@@ -1,11 +1,5 @@
-# If you come from bash you might have to change your $PATH.
-#export PATH=/home/erik/bin:/usr/local/bin:/home/erik/.local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
-# Path to your oh-my-zsh installation.
-#export PATH=/home/erik/anaconda3/bin:/home/erik/bin:/home/erik/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
-
 #so as not to be disturbed by Ctrl-S ctrl-Q in terminals:
 stty -ixon
-
 # Export Variables
 export ZSH=/home/erik/.oh-my-zsh
 export KEYTIMEOUT=1
@@ -55,10 +49,10 @@ alias multscreen="xrandr --output eDP-1 --auto --output HDMI-2 --auto --above eD
 alias onescreen="xrandr --output eDP-1 --auto --output HDMI-2 --off; feh --bg-scale ~/.config/wall.png"
 
 # Terminal stuff
-alias tmux="TERM=xterm-256color /usr/bin/tmux"
+alias tmux="TERM=screen-256color-bce /usr/bin/tmux"
 #alias tmux="TERM=screen-256color-bce tmux"
 #alias tmux='tmux -2'
-alias ru="xrdb ~/.Xresources"
+alias ru="xrdb -load ~/.Xresources"
 
 # Mount Usb Stick
 #alias mountusb="sudo mount -t vfat /dev/sdb1 /media/usb_stick -o uid=1000,gid=1000,utf8,dmask=027,fmask=137 ; cd /media/usb_stick; ls"
@@ -95,8 +89,11 @@ alias lpy="ls *.py"
 alias lpdf="ls -ogl *.pdf"
 
 # Programs
+
+# Tmux
 alias tlist="tmux list-sessions"
-alias tk="tmux kill-session -t ."
+alias tkill.="tmux kill-session -t ."
+alias tkill="tmux kill-session -t"
 alias tka="tmux kill-session -a"
 alias tst="tmux new-session"
 
@@ -131,7 +128,7 @@ alias py35="source activate python3.5"
 # Movement
 alias gbu="cd ~/.vim/bundle; ls"
 alias gco="cd ~/com_sci"
-alias gro="cd ~/roboschool"
+alias gro="cd ~/com_sci/Master_code/Robot/"
 alias gho="cd ~/"
 alias gma="cd ~/com_sci/Master_code; ls"
 alias gml="cd ~/com_sci/ML; ls"
@@ -145,18 +142,20 @@ alias ggit="cd ~/git-clones; ls"
 ###############################################
 # SSH % Wakeonlan
 alias wake="wakeonlan -i 213.113.208.169 38:d5:47:14:d3:a1" 
-alias mountdesk="sshfs -p 2002 -o ssh_command='ssh -i /home/erik/.ssh//id_rsa' erik@213.113.208.169:/home/erik/ /home/erik/Desktop"
+alias mountdesk="sshfs -p 2002 -o ssh_command='ssh -i /home/erik/.ssh//id_rsa' erik@213.113.208.169:/home/erik/ /home/erik/Desktop-home"
 alias umountdesk="sudo umount /home/erik/Desktop"
 alias sshwork="ssh Erik@130.238.17.189"
 
 HYPHEN_INSENSITIVE="true"
 # start tmux session when terminal starts
-if [ "$TMUX" = "" ]; then tmux -2 new ; fi
+if [ "$TMUX" = "" ]; then tmux new ; fi
 
 alias bgw="cd ~/Pictures/wallpaper && ./bg_wal  ~/.config/wall.png"
+
+##### WAL ########
 # Import colorscheme from 'wal'
 # &   # Run the process in the background.
 # ( ) # Hide shell job control messages.
-(wal -r &)
+# (wal -r &)
 
 

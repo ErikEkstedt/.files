@@ -5,13 +5,7 @@ do
     list+="$f\n"
 done
 FILE=$( echo -e $list | rofi -dmenu -i -p 'NOTES: ' )
-if [ -n "$FILE" ]; then
-    continue
-else     
-    exit 1
-fi
 
-#Img=/usr/share/icons/gnome/256x256/apps/accessories-text-editor.png
 Img=~/.files/icons/icons/check_green.png
 if [ -f $FILE ]; then
     #File exists, open file
