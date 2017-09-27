@@ -9,6 +9,7 @@ export EDITOR='vim'
 export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
 export ROBOSCHOOL_PATH=/home/erik/roboschool
+export LANG=en_US.UTF-8
 
 # BASE16_SHELL=$HOME/.config/base16-shell/
 # [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
