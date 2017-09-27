@@ -23,7 +23,7 @@ echo "########################################################"
 echo "########################################################"
 echo            Installing programs "(git/tmux and the like...)"
 sudo apt-get install -yyqq git tmux htop xclip\
-    zsh feh curl unclutter vim-gtk udiskie zathura\
+    zsh feh curl unclutter udiskie zathura\
     rxvt-unicode-256color ranger wget curl\
     autoconf gnome-session-bin python-pip\
     latexmk libappindicator1 wakeonlan \
@@ -32,11 +32,10 @@ sudo apt-get install -yyqq git tmux htop xclip\
 # (with some extra functions recommended in solition to the above.
 echo "########################################################"
 echo            Additional installs for libnotify
+sudo add-apt-repository ppa:jonathonf/vim
 sudo add-apt-repository ppa:leolik/leolik -yy
-sudo add-apt-repository ppa:nilarimogard/webupd8 -yy
 sudo apt-get update -yyqq
-sudo apt-get install libnotify-bin -yy
-sudo apt-get install notifyosdconfig -yy
+sudo apt-get install libnotify-bin vim -yy
 pkill notify-osd
 
 echo "########################################################"
