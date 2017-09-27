@@ -132,6 +132,7 @@ ln -sf ~/.files/ranger/rc.conf ~/.config/ranger/rc.conf
 ln -sf ~/.files/ranger/rifle.conf ~/.config/ranger/rifle.conf
 ln -sf ~/.files/ranger/scope.sh ~/.config/ranger/scope.sh
 ln -sf ~/.files/ranger/commands.py ~/.config/ranger/commands.py
+ln -sf ~/.files/ranger/commands_full.py ~/.config/ranger/commands_full.py
 ln -sf ~/.files/ranger/colorschemes ~/.config/ranger/colorschemes
 # Place wallpaper 
 cp ~/.files/Wallpaper.png ~/.config/wall.png
