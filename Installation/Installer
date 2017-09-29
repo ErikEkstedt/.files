@@ -62,6 +62,11 @@ sudo apt-get update -yyqq
 sudo apt-get install spotify-client -yyqq
 echo "########################################################"
 echo                        Done!
+echo "########################################################"
+echo 
+echo                "Installing tex-live (this could take a while)"
+sudo apt-get install texlive-full -yyqq
+
 ############################################################################
 echo "\n \n \n"
 echo "########################################################"
