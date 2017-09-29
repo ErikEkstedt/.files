@@ -9,16 +9,14 @@ set $mod2 Mod4
 # SET VARIABLES
 set $term urxvt
 set $term2 xterm
-
-#bindsym $mod+u exec $term -e bash -c "stty -ixon && vim ~/.files/vimrc"
-bindsym $mod+u exec $term -e vim ~/.vimrc
-#"stty -ixon && vim ~/.files/vimrc"
+set $term3 terminator
 
 set $Browser google-chrome
 set $Music spotify
 set $Editor vim
 
 floating_modifier $mod
+focus_follows_mouse no
 bindsym $mod+Shift+q kill
 font pango:monospace 12
 
@@ -28,7 +26,7 @@ bindsym $mod2+F1 exec bash -c "systemctl suspend"
 
 # test key- for testing different scripts
 bindsym $mod2+t exec bash -c "cd ~/Pictures/wallpaper && ./bg_wal ~/.config/wall.png"
-#bindsym $mod2+t exec $term
+
 
 # WORKSPACES
 set $ws1 "1:Web 1"
@@ -92,13 +90,13 @@ exec --no-startup-id udiskie
 exec $term -T "scratchTerm"
 for_window [class="URxvt" title="scratchTerm"] move scratchpad
 
-# TERMINAL
+############## TERMINAL ###########################
 bindsym $mod+Return exec $term 
 bindsym $mod+Shift+Return exec $term -T "scratchTerm"
-bindsym $mod+y exec $term2
+bindsym $mod+y exec $term3
 
 # Open a ranger terminal
-bindsym $mod+r exec $term -e bash -c "stty -ixon && ranger"
+bindsym $mod+r exec $term -e sh -c "stty -ixon && ranger"
 bindsym $mod2+r exec $term -e bash -c "stty -ixon && sudo ranger"
 
 # Open a floating ranger terminal
@@ -114,7 +112,7 @@ resize grow left 120, resize grow right 120, \
 resize grow down 250, resize grow up 250
 
 
-# APPLICATIONS and SETINGS
+############## APPLICATIONS and SETINGS ###########################
 # Fast Access
 bindsym $mod+g exec $Browser 
 bindsym $mod+s exec $Music; workspace $ws9
@@ -142,16 +140,18 @@ bindsym $mod+q exec ~/.files/i3/scripts/workflow.sh
 # LATEX - Documents
 ###################################################################################
 
-# Log
-#bindsym $mod+d exec $term -e bash -c "stty -ixon && sh ~/.files/Scripts/new_log.sh"
-bindsym $mod+d exec ~/.files/Scripts/new_log
-bindsym $mod+Shift+d exec bash ~/.files/Scripts/open_last_log.sh
-
 # Notes
 bindsym $mod+n exec ~/.files/Scripts/new_note
 
-# Open WorkFlow latex document for todo:s
-bindsym $mod+w exec $term -T "Master_todo-term" -e bash -c "stty -ixon && vim ~/Documents/latex/Master_todo.tex"
+# Log
+bindsym $mod+d exec ~/.files/Scripts/new_log
+bindsym $mod+Shift+d exec bash ~/.files/Scripts/open_last_log.sh
+
+# open terminal at project directory
+bindsym $mod+u exec $term -cd ~/com_sci/Master_code/Robot
+
+# Open Learning doc
+bindsym $mod+w exec $term -T "Learning-tex" -e bash -c "stty -ixon && vim ~/com_sci/Master_code/Learning/docs/docs.tex" 
 for_window [class="URxvt" title="Master_todo-term"] floating enable, \
 resize grow left 20, resize grow right 300, \
 resize grow down 200, resize grow up 250 
@@ -226,9 +226,6 @@ bindsym $mod+Ctrl+g gaps inner current set 0, gaps outer current set 0
 # Terminal Transparancy
 bindsym $mod+Ctrl+t exec ~/.files/Scripts/term_transpar_up
 bindsym $mod+Ctrl+Shift+t  exec ~/.files/Scripts/term_transpar_down
-# Termnal FontSize
-bindsym $mod+Ctrl+Shift+f exec ~/.files/Scripts/Font_decrease
-bindsym $mod+Ctrl+f exec ~/.files/Scripts/Font_increase
 
 #Pulse Audio controls
 # special keyboard commands
@@ -276,10 +273,11 @@ bindsym $mod+Ctrl+l workspace next
 bindsym $mod+Ctrl+h workspace prev
 
 # resize
-bindsym $mod+Shift+y resize shrink width 2 px or 2 ppt
-bindsym $mod+Shift+i resize grow height 2 px or 2 ppt
-bindsym $mod+Shift+u resize shrink height 5 px or 2 ppt
-bindsym $mod+Shift+o resize grow width 2 px or 2 ppt
+set $growth 4
+bindsym $mod+Shift+y resize shrink width $growth px or $growth ppt
+bindsym $mod+Shift+i resize grow height $growth px or $growth ppt
+bindsym $mod+Shift+u resize shrink height $growth px or $growth ppt
+bindsym $mod+Shift+o resize grow width $growth px or $growth ppt
 
 # move focused window
 bindsym $mod+Shift+h move left
@@ -328,13 +326,13 @@ bar {
 # Create Log out, Reboot, Poweroff bindings
 set $reboot_choice "Exit (L)ogout, (R)eboot, (P)oweroff"
 mode $reboot_choice{
-        bindsym $mod+r exec systemctl reboot
-        bindsym $mod+l exit 
-        bindsym $mod+p exec systemctl poweroff
+	bindsym $mod+r exec systemctl reboot
+	bindsym $mod+l exit 
+	bindsym $mod+p exec systemctl poweroff
 
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+	# back to normal: Enter or Escape
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
 }
 
 bindsym $mod+Ctrl+e mode $reboot_choice
@@ -342,16 +340,16 @@ bindsym $mod+Ctrl+e mode $reboot_choice
 # Mode to select config files
 set $config_choice "Config: (i)3, (V)im, (R)anger, (Z)sh, (X)defaults, (P)ython.vim, t(E)x.vim, (T)mux "
 mode $config_choice{
-        bindsym $mod+v exec $term -e bash -c "stty -ixon && vim ~/.files/vimrc", mode "default"
-        bindsym $mod+r exec $term -e bash -c "stty -ixon && vim ~/.files/ranger/rc.conf", mode "default"
-        bindsym $mod+z exec $term -e bash -c "stty -ixon && vim ~/.files/zshrc", mode "default"
-        bindsym $mod+i exec $term -e bash -c "stty -ixon && vim ~/.files/i3/config", mode "default"
-        bindsym $mod+x exec $term -e bash -c "stty -ixon && vim ~/.files/Xresources", mode "default"
-        bindsym $mod+p exec $term -e bash -c "stty -ixon && vim ~/.files/vim/ftplugin/python.vim ", mode "default"
-        bindsym $mod+e exec $term -e bash -c "stty -ixon && vim ~/.files/vim/ftplugin/tex.vim", mode "default"
-        bindsym $mod+t exec $term -e bash -c "stty -ixon && vim ~/.files/tmux.conf", mode "default"
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+	bindsym $mod+v exec $term -T "Config" -e bash -c "stty -ixon && vim ~/.files/vimrc", mode "default" 
+	bindsym $mod+r exec $term -T "Config" -e bash -c "stty -ixon && vim ~/.files/ranger/rc.conf", mode "default"
+	bindsym $mod+z exec $term -T "Config" -e bash -c "stty -ixon && vim ~/.files/zshrc", mode "default"
+	bindsym $mod+i exec $term -T "Config" -e bash -c "stty -ixon && vim ~/.files/i3/config", mode "default"
+	bindsym $mod+x exec $term -T "Config" -e bash -c "stty -ixon && vim ~/.files/Xresources", mode "default"
+	bindsym $mod+p exec $term -T "Config" -e bash -c "stty -ixon && vim ~/.files/vim/ftplugin/python.vim ", mode "default"
+	bindsym $mod+e exec $term -T "Config" -e bash -c "stty -ixon && vim ~/.files/vim/ftplugin/tex.vim", mode "default"
+	bindsym $mod+t exec $term -T "Config" -e bash -c "stty -ixon && vim ~/.files/tmux.conf", mode "default"
+	# back to normal: Enter or Escape
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
 }
 bindsym $mod+Shift+e mode $config_choice
