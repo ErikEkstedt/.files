@@ -51,8 +51,6 @@ alias onescreen="xrandr --output eDP-1 --auto --output HDMI-2 --off; feh --bg-sc
 
 # Terminal stuff
 alias tmux="TERM=screen-256color-bce /usr/bin/tmux"
-#alias tmux="TERM=screen-256color-bce tmux"
-#alias tmux='tmux -2'
 alias ru="xrdb -load ~/.Xresources"
 
 # Mount Usb Stick
@@ -141,6 +139,7 @@ alias gdw="cd ~/Downloads; la"
 alias ggit="cd ~/git-clones; ls"
 
 ###############################################
+alias wnvi="watch nvidia-smi"
 # SSH % Wakeonlan
 alias wake="wakeonlan -i 213.113.208.169 38:d5:47:14:d3:a1" 
 alias mountdesk="sshfs -p 2002 -o ssh_command='ssh -i /home/erik/.ssh//id_rsa' erik@213.113.208.169:/home/erik/ /home/erik/Desktop-home"
