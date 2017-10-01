@@ -192,6 +192,10 @@ inoremap <Leader>w <esc>:lnext<CR>
 inoremap <Leader>i <esc>gg=G<C-o>
 nnoremap <Leader>i gg=G<C-o>
 
+" try map öä
+map ö {
+map ä }
+
 " Abbreviations
 cnoreabbrev Wq wq
 cnoreabbrev WQ wq
@@ -241,13 +245,18 @@ nnoremap <F10> :set relativenumber!<CR>
 " extends over multiple rows
 nnoremap <C-h> <C-w><C-h>
 nnoremap <C-l> <C-w><C-l>
+nnoremap <C-k> <C-w><C-k>
+nnoremap <C-j> <C-w><C-j>
+
 inoremap <C-h> <Esc><C-w><C-h>i
 inoremap <C-l> <Esc><C-w><C-l>i
+inoremap <C-j> <Esc><C-w><C-j>i
+inoremap <C-k> <Esc><C-w><C-k>i
+
 vnoremap <C-h> <Esc><C-w><C-h>gv
 vnoremap <C-l> <Esc><C-w><C-l>gv
-
-nnoremap <C-k> {
-nnoremap <C-j> }
+vnoremap <C-j> <Esc><C-w><C-j>gv
+vnoremap <C-k> <Esc><C-w><C-k>gv
 
 nnoremap j gj
 nnoremap k gk
@@ -350,29 +359,35 @@ vnoremap <silent> <Leader>ce :Tabularize /=<CR>
 vnoremap <silent> <Leader>ct :Tabularize /#<CR>
 
 " YouCompleteMe
-let g:ycm_python_binary_path = 'python'
+let g:ycm_python_binary_path = '/home/erik/anaconda3/bin/python3'
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let g:ycm_min_num_of_chars_for_completion = 0
+
 
 " Python-mode
 " Most are default but here to remind me that they exist
-let g:pymode_python = 'python3'
-let g:pymode_doc_bind = 'K'
-let g:pymode_run =  0 " Runs in background, freezes vim. No good.
-let g:pymode_breakpoint_bind = '<leader>b'
-let g:pymode_rope_complete_on_dot = 0
-let g:pymode_rope_completion_bind ="<tab>"
-let g:pymode_quickfix_minheight = 3
-let g:pymode_quickfix_maxheight = 5
-let g:pymode_virtualenv_path = "/home/erik/anaconda3"
-let g:pymode_options_max_line_length=120
-let g:pymode_trim_whitespaces = 1 " trim whitespaces on save
-"let g:pymode_lint_ignore = "E501" " Ignores certain warnings
+" Turn off autocmoplete to use YCM
+" let g:pymode_run =  0 " Runs in background, freezes vim. No good.
+" let g:pymode_rope_completion = 0
+" let g:pymode_rope_complete_on_dot = 0
+" let g:pymode_rope_lookup_project = 0
+" let g:pymode_rope = 0
+" let g:pymode_python = 'python3'
+" let g:pymode_doc_bind = 'K'
+" let g:pymode_breakpoint_bind = '<leader>b'
+" "let g:pymode_rope_completion_bind = "<tab>"
+" let g:pymode_quickfix_minheight = 3
+" let g:pymode_quickfix_maxheight = 5
+" let g:pymode_virtualenv_path = "/home/erik/anaconda3/"
+" let g:pymode_options_max_line_length=120
+" let g:pymode_trim_whitespaces = 1 " trim whitespaces on save
 
+"let g:pymode_lint_ignore = "E501" " Ignores certain warnings
 " Warnings pylint
 " E302: expected 2 blank lines 
 " E231: missing whitespacea after ','
-let g:pymode_warnings = 1
+" let g:pymode_warnings = 1
 " function! TogglePymodeWarnings()
 "     if g:pymode_warnings==1
 "         let g:pymode_warnings = 0
