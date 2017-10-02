@@ -92,7 +92,7 @@ set nuw=4 "width of numberline
 "
 """"""""" BEHAVIOUR""""""""""
 set mouse=a "mouse functionality 
-set timeoutlen=500 "ms to wait for command completion 
+set timeoutlen=300 "ms to wait for command completion 
 set ttimeoutlen=0 " Don't wait for <esc>
 set backspace=indent,eol,start " Backspace over spaces
 set ai! "auto indent
@@ -116,7 +116,7 @@ set switchbuf=usetab
 set wildmenu
 set wildchar=<Tab>
 
-" Interesting for colors. Coors becomes that of terminal.
+" Interesting for colors. (URxvt and wal)Colors becomes that of terminal.
 " if has('termguicolors')
 " 	set termguicolors
 " endif
@@ -276,13 +276,20 @@ let g:netrw_sort_sequence = '[\/]$,*' " sort is affecting only: directories on t
 nnoremap <Leader>tt :Texplore<CR>
 nnoremap <Leader>ee :Explore<CR>
 nnoremap <Leader>vv :Vexplore<CR>
+nnoremap <Leader>hh :Hexplore<CR>
 
+nnoremap <Leader>sr :SyntasticReset<CR>
+nnoremap <Leader>lc :lclose<CR>
+nnoremap <Leader>lo :Errors<CR>
 
 " Go to placeholder
-nnoremap <C-@> <Esc>/<++><Enter>"_c4l
-vnoremap <C-@> <Esc>/<++><Enter>"_c4l
-inoremap <C-@> <Esc>/<++><Enter>"_c4l
+" nnoremap <C-@> <Esc>/<++><Enter>"_c4l
+" vnoremap <C-@> <Esc>/<++><Enter>"_c4l
+" inoremap <C-@> <Esc>/<++><Enter>"_c4l
 
+nnoremap gj <Esc>/<++><Enter>"_c4l
+vnoremap gj <Esc>/<++><Enter>"_c4l
+inoremap gj <Esc>/<++><Enter>"_c4l
 "Spellcheck
 map <F6> :setlocal spell! spelllang=en_us<CR>
 " h <space> becomes tab help <space> as to open help in new tab (instead of split)
@@ -364,47 +371,18 @@ let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:ycm_min_num_of_chars_for_completion = 0
 
+" Syntastic
+" Recommended settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-" Python-mode
-" Most are default but here to remind me that they exist
-" Turn off autocmoplete to use YCM
-" let g:pymode_run =  0 " Runs in background, freezes vim. No good.
-" let g:pymode_rope_completion = 0
-" let g:pymode_rope_complete_on_dot = 0
-" let g:pymode_rope_lookup_project = 0
-" let g:pymode_rope = 0
-" let g:pymode_python = 'python3'
-" let g:pymode_doc_bind = 'K'
-" let g:pymode_breakpoint_bind = '<leader>b'
-" "let g:pymode_rope_completion_bind = "<tab>"
-" let g:pymode_quickfix_minheight = 3
-" let g:pymode_quickfix_maxheight = 5
-" let g:pymode_virtualenv_path = "/home/erik/anaconda3/"
-" let g:pymode_options_max_line_length=120
-" let g:pymode_trim_whitespaces = 1 " trim whitespaces on save
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+let g:syntastic_python_checkers =  ["flake8" ]
+let g:syntastic_loc_list_height = 4
+" Python syntax ~/.vim/syntax/python.vim 
+let python_highlight_all = 1
 
-"let g:pymode_lint_ignore = "E501" " Ignores certain warnings
-" Warnings pylint
-" E302: expected 2 blank lines 
-" E231: missing whitespacea after ','
-" let g:pymode_warnings = 1
-" function! TogglePymodeWarnings()
-"     if g:pymode_warnings==1
-"         let g:pymode_warnings = 0
-"         echo "Warnings off!"
-"     else
-"         let g:pymode_warnings = 1
-"         echo "Warnings on!"
-"     endif
-" endfunction
-" nnoremap <F10> :call TogglePymodeWarnings()<CR>
-
-""""""""""""BASE16"""""""""""""""
-"colorscheme base16-monokai
-" if filereadable(expand("~/.vimrc_background"))
-"    let base16colorspace=256
-"    source ~/.vimrc_background
-" endif
-
-" unhighlight comments, and change the search highlight to be non-intrusive
-" hi Comment cterm=NONE

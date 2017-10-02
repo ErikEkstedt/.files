@@ -126,6 +126,7 @@ alias py35="source activate python3.5"
 
 # Movement
 alias gbu="cd ~/.vim/bundle; ls"
+alias gfi="cd ~/.files; ls"
 alias gco="cd ~/com_sci"
 alias gro="cd ~/com_sci/Master_code/Robot/;ls"
 alias gle="cd ~/com_sci/Master_code/Learning/;ls"
@@ -133,7 +134,10 @@ alias gho="cd ~/"
 alias gma="cd ~/com_sci/Master_code; ls"
 alias gml="cd ~/com_sci/ML; ls"
 alias gne="cd ~/com_sci/Nexus; ls"
-alias gl="cd ~/Documents/latex; ls *.tex"
+
+alias gla="cd ~/Documents/latex; ls"
+alias gno="cd ~/Documents/latex/Notes; ls *.tex"
+
 alias gpa="cd ~/Documents/Papers; ls *.pdf"
 alias gdd="cd ~/Desktop/DATA; ls"
 alias gdw="cd ~/Downloads; la"
@@ -147,11 +151,12 @@ alias mountdesk="sshfs -p 2002 -o ssh_command='ssh -i /home/erik/.ssh//id_rsa' e
 alias umountdesk="sudo umount /home/erik/Desktop"
 alias sshwork="ssh Erik@130.238.17.189"
 
+# Background color/terminal ui-color 
+alias bgw="cd ~/Pictures/wallpaper && ./bg_wal  ~/.config/wall.png"
 HYPHEN_INSENSITIVE="true"
 # start tmux session when terminal starts
 if [ "$TMUX" = "" ]; then tmux new ; fi
 
-alias bgw="cd ~/Pictures/wallpaper && ./bg_wal  ~/.config/wall.png"
 
 ##### WAL ########
 # Import colorscheme from 'wal'
