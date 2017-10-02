@@ -122,7 +122,6 @@ set wildchar=<Tab>
 " endif
 "
 """""""""""FUNCTIONS""""""""""""""""""""""
-
 """ Transparancy 
 let g:transpar=0
 function! ToggleTransparency()
@@ -159,6 +158,48 @@ function! ToggleFocusMode()
 	endif
 endfunc
 nnoremap <F1> :call ToggleFocusMode()<cr>
+
+
+" autocmd. 
+autocmd BufEnter *.tex call SetTexColor()
+function! SetTexColor()
+	set background=light
+	let g:solarized_termcolors=256
+	" use lightline-solarized in lightline
+	let g:lightline = {
+				\ 'colorscheme': 'lightline_solarized',
+				\ }
+	colorscheme solarized
+endfunction
+
+" function to exit quickfix when exiting buffer
+aug QFClose
+  au!
+  au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
+aug END
+
+" Compile on initialization, cleanup on quit
+augroup vimtex_event_1
+	au!
+	au User VimtexEventQuit     call vimtex#compiler#clean(0)
+augroup END
+
+" Indentation for python
+au! BufNewFile,BufRead *.py
+    set tabstop=4
+	set softtabstop=4
+	set shiftwidth=4
+	set textwidth=79
+	set expandtab
+	set autoindent
+	set fileformat=unix
+
+" Indentation for js, htmlm css
+au BufNewFile,BufRead *.js, *.html, *.css
+    \ set tabstop=2
+    \ set softtabstop=2
+    \ set shiftwidth=2
+
 """""""""""""""""""MAPPINGS""""""""""""""""""""""
 " Edit config files
 " mak function that opens vimrc in vsplit left after changing the layout to
@@ -294,39 +335,6 @@ inoremap gj <Esc>/<++><Enter>"_c4l
 map <F6> :setlocal spell! spelllang=en_us<CR>
 " h <space> becomes tab help <space> as to open help in new tab (instead of split)
 
-" autocmd. 
-autocmd BufEnter *.tex call SetTexColor()
-function! SetTexColor()
-	set background=light
-	let g:solarized_termcolors=256
-	" use lightline-solarized in lightline
-	let g:lightline = {
-				\ 'colorscheme': 'lightline_solarized',
-				\ }
-	colorscheme solarized
-endfunction
-
-" Compile on initialization, cleanup on quit
-augroup vimtex_event_1
-	au!
-	au User VimtexEventQuit     call vimtex#compiler#clean(0)
-augroup END
-
-" Indentation for python
-au! BufNewFile,BufRead *.py
-    set tabstop=4
-	set softtabstop=4
-	set shiftwidth=4
-	set textwidth=79
-	set expandtab
-	set autoindent
-	set fileformat=unix
-
-" Indentation for js, htmlm css
-au BufNewFile,BufRead *.js, *.html, *.css
-    \ set tabstop=2
-    \ set softtabstop=2
-    \ set shiftwidth=2
 
 """""""""""PLUGINS""""""""""""""""""""
 " slimux.vim
@@ -383,6 +391,10 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 let g:syntastic_python_checkers =  ["flake8" ]
 let g:syntastic_loc_list_height = 4
+
+" Syntax error color
+hi Error ctermfg=161 ctermbg=016 guifg=#eeeeee guibg=#5f00ff
+
 " Python syntax ~/.vim/syntax/python.vim 
 let python_highlight_all = 1
 
