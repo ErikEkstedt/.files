@@ -8,7 +8,7 @@
 T=2000
 #Img="/usr/share/icons/gnome/256x256/status/user-available.png"
 Img="/home/erik/.files/icons/check_green.png"
-Img2="/home/erik/.files/icons/check_green.png"
+Img2="/home/erik/.files/icons/red-icon.png"
 #Img2="/usr/share/icons/gnome/256x256/status/user-busy.png"
 if [[ $(xinput list 12 | grep -Ec "disabled") -eq 1 ]]; then
     xinput enable 12
