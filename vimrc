@@ -47,9 +47,15 @@ if has('termguicolors')
 	endif
 endif
 
+" COLORS
 "set background=dark
 colorscheme monokai-phoenix
 
+" Syntax error color
+hi Error ctermfg=161 ctermbg=016 guifg=#eeeeee guibg=#5f00ff
+
+" SignalColumn
+hi SignColumn ctermbg=16
 
 if has('folding')
 	if has('windows')
@@ -130,6 +136,7 @@ function! ToggleTransparency()
 		let g:transpar=1
 	else
 		colorscheme monokai-phoenix
+        hi SignColumn ctermbg=16
 		hi Comment cterm=NONE
 		hi Search ctermfg=1 ctermbg=NONE cterm=bold,underline
 		hi LineNr ctermfg=grey
@@ -162,6 +169,8 @@ nnoremap <F1> :call ToggleFocusMode()<cr>
 
 " autocmd. 
 autocmd BufEnter *.tex call SetTexColor()
+autocmd BufEnter *.tex set foldmethod=manual
+	
 function! SetTexColor()
 	set background=light
 	let g:solarized_termcolors=256
@@ -392,8 +401,6 @@ let g:syntastic_check_on_wq = 1
 let g:syntastic_python_checkers =  ["flake8" ]
 let g:syntastic_loc_list_height = 4
 
-" Syntax error color
-hi Error ctermfg=161 ctermbg=016 guifg=#eeeeee guibg=#5f00ff
 
 " Python syntax ~/.vim/syntax/python.vim 
 let python_highlight_all = 1

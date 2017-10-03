@@ -8,16 +8,20 @@ then
     exit 0
 fi
 
+Clean="/home/erik/.files/Scripts/clear.sh"
+
 dir0="/home/erik/.files"
 dir1="/home/erik/com_sci/Master_code/Robot"
 dir2="/home/erik/Documents/latex"
-
-for directory in $dir0 $dir1 $dir2
+dir3="/home/erik/com_sci/Master_code/Learning"
+for directory in $dir0 $dir1 $dir2 $dir3
 do
 	echo "Checking for $directory update..."
-	if [ -d "$directory/.git" ]
-       	then
+	if [ -d "$directory/.git" ] 
+    then
 		cd $directory
+        echo cleaning crap...
+        exec $Clean &
         echo "Git Push"
 		git add .
         git commit -m $1

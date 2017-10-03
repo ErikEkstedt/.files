@@ -1,14 +1,23 @@
 #!/bin/bash
+
+T=2000
+#Img="/home/erik/.files/icons/check_green.png"
+Img="/home/erik/.files/icons/brightness_blue.png"
 if [[ $1 == -d ]]; then
     current=$(xrandr --verbose | grep -m 1 -i brightness | awk -F' ' '{ print $2 }')
     new=$(echo "$current - 0.1" | bc -l)
     xrandr --output eDP-1 --brightness 0$new
 elif [[ $1 == -u ]]; then
     current=$(xrandr --verbose | grep -m 1 -i brightness | awk -F' ' '{ print $2 }')
-new=$(echo "$current + 0.1" | bc -l)
+    new=$(echo "$current + 0.1" | bc -l)
     xrandr --output eDP-1 --brightness 0$new
 elif [[ $1 == -m ]]; then
     xrandr --output eDP-1 --brightness 1
+    new=1
 else
     xrandr --output eDP-1 --brightness $1
+    new=$1
 fi
+
+killall notify-osd
+DISPLAY=:0 notify-send -t $T --urgency=normal --icon=$Img "Brightness: $new"

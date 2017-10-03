@@ -76,16 +76,14 @@ bindsym $mod2+F8 exec ~/.files/Scripts/monitor_toggle
 
 ## STARTUP
 #exec_always --no-startup-id compton --config ~/.files/compton/config
+#exec_always --no-startup-id ~/.files/i3/scripts/polybar.sh
+
 exec_always feh --bg-scale ~/.config/wall.png
 exec ~/.files/Scripts/start_up.sh
-#exec_always --no-startup-id ~/.files/i3/scripts/polybar.sh
 exec --no-startup-id gnome-sound-applet
 exec --no-startup-id gnome-settings-daemon
 exec --no-startup-id nm-applet
 exec --no-startup-id udiskie
-
-#exec $term -T "News" -e bash -c "stty -ixon && newsbeuter"
-#for_window [class="URxvt" title="News"] move container workspace $ws5; workspace $ws5
 
 exec $term -T "scratchTerm"
 for_window [class="URxvt" title="scratchTerm"] move scratchpad
@@ -94,16 +92,7 @@ for_window [class="URxvt" title="scratchTerm"] move scratchpad
 bindsym $mod+Return exec $term 
 bindsym $mod+Shift+Return exec $term -T "scratchTerm"
 bindsym $mod+y exec $term3
-
-# Open a ranger terminal
 bindsym $mod+r exec $term -e sh -c "stty -ixon && ranger"
-bindsym $mod2+r exec $term -e bash -c "stty -ixon && sudo ranger"
-
-# Open a floating ranger terminal
-bindsym $mod+Shift+r exec $term -T "rangerTerm" -e bash -c "stty -ixon && ranger"
-for_window [class="URxvt" title="rangerTerm"] floating enable, \
-resize grow left 300, resize grow right 300, \
-resize grow down 150, resize grow up 100 
 
 # Open floating terminal
 bindsym $mod+t exec --no-startup-id $term -T "metaTerm"
@@ -111,12 +100,18 @@ for_window [class="URxvt" title="metaTerm"] floating enable, \
 resize grow left 120, resize grow right 120, \
 resize grow down 250, resize grow up 250
 
+# Open a floating ranger terminal
+bindsym $mod+Shift+r exec $term -T "rangerTerm" -e bash -c "stty -ixon && ranger"
+for_window [class="URxvt" title="rangerTerm"] floating enable, \
+resize grow left 300, resize grow right 300, \
+resize grow down 150, resize grow up 100 
+
 
 ############## APPLICATIONS and SETINGS ###########################
 # Fast Access
 bindsym $mod+g exec $Browser 
 bindsym $mod+s exec $Music; workspace $ws9
-bindsym $mod+a exec bash ~/.files/Scripts/touchpad_onoff.sh
+bindsym $mod+a exec bash ~/.files/Scripts/Laptop/touchpad_onoff.sh
 
 # Calendar 
 bindsym $mod+c exec ~/.files/i3/scripts/Calendar.sh
@@ -150,14 +145,14 @@ bindsym $mod+Shift+d exec bash ~/.files/Scripts/open_last_log.sh
 # open terminal at project directory
 bindsym $mod+u exec $term -cd ~/com_sci/Master_code/Robot
 
+# Open Model doc
+bindsym $mod+m exec $term -T "model-tex" -e bash -c "stty -ixon && vim ~/Documents/latex/Project/Master.tex"
+
 # Open Learning doc
 bindsym $mod+w exec $term -T "Learning-tex" -e bash -c "stty -ixon && vim ~/com_sci/Master_code/Learning/docs/docs.tex" 
-for_window [class="URxvt" title="Master_todo-term"] floating enable, \
-resize grow left 20, resize grow right 300, \
-resize grow down 200, resize grow up 250 
 
 # Open Installer.sh Computer todo document 
-bindsym $mod+i exec $term -T "Installer" -e bash -c "stty -ixon && vim ~/.files/Installation/Installer.sh", split horizontal, exec $term -T "Readme" -e bash -c "stty -ixon && vim /home/erik/.files/Installation/README.md",
+bindsym $mod+i exec $term -T "Installer" -e bash -c "stty -ixon && vim ~/.files/Installation/Installer", split horizontal, exec $term -T "Readme" -e bash -c "stty -ixon && vim /home/erik/.files/Installation/README.md",
 
 # Open bibtex document 
 bindsym $mod+b exec $term -T "bib-term" -e bash -c "stty -ixon && vim ~/Documents/latex/References.bib"
@@ -244,18 +239,19 @@ bindsym Shift+XF86AudioMute exec pactl set-sink-mute 1 toggle
 #bindsym XF86AudioNext exec playerctl next
 #bindsym XF86AudioPrev exec playerctl previous
 
-# Scripts that change brightness settings on my laptop
-# Screen brightness controls
-bindsym XF86MonBrightnessUp exec ~/.files/Scripts/screen_bright -u
-bindsym XF86MonBrightnessDown exec ~/.files/Scripts/screen_bright -d
+# LAPTOP Settings
+# Xrandr brightness
+bindsym XF86MonBrightnessUp exec ~/.files/Scripts/Laptop/screen_bright -u
+bindsym XF86MonBrightnessDown exec ~/.files/Scripts/Laptop/screen_bright -d
 
-bindsym Shift+XF86MonBrightnessDown exec sudo ~/.files/Scripts/intel_screen_bright_min 
-bindsym Ctrl+XF86MonBrightnessDown exec sudo ~/.files/Scripts/intel_screen_bright_mid 
-bindsym Shift+XF86MonBrightnessUp exec sudo ~/.files/Scripts/intel_screen_bright_max
+# Intel brightness
+bindsym Shift+XF86MonBrightnessDown exec sudo ~/.files/Scripts/Laptop/intel_screen_bright_min 
+bindsym Ctrl+XF86MonBrightnessDown exec sudo ~/.files/Scripts/Laptop/intel_screen_bright_mid 
+bindsym Shift+XF86MonBrightnessUp exec sudo ~/.files/Scripts/Laptop/intel_screen_bright_max
 
-# Keyboard brightness controls
-bindsym XF86KbdBrightnessUp exec sudo ~/.files/Scripts/backlit_keys 
-bindsym XF86KbdBrightnessDown exec sudo ~/.files/Scripts/backlit_keys down
+# key brightness
+bindsym XF86KbdBrightnessUp exec sudo ~/.files/Scripts/Laptop/backlit_keys 
+bindsym XF86KbdBrightnessDown exec sudo ~/.files/Scripts/Laptop/backlit_keys down
 
 # Hibernate
 bindsym XF86Sleep exec systemctl hybrid-sleep
