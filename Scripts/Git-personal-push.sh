@@ -1,13 +1,13 @@
 #!/bin/bash
 
-read -p 'Please Enter a commit comment: "' uservar
-
+#read -p "Please Enter a commit comment: '\n'> " uservar
+read -p "Please Enter a commit message: `echo '\n> '`" uservar
 # if [ -z $1 && -z $line ]
 # then
 #     echo "Empty commit comment. Abort..."
 #     exit 0
 # fi
-if [ -z $uservar ]
+if [ -z "$uservar" ]
 then
     echo "Empty commit comment. Abort..."
     exit 0
