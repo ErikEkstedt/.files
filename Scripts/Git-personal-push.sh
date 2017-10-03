@@ -1,19 +1,24 @@
-#!/bin/sh
-# Nice script from:
-# https://github.com/kugaevsky/vim-bundle-update/blob/master/vim-bundle-update.sh 
+#!/bin/bash
 
-if [ -z $1 ]
+read -p 'Please Enter a commit comment: "' uservar
+
+# if [ -z $1 && -z $line ]
+# then
+#     echo "Empty commit comment. Abort..."
+#     exit 0
+# fi
+if [ -z $uservar ]
 then
     echo "Empty commit comment. Abort..."
     exit 0
 fi
 
 Clean="/home/erik/.files/Scripts/clear.sh"
-
 dir0="/home/erik/.files"
 dir1="/home/erik/com_sci/Master_code/Robot"
 dir2="/home/erik/Documents/latex"
 dir3="/home/erik/com_sci/Master_code/Learning"
+
 for directory in $dir0 $dir1 $dir2 $dir3
 do
 	echo "Checking for $directory update..."
@@ -24,7 +29,7 @@ do
         exec $Clean &
         echo "Git Push"
 		git add .
-        git commit -m $1
+        git commit -m "$uservar"
         git push
 	else
 		echo "$directory not a git plugin."
