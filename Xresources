@@ -36,7 +36,6 @@ Xft.hintstyle:              hintslight
 *color2: #859900
 *color10: #586e75
 
-
 !-------------------------
 !! yellow dark/light
 *color3: #b58900
@@ -80,6 +79,7 @@ URxvt.depth:		32
 URxvt.font: xft:monospace:size=11
 URxvt.scrollBar:	false
 URxvt.cursorColor:	gray
+URxvt*foreground:	white
 
 URxvt.perl-ext-common:	default,matcher,resize-font
 URxvt.perl-lib: $HOME/.files/Scripts

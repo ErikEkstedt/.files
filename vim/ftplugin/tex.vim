@@ -28,7 +28,7 @@ inoremap ;eq \begin{equation}<CR>\label{eq:<++>}<CR>\end{equation}<CR><CR><++><E
 
 " url
 inoremap ;url \url{} <++><Esc>5hi
-
+"
 " fix slowness
 autocmd FileType tex :NoMatchParen
 let g:vimtex_indent_enabled = 0

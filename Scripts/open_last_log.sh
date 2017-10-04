@@ -15,17 +15,18 @@ do
         # PDF does not exist, make pdf from tex
         # echo "PDF $FILE does not exist. Making pdf of .tex file"
         # echo "$f" 
+        F=${f::-4}
         pdf=${f::-4}".pdf"
         # echo $pdf
         if [[ -f $pdf ]]
         then
-            
             DISPLAY=:0 notify-send -t 2000 --urgency=critical --icon=$img "Yesterdays Log entry"
             zathura $pdf 
             break
         else
+            latexmk -f -pdf $F
+            zathura $pdf
             DISPLAY=:0 notify-send -t 2000 --urgency=critical --icon=$img "Yesterdays Log entry"
-            latexmk -f -pdf $f
             break
         fi
     fi

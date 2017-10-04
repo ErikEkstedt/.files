@@ -238,13 +238,23 @@ nnoremap <Leader>r :! urxvt -e python % &<CR><CR>
 nnoremap <Leader>w :lnext<CR>
 inoremap <Leader>w <esc>:lnext<CR>
 
+" Easier next paren
+nnoremap <Leader>w :lnext<CR>
+inoremap <Leader>w <esc>:lnext<CR>
+
 " Indent entire file
 inoremap <Leader>i <esc>gg=G<C-o>
 nnoremap <Leader>i gg=G<C-o>
 
+" command line change text font
+inoremap <Leader>å <esc>:hi Normal ctermfg=255<CR>
+nnoremap <Leader>å :hi Normal ctermfg=255<CR>
+
 " try map öä
 map ö {
 map ä }
+
+
 
 " Abbreviations
 cnoreabbrev Wq wq
@@ -401,6 +411,9 @@ let g:syntastic_check_on_wq = 1
 let g:syntastic_python_checkers =  ["flake8" ]
 let g:syntastic_loc_list_height = 4
 
+" IndentLine
+let g:indentLine_fileTypeExclude=['help']
+let g:indentLine_char = '┊'
 
 " Python syntax ~/.vim/syntax/python.vim 
 let python_highlight_all = 1
