@@ -32,8 +32,8 @@ let g:ctrlp_map = ''
 
 "fugitive.vim
 nnoremap <Leader>ga :Gwrite<CR>
-nnoremap <Leader>gc :Gcommit<CR>
-nnoremap <Leader>gp :Gpush<CR>
+nnoremap <Leader>gco :Gcommit<CR>
+nnoremap <Leader>gpu :Gpush<CR>
 
 " lightline - statusline
 "let g:lightline = {'colorscheme': 'wombat',}
@@ -83,13 +83,11 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Unknown"   : "?"
     \ }
 
-
 " Python syntax ~/.vim/syntax/python.vim 
 let python_highlight_all = 1
 
 
 """""""""""""SETTINGS"""""""""""""""" 
-
 " encoding
 scriptencoding utf-8
 set encoding=utf-8
