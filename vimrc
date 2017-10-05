@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 
 """""""""""plugins""""""""""""""""""""
+=======
+""""""""""""" SETTING"""""""""""""""" 
+>>>>>>> parent of 12d91f1... updated vimrc with NERDTree settings
 "pathogen vim modules stuff
 filetype off
 execute pathogen#infect()
@@ -7,9 +11,14 @@ execute pathogen#infect()
 
 filetype plugin on
 filetype plugin indent on
+<<<<<<< HEAD
 syntax on "color
 
 """""""""""""settings"""""""""""""""" 
+=======
+syntax on "Color
+
+>>>>>>> parent of 12d91f1... updated vimrc with NERDTree settings
 " encoding
 scriptencoding utf-8
 set encoding=utf-8
@@ -169,6 +178,7 @@ function! Togglefocusmode()
 endfunc
 nnoremap <f1> :call Togglefocusmode()<cr>
 
+<<<<<<< HEAD
 
 
 """""""""""autocommands"""""""""""""""""
@@ -180,6 +190,13 @@ nnoremap <f1> :call Togglefocusmode()<cr>
 " autocmd bufenter *.tex set foldmethod=manual
 " 	
 function! Settexcolor()
+=======
+" autocmd. 
+autocmd BufEnter *.tex call SetTexColor()
+autocmd BufEnter *.tex set foldmethod=manual
+	
+function! SetTexColor()
+>>>>>>> parent of 12d91f1... updated vimrc with NERDTree settings
 	set background=light
 	let g:solarized_termcolors=256
 	" use lightline-solarized in lightline
@@ -221,6 +238,7 @@ au bufnewfile,bufread *.js, *.html, *.css
 " edit config files
 " mak function that opens vimrc in vsplit left after changing the layout to
 " fullscreen (i3?).
+<<<<<<< HEAD
 nnoremap <leader>ev :vsplit ~/.vimrc<cr>
 nnoremap <leader>ez :tabnew ~/.zshrc<cr>
 nnoremap <leader>ei3 :tabnew ~/.config/i3/config<cr>
@@ -252,6 +270,40 @@ inoremap <leader>w <esc>:lnext<cr>
 " indent entire file
 inoremap <leader>i <esc>gg=g<c-o>
 nnoremap <leader>i gg=g<c-o>
+=======
+nnoremap <Leader>ev :vsplit ~/.vimrc<CR>
+nnoremap <Leader>ez :tabnew ~/.zshrc<CR>
+nnoremap <Leader>ei3 :tabnew ~/.config/i3/config<CR>
+nnoremap <Leader>er :tabnew ~/.config/ranger/rc.conf<CR>
+nnoremap <Leader>ex :tabnew ~/.Xresources<CR>
+nnoremap <Leader>et :tabnew ~/.tmux.conf<CR>
+nnoremap <Leader>ebib :tabnew ~/Documents/latex/References.bib<CR>
+nnoremap <Leader>epy :tabnew ~/.vim/ftplugin/python.vim<CR>
+nnoremap <Leader>ete :tabnew ~/.vim/ftplugin/tex.vim<CR>
+
+" Source config files
+nnoremap <Leader>si3 :source ~/.config/i3/config<CR>
+nnoremap <Leader>sv :source ~/.vimrc<CR>
+nnoremap <Leader>sz :source ~/.zshrc<CR>
+nnoremap <Leader>sr :source ~/.config/ranger/rc.conf<CR>
+nnoremap <Leader>sx :! xrdb ~/.Xresources<CR>
+nnoremap <Leader>st :source ~/.tmux.conf<CR>
+
+" Run scripts
+nnoremap <Leader>r :! urxvt -e python % &<CR><CR>
+
+" Go to next comment (in pymode at least)
+nnoremap <Leader>w :lnext<CR>
+inoremap <Leader>w <esc>:lnext<CR>
+
+" Easier next paren
+nnoremap <Leader>w :lnext<CR>
+inoremap <Leader>w <esc>:lnext<CR>
+
+" Indent entire file
+inoremap <Leader>i <esc>gg=G<C-o>
+nnoremap <Leader>i gg=G<C-o>
+>>>>>>> parent of 12d91f1... updated vimrc with NERDTree settings
 
 " command line change text font
 inoremap <leader>å <esc>:hi normal ctermfg=255<cr>
@@ -262,7 +314,12 @@ map ö {
 map ä }
 
 
+<<<<<<< HEAD
 " abbreviations
+=======
+
+" Abbreviations
+>>>>>>> parent of 12d91f1... updated vimrc with NERDTree settings
 cnoreabbrev Wq wq
 cnoreabbrev WQ wq
 cnoreabbrev <expr> h getcmdtype() == ":" && getcmdline() == 'h' ? 'tab help' : 'h'
@@ -339,6 +396,7 @@ vnoremap tp y<esc>gt<esc>gpggtgv<esc>
 let g:netrw_banner = 0 "no banner
 let g:netrw_liststyle = 3 
 let g:netrw_sort_sequence = '[\/]$,*' " sort is affecting only: directories on the top, files below
+<<<<<<< HEAD
 nnoremap <leader>tt :texplore<cr>
 nnoremap <leader>ee :explore<cr>
 nnoremap <leader>vv :vexplore<cr>
@@ -361,6 +419,27 @@ inoremap gj <esc>/<++><enter>"_c4l
 
 "spellcheck
 map <f6> :setlocal spell! spelllang=en_us<cr>
+=======
+nnoremap <Leader>tt :Texplore<CR>
+nnoremap <Leader>ee :Explore<CR>
+nnoremap <Leader>vv :Vexplore<CR>
+nnoremap <Leader>hh :Hexplore<CR>
+
+nnoremap <Leader>sr :SyntasticReset<CR>
+nnoremap <Leader>lc :lclose<CR>
+nnoremap <Leader>lo :Errors<CR>
+
+" Go to placeholder
+" nnoremap <C-@> <Esc>/<++><Enter>"_c4l
+" vnoremap <C-@> <Esc>/<++><Enter>"_c4l
+" inoremap <C-@> <Esc>/<++><Enter>"_c4l
+
+nnoremap gj <Esc>/<++><Enter>"_c4l
+vnoremap gj <Esc>/<++><Enter>"_c4l
+inoremap gj <Esc>/<++><Enter>"_c4l
+"Spellcheck
+map <F6> :setlocal spell! spelllang=en_us<CR>
+>>>>>>> parent of 12d91f1... updated vimrc with NERDTree settings
 " h <space> becomes tab help <space> as to open help in new tab (instead of split)
 
 " slimux.vim
@@ -441,4 +520,67 @@ let g:nerdtreeindicatormapcustom = {
 " python syntax ~/.vim/syntax/python.vim 
 let python_highlight_all = 1
 
+
+"""""""""""PLUGINS""""""""""""""""""""
+" slimux.vim
+nnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>
+vnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>gv<Esc>zz
+nnoremap <C-c><C-x> :SlimuxREPLConfigure<CR>
+vnoremap <C-c><C-x> :SlimuxREPLConfigure<CR>
+
+" Calendar.vim
+let g:calendar_google_calendar = 1
+let g:calendar_google_task = 1
+
+" vimtex.vim
+let g:latex_view_general_viewer = 'zathura'
+let g:vimtex_view_method = "zathura"
+"let g:latex_view_general_options = shellescape("-s -e '" . exepath(v:progpath) . " --servername " . v:servername . " +{%line} {%input}'")
+let g:vimtex_complete_recursive_bib = 2
+
+" CtrlP.vim
+let g:ctrlp_show_hidden = 2 
+nnoremap <Leader>f :CtrlP<CR>
+nnoremap <Leader>fm :CtrlPMRU<CR>
+let g:ctrlp_map = ''
+
+"fugitive.vim
+nnoremap <Leader>ga :Gwrite<CR>
+nnoremap <Leader>gc :Gcommit<CR>
+nnoremap <Leader>gp :Gpush<CR>
+
+" lightline - statusline
+"let g:lightline = {'colorscheme': 'wombat',}
+let g:lightline = {'colorscheme': 'powerline',}
+set noshowmode "stops vims own showing below the statusbar.
+
+" Tabular
+vnoremap <silent> <Leader>ce :Tabularize /=<CR>
+vnoremap <silent> <Leader>ct :Tabularize /#<CR>
+
+" YouCompleteMe
+let g:ycm_python_binary_path = '/home/erik/anaconda3/bin/python3'
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let g:ycm_min_num_of_chars_for_completion = 0
+
+" Syntastic
+" Recommended settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+let g:syntastic_python_checkers =  ["flake8" ]
+let g:syntastic_loc_list_height = 4
+
+" IndentLine
+let g:indentLine_fileTypeExclude=['help']
+let g:indentLine_char = '┊'
+
+" Python syntax ~/.vim/syntax/python.vim 
+let python_highlight_all = 1
 
