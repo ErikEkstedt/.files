@@ -61,11 +61,12 @@ hi error ctermfg=161 ctermbg=016 guifg=#eeeeee guibg=#5f00ff
 " signalcolumn
 hi signcolumn ctermbg=16
 
+if has('windows')
+		set fillchars=vert:┃     " ┃ line with no breaks between vertical splits 
+    endif
+
 if has('folding')
-	if has('windows')
-		set fillchars=vert:┃ " line with no breaks between vertical splits
-	endif
-	set foldmethod=indent "fast but dumb. not relying on syntax. fast
+		set foldmethod=indent "fast but dumb. not relying on syntax. fast
 	set foldlevelstart=-1 " start with unfold everything
 	set foldclose="all"
 endif
@@ -75,7 +76,7 @@ set ruler "for cursor position in the bottom right corner
 set number "number lines
 set scrolloff=7 " visual rows above and below cursor
 set sidescroll=3 " visual columns on sides of cursor
-set cursorline " highlight line where cursor is
+set cursorline  " highlight line where cursor is
 set hls "highlighting!
 " " figure out highlightning. this affecter breakindentopt 'bg hl'
 "set highlight+=@:colorcolumn 
@@ -368,7 +369,7 @@ vnoremap j gj
 vnoremap k gk
 
 nnoremap <space> i <esc> 
-nnoremap G gzz
+nnoremap G Gzz
 nnoremap gh 0
 nnoremap gi 0ciw
 vnoremap tp y<esc>gt<esc>gpggtgv<esc>
