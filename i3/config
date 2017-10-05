@@ -106,12 +106,12 @@ for_window [class="URxvt" title="rangerTerm"] floating enable, \
 resize grow left 300, resize grow right 300, \
 resize grow down 150, resize grow up 100 
 
-
 ############## APPLICATIONS and SETINGS ###########################
 # Fast Access
 bindsym $mod+g exec $Browser 
 bindsym $mod+s exec $Music; workspace $ws9
 bindsym $mod+a exec bash ~/.files/Scripts/Laptop/touchpad_onoff.sh
+bindsym $mod+o exec $term -e bash -c "stty -ixon && vim"
 
 # Calendar 
 bindsym $mod+c exec ~/.files/i3/scripts/Calendar.sh

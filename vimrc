@@ -3,7 +3,7 @@
 "pathogen vim modules stuff
 filetype off
 execute pathogen#infect()
-"helptags
+Helptags
 
 filetype plugin on
 filetype plugin indent on
@@ -58,8 +58,6 @@ hi CursorLineNr ctermfg=87
 " syntax error color
 hi Error ctermfg=161 ctermbg=016 guifg=#eeeeee guibg=#5f00ff
 
-" signalcolumn
-hi SignColumn ctermbg=233
 
 if has('windows')
     set fillchars=vert:\|   " ┃ line with no breaks between vertical splits 
@@ -85,7 +83,7 @@ set hls "highlighting!
 "set highlight+=n:difftext
 
 set wrap
-set linebreak " break lines if window is too narrow
+"set linebreak " break lines if window is too narrow
 set formatoptions+=j " smart line joining. uncomments comments.
 
 set lazyredraw " don't redraw screen during macros
@@ -138,15 +136,19 @@ set wildchar=<tab>
 let g:transpar=0
 function! Toggletransparency()
 	if g:transpar == 0
-		hi normal guibg=none ctermbg=none
+		hi Normal ctermbg=none
+        hi LineNr ctermbg=none
+        hi SignalColumn ctermbg=none
+        hi VertSplit ctermfg=51
 		let g:transpar=1
 	else
 		colorscheme monokai-phoenix
-        hi signcolumn ctermbg=16
-		hi comment cterm=none
-		hi search ctermfg=1 ctermbg=none cterm=bold,underline
-		hi linenr ctermfg=grey
-		hi cursorlinenr ctermfg=45
+        hi SignColumn ctermbg=233
+        hi VertSplit ctermfg=51
+		hi Comment cterm=none
+		hi Search ctermfg=1 ctermbg=none cterm=bold,underline
+		hi LineNr ctermfg=grey
+		hi CursorLineNr ctermfg=45
 		let g:transpar=0
 	endif
 endfunc
@@ -155,7 +157,7 @@ map <f12> :call Toggletransparency()<cr>
 
 """ focusmode
 function! Togglefocusmode()
-	if (&foldcolumn != 12)
+	if (&foldcolumn != 12z)
 		set laststatus=0
 		set numberwidth=10
 		set foldcolumn=12
@@ -177,10 +179,10 @@ nnoremap <f1> :call Togglefocusmode()<cr>
 
 """""""""""autocommands"""""""""""""""""
 " " open NERDTree on startup
-autocmd vimenter * NERDTree
-
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " " autocmd. 
-autocmd bufenter *.tex call Settexcolor()
+autocmd bufenter *.tex call SetTexColor()
 autocmd bufenter *.tex set foldmethod=manual
 
 function! SetTexColor()
@@ -240,7 +242,7 @@ nnoremap <leader>si3 :source ~/.config/i3/config<cr>
 nnoremap <leader>sv :source ~/.vimrc<cr>
 nnoremap <leader>sz :source ~/.zshrc<cr>
 nnoremap <leader>sx :! xrdb ~/.xresources<cr>
-nnoremap <leader>st :source ~/.tmux.conf<cr>
+nnoremap <leader>sot :source ~/.tmux.conf<cr>
 
 " run scripts
 nnoremap <leader>r :! urxvt -e python % &<cr><cr>
@@ -291,14 +293,14 @@ nnoremap <silent> g$ :<c-u>tablast<cr>
 nnoremap <expr> gp '`['.strpart(getregtype(), 0, 1).'`]'
 
 " swap line/normal visual mode
-noremap v v
-noremap v v
+noremap V v
+noremap v V
 
 " copy / paste
 set pastetoggle=<f2> " system clipboard pastes preserves indentation
 nnoremap <c-a> ggvg$
-nnoremap y y$
-nnoremap s viw"0p
+nnoremap Y y$
+nnoremap S viw"0p
 
 " copy / paste from clipboard
 nnoremap <c-p> "+p
@@ -359,7 +361,6 @@ inoremap gj <esc>/<++><enter>"_c4l
 
 "Spellcheck
 map <F6> :setlocal spell! spelllang=en_us<CR>
-" h <space> becomes tab help <space> as to open help in new tab (instead of split)
 
 """""""""""PLUGINS""""""""""""""""""""
 " slimux.vim
@@ -404,6 +405,9 @@ let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>gd  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:ycm_min_num_of_chars_for_completion = 0
 
+" NERDTree 
+map <C-n> :NERDTreeToggle<CR>
+let NERDTreeIgnore=['\.pdf$', '\.bib$']
 " Syntastic
 " Recommended settings
 set statusline+=%#warningmsg#
@@ -412,6 +416,8 @@ set statusline+=%*
 
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+let g:syntastic_mode = "passive"
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_python_checkers =  ["flake8" ]
