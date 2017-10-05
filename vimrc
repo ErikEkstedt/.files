@@ -212,7 +212,6 @@ au! bufnewfile,bufread *.py
     set tabstop=4
 	set softtabstop=4
 	set shiftwidth=4
-	set textwidth=79
 	set expandtab
 	set autoindent
 	set fileformat=unix
@@ -359,6 +358,9 @@ nnoremap gj <esc>/<++><enter>"_c4l
 vnoremap gj <esc>/<++><enter>"_c4l
 inoremap gj <esc>/<++><enter>"_c4l
 
+" Togle fold
+nnoremap ga za
+
 "Spellcheck
 map <F6> :setlocal spell! spelllang=en_us<CR>
 
@@ -407,7 +409,9 @@ let g:ycm_min_num_of_chars_for_completion = 0
 
 " NERDTree 
 map <C-n> :NERDTreeToggle<CR>
-let NERDTreeIgnore=['\.pdf$', '\.bib$']
+let NERDTreeIgnore=['\.pdf$', '\.bib$', '\.png$']
+let NERDTreeShowBookmarks=1
+
 " Syntastic
 " Recommended settings
 set statusline+=%#warningmsg#
