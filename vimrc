@@ -52,14 +52,18 @@ endif
 "set background=dark
 colorscheme monokai-phoenix
 
+" current linenumber color
+hi CursorLineNr ctermfg=87
+
 " syntax error color
-hi error ctermfg=161 ctermbg=016 guifg=#eeeeee guibg=#5f00ff
+hi Error ctermfg=161 ctermbg=016 guifg=#eeeeee guibg=#5f00ff
 
 " signalcolumn
-hi signcolumn ctermbg=16
+hi SignColumn ctermbg=233
 
 if has('windows')
     set fillchars=vert:\|   " ┃ line with no breaks between vertical splits 
+    hi VertSplit ctermfg=51
 endif
 
 if has('folding')
@@ -179,10 +183,6 @@ autocmd vimenter * NERDTree
 autocmd bufenter *.tex call Settexcolor()
 autocmd bufenter *.tex set foldmethod=manual
 
-" autocmd. 
-autocmd BufEnter *.tex call SetTexColor()
-autocmd BufEnter *.tex set foldmethod=manual
-	
 function! SetTexColor()
 	set background=light
 	let g:solarized_termcolors=256
@@ -249,45 +249,9 @@ nnoremap <leader>r :! urxvt -e python % &<cr><cr>
 nnoremap <leader>w :lnext<cr>
 inoremap <leader>w <esc>:lnext<cr>
 
-" easier next paren
-nnoremap <leader>w :lnext<cr>
-inoremap <leader>w <esc>:lnext<cr>
-
 " indent entire file
 inoremap <leader>i <esc>gg=g<c-o>
 nnoremap <leader>i gg=g<c-o>
-nnoremap <Leader>ev :vsplit ~/.vimrc<CR>
-nnoremap <Leader>ez :tabnew ~/.zshrc<CR>
-nnoremap <Leader>ei3 :tabnew ~/.config/i3/config<CR>
-nnoremap <Leader>er :tabnew ~/.config/ranger/rc.conf<CR>
-nnoremap <Leader>ex :tabnew ~/.Xresources<CR>
-nnoremap <Leader>et :tabnew ~/.tmux.conf<CR>
-nnoremap <Leader>ebib :tabnew ~/Documents/latex/References.bib<CR>
-nnoremap <Leader>epy :tabnew ~/.vim/ftplugin/python.vim<CR>
-nnoremap <Leader>ete :tabnew ~/.vim/ftplugin/tex.vim<CR>
-
-" Source config files
-nnoremap <Leader>si3 :source ~/.config/i3/config<CR>
-vnoremap <Leader>sv :source ~/.vimrc<CR>
-nnoremap <Leader>sz :source ~/.zshrc<CR>
-nnoremap <Leader>sr :source ~/.config/ranger/rc.conf<CR>
-nnoremap <Leader>sx :! xrdb ~/.Xresources<CR>
-nnoremap <Leader>st :source ~/.tmux.conf<CR>
-
-" Run scripts
-nnoremap <Leader>r :! urxvt -e python % &<CR><CR>
-
-" Go to next comment (in pymode at least)
-nnoremap <Leader>w :lnext<CR>
-inoremap <Leader>w <esc>:lnext<CR>
-
-" Easier next paren
-nnoremap <Leader>w :lnext<CR>
-inoremap <Leader>w <esc>:lnext<CR>
-
-" Indent entire file
-inoremap <Leader>i <esc>gg=G<C-o>
-nnoremap <Leader>i gg=G<C-o>
 
 " command line change text font
 inoremap <leader>å <esc>:hi normal ctermfg=255<cr>
@@ -301,6 +265,8 @@ map ä }
 " Abbreviations
 cnoreabbrev Wq wq
 cnoreabbrev WQ wq
+cnoreabbrev Q! q!
+cnoreabbrev Q q
 cnoreabbrev <expr> h getcmdtype() == ":" && getcmdline() == 'h' ? 'tab help' : 'h'
 cnoreabbrev <expr> q getcmdtype() == ":" && getcmdline() == 'q' ? 'q' : 'q'
 
@@ -349,6 +315,8 @@ nnoremap <c-h> <c-w><c-h>
 nnoremap <c-l> <c-w><c-l>
 nnoremap <c-k> <c-w><c-k>
 nnoremap <c-j> <c-w><c-j>
+nnoremap j gj
+nnoremap k gk
 
 inoremap <c-h> <esc><c-w><c-h>i
 inoremap <c-l> <esc><c-w><c-l>i
@@ -356,12 +324,9 @@ inoremap <c-j> <esc><c-w><c-j>i
 inoremap <c-k> <esc><c-w><c-k>i
 
 vnoremap <c-h> <esc><c-w><c-h>gv
-noremap <c-l> <esc><c-w><c-l>gv
+vnoremap <c-l> <esc><c-w><c-l>gv
 vnoremap <c-j> <esc><c-w><c-j>gv
 vnoremap <c-k> <esc><c-w><c-k>gv
-
-nnoremap j gj
-nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
@@ -375,45 +340,23 @@ vnoremap tp y<esc>gt<esc>gpggtgv<esc>
 let g:netrw_banner = 0 "no banner
 let g:netrw_liststyle = 3 
 let g:netrw_sort_sequence = '[\/]$,*' " sort is affecting only: directories on the top, files below
-nnoremap <leader>tt :texplore<cr>
-nnoremap <leader>ee :explore<cr>
-nnoremap <leader>vv :vexplore<cr>
-nnoremap <leader>hh :hexplore<cr>
+nnoremap <leader>tt :Texplore<cr>
+nnoremap <leader>ee :Explore<cr>
+nnoremap <leader>vv :Vexplore<cr>
+nnoremap <leader>hh :Hexplore<cr>
 
+" Syntastic bindings
 nnoremap <leader>sr :SyntasticReset<cr>
-nnoremap <leader>st :SyntasticTogglemode<cr>
+nnoremap <leader>st :SyntasticToggleMode<cr>
 nnoremap <leader>sc :SyntasticCheck<cr>
 nnoremap <leader>lc :lclose<cr>
 nnoremap <leader>lo :errors<cr>
 
 " go to placeholder
-" nnoremap <c-@> <esc>/j<enter>"_c4l
-" vnoremap <c-@> <esc>/<++><enter>"_c4l
-" inoremap <c-@> <esc>/<++><enter>"_c4l
-
 nnoremap gj <esc>/<++><enter>"_c4l
 vnoremap gj <esc>/<++><enter>"_c4l
 inoremap gj <esc>/<++><enter>"_c4l
 
-"spellcheck
-map <f6> :setlocal spell! spelllang=en_us<cr>
-nnoremap <Leader>tt :Texplore<CR>
-nnoremap <Leader>ee :Explore<CR>
-nnoremap <Leader>vv :Vexplore<CR>
-nnoremap <Leader>hh :Hexplore<CR>
-
-nnoremap <Leader>sr :SyntasticReset<CR>
-nnoremap <Leader>lc :lclose<CR>
-nnoremap <Leader>lo :Errors<CR>
-
-" Go to placeholder
-" nnoremap <C-@> <Esc>/<++><Enter>"_c4l
-" vnoremap <C-@> <Esc>/<++><Enter>"_c4l
-" inoremap <C-@> <Esc>/<++><Enter>"_c4l
-
-nnoremap gj <Esc>/<++><Enter>"_c4l
-vnoremap gj <Esc>/<++><Enter>"_c4l
-inoremap gj <Esc>/<++><Enter>"_c4l
 "Spellcheck
 map <F6> :setlocal spell! spelllang=en_us<CR>
 " h <space> becomes tab help <space> as to open help in new tab (instead of split)
@@ -458,7 +401,7 @@ vnoremap <silent> <Leader>ct :Tabularize /#<CR>
 " YouCompleteMe
 let g:ycm_python_binary_path = '/home/erik/anaconda3/bin/python3'
 let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+map <leader>gd  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:ycm_min_num_of_chars_for_completion = 0
 
 " Syntastic
@@ -467,10 +410,10 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
 let g:syntastic_python_checkers =  ["flake8" ]
 let g:syntastic_loc_list_height = 4
 
