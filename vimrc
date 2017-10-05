@@ -1,20 +1,20 @@
 
-"""""""""""PLUGINS""""""""""""""""""""
+"""""""""""plugins""""""""""""""""""""
 "pathogen vim modules stuff
 filetype off
 execute pathogen#infect()
-Helptags
+helptags
 filetype plugin on
 filetype plugin indent on
-syntax on "Color
+syntax on "color
 
 " slimux.vim
-nnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>
-vnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>gv<Esc>zz
-nnoremap <C-c><C-x> :SlimuxREPLConfigure<CR>
-vnoremap <C-c><C-x> :SlimuxREPLConfigure<CR>
+nnoremap <c-c><c-c> :slimuxreplsendline<cr>
+vnoremap <c-c><c-c> :slimuxreplsendline<cr>gv<esc>zz
+nnoremap <c-c><c-x> :slimuxreplconfigure<cr>
+vnoremap <c-c><c-x> :slimuxreplconfigure<cr>
 
-" Calendar.vim
+" calendar.vim
 let g:calendar_google_calendar = 1
 let g:calendar_google_task = 1
 
@@ -24,36 +24,36 @@ let g:vimtex_view_method = "zathura"
 "let g:latex_view_general_options = shellescape("-s -e '" . exepath(v:progpath) . " --servername " . v:servername . " +{%line} {%input}'")
 let g:vimtex_complete_recursive_bib = 2
 
-" CtrlP.vim
+" ctrlp.vim
 let g:ctrlp_show_hidden = 2 
-nnoremap <Leader>f :CtrlP<CR>
-nnoremap <Leader>fm :CtrlPMRU<CR>
+nnoremap <leader>f :ctrlp<cr>
+nnoremap <leader>fm :ctrlpmru<cr>
 let g:ctrlp_map = ''
 
 "fugitive.vim
-nnoremap <Leader>ga :Gwrite<CR>
-nnoremap <Leader>gco :Gcommit<CR>
-nnoremap <Leader>gpu :Gpush<CR>
+nnoremap <leader>ga :gwrite<cr>
+nnoremap <leader>gco :gcommit<cr>
+nnoremap <leader>gpu :gpush<cr>
 
 " lightline - statusline
 "let g:lightline = {'colorscheme': 'wombat',}
 let g:lightline = {'colorscheme': 'powerline',}
 set noshowmode "stops vims own showing below the statusbar.
 
-" Tabular
-vnoremap <silent> <Leader>ce :Tabularize /=<CR>
-vnoremap <silent> <Leader>ct :Tabularize /#<CR>
+" tabular
+vnoremap <silent> <leader>ce :tabularize /=<cr>
+vnoremap <silent> <leader>ct :tabularize /#<cr>
 
-" YouCompleteMe
+" youcompleteme
 let g:ycm_python_binary_path = '/home/erik/anaconda3/bin/python3'
 let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+map <leader>g  :ycmcompleter gotodefinitionelsedeclaration<cr>
 let g:ycm_min_num_of_chars_for_completion = 0
 
-" Syntastic
-" Recommended settings
+" syntastic
+" recommended settings
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%{syntasticstatuslineflag()}
 set statusline+=%*
 
 let g:syntastic_check_on_open = 0
@@ -63,136 +63,136 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_python_checkers =  ["flake8" ]
 let g:syntastic_loc_list_height = 4
 
-" IndentLine
-let g:indentLine_fileTypeExclude=['help']
-let g:indentLine_char = '┊'
+" indentline
+let g:indentline_filetypeexclude=['help']
+let g:indentline_char = '┊'
 
-" NERDTree
-map <C-n> :NERDTreeToggle<CR>
-let g:NERDTreeShowGitStatus = 1
-let g:NERDTreeUpdateOnWrite = 1
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ "Unknown"   : "?"
+" nerdtree
+map <c-n> :nerdtreetoggle<cr>
+let g:nerdtreeshowgitstatus = 1
+let g:nerdtreeupdateonwrite = 1
+let g:nerdtreeindicatormapcustom = {
+    \ "modified"  : "✹",
+    \ "staged"    : "✚",
+    \ "untracked" : "✭",
+    \ "renamed"   : "➜",
+    \ "unmerged"  : "═",
+    \ "deleted"   : "✖",
+    \ "dirty"     : "✗",
+    \ "clean"     : "✔︎",
+    \ "unknown"   : "?"
     \ }
 
-" Python syntax ~/.vim/syntax/python.vim 
+" python syntax ~/.vim/syntax/python.vim 
 let python_highlight_all = 1
 
 
-"""""""""""""SETTINGS"""""""""""""""" 
+"""""""""""""settings"""""""""""""""" 
 " encoding
 scriptencoding utf-8
 set encoding=utf-8
 
-" Oh dear leader
+" oh dear leader
 let mapleader = ','
 
-" Standard saving options
-nnoremap <C-s> :w<CR>
-inoremap <C-s> <Esc>:w<CR>
-nnoremap <C-q> :q!<CR>
-inoremap <C-q> <Esc>:wq<CR>
+" standard saving options
+nnoremap <c-s> :w<cr>
+inoremap <c-s> <esc>:w<cr>
+nnoremap <c-q> :q!<cr>
+inoremap <c-q> <esc>:wq<cr>
 
 " when sudo rights are needed but you did not sudo. 
 cmap w!! %!sudo tee > /dev/null %
 
-""""""""" Appearence""""""""""
-" enable all Python syntax highlighting features
+""""""""" appearence""""""""""
+" enable all python syntax highlighting features
 let python_highlight_all = 1
 
 set laststatus=2 "always show status bar
 set term=xterm-256color
-set t_Co=256 "Colormode
+set t_co=256 "colormode
 if &term =~ "256color"
 	"hello
-	" disable Background Color Erase (BCE) so that color schemes
-	" render properly when inside 256-color tmux and GNU screen.
+	" disable background color erase (bce) so that color schemes
+	" render properly when inside 256-color tmux and gnu screen.
 	" see also http://snk.tuxfamily.org/log/vim-256color-bce.html
 	set t_ut=
 endif
 
 if has('termguicolors')
-	" Don't need this in xterm-256color, but do need it inside tmux.
-	" (See `:h xterm-true-color`.)
+	" don't need this in xterm-256color, but do need it inside tmux.
+	" (see `:h xterm-true-color`.)
 	if &term =~# 'tmux-256color'
 		let &t_8f="\e[38;2;%ld;%ld;%ldm"
 		let &t_8b="\e[48;2;%ld;%ld;%ldm"
 	endif
 endif
 
-" COLORS
+" colors
 "set background=dark
 colorscheme monokai-phoenix
 
-" Syntax error color
-hi Error ctermfg=161 ctermbg=016 guifg=#eeeeee guibg=#5f00ff
+" syntax error color
+hi error ctermfg=161 ctermbg=016 guifg=#eeeeee guibg=#5f00ff
 
-" SignalColumn
-hi SignColumn ctermbg=16
+" signalcolumn
+hi signcolumn ctermbg=16
 
 if has('folding')
 	if has('windows')
 		set fillchars=vert:┃ " line with no breaks between vertical splits
 	endif
-	set foldmethod=indent "fast but dumb. Not relying on syntax. FAST
-	set foldlevelstart=-1 " Start with unfold everything
+	set foldmethod=indent "fast but dumb. not relying on syntax. fast
+	set foldlevelstart=-1 " start with unfold everything
 	set foldclose="all"
 endif
 
-""""""""Basic Options"""""""""""
+""""""""basic options"""""""""""
 set ruler "for cursor position in the bottom right corner
 set number "number lines
-set scrolloff=7 " Visual rows above and below cursor
-set sidescroll=3 " Visual columns on sides of cursor
+set scrolloff=7 " visual rows above and below cursor
+set sidescroll=3 " visual columns on sides of cursor
 set cursorline " highlight line where cursor is
 set hls "highlighting!
-" " Figure out highlightning. this affecter breakindentopt 'bg hl'
-"set highlight+=@:ColorColumn 
-"set highlight+=c:LineNr
-"set highlight+=N:DiffText
+" " figure out highlightning. this affecter breakindentopt 'bg hl'
+"set highlight+=@:colorcolumn 
+"set highlight+=c:linenr
+"set highlight+=n:difftext
 
 set wrap
 set linebreak " break lines if window is too narrow
 set formatoptions+=j " smart line joining. uncomments comments.
 
-set lazyredraw " Don't redraw screen during macros
+set lazyredraw " don't redraw screen during macros
 set breakindent "wrapped line s keep indentation (set bri)
 let &showbreak="↪ "
 set breakindentopt=shift:0 "how far in the breakindent showbreak should be
 set nuw=4 "width of numberline
 
 " set list
-" " Note : maybe if there was no highlighting on charactars.
-" " 		also try to remove highlight from breakindentopt highlight+=@:ColorColumn
-" set listchars=trail:• " Trail character. If whitespace at end.
-" set listchars+=tab:▷- " Character for tab
-" set listchars+=extends:» " Character if text extends beyond line
-" set listchars+=precedes:« "  Character if text extends beyond line on next line
+" " note : maybe if there was no highlighting on charactars.
+" " 		also try to remove highlight from breakindentopt highlight+=@:colorcolumn
+" set listchars=trail:• " trail character. if whitespace at end.
+" set listchars+=tab:▷- " character for tab
+" set listchars+=extends:» " character if text extends beyond line
+" set listchars+=precedes:« "  character if text extends beyond line on next line
 "
-""""""""" BEHAVIOUR""""""""""
+""""""""" behaviour""""""""""
 set mouse=a "mouse functionality 
 set timeoutlen=300 "ms to wait for command completion 
-set ttimeoutlen=0 " Don't wait for <esc>
-set backspace=indent,eol,start " Backspace over spaces
+set ttimeoutlen=0 " don't wait for <esc>
+set backspace=indent,eol,start " backspace over spaces
 set ai! "auto indent
-set incsearch "search starts when typing instead of waiting for <ENTER>
+set incsearch "search starts when typing instead of waiting for <enter>
 set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,resize
 
 set virtualedit=block
-" vim writes swap files. Disable
+" vim writes swap files. disable
 set nobackup
 set nowritebackup
 set noswapfile
 
-" (in)Case sensitive search
+" (in)case sensitive search
 set ignorecase
 set smartcase
 set tabstop=4
@@ -201,42 +201,42 @@ set switchbuf=usetab
 
 " wildchar
 set wildmenu
-set wildchar=<Tab>
+set wildchar=<tab>
 
-" Interesting for colors. (URxvt and wal)Colors becomes that of terminal.
+" interesting for colors. (urxvt and wal)colors becomes that of terminal.
 " if has('termguicolors')
 " 	set termguicolors
 " endif
 "
-"""""""""""FUNCTIONS""""""""""""""""""""""
-""" Transparancy 
+"""""""""""functions""""""""""""""""""""""
+""" transparancy 
 let g:transpar=0
-function! ToggleTransparency()
+function! toggletransparency()
 	if g:transpar == 0
-		hi Normal guibg=NONE ctermbg=NONE
+		hi normal guibg=none ctermbg=none
 		let g:transpar=1
 	else
 		colorscheme monokai-phoenix
-        hi SignColumn ctermbg=16
-		hi Comment cterm=NONE
-		hi Search ctermfg=1 ctermbg=NONE cterm=bold,underline
-		hi LineNr ctermfg=grey
-		hi CursorLineNr ctermfg=45
+        hi signcolumn ctermbg=16
+		hi comment cterm=none
+		hi search ctermfg=1 ctermbg=none cterm=bold,underline
+		hi linenr ctermfg=grey
+		hi cursorlinenr ctermfg=45
 		let g:transpar=0
 	endif
 endfunc
-map <F12> :call ToggleTransparency()<CR>
+map <f12> :call toggletransparency()<cr>
 
-""" FocusMode
-function! ToggleFocusMode()
+""" focusmode
+function! togglefocusmode()
 	if (&foldcolumn != 12)
 		set laststatus=0
 		set numberwidth=10
 		set foldcolumn=12
 		set noruler
-		hi FoldColumn ctermbg=none
-		hi LineNr ctermfg=0 ctermbg=none
-		hi NonText ctermfg=0
+		hi foldcolumn ctermbg=none
+		hi linenr ctermfg=0 ctermbg=none
+		hi nontext ctermfg=0
 	else
 		set laststatus=2
 		set numberwidth=4
@@ -245,19 +245,19 @@ function! ToggleFocusMode()
 		execute 'colorscheme ' . g:colors_name
 	endif
 endfunc
-nnoremap <F1> :call ToggleFocusMode()<cr>
+nnoremap <f1> :call togglefocusmode()<cr>
 
 
 
-"""""""""""AUTOCOMMANDS"""""""""""""""""
-" Open NERDTree on startup
-autocmd vimenter * NERDTree
+"""""""""""autocommands"""""""""""""""""
+" open nerdtree on startup
+autocmd vimenter * nerdtree
 
 " autocmd. 
-autocmd BufEnter *.tex call SetTexColor()
-autocmd BufEnter *.tex set foldmethod=manual
+autocmd bufenter *.tex call settexcolor()
+autocmd bufenter *.tex set foldmethod=manual
 	
-function! SetTexColor()
+function! settexcolor()
 	set background=light
 	let g:solarized_termcolors=256
 	" use lightline-solarized in lightline
@@ -268,19 +268,19 @@ function! SetTexColor()
 endfunction
 
 " function to exit quickfix when exiting buffer
-aug QFClose
+aug qfclose
   au!
-  au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
-aug END
+  au winenter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
+aug end
 
-" Compile on initialization, cleanup on quit
+" compile on initialization, cleanup on quit
 augroup vimtex_event_1
 	au!
-	au User VimtexEventQuit     call vimtex#compiler#clean(0)
-augroup END
+	au user vimtexeventquit     call vimtex#compiler#clean(0)
+augroup end
 
-" Indentation for python
-au! BufNewFile,BufRead *.py
+" indentation for python
+au! bufnewfile,bufread *.py
     set tabstop=4
 	set softtabstop=4
 	set shiftwidth=4
@@ -289,155 +289,155 @@ au! BufNewFile,BufRead *.py
 	set autoindent
 	set fileformat=unix
 
-" Indentation for js, htmlm css
-au BufNewFile,BufRead *.js, *.html, *.css
+" indentation for js, htmlm css
+au bufnewfile,bufread *.js, *.html, *.css
     \ set tabstop=2
     \ set softtabstop=2
     \ set shiftwidth=2
 
-"""""""""""""""""""MAPPINGS""""""""""""""""""""""
-" Edit config files
+"""""""""""""""""""mappings""""""""""""""""""""""
+" edit config files
 " mak function that opens vimrc in vsplit left after changing the layout to
 " fullscreen (i3?).
-nnoremap <Leader>ev :vsplit ~/.vimrc<CR>
-nnoremap <Leader>ez :tabnew ~/.zshrc<CR>
-nnoremap <Leader>ei3 :tabnew ~/.config/i3/config<CR>
-nnoremap <Leader>er :tabnew ~/.config/ranger/rc.conf<CR>
-nnoremap <Leader>ex :tabnew ~/.Xresources<CR>
-nnoremap <Leader>et :tabnew ~/.tmux.conf<CR>
-nnoremap <Leader>ebib :tabnew ~/Documents/latex/References.bib<CR>
-nnoremap <Leader>epy :tabnew ~/.vim/ftplugin/python.vim<CR>
-nnoremap <Leader>ete :tabnew ~/.vim/ftplugin/tex.vim<CR>
+nnoremap <leader>ev :vsplit ~/.vimrc<cr>
+nnoremap <leader>ez :tabnew ~/.zshrc<cr>
+nnoremap <leader>ei3 :tabnew ~/.config/i3/config<cr>
+nnoremap <leader>er :tabnew ~/.config/ranger/rc.conf<cr>
+nnoremap <leader>ex :tabnew ~/.xresources<cr>
+nnoremap <leader>et :tabnew ~/.tmux.conf<cr>
+nnoremap <leader>ebib :tabnew ~/documents/latex/references.bib<cr>
+nnoremap <leader>epy :tabnew ~/.vim/ftplugin/python.vim<cr>
+nnoremap <leader>ete :tabnew ~/.vim/ftplugin/tex.vim<cr>
 
-" Source config files
-nnoremap <Leader>si3 :source ~/.config/i3/config<CR>
-nnoremap <Leader>sv :source ~/.vimrc<CR>
-nnoremap <Leader>sz :source ~/.zshrc<CR>
-nnoremap <Leader>sx :! xrdb ~/.Xresources<CR>
-nnoremap <Leader>st :source ~/.tmux.conf<CR>
+" source config files
+nnoremap <leader>si3 :source ~/.config/i3/config<cr>
+nnoremap <leader>sv :source ~/.vimrc<cr>
+nnoremap <leader>sz :source ~/.zshrc<cr>
+nnoremap <leader>sx :! xrdb ~/.xresources<cr>
+nnoremap <leader>st :source ~/.tmux.conf<cr>
 
-" Run scripts
-nnoremap <Leader>r :! urxvt -e python % &<CR><CR>
+" run scripts
+nnoremap <leader>r :! urxvt -e python % &<cr><cr>
 
-" Go to next comment (in pymode at least)
-nnoremap <Leader>w :lnext<CR>
-inoremap <Leader>w <esc>:lnext<CR>
+" go to next comment (in pymode at least)
+nnoremap <leader>w :lnext<cr>
+inoremap <leader>w <esc>:lnext<cr>
 
-" Easier next paren
-nnoremap <Leader>w :lnext<CR>
-inoremap <Leader>w <esc>:lnext<CR>
+" easier next paren
+nnoremap <leader>w :lnext<cr>
+inoremap <leader>w <esc>:lnext<cr>
 
-" Indent entire file
-inoremap <Leader>i <esc>gg=G<C-o>
-nnoremap <Leader>i gg=G<C-o>
+" indent entire file
+inoremap <leader>i <esc>gg=g<c-o>
+nnoremap <leader>i gg=g<c-o>
 
 " command line change text font
-inoremap <Leader>å <esc>:hi Normal ctermfg=255<CR>
-nnoremap <Leader>å :hi Normal ctermfg=255<CR>
+inoremap <leader>å <esc>:hi normal ctermfg=255<cr>
+nnoremap <leader>å :hi normal ctermfg=255<cr>
 
 " try map öä
 map ö {
 map ä }
 
 
-" Abbreviations
-cnoreabbrev Wq wq
-cnoreabbrev WQ wq
+" abbreviations
+cnoreabbrev wq wq
+cnoreabbrev wq wq
 cnoreabbrev <expr> h getcmdtype() == ":" && getcmdline() == 'h' ? 'tab help' : 'h'
-cnoreabbrev <expr> Q getcmdtype() == ":" && getcmdline() == 'Q' ? 'q' : 'Q'
+cnoreabbrev <expr> q getcmdtype() == ":" && getcmdline() == 'q' ? 'q' : 'q'
 
-" Convenience
-map <CR> o<Esc>
-noremap Q @q
+" convenience
+map <cr> o<esc>
+noremap q @q
 
 "alternate keys for indenting/unindenting
-inoremap <S-Tab> <Esc><LT><LT>i
-nnoremap <Tab> >>
-nnoremap <S-Tab> <LT><LT>
-vnoremap <S-Tab>   <gv
-vnoremap <Tab> >gv|
+inoremap <s-tab> <esc><lt><lt>i
+nnoremap <tab> >>
+nnoremap <s-tab> <lt><lt>
+vnoremap <s-tab>   <gv
+vnoremap <tab> >gv|
 
 " tab
-nnoremap <silent> <C-t> :<C-u>tabnew<CR>
-inoremap <silent> <C-t> <ESC>:<C-u>tabnew<CR>
-nnoremap <silent> g0 :<C-u>tabfirst<CR>
-nnoremap <silent> g$ :<C-u>tablast<CR>
+nnoremap <silent> <c-t> :<c-u>tabnew<cr>
+inoremap <silent> <c-t> <esc>:<c-u>tabnew<cr>
+nnoremap <silent> g0 :<c-u>tabfirst<cr>
+nnoremap <silent> g$ :<c-u>tablast<cr>
 
 " select last paste
 nnoremap <expr> gp '`['.strpart(getregtype(), 0, 1).'`]'
 
 " swap line/normal visual mode
-noremap V v
-noremap v V
+noremap v v
+noremap v v
 
-" Copy / Paste
-set pastetoggle=<F2> " System clipboard pastes preserves indentation
-nnoremap <C-a> ggvG$
-nnoremap Y y$
-nnoremap S viw"0p
+" copy / paste
+set pastetoggle=<f2> " system clipboard pastes preserves indentation
+nnoremap <c-a> ggvg$
+nnoremap y y$
+nnoremap s viw"0p
 
-" Copy / Paste from clipboard
-nnoremap <C-p> "+p
-inoremap <C-p> <Esc>"+pi
-vnoremap <C-p> "+p
-nnoremap <C-y> "+yy
-vnoremap <C-y> "+y
+" copy / paste from clipboard
+nnoremap <c-p> "+p
+inoremap <c-p> <esc>"+pi
+vnoremap <c-p> "+p
+nnoremap <c-y> "+yy
+vnoremap <c-y> "+y
 
-nnoremap <F10> :set relativenumber!<CR>
-"""""""""""""""MOVEMENT"""""""""""""
+nnoremap <f10> :set relativenumber!<cr>
+"""""""""""""""movement"""""""""""""
 " move up and down naturally even if lines 
 " extends over multiple rows
-nnoremap <C-h> <C-w><C-h>
-nnoremap <C-l> <C-w><C-l>
-nnoremap <C-k> <C-w><C-k>
-nnoremap <C-j> <C-w><C-j>
+nnoremap <c-h> <c-w><c-h>
+nnoremap <c-l> <c-w><c-l>
+nnoremap <c-k> <c-w><c-k>
+nnoremap <c-j> <c-w><c-j>
 
-inoremap <C-h> <Esc><C-w><C-h>i
-inoremap <C-l> <Esc><C-w><C-l>i
-inoremap <C-j> <Esc><C-w><C-j>i
-inoremap <C-k> <Esc><C-w><C-k>i
+inoremap <c-h> <esc><c-w><c-h>i
+inoremap <c-l> <esc><c-w><c-l>i
+inoremap <c-j> <esc><c-w><c-j>i
+inoremap <c-k> <esc><c-w><c-k>i
 
-vnoremap <C-h> <Esc><C-w><C-h>gv
-vnoremap <C-l> <Esc><C-w><C-l>gv
-vnoremap <C-j> <Esc><C-w><C-j>gv
-vnoremap <C-k> <Esc><C-w><C-k>gv
+vnoremap <c-h> <esc><c-w><c-h>gv
+noremap <c-l> <esc><c-w><c-l>gv
+vnoremap <c-j> <esc><c-w><c-j>gv
+vnoremap <c-k> <esc><c-w><c-k>gv
 
 nnoremap j gj
 nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
-nnoremap <Space> i <Esc> 
-nnoremap G Gzz
+nnoremap <space> i <esc> 
+nnoremap g gzz
 nnoremap gh 0
 nnoremap gi 0ciw
-vnoremap tp y<Esc>gt<Esc>GpGgTgv<Esc>
+vnoremap tp y<esc>gt<esc>gpggtgv<esc>
 
 " " vim-netrw
 let g:netrw_banner = 0 "no banner
 let g:netrw_liststyle = 3 
 let g:netrw_sort_sequence = '[\/]$,*' " sort is affecting only: directories on the top, files below
-nnoremap <Leader>tt :Texplore<CR>
-nnoremap <Leader>ee :Explore<CR>
-nnoremap <Leader>vv :Vexplore<CR>
-nnoremap <Leader>hh :Hexplore<CR>
+nnoremap <leader>tt :texplore<cr>
+nnoremap <leader>ee :explore<cr>
+nnoremap <leader>vv :vexplore<cr>
+nnoremap <leader>hh :hexplore<cr>
 
-nnoremap <Leader>sr :SyntasticReset<CR>
-nnoremap <Leader>st :SyntasticToggleMode<CR>
-nnoremap <Leader>sc :SyntasticCheck<CR>
-nnoremap <Leader>lc :lclose<CR>
-nnoremap <Leader>lo :Errors<CR>
+nnoremap <leader>sr :syntasticreset<cr>
+nnoremap <leader>st :syntastictogglemode<cr>
+nnoremap <leader>sc :syntasticcheck<cr>
+nnoremap <leader>lc :lclose<cr>
+nnoremap <leader>lo :errors<cr>
 
-" Go to placeholder
-" nnoremap <C-@> <Esc>/<++><Enter>"_c4l
-" vnoremap <C-@> <Esc>/<++><Enter>"_c4l
-" inoremap <C-@> <Esc>/<++><Enter>"_c4l
+" go to placeholder
+" nnoremap <c-@> <esc>/<++><enter>"_c4l
+" vnoremap <c-@> <esc>/<++><enter>"_c4l
+" inoremap <c-@> <esc>/<++><enter>"_c4l
 
-nnoremap gj <Esc>/<++><Enter>"_c4l
-vnoremap gj <Esc>/<++><Enter>"_c4l
-inoremap gj <Esc>/<++><Enter>"_c4l
-"Spellcheck
-map <F6> :setlocal spell! spelllang=en_us<CR>
+nnoremap gj <esc>/<++><enter>"_c4l
+vnoremap gj <esc>/<++><enter>"_c4l
+inoremap gj <esc>/<++><enter>"_c4l
+"spellcheck
+map <f6> :setlocal spell! spelllang=en_us<cr>
 " h <space> becomes tab help <space> as to open help in new tab (instead of split)
 
 
