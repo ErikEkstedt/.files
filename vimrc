@@ -29,9 +29,6 @@ inoremap <c-q> <esc>:wq<cr>
 cmap w!! %!sudo tee > /dev/null %
 
 """"""""" appearence""""""""""
-" enable all python syntax highlighting features
-let python_highlight_all = 1
-
 set laststatus=2 "always show status bar
 set term=xterm-256color
 set t_co=256 "colormode
@@ -62,12 +59,12 @@ hi error ctermfg=161 ctermbg=016 guifg=#eeeeee guibg=#5f00ff
 hi signcolumn ctermbg=16
 
 if has('windows')
-		set fillchars=vert:┃     " ┃ line with no breaks between vertical splits 
-    endif
+    set fillchars=vert:\|   " ┃ line with no breaks between vertical splits 
+endif
 
 if has('folding')
-		set foldmethod=indent "fast but dumb. not relying on syntax. fast
-	set foldlevelstart=-1 " start with unfold everything
+    set foldmethod=indent "fast but dumb. not relying on syntax. fast
+	set foldlevelstart=-1 " start with fold everything
 	set foldclose="all"
 endif
 
@@ -420,85 +417,6 @@ inoremap gj <Esc>/<++><Enter>"_c4l
 "Spellcheck
 map <F6> :setlocal spell! spelllang=en_us<CR>
 " h <space> becomes tab help <space> as to open help in new tab (instead of split)
-
-" slimux.vim
-nnoremap <c-c><c-c> :slimuxreplsendline<cr>
-vnoremap <c-c><c-c> :slimuxreplsendline<cr>gv<esc>zz
-nnoremap <c-c><c-x> :slimuxreplconfigure<cr>
-vnoremap <c-c><c-x> :slimuxreplconfigure<cr>
-
-" calendar.vim
-let g:calendar_google_calendar = 1
-let g:calendar_google_task = 1
-
-" vimtex.vim
-let g:latex_view_general_viewer = 'zathura'
-let g:vimtex_view_method = "zathura"
-"let g:latex_view_general_options = shellescape("-s -e '" . exepath(v:progpath) . " --servername " . v:servername . " +{%line} {%input}'")
-let g:vimtex_complete_recursive_bib = 2
-
-" ctrlp.vim
-let g:ctrlp_show_hidden = 2 
-nnoremap <leader>f :ctrlp<cr>
-nnoremap <leader>fm :ctrlpmru<cr>
-let g:ctrlp_map = ''
-
-"fugitive.vim
-nnoremap <leader>ga :gwrite<cr>
-nnoremap <leader>gco :gcommit<cr>
-nnoremap <leader>gpu :gpush<cr>
-
-" lightline - statusline
-"let g:lightline = {'colorscheme': 'wombat',}
-let g:lightline = {'colorscheme': 'powerline',}
-set noshowmode "stops vims own showing below the statusbar.
-
-" tabular
-vnoremap <silent> <leader>ce :tabularize /=<cr>
-vnoremap <silent> <leader>ct :tabularize /#<cr>
-
-" youcompleteme
-let g:ycm_python_binary_path = '/home/erik/anaconda3/bin/python3'
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :ycmcompleter gotodefinitionelsedeclaration<cr>
-let g:ycm_min_num_of_chars_for_completion = 0
-
-" syntastic
-" recommended settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatusLineFlag()}
-set statusline+=%*
-
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_python_checkers =  ["flake8" ]
-let g:syntastic_loc_list_height = 4
-
-" indentline
-let g:indentline_filetypeexclude=['help']
-let g:indentline_char = '┊'
-
-" nerdtree
-map <c-n> :nerdtreetoggle<cr>
-let g:nerdtreeshowgitstatus = 1
-let g:nerdtreeupdateonwrite = 1
-let g:nerdtreeindicatormapcustom = {
-    \ "modified"  : "✹",
-    \ "staged"    : "✚",
-    \ "untracked" : "✭",
-    \ "renamed"   : "➜",
-    \ "unmerged"  : "═",
-    \ "deleted"   : "✖",
-    \ "dirty"     : "✗",
-    \ "clean"     : "✔︎",
-    \ "unknown"   : "?"
-    \ }
-
-" python syntax ~/.vim/syntax/python.vim 
-let python_highlight_all = 1
-
 
 """""""""""PLUGINS""""""""""""""""""""
 " slimux.vim
