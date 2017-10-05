@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-
 """""""""""plugins""""""""""""""""""""
-=======
 """"""""""""" SETTING"""""""""""""""" 
->>>>>>> parent of 12d91f1... updated vimrc with NERDTree settings
 "pathogen vim modules stuff
 filetype off
 execute pathogen#infect()
@@ -11,14 +7,11 @@ execute pathogen#infect()
 
 filetype plugin on
 filetype plugin indent on
-<<<<<<< HEAD
 syntax on "color
 
 """""""""""""settings"""""""""""""""" 
-=======
 syntax on "Color
 
->>>>>>> parent of 12d91f1... updated vimrc with NERDTree settings
 " encoding
 scriptencoding utf-8
 set encoding=utf-8
@@ -43,7 +36,6 @@ set laststatus=2 "always show status bar
 set term=xterm-256color
 set t_co=256 "colormode
 if &term =~ "256color"
-	"hello
 	" disable background color erase (bce) so that color schemes
 	" render properly when inside 256-color tmux and gnu screen.
 	" see also http://snk.tuxfamily.org/log/vim-256color-bce.html
@@ -156,6 +148,7 @@ function! Toggletransparency()
 		let g:transpar=0
 	endif
 endfunc
+
 map <f12> :call Toggletransparency()<cr>
 
 """ focusmode
@@ -176,27 +169,23 @@ function! Togglefocusmode()
 		execute 'colorscheme ' . g:colors_name
 	endif
 endfunc
-nnoremap <f1> :call Togglefocusmode()<cr>
 
-<<<<<<< HEAD
+nnoremap <f1> :call Togglefocusmode()<cr>
 
 
 """""""""""autocommands"""""""""""""""""
-" " open nerdtree on startup
-" autocmd vimenter * nerdtree
-"
+" " open NERDTree on startup
+autocmd vimenter * NERDTree
+
 " " autocmd. 
-" autocmd bufenter *.tex call Settexcolor()
-" autocmd bufenter *.tex set foldmethod=manual
-" 	
-function! Settexcolor()
-=======
+autocmd bufenter *.tex call Settexcolor()
+autocmd bufenter *.tex set foldmethod=manual
+
 " autocmd. 
 autocmd BufEnter *.tex call SetTexColor()
 autocmd BufEnter *.tex set foldmethod=manual
 	
 function! SetTexColor()
->>>>>>> parent of 12d91f1... updated vimrc with NERDTree settings
 	set background=light
 	let g:solarized_termcolors=256
 	" use lightline-solarized in lightline
@@ -238,7 +227,6 @@ au bufnewfile,bufread *.js, *.html, *.css
 " edit config files
 " mak function that opens vimrc in vsplit left after changing the layout to
 " fullscreen (i3?).
-<<<<<<< HEAD
 nnoremap <leader>ev :vsplit ~/.vimrc<cr>
 nnoremap <leader>ez :tabnew ~/.zshrc<cr>
 nnoremap <leader>ei3 :tabnew ~/.config/i3/config<cr>
@@ -270,7 +258,6 @@ inoremap <leader>w <esc>:lnext<cr>
 " indent entire file
 inoremap <leader>i <esc>gg=g<c-o>
 nnoremap <leader>i gg=g<c-o>
-=======
 nnoremap <Leader>ev :vsplit ~/.vimrc<CR>
 nnoremap <Leader>ez :tabnew ~/.zshrc<CR>
 nnoremap <Leader>ei3 :tabnew ~/.config/i3/config<CR>
@@ -283,7 +270,7 @@ nnoremap <Leader>ete :tabnew ~/.vim/ftplugin/tex.vim<CR>
 
 " Source config files
 nnoremap <Leader>si3 :source ~/.config/i3/config<CR>
-nnoremap <Leader>sv :source ~/.vimrc<CR>
+vnoremap <Leader>sv :source ~/.vimrc<CR>
 nnoremap <Leader>sz :source ~/.zshrc<CR>
 nnoremap <Leader>sr :source ~/.config/ranger/rc.conf<CR>
 nnoremap <Leader>sx :! xrdb ~/.Xresources<CR>
@@ -303,7 +290,6 @@ inoremap <Leader>w <esc>:lnext<CR>
 " Indent entire file
 inoremap <Leader>i <esc>gg=G<C-o>
 nnoremap <Leader>i gg=G<C-o>
->>>>>>> parent of 12d91f1... updated vimrc with NERDTree settings
 
 " command line change text font
 inoremap <leader>å <esc>:hi normal ctermfg=255<cr>
@@ -314,12 +300,7 @@ map ö {
 map ä }
 
 
-<<<<<<< HEAD
-" abbreviations
-=======
-
 " Abbreviations
->>>>>>> parent of 12d91f1... updated vimrc with NERDTree settings
 cnoreabbrev Wq wq
 cnoreabbrev WQ wq
 cnoreabbrev <expr> h getcmdtype() == ":" && getcmdline() == 'h' ? 'tab help' : 'h'
@@ -396,7 +377,6 @@ vnoremap tp y<esc>gt<esc>gpggtgv<esc>
 let g:netrw_banner = 0 "no banner
 let g:netrw_liststyle = 3 
 let g:netrw_sort_sequence = '[\/]$,*' " sort is affecting only: directories on the top, files below
-<<<<<<< HEAD
 nnoremap <leader>tt :texplore<cr>
 nnoremap <leader>ee :explore<cr>
 nnoremap <leader>vv :vexplore<cr>
@@ -419,7 +399,6 @@ inoremap gj <esc>/<++><enter>"_c4l
 
 "spellcheck
 map <f6> :setlocal spell! spelllang=en_us<cr>
-=======
 nnoremap <Leader>tt :Texplore<CR>
 nnoremap <Leader>ee :Explore<CR>
 nnoremap <Leader>vv :Vexplore<CR>
@@ -439,7 +418,6 @@ vnoremap gj <Esc>/<++><Enter>"_c4l
 inoremap gj <Esc>/<++><Enter>"_c4l
 "Spellcheck
 map <F6> :setlocal spell! spelllang=en_us<CR>
->>>>>>> parent of 12d91f1... updated vimrc with NERDTree settings
 " h <space> becomes tab help <space> as to open help in new tab (instead of split)
 
 " slimux.vim
@@ -583,4 +561,3 @@ let g:indentLine_char = '┊'
 
 " Python syntax ~/.vim/syntax/python.vim 
 let python_highlight_all = 1
-
