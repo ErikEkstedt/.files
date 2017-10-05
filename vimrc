@@ -3,89 +3,11 @@
 "pathogen vim modules stuff
 filetype off
 execute pathogen#infect()
-helptags
+"helptags
+
 filetype plugin on
 filetype plugin indent on
 syntax on "color
-
-" slimux.vim
-nnoremap <c-c><c-c> :slimuxreplsendline<cr>
-vnoremap <c-c><c-c> :slimuxreplsendline<cr>gv<esc>zz
-nnoremap <c-c><c-x> :slimuxreplconfigure<cr>
-vnoremap <c-c><c-x> :slimuxreplconfigure<cr>
-
-" calendar.vim
-let g:calendar_google_calendar = 1
-let g:calendar_google_task = 1
-
-" vimtex.vim
-let g:latex_view_general_viewer = 'zathura'
-let g:vimtex_view_method = "zathura"
-"let g:latex_view_general_options = shellescape("-s -e '" . exepath(v:progpath) . " --servername " . v:servername . " +{%line} {%input}'")
-let g:vimtex_complete_recursive_bib = 2
-
-" ctrlp.vim
-let g:ctrlp_show_hidden = 2 
-nnoremap <leader>f :ctrlp<cr>
-nnoremap <leader>fm :ctrlpmru<cr>
-let g:ctrlp_map = ''
-
-"fugitive.vim
-nnoremap <leader>ga :gwrite<cr>
-nnoremap <leader>gco :gcommit<cr>
-nnoremap <leader>gpu :gpush<cr>
-
-" lightline - statusline
-"let g:lightline = {'colorscheme': 'wombat',}
-let g:lightline = {'colorscheme': 'powerline',}
-set noshowmode "stops vims own showing below the statusbar.
-
-" tabular
-vnoremap <silent> <leader>ce :tabularize /=<cr>
-vnoremap <silent> <leader>ct :tabularize /#<cr>
-
-" youcompleteme
-let g:ycm_python_binary_path = '/home/erik/anaconda3/bin/python3'
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :ycmcompleter gotodefinitionelsedeclaration<cr>
-let g:ycm_min_num_of_chars_for_completion = 0
-
-" syntastic
-" recommended settings
-set statusline+=%#warningmsg#
-set statusline+=%{syntasticstatuslineflag()}
-set statusline+=%*
-
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_python_checkers =  ["flake8" ]
-let g:syntastic_loc_list_height = 4
-
-" indentline
-let g:indentline_filetypeexclude=['help']
-let g:indentline_char = '┊'
-
-" nerdtree
-map <c-n> :nerdtreetoggle<cr>
-let g:nerdtreeshowgitstatus = 1
-let g:nerdtreeupdateonwrite = 1
-let g:nerdtreeindicatormapcustom = {
-    \ "modified"  : "✹",
-    \ "staged"    : "✚",
-    \ "untracked" : "✭",
-    \ "renamed"   : "➜",
-    \ "unmerged"  : "═",
-    \ "deleted"   : "✖",
-    \ "dirty"     : "✗",
-    \ "clean"     : "✔︎",
-    \ "unknown"   : "?"
-    \ }
-
-" python syntax ~/.vim/syntax/python.vim 
-let python_highlight_all = 1
-
 
 """""""""""""settings"""""""""""""""" 
 " encoding
@@ -211,7 +133,7 @@ set wildchar=<tab>
 """""""""""functions""""""""""""""""""""""
 """ transparancy 
 let g:transpar=0
-function! toggletransparency()
+function! Toggletransparency()
 	if g:transpar == 0
 		hi normal guibg=none ctermbg=none
 		let g:transpar=1
@@ -225,10 +147,10 @@ function! toggletransparency()
 		let g:transpar=0
 	endif
 endfunc
-map <f12> :call toggletransparency()<cr>
+map <f12> :call Toggletransparency()<cr>
 
 """ focusmode
-function! togglefocusmode()
+function! Togglefocusmode()
 	if (&foldcolumn != 12)
 		set laststatus=0
 		set numberwidth=10
@@ -245,19 +167,19 @@ function! togglefocusmode()
 		execute 'colorscheme ' . g:colors_name
 	endif
 endfunc
-nnoremap <f1> :call togglefocusmode()<cr>
+nnoremap <f1> :call Togglefocusmode()<cr>
 
 
 
 """""""""""autocommands"""""""""""""""""
-" open nerdtree on startup
-autocmd vimenter * nerdtree
-
-" autocmd. 
-autocmd bufenter *.tex call settexcolor()
-autocmd bufenter *.tex set foldmethod=manual
-	
-function! settexcolor()
+" " open nerdtree on startup
+" autocmd vimenter * nerdtree
+"
+" " autocmd. 
+" autocmd bufenter *.tex call Settexcolor()
+" autocmd bufenter *.tex set foldmethod=manual
+" 	
+function! Settexcolor()
 	set background=light
 	let g:solarized_termcolors=256
 	" use lightline-solarized in lightline
@@ -341,8 +263,8 @@ map ä }
 
 
 " abbreviations
-cnoreabbrev wq wq
-cnoreabbrev wq wq
+cnoreabbrev Wq wq
+cnoreabbrev WQ wq
 cnoreabbrev <expr> h getcmdtype() == ":" && getcmdline() == 'h' ? 'tab help' : 'h'
 cnoreabbrev <expr> q getcmdtype() == ":" && getcmdline() == 'q' ? 'q' : 'q'
 
@@ -408,7 +330,7 @@ vnoremap j gj
 vnoremap k gk
 
 nnoremap <space> i <esc> 
-nnoremap g gzz
+nnoremap G gzz
 nnoremap gh 0
 nnoremap gi 0ciw
 vnoremap tp y<esc>gt<esc>gpggtgv<esc>
@@ -422,22 +344,101 @@ nnoremap <leader>ee :explore<cr>
 nnoremap <leader>vv :vexplore<cr>
 nnoremap <leader>hh :hexplore<cr>
 
-nnoremap <leader>sr :syntasticreset<cr>
-nnoremap <leader>st :syntastictogglemode<cr>
-nnoremap <leader>sc :syntasticcheck<cr>
+nnoremap <leader>sr :SyntasticReset<cr>
+nnoremap <leader>st :SyntasticTogglemode<cr>
+nnoremap <leader>sc :SyntasticCheck<cr>
 nnoremap <leader>lc :lclose<cr>
 nnoremap <leader>lo :errors<cr>
 
 " go to placeholder
-" nnoremap <c-@> <esc>/<++><enter>"_c4l
+" nnoremap <c-@> <esc>/j<enter>"_c4l
 " vnoremap <c-@> <esc>/<++><enter>"_c4l
 " inoremap <c-@> <esc>/<++><enter>"_c4l
 
 nnoremap gj <esc>/<++><enter>"_c4l
 vnoremap gj <esc>/<++><enter>"_c4l
 inoremap gj <esc>/<++><enter>"_c4l
+
 "spellcheck
 map <f6> :setlocal spell! spelllang=en_us<cr>
 " h <space> becomes tab help <space> as to open help in new tab (instead of split)
+
+" slimux.vim
+nnoremap <c-c><c-c> :slimuxreplsendline<cr>
+vnoremap <c-c><c-c> :slimuxreplsendline<cr>gv<esc>zz
+nnoremap <c-c><c-x> :slimuxreplconfigure<cr>
+vnoremap <c-c><c-x> :slimuxreplconfigure<cr>
+
+" calendar.vim
+let g:calendar_google_calendar = 1
+let g:calendar_google_task = 1
+
+" vimtex.vim
+let g:latex_view_general_viewer = 'zathura'
+let g:vimtex_view_method = "zathura"
+"let g:latex_view_general_options = shellescape("-s -e '" . exepath(v:progpath) . " --servername " . v:servername . " +{%line} {%input}'")
+let g:vimtex_complete_recursive_bib = 2
+
+" ctrlp.vim
+let g:ctrlp_show_hidden = 2 
+nnoremap <leader>f :ctrlp<cr>
+nnoremap <leader>fm :ctrlpmru<cr>
+let g:ctrlp_map = ''
+
+"fugitive.vim
+nnoremap <leader>ga :gwrite<cr>
+nnoremap <leader>gco :gcommit<cr>
+nnoremap <leader>gpu :gpush<cr>
+
+" lightline - statusline
+"let g:lightline = {'colorscheme': 'wombat',}
+let g:lightline = {'colorscheme': 'powerline',}
+set noshowmode "stops vims own showing below the statusbar.
+
+" tabular
+vnoremap <silent> <leader>ce :tabularize /=<cr>
+vnoremap <silent> <leader>ct :tabularize /#<cr>
+
+" youcompleteme
+let g:ycm_python_binary_path = '/home/erik/anaconda3/bin/python3'
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :ycmcompleter gotodefinitionelsedeclaration<cr>
+let g:ycm_min_num_of_chars_for_completion = 0
+
+" syntastic
+" recommended settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatusLineFlag()}
+set statusline+=%*
+
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_python_checkers =  ["flake8" ]
+let g:syntastic_loc_list_height = 4
+
+" indentline
+let g:indentline_filetypeexclude=['help']
+let g:indentline_char = '┊'
+
+" nerdtree
+map <c-n> :nerdtreetoggle<cr>
+let g:nerdtreeshowgitstatus = 1
+let g:nerdtreeupdateonwrite = 1
+let g:nerdtreeindicatormapcustom = {
+    \ "modified"  : "✹",
+    \ "staged"    : "✚",
+    \ "untracked" : "✭",
+    \ "renamed"   : "➜",
+    \ "unmerged"  : "═",
+    \ "deleted"   : "✖",
+    \ "dirty"     : "✗",
+    \ "clean"     : "✔︎",
+    \ "unknown"   : "?"
+    \ }
+
+" python syntax ~/.vim/syntax/python.vim 
+let python_highlight_all = 1
 
 
