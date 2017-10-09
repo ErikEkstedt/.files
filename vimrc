@@ -254,6 +254,9 @@ inoremap <leader>w <esc>:lnext<cr>
 inoremap <leader>i <esc>gg=g<c-o>
 nnoremap <leader>i gg=g<c-o>
 
+" jump forward in jump list
+nnoremap <i <C-I>
+
 " command line change text font
 inoremap <leader>å <esc>:hi normal ctermfg=255<cr>
 nnoremap <leader>å :hi normal ctermfg=255<cr>
