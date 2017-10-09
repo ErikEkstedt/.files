@@ -3,6 +3,7 @@
 "pathogen vim modules stuff
 filetype off
 execute pathogen#infect()
+ 
 Helptags
 
 filetype plugin on
@@ -64,11 +65,9 @@ if has('windows')
     hi VertSplit ctermfg=51
 endif
 
-if has('folding')
-    set foldmethod=indent "fast but dumb. not relying on syntax. fast
-	set foldlevelstart=-1 " start with fold everything
-	set foldclose="all"
-endif
+set foldmethod=indent "fast but dumb. not relying on syntax. fast
+set foldlevelstart=-1 " start with fold everything
+set foldclose="all"
 
 """"""""basic options"""""""""""
 set ruler "for cursor position in the bottom right corner
@@ -183,7 +182,7 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " " autocmd. 
 autocmd bufenter *.tex call SetTexColor()
-autocmd bufenter *.tex set foldmethod=manual
+autocmd bufenter *.tex let g:tex_fold_enabled=1
 
 function! SetTexColor()
 	set background=light
@@ -193,6 +192,7 @@ function! SetTexColor()
 				\ 'colorscheme': 'lightline_solarized',
 				\ }
 	colorscheme solarized
+    set conceallevel=0
 endfunction
 
 " function to exit quickfix when exiting buffer
@@ -212,7 +212,6 @@ au! bufnewfile,bufread *.py
     set tabstop=4
 	set softtabstop=4
 	set shiftwidth=4
-	set textwidth=79
 	set expandtab
 	set autoindent
 	set fileformat=unix
@@ -254,6 +253,9 @@ inoremap <leader>w <esc>:lnext<cr>
 " indent entire file
 inoremap <leader>i <esc>gg=g<c-o>
 nnoremap <leader>i gg=g<c-o>
+
+" jump forward in jump list
+nnoremap <i <C-I>
 
 " command line change text font
 inoremap <leader>å <esc>:hi normal ctermfg=255<cr>
@@ -358,6 +360,9 @@ nnoremap <leader>lo :errors<cr>
 nnoremap gj <esc>/<++><enter>"_c4l
 vnoremap gj <esc>/<++><enter>"_c4l
 inoremap gj <esc>/<++><enter>"_c4l
+
+" Togle fold
+nnoremap ga za
 
 "Spellcheck
 map <F6> :setlocal spell! spelllang=en_us<CR>

@@ -19,21 +19,25 @@ if [ $monitor_mode = "all" ]; then
         monitor_mode="EXTERNAL"
         xrandr --output $INTERNAL_OUTPUT --off --output $EXTERNAL_OUTPUT --auto
         feh --bg-scale ~/.config/wall.png
+        killall notify-osd
         DISPLAY=:0 notify-send -t $T --urgency=critical --icon=$Img "Monitor mode: Only External"
 elif [ $monitor_mode = "EXTERNAL" ]; then
         monitor_mode="INTERNAL"
         xrandr --output $INTERNAL_OUTPUT --auto --output $EXTERNAL_OUTPUT --off
         feh --bg-scale ~/.config/wall.png
+        killall notify-osd
         DISPLAY=:0 notify-send -t $T --urgency=critical --icon=$Img  "Monitor mode: Only Laptop"
 elif [ $monitor_mode = "INTERNAL" ]; then
         monitor_mode="CLONES"
         xrandr --output $INTERNAL_OUTPUT --auto --output $EXTERNAL_OUTPUT --auto --same-as $INTERNAL_OUTPUT
         feh --bg-scale ~/.config/wall.png
+        killall notify-osd
         DISPLAY=:0 notify-send -t $T --urgency=critical --icon=$Img "Monitor mode: Clone screen"
 else
         monitor_mode="all"
         xrandr --output $INTERNAL_OUTPUT --auto --output $EXTERNAL_OUTPUT --auto --above $INTERNAL_OUTPUT
         feh --bg-scale ~/.config/wall.png
+        killall notify-osd
         DISPLAY=:0 notify-send -t $T --urgency=critical --icon=$Img "Monitor mode: All"
 fi
 echo "${monitor_mode}" > /tmp/monitor_mode.dat
