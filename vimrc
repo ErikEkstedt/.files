@@ -413,8 +413,7 @@ let g:ycm_min_num_of_chars_for_completion = 0
 " NERDTree 
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\.pdf$', '\.bib$', '\.png$']
-let NERDTreeShowBookmarks=1
-
+let NERDTreeShowBookmarks = 1
 " Syntastic
 " Recommended settings
 set statusline+=%#warningmsg#
