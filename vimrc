@@ -247,8 +247,8 @@ nnoremap <leader>sot :source ~/.tmux.conf<cr>
 nnoremap <leader>r :! urxvt -e python % &<cr><cr>
 
 " go to next comment (in pymode at least)
-nnoremap <leader>w :lnext<cr>
-inoremap <leader>w <esc>:lnext<cr>
+nnoremap <leader>e :lnext<cr>
+inoremap <leader>e <esc>:lnext<cr>
 
 " indent entire file
 inoremap <leader>i <esc>gg=g<c-o>
@@ -294,10 +294,6 @@ nnoremap <silent> g$ :<c-u>tablast<cr>
 " select last paste
 nnoremap <expr> gp '`['.strpart(getregtype(), 0, 1).'`]'
 
-" swap line/normal visual mode
-noremap V v
-noremap v V
-
 " copy / paste
 set pastetoggle=<f2> " system clipboard pastes preserves indentation
 nnoremap <c-a> ggvg$
@@ -315,12 +311,16 @@ nnoremap <f10> :set relativenumber!<cr>
 """""""""""""""movement"""""""""""""
 " move up and down naturally even if lines 
 " extends over multiple rows
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+
+" Move between splits
 nnoremap <c-h> <c-w><c-h>
 nnoremap <c-l> <c-w><c-l>
 nnoremap <c-k> <c-w><c-k>
 nnoremap <c-j> <c-w><c-j>
-nnoremap j gj
-nnoremap k gk
 
 inoremap <c-h> <esc><c-w><c-h>i
 inoremap <c-l> <esc><c-w><c-l>i
@@ -331,8 +331,10 @@ vnoremap <c-h> <esc><c-w><c-h>gv
 vnoremap <c-l> <esc><c-w><c-l>gv
 vnoremap <c-j> <esc><c-w><c-j>gv
 vnoremap <c-k> <esc><c-w><c-k>gv
-vnoremap j gj
-vnoremap k gk
+
+" Resize splits
+nnoremap <Leader>q :vertical resize -10<CR>
+nnoremap <Leader>w :vertical resize +10<CR>
 
 nnoremap <space> i <esc> 
 nnoremap G Gzz
@@ -345,7 +347,7 @@ let g:netrw_banner = 0 "no banner
 let g:netrw_liststyle = 3 
 let g:netrw_sort_sequence = '[\/]$,*' " sort is affecting only: directories on the top, files below
 nnoremap <leader>tt :Texplore<cr>
-nnoremap <leader>ee :Explore<cr>
+nnoremap <leader>ex :Explore<cr>
 nnoremap <leader>vv :Vexplore<cr>
 nnoremap <leader>hh :Hexplore<cr>
 
