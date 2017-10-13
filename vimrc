@@ -3,7 +3,6 @@
 "pathogen vim modules stuff
 filetype off
 execute pathogen#infect()
- 
 Helptags
 
 filetype plugin on
@@ -68,6 +67,7 @@ endif
 set foldmethod=indent "fast but dumb. not relying on syntax. fast
 set foldlevelstart=-1 " start with fold everything
 set foldclose="all"
+set conceallevel=0
 
 """"""""basic options"""""""""""
 set ruler "for cursor position in the bottom right corner
@@ -84,7 +84,6 @@ set hls "highlighting!
 set wrap
 "set linebreak " break lines if window is too narrow
 set formatoptions+=j " smart line joining. uncomments comments.
-
 set lazyredraw " don't redraw screen during macros
 set breakindent "wrapped line s keep indentation (set bri)
 let &showbreak="↪ "
@@ -101,7 +100,7 @@ set nuw=4 "width of numberline
 "
 """"""""" behaviour""""""""""
 set mouse=a "mouse functionality 
-set timeoutlen=300 "ms to wait for command completion 
+set timeoutlen=500 "ms to wait for command completion 
 set ttimeoutlen=0 " don't wait for <esc>
 set backspace=indent,eol,start " backspace over spaces
 set ai! "auto indent
@@ -129,7 +128,7 @@ set wildchar=<tab>
 " if has('termguicolors')
 " 	set termguicolors
 " endif
-"
+
 """""""""""functions""""""""""""""""""""""
 """ transparancy 
 let g:transpar=0
@@ -177,24 +176,22 @@ nnoremap <f1> :call Togglefocusmode()<cr>
 
 
 """""""""""autocommands"""""""""""""""""
-" " open NERDTree on startup
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " " autocmd. 
-autocmd bufenter *.tex call SetTexColor()
 autocmd bufenter *.tex let g:tex_fold_enabled=1
 
+autocmd bufenter *.tex call SetTexColor()
 function! SetTexColor()
-	set background=light
-	let g:solarized_termcolors=256
+	" set background=light
+	" let g:solarized_termcolors=256
 	" use lightline-solarized in lightline
-	let g:lightline = {
-				\ 'colorscheme': 'lightline_solarized',
-				\ }
-	colorscheme solarized
+	" let g:lightline = {
+	" 			\ 'colorscheme': 'lightline_solarized',
+	" 			\ }
+	" colorscheme solarized
     set conceallevel=0
+    set linebreak
 endfunction
-
+"
 " function to exit quickfix when exiting buffer
 aug qfclose
   au!
@@ -333,8 +330,8 @@ vnoremap <c-j> <esc><c-w><c-j>gv
 vnoremap <c-k> <esc><c-w><c-k>gv
 
 " Resize splits
-nnoremap <Leader>q :vertical resize -10<CR>
-nnoremap <Leader>w :vertical resize +10<CR>
+nnoremap <Leader>q :vertical resize -5<CR>
+nnoremap <Leader>w :vertical resize +5<CR>
 
 nnoremap <space> i <esc> 
 nnoremap G Gzz
@@ -398,7 +395,6 @@ nnoremap <Leader>gc :Gcommit<CR>
 nnoremap <Leader>gp :Gpush<CR>
 
 " lightline - statusline
-"let g:lightline = {'colorscheme': 'wombat',}
 let g:lightline = {'colorscheme': 'powerline',}
 set noshowmode "stops vims own showing below the statusbar.
 
@@ -413,9 +409,14 @@ map <leader>gd  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:ycm_min_num_of_chars_for_completion = 0
 
 " NERDTree 
-map <C-n> :NERDTreeToggle<CR>
-let NERDTreeIgnore=['\.pdf$', '\.bib$', '\.png$']
+" " open NERDTree on startup
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+let NERDTreeIgnore=['\.pdf$', '\.bib$', '\.png$', '\.aux$', '\.bbl$', '\.fls$', '\.blg$', '\.log$', '\.xml$', '\.fdb_latexmk$','\.gz$']
 let NERDTreeShowBookmarks = 1
+
+map <C-n> :NERDTreeToggle<CR>
+
 " Syntastic
 " Recommended settings
 set statusline+=%#warningmsg#

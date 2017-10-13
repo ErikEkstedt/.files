@@ -25,7 +25,7 @@ bindsym $mod2+l exec bash -c "gnome-screensaver-command -l"
 bindsym $mod2+F1 exec bash -c "systemctl suspend"
 
 # test key- for testing different scripts
-bindsym $mod2+t exec bash -c "cd ~/Pictures/wallpaper && ./bg_wal ~/.config/wall.png"
+# bindsym $mod2+t exec bash -c "cd ~/Pictures/wallpaper && ./bg_wal ~/.config/wall.png"
 
 
 # WORKSPACES
@@ -69,6 +69,9 @@ bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
 bindsym Mod1+Tab scratchpad show
 bindsym Mod1+Shift+Tab move scratchpad
 
+bindsym $mod2+g [con_mark="browser"] scratchpad show
+bindsym $mod2+t [con_mark="term"] scratchpad show
+
 # Monitor Setup
 # Move workspace to different monitor
 bindsym $mod2+m move workspace to output up
@@ -86,12 +89,15 @@ exec --no-startup-id nm-applet
 exec --no-startup-id udiskie
 
 exec $term -T "scratchTerm"
-for_window [class="URxvt" title="scratchTerm"] move scratchpad
+for_window [class="URxvt" title="scratchTerm"] mark "term" move scratchpad
+
+exec $Browser 
+for_window [class="URxvt" title="browser"] mark "browser" move scratchpad
+
 
 ############## TERMINAL ###########################
 bindsym $mod+Return exec $term 
 bindsym $mod+Shift+Return exec $term -T "scratchTerm"
-bindsym $mod+y exec $term3
 bindsym $mod+r exec $term -e sh -c "stty -ixon && ranger"
 
 # Open floating terminal
@@ -109,15 +115,16 @@ resize grow down 150, resize grow up 100
 ############## APPLICATIONS and SETINGS ###########################
 # Fast Access
 bindsym $mod+g exec $Browser 
+bindsym $mod+y exec $Browser --app=https://www.youtube.com
 bindsym $mod+s exec $Music; workspace $ws9
 bindsym $mod+a exec bash ~/.files/Scripts/Laptop/touchpad_onoff.sh
-bindsym $mod+o exec $term -e bash -c "stty -ixon && vim"
+bindsym $mod+o exec $term -e bash -c "stty -ixon && cd ~/com_sci/Master_code/Robot && vim"
 
 # Calendar 
-bindsym $mod+c exec ~/.files/i3/scripts/Calendar.sh
+# bindsym $mod+c exec ~/.files/i3/scripts/Calendar.sh
 
 # Normal Access
-bindsym $mod+Shift+n exec nautilus --no-desktop
+bindsym $mod+Ctrl+n exec nautilus --no-desktop
 bindsym $mod+Shift+s exec shutter -s
 bindsym $mod+Shift+t exec ~/Downloads/TeamSpeak3-Client-linux_amd64/ts3client_runscript.sh
 
@@ -136,7 +143,8 @@ bindsym $mod+q exec ~/.files/i3/scripts/workflow.sh
 ###################################################################################
 
 # Notes
-bindsym $mod+n exec ~/.files/Scripts/new_note
+bindsym $mod+Shift+n exec ~/.files/Scripts/new_note
+bindsym $mod+n exec $term -e bash -c "stty -ixon && cd ~/Documents/latex/Notes && vim "
 
 # Log
 bindsym $mod+d exec ~/.files/Scripts/new_log
@@ -149,10 +157,12 @@ bindsym $mod+u exec $term -cd ~/com_sci/Master_code/Robot
 bindsym $mod+m exec $term -T "model-tex" -e bash -c "stty -ixon && vim ~/Documents/latex/Project/Master.tex"
 
 # Open Learning doc
-bindsym $mod+w exec $term -T "Learning-tex" -e bash -c "stty -ixon && vim ~/com_sci/Master_code/Learning/docs/docs.tex" 
+bindsym $mod+c exec $term -T "Learning-tex" -e bash -c "stty -ixon && vim ~/com_sci/Master_code/Learning/docs/docs.tex" 
 
 # Open Installer.sh Computer todo document 
-bindsym $mod+i exec $term -T "Installer" -e bash -c "stty -ixon && vim ~/.files/Installation/Installer", split horizontal, exec $term -T "Readme" -e bash -c "stty -ixon && vim /home/erik/.files/Installation/README.md",
+bindsym $mod+w exec $term -T "Installer" -e bash -c "stty -ixon && vim ~/.files/Installation/Installer", split horizontal, exec $term -T "Readme" -e bash -c "stty -ixon && vim /home/erik/.files/Installation/README.md",
+
+bindsym $mod+i exec $term -T "Ideas" -e bash -c "stty -ixon && vim ~/Documents/latex/Project/Ideas.tex"
 
 # Open bibtex document 
 bindsym $mod+b exec $term -T "bib-term" -e bash -c "stty -ixon && vim ~/Documents/latex/References.bib"
@@ -196,9 +206,14 @@ bindsym $mod+Ctrl+r restart
 # APPEARENCE - borders and gaps
 ################################################################
 hide_edge_borders both
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 1
+for_window [class="Zathura"] border pixel 5
+for_window [class=" "] border pixel 5
+
 # color of focused window
-client.focused #00CDFF #00CDFF #00CDFF 
+# client.focused #00CDFF #00CDFF #00CDFF  # Teal  
+client.focused #A7A7A7 #A7A7A7 #A7A7A7
+# client.focused #ff6417 #ff6417 #ff6417
 # initial gap size
 gaps inner 13
 gaps outer 0 
@@ -269,7 +284,7 @@ bindsym $mod+Ctrl+l workspace next
 bindsym $mod+Ctrl+h workspace prev
 
 # resize
-set $growth 4
+set $growth 3
 bindsym $mod+Shift+y resize shrink width $growth px or $growth ppt
 bindsym $mod+Shift+i resize grow height $growth px or $growth ppt
 bindsym $mod+Shift+u resize shrink height $growth px or $growth ppt

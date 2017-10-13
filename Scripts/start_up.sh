@@ -3,7 +3,7 @@
 # -R restores the last colorscheme that was in use.
 xrdb ~/.Xdefaults                                                                          
 xmodmap ~/.files/Scripts/speedswapper
-xset r rate 300 75
-WAL=$(which wal)
-$WAL -R -a 70 
+xset r rate 200 75
+# WAL=$(which wal)
+# $WAL -R -a 70 
 unclutter &
