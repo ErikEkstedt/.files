@@ -27,6 +27,11 @@ bindsym $mod2+F1 exec bash -c "systemctl suspend"
 # test key- for testing different scripts
 # bindsym $mod2+t exec bash -c "cd ~/Pictures/wallpaper && ./bg_wal ~/.config/wall.png"
 
+# i3-wm-scripts /home/erik/com_sci/scripts/i3-wm-scripts
+# use dmenu to select an open window
+bindsym $mod+u exec python /home/erik/com_sci/scripts/i3-wm-scripts/nextfind.py
+# Notworknig?
+
 
 # WORKSPACES
 set $ws1 "1:Web 1"
@@ -71,6 +76,7 @@ bindsym Mod1+Shift+Tab move scratchpad
 
 bindsym $mod2+g [con_mark="browser"] scratchpad show
 bindsym $mod2+t [con_mark="term"] scratchpad show
+bindsym $mod2+s [con_mark="spotify"] scratchpad show
 
 # Monitor Setup
 # Move workspace to different monitor
@@ -117,18 +123,20 @@ resize grow down 150, resize grow up 100
 bindsym $mod+g exec $Browser 
 bindsym $mod+y exec $Browser --app=https://www.youtube.com
 bindsym $mod+Shift+f exec $Browser --app=https://www.facebook.com
-bindsym $mod+s exec $Music; workspace $ws9
+bindsym $mod+shift+s exec $Music, move scratchpad
+bindsym $mod+s [con_mark="music"] scratchpad show
+
 bindsym $mod+a exec bash ~/.files/Scripts/Laptop/touchpad_onoff.sh
 #bindsym $mod+o exec $term -e bash -c "stty -ixon && cd ~/com_sci/Master_code/Robot && vim "  
 #bindsym $mod+o exec $term2 -x bash -c "stty -ixon && cd ~/com_sci/Master_code/Robot && vim"
-bindsym $mod+o exec $term3 -e bash -c "stty -ixon && cd ~/com_sci/Master_code/Robot && vim"
+bindsym $mod+o exec $term3 -e bash -c "stty -ixon && cd ~/com_sci/Master_code/Robot && tmux -c vim"
 
 # Calendar 
 # bindsym $mod+c exec ~/.files/i3/scripts/Calendar.sh
 
 # Normal Access
 bindsym $mod+Ctrl+n exec nautilus --no-desktop
-bindsym $mod+Shift+s exec shutter -s
+bindsym $mod+Ctrl+s exec shutter -s
 bindsym $mod+Shift+t exec ~/Downloads/TeamSpeak3-Client-linux_amd64/ts3client_runscript.sh
 
 # start rofi (a program launcher)
@@ -156,7 +164,8 @@ bindsym $mod+d exec ~/.files/Scripts/new_log
 bindsym $mod+Shift+d exec bash ~/.files/Scripts/open_last_log.sh
 
 # open terminal at project directory
-bindsym $mod+u exec $term -cd ~/com_sci/Master_code/Robot
+#bindsym $mod+u exec $term -cd ~/com_sci/Master_code/Robot
+# bindsym $mod+u exec $term3 -e bash -c "stty -ixon && cd ~/com_sci/Master_code/Robot && vim "
 
 # Open Model doc
 bindsym $mod+m exec $term -T "model-tex" -e bash -c "stty -ixon && vim ~/Documents/latex/Project/Master.tex"
@@ -167,7 +176,8 @@ bindsym $mod+c exec $term -T "Learning-tex" -e bash -c "stty -ixon && vim ~/com_
 # Open Installer.sh Computer todo document 
 bindsym $mod+w exec $term -T "Installer" -e bash -c "stty -ixon && vim ~/.files/Installation/Installer", split horizontal, exec $term -T "Readme" -e bash -c "stty -ixon && vim /home/erik/.files/Installation/README.md",
 
-bindsym $mod+i exec $term -T "Ideas" -e bash -c "stty -ixon && vim ~/Documents/latex/Project/Ideas.tex"
+#bindsym $mod+i exec $term -T "Ideas" -e bash -c "stty -ixon && vim ~/Documents/latex/Project/Ideas.tex"
+bindsym $mod+i exec $term3 -T "Ideas" -e bash -c "stty -ixon && vim ~/Documents/latex/Project/Ideas.tex"
 
 # Open bibtex document 
 bindsym $mod+b exec $term -T "bib-term" -e bash -c "stty -ixon && vim ~/Documents/latex/References.bib"
@@ -178,7 +188,9 @@ resize grow down 200, resize grow up 250
 #########################################################################
 ################ FLOATING Classes
 #########################################################################
-assign [class="Spotify"] workspace $ws9
+#assign [class="Spotify"] workspace $ws9
+for_window [class="Spotify"] mark "music", move scratchpad
+
 for_window [class="Simplescreenrecorder"] floating enable
 for_window [class="Videos"] floating enable
 for_window [class="Nautilus"] floating enable
