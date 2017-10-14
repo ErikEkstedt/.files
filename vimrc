@@ -57,8 +57,9 @@ endif
 " colorscheme Tomorrow-Night
 colorscheme base16-tomorrow-night
 let base16colorspace=256
+
 " current linenumber color
-"hi CursorLineNr ctermfg=87
+hi CursorLineNr ctermfg=87 guifg=white
 
 " syntax error color
 "hi Error ctermf
@@ -274,7 +275,6 @@ cnoreabbrev <expr> q getcmdtype() == ":" && getcmdline() == 'q' ? 'q' : 'q'
 
 " convenience
 map <cr> o<esc>
-noremap q @q
 
 "alternate keys for indenting/unindenting
 inoremap <s-tab> <esc><lt><lt>i
@@ -439,3 +439,9 @@ let g:indentLine_char = '┊'
 
 " Python syntax ~/.vim/syntax/python.vim 
 let python_highlight_all = 1
+
+" vim-markdown-preview (uses grip)
+let vim_markdown_preview_github=1
+let vim_markdown_preview_hotkey='<C-m>'
+let vim_markdown_preview_browser='Google Chrome'
+"let vim_markdown_preview_toggle=2

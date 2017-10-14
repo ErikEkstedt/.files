@@ -62,13 +62,6 @@ alias tlog="sh ~/.files/Scripts/new_log.sh " "$1"
 alias tnew="sh ~/.files/Scripts/new_tex.sh " "$1"
 alias tnote="sh ~/.files/Scripts/new_note.sh " "$1"
 
-# shortcut for simple git routines
-function ag() { # auto git
-	git add .
-	git commit -m "$1"
-	git push
-}
-
 alias tma="cd ~/Documents/latex; vim Master.tex"
 alias two="cd ~/Documents/latex; vim Master_todo.tex"
 alias tco="cd ~/Documents/latex; vim Computer_todo.tex"
@@ -88,6 +81,20 @@ alias lpy="ls *.py"
 alias lpdf="ls -ogl *.pdf"
 
 # Programs
+
+#Git
+alias gad="git add"
+alias gcm="git commit -m "
+alias gps="git push"
+alias gpl="git pull"
+alias gst="git status"
+
+function ag() { # auto git
+	git add .
+	git commit -m "$1"
+	git push
+}
+
 
 # Tmux
 alias tlist="tmux list-sessions"

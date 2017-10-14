@@ -11,12 +11,15 @@ cd ~/Documents/latex/Logs/
 if [ -f $FILE ]; then
     #File exists, open file
     DISPLAY=:0 notify-send -t 2000 --urgency=critical --icon=$Img "Todays Log entry"
-    urxvt -e bash -c "stty -ixon && vim $FILE" &
+    #urxvt -e bash -c "stty -ixon && vim $FILE" &
+    #urxvt -e bash -c "stty -ixon && vim $FILE" &
+    konsole -e bash -c "stty -ixon && cd ~/Documents/latex/Logs && vim $FILE " &
 else
     # File does not exist, create file
     DISPLAY=:0 notify-send -t 2000 --urgency=critical --icon=$Img "Todays Log entry"
     cp ~/Documents/latex/LaTeX/Log_base.tex ~/Documents/latex/Logs/"$FILE"
-    urxvt -e bash -c "stty -ixon && vim $FILE" &
+    # urxvt -e bash -c "stty -ixon && vim $FILE" &
+    konsole -e bash -c "stty -ixon && cd ~/Documents/latex/Logs && vim $FILE " &
 fi
 
 
