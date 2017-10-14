@@ -3,6 +3,7 @@
 "pathogen vim modules stuff
 filetype off
 execute pathogen#infect()
+ 
 Helptags
 
 filetype plugin on
@@ -10,7 +11,10 @@ filetype plugin indent on
 syntax on "color
 
 """""""""""""settings"""""""""""""""" 
+syntax on "Color
+
 " encoding
+scriptencoding utf-8
 set encoding=utf-8
 
 " oh dear leader
@@ -27,7 +31,7 @@ cmap w!! %!sudo tee > /dev/null %
 
 """"""""" appearence""""""""""
 set laststatus=2 "always show status bar
-set term=rxvt-256color
+set term=xterm-256color
 set t_co=256 "colormode
 if &term =~ "256color"
 	" disable background color erase (bce) so that color schemes
@@ -35,15 +39,10 @@ if &term =~ "256color"
 	" see also http://snk.tuxfamily.org/log/vim-256color-bce.html
 	set t_ut=
 endif
-" interesting for colors. (urxvt and wal)colors becomes that of terminal.
-set termguicolors
-let &t_8f="\e[38;2;%ld;%ld;%ldm"
-let &t_8b="\e[48;2;%ld;%ld;%ldm"
 
 if has('termguicolors')
 	" don't need this in xterm-256color, but do need it inside tmux.
 	" (see `:h xterm-true-color`.)
-	set termguicolors
 	if &term =~# 'tmux-256color'
 		let &t_8f="\e[38;2;%ld;%ld;%ldm"
 		let &t_8b="\e[48;2;%ld;%ld;%ldm"
@@ -52,15 +51,13 @@ endif
 
 " colors
 "set background=dark
-"colorscheme monokai-phoenix
-"colorscheme monokai
-colorscheme Tomorrow-Night
+colorscheme monokai-phoenix
 
 " current linenumber color
-"hi CursorLineNr ctermfg=87
+hi CursorLineNr ctermfg=87
 
 " syntax error color
-"hi Error ctermf
+hi Error ctermfg=161 ctermbg=016 guifg=#eeeeee guibg=#5f00ff
 
 
 if has('windows')
@@ -71,13 +68,11 @@ endif
 set foldmethod=indent "fast but dumb. not relying on syntax. fast
 set foldlevelstart=-1 " start with fold everything
 set foldclose="all"
-set conceallevel=0
 
 """"""""basic options"""""""""""
 set ruler "for cursor position in the bottom right corner
 set number "number lines
-set relativenumber
-set scrolloff=5 " visual rows above and below cursor
+set scrolloff=7 " visual rows above and below cursor
 set sidescroll=3 " visual columns on sides of cursor
 set cursorline  " highlight line where cursor is
 set hls "highlighting!
@@ -89,6 +84,7 @@ set hls "highlighting!
 set wrap
 "set linebreak " break lines if window is too narrow
 set formatoptions+=j " smart line joining. uncomments comments.
+
 set lazyredraw " don't redraw screen during macros
 set breakindent "wrapped line s keep indentation (set bri)
 let &showbreak="↪ "
@@ -105,7 +101,7 @@ set nuw=4 "width of numberline
 "
 """"""""" behaviour""""""""""
 set mouse=a "mouse functionality 
-set timeoutlen=500 "ms to wait for command completion 
+set timeoutlen=300 "ms to wait for command completion 
 set ttimeoutlen=0 " don't wait for <esc>
 set backspace=indent,eol,start " backspace over spaces
 set ai! "auto indent
@@ -129,6 +125,11 @@ set switchbuf=usetab
 set wildmenu
 set wildchar=<tab>
 
+" interesting for colors. (urxvt and wal)colors becomes that of terminal.
+" if has('termguicolors')
+" 	set termguicolors
+" endif
+"
 """""""""""functions""""""""""""""""""""""
 """ transparancy 
 let g:transpar=0
@@ -176,22 +177,24 @@ nnoremap <f1> :call Togglefocusmode()<cr>
 
 
 """""""""""autocommands"""""""""""""""""
+" " open NERDTree on startup
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " " autocmd. 
+autocmd bufenter *.tex call SetTexColor()
 autocmd bufenter *.tex let g:tex_fold_enabled=1
 
-autocmd bufenter *.tex call SetTexColor()
 function! SetTexColor()
-	" set background=light
-	" let g:solarized_termcolors=256
+	set background=light
+	let g:solarized_termcolors=256
 	" use lightline-solarized in lightline
-	" let g:lightline = {
-	" 			\ 'colorscheme': 'lightline_solarized',
-	" 			\ }
-	" colorscheme solarized
+	let g:lightline = {
+				\ 'colorscheme': 'lightline_solarized',
+				\ }
+	colorscheme solarized
     set conceallevel=0
-    set linebreak
 endfunction
-"
+
 " function to exit quickfix when exiting buffer
 aug qfclose
   au!
@@ -237,15 +240,15 @@ nnoremap <leader>ete :tabnew ~/.vim/ftplugin/tex.vim<cr>
 nnoremap <leader>si3 :source ~/.config/i3/config<cr>
 nnoremap <leader>sv :source ~/.vimrc<cr>
 nnoremap <leader>sz :source ~/.zshrc<cr>
-nnoremap <leader>sx :! xrdb ~/.Xresources<cr>
+nnoremap <leader>sx :! xrdb ~/.xresources<cr>
 nnoremap <leader>sot :source ~/.tmux.conf<cr>
 
 " run scripts
 nnoremap <leader>r :! urxvt -e python % &<cr><cr>
 
 " go to next comment (in pymode at least)
-nnoremap <leader>e :lnext<cr>
-inoremap <leader>e <esc>:lnext<cr>
+nnoremap <leader>w :lnext<cr>
+inoremap <leader>w <esc>:lnext<cr>
 
 " indent entire file
 inoremap <leader>i <esc>gg=g<c-o>
@@ -291,6 +294,10 @@ nnoremap <silent> g$ :<c-u>tablast<cr>
 " select last paste
 nnoremap <expr> gp '`['.strpart(getregtype(), 0, 1).'`]'
 
+" swap line/normal visual mode
+noremap V v
+noremap v V
+
 " copy / paste
 set pastetoggle=<f2> " system clipboard pastes preserves indentation
 nnoremap <c-a> ggvg$
@@ -308,16 +315,12 @@ nnoremap <f10> :set relativenumber!<cr>
 """""""""""""""movement"""""""""""""
 " move up and down naturally even if lines 
 " extends over multiple rows
-nnoremap j gj
-nnoremap k gk
-vnoremap j gj
-vnoremap k gk
-
-" Move between splits
 nnoremap <c-h> <c-w><c-h>
 nnoremap <c-l> <c-w><c-l>
 nnoremap <c-k> <c-w><c-k>
 nnoremap <c-j> <c-w><c-j>
+nnoremap j gj
+nnoremap k gk
 
 inoremap <c-h> <esc><c-w><c-h>i
 inoremap <c-l> <esc><c-w><c-l>i
@@ -328,10 +331,8 @@ vnoremap <c-h> <esc><c-w><c-h>gv
 vnoremap <c-l> <esc><c-w><c-l>gv
 vnoremap <c-j> <esc><c-w><c-j>gv
 vnoremap <c-k> <esc><c-w><c-k>gv
-
-" Resize splits
-nnoremap <Leader>q :vertical resize -5<CR>
-nnoremap <Leader>w :vertical resize +5<CR>
+vnoremap j gj
+vnoremap k gk
 
 nnoremap <space> i <esc> 
 nnoremap G Gzz
@@ -344,7 +345,7 @@ let g:netrw_banner = 0 "no banner
 let g:netrw_liststyle = 3 
 let g:netrw_sort_sequence = '[\/]$,*' " sort is affecting only: directories on the top, files below
 nnoremap <leader>tt :Texplore<cr>
-nnoremap <leader>ex :Explore<cr>
+nnoremap <leader>ee :Explore<cr>
 nnoremap <leader>vv :Vexplore<cr>
 nnoremap <leader>hh :Hexplore<cr>
 
@@ -395,6 +396,7 @@ nnoremap <Leader>gc :Gcommit<CR>
 nnoremap <Leader>gp :Gpush<CR>
 
 " lightline - statusline
+"let g:lightline = {'colorscheme': 'wombat',}
 let g:lightline = {'colorscheme': 'powerline',}
 set noshowmode "stops vims own showing below the statusbar.
 
@@ -409,13 +411,9 @@ map <leader>gd  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:ycm_min_num_of_chars_for_completion = 0
 
 " NERDTree 
-" " open NERDTree on startup
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-let NERDTreeIgnore=['\.pdf$', '\.bib$', '\.png$', '\.aux$', '\.bbl$', '\.fls$', '\.blg$', '\.log$', '\.xml$', '\.fdb_latexmk$','\.gz$']
-let NERDTreeShowBookmarks = 1
-
 map <C-n> :NERDTreeToggle<CR>
+let NERDTreeIgnore=['\.pdf$', '\.bib$', '\.png$']
+let NERDTreeShowBookmarks = 1
 
 " Syntastic
 " Recommended settings

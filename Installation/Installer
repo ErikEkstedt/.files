@@ -22,7 +22,7 @@ echo "########################################################"
 echo "########################################################"
 echo "########################################################"
 echo            Installing programs "(git/tmux and the like...)"
-sudo apt-get install -yyqq git tmux htop xclip\
+sudo apt-get install -yyqq git tmux htop xclip xsel\
     zsh feh curl unclutter udiskie zathura\
     rxvt-unicode-256color ranger wget curl\
     autoconf gnome-session-bin python-pip\

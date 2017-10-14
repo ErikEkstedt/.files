@@ -8,7 +8,7 @@ set $mod2 Mod4
 
 # SET VARIABLES
 set $term urxvt
-set $term2 xterm
+set $term2 gnome-terminal
 set $term3 terminator
 
 set $Browser google-chrome
@@ -116,9 +116,11 @@ resize grow down 150, resize grow up 100
 # Fast Access
 bindsym $mod+g exec $Browser 
 bindsym $mod+y exec $Browser --app=https://www.youtube.com
+bindsym $mod+Shift+f exec $Browser --app=https://www.facebook.com
 bindsym $mod+s exec $Music; workspace $ws9
 bindsym $mod+a exec bash ~/.files/Scripts/Laptop/touchpad_onoff.sh
-bindsym $mod+o exec $term -e bash -c "stty -ixon && cd ~/com_sci/Master_code/Robot && vim"
+#bindsym $mod+o exec $term -e bash -c "stty -ixon && cd ~/com_sci/Master_code/Robot && vim "  
+bindsym $mod+o exec $term2 -x bash -c "stty -ixon && cd ~/com_sci/Master_code/Robot && vim"
 
 # Calendar 
 # bindsym $mod+c exec ~/.files/i3/scripts/Calendar.sh
@@ -144,7 +146,8 @@ bindsym $mod+q exec ~/.files/i3/scripts/workflow.sh
 
 # Notes
 bindsym $mod+Shift+n exec ~/.files/Scripts/new_note
-bindsym $mod+n exec $term -e bash -c "stty -ixon && cd ~/Documents/latex/Notes && vim "
+#bindsym $mod+n exec $term -e bash -c "stty -ixon && cd ~/Documents/latex/Notes && vim "
+bindsym $mod+n exec $term2 -x bash -c "stty -ixon && cd ~/Documents/latex/Notes && vim "
 
 # Log
 bindsym $mod+d exec ~/.files/Scripts/new_log
@@ -351,14 +354,26 @@ bindsym $mod+Ctrl+e mode $reboot_choice
 # Mode to select config files
 set $config_choice "Config: (i)3, (V)im, (R)anger, (Z)sh, (X)defaults, (P)ython.vim, t(E)x.vim, (T)mux "
 mode $config_choice{
-	bindsym $mod+v exec $term -T "Config" -e bash -c "stty -ixon && vim ~/.files/vimrc", mode "default" 
-	bindsym $mod+r exec $term -T "Config" -e bash -c "stty -ixon && vim ~/.files/ranger/rc.conf", mode "default"
-	bindsym $mod+z exec $term -T "Config" -e bash -c "stty -ixon && vim ~/.files/zshrc", mode "default"
-	bindsym $mod+i exec $term -T "Config" -e bash -c "stty -ixon && vim ~/.files/i3/config", mode "default"
-	bindsym $mod+x exec $term -T "Config" -e bash -c "stty -ixon && vim ~/.files/Xresources", mode "default"
-	bindsym $mod+p exec $term -T "Config" -e bash -c "stty -ixon && vim ~/.files/vim/ftplugin/python.vim ", mode "default"
-	bindsym $mod+e exec $term -T "Config" -e bash -c "stty -ixon && vim ~/.files/vim/ftplugin/tex.vim", mode "default"
-	bindsym $mod+t exec $term -T "Config" -e bash -c "stty -ixon && vim ~/.files/tmux.conf", mode "default"
+	# bindsym $mod+v exec $term -T "Config" -e bash -c "stty -ixon && vim ~/.files/vimrc", mode "default" 
+	# bindsym $mod+r exec $term -T "Config" -e bash -c "stty -ixon && vim ~/.files/ranger/rc.conf", mode "default"
+	# bindsym $mod+z exec $term -T "Config" -e bash -c "stty -ixon && vim ~/.files/zshrc", mode "default"
+	# bindsym $mod+i exec $term -T "Config" -e bash -c "stty -ixon && vim ~/.files/i3/config", mode "default"
+	# bindsym $mod+x exec $term -T "Config" -e bash -c "stty -ixon && vim ~/.files/Xresources", mode "default"
+	# bindsym $mod+p exec $term -T "Config" -e bash -c "stty -ixon && vim ~/.files/vim/ftplugin/python.vim ", mode "default"
+	# bindsym $mod+e exec $term -T "Config" -e bash -c "stty -ixon && vim ~/.files/vim/ftplugin/tex.vim", mode "default"
+	# bindsym $mod+t exec $term -T "Config" -e bash -c "stty -ixon && vim ~/.files/tmux.conf", mode "default"
+
+    # with gnome terminal
+    bindsym $mod+v exec $term2 -x bash -c "stty -ixon && vim ~/.files/vimrc", mode "default" 
+	bindsym $mod+r exec $term2 -x bash -c "stty -ixon && vim ~/.files/ranger/rc.conf", mode "default"
+	bindsym $mod+z exec $term2 -x bash -c "stty -ixon && vim ~/.files/zshrc", mode "default"
+	bindsym $mod+i exec $term2 -x bash -c "stty -ixon && vim ~/.files/i3/config", mode "default"
+	bindsym $mod+x exec $term2 -x bash -c "stty -ixon && vim ~/.files/Xresources", mode "default"
+	bindsym $mod+p exec $term2 -x bash -c "stty -ixon && vim ~/.files/vim/ftplugin/python.vim ", mode "default"
+	bindsym $mod+e exec $term2 -x bash -c "stty -ixon && vim ~/.files/vim/ftplugin/tex.vim", mode "default"
+	bindsym $mod+t exec $term2 -x bash -c "stty -ixon && vim ~/.files/tmux.conf", mode "default"
+
+    bindsym $mod+o exec $term2 -x bash -c "stty -ixon && cd ~/com_sci/Master_code/Robot && vim"
 	# back to normal: Enter or Escape
 	bindsym Return mode "default"
 	bindsym Escape mode "default"

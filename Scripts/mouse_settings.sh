@@ -4,7 +4,7 @@ for id in `xinput --list|grep 'Microsoft'|perl -ne 'while (m/id=(\d+)/g){print "
     notify-send -t 500  'Mouse fixed'
     # xinput set-prop $id "Device Accel Velocity Scaling" 10
     xinput set-prop $id "Device Accel Constant Deceleration" 2.4
-    xinput set-prop $id "Evdev Scrolling Distance"  -1 1 1
+    xinput set-prop $id "Evdev Scrolling Distance"  1 -1 1
 done
 
 

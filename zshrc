@@ -3,7 +3,7 @@ stty -ixon
 # Export Variables
 export ZSH=/home/erik/.oh-my-zsh
 export KEYTIMEOUT=1
-export TERM="screen-256color"
+#export TERM="screen-256color"
 #export TERM="xterm-256color"
 export EDITOR='vim'
 export USE_EDITOR=$EDITOR
