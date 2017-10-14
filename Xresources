@@ -7,7 +7,7 @@ Xft.rgba:                   rgba
 Xft.hinting:                true
 Xft.hintstyle:              hintslight
 
-URxvt.termName:         rxvt-256color
+URxvt.termName:         screen-256color
 URxvt*termName: screen-256color
 URxvt*loginShell: true
 URxvt*transparent: true
