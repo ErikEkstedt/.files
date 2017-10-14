@@ -27,7 +27,7 @@ cmap w!! %!sudo tee > /dev/null %
 
 """"""""" appearence""""""""""
 set laststatus=2 "always show status bar
-set term=rxvt-256color
+set term=screen-256color
 set t_co=256 "colormode
 if &term =~ "256color"
 	" disable background color erase (bce) so that color schemes
@@ -52,10 +52,11 @@ endif
 
 " colors
 "set background=dark
-"colorscheme monokai-phoenix
-"colorscheme monokai
-colorscheme Tomorrow-Night
-
+" colorscheme monokai-phoenix
+" colorscheme monokai
+" colorscheme Tomorrow-Night
+colorscheme base16-tomorrow-night
+let base16colorspace=256
 " current linenumber color
 "hi CursorLineNr ctermfg=87
 
