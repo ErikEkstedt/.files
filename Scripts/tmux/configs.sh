@@ -1,11 +1,12 @@
 #!/bin/bash
 
+Img=~/.files/icons/red-icon.png
+VIM=~/.files/icons/vim-icon.png
 session="config"
 tmux has-session -t $session 2> /dev/null
 if [ "$?" -eq 1 ] 
 then
-    Img=~/.files/icons/red-icon.png
-    DISPLAY=:0 notify-send -t 3000 --urgency=critical --icon=$Img "Creating Work Session"
+    DISPLAY=:0 notify-send -t 3000 --urgency=critical --icon=$VIM "Creating $session session"
     # set up tmux
     tmux start-server
 
@@ -18,12 +19,11 @@ then
     # Finished setup, attach to the tmux session!
     tmux attach-session -t $session
 else
-    Img=~/.files/icons/check_green.png
     attached=$( tmux ls | grep $session | grep attached)
     if [ -z "$attached" ] 
     then
         killall notify-osd
-        DISPLAY=:0 notify-send -t 3000 --urgency=critical --icon=$Img "Attaching to $session"
+        DISPLAY=:0 notify-send -t 3000 --urgency=critical --icon=$VIM "Attaching to $session"
         tmux attach-session -t $session    
     else
         DISPLAY=:0 notify-send -t 3000 --urgency=critical --icon=$Img "Already attached"
