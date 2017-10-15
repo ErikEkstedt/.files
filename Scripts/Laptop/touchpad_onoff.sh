@@ -10,12 +10,15 @@ T=2000
 Img="/home/erik/.files/icons/check_green.png"
 Img2="/home/erik/.files/icons/red-icon.png"
 #Img2="/usr/share/icons/gnome/256x256/status/user-busy.png"
-if [[ $(xinput list 12 | grep -Ec "disabled") -eq 1 ]]; then
-    xinput enable 12
+
+# xinput list | find line with touchpad | take number before = | cut before [ ----> the Id number
+N=$(xinput list | grep Touchpad | cut -f 2 -d '=' | cut -f 1 -d '[')
+if [[ $(xinput list $N | grep -Ec "disabled") -eq 1 ]]; then
+    xinput enable $N
     killall notify-osd
     DISPLAY=:0 notify-send -t $T --urgency=critical --icon=$Img "Touchpad enabled"
 else
-    xinput disable 12
+    xinput disable $N
     killall notify-osd
     DISPLAY=:0 notify-send -t $T --urgency=critical --icon=$Img2 "Touchpad disabled"
 fi
