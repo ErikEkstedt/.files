@@ -132,6 +132,9 @@ bindsym $mod+o exec $term -e bash -c "stty -ixon && ~/.files/Scripts/tmux/work_t
 #bindsym $mod+o exec $term2 -x bash -c "stty -ixon && cd ~/com_sci/Master_code/Robot && vim"
 #bindsym $mod+o exec $term3 -e bash -c "cd ~/com_sci/Master_code/Robot && tmux -c vim "
 
+# Open config session
+bindsym $mod+c exec $term -e bash -c "stty -ixon && $tcfg", mode "default" 
+
 # Calendar 
 # bindsym $mod+c exec ~/.files/i3/scripts/Calendar.sh
 
@@ -172,7 +175,7 @@ bindsym $mod+Shift+d exec bash ~/.files/Scripts/open_last_log.sh
 bindsym $mod+m exec $term -T "model-tex" -e bash -c "stty -ixon && vim ~/Documents/latex/Project/Master.tex"
 
 # Open Learning doc
-bindsym $mod+c exec $term -T "Learning-tex" -e bash -c "stty -ixon && vim ~/com_sci/Master_code/Learning/docs/docs.tex" 
+#bindsym $mod+c exec $term -T "Learning-tex" -e bash -c "stty -ixon && vim ~/com_sci/Master_code/Learning/docs/docs.tex" 
 
 # Open Installer.sh Computer todo document 
 bindsym $mod+w exec $term -T "Installer" -e bash -c "stty -ixon && vim ~/.files/Installation/Installer", split horizontal, exec $term -T "Readme" -e bash -c "stty -ixon && vim /home/erik/.files/Installation/README.md",
@@ -389,7 +392,6 @@ mode $config_choice{
 	bindsym $mod+e exec $term3 -e bash -c "stty -ixon && vim ~/.files/vim/ftplugin/tex.vim", mode "default"
 	bindsym $mod+t exec $term3 -e bash -c "stty -ixon && vim ~/.files/tmux.conf", mode "default"
     bindsym $mod+o exec $term3 -e bash -c "stty -ixon && cd ~/com_sci/Master_code/Robot && vim"
-    bindsym $mod+c exec $term -e bash -c "stty -ixon && $tcfg", mode "default" 
 
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
