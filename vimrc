@@ -36,6 +36,7 @@ if &term =~ "256color"
 	set t_ut=
 endif
 " interesting for colors. (urxvt and wal)colors becomes that of terminal.
+
 set termguicolors
 let &t_8f="\e[38;2;%ld;%ld;%ldm"
 let &t_8b="\e[48;2;%ld;%ld;%ldm"

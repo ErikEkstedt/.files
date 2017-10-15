@@ -104,7 +104,7 @@ for_window [class="URxvt" title="browser"] mark "browser" move scratchpad
 ############## TERMINAL ###########################
 bindsym $mod+Return exec $term 
 bindsym $mod+Shift+Return exec $term -T "scratchTerm"
-bindsym $mod+r exec $term -e sh -c "stty -ixon && ranger"
+bindsym $mod+r exec $term -e bash -c "stty -ixon && ~/.files/Scripts/tmux/ranger.sh"
 
 # Open floating terminal
 bindsym $mod+t exec --no-startup-id $term -T "metaTerm"
@@ -113,7 +113,7 @@ resize grow left 120, resize grow right 120, \
 resize grow down 250, resize grow up 250
 
 # Open a floating ranger terminal
-bindsym $mod+Shift+r exec $term -T "rangerTerm" -e bash -c "stty -ixon && ranger"
+bindsym $mod+Shift+r exec $term -T "rangerTerm" -e bash -c "stty -ixon && ~/.files/Scripts/tmux/ranger.sh"
 for_window [class="URxvt" title="rangerTerm"] floating enable, \
 resize grow left 300, resize grow right 300, \
 resize grow down 150, resize grow up 100 
@@ -128,8 +128,9 @@ bindsym $mod+s [con_mark="music"] scratchpad show
 
 bindsym $mod+a exec bash ~/.files/Scripts/Laptop/touchpad_onoff.sh
 #bindsym $mod+o exec $term -e bash -c "stty -ixon && cd ~/com_sci/Master_code/Robot && vim "  
+bindsym $mod+o exec $term -e bash -c "stty -ixon && ~/.files/Scripts/tmux/work_tmux.sh" 
 #bindsym $mod+o exec $term2 -x bash -c "stty -ixon && cd ~/com_sci/Master_code/Robot && vim"
-bindsym $mod+o exec $term3 -e bash -c "stty -ixon && cd ~/com_sci/Master_code/Robot && tmux -c vim"
+#bindsym $mod+o exec $term3 -e bash -c "cd ~/com_sci/Master_code/Robot && tmux -c vim "
 
 # Calendar 
 # bindsym $mod+c exec ~/.files/i3/scripts/Calendar.sh
@@ -365,8 +366,10 @@ mode $reboot_choice{
 
 bindsym $mod+Ctrl+e mode $reboot_choice
 
+set $tcfg ~/.files/Scripts/tmux/configs.sh
+
 # Mode to select config files
-set $config_choice "Config: (i)3, (V)im, (R)anger, (Z)sh, (X)defaults, (P)ython.vim, t(E)x.vim, (T)mux "
+set $config_choice "Config: (i)3, (V)im, (R)anger, (Z)sh, (X)defaults, (P)ython.vim, t(E)x.vim, (T)mux, (C)onfig folder in vim "
 mode $config_choice{
 	# bindsym $mod+v exec $term -T "Config" -e bash -c "stty -ixon && vim ~/.files/vimrc", mode "default" 
 	# bindsym $mod+r exec $term -T "Config" -e bash -c "stty -ixon && vim ~/.files/ranger/rc.conf", mode "default"
@@ -386,7 +389,8 @@ mode $config_choice{
 	bindsym $mod+e exec $term3 -e bash -c "stty -ixon && vim ~/.files/vim/ftplugin/tex.vim", mode "default"
 	bindsym $mod+t exec $term3 -e bash -c "stty -ixon && vim ~/.files/tmux.conf", mode "default"
     bindsym $mod+o exec $term3 -e bash -c "stty -ixon && cd ~/com_sci/Master_code/Robot && vim"
-	# back to normal: Enter or Escape
+    bindsym $mod+c exec $term -e bash -c "stty -ixon && $tcfg", mode "default" 
+
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
 }

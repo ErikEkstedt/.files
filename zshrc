@@ -52,6 +52,7 @@ alias onescreen="xrandr --output eDP-1 --auto --output HDMI-2 --off; feh --bg-sc
 # Terminal stuff
 alias tmux="TERM=screen-256color-bce /usr/bin/tmux"
 alias ru="xrdb -load ~/.Xresources"
+alias twork="sh ~/.files/Scripts/tmux/start_tmux.sh"
 
 # Mount Usb Stick
 #alias mountusb="sudo mount -t vfat /dev/sdb1 /media/usb_stick -o uid=1000,gid=1000,utf8,dmask=027,fmask=137 ; cd /media/usb_stick; ls"

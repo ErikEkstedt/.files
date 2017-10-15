@@ -8,9 +8,10 @@ Xft.hinting:                true
 Xft.hintstyle:              hintslight
 
 URxvt.termName:         screen-256color
-URxvt*termName: screen-256color
+URxvt*termName:         screen-256color
 URxvt*loginShell: true
 URxvt*transparent: true
+
 URxvt*shading: 30
 URxvt.intensityStyles:	false
 ! URxvt.background: [70]#000000
@@ -36,15 +37,14 @@ URxvt*iso14755: False
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 
-URxvt.resize-font.smaller: C-Down
-URxvt.resize-font.bigger: C-Up
+URxvt.resize-font.smaller: C-minus
+URxvt.resize-font.bigger: C-plus
 
 ! rofi settings
 rofi.fake-transparency:	true
 rofi.bw:		0
 rofi.opacity:		"10"
 rofi.hide-scrollbar:	true
-
 rofi.kb-remove-to-eol: Control+p 
 rofi.kb-accept-entry: Return,KP_Enter
 rofi.kb-row-up: Control+k
