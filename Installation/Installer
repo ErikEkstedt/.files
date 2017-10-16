@@ -65,7 +65,7 @@ echo                        Done!
 echo "########################################################"
 echo 
 echo                "Installing tex-live (this could take a while)"
-sudo apt-get install texlive-full -yyqq
+sudo apt-get install texlive-full -y
 
 ############################################################################
 echo "\n \n \n"
