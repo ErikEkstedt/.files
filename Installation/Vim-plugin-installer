@@ -24,7 +24,7 @@ git clone https://github.com/Valloric/YouCompleteMe.git
 cd YouCompleteMe
 git submodule update --init --recursive'
 # Python needs to be same version as vim was compiled with.
-python install.py -clang-completer
+python install.py
 
 echo "###############################################"
 echo
