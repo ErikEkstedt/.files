@@ -22,8 +22,9 @@ sudo apt-get install build-essetial cmake -y
 sudo apt-get install python-dev python3-dev
 git clone https://github.com/Valloric/YouCompleteMe.git
 cd YouCompleteMe
-git submodule update --init --recursive
-./install.py -clang-completer
+git submodule update --init --recursive'
+# Python needs to be same version as vim was compiled with.
+python install.py -clang-completer
 
 echo "###############################################"
 echo
