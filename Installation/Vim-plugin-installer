@@ -24,7 +24,10 @@ git clone https://github.com/Valloric/YouCompleteMe.git
 cd YouCompleteMe
 git submodule update --init --recursive'
 # Python needs to be same version as vim was compiled with.
+# check "vim --version" for +python3
 python install.py
+# If it brakes, read the logs and maybe
+# conda install libgcc (python=3.5)
 
 echo "###############################################"
 echo
