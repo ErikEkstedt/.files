@@ -26,6 +26,11 @@ echo "                      Done!"
 echo "########################################################"
 echo "Installing tqdm"
 pip install tqdm
+
+echo "apt-get install gym dependencies"
+sudo apt-get install xvfb libav-tools xorg-dev libsdl2-dev swig cmake
+echo "Pip Installing Gym"
+pip install 'gym[all]'
 echo "########################################################"
 echo "                      Done!"
 echo "########################################################"

@@ -5,7 +5,6 @@
 
 Scripts that installs everything from the ground up.
 
-
 ### [Scripts](https://github.com/eeckee/.files/tree/master/Scripts "Scripts directory")
 Here are all small scripts that are used from laptop settings to log entries.
 
@@ -23,3 +22,7 @@ Oh how I love you.
 
 ## Config files
 All config files that I use. I think.
+
+# Todo:
+* Script that starts a terminal and run mountdesk and ssh to desktop. 
+* Scripts for tmux integration like work_tmux for Notes, logs, todo, calendar.
