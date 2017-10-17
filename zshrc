@@ -172,6 +172,5 @@ if [ "$TMUX" = "" ]; then tmux new ; fi
 # ( ) # Hide shell job control messages.
 # (wal -r &)
 
-
-
+# fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -17,10 +17,11 @@ echo "########################################################"
 echo
 echo "               Downgrading ipython (for slimux)"
 pip install --upgrade --force-reinstall ipython==4.2.1
+
 echo "                      Done!"
 echo "########################################################"
-echo "Installing pytorch with cuda support" 
-conda install pytorch torchvision cuda80 -c soumith
+echo "Installing pytorch without cuda support" 
+conda install pytorch torchvision -c soumith
 echo "########################################################"
 echo "                      Done!"
 echo "########################################################"

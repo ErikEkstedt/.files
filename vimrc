@@ -1,9 +1,10 @@
-"""""""""""plugins""""""""""""""""""""
 """"""""""""" SETTING"""""""""""""""" 
 "pathogen vim modules stuff
 filetype off
 execute pathogen#infect()
 Helptags
+" fzf path
+set rtp+=~/.fzf
 
 filetype plugin on
 filetype plugin indent on
@@ -217,10 +218,7 @@ au! bufnewfile,bufread *.py
 	set fileformat=unix
 
 " indentation for js, htmlm css
-au bufnewfile,bufread *.js, *.html, *.css
-    \ set tabstop=2
-    \ set softtabstop=2
-    \ set shiftwidth=2
+au bufnewfile,bufread *.js, *.html, *.css set tabstop=2 set softtabstop=2 set shiftwidth=2
 
 """""""""""""""""""mappings""""""""""""""""""""""
 " edit config files
@@ -293,7 +291,6 @@ nnoremap <silent> g$ :<c-u>tablast<cr>
 " select last paste
 nnoremap <expr> gp '`['.strpart(getregtype(), 0, 1).'`]'
 
-" copy / paste
 set pastetoggle=<f2> " system clipboard pastes preserves indentation
 nnoremap <c-a> ggvg$
 nnoremap Y y$
@@ -445,4 +442,24 @@ let python_highlight_all = 1
 let vim_markdown_preview_github=1
 let vim_markdown_preview_hotkey='<C-m>'
 let vim_markdown_preview_browser='Google Chrome'
-let vim_markdown_preview_toggle=2
+" let vim_markdown_preview_toggle=2 " I believe this was to preview on save
+" but I save more than I wish to preview
+
+" FZF
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+nnoremap <Leader>gg :Lines<CR>
+nnoremap <Leader>gs :GFiles?<CR>
