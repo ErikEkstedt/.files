@@ -384,7 +384,7 @@ mode $config_choice{
 	# bindsym $mod+e exec $term -T "Config" -e bash -c "stty -ixon && vim ~/.files/vim/ftplugin/tex.vim", mode "default"
 	# bindsym $mod+t exec $term -T "Config" -e bash -c "stty -ixon && vim ~/.files/tmux.conf", mode "default"
 
-    bindsym $mod+v exec $term3 -e bash -c "stty -ixon && vim ~/.files/vimrc", mode "default" 
+    bindsym $mod+v exec $term3 -e bash -c "stty -ixon && vim ~/.files/vimrc", mode "default"
 	bindsym $mod+r exec $term3 -e bash -c "stty -ixon && vim ~/.files/ranger/rc.conf", mode "default"
 	bindsym $mod+z exec $term3 -e bash -c "stty -ixon && vim ~/.files/zshrc", mode "default"
 	bindsym $mod+i exec $term3 -e bash -c "stty -ixon && vim ~/.files/i3/config", mode "default"

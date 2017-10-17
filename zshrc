@@ -155,7 +155,8 @@ alias ggit="cd ~/git-clones; ls"
 alias wnvi="watch nvidia-smi"
 # SSH % Wakeonlan
 alias wake="wakeonlan -i 213.113.208.169 38:d5:47:14:d3:a1" 
-alias mountdesk="sshfs -p 2002 -o ssh_command='ssh -i /home/erik/.ssh//id_rsa' erik@213.113.208.169:/home/erik/ /home/erik/Desktop-home"
+alias sshhome="ssh erik@213.113.208.169"
+alias mountdesk="sshfs -p 2002 -o ssh_command='ssh -i /home/erik/.ssh//id_rsa.pub' erik@213.113.208.169:/home/erik/ /home/erik/Desktop-home"
 alias umountdesk="sudo umount /home/erik/Desktop"
 alias sshwork="ssh Erik@130.238.17.189"
 
@@ -172,5 +173,5 @@ if [ "$TMUX" = "" ]; then tmux new ; fi
 # ( ) # Hide shell job control messages.
 # (wal -r &)
 
-# fzf
+# FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

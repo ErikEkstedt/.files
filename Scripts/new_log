@@ -3,22 +3,22 @@
 DATE=`date +%Y-%m-%d`
 FILE=$DATE".tex"     
 # define notification image
-Img=/usr/share/icons/gnome/256x256/apps/accessories-text-editor.png
+Vim=/home/erik/.files/icons/vim-icon.png
 
 cd ~/Documents/latex/Logs/
 # todo: change htop here to "Week overview"
 #   sleep 2 command is not nice. force zathura to name windows
 if [ -f $FILE ]; then
     #File exists, open file
-    DISPLAY=:0 notify-send -t 2000 --urgency=critical --icon=$Img "Todays Log entry"
-    urxvt -e bash -c "stty -ixon && vim $FILE" &
-    #konsole -e bash -c "stty -ixon && cd ~/Documents/latex/Logs && vim $FILE " &
+    DISPLAY=:0 notify-send -t 2000 --urgency=critical --icon=$Vim "Todays Log entry"
+    #urxvt -e bash -c "stty -ixon && vim $FILE" &
+    konsole -e bash -c "stty -ixon && cd ~/Documents/latex/Logs && vim $FILE " &
 else
     # File does not exist, create file
-    DISPLAY=:0 notify-send -t 2000 --urgency=critical --icon=$Img "Todays Log entry"
+    DISPLAY=:0 notify-send -t 2000 --urgency=critical --icon=$Vim "Todays Log entry"
     cp ~/Documents/latex/LaTeX/Log_base.tex ~/Documents/latex/Logs/"$FILE"
-    urxvt -e bash -c "stty -ixon && vim $FILE" &
-    # konsole -e bash -c "stty -ixon && cd ~/Documents/latex/Logs && vim $FILE " &
+    #urxvt -e bash -c "stty -ixon && vim $FILE" &
+    konsole -e bash -c "stty -ixon && cd ~/Documents/latex/Logs && vim $FILE " &
 fi
 
 

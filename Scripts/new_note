@@ -10,17 +10,17 @@ if [ -z "$FILE" ]; then
     exit 1
 fi
 
-Img=~/.files/icons/check_green.png
+Vim=~/.files/icons/vim-icon.png
 if [ -f $FILE ]; then
     #File exists, open file
-    DISPLAY=:0 notify-send -t 3000 --urgency=critical --icon=$Img "Opening $FILE"
+    DISPLAY=:0 notify-send -t 3000 --urgency=critical --icon=$Vim "Opening $FILE"
     urxvt -e bash -c "stty -ixon && vim $FILE" &
 else
     ans=$( echo -e "Yes \n No" | rofi -dmenu -i -p "Wish to create $FILE ? " )
     if [ $ans == 'Yes' ]; then
         # Safety check
         cp ~/Documents/latex/LaTeX/Note_base.tex ~/Documents/latex/Notes/"$FILE"
-        DISPLAY=:0 notify-send -t 3000 --urgency=critical --icon=$Img "Created $FILE"
+        DISPLAY=:0 notify-send -t 3000 --urgency=critical --icon=$Vim "Created $FILE"
         urxvt -e bash -c "stty -ixon && vim $FILE" &
     else
         exit 1
