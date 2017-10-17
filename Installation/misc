@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Urxvt
+
+# Resize font perl-script in a folder where urxvt looks.
+cd /usr/lib/urxvt/perl
+sudo wget https://raw.githubusercontent.com/simmel/urxvt-resize-font/master/resize-font
