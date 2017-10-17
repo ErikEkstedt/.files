@@ -131,3 +131,8 @@ export PATH="/home/erik/anaconda3/bin:$PATH"
 
 # added by Anaconda3 4.4.0 installer
 export PATH="/home/erik/anaconda3/bin:$PATH"
+
+# added by Anaconda3 4.4.0 installer
+export PATH="/home/erik/anaconda3/bin:$PATH"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

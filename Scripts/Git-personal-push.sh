@@ -13,6 +13,8 @@ dir0="/home/erik/.files"
 dir1="/home/erik/com_sci/Master_code/Robot"
 dir2="/home/erik/Documents/latex"
 dir3="/home/erik/com_sci/Master_code/Learning"
+dir4="/home/erik/com_sci/Ideas/Computer_interface"
+dir5="/home/erik/com_sci/Ideas/ParamMass"
 
 for directory in $dir0 $dir1 $dir2 $dir3
 do
@@ -20,7 +22,7 @@ do
 	if [ -d "$directory/.git" ] 
     then
 		cd $directory
-        echo cleaning crap...
+        echo cleaning crap in $directory
         exec $Clean &
         echo "Git Push"
 		git add .

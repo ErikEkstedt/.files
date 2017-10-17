@@ -280,10 +280,11 @@ bindsym Shift+XF86AudioMute exec pactl set-sink-mute 1 toggle
 bindsym XF86MonBrightnessUp exec ~/.files/Scripts/Laptop/screen_bright -u
 bindsym XF86MonBrightnessDown exec ~/.files/Scripts/Laptop/screen_bright -d
 
+
 # Intel brightness
 bindsym Shift+XF86MonBrightnessDown exec sudo ~/.files/Scripts/Laptop/intel_screen_bright_min 
 bindsym Ctrl+XF86MonBrightnessDown exec sudo ~/.files/Scripts/Laptop/intel_screen_bright_mid 
-bindsym Shift+XF86MonBrightnessUp exec sudo ~/.files/Scripts/Laptop/intel_screen_bright_max
+bindsym Shift+XF86MonBrightnessUp exec sudo ~/.files/Scripts/Laptop/screen_bright
 
 # key brightness
 bindsym XF86KbdBrightnessUp exec sudo ~/.files/Scripts/Laptop/backlit_keys 
@@ -383,7 +384,7 @@ mode $config_choice{
 	# bindsym $mod+e exec $term -T "Config" -e bash -c "stty -ixon && vim ~/.files/vim/ftplugin/tex.vim", mode "default"
 	# bindsym $mod+t exec $term -T "Config" -e bash -c "stty -ixon && vim ~/.files/tmux.conf", mode "default"
 
-    bindsym $mod+v exec $term3 -e bash -c "stty -ixon && vim ~/.files/vimrc", mode "default" 
+    bindsym $mod+v exec $term3 -e bash -c "stty -ixon && vim ~/.files/vimrc", mode "default"
 	bindsym $mod+r exec $term3 -e bash -c "stty -ixon && vim ~/.files/ranger/rc.conf", mode "default"
 	bindsym $mod+z exec $term3 -e bash -c "stty -ixon && vim ~/.files/zshrc", mode "default"
 	bindsym $mod+i exec $term3 -e bash -c "stty -ixon && vim ~/.files/i3/config", mode "default"

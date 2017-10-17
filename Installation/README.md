@@ -19,11 +19,10 @@
 
 | Scripts       | Description   | 
 | ------------- |:-------------:| 
-| Installer      | Installs basic apps and i3 + i3-gaps. Links all config files. | 
-| i3-gaps-installer| Installs Pathogen and the plugins/colors I use for vim | 
+| Installer      | Installs basic apps and i3. + i3-gaps. Links all config files. | 
+| i3-gaps-installer| i3-gaps | 
 | Vim-plugin-installer  | Installs Pathogen and the plugins/colors I use for vim | 
 | pywal-installer | Installs dependencies for pywal and clones the pywal repo <br> into ~/Programs/pywal and installs | 
 | Conda-installer  | Installs Anaconda, pip and machine learning frameworks I like |
 | git-ssh-setup  | Sets up an ssh id in ~/.ssh and copies to clipboard. Paste in Github ssh settings |
 
-| CUDA-INSTALLER  | Explains how and contains some helpful scripts  |
