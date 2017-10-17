@@ -280,10 +280,11 @@ bindsym Shift+XF86AudioMute exec pactl set-sink-mute 1 toggle
 bindsym XF86MonBrightnessUp exec ~/.files/Scripts/Laptop/screen_bright -u
 bindsym XF86MonBrightnessDown exec ~/.files/Scripts/Laptop/screen_bright -d
 
+
 # Intel brightness
 bindsym Shift+XF86MonBrightnessDown exec sudo ~/.files/Scripts/Laptop/intel_screen_bright_min 
 bindsym Ctrl+XF86MonBrightnessDown exec sudo ~/.files/Scripts/Laptop/intel_screen_bright_mid 
-bindsym Shift+XF86MonBrightnessUp exec sudo ~/.files/Scripts/Laptop/intel_screen_bright_max
+bindsym Shift+XF86MonBrightnessUp exec sudo ~/.files/Scripts/Laptop/screen_bright
 
 # key brightness
 bindsym XF86KbdBrightnessUp exec sudo ~/.files/Scripts/Laptop/backlit_keys 

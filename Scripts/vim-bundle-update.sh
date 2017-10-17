@@ -6,6 +6,7 @@ cd ~/.vim/bundle
 
 for directory in `ls ~/.vim/bundle`
 do
+    echo "----------------------------------------"
 	echo "Checking for $directory update..."
 	if [ -d "$directory/.git" ]
        	then
@@ -17,4 +18,7 @@ do
 	fi
 	echo
 done
+
+echo "Updating fzf"
+cd ~/.fzf && git pull && ./install
 exit 0

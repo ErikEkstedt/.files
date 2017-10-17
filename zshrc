@@ -173,3 +173,5 @@ if [ "$TMUX" = "" ]; then tmux new ; fi
 # (wal -r &)
 
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

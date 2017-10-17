@@ -17,14 +17,19 @@ git clone https://github.com/christoomey/vim-tmux-navigator.git
 git clone --depth=1 https://github.com/vim-syntastic/syntastic.git
 git clone https://github.com/scrooloose/nerdtree.git
 
+
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
 # YouCompleteMe
 sudo apt-get install build-essetial cmake -y
 sudo apt-get install python-dev python3-dev
 git clone https://github.com/Valloric/YouCompleteMe.git
 cd YouCompleteMe
-git submodule update --init --recursive'
+git submodule update --init --recursive
 # Python needs to be same version as vim was compiled with.
 # check "vim --version" for +python3
+
 python install.py
 # If it brakes, read the logs and maybe
 # conda install libgcc (python=3.5)
