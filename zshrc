@@ -156,7 +156,7 @@ alias wnvi="watch nvidia-smi"
 # SSH % Wakeonlan
 alias wake="wakeonlan -i 213.113.208.169 38:d5:47:14:d3:a1" 
 alias sshhome="ssh erik@213.113.208.169"
-alias mountdesk="sshfs -p 2002 -o ssh_command='ssh -i /home/erik/.ssh//id_rsa.pub' erik@213.113.208.169:/home/erik/ /home/erik/Desktop-home"
+alias mountdesk="sshfs -p 2002 -o ssh_command='ssh -i /home/erik/.ssh//id_rsa' erik@213.113.208.169:/home/erik/ /home/erik/Desktop-home"
 alias umountdesk="sudo umount /home/erik/Desktop"
 alias sshwork="ssh Erik@130.238.17.189"
 
