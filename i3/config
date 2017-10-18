@@ -123,17 +123,31 @@ resize grow down 150, resize grow up 100
 bindsym $mod+g exec $Browser 
 bindsym $mod+y exec $Browser --app=https://www.youtube.com
 bindsym $mod+Shift+f exec $Browser --app=https://www.facebook.com
+# scratchpad. todo: toggle a chrome instance, spotify and terminal with different keys. alt-tab showseverything.
 bindsym $mod+shift+s exec $Music, move scratchpad
 bindsym $mod+s [con_mark="music"] scratchpad show
+# todo: bindsym $mod+shift+s exec $Browser #name-title-window-instance#, move scratchpad.
+# todo: bindsym $mod+s [con_mark="scratch_browser"] scratchpad show
 
 bindsym $mod+a exec bash ~/.files/Scripts/Laptop/touchpad_onoff.sh
+
+# Open tmux sessions
+set $tmuxscripts ~/.files/Scripts/tmux
+bindsym $mod+n exec $term -e bash -c "stty -ixon && $tmuxscripts/notes_tmux.sh"
+bindsym $mod+c exec $term -e bash -c "stty -ixon && $tmuxscripts/config_tmux.sh"
+bindsym $mod+o exec $term -e bash -c "stty -ixon && $tmuxscripts/work_tmux.sh"
 #bindsym $mod+o exec $term -e bash -c "stty -ixon && cd ~/com_sci/Master_code/Robot && vim "  
-bindsym $mod+o exec $term -e bash -c "stty -ixon && ~/.files/Scripts/tmux/work_tmux.sh" 
 #bindsym $mod+o exec $term2 -x bash -c "stty -ixon && cd ~/com_sci/Master_code/Robot && vim"
 #bindsym $mod+o exec $term3 -e bash -c "cd ~/com_sci/Master_code/Robot && tmux -c vim "
+# Notes
+bindsym $mod+Shift+n exec ~/.files/Scripts/new_note
+#bindsym $mod+n exec $term -e bash -c "stty -ixon && cd ~/Documents/latex/Notes && vim "
+#bindsym $mod+n exec $term2 -x bash -c "stty -ixon && cd ~/Documents/latex/Notes && vim "
+#bindsym $mod+n exec $term3 -e bash -c "stty -ixon && cd ~/Documents/latex/Notes && vim "
 
-# Open config session
-bindsym $mod+c exec $term -e bash -c "stty -ixon && $tcfg", mode "default" 
+# Log
+bindsym $mod+d exec ~/.files/Scripts/new_log
+bindsym $mod+Shift+d exec bash ~/.files/Scripts/open_last_log.sh
 
 # Calendar 
 # bindsym $mod+c exec ~/.files/i3/scripts/Calendar.sh
@@ -153,35 +167,10 @@ run -font "ubuntu mono 18" -fg "#505050"  \
 # Workflow
 bindsym $mod+q exec ~/.files/i3/scripts/workflow.sh
 
-###################################################################################
-# LATEX - Documents
-###################################################################################
-
-# Notes
-bindsym $mod+Shift+n exec ~/.files/Scripts/new_note
-#bindsym $mod+n exec $term -e bash -c "stty -ixon && cd ~/Documents/latex/Notes && vim "
-#bindsym $mod+n exec $term2 -x bash -c "stty -ixon && cd ~/Documents/latex/Notes && vim "
-bindsym $mod+n exec $term3 -e bash -c "stty -ixon && cd ~/Documents/latex/Notes && vim "
-
-# Log
-bindsym $mod+d exec ~/.files/Scripts/new_log
-bindsym $mod+Shift+d exec bash ~/.files/Scripts/open_last_log.sh
-
-# open terminal at project directory
-#bindsym $mod+u exec $term -cd ~/com_sci/Master_code/Robot
-# bindsym $mod+u exec $term3 -e bash -c "stty -ixon && cd ~/com_sci/Master_code/Robot && vim "
-
 # Open Model doc
 bindsym $mod+m exec $term -T "model-tex" -e bash -c "stty -ixon && vim ~/Documents/latex/Project/Master.tex"
-
-# Open Learning doc
-#bindsym $mod+c exec $term -T "Learning-tex" -e bash -c "stty -ixon && vim ~/com_sci/Master_code/Learning/docs/docs.tex" 
-
-# Open Installer.sh Computer todo document 
-bindsym $mod+w exec $term -T "Installer" -e bash -c "stty -ixon && vim ~/.files/Installation/Installer", split horizontal, exec $term -T "Readme" -e bash -c "stty -ixon && vim /home/erik/.files/Installation/README.md",
-
-#bindsym $mod+i exec $term -T "Ideas" -e bash -c "stty -ixon && vim ~/Documents/latex/Project/Ideas.tex"
 bindsym $mod+i exec $term3 -T "Ideas" -e bash -c "stty -ixon && vim ~/Documents/latex/Project/Ideas.tex"
+#bindsym $mod+i exec $term -T "Ideas" -e bash -c "stty -ixon && vim ~/Documents/latex/Project/Ideas.tex"
 
 # Open bibtex document 
 bindsym $mod+b exec $term -T "bib-term" -e bash -c "stty -ixon && vim ~/Documents/latex/References.bib"
@@ -370,7 +359,6 @@ mode $reboot_choice{
 
 bindsym $mod+Ctrl+e mode $reboot_choice
 
-set $tcfg ~/.files/Scripts/tmux/configs.sh
 
 # Mode to select config files
 set $config_choice "Config: (i)3, (V)im, (R)anger, (Z)sh, (X)defaults, (P)ython.vim, t(E)x.vim, (T)mux, (C)onfig folder in vim "

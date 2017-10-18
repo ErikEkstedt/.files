@@ -3,6 +3,7 @@
 filetype off
 execute pathogen#infect()
 Helptags
+
 " fzf path
 set rtp+=~/.fzf
 
@@ -215,14 +216,14 @@ au! bufnewfile,bufread *.py
 	set shiftwidth=4
 	set expandtab
 	set autoindent
-	set fileformat=unix
+	"set fileformat=unix
 
 " indentation for js, htmlm css
 au bufnewfile,bufread *.js, *.html, *.css set tabstop=2 set softtabstop=2 set shiftwidth=2
 
 """""""""""""""""""mappings""""""""""""""""""""""
 " edit config files
-" mak function that opens vimrc in vsplit left after changing the layout to
+" make function that opens vimrc in vsplit left after changing the layout to
 " fullscreen (i3?).
 nnoremap <leader>ev :vsplit ~/.vimrc<cr>
 nnoremap <leader>ez :tabnew ~/.zshrc<cr>
@@ -234,7 +235,7 @@ nnoremap <leader>ebib :tabnew ~/documents/latex/references.bib<cr>
 nnoremap <leader>epy :tabnew ~/.vim/ftplugin/python.vim<cr>
 nnoremap <leader>ete :tabnew ~/.vim/ftplugin/tex.vim<cr>
 
-" source config files
+" " source config files
 nnoremap <leader>si3 :source ~/.config/i3/config<cr>
 nnoremap <leader>sv :source ~/.vimrc<cr>
 nnoremap <leader>sz :source ~/.zshrc<cr>
@@ -263,7 +264,6 @@ nnoremap <leader>å :hi normal ctermfg=255<cr>
 map ö {
 map ä }
 
-
 " Abbreviations
 cnoreabbrev Wq wq
 cnoreabbrev WQ wq
@@ -272,8 +272,23 @@ cnoreabbrev Q q
 cnoreabbrev <expr> h getcmdtype() == ":" && getcmdline() == 'h' ? 'tab help' : 'h'
 cnoreabbrev <expr> q getcmdtype() == ":" && getcmdline() == 'q' ? 'q' : 'q'
 
-" convenience
+""""" convenience""""""
 map <cr> o<esc>
+nnoremap <leader>n :set hlsearch!<cr>
+" toggle fold
+nnoremap <leader>r :call Toggle_MaxMinFold()<CR>
+
+let g:fold_max=1
+function! Toggle_MaxMinFold()
+    echo "hello"
+    if g:fold_max == 0
+		let g:fold_max=1
+        :normal zM
+	else
+		let g:fold_max=0
+        :normal zR
+	endif
+endfunc
 
 "alternate keys for indenting/unindenting
 inoremap <s-tab> <esc><lt><lt>i
@@ -292,7 +307,9 @@ nnoremap <silent> g$ :<c-u>tablast<cr>
 nnoremap <expr> gp '`['.strpart(getregtype(), 0, 1).'`]'
 
 set pastetoggle=<f2> " system clipboard pastes preserves indentation
-nnoremap <c-a> ggvg$
+"
+" " <c-a> 
+nnoremap <leader>a ggvG$
 nnoremap Y y$
 nnoremap S viw"0p
 
@@ -304,6 +321,7 @@ nnoremap <c-y> "+yy
 vnoremap <c-y> "+y
 
 nnoremap <f10> :set relativenumber!<cr>
+
 """""""""""""""movement"""""""""""""
 " move up and down naturally even if lines 
 " extends over multiple rows
@@ -312,7 +330,7 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
-" Move between splits
+"Move between splits
 nnoremap <c-h> <c-w><c-h>
 nnoremap <c-l> <c-w><c-l>
 nnoremap <c-k> <c-w><c-k>
@@ -328,7 +346,7 @@ vnoremap <c-l> <esc><c-w><c-l>gv
 vnoremap <c-j> <esc><c-w><c-j>gv
 vnoremap <c-k> <esc><c-w><c-k>gv
 
-" Resize splits
+" " Resize splits
 nnoremap <Leader>q :vertical resize -5<CR>
 nnoremap <Leader>w :vertical resize +5<CR>
 
@@ -342,8 +360,9 @@ vnoremap tp y<esc>gt<esc>gpggtgv<esc>
 let g:netrw_banner = 0 "no banner
 let g:netrw_liststyle = 3 
 let g:netrw_sort_sequence = '[\/]$,*' " sort is affecting only: directories on the top, files below
+
 nnoremap <leader>tt :Texplore<cr>
-nnoremap <leader>ex :Explore<cr>
+noremap <leader>ex :Explore<cr>
 nnoremap <leader>vv :Vexplore<cr>
 nnoremap <leader>hh :Hexplore<cr>
 
@@ -358,14 +377,14 @@ nnoremap <leader>lo :errors<cr>
 nnoremap gj <esc>/<++><enter>"_c4l
 vnoremap gj <esc>/<++><enter>"_c4l
 inoremap gj <esc>/<++><enter>"_c4l
-
+"
 " Togle fold
 nnoremap ga za
 
 "Spellcheck
 map <F6> :setlocal spell! spelllang=en_us<CR>
 
-"""""""""""PLUGINS""""""""""""""""""""
+"""""""""""PLUGIN SETTINGS""""""""""""""""""""
 " slimux.vim
 nnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>
 vnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>gv<Esc>zz

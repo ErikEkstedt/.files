@@ -2,7 +2,7 @@
 
 Img=~/.files/icons/red-icon.png
 VIM=~/.files/icons/vim-icon.png
-session="config"
+session="Config"
 tmux has-session -t $session 2> /dev/null
 if [ "$?" -eq 1 ] 
 then
@@ -15,7 +15,7 @@ then
 
     # Select pane 1, set dir to gfi (zsh alias) , run vim
     tmux selectp -t 1 
-    tmux send-keys "gfi;vim" C-m 
+    tmux send-keys "~/.files;vim" C-m 
     # Finished setup, attach to the tmux session!
     tmux attach-session -t $session
 else
