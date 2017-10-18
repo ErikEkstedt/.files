@@ -46,7 +46,12 @@ alias b_low="echo 100>/sys/class/backlight/intel_backlight/brightness"
 alias b_mid="echo 500>/sys/class/backlight/intel_backlight/brightness"
 alias b_max="echo 937>/sys/class/backlight/intel_backlight/brightness"
 
-alias multscreen="xrandr --output eDP-1 --auto --output HDMI-2 --auto --above eDP-1; feh --bg-scale ~/.config/wall.png "
+
+alias multscreen_laptop="xrandr --output eDP-1 --auto --output HDMI-2 --auto --above eDP-1; feh --bg-scale ~/.config/wall.png "
+
+alias multscreen_desk="xrandr --output DP-0 --auto --output HDMI-0 -s 1920x1080; feh --bg-scale ~/.config/wall.png "
+
+
 alias onescreen="xrandr --output eDP-1 --auto --output HDMI-2 --off; feh --bg-scale ~/.config/wall.png"
 
 # Terminal stuff
@@ -159,6 +164,9 @@ alias sshhome="ssh erik@213.113.208.169"
 alias mountdesk="sshfs -p 2002 -o ssh_command='ssh -i /home/erik/.ssh//id_rsa' erik@213.113.208.169:/home/erik/ /home/erik/Desktop-home"
 alias umountdesk="sudo umount /home/erik/Desktop"
 alias sshwork="ssh Erik@130.238.17.189"
+
+alias tv_size=" xrandr -s 1080x1920"
+alias desktop_size=" xrandr -s 1440"
 
 # Background color/terminal ui-color 
 alias bgw="cd ~/Pictures/wallpaper && ./bg_wal  ~/.config/wall.png"
