@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Needed for script to work.
+# sudo vim /etc/sudoers  (make writeable: sudo chmod +w)
+# and add lines to make this script executable with sudo rights without password.
+# example:
+# [USERNAME] [Host]=(root) NOPASSWD: /path/to/file
+# erik ALL=(root) NOPASSWD: /home/erik/.files/Scripts/Laptop/screen_bright
+
+current=$(cat /sys/class/backlight/intel_backlight/brightness)
+if [[ $current == 500 ]]; then
+    bright=937
+    sudo echo $bright > /sys/class/backlight/intel_backlight/brightness
+elif [[ $current == 937 ]]; then
+    bright=100
+    sudo echo $bright > /sys/class/backlight/intel_backlight/brightness
+elif [[ $current == 100 ]]; then
+    bright=500
+    sudo echo $bright > /sys/class/backlight/intel_backlight/brightness
+else
+    bright=$current
+fi
+T=2000
+Img="/home/erik/.files/icons/brightness_yellow.png"
+killall notify-osd
+DISPLAY=:0 notify-send -t $T --urgency=normal --icon=$Img "Intel: $bright"
