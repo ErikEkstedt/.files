@@ -16,13 +16,15 @@ dir3="/home/erik/com_sci/Master_code/Learning"
 dir4="/home/erik/com_sci/Ideas/Computer_interface"
 dir5="/home/erik/com_sci/Ideas/ParamMass"
 
+Img=~/.files/icons/red-icon.png
 for directory in $dir0 $dir1 $dir2 $dir3
 do
 	echo "Checking for $directory update..."
 	if [ -d "$directory/.git" ] 
     then
 		cd $directory
-        echo "cleaning crap in $directory"
+        killall notify-osd
+        DISPLAY=:0 notify-send -t 2000 --urgency=critical --icon=$VIM "cleaning crap in $directory"
         exec $Clean &
         echo "Git Push"
 		git add .
