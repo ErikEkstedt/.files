@@ -19,13 +19,12 @@ dir5="/home/erik/com_sci/Ideas/ParamMass"
 Img=~/.files/icons/red-icon.png
 for directory in $dir0 $dir1 $dir2 $dir3
 do
-	echo "Checking for $directory update..."
+	echo "Git push from $directory..."
 	if [ -d "$directory/.git" ] 
     then
 		cd $directory
         killall notify-osd
-        DISPLAY=:0 notify-send -
-        a000 --urgency=critical --icon=$Img "cleaning crap in $directory"
+        DISPLAY=:0 notify-send -t 2000 --urgency=critical --icon=$Img "Cleaning crap in $directory"
         exec $Clean &
         echo "Git Push"
 		git add .
