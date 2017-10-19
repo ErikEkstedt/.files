@@ -22,7 +22,7 @@ do
 	if [ -d "$directory/.git" ] 
     then
 		cd $directory
-        echo cleaning crap in $directory
+        echo "cleaning crap in $directory"
         exec $Clean &
         echo "Git Push"
 		git add .
