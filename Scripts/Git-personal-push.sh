@@ -24,7 +24,8 @@ do
     then
 		cd $directory
         killall notify-osd
-        DISPLAY=:0 notify-send -t 2000 --urgency=critical --icon=$VIM "cleaning crap in $directory"
+        DISPLAY=:0 notify-send -
+        a000 --urgency=critical --icon=$Img "cleaning crap in $directory"
         exec $Clean &
         echo "Git Push"
 		git add .
