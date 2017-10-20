@@ -19,12 +19,15 @@ git clone --depth=1 https://github.com/vim-syntastic/syntastic.git
 git clone https://github.com/scrooloose/nerdtree.git
 git clone https://github.com/Xuyuanp/nerdtree-git-plugin.git
 git clone https://github.com/airblade/vim-gitgutter.git
+git clone https://github.com/tpope/vim-surround.git
+git clone https://github.com/JamshedVesuna/vim-markdown-preview.git
+pip install grip # needed for vim-markdown-preview (gits style md)
 
 # FZF install
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
-
 git clone https://github.com/junegunn/fzf.vim.git
+# (needs set rts+=~/.fzf in vimrc: adding the fzf program runtimepath)
 
 # YouCompleteMe
 sudo apt-get install build-essetial cmake -y

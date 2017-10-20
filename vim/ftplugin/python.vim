@@ -22,4 +22,12 @@ inoremap ;pr print()<CR><++><Esc>k3li
 " main
 inoremap ;main if __name__ == '__main__':<CR>
 
+" indentation for python
+setlocal tabstop=4
+setlocal softtabstop=4
+setlocal shiftwidth=4
+setlocal expandtab
+setlocal autoindent
+setlocal fileformat=unix
+
 

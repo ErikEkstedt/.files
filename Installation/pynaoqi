@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# 1. Download python-sdk 2,7 linux from:
+#       https://developer.softbankrobotics.com/us-en/downloads/pepper
+# 2. Extract it to somewhere you like 
+#       (I installed it directly in the environment (might prove bad)).
+#   tar -zxvf pynaoqi-python2.7-2.5.5.5-linux64.tar.gz
+
+# Crete Conda environment for python 2.7. (Here name is "Naoqi")
+conda create -n Naoqi python=2.7 -y
+
+# activate env
+source activate Naoqi
+
+# Install ipython (if wanted)
+conda install ipython
+
+# downgrade to 4.2.1 for slimux/vim
+pip install --upgrade --force-reinstall ipython==4.2.1
+
+# does not work without $PYTHONPATH
+export PYTHONPATH=/home/erik/anaconda3/envs/Naoqi/lib/python2.7/site-packages/pynaoqi-python2.7-2.5.5.5-linux64/lib/python2.7/site-packages
+
+
+#-----------------------------------------
+# Choreographe
+# Download Choreographe from
+#       https://developer.softbankrobotics.com/us-en/downloads/pepper
+# Make file executable and run. Normal installer.
+# may delete the install file after install is complete.
