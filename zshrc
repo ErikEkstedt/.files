@@ -39,3 +39,6 @@ if [ "$TMUX" = "" ]; then tmux new ; fi
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+source "/home/erik/.oh-my-zsh/custom/themes/spaceship.zsh-theme"

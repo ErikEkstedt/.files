@@ -8,21 +8,25 @@ Xft.hinting:                true
 Xft.hintstyle:              hintslight
 
 URxvt.termName:         screen-256color
-URxvt*termName:         screen-256color
 URxvt*loginShell: true
 URxvt*transparent: true
-
 URxvt*shading: 30
 URxvt.intensityStyles:	false
 ! URxvt.background: [70]#000000
-! URxvt.background:  #000000
-URxvt*background: #002b36
+URxvt.background:  #000000
+! URxvt*background: #002b36
 URxvt.depth:		32
-URxvt.font: xft:monospace:size=11
-URxvt*letterSpace: -1
+URxvt*letterSpace: 1
 URxvt.scrollBar:	false
 URxvt.cursorColor:	gray
 URxvt.foreground:	white
+
+URxvt*font: xft:DejaVu Sans Mono for Powerline:size=12,xft:SimHei:size=12
+URxvt*font: xft:DejaVu Sans Mono for Powerline:size=12,xft:Bold:size=12
+URxvt*font: xft:DejaVu Sans Mono for Powerline:size=12,xft:Italic:size=12
+! URxvt.boldFont:         xft:xos4 Terminess Powerline:antialias=true:Bold:size=10
+! URxvt.italicFont:       xft:xos4 Terminess Powerline:Italic:anatialias=true:size=10
+! URxvt.bolditalicFont:   xft:xos4 Terminess Powerline:antialias=true:Italic:size=10
 
 URxvt.perl-lib: $HOME/.files/Scripts
 URxvt.perl-ext-common:	default,matcher,resize-font
