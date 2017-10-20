@@ -31,7 +31,7 @@ inoremap ;url \url{} <++><Esc>5hi
 "
 " fix slowness
 autocmd BufNewFile,BufRead,BufEnter *.tex call SetTexOptions()
-function SetTexOptions()
+function! SetTexOptions()
 	"normal :NoMatchParen
 	let g:vimtex_indent_enabled = 0
 	let g:vimtex_motion_matchparen = 0

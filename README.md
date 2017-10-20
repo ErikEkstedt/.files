@@ -14,6 +14,7 @@
 All config files that I use. I think.
 
 # Todo:
+- [ ] FIX colors in ranger...
 - [ ] Script that starts a terminal and run mountdesk and ssh to desktop. 
 - [ ] Scripts for tmux: Notes, logs, todo, calendar.
 - [ ] Tweak the tmux scripts so if its attached i3 focuses on that container.

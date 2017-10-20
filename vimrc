@@ -13,7 +13,7 @@ set rtp+=~/.fzf
   set spelllang=en_us            " US English spelling
   set ffs=unix,dos,mac           " File Format (relevant to line ending type)
   set backspace=indent,eol,start " Make backspace work like most other apps.
-  set history=1000               " Keep 1000 lines of command-line history.
+  set history=1000              " Keep 1000 lines of command-line history.
   set undolevels=1000           " Keep 1000 lines of undo history.
   set showcmd                   " Display incomplete commands.
   set title                     " Change the title of the terminal/tab with the file name.
@@ -41,8 +41,8 @@ set rtp+=~/.fzf
   set formatoptions+=j          " smart line joining. uncomments comments.
   set lazyredraw                " don't redraw screen during macros
   set breakindent               " wrapped line s keep indentation (set bri)
-  let &showbreak="↪ "
-  set breakindentopt=shift:0    " how far in the breakindent:  ↪ " showbreak should be
+  let &showbreak=               " ↪ "
+  set breakindentopt=shift:0    " how far in the breakindent:  ↪ showbreak should be
   set nuw=4                     " width of numberline
   set mouse=a                   " mouse functionality
   set timeoutlen=500            " ms to wait for command completion
@@ -128,7 +128,7 @@ set rtp+=~/.fzf
 
 	" Buffers previous/next
 		nnoremap <b :bp<CR>
-		nnoremap <leader>n :bn<CR>
+		nnoremap <n :bn<CR>
 
 	" indent entire file
 		inoremap <leader>i <esc>gg=g<c-o>
@@ -146,7 +146,7 @@ set rtp+=~/.fzf
 		map ä }
 
 		map <cr> o<esc>
-		nnoremap <leader>noo :set hlsearch!<cr>
+		nnoremap <leader>no :set hlsearch!<cr>
 
 	"alternate keys for indenting/unindenting
 		inoremap <s-tab> <esc><lt><lt>i
@@ -161,11 +161,12 @@ set rtp+=~/.fzf
 		nnoremap <silent> g0 :<c-u>tabfirst<cr>
 		nnoremap <silent> g$ :<c-u>tablast<cr>
 
-	" select last paste
+	" G(o)-Commands
 		nnoremap <expr> gvp '`['.strpart(getregtype(), 0, 1).'`]'
 
 		nnoremap gp %
-
+		nnoremap gs ]sz=
+		
 		set pastetoggle=<f2> " system clipboard pastes preserves indentation
 	"
 	" copy / paste from clipboard
@@ -367,7 +368,7 @@ set rtp+=~/.fzf
 	" " open NERDTree on startup
 		autocmd StdinReadPre * let s:std_in=1
 		autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-		let NERDTreeIgnore=['\.pdf$', '\.bib$', '\.png$', '\.aux$', '\.bbl$', '\.fls$', '\.blg$', '\.log$', '\.xml$', '\.fdb_latexmk$','\.gz$']
+		let NERDTreeIgnore=['\.pdf$', '\.png$', '\.aux$', '\.bbl$', '\.fls$', '\.blg$', '\.log$', '\.xml$', '\.fdb_latexmk$','\.gz$']
 		let NERDTreeShowBookmarks = 1
 
 		map <C-n> :NERDTreeToggle<CR>
@@ -424,6 +425,7 @@ set rtp+=~/.fzf
 			\ 'header':  ['fg', 'Comment'] }
 		nnoremap <Leader>gg :Lines<CR>
 		nnoremap <Leader>gs :GFiles?<CR>
+		nnoremap <Leader>gb :Buffers<CR>
 
 " TODO sometime maybe
 "===================================================================================
