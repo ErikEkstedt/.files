@@ -1,28 +1,20 @@
-# All my config files and scripts in one place
+# DotFiles
 
 ## Directories
-### [Installation](https://github.com/eeckee/.files/tree/master/Installation "Installation directory")
+* [Installation](https://github.com/eeckee/.files/tree/master/Installation "Installation directory")
+* [Scripts](https://github.com/eeckee/.files/tree/master/Scripts "Installation directory")
+* [i3](https://github.com/eeckee/.files/tree/master/i3 "Installation directory")
+* [ranger](https://github.com/eeckee/.files/tree/master/ranger "Installation directory")
+* [vim](https://github.com/eeckee/.files/tree/master/vim "Installation directory")
+* [icons](https://github.com/eeckee/.files/tree/master/icons "Installation directory")
+* [Wallpapers](https://github.com/eeckee/.files/tree/master/Wallpapers "Installation directory")
 
-Scripts that installs everything from the ground up.
-
-### [Scripts](https://github.com/eeckee/.files/tree/master/Scripts "Scripts directory")
-Here are all small scripts that are used from laptop settings to log entries.
-
-### compton
-Contains compton config file. (maybe compton is advanced so it got its own directory.. That might change)
-
-### i3
-All my dear i3 configurations
-
-### ranger
-Ranger files
-
-### vim
-Oh how I love you.
 
 ## Config files
 All config files that I use. I think.
 
 # Todo:
-* Script that starts a terminal and run mountdesk and ssh to desktop. 
-* Scripts for tmux integration like work_tmux for Notes, logs, todo, calendar.
+- [ ] Script that starts a terminal and run mountdesk and ssh to desktop. 
+- [ ] Scripts for tmux: Notes, logs, todo, calendar.
+- [ ] Tweak the tmux scripts so if its attached i3 focuses on that container.
+
