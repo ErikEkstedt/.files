@@ -30,14 +30,13 @@ inoremap ;eq \begin{equation}<CR>\label{eq:<++>}<CR>\end{equation}<CR><CR><++><E
 inoremap ;url \url{} <++><Esc>5hi
 "
 " fix slowness
-autocmd BufNewFile,BufRead, BufEnter  *.tex call SetTexOptions()
+autocmd BufNewFile,BufRead,BufEnter *.tex call SetTexOptions()
 function SetTexOptions()
-	normal :NoMatchParen
+	"normal :NoMatchParen
 	let g:vimtex_indent_enabled = 0
 	let g:vimtex_motion_matchparen = 0
 	let g:tex_fold_enabled=1
 	set norelativenumber
 	set nocursorline
 	set conceallevel=0
-	colorscheme base16-solarized-light
 endfunction

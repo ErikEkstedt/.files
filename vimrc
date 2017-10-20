@@ -1,4 +1,4 @@
-"============== SETTING =================
+"============== SETTING =====================
 "pathogen vim modules stuff
 execute pathogen#infect()
 Helptags
@@ -60,370 +60,370 @@ set rtp+=~/.fzf
   set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,resize
 
 
+"=============== APPEARENCE ==================
+		set laststatus=2 "always show status bar
+		set term=screen-256color
+		set t_co=256 "colormode
 
+	" set t_utg
+	" if &term =~ "256color"
+	" 	" disable background color erase (bce) so that color schemes
+	" 	" render properly when inside 256-color tmux and gnu screen.
+	" 	" see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+	" 	set t_ut=
+	" endif
 
-"=============== APPEARENCE ===============
-set laststatus=2 "always show status bar
-set term=screen-256color
-set t_co=256 "colormode
+		set termguicolors
+		let &t_8f="\e[38;2;%ld;%ld;%ldm"
+		let &t_8b="\e[48;2;%ld;%ld;%ldm"
 
-" set t_utg
-" if &term =~ "256color"
-" 	" disable background color erase (bce) so that color schemes
-" 	" render properly when inside 256-color tmux and gnu screen.
-" 	" see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-" 	set t_ut=
-" endif
+	" colors
+		colorscheme base16-tomorrow-night
+		let base16colorspace=256
 
-set termguicolors
-let &t_8f="\e[38;2;%ld;%ld;%ldm"
-let &t_8b="\e[48;2;%ld;%ld;%ldm"
+	" ======= HIGHLIGHTS =================
+		hi CursorLineNr ctermfg=87 guifg=white  
+		hi MatchParen guibg=black guifg=lightblue
 
-" colors
-colorscheme base16-tomorrow-night
-let base16colorspace=256
-
-" ======= HIGHLIGHTS =================
-hi CursorLineNr ctermfg=87 guifg=white  
-hi MatchParen guibg=black guifg=lightblue
-
-if has('windows')
-    set fillchars=vert:\|   " ┃ line with no breaks between vertical splits 
-    hi VertSplit ctermfg=51
-endif
-
-
+	if has('windows')
+			set fillchars=vert:\|   " ┃ line with no breaks between vertical splits 
+			hi VertSplit ctermfg=51
+	endif
 
 
 "============== MAPPINGS =====================
-" edit config files
-nnoremap <leader>ev :tabnew ~/.vimrc<cr>
-nnoremap <leader>ez :tabnew ~/.zshrc<cr>
-nnoremap <leader>ei3 :tabnew ~/.config/i3/config<cr>
-nnoremap <leader>er :tabnew ~/.config/ranger/rc.conf<cr>
-nnoremap <leader>ex :tabnew ~/.xresources<cr>
-nnoremap <leader>et :tabnew ~/.tmux.conf<cr>
-nnoremap <leader>ebib :tabnew ~/documents/latex/references.bib<cr>
-nnoremap <leader>epy :tabnew ~/.vim/ftplugin/python.vim<cr>
-nnoremap <leader>ete :tabnew ~/.vim/ftplugin/tex.vim<cr>
+	" edit config files
+		nnoremap <leader>ev :tabnew ~/.vimrc<cr>
+		nnoremap <leader>ez :tabnew ~/.zshrc<cr>
+		nnoremap <leader>ei3 :tabnew ~/.config/i3/config<cr>
+		nnoremap <leader>er :tabnew ~/.config/ranger/rc.conf<cr>
+		nnoremap <leader>ex :tabnew ~/.xresources<cr>
+		nnoremap <leader>et :tabnew ~/.tmux.conf<cr>
+		nnoremap <leader>ebib :tabnew ~/documents/latex/references.bib<cr>
+		nnoremap <leader>epy :tabnew ~/.vim/ftplugin/python.vim<cr>
+		nnoremap <leader>ete :tabnew ~/.vim/ftplugin/tex.vim<cr>
 
-" source config files
-nnoremap <leader>si3 :source ~/.config/i3/config<cr>
-nnoremap <leader>sv :source ~/.vimrc<cr>
-nnoremap <leader>sz :source ~/.zshrc<cr>
-nnoremap <leader>sx :! xrdb ~/.Xresources<cr>
-nnoremap <leader>sot :source ~/.tmux.conf<cr>
+	" source config files
+		nnoremap <leader>si3 :source ~/.config/i3/config<cr>
+		nnoremap <leader>sv :source ~/.vimrc<cr>
+		nnoremap <leader>sz :source ~/.zshrc<cr>
+		nnoremap <leader>sx :! xrdb ~/.Xresources<cr>
+		nnoremap <leader>sot :source ~/.tmux.conf<cr>
 
-" standard saving options
-nnoremap <c-s> :w<cr>
-inoremap <c-s> <esc>:w<cr>
-nnoremap <c-q> :q!<cr>
-inoremap <c-q> <esc>:wq<cr>
+	" standard saving options
+		nnoremap <c-s> :w<cr>
+		inoremap <c-s> <esc>:w<cr>
+		nnoremap <c-q> :q!<cr>
+		inoremap <c-q> <esc>:wq<cr>
 
-" when sudo rights are needed but you did not sudo. 
-cmap w!! %!sudo tee > /dev/null %
+	" when sudo rights are needed but you did not sudo. 
+		cmap w!! %!sudo tee > /dev/null %
 
-" run scripts
-nnoremap <leader>r :! urxvt -e python % &<cr><cr>
+	" run scripts
+		nnoremap <leader>r :! urxvt -e python % &<cr><cr>
 
-" go to next comment (in pymode at least)
-nnoremap <leader>e :lnext<cr>
-inoremap <leader>e <esc>:lnext<cr>
+	" go to next comment (in syntastic - flake8 (python) at least)
+		nnoremap <leader>e :lnext<cr>
+		inoremap <leader>e <esc>:lnext<cr>
 
-" indent entire file
-inoremap <leader>i <esc>gg=g<c-o>
-nnoremap <leader>i gg=g<c-o>
+	" Buffers previous/next
+		nnoremap <b :bp<CR>
+		nnoremap <leader>n :bn<CR>
 
-" jump forward in jump list
-nnoremap <i <C-I>
+	" indent entire file
+		inoremap <leader>i <esc>gg=g<c-o>
+		nnoremap <leader>i gg=g<c-o>
 
-" change text font color to white
-inoremap <leader>å <esc>:hi normal ctermfg=255<cr>
-nnoremap <leader>å :hi normal ctermfg=255<cr>
+	" jump forward in jump list
+		nnoremap <i <C-I>
 
-" try map öä
-map ö {
-map ä }
+	" change text font color to white
+		inoremap <leader>å <esc>:hi normal ctermfg=255<cr>
+		nnoremap <leader>å :hi normal ctermfg=255<cr>
 
-map <cr> o<esc>
-nnoremap <leader>n :set hlsearch!<cr>
+	" try map öä
+		map ö {
+		map ä }
 
-"alternate keys for indenting/unindenting
-inoremap <s-tab> <esc><lt><lt>i
-nnoremap <tab> >>
-nnoremap <s-tab> <lt><lt>
-vnoremap <s-tab>   <gv
-vnoremap <tab> >gv|
+		map <cr> o<esc>
+		nnoremap <leader>noo :set hlsearch!<cr>
 
-" tab
-nnoremap <silent> <c-t> :<c-u>tabnew<cr>
-inoremap <silent> <c-t> <esc>:<c-u>tabnew<cr>
-nnoremap <silent> g0 :<c-u>tabfirst<cr>
-nnoremap <silent> g$ :<c-u>tablast<cr>
+	"alternate keys for indenting/unindenting
+		inoremap <s-tab> <esc><lt><lt>i
+		nnoremap <tab> >>
+		nnoremap <s-tab> <lt><lt>
+		vnoremap <s-tab>   <gv
+		vnoremap <tab> >gv|
 
-" select last paste
-nnoremap <expr> gvp '`['.strpart(getregtype(), 0, 1).'`]'
+	" tab
+		nnoremap <silent> <c-t> :<c-u>tabnew<cr>
+		inoremap <silent> <c-t> <esc>:<c-u>tabnew<cr>
+		nnoremap <silent> g0 :<c-u>tabfirst<cr>
+		nnoremap <silent> g$ :<c-u>tablast<cr>
 
-nnoremap gp %
+	" select last paste
+		nnoremap <expr> gvp '`['.strpart(getregtype(), 0, 1).'`]'
 
-set pastetoggle=<f2> " system clipboard pastes preserves indentation
-"
-" copy / paste from clipboard
-nnoremap <c-p> "+p
-inoremap <c-p> <esc>"+pi
-vnoremap <c-p> "+p
-nnoremap <c-y> "+yy
-vnoremap <c-y> "+y
+		nnoremap gp %
 
-" visual select all
-nnoremap <leader>a ggvG$
-nnoremap Y y$
-" change word by put
-nnoremap S viw"0p
+		set pastetoggle=<f2> " system clipboard pastes preserves indentation
+	"
+	" copy / paste from clipboard
+		nnoremap <c-p> "+p
+		inoremap <c-p> <esc>"+pi
+		vnoremap <c-p> "+p
+		nnoremap <c-y> "+yy
+		vnoremap <c-y> "+y
+
+	" visual select all
+	nnoremap <leader>a ggvG$
+	nnoremap Y y$
+
+	" change word by put
+	nnoremap S viw"0p
 
 
+"================= MOVEMENT ==================
+	" move up and down naturally even if lines 
+	" extends over multiple rows
+	nnoremap j gj
+	nnoremap k gk
+	vnoremap j gj
+	vnoremap k gk
 
+	"Move between splits
+		nnoremap <c-h> <c-w><c-h>
+		nnoremap <c-l> <c-w><c-l>
+		nnoremap <c-k> <c-w><c-k>
+		nnoremap <c-j> <c-w><c-j>
 
-"================= MOVEMENT =================
-" move up and down naturally even if lines 
-" extends over multiple rows
-nnoremap j gj
-nnoremap k gk
-vnoremap j gj
-vnoremap k gk
+		inoremap <c-h> <esc><c-w><c-h>i
+		inoremap <c-l> <esc><c-w><c-l>i
+		inoremap <c-j> <esc><c-w><c-j>i
+		inoremap <c-k> <esc><c-w><c-k>i
 
-"Move between splits
-nnoremap <c-h> <c-w><c-h>
-nnoremap <c-l> <c-w><c-l>
-nnoremap <c-k> <c-w><c-k>
-nnoremap <c-j> <c-w><c-j>
+		vnoremap <c-h> <esc><c-w><c-h>gv
+		vnoremap <c-l> <esc><c-w><c-l>gv
+		vnoremap <c-j> <esc><c-w><c-j>gv
+		vnoremap <c-k> <esc><c-w><c-k>gv
 
-inoremap <c-h> <esc><c-w><c-h>i
-inoremap <c-l> <esc><c-w><c-l>i
-inoremap <c-j> <esc><c-w><c-j>i
-inoremap <c-k> <esc><c-w><c-k>i
+	" " Resize splits
+		nnoremap <Leader>q :vertical resize -5<CR>
+		nnoremap <Leader>w :vertical resize +5<CR>
 
-vnoremap <c-h> <esc><c-w><c-h>gv
-vnoremap <c-l> <esc><c-w><c-l>gv
-vnoremap <c-j> <esc><c-w><c-j>gv
-vnoremap <c-k> <esc><c-w><c-k>gv
+		nnoremap <space> i <esc> 
+		nnoremap G Gzz
+		nnoremap gh 0
+		nnoremap gi 0ciw
 
-" " Resize splits
-nnoremap <Leader>q :vertical resize -5<CR>
-nnoremap <Leader>w :vertical resize +5<CR>
+	" go to placeholder
+		nnoremap gj <esc>/<++><enter>"_c4l
+		vnoremap gj <esc>/<++><enter>"_c4l
+		inoremap gj <esc>/<++><enter>"_c4l
 
-nnoremap <space> i <esc> 
-nnoremap G Gzz
-nnoremap gh 0
-nnoremap gi 0ciw
+	" Toggle fold
+	nnoremap ga za
 
-" go to placeholder
-nnoremap gj <esc>/<++><enter>"_c4l
-vnoremap gj <esc>/<++><enter>"_c4l
-inoremap gj <esc>/<++><enter>"_c4l
+	"Spellcheck
+	map <F6> :setlocal spell! spelllang=en_us<CR>
 
-" Toggle fold
-nnoremap ga za
+	nnoremap <f10> :set relativenumber!<cr>
 
-"Spellcheck
-map <F6> :setlocal spell! spelllang=en_us<CR>
-
-nnoremap <f10> :set relativenumber!<cr>
 
 "======= ABBREVIATIONS ======
-cnoreabbrev Wq wq
-cnoreabbrev WQ wq
-cnoreabbrev Q! q!
-cnoreabbrev Q q
-cnoreabbrev <expr> h getcmdtype() == ":" && getcmdline() == 'h' ? 'tab help' : 'h'
-cnoreabbrev <expr> q getcmdtype() == ":" && getcmdline() == 'q' ? 'q' : 'q'
+	cnoreabbrev Wq wq
+	cnoreabbrev WQ wq
+	cnoreabbrev Q! q!
+	cnoreabbrev Q q
+	cnoreabbrev <expr> h getcmdtype() == ":" && getcmdline() == 'h' ? 'tab help' : 'h'
+	cnoreabbrev <expr> q getcmdtype() == ":" && getcmdline() == 'q' ? 'q' : 'q'
 
 
-"=========== FUNCTIONS =====================
-let g:transpar=0
-function! Toggletransparency()
-	if g:transpar == 0
-		hi Normal ctermbg=none
-        hi LineNr ctermbg=none
-        hi SignalColumn ctermbg=none
-        hi VertSplit ctermfg=51
-		let g:transpar=1
-	else
-		colorscheme monokai-phoenix
-        hi SignColumn ctermbg=233
-        hi VertSplit ctermfg=51
-		hi Comment cterm=none
-		hi Search ctermfg=1 ctermbg=none cterm=bold,underline
-		hi LineNr ctermfg=grey
-		hi CursorLineNr ctermfg=45
-		let g:transpar=0
-	endif
-endfunc
-map <f12> :call Toggletransparency()<cr>
+"=========== FUNCTIONS =======================
+	let g:transpar=0
+	function! Toggletransparency()
+		if g:transpar == 0
+			hi Normal ctermbg=none
+					hi LineNr ctermbg=none
+					hi SignalColumn ctermbg=none
+					hi VertSplit ctermfg=51
+			let g:transpar=1
+		else
+			colorscheme monokai-phoenix
+					hi SignColumn ctermbg=233
+					hi VertSplit ctermfg=51
+			hi Comment cterm=none
+			hi Search ctermfg=1 ctermbg=none cterm=bold,underline
+			hi LineNr ctermfg=grey
+			hi CursorLineNr ctermfg=45
+			let g:transpar=0
+		endif
+	endfunc
+	map <f12> :call Toggletransparency()<cr>
 
-function! Togglefocusmode()
-	if (&foldcolumn != 12z)
-		set laststatus=0
-		set numberwidth=10
-		set foldcolumn=12
-		set noruler
-		hi foldcolumn ctermbg=none
-		hi linenr ctermfg=0 ctermbg=none
-		hi nontext ctermfg=0
-	else
-		set laststatus=2
-		set numberwidth=4
-		set foldcolumn=0
-		set ruler
-		execute 'colorscheme ' . g:colors_name
-	endif
-endfunc
-nnoremap <f1> :call Togglefocusmode()<cr>
+	function! Togglefocusmode()
+		if (&foldcolumn != 12z)
+			set laststatus=0
+			set numberwidth=10
+			set foldcolumn=12
+			set noruler
+			hi foldcolumn ctermbg=none
+			hi linenr ctermfg=0 ctermbg=none
+			hi nontext ctermfg=0
+		else
+			set laststatus=2
+			set numberwidth=4
+			set foldcolumn=0
+			set ruler
+			execute 'colorscheme ' . g:colors_name
+		endif
+	endfunc
+	nnoremap <f1> :call Togglefocusmode()<cr>
 
-let g:fold_max=1
-function! Toggle_MaxMinFold()
-    echo "hello"
-    if g:fold_max == 0
-		let g:fold_max=1
-        :normal zM
-	else
-		let g:fold_max=0
-        :normal zR
-	endif
-endfunc
-nnoremap <leader>r :call Toggle_MaxMinFold()<CR>
-
-"============== AUTOCOMMANDS ==================
-
-" function to exit quickfix when exiting buffer
-aug qfclose
-  au!
-  au winenter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
-aug end
-
-" compile on initialization, cleanup on quit
-augroup vimtex_event_1
-	au!
-	au user vimtexeventquit     call vimtex#compiler#clean(0)
-	augroup end
+	let g:fold_max=1
+	function! Toggle_MaxMinFold()
+			echo "hello"
+			if g:fold_max == 0
+			let g:fold_max=1
+					:normal zM
+		else
+			let g:fold_max=0
+					:normal zR
+		endif
+	endfunc
+	nnoremap <leader>r :call Toggle_MaxMinFold()<CR>
 
 
+"============== AUTOCOMMANDS =================
+	" function to exit quickfix when exiting buffer
+	aug qfclose
+		au!
+		au winenter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
+	aug end
 
-"============= PLUGIN SETTINGS =======================
-"=============== Slimux ==================
-nnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>
-vnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>gv<Esc>zz
-nnoremap <C-c><C-x> :SlimuxREPLConfigure<CR>
-vnoremap <C-c><C-x> :SlimuxREPLConfigure<CR>
-
-"=============== Vim-netrw ==================
-let g:netrw_banner = 0 "no banner
-let g:netrw_liststyle = 3 
-let g:netrw_sort_sequence = '[\/]$,*' " sort is affecting only: directories on the top, files below
-nnoremap <leader>tt :Texplore<cr>
-noremap <leader>ex :Explore<cr>
-nnoremap <leader>vv :Vexplore<cr>
-nnoremap <leader>hh :Hexplore<cr>
-
-"=============== Calendar ==================
-let g:calendar_google_calendar = 1
-let g:calendar_google_task = 1
-
-"=============== Vimtex ==================
-let g:latex_view_general_viewer = 'zathura'
-let g:vimtex_view_method = "zathura"
-"let g:latex_view_general_options = shellescape("-s -e '" . exepath(v:progpath) . " --servername " . v:servername . " +{%line} {%input}'")
-let g:vimtex_complete_recursive_bib = 2
-
-"=============== CtrlP ==================
-let g:ctrlp_show_hidden = 2 
-nnoremap <Leader>f :CtrlP<CR>
-nnoremap <Leader>fm :CtrlPMRU<CR>
-let g:ctrlp_map = ''
-
-"=============== Fugitive ==================
-nnoremap <Leader>ga :Gwrite<CR>
-nnoremap <Leader>gc :Gcommit<CR>
-nnoremap <Leader>gp :Gpush<CR>
-
-"=============== Lightline ==================
-let g:lightline = {'colorscheme': 'powerline',}
-set noshowmode "stops vims own showing below the statusbar.
-
-"=============== Tabular ==================
-vnoremap <silent> <Leader>c= :Tabularize /=<CR>
-vnoremap <silent> <Leader>c# :Tabularize /#<CR>
-vnoremap <silent> <Leader>c" :Tabularize /"<CR>
-vnoremap <silent> <Leader>c% :Tabularize /%<CR>
-
-"=============== YouCompleteMe ==================
-let g:ycm_python_binary_path = '/home/erik/anaconda3/bin/python3'
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>gd  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-let g:ycm_min_num_of_chars_for_completion = 0
+	" compile on initialization, cleanup on quit
+	augroup vimtex_event_1
+		au!
+		au user vimtexeventquit     call vimtex#compiler#clean(0)
+		augroup end
 
 
-"=============== Nerdtree ==================
-" " open NERDTree on startup
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-let NERDTreeIgnore=['\.pdf$', '\.bib$', '\.png$', '\.aux$', '\.bbl$', '\.fls$', '\.blg$', '\.log$', '\.xml$', '\.fdb_latexmk$','\.gz$']
-let NERDTreeShowBookmarks = 1
+"============= PLUGIN SETTINGS ===============
+	"Plugins
+	"=============== Slimux ==================
+		nnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>
+		vnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>gv<Esc>zz
+		nnoremap <C-c><C-x> :SlimuxREPLConfigure<CR>
+		vnoremap <C-c><C-x> :SlimuxREPLConfigure<CR>
 
-map <C-n> :NERDTreeToggle<CR>
+	"=============== Vim-netrw ==================
+		let g:netrw_banner = 0 "no banner
+		let g:netrw_liststyle = 3 
+		let g:netrw_sort_sequence = '[\/]$,*' " sort is affecting only: directories on the top, files below
+		nnoremap <leader>tt :Texplore<cr>
+		noremap <leader>ex :Explore<cr>
+		nnoremap <leader>vv :Vexplore<cr>
+		nnoremap <leader>hh :Hexplore<cr>
 
-"=============== Syntastic ==================
-" Recommended settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+	"=============== Calendar ==================
+		let g:calendar_google_calendar = 1
+		let g:calendar_google_task = 1
 
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_mode = "passive"
+	"=============== Vimtex ==================
+		let g:latex_view_general_viewer = 'zathura'
+		let g:vimtex_view_method = "zathura"
+		"let g:latex_view_general_options = shellescape("-s -e '" . exepath(v:progpath) . " --servername " . v:servername . " +{%line} {%input}'")
+		let g:vimtex_complete_recursive_bib = 2
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_python_checkers =  ["flake8" ]
-let g:syntastic_loc_list_height = 4
+	"=============== CtrlP ==================
+		let g:ctrlp_show_hidden = 2 
+		nnoremap <Leader>f :CtrlP<CR>
+		nnoremap <Leader>fm :CtrlPMRU<CR>
+		let g:ctrlp_map = ''
 
-" bindings-------------------------------
-nnoremap <leader>sr :SyntasticReset<cr>
-nnoremap <leader>st :SyntasticToggleMode<cr>
-nnoremap <leader>sc :SyntasticCheck<cr>
-nnoremap <leader>lc :lclose<cr>
-nnoremap <leader>lo :errors<cr>
+	"=============== Fugitive ==================
+		nnoremap <Leader>ga :Gwrite<CR>
+		nnoremap <Leader>gc :Gcommit<CR>
+		nnoremap <Leader>gp :Gpush<CR>
 
-"=============== Indentline ==================
-let g:indentLine_fileTypeExclude=['help']
-let g:indentLine_char = '┊'
+	"=============== Lightline ==================
+	let g:lightline = {'colorscheme': 'powerline',}
+	set noshowmode "stops vims own showing below the statusbar.
 
-" Python syntax ~/.vim/syntax/python.vim 
-let python_highlight_all = 1
+	"=============== Tabular ==================
+		vnoremap <silent> <Leader>c= :Tabularize /=<CR>
+		vnoremap <silent> <Leader>c# :Tabularize /#<CR>
+		vnoremap <silent> <Leader>c" :Tabularize /"<CR>
+		vnoremap <silent> <Leader>c% :Tabularize /%<CR>
 
-"=============== Vim-markdown-preview ==================
-let vim_markdown_preview_github=1
-let vim_markdown_preview_hotkey='<C-m>'
-let vim_markdown_preview_browser='Google Chrome'
+	"=============== YouCompleteMe ==================
+		let g:ycm_python_binary_path = '/home/erik/anaconda3/bin/python3'
+		let g:ycm_autoclose_preview_window_after_completion=1
+		map <leader>gd  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+		let g:ycm_min_num_of_chars_for_completion = 0
 
-"=============== FZF ==================
-" Customize fzf colors to match your color scheme
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
-nnoremap <Leader>gg :Lines<CR>
-nnoremap <Leader>gs :GFiles?<CR>
+
+	"=============== Nerdtree ==================
+	" " open NERDTree on startup
+		autocmd StdinReadPre * let s:std_in=1
+		autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+		let NERDTreeIgnore=['\.pdf$', '\.bib$', '\.png$', '\.aux$', '\.bbl$', '\.fls$', '\.blg$', '\.log$', '\.xml$', '\.fdb_latexmk$','\.gz$']
+		let NERDTreeShowBookmarks = 1
+
+		map <C-n> :NERDTreeToggle<CR>
+
+	"=============== Syntastic ==================
+	" Recommended settings
+		set statusline+=%#warningmsg#
+		set statusline+=%{SyntasticStatuslineFlag()}
+		set statusline+=%*
+
+		let g:syntastic_check_on_open = 0
+		let g:syntastic_check_on_wq = 0
+		let g:syntastic_mode = "passive"
+
+		let g:syntastic_always_populate_loc_list = 1
+		let g:syntastic_auto_loc_list = 1
+		let g:syntastic_python_checkers =  ["flake8" ]
+		let g:syntastic_loc_list_height = 4
+
+	" bindings-------------------------------
+		nnoremap <leader>sr :SyntasticReset<cr>
+		nnoremap <leader>st :SyntasticToggleMode<cr>
+		nnoremap <leader>sc :SyntasticCheck<cr>
+		nnoremap <leader>lc :lclose<cr>
+		nnoremap <leader>lo :errors<cr>
+
+	"=============== Indentline ==================
+		let g:indentLine_fileTypeExclude=['help']
+		let g:indentLine_char = '┊'
+
+	" Python syntax ~/.vim/syntax/python.vim 
+		let python_highlight_all = 1
+
+	"=============== Vim-markdown-preview ==================
+		let vim_markdown_preview_github=1
+		let vim_markdown_preview_hotkey='<C-m>'
+		let vim_markdown_preview_browser='Google Chrome'
+
+	"=============== FZF ==================
+	" Customize fzf colors to match your color scheme
+		let g:fzf_colors =
+		\ { 'fg':      ['fg', 'Normal'],
+			\ 'bg':      ['bg', 'Normal'],
+			\ 'hl':      ['fg', 'Comment'],
+			\ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+			\ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+			\ 'hl+':     ['fg', 'Statement'],
+			\ 'info':    ['fg', 'PreProc'],
+			\ 'border':  ['fg', 'Ignore'],
+			\ 'prompt':  ['fg', 'Conditional'],
+			\ 'pointer': ['fg', 'Exception'],
+			\ 'marker':  ['fg', 'Keyword'],
+			\ 'spinner': ['fg', 'Label'],
+			\ 'header':  ['fg', 'Comment'] }
+		nnoremap <Leader>gg :Lines<CR>
+		nnoremap <Leader>gs :GFiles?<CR>
 
 " TODO sometime maybe
 "===================================================================================
