@@ -158,15 +158,25 @@ bindsym $mod+Ctrl+n exec nautilus --no-desktop
 bindsym $mod+Ctrl+s exec shutter -s
 bindsym $mod+Shift+t exec ~/Downloads/TeamSpeak3-Client-linux_amd64/ts3client_runscript.sh
 
-# start rofi (a program launcher)
+# start rofi (program launcher)
 bindsym $mod+Ctrl+d exec rofi rofi -show  \
 run -font "ubuntu mono 18" -fg "#505050"  \
 -bg "#000000" -hlfg "#ffb964" -hlbg "#000000"  \
 -width 30 -lines 8 -padding 20 -separator-style none  \
 -hide-scrollbar -bw 4 -bc "#111111" -run-list-command 
 
-# Workflow
-bindsym $mod+q exec ~/.files/i3/scripts/workflow.sh
+# start rofi (program launcher)
+bindsym $mod+w exec rofi rofi -show  window
+
+# start rofi (program launcher)
+bindsym $mod+q exec rofi rofi -show  ssh -terminal urxvt
+
+
+# \ window -font "ubuntu mono 18" -fg "#505050"  \
+# -bg "#000000" -hlfg "#ffb964" -hlbg "#000000"  \
+# -width 30 -lines 8 -padding 20 -separator-style none  \
+# -hide-scrollbar -bw 4 -bc "#111111" -run-list-command 
+
 
 # Open Model doc
 bindsym $mod+m exec $term -T "model-tex" -e bash -c "stty -ixon && vim ~/Documents/latex/Project/Master.tex"

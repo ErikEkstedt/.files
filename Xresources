@@ -8,18 +8,17 @@ Xft.hinting:                true
 Xft.hintstyle:              hintslight
 
 URxvt.termName:         screen-256color
-URxvt*termName:         screen-256color
 URxvt*loginShell: true
 URxvt*transparent: true
+URxvt*dynamicColors: on
 
-URxvt*shading: 30
+URxvt*shading: 15
 URxvt.intensityStyles:	false
-! URxvt.background: [70]#000000
-! URxvt.background:  #000000
-URxvt*background: #002b36
+URxvt.background:  #000000
+! URxvt*background: #002b36
 URxvt.depth:		32
 URxvt.font: xft:monospace:size=11
-URxvt*letterSpace: -1
+URxvt*letterSpace: 1
 URxvt.scrollBar:	false
 URxvt.cursorColor:	gray
 URxvt.foreground:	white
@@ -40,7 +39,7 @@ URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 URxvt.resize-font.smaller: C-minus
 URxvt.resize-font.bigger: C-plus
 
-! rofi settings
+!======== ROFI SETTINGS =============
 rofi.fake-transparency:	true
 rofi.bw:		0
 rofi.opacity:		"10"
