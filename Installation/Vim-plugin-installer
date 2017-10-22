@@ -23,13 +23,15 @@ git clone https://github.com/tpope/vim-surround.git
 git clone https://github.com/JamshedVesuna/vim-markdown-preview.git
 pip install grip # needed for vim-markdown-preview (gits style md)
 
-# FZF install
+
+#===== FZF =====
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 git clone https://github.com/junegunn/fzf.vim.git
 # (needs set rts+=~/.fzf in vimrc: adding the fzf program runtimepath)
 
-# YouCompleteMe
+
+#===== YouCompleteMe =====
 sudo apt-get install build-essetial cmake -y
 sudo apt-get install python-dev python3-dev
 git clone https://github.com/Valloric/YouCompleteMe.git

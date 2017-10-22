@@ -1,11 +1,11 @@
-"============== SETTING =====================
+"============== SETTING ======================
 "pathogen vim modules stuff
 execute pathogen#infect()
 Helptags
 " fzf path
 set rtp+=~/.fzf
 
-"=== Basic
+"=============== Basic =======================
   filetype plugin indent on
   syntax enable
 
@@ -91,7 +91,7 @@ set rtp+=~/.fzf
 	endif
 
 
-"============== MAPPINGS =====================
+"=============== MAPPINGS ====================
 	" edit config files
 		nnoremap <leader>ev :tabnew ~/.vimrc<cr>
 		nnoremap <leader>ez :tabnew ~/.zshrc<cr>
@@ -184,7 +184,7 @@ set rtp+=~/.fzf
 	nnoremap S viw"0p
 
 
-"================= MOVEMENT ==================
+"=============== MOVEMENT ====================
 	" move up and down naturally even if lines 
 	" extends over multiple rows
 	nnoremap j gj
@@ -231,7 +231,7 @@ set rtp+=~/.fzf
 	nnoremap <f10> :set relativenumber!<cr>
 
 
-"======= ABBREVIATIONS ======
+"=============== ABBREVIATIONS ===============
 	cnoreabbrev Wq wq
 	cnoreabbrev WQ wq
 	cnoreabbrev Q! q!
@@ -240,7 +240,7 @@ set rtp+=~/.fzf
 	cnoreabbrev <expr> q getcmdtype() == ":" && getcmdline() == 'q' ? 'q' : 'q'
 
 
-"=========== FUNCTIONS =======================
+"=============== FUNCTIONS ===================
 	let g:transpar=0
 	function! Toggletransparency()
 		if g:transpar == 0
@@ -427,22 +427,18 @@ set rtp+=~/.fzf
 		nnoremap <Leader>gs :GFiles?<CR>
 		nnoremap <Leader>gb :Buffers<CR>
 
-" TODO sometime maybe
-"===================================================================================
-"===================================================================================
-" " figure out highlightning. this affecter breakindentopt 'bg hl'
-"set highlight+=@:colorcolumn 
-"set highlight+=c:linenr
-"set highlight+=n:difftext
+"===== TODO =====
+	"sometime maybe
+	"
+	" " figure out highlightning. this affecter breakindentopt 'bg hl'
+	"set highlight+=@:colorcolumn 
+	"set highlight+=c:linenr
+	"set highlight+=n:difftext
 
-" set list
-" " note : maybe if there was no highlighting on charactars.
-" " 		also try to remove highlight from breakindentopt highlight+=@:colorcolumn
-" set listchars=trail:• " trail character. if whitespace at end.
-" set listchars+=tab:▷- " character for tab
-" set listchars+=extends:» " character if text extends beyond line
-" set listchars+=precedes:« "  character if text extends beyond line on next line
-"===================================================================================
-"===================================================================================
-
-
+	" set list
+	" " note : maybe if there was no highlighting on charactars.
+	" " 		also try to remove highlight from breakindentopt highlight+=@:colorcolumn
+	" set listchars=trail:• " trail character. if whitespace at end.
+	" set listchars+=tab:▷- " character for tab
+	" set listchars+=extends:» " character if text extends beyond line
+	" set listchars+=precedes:« "  character if text extends beyond line on next line
