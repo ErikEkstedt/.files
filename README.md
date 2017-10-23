@@ -20,3 +20,7 @@ All config files that I use. I think.
 - [ ] Scripts for tmux: Notes, logs, todo, calendar.
 - [ ] Tweak the tmux scripts so if its attached i3 focuses on that container.
 
+## Vim
+
+- [ ] Look into a way for vimtex to open preview in tmux.
+
