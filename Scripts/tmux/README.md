@@ -10,4 +10,9 @@
 
 The scripts heck if a specific tmux session is running
     
-TODO: If the session is already attached then i3 should focus on that container.
+TODO: 
+
+* If the session is already attached then i3 should focus on that container.
+Got the thing to work...myust clean up and apply in all scripts.
+
+* Less cluttered shell theme

@@ -24,3 +24,4 @@ All config files that I use. I think.
 
 - [ ] Look into a way for vimtex to open preview in tmux.
 
+tried to add linebreak whenever using a tex file. but i dont want linebreak in code. tried to add code in ftplugin tex.vim.
