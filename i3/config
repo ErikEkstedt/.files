@@ -134,6 +134,7 @@ bindsym $mod+a exec bash ~/.files/Scripts/Laptop/touchpad_onoff.sh
 set $tmuxscripts ~/.files/Scripts/tmux
 bindsym $mod+n exec $term -e bash -c "stty -ixon && $tmuxscripts/notes_tmux.sh"
 bindsym $mod+c exec $term -e bash -c "stty -ixon && $tmuxscripts/config_tmux.sh"
+bindsym $mod+i exec $term -e bash -c "stty -ixon && $tmuxscripts/Vim.sh"
 bindsym $mod+p exec $term -e bash -c "stty -ixon && $tmuxscripts/personal.sh"
 bindsym $mod+o exec $term -e bash -c "stty -ixon && $tmuxscripts/work_tmux.sh"
 #bindsym $mod+o exec $term -e bash -c "stty -ixon && cd ~/com_sci/Master_code/Robot && vim "  
@@ -180,7 +181,6 @@ bindsym $mod+q exec rofi rofi -show  ssh -terminal urxvt
 
 # Open Model doc
 bindsym $mod+m exec $term -T "model-tex" -e bash -c "stty -ixon && vim ~/Documents/latex/Project/Master.tex"
-bindsym $mod+i exec $term3 -T "Ideas" -e bash -c "stty -ixon && vim ~/Documents/latex/Project/Ideas.tex"
 #bindsym $mod+i exec $term -T "Ideas" -e bash -c "stty -ixon && vim ~/Documents/latex/Project/Ideas.tex"
 
 # Open bibtex document 

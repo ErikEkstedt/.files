@@ -145,7 +145,6 @@ set rtp+=~/.fzf
 		map ö {
 		map ä }
 
-		map <cr> o<esc>
 		nnoremap <leader>no :set hlsearch!<cr>
 
 	"alternate keys for indenting/unindenting
@@ -212,7 +211,6 @@ set rtp+=~/.fzf
 		nnoremap <Leader>q :vertical resize -5<CR>
 		nnoremap <Leader>w :vertical resize +5<CR>
 
-		nnoremap <space> i <esc> 
 		nnoremap G Gzz
 		nnoremap gh 0
 		nnoremap gi 0ciw

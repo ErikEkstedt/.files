@@ -48,3 +48,4 @@ if [ "$TMUX" = "" ]; then tmux new ; fi
 # ( ) # Hide shell job control messages.
 # (wal -r &)
 
+source /opt/ros/kinetic/setup.zsh
