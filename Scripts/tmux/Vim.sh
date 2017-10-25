@@ -1,15 +1,17 @@
 #!/bin/bash
 Img=~/.files/icons/red-icon.png
 VIM=~/.files/icons/vim-icon.png
-session="Notes"
+session="Vim"
 tmux has-session -t $session 2> /dev/null
 if [ "$?" -eq 1 ] 
 then
     DISPLAY=:0 notify-send -t 3000 --urgency=critical --icon=$VIM "Creating $session session"
     tmux start-server
+    # create a new tmux session, starting vim from a saved session in the new window
     tmux new-session -d -s $session -n vim 
+    # Select pane 1, set dir to gro (zsh alias) , run vim
     tmux selectp -t 1 
-    tmux send-keys "cd ~/Documents/latex/Notes;vim" C-m 
+    tmux send-keys "~/com_sci; vim" C-m 
     tmux attach-session -t $session    
 else
     attached=$( tmux ls | grep $session | grep attached)
