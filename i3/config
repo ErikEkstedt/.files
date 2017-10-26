@@ -1,5 +1,4 @@
 # i3 config file (v4)
-
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 # MOD-keys
 # mod - Alt, mod2 - win
@@ -20,26 +19,28 @@ focus_follows_mouse no
 bindsym $mod+Shift+q kill
 font pango:monospace 12
 
+# Reload the configuration file
+bindsym $mod+Ctrl+c reload 
+
+# Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Ctrl+r restart
+
+# Ctrl Alt Delete
+bindsym $mod+Ctrl+Delete exec gnome-system-monitor
+
 # Lock computer
 bindsym $mod2+l exec bash -c "gnome-screensaver-command -l"
 bindsym $mod2+F1 exec bash -c "systemctl suspend"
 
-# test key- for testing different scripts
-# bindsym $mod2+t exec bash -c "cd ~/Pictures/wallpaper && ./bg_wal ~/.config/wall.png"
-
-# i3-wm-scripts /home/erik/com_sci/scripts/i3-wm-scripts
-# use dmenu to select an open window
-bindsym $mod+u exec python /home/erik/com_sci/scripts/i3-wm-scripts/nextfind.py
-# Notworknig?
 
 # WORKSPACES
 set $ws1 "1:Web 1"
 set $ws2 "2:Web 2"
 set $ws3 "3:Code"
-set $ws4 "4:Code"
-set $ws5 "5:Tex"
-set $ws6 "6:Pdf"
-set $ws7 "7:Calendar"
+set $ws4 "4:Work"
+set $ws5 "5:Notes"
+set $ws6 "6:Logs"
+set $ws7 "7:Config"
 set $ws8 "8:Laptop"
 set $ws9 "9:Netflix"
 set $ws10 "10:Spotify"
@@ -100,12 +101,12 @@ exec $Browser
 for_window [class="URxvt" title="browser"] mark "browser" move scratchpad
 
 
-############## TERMINAL ###########################
+#============== TERMINAL ==========================
 bindsym $mod+Return exec $term 
 bindsym $mod+Shift+Return exec $term -T "scratchTerm"
 bindsym $mod+r exec $term -e bash -c "stty -ixon && ~/.files/Scripts/tmux/ranger.sh"
 
-# Open floating terminal
+	# Open floating terminal
 bindsym $mod+t exec --no-startup-id $term -T "metaTerm"
 for_window [class="URxvt" title="metaTerm"] floating enable, \
 resize grow left 120, resize grow right 120, \
@@ -117,7 +118,7 @@ for_window [class="URxvt" title="rangerTerm"] floating enable, \
 resize grow left 300, resize grow right 300, \
 resize grow down 150, resize grow up 100 
 
-############## APPLICATIONS and SETINGS ###########################
+#==================== APPLICATIONS and SETINGS ====================
 # Fast Access
 bindsym $mod+g exec $Browser 
 bindsym $mod+y exec $Browser --app=https://www.youtube.com
@@ -125,10 +126,17 @@ bindsym $mod+Shift+f exec $Browser --app=https://www.facebook.com
 # scratchpad. todo: toggle a chrome instance, spotify and terminal with different keys. alt-tab showseverything.
 bindsym $mod+shift+s exec $Music, move scratchpad
 bindsym $mod+s [con_mark="music"] scratchpad show
+
 # todo: bindsym $mod+shift+s exec $Browser #name-title-window-instance#, move scratchpad.
 # todo: bindsym $mod+s [con_mark="scratch_browser"] scratchpad show
 
 bindsym $mod+a exec bash ~/.files/Scripts/Laptop/touchpad_onoff.sh
+
+# Normal Access
+bindsym $mod+Ctrl+n exec nautilus --no-desktop
+bindsym $mod+Ctrl+s exec shutter -s
+bindsym $mod+Shift+t exec ~/Downloads/TeamSpeak3-Client-linux_amd64/ts3client_runscript.sh
+
 
 #===== TMUX SESSIONS ===========
 set $tmuxscripts ~/.files/Scripts/tmux
@@ -137,63 +145,28 @@ bindsym $mod+c exec $tmuxscripts/config_tmux.sh
 bindsym $mod+i exec $tmuxscripts/Vim.sh
 bindsym $mod+p exec $tmuxscripts/personal.sh
 bindsym $mod+o exec $tmuxscripts/work_tmux.sh
-#bindsym $mod+o exec $term -e bash -c "stty -ixon && cd ~/com_sci/Master_code/Robot && vim "  
-#bindsym $mod+o exec $term2 -x bash -c "stty -ixon && cd ~/com_sci/Master_code/Robot && vim"
-#bindsym $mod+o exec $term3 -e bash -c "cd ~/com_sci/Master_code/Robot && tmux -c vim "
 
-#===== Notes =======
+#===== Notes & Logs =======
 bindsym $mod+Shift+n exec ~/.files/Scripts/new_note
-#bindsym $mod+n exec $term -e bash -c "stty -ixon && cd ~/Documents/latex/Notes && vim "
-#bindsym $mod+n exec $term2 -x bash -c "stty -ixon && cd ~/Documents/latex/Notes && vim "
-#bindsym $mod+n exec $term3 -e bash -c "stty -ixon && cd ~/Documents/latex/Notes && vim "
 
 # Log
 bindsym $mod+d exec ~/.files/Scripts/new_log
 bindsym $mod+Shift+d exec bash ~/.files/Scripts/open_last_log.sh
 
-# Calendar 
-# bindsym $mod+c exec ~/.files/i3/scripts/Calendar.sh
-
-# Normal Access
-bindsym $mod+Ctrl+n exec nautilus --no-desktop
-bindsym $mod+Ctrl+s exec shutter -s
-bindsym $mod+Shift+t exec ~/Downloads/TeamSpeak3-Client-linux_amd64/ts3client_runscript.sh
-
 # start rofi (program launcher)
-bindsym $mod+Ctrl+d exec rofi rofi -show  \
-run -font "ubuntu mono 18" -fg "#505050"  \
--bg "#000000" -hlfg "#ffb964" -hlbg "#000000"  \
--width 30 -lines 8 -padding 20 -separator-style none  \
--hide-scrollbar -bw 4 -bc "#111111" -run-list-command 
+bindsym $mod+Ctrl+d exec rofi rofi -show run -lines 8 -padding 20 -separator-style none -hide-scrollbar --run-list-command 
+bindsym $mod+w exec rofi rofi -show  window -lines 8 -padding 20 -separator-style none -hide-scrollbar --run-list-command 
+bindsym $mod+q exec rofi rofi -show  ssh -terminal urxvt -lines 8 -padding 20
 
-# start rofi (program launcher)
-bindsym $mod+w exec rofi rofi -show  window
-
-# start rofi (program launcher)
-bindsym $mod+q exec rofi rofi -show  ssh -terminal urxvt
-
-
-# \ window -font "ubuntu mono 18" -fg "#505050"  \
-# -bg "#000000" -hlfg "#ffb964" -hlbg "#000000"  \
-# -width 30 -lines 8 -padding 20 -separator-style none  \
-# -hide-scrollbar -bw 4 -bc "#111111" -run-list-command 
-
-
-# Open Model doc
-bindsym $mod+m exec $term -T "model-tex" -e bash -c "stty -ixon && vim ~/Documents/latex/Project/Master.tex"
-#bindsym $mod+i exec $term -T "Ideas" -e bash -c "stty -ixon && vim ~/Documents/latex/Project/Ideas.tex"
-
-# Open bibtex document 
+# Open bibtex document FIX THIS!!!!!!!!!!!!!!!!
 bindsym $mod+b exec $term -T "bib-term" -e bash -c "stty -ixon && vim ~/Documents/latex/References.bib"
 for_window [class="URxvt" title="bib-term"] floating enable, \
 resize grow left 20, resize grow right 300, \
 resize grow down 200, resize grow up 250 
 
-#########################################################################
-################ FLOATING Classes
-#########################################################################
-#assign [class="Spotify"] workspace $ws9
+#===== Floating Classes =====
 for_window [class="Spotify"] mark "music", move scratchpad
+#assign [class="Spotify"] workspace $ws9
 
 for_window [class="Simplescreenrecorder"] floating enable
 for_window [class="Videos"] floating enable
@@ -215,17 +188,7 @@ for_window [class="Simulate"] floating enable
 floating_minimum_size 75 x 74
 floating_maximum_size 1910 x 3000 
 
-# Ctrl alt delete
-bindsym $mod+Ctrl+Delete exec gnome-system-monitor
-
-# reload the configuration file
-bindsym $mod+Ctrl+c reload 
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Ctrl+r restart
-
-################################################################
-# APPEARENCE - borders and gaps
-################################################################
+# ========== APPEARENCE - borders and gaps =================
 hide_edge_borders both
 for_window [class="^.*"] border pixel 1
 for_window [class="Zathura"] border pixel 5
@@ -253,13 +216,8 @@ bindsym Ctrl+Shift+g gaps inner current minus 5
 bindsym $mod+Ctrl+Shift+g gaps inner current set 15, gaps outer current set 0
 bindsym $mod+Ctrl+g gaps inner current set 0, gaps outer current set 0
 
-# Shell that rewrites xfce4-terminal rc file.
-# Terminal Transparancy
-bindsym $mod+Ctrl+t exec ~/.files/Scripts/term_transpar_up
-bindsym $mod+Ctrl+Shift+t  exec ~/.files/Scripts/term_transpar_down
+#============== Media Key Bindings ===================
 
-#Pulse Audio controls
-# special keyboard commands
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
@@ -267,7 +225,6 @@ bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 bindsym Shift+XF86AudioRaiseVolume exec pactl set-sink-volume 1 +5%
 bindsym Shift+XF86AudioLowerVolume exec pactl set-sink-volume 1 -5%
 bindsym Shift+XF86AudioMute exec pactl set-sink-mute 1 toggle
-
 
 # Media player controls
 #bindsym XF86AudioPlay exec playerctl play
@@ -280,7 +237,6 @@ bindsym Shift+XF86AudioMute exec pactl set-sink-mute 1 toggle
 bindsym XF86MonBrightnessUp exec ~/.files/Scripts/Laptop/screen_bright -u
 bindsym XF86MonBrightnessDown exec ~/.files/Scripts/Laptop/screen_bright -d
 
-
 # Intel brightness
 bindsym Shift+XF86MonBrightnessUp exec sudo ~/.files/Scripts/Laptop/intel_screen_bright_toggle
 
@@ -291,8 +247,6 @@ bindsym XF86KbdBrightnessDown exec sudo ~/.files/Scripts/Laptop/backlit_keys dow
 # Hibernate
 bindsym XF86Sleep exec systemctl hybrid-sleep
 
-#########################################################################
-# So standard that they are never changed. 
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -353,6 +307,7 @@ bar {
 	status_command i3status -c ~/.config/i3/i3status.conf
 }
 
+#========= Shutdown Options ====================
 # TODO : scripts that syncs github on exit/Start
 # Create Log out, Reboot, Poweroff bindings
 set $reboot_choice "Exit (L)ogout, (R)eboot, (P)oweroff"
@@ -365,11 +320,9 @@ mode $reboot_choice{
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
 }
-
 bindsym $mod+Ctrl+e mode $reboot_choice
 
-
-# Mode to select config files
+#============== Config File Options ================
 set $config_choice "Config: (i)3, (V)im, (R)anger, (Z)sh, (X)defaults, (P)ython.vim, t(E)x.vim, (T)mux, (C)onfig folder in vim "
 mode $config_choice{
 	bindsym $mod+v exec $term3 -e bash -c "stty -ixon && vim ~/.files/vimrc", mode "default"

@@ -86,8 +86,9 @@ set rtp+=~/.fzf
 		hi MatchParen guibg=black guifg=lightblue
 
 	if has('windows')
-			set fillchars=vert:\|   " ┃ line with no breaks between vertical splits 
-			hi VertSplit ctermfg=51
+		set fillchars=vert:\┃  " ┃ line with no breaks between vertical splits 
+		hi VertSplit ctermfg=51
+		hi VertSplit guibg=bg guifg=#b5bd68
 	endif
 
 
