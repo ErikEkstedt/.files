@@ -6,6 +6,7 @@
 	* If it is attached it prompts a message notification that states this fact.
 	* If it is not attached 
 
-# TODO: 
+# TODO
+
 
 * [ ] Ranger tmux shell, toggle

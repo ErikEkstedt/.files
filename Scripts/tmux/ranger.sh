@@ -1,6 +1,6 @@
 #!/bin/sh
 
-session="ranger"
+session="Ranger"
 
 # start tmux server (If already running it does not do anything...I think)
 tmux start-server
