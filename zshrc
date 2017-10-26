@@ -23,8 +23,8 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 
 
 #==== ZSH Themes ========
-ZSH_THEME="terminalparty"
-#ZSH_THEME="spaceship"
+#ZSH_THEME="terminalparty"
+ZSH_THEME="spaceship"
 
 
 # if you do a 'rm *', Zsh will give you a sanity check!

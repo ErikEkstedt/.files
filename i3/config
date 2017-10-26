@@ -133,11 +133,11 @@ bindsym $mod+a exec bash ~/.files/Scripts/Laptop/touchpad_onoff.sh
 
 #===== TMUX SESSIONS ===========
 set $tmuxscripts ~/.files/Scripts/tmux
-bindsym $mod+n exec $term -e bash -c "stty -ixon && $tmuxscripts/notes_tmux.sh"
-bindsym $mod+c exec $term -e bash -c "stty -ixon && $tmuxscripts/config_tmux.sh"
-bindsym $mod+i exec $term -e bash -c "stty -ixon && $tmuxscripts/Vim.sh"
-bindsym $mod+p exec $term -e bash -c "stty -ixon && $tmuxscripts/personal.sh"
-bindsym $mod+o exec $term -e bash -c "stty -ixon && $tmuxscripts/work_tmux.sh"
+bindsym $mod+n exec $tmuxscripts/notes_tmux.sh
+bindsym $mod+c exec $tmuxscripts/config_tmux.sh
+bindsym $mod+i exec $tmuxscripts/Vim.sh
+bindsym $mod+p exec $tmuxscripts/personal.sh
+bindsym $mod+o exec $tmuxscripts/work_tmux.sh
 #bindsym $mod+o exec $term -e bash -c "stty -ixon && cd ~/com_sci/Master_code/Robot && vim "  
 #bindsym $mod+o exec $term2 -x bash -c "stty -ixon && cd ~/com_sci/Master_code/Robot && vim"
 #bindsym $mod+o exec $term3 -e bash -c "cd ~/com_sci/Master_code/Robot && tmux -c vim "

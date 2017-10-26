@@ -39,4 +39,5 @@ function! SetTexOptions()
 	set norelativenumber
 	set nocursorline
 	set conceallevel=0
+	set linebreak
 endfunction

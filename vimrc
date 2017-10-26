@@ -141,6 +141,11 @@ set rtp+=~/.fzf
 		inoremap <leader>å <esc>:hi normal ctermfg=255<cr>
 		nnoremap <leader>å :hi normal ctermfg=255<cr>
 
+	" Calendar
+		nnoremap <leader>cm :Calendar -view=month<CR>
+		nnoremap <leader>cw :Calendar -view=week<CR>
+		nnoremap <leader>cd :Calendar -view=day<CR>
+
 	" try map öä
 		map ö {
 		map ä }
@@ -186,10 +191,10 @@ set rtp+=~/.fzf
 "=============== MOVEMENT ====================
 	" move up and down naturally even if lines 
 	" extends over multiple rows
-	nnoremap j gj
-	nnoremap k gk
-	vnoremap j gj
-	vnoremap k gk
+		nnoremap j gj
+		nnoremap k gk
+		vnoremap j gj
+		vnoremap k gk
 
 	"Move between splits
 		nnoremap <c-h> <c-w><c-h>
@@ -221,10 +226,10 @@ set rtp+=~/.fzf
 		inoremap gj <esc>/<++><enter>"_c4l
 
 	" Toggle fold
-	nnoremap ga za
+		nnoremap ga zA
 
 	"Spellcheck
-	map <F6> :setlocal spell! spelllang=en_us<CR>
+		map <F6> :setlocal spell! spelllang=en_us<CR>
 
 	nnoremap <f10> :set relativenumber!<cr>
 

@@ -10,16 +10,18 @@ then
     tmux new-session -d -s $session -n vim 
     tmux selectp -t 1 
     tmux send-keys "cd ~/Documents/latex/Notes;vim" C-m 
-    tmux attach-session -t $session    
+		exec urxvt -e bash -c "tmux attach-session -t $session"
 else
     attached=$( tmux ls | grep $session | grep attached)
     if [ -z "$attached" ] 
     then
         killall notify-osd
         DISPLAY=:0 notify-send -t 3000 --urgency=critical --icon=$VIM "Attaching to $session"
-        tmux attach-session -t $session    
+				exec urxvt -e bash -c "tmux attach-session -t $session"
     else
         DISPLAY=:0 notify-send -t 3000 --urgency=critical --icon=$Img "Already attached"
+				name=$(xdotool search -name $session)
+				i3-msg [id="$name"] focus
     fi
 fi
 
