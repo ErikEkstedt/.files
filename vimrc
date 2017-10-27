@@ -78,7 +78,7 @@ set rtp+=~/.fzf
 		let &t_8b="\e[48;2;%ld;%ld;%ldm"
 
 	" colors
-		colorscheme base16-tomorrow-night
+		colorscheme base16-classic-dark
 		let base16colorspace=256
 
 	" ======= HIGHLIGHTS =================
