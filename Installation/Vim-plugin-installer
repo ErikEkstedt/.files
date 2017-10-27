@@ -23,6 +23,10 @@ git clone https://github.com/tpope/vim-surround.git
 git clone https://github.com/JamshedVesuna/vim-markdown-preview.git
 pip install grip # needed for vim-markdown-preview (gits style md)
 
+# python syntax
+cd ~/.vim
+mkdir -p syntax && cd syntax
+wget https://github.com/kh3phr3n/python-syntax/blob/master/syntax/python.vim
 
 #===== FZF =====
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
