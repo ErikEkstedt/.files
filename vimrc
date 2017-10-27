@@ -377,6 +377,8 @@ set rtp+=~/.fzf
 		let NERDTreeShowBookmarks = 1
 		autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 		map <C-n> :NERDTreeToggle<CR>
+		let g:NERDTreeDirArrowExpandable = '▸'
+		let g:NERDTreeDirArrowCollapsible = '▾'
 
 	"=============== Syntastic ==================
 	" Recommended settings
