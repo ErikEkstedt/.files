@@ -36,8 +36,9 @@ function! SetTexOptions()
 	let g:vimtex_indent_enabled = 0
 	let g:vimtex_motion_matchparen = 0
 	let g:tex_fold_enabled=1
+	let g:indentLine_enabled = 0 " need conceallevel 1 or 2. unneccessary in tex
+	set conceallevel=0
 	set norelativenumber
 	set nocursorline
-	set conceallevel=0
 	set linebreak
 endfunction

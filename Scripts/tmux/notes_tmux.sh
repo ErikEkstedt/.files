@@ -19,8 +19,9 @@ else
         DISPLAY=:0 notify-send -t 3000 --urgency=critical --icon=$VIM "Attaching to $session"
 				exec urxvt -e bash -c "tmux attach-session -t $session"
     else
-        DISPLAY=:0 notify-send -t 3000 --urgency=critical --icon=$Img "Already attached"
-				name=$(xdotool search -name $session)
+				name=$(xdotool search -name $session:)  
+				# the ':' after session is to separate it from zathura for example. tmux sess always has the colon in name.
+				DISPLAY=:0 notify-send -t 3000 --urgency=critical --icon=$Img "Focus Window $name"
 				i3-msg [id="$name"] focus
     fi
 fi

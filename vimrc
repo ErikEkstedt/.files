@@ -96,6 +96,7 @@ set rtp+=~/.fzf
 	" edit config files
 		nnoremap <leader>ev :tabnew ~/.vimrc<cr>
 		nnoremap <leader>ez :tabnew ~/.zshrc<cr>
+		nnoremap <leader>ea :tabnew ~/.files/aliases<cr>
 		nnoremap <leader>ei3 :tabnew ~/.config/i3/config<cr>
 		nnoremap <leader>er :tabnew ~/.config/ranger/rc.conf<cr>
 		nnoremap <leader>ex :tabnew ~/.xresources<cr>
@@ -374,7 +375,7 @@ set rtp+=~/.fzf
 		autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 		let NERDTreeIgnore=['\.pdf$', '\.png$', '\.aux$', '\.bbl$', '\.fls$', '\.blg$', '\.log$', '\.xml$', '\.fdb_latexmk$','\.gz$']
 		let NERDTreeShowBookmarks = 1
-
+		autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 		map <C-n> :NERDTreeToggle<CR>
 
 	"=============== Syntastic ==================

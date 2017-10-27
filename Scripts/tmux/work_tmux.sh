@@ -15,7 +15,7 @@ then
 	tmux selectp -t 1 
 	tmux send-keys "~/com_sci/Master_code/Robot;vim" C-m 
 	# Split pane 1 horizontal by 65%, start redis-server
-	tmux splitw -h -p 25
+	tmux splitw -h -p 15
 	tmux send-keys "~/com_sci/Master_code/Robot;ipython --no-autoindent" C-m 
 	# Select pane 1
 	tmux selectp -t 1
@@ -30,7 +30,7 @@ else
 		exec urxvt -e bash -c "tmux attach-session -t $session"    
 	else
 		DISPLAY=:0 notify-send -t 3000 --urgency=critical --icon=$VIM "$session"
-		name=$(xdotool search -name $session)
+		name=$(xdotool search -name $session:)
 		i3-msg [id="$name"] focus
 	fi
 fi

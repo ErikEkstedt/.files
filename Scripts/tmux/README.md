@@ -8,5 +8,11 @@
 
 # TODO
 
-
+* MAKE one script that takes input... almost all scripts are the same except work...
 * [ ] Ranger tmux shell, toggle
+* A preconfigurated tmux session that is started over ssh.
+  * A ranger term
+	* Terminal
+	* Htop
+	* Nvidia watch
+

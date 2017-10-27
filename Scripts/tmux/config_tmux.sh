@@ -20,7 +20,7 @@ else
 				exec urxvt -e bash -c "tmux attach-session -t $session"
     else
         DISPLAY=:0 notify-send -t 3000 --urgency=critical --icon=$VIM "$session"
-				name=$(xdotool search -name $session)
+				name=$(xdotool search -name $session:)  
 				i3-msg [id="$name"] focus
     fi
 fi
