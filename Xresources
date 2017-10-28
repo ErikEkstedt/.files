@@ -20,7 +20,7 @@ URxvt*fading: 10
 ! URxvt*tintColor: #1d1f21
 
 URxvt*letterSpace: -1
-URxvt*lineSpace: 0
+URxvt*lineSpace: 1
 URxvt.cursorColor:	gray
 URxvt.foreground:	white
 URxvt.scrollBar:	false
