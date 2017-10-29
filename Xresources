@@ -1,11 +1,12 @@
 !-------------------------------------------------------------------------------
 ! Xft settings
 !-------------------------------------------------------------------------------
-Xft.dpi:                    95
+Xft.dpi:                    120
 Xft.antialias:              true
-Xft.rgba:                   rgba
+Xft.rgba:                   rgb
 Xft.hinting:                true
 Xft.hintstyle:              hintslight
+Xft.lcdfilter:							lcddefault
 
 URxvt.termName:         screen-256color
 URxvt*loginShell: true
@@ -20,7 +21,7 @@ URxvt*fading: 10
 ! URxvt*tintColor: #1d1f21
 
 URxvt*letterSpace: -1
-URxvt*lineSpace: 0
+URxvt*lineSpace: 2
 URxvt.cursorColor:	gray
 URxvt.foreground:	white
 URxvt.scrollBar:	false

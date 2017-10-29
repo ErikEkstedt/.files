@@ -196,8 +196,8 @@ for_window [class=" "] border pixel 5
 client.focused #A7A7A7 #A7A7A7 #A7A7A7
 # client.focused #ff6417 #ff6417 #ff6417
 # initial gap size
-gaps inner 13
-gaps outer 0 
+gaps inner 0
+gaps outer 13 
 
 # Workspace specific gaps
 workspace $ws1 gaps inner 0

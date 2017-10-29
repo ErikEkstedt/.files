@@ -24,8 +24,9 @@ All config files that I use. I think.
 
 - [ ] Look into a way for vimtex to open preview in tmux.
 - [ ] Latex ftplugin does not work? a function that sets linebreak and textwidth.
+  - tried to add linebreak whenever using a tex file. but i dont want linebreak in code. tried to add code in ftplugin tex.vim.
+- [ ] [vim-man](https://github.com/vim-utils/vim-man) - Read man files in vim. A nice way of open man pages in vim from terminal.
 
-tried to add linebreak whenever using a tex file. but i dont want linebreak in code. tried to add code in ftplugin tex.vim.
 
 ## NerdFonts ?
 * [NerdFont link](https://github.com/ryanoasis/nerd-fonts)
