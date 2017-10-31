@@ -20,6 +20,6 @@ done
 for id in `xinput --list|grep 'Touchpad'|perl -ne 'while (m/id=(\d+)/g){print "$1\n";}'`; do
     # echo "setting device ID $id"
     # xinput set-prop $id "Device Accel Velocity Scaling" 10
-    xinput set-prop $id "Synaptics Scrolling Distance" -77 77
+    xinput set-prop $id "Synaptics Scrolling Distance" -77 -77
 done
 

@@ -1,10 +1,11 @@
 #!/bin/sh
 session="Ranger"
+term="termite"
 tmux has-session -t $session 2> /dev/null
 if [ "$?" -eq 1 ] 
 then
 	tmux start-server
-	tmux new-session -d -s $session -n ranger
+	tmux new-session -d -s $session -n $session
 	tmux selectp -t 1 
 	tmux send-keys "ranger" C-m 
 	tmux attach-session -t $session
