@@ -9,6 +9,7 @@ set $mod2 Mod4
 set $term urxvt
 set $term2 gnome-terminal
 set $term3 konsole
+set $term4 termite
 
 set $Browser google-chrome
 set $Music spotify
@@ -105,7 +106,7 @@ exec --no-startup-id udiskie
 # exec $term -T "scratchTerm"
 # for_window [class="URxvt" title="scratchTerm"] mark "term" move scratchpad
 
-exec $term -T "rangerTerm" -e bash -c "stty -ixon && ~/.files/Scripts/tmux/ranger.sh"
+exec $term4 -t "rangerTerm" -e ~/.files/Scripts/tmux/ranger.sh
 for_window [class="URxvt" title="rangerTerm"] mark "ranger" move scratchpad
 
 exec $term -T "rangerTerm" -e bash -c "stty -ixon && ~/.files/Scripts/tmux/ranger.sh"
@@ -126,8 +127,9 @@ resize grow left 120, resize grow right 120, \
 resize grow down 250, resize grow up 250
 
 # Open a floating ranger terminal
-bindsym $mod+r exec $term -T "rangerTerm" -e bash -c "stty -ixon && ~/.files/Scripts/tmux/ranger.sh"
-for_window [class="URxvt" title="rangerTerm"] floating enable
+bindsym $mod+r exec $term4 -t "rangerTerm" -e ~/.files/Scripts/tmux/ranger.sh
+for_window [class="Termite" title="rangerTerm"] floating enable
+
 #==================== APPLICATIONS and SETINGS ====================
 
 bindsym $mod+Ctrl+n exec nautilus --no-desktop

@@ -385,6 +385,15 @@ set rtp+=~/.fzf
 		let g:NERDTreeDirArrowExpandable =''
 		let g:NERDTreeDirArrowCollapsible = ''
 
+		"PaleTurquoise1
+		hi NERDTreeDir guifg=#90a959 
+		hi Directory guifg=#404040
+		"hi NERDTreeDir guifg=gray50
+		hi NERDTreeCWD guifg=gray50
+		hi NERDTreeFile guifg=white
+		hi NERDTreeBookmarksHeader guifg=gray50
+		hi NERDTreeBookmarkName guifg=gray50
+
 	"=============== Syntastic ==================
 	" Recommended settings
 		set statusline+=%#warningmsg#
