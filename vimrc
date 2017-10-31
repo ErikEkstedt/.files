@@ -370,7 +370,7 @@ set rtp+=~/.fzf
 		let g:ycm_python_binary_path = '/home/erik/anaconda3/bin/python3'
 		let g:ycm_autoclose_preview_window_after_completion=1
 		map <leader>gd  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-		let g:ycm_min_num_of_chars_for_completion = 0
+		let g:ycm_min_num_of_chars_for_completion = 2
 
 
 	"=============== Nerdtree ==================
