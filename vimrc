@@ -78,7 +78,7 @@ set rtp+=~/.fzf
 		let &t_8b="\e[48;2;%ld;%ld;%ldm"
 
 	" colors
-		colorscheme base16-tomorrow-night
+		colorscheme base16-classic-dark
 		let base16colorspace=256
 
 	" ======= HIGHLIGHTS =================
@@ -96,6 +96,7 @@ set rtp+=~/.fzf
 	" edit config files
 		nnoremap <leader>ev :tabnew ~/.vimrc<cr>
 		nnoremap <leader>ez :tabnew ~/.zshrc<cr>
+		nnoremap <leader>ea :tabnew ~/.files/aliases<cr>
 		nnoremap <leader>ei3 :tabnew ~/.config/i3/config<cr>
 		nnoremap <leader>er :tabnew ~/.config/ranger/rc.conf<cr>
 		nnoremap <leader>ex :tabnew ~/.xresources<cr>
@@ -365,7 +366,7 @@ set rtp+=~/.fzf
 		let g:ycm_python_binary_path = '/home/erik/anaconda3/bin/python3'
 		let g:ycm_autoclose_preview_window_after_completion=1
 		map <leader>gd  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-		let g:ycm_min_num_of_chars_for_completion = 0
+		let g:ycm_min_num_of_chars_for_completion = 2
 
 
 	"=============== Nerdtree ==================
@@ -374,8 +375,10 @@ set rtp+=~/.fzf
 		autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 		let NERDTreeIgnore=['\.pdf$', '\.png$', '\.aux$', '\.bbl$', '\.fls$', '\.blg$', '\.log$', '\.xml$', '\.fdb_latexmk$','\.gz$']
 		let NERDTreeShowBookmarks = 1
-
+		autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 		map <C-n> :NERDTreeToggle<CR>
+		let g:NERDTreeDirArrowExpandable = '▸'
+		let g:NERDTreeDirArrowCollapsible = '▾'
 
 	"=============== Syntastic ==================
 	" Recommended settings

@@ -83,7 +83,12 @@ bindsym $mod2+s [con_mark="spotify"] scratchpad show
 bindsym $mod2+m move workspace to output up
 bindsym $mod2+F8 exec ~/.files/Scripts/monitor_toggle
 
+<<<<<<< HEAD
 #============================== STARTUP =================================
+=======
+## STARTUP
+#exec_always --no-startup-id ~/.files/i3/scripts/polybar.sh
+>>>>>>> 6f32270c3624557d0cd088f821ef1e4fa83f71dd
 
 exec_always feh --bg-scale ~/.config/wall.png
 exec ~/.files/Scripts/start_up.sh
@@ -120,24 +125,21 @@ resize grow left 300, resize grow right 300, \
 resize grow down 150, resize grow up 100 
 
 #==================== APPLICATIONS and SETINGS ====================
-# Fast Access
+
+bindsym $mod+Ctrl+n exec nautilus --no-desktop
+bindsym $mod+Ctrl+s exec shutter -s
+bindsym $mod+Shift+t exec ~/Downloads/TeamSpeak3-Client-linux_amd64/ts3client_runscript.sh
+bindsym $mod+a exec bash ~/.files/Scripts/Laptop/touchpad_onoff.sh
 bindsym $mod+g exec $Browser 
 bindsym $mod+y exec $Browser --app=https://www.youtube.com
 bindsym $mod+Shift+f exec $Browser --app=https://www.facebook.com
+
 # scratchpad. todo: toggle a chrome instance, spotify and terminal with different keys. alt-tab showseverything.
 bindsym $mod+shift+s exec $Music, move scratchpad
 bindsym $mod+s [con_mark="music"] scratchpad show
 
 # todo: bindsym $mod+shift+s exec $Browser #name-title-window-instance#, move scratchpad.
 # todo: bindsym $mod+s [con_mark="scratch_browser"] scratchpad show
-
-bindsym $mod+a exec bash ~/.files/Scripts/Laptop/touchpad_onoff.sh
-
-# Normal Access
-bindsym $mod+Ctrl+n exec nautilus --no-desktop
-bindsym $mod+Ctrl+s exec shutter -s
-bindsym $mod+Shift+t exec ~/Downloads/TeamSpeak3-Client-linux_amd64/ts3client_runscript.sh
-
 
 #===== TMUX SESSIONS ===========
 set $tmuxscripts ~/.files/Scripts/tmux
@@ -146,6 +148,7 @@ bindsym $mod+c exec $tmuxscripts/config_tmux.sh
 bindsym $mod+i exec $tmuxscripts/Vim.sh
 bindsym $mod+p exec $tmuxscripts/personal.sh
 bindsym $mod+o exec $tmuxscripts/work_tmux.sh
+# bindsym $mod+u exec bash -e "$tmuxscripts/base.sh Config"
 
 #===== Notes & Logs =======
 bindsym $mod+Shift+n exec ~/.files/Scripts/new_note

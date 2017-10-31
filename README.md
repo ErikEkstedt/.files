@@ -23,5 +23,10 @@ All config files that I use. I think.
 ## Vim
 
 - [ ] Look into a way for vimtex to open preview in tmux.
+- [ ] Latex ftplugin does not work? a function that sets linebreak and textwidth.
 
 tried to add linebreak whenever using a tex file. but i dont want linebreak in code. tried to add code in ftplugin tex.vim.
+
+## NerdFonts ?
+* [NerdFont link](https://github.com/ryanoasis/nerd-fonts)
+* [Vim-devicons](https://github.com/ryanoasis/vim-devicons)
