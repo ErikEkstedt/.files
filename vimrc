@@ -124,7 +124,10 @@ set rtp+=~/.fzf
 	" run scripts
 		nnoremap <leader>r :! urxvt -e python % &<cr><cr>
 
-	" go to next comment (in syntastic - flake8 (python) at least)
+	" Toggle conceallevel
+		map <LocalLeader>c :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
+
+	" GO TO next comment (in syntastic - flake8 (python) at least)
 		nnoremap <leader>e :lnext<cr>
 		inoremap <leader>e <esc>:lnext<cr>
 
@@ -188,6 +191,7 @@ set rtp+=~/.fzf
 
 	" change word by put
 	nnoremap S viw"0p
+
 
 
 "=============== MOVEMENT ====================
@@ -353,7 +357,7 @@ set rtp+=~/.fzf
 		nnoremap <Leader>gp :Gpush<CR>
 
 	"=============== Lightline ==================
-	let g:lightline = {'colorscheme': 'powerline',}
+	let g:lightline = {'colorscheme': 'powerline'}
 	set noshowmode "stops vims own showing below the statusbar.
 
 	"=============== Tabular ==================
@@ -377,8 +381,9 @@ set rtp+=~/.fzf
 		let NERDTreeShowBookmarks = 1
 		autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 		map <C-n> :NERDTreeToggle<CR>
-		let g:NERDTreeDirArrowExpandable = '▸'
-		let g:NERDTreeDirArrowCollapsible = '▾'
+		
+		let g:NERDTreeDirArrowExpandable =''
+		let g:NERDTreeDirArrowCollapsible = ''
 
 	"=============== Syntastic ==================
 	" Recommended settings
@@ -433,6 +438,7 @@ set rtp+=~/.fzf
 		nnoremap <Leader>gg :Lines<CR>
 		nnoremap <Leader>gs :GFiles?<CR>
 		nnoremap <Leader>gb :Buffers<CR>
+
 
 "===== TODO =====
 	"sometime maybe

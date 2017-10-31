@@ -1,11 +1,12 @@
 !-------------------------------------------------------------------------------
 ! Xft settings
 !-------------------------------------------------------------------------------
-Xft.dpi:                    95
+Xft.dpi:                    120
 Xft.antialias:              true
-Xft.rgba:                   rgba
+Xft.rgba:                   rgb
 Xft.hinting:                true
 Xft.hintstyle:              hintslight
+Xft.lcdfilter:							lcddefault
 
 URxvt.termName:         screen-256color
 URxvt*loginShell: true
@@ -19,8 +20,13 @@ URxvt*fading: 10
 
 ! URxvt*tintColor: #1d1f21
 
+<<<<<<< HEAD
 URxvt*letterSpace: -1
 URxvt*lineSpace: 1
+=======
+URxvt*letterSpace: 0
+URxvt*lineSpace: 2
+>>>>>>> 38049a7667fbdf2c9100db90a60df4042a648d8c
 URxvt.cursorColor:	gray
 URxvt.foreground:	white
 URxvt.scrollBar:	false
@@ -37,10 +43,14 @@ URxvt.colorIT:      #87af5f
 URxvt.colorBD:      #d7d7d7
 URxvt.colorUL:      #87afd7
 
-URxvt*font:xft:DejaVu\ Sans\ Mono\ for\ Powerline:pixelsize=14:antialias=true
-URxvt*boldFont:xft:DejaVu\ Sans\ Mono\ for\ Powerline:bold:pixelsize=14:antialias=true
-URxvt*italicFont:xft:DejaVu\ Sans\ Mono\ for\ Powerline:italic:pixelsize=14:antialias=true
+URxvt*font:					xft:DejaVu\ Sans\ Mono\ Nerd\ Font:pixelsize=15:antialias=true\
+										xft:Awesome\ Font:pixelsize=15:antialias=true
+URxvt*boldFont:			xft:DejaVu\ Sans\ Mono\ Nerd\ Font:bold:pixelsize=14:antialias=true
+URxvt*italicFont:   xft:DejaVu\ Sans\ Mono\ Nerd\ Font:italic:pixelsize=14:antialias=true
 
+! URxvt*font:					xft:DejaVu\ Sans\ Mono\ for\ Powerline:pixelsize=15:antialias=true       
+! URxvt*boldFont:			xft:DejaVu\ Sans\ Mono\ for\ Powerline:bold:pixelsize=14:antialias=true  
+! URxvt*italicFont:   xft:DejaVu\ Sans\ Mono\ for\ Powerline:italic:pixelsize=14:antialias=true
 
 ! themes
 ! --------------------------------------------------------------------

@@ -1,16 +1,22 @@
 #!/bin/sh
-
 session="Ranger"
+tmux has-session -t $session 2> /dev/null
+if [ "$?" -eq 1 ] 
+then
+	tmux start-server
+	tmux new-session -d -s $session -n ranger
+	tmux selectp -t 1 
+	tmux send-keys "ranger" C-m 
+	tmux attach-session -t $session
+else
+	attached=$( tmux ls | grep $session | grep attached)
+	if [ -z "$attached" ] 
+	then
+		killall notify-osd
+		tmux attach-session -t $session
+	else
+		name=$(xdotool search -name $session:)
+		i3-msg [id="$name"] focus
+	fi
+fi
 
-# start tmux server (If already running it does not do anything...I think)
-tmux start-server
-
-# create a new tmux session, starting vim from a saved session in the new window
-tmux new-session -d -s $session -n ranger
-
-# Select pane 1, set dir to gro (zsh alias) , run vim
-tmux selectp -t 1 
-tmux send-keys "ranger" C-m 
-
-# Finished setup, attach to the tmux session!
-tmux attach-session -t $session

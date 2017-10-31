@@ -2,29 +2,31 @@
 Img=~/.files/icons/red-icon.png
 VIM=~/.files/icons/vim-icon.png
 session="Logs"
+term="termite"
+path="~/.files"
 tmux has-session -t $session 2> /dev/null
 if [ "$?" -eq 1 ] 
 then
-	DISPLAY=:0 notify-send -t 3000 --urgency=critical --icon=$VIM "Creating $session session"
-	tmux start-server
-	tmux new-session -d -s $session -n $session 
-	tmux selectp -t 1 
-	tmux send-keys "cd ~/Documents/latex/Logs;vim" C-m 
-	tmux splitw -h -p 25
-	tmux send-keys "~/Documents/latex/Logs;zathura" C-m 
-	tmux selectp -t 1
-	exec urxvt -e bash -c "tmux attach-session -t $session"
+    DISPLAY=:0 notify-send -t 3000 --urgency=critical --icon=$VIM "Creating $session session"
+    tmux start-server
+    tmux new-session -d -s $session -n $session 
+    tmux selectp -t 1 
+		tmux send-keys "cd $path;vim" C-m 
+		tmux splitw -h -p 25
+		tmux send-keys "cd $path;zathura" C-m 
+		exec $term -e "tmux attach-session -t $session"
 else
-	attached=$( tmux ls | grep $session | grep attached)
-	if [ -z "$attached" ] 
-	then
-		killall notify-osd
-		DISPLAY=:0 notify-send -t 3000 --urgency=critical --icon=$VIM "Attaching to $session"
-		exec urxvt -e bash -c "tmux attach-session -t $session"
-	else
-		DISPLAY=:0 notify-send -t 3000 --urgency=critical --icon=$VIM "$session"
-		name=$(xdotool search -name $session:)
-		i3-msg [id="$name"] focus
-	fi
+    attached=$( tmux ls | grep $session | grep attached)
+    if [ -z "$attached" ] 
+    then
+        killall notify-osd
+        DISPLAY=:0 notify-send -t 3000 --urgency=critical --icon=$VIM "Attaching to $session"
+				exec $term -e "tmux attach-session -t $session"
+    else
+        DISPLAY=:0 notify-send -t 3000 --urgency=critical --icon=$VIM "$session"
+				name=$(xdotool search -name $session:)  
+				i3-msg [id="$name"] focus
+    fi
 fi
+
 
