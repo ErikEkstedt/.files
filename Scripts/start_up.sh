@@ -4,7 +4,4 @@
 xrdb ~/.Xdefaults                                                                          
 xmodmap ~/.files/Scripts/speedswapper
 xset r rate 200 75
-WAL=$(which wal)
-$WAL -R -a 70 
-exec ./mouse_settings.sh &
 unclutter &

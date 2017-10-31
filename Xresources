@@ -20,7 +20,7 @@ URxvt*fading: 10
 
 ! URxvt*tintColor: #1d1f21
 
-URxvt*letterSpace: -1
+URxvt*letterSpace: 0
 URxvt*lineSpace: 2
 URxvt.cursorColor:	gray
 URxvt.foreground:	white
@@ -38,10 +38,14 @@ URxvt.colorIT:      #87af5f
 URxvt.colorBD:      #d7d7d7
 URxvt.colorUL:      #87afd7
 
-URxvt*font:xft:DejaVu\ Sans\ Mono\ for\ Powerline:pixelsize=14:antialias=true
-URxvt*boldFont:xft:DejaVu\ Sans\ Mono\ for\ Powerline:bold:pixelsize=14:antialias=true
-URxvt*italicFont:xft:DejaVu\ Sans\ Mono\ for\ Powerline:italic:pixelsize=14:antialias=true
+URxvt*font:					xft:DejaVu\ Sans\ Mono\ Nerd\ Font:pixelsize=15:antialias=true\
+										xft:Awesome\ Font:pixelsize=15:antialias=true
+URxvt*boldFont:			xft:DejaVu\ Sans\ Mono\ Nerd\ Font:bold:pixelsize=14:antialias=true
+URxvt*italicFont:   xft:DejaVu\ Sans\ Mono\ Nerd\ Font:italic:pixelsize=14:antialias=true
 
+! URxvt*font:					xft:DejaVu\ Sans\ Mono\ for\ Powerline:pixelsize=15:antialias=true       
+! URxvt*boldFont:			xft:DejaVu\ Sans\ Mono\ for\ Powerline:bold:pixelsize=14:antialias=true  
+! URxvt*italicFont:   xft:DejaVu\ Sans\ Mono\ for\ Powerline:italic:pixelsize=14:antialias=true
 
 ! themes
 ! --------------------------------------------------------------------

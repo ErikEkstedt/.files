@@ -17,6 +17,7 @@ if [[ $(xinput list $N | grep -Ec "disabled") -eq 1 ]]; then
     xinput enable $N
     killall notify-osd
     DISPLAY=:0 notify-send -t $T --urgency=critical --icon=$Img "Touchpad enabled"
+		exec ~/.files/Scripts/mouse_settings.sh 
 else
     xinput disable $N
     killall notify-osd

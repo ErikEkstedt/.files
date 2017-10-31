@@ -30,4 +30,9 @@ All config files that I use. I think.
 
 ## NerdFonts ?
 * [NerdFont link](https://github.com/ryanoasis/nerd-fonts)
-* [Vim-devicons](https://github.com/ryanoasis/vim-devicons)
+* [Vim-devicons](https://github.com/ryanoasis/vim
+devicona)
+
+Get unicode to clipboard
+
+	echo -ne "\uf026" | xclip -selection clipboard
