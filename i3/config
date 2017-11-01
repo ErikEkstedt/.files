@@ -1,11 +1,11 @@
-# ---------------------------------------------------------
+# =============================================
 #
-# i3 config file (v4)
+#
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 #
-# ---------------------------------------------------------
+# =============================================
 
-
+#========= MOD/VARIABLES ========={{{
 # MOD-keys
 # mod: Alt, mod2: win
 set $mod Mod1
@@ -30,13 +30,13 @@ font pango:monospace 10
 bindsym $mod+Ctrl+c reload 
 bindsym $mod+Ctrl+r restart
 
-
 # Lock computer/ Ctrl Alt Delete 
 bindsym $mod2+l exec bash -c "gnome-screensaver-command -l"
 bindsym $mod2+F1 exec bash -c "systemctl suspend"
 bindsym $mod+Ctrl+Delete exec gnome-system-monitor
+#}}}
 
-# WORKSPACES
+#========= WORKSPACES ============{{{
 set $ws1 "1:Web 1"
 set $ws2 "2:Web 2"
 set $ws3 "3:Code"
@@ -72,10 +72,9 @@ bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
+#}}}
 
-
-#====================== STARTUP =================================
-
+#========= STARTUP == ============{{{
 exec_always --no-startup-id ~/.files/Scripts/polybar_start.sh
 exec_always --no-startup-id ~/.files/Scripts/mouse_settings.sh
 exec_always --no-startup-id feh --bg-scale ~/.config/wall.png
@@ -94,9 +93,9 @@ exec_always $term4 -t "rangerTerm" -e ~/.files/Scripts/tmux/ranger.sh
 	for_window [class="Termite" title="rangerTerm"] mark "ranger" move scratchpad
 exec $Browser
 	for_window [class="Google-chrome" title="browser"] mark "browser" move scratchpad
+#}}}
 
-#==================== APPLICATIONS and SETINGS ====================
-
+#========= APPLICATIONS =========={{{
 bindsym $mod+Ctrl+n exec nautilus --no-desktop
 bindsym $mod+Ctrl+s exec shutter -s
 bindsym $mod+Shift+t exec ~/Downloads/TeamSpeak3-Client-linux_amd64/ts3client_runscript.sh
@@ -121,7 +120,6 @@ bindsym Mod1+Shift+Tab move scratchpad
 
 #bindsym $mod+Shift+g exec $Browser, mark browser
 bindsym $mod2+g [con_mark="browser"] scratchpad show
-
 bindsym $mod2+t [con_mark="term"] scratchpad show
 bindsym $mod+s [con_mark="music"] scratchpad show
 bindsym $mod+r [class="Termite" title="rangerTerm"] scratchpad show
@@ -165,9 +163,9 @@ bindsym $mod+q exec rofi rofi -show  ssh\
 											-terminal $term \
 											-lines 8 \
 											-padding 20
+#}}}
 
-
-#===== Floating Classes =====
+#========= FLOATING CLASSES ======{{{
 for_window [class="Spotify"] mark "music", move scratchpad
 for_window [class="Simplescreenrecorder"] floating enable
 for_window [class="Videos"] floating enable
@@ -188,9 +186,9 @@ for_window [class="Simulate"] floating enable
 # Floating constraints
 floating_minimum_size 75 x 74
 floating_maximum_size 1910 x 3000 
+#}}}
 
-
-# ========== APPEARENCE - borders and gaps =================
+#========= APPEARENCE ============{{{
 hide_edge_borders both
 for_window [class="^.*"] border pixel 1
 for_window [class="Zathura"] border pixel 5
@@ -201,11 +199,9 @@ for_window [class=" "] border pixel 5
 client.focused #A7A7A7 #A7A7A7 #A7A7A7
 # client.focused #ff6417 #ff6417 #ff6417
 
-
 # initial gap size
 gaps inner 10
 gaps outer 10 
-
 
 # Workspace specific gaps
 workspace $ws1 gaps inner 0
@@ -215,25 +211,22 @@ workspace $ws2 gaps outer 0
 workspace $ws8 gaps inner 0
 workspace $ws8 gaps outer 0
 
-
 # Chaning gap size, no gaps, initial gap size
 bindsym Ctrl+g gaps inner current plus 5
 bindsym Ctrl+Shift+g gaps inner current minus 5
 bindsym $mod+Ctrl+Shift+g gaps inner current set 15, gaps outer current set 0
 bindsym $mod+Ctrl+g gaps inner current set 0, gaps outer current set 0
+#}}}
 
-
-#============== Media Key Bindings ===================
+#========= MEDIA KEY BINDINGS ===={{{
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
-
 
 # Desktop
 bindsym Shift+XF86AudioRaiseVolume exec pactl set-sink-volume 1 +5%
 bindsym Shift+XF86AudioLowerVolume exec pactl set-sink-volume 1 -5%
 bindsym Shift+XF86AudioMute exec pactl set-sink-mute 1 toggle
-
 
 # Media player controls
 #bindsym XF86AudioPlay exec playerctl play
@@ -241,37 +234,32 @@ bindsym Shift+XF86AudioMute exec pactl set-sink-mute 1 toggle
 #bindsym XF86AudioNext exec playerctl next
 #bindsym XF86AudioPrev exec playerctl previous
 
-
 # LAPTOP Settings
 # Xrandr brightness
 bindsym XF86MonBrightnessUp exec ~/.files/Scripts/Laptop/screen_bright -u
 bindsym XF86MonBrightnessDown exec ~/.files/Scripts/Laptop/screen_bright -d
 
-
 # Intel brightness
 bindsym Shift+XF86MonBrightnessUp exec sudo ~/.files/Scripts/Laptop/intel_screen_bright_toggle
-
 
 # key brightness
 bindsym XF86KbdBrightnessUp exec sudo ~/.files/Scripts/Laptop/backlit_keys 
 bindsym XF86KbdBrightnessDown exec sudo ~/.files/Scripts/Laptop/backlit_keys down
 
-
 # Hibernate
 bindsym XF86Sleep exec systemctl hybrid-sleep
+#}}}
 
-
+#========= MOVEMENTS ============={{{
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-
 # change workspace
 bindsym $mod+Ctrl+l workspace next
 bindsym $mod+Ctrl+h workspace prev
-
 
 # resize
 set $growth 3
@@ -280,18 +268,15 @@ bindsym $mod+Shift+i resize grow height $growth px or $growth ppt
 bindsym $mod+Shift+u resize shrink height $growth px or $growth ppt
 bindsym $mod+Shift+o resize grow width $growth px or $growth ppt
 
-
 # move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-
 # split in horizontal orientation
 bindsym $mod+Shift+v split h
 bindsym $mod+v split v
-
 
 # enter fullscreen mode for the focused container
 popup_during_fullscreen smart
@@ -301,8 +286,9 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 bindsym $mod+Shift+z focus parent
 bindsym $mod+z focus child
+#}}}
 
-
+#========= i3-BAR ================{{{
 # Start i3bar to display a workspace bar (plus the system information i3status
 # bar {
 # 	colors {
@@ -325,8 +311,9 @@ bindsym $mod+z focus child
 # 	# Using custom i3status.conf
 # 	status_command i3status -c ~/.config/i3/i3status.conf
 # }
+#}}}
 
-#========= Shutdown Options ====================
+#========= SHUTDOWN =============={{{
 # TODO : scripts that syncs github on exit/Start
 # Create Log out, Reboot, Poweroff bindings
 set $reboot_choice "Exit (L)ogout, (R)eboot, (P)oweroff"
@@ -340,8 +327,9 @@ mode $reboot_choice{
 	bindsym Escape mode "default"
 }
 bindsym $mod+Ctrl+e mode $reboot_choice
+#}}}
 
-#============== Config File Options ================
+#========= CONFIG MENU ==========={{{
 set $config_choice "Config: (i)3, (V)im, (R)anger, (Z)sh, (X)defaults, (P)ython.vim, t(E)x.vim, (T)mux, (C)onfig folder in vim "
 mode $config_choice{
 	bindsym $mod+v exec $term3 -e bash -c "stty -ixon && vim ~/.files/vimrc", mode "default"
@@ -358,3 +346,6 @@ mode $config_choice{
 	bindsym Escape mode "default"
 }
 bindsym $mod+Shift+e mode $config_choice
+#}}}
+
+# vim:fdm=marker
