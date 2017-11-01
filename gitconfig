@@ -1,3 +1,4 @@
+; vim:ft=dosini
 [user]
 	email = eeckee@gmail.com
 	name = Erik
@@ -7,3 +8,8 @@
 	default = simple
 [web]
 	browser = google-chrome
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff
+	conflictstyle =  diff3
