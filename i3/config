@@ -147,13 +147,8 @@ bindsym $mod+b exec $term4 -t ref -e "vim /home/erik/Documents/latex/References.
 
 
 # start rofi (program launcher)
-bindsym $mod+Ctrl+d exec rofi rofi -show run \ 
-													-lines 8 -padding 20 \
-													-separator-style none \
-													-hide-scrollbar \
-													--run-list-command 
-
-bindsym $mod+w exec rofi rofi -show window\
+bindsym $mod+Ctrl+d exec rofi rofi -show run -lines 8 -padding 20 -separator-style none -hide-scrollbar --run-list-command 
+bindsym $mod+w exec rofi rofi -show window \
 											-lines 8 -padding 20 \
 											-separator-style none\
 											-hide-scrollbar \
@@ -348,4 +343,4 @@ mode $config_choice{
 bindsym $mod+Shift+e mode $config_choice
 #}}}
 
-# vim:fdm=marker
+#vim:fdm=marker
