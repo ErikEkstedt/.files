@@ -1,6 +1,5 @@
 # =============================================
 #
-#
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 #
 # =============================================
@@ -83,8 +82,10 @@ exec --no-startup-id gnome-sound-applet
 exec --no-startup-id gnome-settings-daemon
 exec --no-startup-id nm-applet
 exec --no-startup-id udiskie
+
 exec_always $term4 -t "rangerTerm" -e ~/.files/Scripts/tmux/ranger.sh
 	for_window [class="Termite" title="rangerTerm"] mark "ranger" move scratchpad
+
 exec --no-startup-id gnome-sound-applet
 exec --no-startup-id gnome-settings-daemon
 exec --no-startup-id nm-applet
@@ -109,10 +110,11 @@ bindsym $mod+y exec $Browser --app=https://www.youtube.com
 #============== TERMINAL ==========================
 bindsym $mod+Return exec $term4
 bindsym $mod+Shift+Return exec $term -T "scratchTerm"
-bindsym $mod+t exec --no-startup-id $term4 -t "metaTerm"
-	for_window [class="Termite" title="metaTerm"] floating enable, \
-	resize grow left 120, resize grow right 120, \
-	resize grow down 250, resize grow up 250
+
+# bindsym $mod+t exec --no-startup-id $term4 -t "metaTerm"
+# 	for_window [class="Termite" title="metaTerm"] floating enable, \
+# 	resize grow left 120, resize grow right 120, \
+# 	resize grow down 250, resize grow up 250
 
 # Scratchpad
 bindsym Mod1+Tab scratchpad show
@@ -122,7 +124,10 @@ bindsym Mod1+Shift+Tab move scratchpad
 bindsym $mod2+g [con_mark="browser"] scratchpad show
 bindsym $mod2+t [con_mark="term"] scratchpad show
 bindsym $mod+s [con_mark="music"] scratchpad show
+bindsym $mod+t exec ~/.files/Scripts/tlist.sh
 bindsym $mod+r [class="Termite" title="rangerTerm"] scratchpad show
+bindsym $mod+Shift+r exec $term4 -t "rangerTerm" -e ~/.files/Scripts/tmux/ranger.sh
+	for_window [class="Termite" title="rangerTerm"] mark "ranger" move scratchpad
 
 # Monitor Setup
 bindsym $mod2+m move workspace to output up
@@ -131,12 +136,12 @@ bindsym $mod2+F8 exec ~/.files/Scripts/monitor_toggle
 
 #===== TMUX SESSIONS ===========
 set $tmuxscripts ~/.files/Scripts/tmux
-bindsym $mod+n exec $tmuxscripts/notes_tmux.sh
-bindsym $mod+d exec ~/.files/Scripts/new_log
-bindsym $mod+c exec $tmuxscripts/config_tmux.sh
-bindsym $mod+i exec $tmuxscripts/Vim.sh
-bindsym $mod+p exec $tmuxscripts/personal.sh
-bindsym $mod+o exec $tmuxscripts/work_tmux.sh
+bindsym $mod+n workspace $ws6 focus, exec $tmuxscripts/notes_tmux.sh
+bindsym $mod+d workspace $ws6 focus, exec ~/.files/Scripts/new_log
+bindsym $mod+c workspace $ws7 focus, exec $tmuxscripts/config_tmux.sh
+bindsym $mod+i workspace $ws4 focus, exec $tmuxscripts/Vim.sh
+bindsym $mod+p workspace $ws6 focus, exec $tmuxscripts/personal.sh
+bindsym $mod+o workspace $ws3 focus, exec $tmuxscripts/work_tmux.sh
 
 bindsym $mod+Shift+d exec bash ~/.files/Scripts/open_last_log.sh
 bindsym $mod+Shift+n exec ~/.files/Scripts/new_note
@@ -147,7 +152,16 @@ bindsym $mod+b exec $term4 -t ref -e "vim /home/erik/Documents/latex/References.
 
 
 # start rofi (program launcher)
-bindsym $mod+Ctrl+d exec rofi rofi -show run -lines 8 -padding 20 -separator-style none -hide-scrollbar --run-list-command 
+bindsym $mod+Ctrl+d exec rofi rofi -show run -lines 8 -padding 20 \
+													-separator-style none \
+													-hide-scrollbar \
+													--run-list-command 
+
+bindsym $mod+Ctrl+d exec rofi rofi -show run -lines 8 -padding 20 \
+													-separator-style none \
+													-hide-scrollbar \
+													--run-list-command 
+
 bindsym $mod+w exec rofi rofi -show window \
 											-lines 8 -padding 20 \
 											-separator-style none\

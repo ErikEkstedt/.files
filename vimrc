@@ -8,6 +8,7 @@ set rtp+=~/.fzf
 
 "=============== Basic ======================={{{
 filetype plugin indent on
+filetype plugin on
 syntax enable
 
 let mapleader = ','
@@ -171,7 +172,7 @@ nnoremap gp %
 nnoremap gs ]sz=
 
 set pastetoggle=<f2> " system clipboard pastes preserves indentation
-"
+
 " copy / paste from clipboard
 nnoremap <c-p> "+p
 inoremap <c-p> <esc>"+pi
@@ -185,6 +186,14 @@ nnoremap Y y$
 
 " change word by put
 nnoremap S viw"0p
+
+" Marker line
+nnoremap <leader>ml i=============== FOLD ==========={{{<esc>:TComment<CR>
+" Marker After line
+
+nnoremap <leader>mA A  %{{{<esc>
+nnoremap <leader>me i%}}}<esc>
+
 "}}}
 
 "=============== MOVEMENT ===================={{{
@@ -381,7 +390,7 @@ let g:ycm_min_num_of_chars_for_completion = 2
 " " open NERDTree on startup
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-let NERDTreeIgnore=['\.pdf$', '\.png$', '\.aux$', '\.bbl$', '\.fls$', '\.blg$', '\.log$', '\.xml$', '\.fdb_latexmk$','\.gz$']
+let NERDTreeIgnore=['\.pyc$', '\.pdf$', '\.png$', '\.aux$', '\.bbl$', '\.fls$', '\.blg$', '\.log$', '\.xml$', '\.fdb_latexmk$','\.gz$']
 let NERDTreeShowBookmarks = 1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 map <C-n> :NERDTreeToggle<CR>

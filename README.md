@@ -19,6 +19,8 @@ All config files that I use. I think.
 - [ ] Script that starts a terminal and run mountdesk and ssh to desktop. 
 - [ ] Scripts for tmux: Notes, logs, todo, calendar.
 - [ ] Tweak the tmux scripts so if its attached i3 focuses on that container.
+- [ ] Fix Calendar vim - might help in productivty / goals.
+
 
 ## Vim
 
@@ -28,11 +30,7 @@ All config files that I use. I think.
 - [ ] [vim-man](https://github.com/vim-utils/vim-man) - Read man files in vim. A nice way of open man pages in vim from terminal.
 
 
-## NerdFonts ?
-* [NerdFont link](https://github.com/ryanoasis/nerd-fonts)
-* [Vim-devicons](https://github.com/ryanoasis/vim
-devicona)
 
+## Useful tips
 Get unicode to clipboard
-
 	echo -ne "\uf026" | xclip -selection clipboard
