@@ -157,11 +157,6 @@ bindsym $mod+Ctrl+d exec rofi rofi -show run -lines 8 -padding 20 \
 													-hide-scrollbar \
 													--run-list-command 
 
-bindsym $mod+Ctrl+d exec rofi rofi -show run -lines 8 -padding 20 \
-													-separator-style none \
-													-hide-scrollbar \
-													--run-list-command 
-
 bindsym $mod+w exec rofi rofi -show window \
 											-lines 8 -padding 20 \
 											-separator-style none\
