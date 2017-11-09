@@ -1,3 +1,4 @@
+" vim: set fdm=marker
 "============= SETTING ======================
 "pathogen vim modules stuff
 execute pathogen#infect()
@@ -193,6 +194,9 @@ nnoremap j gj
 nnoremap k gk
 vnoremap j gj
 vnoremap k gk
+
+nnoremap H 0
+nnoremap L $
 
 "Move between splits
 nnoremap <c-h> <c-w><c-h>
