@@ -206,12 +206,19 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
+<<<<<<< HEAD
 nnoremap L $
 nnoremap H 0
 
 nnoremap G Gzz
 nnoremap <c-o> <c-o>zz
 
+||||||| merged common ancestors
+=======
+nnoremap H 0
+nnoremap L $
+
+>>>>>>> d06210762b613f6cfbb872d1240f20e8e351f6cc
 "Move between splits
 nnoremap <c-h> <c-w><c-h>
 nnoremap <c-l> <c-w><c-l>
