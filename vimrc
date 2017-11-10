@@ -87,7 +87,7 @@ endif
 "}}}
 
 "=============== MAPPINGS ===================={{{
-" edit config files
+" Config files {{{
 nnoremap <leader>ev :tabnew ~/.vimrc<cr>
 nnoremap <leader>ez :tabnew ~/.zshrc<cr>
 nnoremap <leader>ea :tabnew ~/.files/aliases<cr>
@@ -105,6 +105,10 @@ nnoremap <leader>sv :source ~/.vimrc<cr>
 nnoremap <leader>sz :source ~/.zshrc<cr>
 nnoremap <leader>sx :! xrdb ~/.Xresources<cr>
 nnoremap <leader>sot :source ~/.tmux.conf<cr>
+" }}}
+
+" Source lines
+vnoremap <leader>vs y:@"<CR>
 
 " standard saving options
 nnoremap <c-s> :w<cr>
@@ -187,8 +191,6 @@ nnoremap Y y$
 nnoremap S viw"0p
 
 " Marker line
-nnoremap <leader>ml i=============== FOLD ==========={{{<esc>:TComment<CR>
-" Marker After line
 
 nnoremap <leader>mA A  %{{{<esc>
 nnoremap <leader>me i%}}}<esc>
@@ -202,6 +204,12 @@ nnoremap j gj
 nnoremap k gk
 vnoremap j gj
 vnoremap k gk
+
+nnoremap L $
+nnoremap H 0
+
+nnoremap G Gzz
+nnoremap <c-o> <c-o>zz
 
 "Move between splits
 nnoremap <c-h> <c-w><c-h>
@@ -223,9 +231,6 @@ vnoremap <c-k> <esc><c-w><c-k>gv
 nnoremap <Leader>q :vertical resize -5<CR>
 nnoremap <Leader>w :vertical resize +5<CR>
 
-nnoremap G Gzz
-nnoremap gh 0
-nnoremap gi 0ciw
 
 " go to placeholder
 nnoremap gj <esc>/<++><enter>"_c4l
@@ -339,7 +344,6 @@ vnoremap <C-c><C-x> :SlimuxREPLConfigure<CR>
 let g:netrw_banner = 0 "no banner
 let g:netrw_liststyle = 3 
 let g:netrw_sort_sequence = '[\/]$,*' " sort is affecting only: directories on the top, files below
-nnoremap <leader>tt :Texplore<cr>
 noremap <leader>ex :Explore<cr>
 nnoremap <leader>vv :Vexplore<cr>
 nnoremap <leader>hh :Hexplore<cr>
@@ -370,10 +374,10 @@ let g:lightline = {'colorscheme': 'powerline'}
 set noshowmode "stops vims own showing below the statusbar.
 
 "=============== Tabular ==================
-vnoremap <silent> <Leader>c= :Tabularize /=<CR>
-vnoremap <silent> <Leader>c# :Tabularize /#<CR>
-vnoremap <silent> <Leader>c" :Tabularize /"<CR>
-vnoremap <silent> <Leader>c% :Tabularize /%<CR>
+vnoremap <silent> <Leader>t= :Tabularize /=<CR>
+vnoremap <silent> <Leader>t# :Tabularize /#<CR>
+vnoremap <silent> <Leader>t" :Tabularize /"<CR>
+vnoremap <silent> <Leader>t% :Tabularize /%<CR>
 
 "=============== YouCompleteMe ==================
 let g:ycm_python_binary_path = '/home/erik/anaconda3/bin/python3'
