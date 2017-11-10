@@ -111,11 +111,6 @@ bindsym $mod+y exec $Browser --app=https://www.youtube.com
 bindsym $mod+Return exec $term4
 bindsym $mod+Shift+Return exec $term -T "scratchTerm"
 
-# bindsym $mod+t exec --no-startup-id $term4 -t "metaTerm"
-# 	for_window [class="Termite" title="metaTerm"] floating enable, \
-# 	resize grow left 120, resize grow right 120, \
-# 	resize grow down 250, resize grow up 250
-
 # Scratchpad
 bindsym Mod1+Tab scratchpad show
 bindsym Mod1+Shift+Tab move scratchpad
