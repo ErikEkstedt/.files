@@ -36,8 +36,16 @@ let g:vimtex_motion_matchparen = 0
 let g:tex_fold_enabled=1
 let g:indentLine_enabled = 0 " need conceallevel 1 or 2. unneccessary in tex
 
+" Appearance
 colorscheme base16-classic-dark
 let base16colorspace=256
+hi NERDTreeDir guifg=#90a959 
+hi Directory guifg=#404040
+hi NERDTreeCWD guifg=gray50
+hi NERDTreeFile guifg=white
+hi NERDTreeBookmarksHeader guifg=gray50
+hi NERDTreeBookmarkName guifg=gray50
+
 set foldmethod=marker
 set conceallevel=0
 set norelativenumber
