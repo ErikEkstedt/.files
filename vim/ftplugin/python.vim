@@ -27,9 +27,17 @@ setlocal softtabstop=4
 setlocal shiftwidth=4
 setlocal expandtab
 setlocal autoindent
+
 " colors
 colorscheme base16-monokai
 let base16colorspace=256
+hi NERDTreeDir guifg=#90a959 
+hi Directory guifg=#404040
+hi NERDTreeCWD guifg=gray50
+hi NERDTreeFile guifg=white
+hi NERDTreeBookmarksHeader guifg=gray50
+hi NERDTreeBookmarkName guifg=gray50
+
 
 
 
