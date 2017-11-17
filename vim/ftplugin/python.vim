@@ -14,7 +14,6 @@ inoremap ;nu import numpy as np<CR>import matplotlib.pyplot as plt<CR>
 "--------------------------------------------------------------------------------------
 "Def
 inoremap ;def def (<++>):<CR><++><Esc>k0f(i
-
 " Class
 inoremap ;cl class (<++>):<CR>'''<++>'''<CR>def __init__(self,<++>):<CR>super(<++>,self).__init__()<Esc>3k6hi
 " typing
@@ -28,5 +27,9 @@ setlocal softtabstop=4
 setlocal shiftwidth=4
 setlocal expandtab
 setlocal autoindent
+" colors
+colorscheme base16-monokai
+let base16colorspace=256
+
 
 

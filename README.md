@@ -14,11 +14,12 @@
 All config files that I use. I think.
 
 # Todo:
+- [ ] Steal background colors from base16-monokai, they be nice
 - [x] FIX colors in ranger... -> Base16
 - [ ] Write terminal installation script.
 - [ ] Script that starts a terminal and run mountdesk and ssh to desktop. 
-- [ ] Scripts for tmux: Notes, logs, todo, calendar.
-- [ ] Tweak the tmux scripts so if its attached i3 focuses on that container.
+- [x] Scripts for tmux: Notes, logs, todo, calendar.
+- [x] Tweak the tmux scripts so if its attached i3 focuses on that container.
 - [ ] Fix Calendar vim - might help in productivty / goals.
 
 
@@ -28,7 +29,6 @@ All config files that I use. I think.
 - [ ] Latex ftplugin does not work? a function that sets linebreak and textwidth.
   - tried to add linebreak whenever using a tex file. but i dont want linebreak in code. tried to add code in ftplugin tex.vim.
 - [ ] [vim-man](https://github.com/vim-utils/vim-man) - Read man files in vim. A nice way of open man pages in vim from terminal.
-
 
 
 ## Useful tips

@@ -1,16 +1,16 @@
 #vim: set ft=dosini
-;=====================================================
-;
-;   To learn more about how to configure Polybar
-;   go to https://github.com/jaagr/polybar
-;
-;   The README contains alot of information
-;
-;=====================================================
-; https://www.w3schools.com/colors/colors_picker.asp
+# =====================================================
+#
+#   To learn more about how to configure Polybar
+#   go to https://github.com/jaagr/polybar
+#
+#   The README contains alot of information
+#
+# =====================================================
+# https://www.w3schools.com/colors/colors_picker.asp
 [colors]
 #{{{
-;background = ${xrdb:URxvt.background:#ffffff}
+#background = ${xrdb:URxvt.background:#ffffff}
 background = #ff000000
 background-alt = #444
 foreground = #dfdfdf
@@ -27,9 +27,9 @@ margin-top = 10
 margin-bottom = 0
 #}}}
 
-[bar/eriksbar]
+[bar/eriksbar2]
 #{{{
-monitor = eDP-1
+monitor = HDMI-2
 width = 100%
 height = 27
 offset-x = 0%
