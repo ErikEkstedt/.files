@@ -48,7 +48,7 @@ plugins=(gitfast python git-extras tmux vi-mode pip)
 source $ZSH/oh-my-zsh.sh
 source ~/.files/aliases
 source "/home/erik/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
-source /opt/ros/kinetic/setup.zsh
+# source /opt/ros/kinetic/setup.zsh
 
 HYPHEN_INSENSITIVE="true"
 #}}}

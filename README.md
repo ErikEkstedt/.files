@@ -2,16 +2,13 @@
 
 ## Directories
 * [Installation](https://github.com/eeckee/.files/tree/master/Installation "Installation directory")
-* [Scripts](https://github.com/eeckee/.files/tree/master/Scripts "Installation directory")
+* [Scripts](https://github.com/eeckee/.files/tree/master/Scripts "Scripts used in mostly i3/bash")
 * [i3](https://github.com/eeckee/.files/tree/master/i3 "i3 config directory")
 * [ranger](https://github.com/eeckee/.files/tree/master/ranger "Ranger config directory")
 * [vim](https://github.com/eeckee/.files/tree/master/vim "Vim config directory")
 * [icons](https://github.com/eeckee/.files/tree/master/icons "Icons for notify-send")
 * [Wallpapers](https://github.com/eeckee/.files/tree/master/Wallpapers "Some wallpapers that are nice as default")
 
-
-## Config files
-All config files that I use. I think.
 
 # Todo:
 - [ ] Steal background colors from base16-monokai, they be nice
@@ -23,8 +20,25 @@ All config files that I use. I think.
 - [ ] Fix Calendar vim - might help in productivty / goals.
 
 
-## Vim
+# .VIMRC
 
+## Python-Ide
+1. [python-ide]( https://github.com/jarolrod/vim-python-ide )
+	- [x] Installed python-mode
+		* Had problem with ´import git, vim´
+2. [python-ide]( https://github.com/ets-labs/python-vimrc )
+
+## 
+* Camelstyle and the other style vim objects (cw, dw ,...)
+
+* RST
+	* Syntax for rst
+	* Preview
+
+## Snippets
+snips
+
+## Vim
 - [ ] Look into a way for vimtex to open preview in tmux.
 - [ ] Latex ftplugin does not work? a function that sets linebreak and textwidth.
   - tried to add linebreak whenever using a tex file. but i dont want linebreak in code. tried to add code in ftplugin tex.vim.

@@ -7,6 +7,7 @@ path="~/.files"
 tmux has-session -t $session 2> /dev/null
 if [ "$?" -eq 1 ] 
 then
+		killall notify-osd
     DISPLAY=:0 notify-send -t 3000 --urgency=critical --icon=$VIM "Creating $session session"
     tmux start-server
     tmux new-session -d -s $session -n $session 
@@ -21,6 +22,7 @@ else
         DISPLAY=:0 notify-send -t 3000 --urgency=critical --icon=$VIM "Attaching to $session"
 				exec $term -e "tmux attach-session -t $session"
     else
+        killall notify-osd
         DISPLAY=:0 notify-send -t 3000 --urgency=critical --icon=$VIM "$session"
 				name=$(xdotool search -name $session:)  
 				i3-msg [id="$name"] focus

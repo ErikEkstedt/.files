@@ -1,4 +1,4 @@
-" vim: set fdm=marker
+"vim: set fdm=marker
 "============= SETTING ======================
 "pathogen vim modules stuff
 execute pathogen#infect()
@@ -7,8 +7,10 @@ Helptags
 set rtp+=~/.fzf
 
 "=============== Basic ======================={{{
-filetype plugin indent on
+filetype on
 filetype plugin on
+filetype plugin indent on
+
 syntax enable
 
 let mapleader = ','
@@ -22,7 +24,7 @@ set title                     " Change the title of the terminal/tab with the fi
 set hidden                    " Allow unsaved background buffers.
 set shortmess=I               " Don't show Vim's welcome message.
 set shortmess+=a              " Make the save message shorter. Helps avoid the 'Hit ENTER to continue' message.
-set foldmethod=indent         " fast but dumb. not relying on syntax. fast
+set foldmethod=marker         " marker for all but specified filetypes (ex: python)
 set foldlevelstart=-1         " start with fold everything
 set foldclose=                " all
 set conceallevel=0
@@ -379,13 +381,18 @@ vnoremap <silent> <Leader>t= :Tabularize /=<CR>
 vnoremap <silent> <Leader>t# :Tabularize /#<CR>
 vnoremap <silent> <Leader>t" :Tabularize /"<CR>
 vnoremap <silent> <Leader>t% :Tabularize /%<CR>
+vnoremap <silent> <Leader>t: :Tabularize /:<CR>
+vnoremap <silent> <Leader>t; :Tabularize /;<CR>
 
 "=============== YouCompleteMe ==================
+set completeopt-=preview
 let g:ycm_python_binary_path = '/home/erik/anaconda3/bin/python3'
 let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>gd  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:ycm_min_num_of_chars_for_completion = 2
 
+noremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>g :YcmCompleter GoTo<CR>
+nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
 
 "=============== Nerdtree ==================
 " " open NERDTree on startup
@@ -408,6 +415,89 @@ hi NERDTreeFile guifg=white
 hi NERDTreeBookmarksHeader guifg=gray50
 hi NERDTreeBookmarkName guifg=gray50
 
+"" Python settings
+"=====================================================
+
+" python executables for different plugins
+let g:pymode_python                          = 'python'
+let g:syntastic_python_python_exec           = 'python'
+
+" rope
+let g:pymode_rope                            = 0
+let g:pymode_rope_completion                 = 0
+let g:pymode_rope_complete_on_dot            = 0
+let g:pymode_rope_auto_project               = 0
+let g:pymode_rope_enable_autoimport          = 0
+let g:pymode_rope_autoimport_generate        = 0
+let g:pymode_rope_guess_project              = 0
+
+" documentation
+let g:pymode_doc                             = 0
+let g:pymode_doc_bind                        = 'K'
+
+" lints
+let g:pymode_lint                            = 0
+
+" virtualenv
+" let g:pymode_virtualenv                      = 1
+
+" breakpoints
+let g:pymode_breakpoint                      = 1
+let g:pymode_breakpoint_key                  = '<leader>b'
+
+" syntax highlight
+let g:pymode_syntax                          = 1
+let g:pymode_syntax_slow_sync                = 1
+let g:pymode_syntax_all                      = 1
+let g:pymode_syntax_print_as_function        = g:pymode_syntax_all
+let g:pymode_syntax_highlight_async_await    = g:pymode_syntax_all
+let g:pymode_syntax_highlight_equal_operator = g:pymode_syntax_all
+let g:pymode_syntax_highlight_stars_operator = g:pymode_syntax_all
+let g:pymode_syntax_highlight_self           = g:pymode_syntax_all
+let g:pymode_syntax_indent_errors            = g:pymode_syntax_all
+let g:pymode_syntax_string_formatting        = g:pymode_syntax_all
+let g:pymode_syntax_space_errors             = g:pymode_syntax_all
+let g:pymode_syntax_string_format            = g:pymode_syntax_all
+let g:pymode_syntax_string_templates         = g:pymode_syntax_all
+let g:pymode_syntax_doctests                 = g:pymode_syntax_all
+let g:pymode_syntax_builtin_objs             = g:pymode_syntax_all
+let g:pymode_syntax_builtin_types            = g:pymode_syntax_all
+let g:pymode_syntax_highlight_exceptions     = g:pymode_syntax_all
+let g:pymode_syntax_docstrings               = g:pymode_syntax_all
+
+" highlight 'long' lines (>= 80 symbols) in python files
+" augroup vimrc_autocmds
+"     autocmd!
+"     autocmd FileType python,rst,c,cpp highlight Excess ctermbg=DarkGrey guibg=Black
+"     autocmd FileType python,rst,c,cpp match Excess /\%81v.*/
+"     autocmd FileType python,rst,c,cpp set nowrap
+"     autocmd FileType python,rst,c,cpp set colorcolumn=80
+" augroup END
+
+" code folding
+let g:pymode_folding=0
+
+" pep8 indents
+let g:pymode_indent=1
+
+" code running
+let g:pymode_run=1
+let g:pymode_run_bind='<F5>'
+
+
+let g:ale_sign_column_always = 0
+let g:ale_emit_conflict_warnings = 0                                                                         
+let g:airline#extensions#ale#enabled = 1
+let g:pymode_rope_lookup_project = 0
+let g:airline#extensions#tabline#enabled = 1
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+
+imap <F5> <Esc>:w<CR>:!clear;python %<CR>
+
 "=============== Syntastic ==================
 " Recommended settings
 set statusline+=%#warningmsg#
@@ -420,8 +510,16 @@ let g:syntastic_mode = "passive"
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_python_checkers =  ["flake8" ]
 let g:syntastic_loc_list_height = 4
+let g:syntastic_enable_signs=1
+
+let g:syntastic_aggregate_errors=1
+let g:syntastic_error_symbol='X'
+let g:syntastic_style_error_symbol='X'
+let g:syntastic_warning_symbol='x'
+let g:syntastic_style_warning_symbol='x'
+let g:syntastic_python_checkers=['flake8', 'pydocstyle', 'python']
+"let g:syntastic_python_checkers =  ["flake8" ]
 
 " bindings-------------------------------
 nnoremap <leader>sr :SyntasticReset<cr>
@@ -479,4 +577,16 @@ nnoremap <Leader>gb :Buffers<CR>
 	" next lineo
 	"}}}
 
-" vim:fdm=marker
+" python << EOF
+" import vim
+" import git
+" def is_git_repo():
+"       try:
+"           _ = git.Repo('.', search_parent_directories=True).git_dir
+"           return "1"
+"       except:
+"           return "0"
+" vim.command("let g:pymode_rope = " + is_git_repo())
+" EOF
+
+"vim:fdm=marker
