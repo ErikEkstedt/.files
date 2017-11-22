@@ -1,12 +1,65 @@
-"vim: set fdm=marker
-"============= SETTING ======================
-"pathogen vim modules stuff
-execute pathogen#infect()
-Helptags
+"============= VUNDLE ========================{{{
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin() 
+Plugin 'VundleVim/Vundle.vim'
+
+" ============ Code/Project Navigation ================
+Plugin 'scrooloose/nerdtree'                " Project and file navigation
+Plugin 'tpope/vim-fugitive'                 " git extension
+Plugin 'airblade/vim-gitgutter'             " see git changes in file in the numberline
+Plugin 'Xuyuanp/nerdtree-git-plugin'        " NerdTree git functionality rebuilding pathogen
+Plugin 'junegunn/fzf.vim'                   " fuzzy filefinding
+
+" ============ Appearence =============================
+Plugin 'chriskempson/base16-vim'
+Plugin 'Yggdroot/indentLine'                " see where there is indent
+Plugin 'itchyny/lightline.vim'              " light weight status bar
+Plugin 'edkolev/tmuxline.vim'
+
+" ============ Useful Tools ===========================
+Plugin 'epeli/slimux'                       " vim+ipython REPL
+Plugin 'tpope/vim-surround'                 " Parentheses, brackets, quotes, XML tags, and more
+Plugin 'tpope/vim-repeat'                   " repeat commands not repeatable by 'vanilla' vim
+Plugin 'godlygeek/tabular'                  " structure text
+Plugin 'tomtom/tcomment_vim'                " smart comments
+Plugin 'christoomey/vim-tmux-navigator'     " navigate between vim and tmuz seemlessly
+
+" ============ Preview Text ===========================
+Plugin 'JamshedVesuna/vim-markdown-preview' " preview markdowns
+Plugin 'lervag/vimtex'                      " latex compiler and alot more.
+Plugin 'Rykka/riv.vim'                      " ReStructuredText plugin
+Plugin 'Rykka/InstantRst'                   " Preview rst in browser (Fast)
+
+" ============ Completion and Syntax ==================
+Plugin 'klen/python-mode'                   " Python mode (docs, refactor, lints...)
+Plugin 'scrooloose/syntastic'               " Syntax checking plugin for Vim
+Plugin 'Valloric/YouCompleteMe'             " Autocomplete plugin
+Plugin 'PotatoesMaster/i3-vim-syntax'       " syntax for i3 config
+Plugin 'hdima/python-syntax'                " extra help for python syntax (self etc)
+
+" ============ Snippets ===============================
+" Take an hour and install and make correct with YCM
+" Plugin 'SirVer/ultisnips'
+" Snippets are separated from the engine. Add this if you want them:
+" Plugin 'honza/vim-snippets'
+
+" ============ Checkout ? ==============================
+" Plugin 'fisadev/FixedTaskList.vim'          " Pending tasks list
+" Plugin 'MattesGroeger/vim-bookmarks'        " Bookmarks
+" Plugin 'vimwiki/vimwiki'                    " Personal Wiki
+" Plugin 'jreybert/vimagit'
+" Plugin 'ryanoasis/vim-devicons'             " Dev Icons
+
+" All of your Plugins must be added before the following line
+call vundle#end()            "}}}
+"=============== Basic ======================={{{
 " fzf path
 set rtp+=~/.fzf
 
-"=============== Basic ======================={{{
 filetype on
 filetype plugin on
 filetype plugin indent on
@@ -64,7 +117,6 @@ set wildchar=<tab>
 set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,resize
 
 " }}}
-
 "=============== APPEARENCE =================={{{
 set laststatus=2 "always show status bar
 set term=screen-256color
@@ -88,7 +140,6 @@ hi VertSplit ctermfg=51
 hi VertSplit guibg=bg guifg=#b5bd68
 endif
 "}}}
-
 "=============== MAPPINGS ===================={{{
 " Config files {{{
 nnoremap <leader>ev :tabnew ~/.vimrc<cr>
@@ -199,7 +250,6 @@ nnoremap <leader>mA A  %{{{<esc>
 nnoremap <leader>me i%}}}<esc>
 
 "}}}
-
 "=============== MOVEMENT ===================={{{
 " move up and down naturally even if lines 
 " extends over multiple rows
@@ -256,7 +306,6 @@ if &diff
 	nnoremap <Leader>p [c
 endif
 "}}}
-
 "=============== ABBREVIATIONS ==============={{{
 cnoreabbrev Wq wq
 cnoreabbrev WQ wq
@@ -265,7 +314,6 @@ cnoreabbrev Q q
 cnoreabbrev <expr> h getcmdtype() == ":" && getcmdline() == 'h' ? 'tab help' : 'h'
 cnoreabbrev <expr> q getcmdtype() == ":" && getcmdline() == 'q' ? 'q' : 'q'
 "}}}
-
 "=============== FUNCTIONS ==================={{{
 let g:transpar=0
 function! Toggletransparency()
@@ -320,7 +368,6 @@ function! Toggle_MaxMinFold()
 endfunc
 nnoremap <leader>r :call Toggle_MaxMinFold()<CR>
 "}}}
-
 "============== AUTOCOMMANDS ================={{{
 " function to exit quickfix when exiting buffer
 aug qfclose
@@ -334,9 +381,11 @@ augroup vimtex_event_1
 	au user vimtexeventquit     call vimtex#compiler#clean(0)
 	augroup end
 "}}}
-
 "============= PLUGIN SETTINGS ==============={{{
-"Plugins
+
+"=============== riv.vim ==================
+let g:instant_rst_bind_scroll = 0
+
 "=============== Slimux ==================
 nnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>
 vnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>gv<Esc>zz
@@ -384,7 +433,7 @@ vnoremap <silent> <Leader>t% :Tabularize /%<CR>
 vnoremap <silent> <Leader>t: :Tabularize /:<CR>
 vnoremap <silent> <Leader>t; :Tabularize /;<CR>
 
-"=============== YouCompleteMe ==================
+"=============== YouCompleteMe ================== {{{
 set completeopt-=preview
 let g:ycm_python_binary_path = '/home/erik/anaconda3/bin/python3'
 let g:ycm_autoclose_preview_window_after_completion=1
@@ -393,8 +442,8 @@ let g:ycm_min_num_of_chars_for_completion = 2
 noremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>g :YcmCompleter GoTo<CR>
 nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
-
-"=============== Nerdtree ==================
+" }}}
+"=============== Nerdtree ================== {{{
 " " open NERDTree on startup
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
@@ -414,10 +463,8 @@ hi NERDTreeCWD guifg=gray50
 hi NERDTreeFile guifg=white
 hi NERDTreeBookmarksHeader guifg=gray50
 hi NERDTreeBookmarkName guifg=gray50
-
-"" Python settings
-"=====================================================
-
+" }}}
+"=============== PyMode ==================== {{{
 " python executables for different plugins
 let g:pymode_python                          = 'python'
 let g:syntastic_python_python_exec           = 'python'
@@ -483,22 +530,14 @@ let g:pymode_indent=1
 " code running
 let g:pymode_run=1
 let g:pymode_run_bind='<F5>'
-
-
-let g:ale_sign_column_always = 0
-let g:ale_emit_conflict_warnings = 0                                                                         
-let g:airline#extensions#ale#enabled = 1
 let g:pymode_rope_lookup_project = 0
-let g:airline#extensions#tabline#enabled = 1
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
 
 imap <F5> <Esc>:w<CR>:!clear;python %<CR>
+" }}}
+" ========== Tagbar ================
+nmap <F8> :TagbarToggle<CR>
 
-"=============== Syntastic ==================
+"=============== Syntastic ================== {{{
 " Recommended settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -527,7 +566,7 @@ nnoremap <leader>st :SyntasticToggleMode<cr>
 nnoremap <leader>sc :SyntasticCheck<cr>
 nnoremap <leader>lc :lclose<cr>
 nnoremap <leader>lo :errors<cr>
-
+" }}}
 "=============== Indentline ==================
 let g:indentLine_fileTypeExclude=['help']
 let g:indentLine_char = '┊'
@@ -560,7 +599,6 @@ nnoremap <Leader>gg :Lines<CR>
 nnoremap <Leader>gs :GFiles?<CR>
 nnoremap <Leader>gb :Buffers<CR>
 "}}}
-
 "===== TODO ====={{{
 	" " figure out highlightning. this affecter breakindentopt 'bg hl'
 	"set highlight+=@:colorcolumn 
@@ -575,9 +613,11 @@ nnoremap <Leader>gb :Buffers<CR>
 	" set listchars+=extends:» " character if text extends beyond line
 	" set listchars+=precedes:« "  character if text extends beyond line on
 	" next lineo
-	"}}}
 
-" python << EOF
+" Stated that the python code below woooould prevent errors
+" cannot parse code. errors. o
+" ImportError: No module named '_sysconfigdata_m_linux_x86_64-linux-gnu'
+" python3 << EOF
 " import vim
 " import git
 " def is_git_repo():
@@ -588,5 +628,5 @@ nnoremap <Leader>gb :Buffers<CR>
 "           return "0"
 " vim.command("let g:pymode_rope = " + is_git_repo())
 " EOF
-
-"vim:fdm=marker
+"
+"}}}

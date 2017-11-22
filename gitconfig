@@ -4,6 +4,7 @@
 	name = Erik
 [core]
 	editor = vim
+	excludesfile = "~/.files/gitignore"
 [push]
 	default = simple
 [web]
