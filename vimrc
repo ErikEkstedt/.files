@@ -27,6 +27,7 @@ Plugin 'tpope/vim-repeat'                   " repeat commands not repeatable by 
 Plugin 'godlygeek/tabular'                  " structure text
 Plugin 'tomtom/tcomment_vim'                " smart comments
 Plugin 'christoomey/vim-tmux-navigator'     " navigate between vim and tmuz seemlessly
+Plugin 'vimwiki/vimwiki'                    " Personal Wiki
 
 " ============ Preview Text ===========================
 Plugin 'JamshedVesuna/vim-markdown-preview' " preview markdowns
@@ -50,7 +51,6 @@ Plugin 'hdima/python-syntax'                " extra help for python syntax (self
 " ============ Checkout ? ==============================
 " Plugin 'fisadev/FixedTaskList.vim'          " Pending tasks list
 " Plugin 'MattesGroeger/vim-bookmarks'        " Bookmarks
-" Plugin 'vimwiki/vimwiki'                    " Personal Wiki
 " Plugin 'jreybert/vimagit'
 " Plugin 'ryanoasis/vim-devicons'             " Dev Icons
 
@@ -382,58 +382,64 @@ augroup vimtex_event_1
 	augroup end
 "}}}
 "============= PLUGIN SETTINGS ==============={{{
-
-"=============== riv.vim ==================
+"============== Python-Syntax ================{{{
+let python_highlight_all = 1
+"}}}
+"============== Riv =========================={{{
 let g:instant_rst_bind_scroll = 0
-
-"=============== Slimux ==================
+" }}}
+"============== Slimux ======================={{{
 nnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>
 vnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>gv<Esc>zz
 nnoremap <C-c><C-x> :SlimuxREPLConfigure<CR>
 vnoremap <C-c><C-x> :SlimuxREPLConfigure<CR>
-
-"=============== Vim-netrw ==================
+" }}}
+"============== Vim-netrw ===================={{{
 let g:netrw_banner = 0 "no banner
 let g:netrw_liststyle = 3 
 let g:netrw_sort_sequence = '[\/]$,*' " sort is affecting only: directories on the top, files below
 noremap <leader>ex :Explore<cr>
 nnoremap <leader>vv :Vexplore<cr>
 nnoremap <leader>hh :Hexplore<cr>
-
-"=============== Calendar ==================
+" }}}
+"============== Calendar ====================={{{
 let g:calendar_google_calendar = 1
 let g:calendar_google_task = 1
-
-"=============== Vimtex ==================
+" }}}
+"============== Vimtex ======================={{{
 let g:latex_view_general_viewer = 'zathura'
 let g:vimtex_view_method = "zathura"
 "let g:latex_view_general_options = shellescape("-s -e '" . exepath(v:progpath) . " --servername " . v:servername . " +{%line} {%input}'")
 let g:vimtex_complete_recursive_bib = 2
 
-"=============== CtrlP ==================
+" }}}
+"============== CtrlP ========================{{{
 let g:ctrlp_show_hidden = 2 
 nnoremap <Leader>f :CtrlP<CR>
 nnoremap <Leader>fm :CtrlPMRU<CR>
 let g:ctrlp_map = ''
 
-"=============== Fugitive ==================
+" }}}
+"============== Fugitive ====================={{{
 nnoremap <Leader>ga :Gwrite<CR>
 nnoremap <Leader>gc :Gcommit<CR>
 nnoremap <Leader>gp :Gpush<CR>
 
-"=============== Lightline ==================
+" }}}
+"============== Ligthline ===================={{{
 let g:lightline = {'colorscheme': 'powerline'}
 set noshowmode "stops vims own showing below the statusbar.
 
-"=============== Tabular ==================
+" }}}
+"============== Tabular ======================{{{
 vnoremap <silent> <Leader>t= :Tabularize /=<CR>
 vnoremap <silent> <Leader>t# :Tabularize /#<CR>
 vnoremap <silent> <Leader>t" :Tabularize /"<CR>
 vnoremap <silent> <Leader>t% :Tabularize /%<CR>
 vnoremap <silent> <Leader>t: :Tabularize /:<CR>
 vnoremap <silent> <Leader>t; :Tabularize /;<CR>
-
-"=============== YouCompleteMe ================== {{{
+" }}}
+"============== YouCompleteMe ================{{{
 set completeopt-=preview
 let g:ycm_python_binary_path = '/home/erik/anaconda3/bin/python3'
 let g:ycm_autoclose_preview_window_after_completion=1
@@ -443,7 +449,7 @@ noremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>g :YcmCompleter GoTo<CR>
 nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
 " }}}
-"=============== Nerdtree ================== {{{
+"============== NerdTree ====================={{{
 " " open NERDTree on startup
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
@@ -464,7 +470,7 @@ hi NERDTreeFile guifg=white
 hi NERDTreeBookmarksHeader guifg=gray50
 hi NERDTreeBookmarkName guifg=gray50
 " }}}
-"=============== PyMode ==================== {{{
+"============== PyMode ======================={{{
 " python executables for different plugins
 let g:pymode_python                          = 'python'
 let g:syntastic_python_python_exec           = 'python'
@@ -534,10 +540,10 @@ let g:pymode_rope_lookup_project = 0
 
 imap <F5> <Esc>:w<CR>:!clear;python %<CR>
 " }}}
-" ========== Tagbar ================
+"============== Tagbar ======================={{{
 nmap <F8> :TagbarToggle<CR>
-
-"=============== Syntastic ================== {{{
+" }}}
+"============== Syntastic ===================={{{
 " Recommended settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -567,19 +573,16 @@ nnoremap <leader>sc :SyntasticCheck<cr>
 nnoremap <leader>lc :lclose<cr>
 nnoremap <leader>lo :errors<cr>
 " }}}
-"=============== Indentline ==================
+"============== Indentline ==================={{{
 let g:indentLine_fileTypeExclude=['help']
 let g:indentLine_char = '┊'
-
-" Python syntax ~/.vim/syntax/python.vim 
-let python_highlight_all = 1
-
-"=============== Vim-markdown-preview ==================
+" }}}
+"============== Vim-Markdown-Preview ========={{{
 let vim_markdown_preview_github=1
 let vim_markdown_preview_hotkey='<C-m>'
 let vim_markdown_preview_browser='Google Chrome'
-
-"=============== FZF ==================
+"}}}
+"============== FZF =========================={{{
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
@@ -599,6 +602,7 @@ nnoremap <Leader>gg :Lines<CR>
 nnoremap <Leader>gs :GFiles?<CR>
 nnoremap <Leader>gb :Buffers<CR>
 "}}}
+
 "===== TODO ====={{{
 	" " figure out highlightning. this affecter breakindentopt 'bg hl'
 	"set highlight+=@:colorcolumn 
