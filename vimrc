@@ -1,10 +1,15 @@
+" Vimrc
+" Erik
+" 2017
+" Ubuntu 16.04
+
 "============= VUNDLE ========================{{{
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin() 
+call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " ============ Code/Project Navigation ================
@@ -28,6 +33,7 @@ Plugin 'godlygeek/tabular'                  " structure text
 Plugin 'tomtom/tcomment_vim'                " smart comments
 Plugin 'christoomey/vim-tmux-navigator'     " navigate between vim and tmuz seemlessly
 Plugin 'vimwiki/vimwiki'                    " Personal Wiki
+Plugin 'itchyny/calendar.vim'               " Calendar for vim
 
 " ============ Preview Text ===========================
 Plugin 'JamshedVesuna/vim-markdown-preview' " preview markdowns
@@ -41,6 +47,7 @@ Plugin 'scrooloose/syntastic'               " Syntax checking plugin for Vim
 Plugin 'Valloric/YouCompleteMe'             " Autocomplete plugin
 Plugin 'PotatoesMaster/i3-vim-syntax'       " syntax for i3 config
 Plugin 'hdima/python-syntax'                " extra help for python syntax (self etc)
+Plugin 'octol/vim-cpp-enhanced-highlight'   " Extra highlight for cpp
 
 " ============ Snippets ===============================
 " Take an hour and install and make correct with YCM
@@ -105,8 +112,8 @@ set mouse=a                   " mouse functionality
 set timeoutlen=500            " ms to wait for command completion
 set ttimeoutlen=0             " don't wait for <esc>
 set incsearch                 " search starts when typing instead of waiting for <enter>
-set virtualedit=block,onemore " 'block' makes it possible to edit empty space in visualblock
-set nobackup                  
+set virtualedit=block					" ,onemore " 'block' makes it possible to edit empty space in visualblock
+set nobackup
 set nowritebackup
 set noswapfile
 set ignorecase                " (in)case sensitive search
@@ -116,7 +123,64 @@ set wildmenu
 set wildchar=<tab>
 set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,resize
 
+set splitbelow
+set splitright
 " }}}
+"=============== Misc ======================={{{
+" Wildmenu completion {{{
+set wildmenu
+set wildmode=list:longest
+
+set wildignore+=.hg,.git,.svn                    " Version control
+set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
+set wildignore+=*.spl                            " compiled spelling word lists
+set wildignore+=*.sw?                            " Vim swap files
+set wildignore+=*.DS_Store                       " OSX bullshit
+set wildignore+=*.luac                           " Lua byte code
+
+set wildignore+=migrations                       " Django migrations
+set wildignore+=*.pyc                            " Python byte code
+
+set wildignore+=*.orig                           " Merge resolution files
+set wildignore+=*.fasl                           " Lisp FASLs
+
+" Clojure/Leiningen
+set wildignore+=classes
+set wildignore+=lib
+" }}}
+" Return to line {{{
+" Make sure Vim returns to the same line when you reopen a file.
+" Thanks, Amit
+augroup line_return
+    au!
+    au BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \     execute 'normal! g`"zvzz' |
+        \ endif
+augroup END
+" }}}
+" Backups {{{
+set backup                        " enable backups
+set noswapfile                    " it's 2013, Vim.
+
+set undodir=~/.vim/tmp/undo//     " undo files
+set backupdir=~/.vim/tmp/backup// " backups
+set directory=~/.vim/tmp/swap//   " swap files
+
+" Make those folders automatically if they don't already exist.
+if !isdirectory(expand(&undodir))
+    call mkdir(expand(&undodir), "p")
+endif
+if !isdirectory(expand(&backupdir))
+    call mkdir(expand(&backupdir), "p")
+endif
+if !isdirectory(expand(&directory))
+    call mkdir(expand(&directory), "p")
+endif
+" }}}
+"}}}
 "=============== APPEARENCE =================={{{
 set laststatus=2 "always show status bar
 set term=screen-256color
@@ -131,14 +195,16 @@ colorscheme base16-classic-dark
 let base16colorspace=256
 
 " ======= HIGHLIGHTS =================
-hi CursorLineNr ctermfg=87 guifg=white  
+hi CursorLineNr ctermfg=87 guifg=white
 hi MatchParen guibg=black guifg=lightblue
 
 if has('windows')
-set fillchars=vert:\┃  " ┃ line with no breaks between vertical splits 
+set fillchars=vert:\┃  " ┃ line with no breaks between vertical splits
 hi VertSplit ctermfg=51
 hi VertSplit guibg=bg guifg=#b5bd68
 endif
+
+au VimResized * exe "normal! \<c-w>="
 "}}}
 "=============== MAPPINGS ===================={{{
 " Config files {{{
@@ -160,9 +226,29 @@ nnoremap <leader>sz :source ~/.zshrc<cr>
 nnoremap <leader>sx :! xrdb ~/.Xresources<cr>
 nnoremap <leader>sot :source ~/.tmux.conf<cr>
 " }}}
+" Window Resizing {{{
+" Need to figure out what keys I wish to use
+" right/up : bigger
+" left/down : smaller
+" nnoremap <m-right> :vertical resize +3<cr>
+" nnoremap <m-left> :vertical resize -3<cr>
+" nnoremap <m-up> :resize +3<cr>
+" nnoremap <m-down> :resize -3<cr>
+" }}}
+" Visual selection {{{
+nnoremap vv V
+nnoremap V v$
+" }}}
 
 " Source lines
 vnoremap <leader>vs y:@"<CR>
+
+" Clean trailing whitespace
+nnoremap <leader><backspace> mz:%s/\s\+$//<cr>:let @/=''<cr>`z
+
+" Keep search matches in the middle of the window.
+nnoremap n nzzzv
+nnoremap N Nzzzv
 
 " standard saving options
 nnoremap <c-s> :w<cr>
@@ -170,7 +256,7 @@ inoremap <c-s> <esc>:w<cr>
 nnoremap <c-q> :q!<cr>
 inoremap <c-q> <esc>:wq<cr>
 
-" when sudo rights are needed but you did not sudo. 
+" when sudo rights are needed but you did not sudo.
 cmap w!! %!sudo tee > /dev/null %
 
 " run scripts
@@ -198,16 +284,11 @@ nnoremap <i <C-I>
 inoremap <leader>å <esc>:hi normal ctermfg=255<cr>
 nnoremap <leader>å :hi normal ctermfg=255<cr>
 
-" Calendar
-nnoremap <leader>cm :Calendar -view=month<CR>
-nnoremap <leader>cw :Calendar -view=week<CR>
-nnoremap <leader>cd :Calendar -view=day<CR>
-
 " try map öä
 map ö {
 map ä }
 
-nnoremap <leader>no :set hlsearch!<cr>
+nnoremap <leader><space> :set hlsearch!<cr>
 
 "alternate keys for indenting/unindenting
 inoremap <s-tab> <esc><lt><lt>i
@@ -245,13 +326,11 @@ nnoremap Y y$
 nnoremap S viw"0p
 
 " Marker line
-
 nnoremap <leader>mA A  %{{{<esc>
 nnoremap <leader>me i%}}}<esc>
-
 "}}}
 "=============== MOVEMENT ===================={{{
-" move up and down naturally even if lines 
+" move up and down naturally even if lines
 " extends over multiple rows
 nnoremap j gj
 nnoremap k gk
@@ -292,12 +371,17 @@ inoremap gj <esc>/<++><enter>"_c4l
 
 " Toggle fold
 nnoremap ga zA
+nnoremap <leader>z zMzvzz
 
 "Spellcheck
 map <F6> :setlocal spell! spelllang=en_us<CR>
 
 nnoremap <f10> :set relativenumber!<cr>
 
+nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
+
+
+" Some vim-diff settings
 if &diff
 	noremap <leader>1 :diffget LOCAL<CR>
 	noremap <leader>2 :diffget BASE<CR>
@@ -375,6 +459,13 @@ aug qfclose
 	au winenter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
 aug end
 
+augroup VIM
+	au!
+	au WinLeave,InsertEnter * set nocursorline
+	au WinLeave,InsertEnter * set norelativenumber
+	au WinEnter,InsertLeave * set cursorline
+	au WinEnter,InsertLeave * set relativenumber
+augroup end
 " compile on initialization, cleanup on quit
 augroup vimtex_event_1
 	au!
@@ -396,7 +487,7 @@ vnoremap <C-c><C-x> :SlimuxREPLConfigure<CR>
 " }}}
 "============== Vim-netrw ===================={{{
 let g:netrw_banner = 0 "no banner
-let g:netrw_liststyle = 3 
+let g:netrw_liststyle = 3
 let g:netrw_sort_sequence = '[\/]$,*' " sort is affecting only: directories on the top, files below
 noremap <leader>ex :Explore<cr>
 nnoremap <leader>vv :Vexplore<cr>
@@ -405,6 +496,11 @@ nnoremap <leader>hh :Hexplore<cr>
 "============== Calendar ====================={{{
 let g:calendar_google_calendar = 1
 let g:calendar_google_task = 1
+
+nnoremap <leader>cm :Calendar -view=month<CR>
+nnoremap <leader>cw :Calendar -view=week<CR>
+nnoremap <leader>cd :Calendar -view=day<CR>
+
 " }}}
 "============== Vimtex ======================={{{
 let g:latex_view_general_viewer = 'zathura'
@@ -414,7 +510,7 @@ let g:vimtex_complete_recursive_bib = 2
 
 " }}}
 "============== CtrlP ========================{{{
-let g:ctrlp_show_hidden = 2 
+let g:ctrlp_show_hidden = 2
 nnoremap <Leader>f :CtrlP<CR>
 nnoremap <Leader>fm :CtrlPMRU<CR>
 let g:ctrlp_map = ''
@@ -426,7 +522,7 @@ nnoremap <Leader>gc :Gcommit<CR>
 nnoremap <Leader>gp :Gpush<CR>
 
 " }}}
-"============== Ligthline ===================={{{
+"============== Lightline ===================={{{
 let g:lightline = {'colorscheme': 'powerline'}
 set noshowmode "stops vims own showing below the statusbar.
 
@@ -462,7 +558,7 @@ let g:NERDTreeDirArrowExpandable = ''
 let g:NERDTreeDirArrowCollapsible = ''
 
 "PaleTurquoise1
-hi NERDTreeDir guifg=#90a959 
+hi NERDTreeDir guifg=#90a959
 hi Directory guifg=#404040
 
 hi NERDTreeCWD guifg=gray50
@@ -582,6 +678,20 @@ let vim_markdown_preview_github=1
 let vim_markdown_preview_hotkey='<C-m>'
 let vim_markdown_preview_browser='Google Chrome'
 "}}}
+"============== VimWiki ======================{{{
+" Use markdown syntax
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_hl_cb_checked = 1  " make checked item lists highlighted
+let g:vimwiki_listsyms = '✗○◐●✓'
+let g:vimwiki_folding = 'custom'
+let g:vimwiki_use_calendar = 1	"Enable calendar.vim integration
+"}}}
+"============== Vim-surround ====================={{{
+" Use markdown syntax
+nnoremap <leader>' :normal ysiw'<CR>
+nnoremap <leader>" :normal ysiw"<CR>
+nnoremap <leader>) :normal ysiw)<CR>
+"}}}
 "============== FZF =========================={{{
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
@@ -602,10 +712,9 @@ nnoremap <Leader>gg :Lines<CR>
 nnoremap <Leader>gs :GFiles?<CR>
 nnoremap <Leader>gb :Buffers<CR>
 "}}}
-
 "===== TODO ====={{{
 	" " figure out highlightning. this affecter breakindentopt 'bg hl'
-	"set highlight+=@:colorcolumn 
+	"set highlight+=@:colorcolumn
 	"set highlight+=c:linenr
 	"set highlight+=n:difftext
 
@@ -634,3 +743,4 @@ nnoremap <Leader>gb :Buffers<CR>
 " EOF
 "
 "}}}
+

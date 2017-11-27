@@ -19,31 +19,27 @@ echo "######################################################"
 conda create -n robo python=3.5 -yy
 echo
 echo
+
+echo "\n\n\n" 
 echo "######################################################"
 echo "source robo"
 source activate robo
 
-echo 
-echo 
-echo 
+echo "\n\n\n" 
 echo "######################################################"
 echo "Installing some ML dependencies"
 echo " Tensorflow, PyTorch"
 pip install gym['all'] -yy
 pip install tensorflow-gpu -yy
 conda install pytorch torchvision cuda80 -c soumith -yy
+pip install pyopengl # might fix some issues on opengl
 
-echo 
-echo 
-echo 
+echo "\n\n\n" 
 echo "######################################################"
 echo "install libcupti-dev..."
 sudo apt-get install libcupti-dev
 
-echo 
-echo 
-echo 
-echo 
+echo "\n\n\n" 
 echo "######################################################"
 echo "I like to install roboschool in the environment directory.."
 echo "cd ~/anaconda3/envs/robo/lib/python3.5/site-packages/ "
