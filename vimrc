@@ -1,6 +1,5 @@
 " Vimrc
 " Erik
-" 2017
 " Ubuntu 16.04
 
 "============= VUNDLE ========================{{{
@@ -48,6 +47,7 @@ Plugin 'Valloric/YouCompleteMe'             " Autocomplete plugin
 Plugin 'PotatoesMaster/i3-vim-syntax'       " syntax for i3 config
 Plugin 'hdima/python-syntax'                " extra help for python syntax (self etc)
 Plugin 'octol/vim-cpp-enhanced-highlight'   " Extra highlight for cpp
+Plugin 'othree/xml.vim'
 
 " ============ Snippets ===============================
 " Take an hour and install and make correct with YCM
@@ -96,7 +96,7 @@ set autoindent
 set ruler                     " for cursor position in the bottom right corner
 set number                    " number lines
 set relativenumber
-set scrolloff=5               " visual rows above and below cursor
+set scrolloff=3               " visual rows above and below cursor
 set sidescroll=3              " visual columns on sides of cursor
 set cursorline                " highlight line where cursor is
 set hls                       " highlighting!
@@ -204,7 +204,6 @@ hi VertSplit ctermfg=51
 hi VertSplit guibg=bg guifg=#b5bd68
 endif
 
-au VimResized * exe "normal! \<c-w>="
 "}}}
 "=============== MAPPINGS ===================={{{
 " Config files {{{
@@ -227,18 +226,26 @@ nnoremap <leader>sx :! xrdb ~/.Xresources<cr>
 nnoremap <leader>sot :source ~/.tmux.conf<cr>
 " }}}
 " Window Resizing {{{
-" Need to figure out what keys I wish to use
-" right/up : bigger
-" left/down : smaller
-" nnoremap <m-right> :vertical resize +3<cr>
-" nnoremap <m-left> :vertical resize -3<cr>
-" nnoremap <m-up> :resize +3<cr>
-" nnoremap <m-down> :resize -3<cr>
+nnoremap <C-e> :vertical resize +3<cr>
+nnoremap <C-Q> :vertical resize -3<cr>
+" nnoremap <c-Q> :resize +3<cr>
+" nnoremap <c-q> :resize -3<cr>
+
+au VimResized * exe "normal! \<c-w>="
 " }}}
 " Visual selection {{{
 nnoremap vv V
 nnoremap V v$
 " }}}
+" Search   {{{
+" Keep search matches in the middle of the window.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap <leader>sw :%s/<C-r><C-w>//g<Left><Left>
+nnoremap * *<c-o>
+nnoremap # #<c-o>
+
+"}}}
 
 " Source lines
 vnoremap <leader>vs y:@"<CR>
@@ -246,21 +253,14 @@ vnoremap <leader>vs y:@"<CR>
 " Clean trailing whitespace
 nnoremap <leader><backspace> mz:%s/\s\+$//<cr>:let @/=''<cr>`z
 
-" Keep search matches in the middle of the window.
-nnoremap n nzzzv
-nnoremap N Nzzzv
-
 " standard saving options
 nnoremap <c-s> :w<cr>
 inoremap <c-s> <esc>:w<cr>
-nnoremap <c-q> :q!<cr>
-inoremap <c-q> <esc>:wq<cr>
+" nnoremap <c-q> :q!<cr>
+" inoremap <c-q> <esc>:wq<cr>
 
 " when sudo rights are needed but you did not sudo.
 cmap w!! %!sudo tee > /dev/null %
-
-" run scripts
-nnoremap <leader>r :! urxvt -e python % &<cr><cr>
 
 " Toggle conceallevel
 map <LocalLeader>c :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
@@ -304,6 +304,7 @@ nnoremap <silent> g0 :<c-u>tabfirst<cr>
 nnoremap <silent> g$ :<c-u>tablast<cr>
 
 " G(o)-Commands
+" visual select last yanked/del/pasted text
 nnoremap <expr> gvp '`['.strpart(getregtype(), 0, 1).'`]'
 
 nnoremap gp %
@@ -324,10 +325,10 @@ nnoremap Y y$
 
 " change word by put
 nnoremap S viw"0p
-
+" H
 " Marker line
-nnoremap <leader>mA A  %{{{<esc>
-nnoremap <leader>me i%}}}<esc>
+nnoremap <leader>mA A:7  {{{<esc>
+nnoremap <leader>me i}}}<esc>:TComment<cr>
 "}}}
 "=============== MOVEMENT ===================={{{
 " move up and down naturally even if lines
@@ -363,7 +364,6 @@ vnoremap <c-k> <esc><c-w><c-k>gv
 nnoremap <Leader>q :vertical resize -5<CR>
 nnoremap <Leader>w :vertical resize +5<CR>
 
-
 " go to placeholder
 nnoremap gj <esc>/<++><enter>"_c4l
 vnoremap gj <esc>/<++><enter>"_c4l
@@ -372,6 +372,12 @@ inoremap gj <esc>/<++><enter>"_c4l
 " Toggle fold
 nnoremap ga zA
 nnoremap <leader>z zMzvzz
+" Nerdtree uses 'o' to open ''foldlike'' dirs.
+" I want to use 'o' to open closed folds but everywhere else it
+" should work as regular (I use 'o' alot!)
+" foldclosed('.') returns -1 if not a closed fold or the linenumber
+" where the closed fold is.
+nnoremap <silent> o @=(foldclosed('.')>0?'za':"o")<CR>
 
 "Spellcheck
 map <F6> :setlocal spell! spelllang=en_us<CR>
@@ -379,7 +385,6 @@ map <F6> :setlocal spell! spelllang=en_us<CR>
 nnoremap <f10> :set relativenumber!<cr>
 
 nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
-
 
 " Some vim-diff settings
 if &diff
@@ -450,7 +455,7 @@ function! Toggle_MaxMinFold()
 				:normal zR
 	endif
 endfunc
-nnoremap <leader>r :call Toggle_MaxMinFold()<CR>
+nnoremap <leader>m :call Toggle_MaxMinFold()<CR>
 "}}}
 "============== AUTOCOMMANDS ================={{{
 " function to exit quickfix when exiting buffer
@@ -473,6 +478,7 @@ augroup vimtex_event_1
 	augroup end
 "}}}
 "============= PLUGIN SETTINGS ==============={{{
+
 "============== Python-Syntax ================{{{
 let python_highlight_all = 1
 "}}}
@@ -525,7 +531,7 @@ nnoremap <Leader>gp :Gpush<CR>
 "============== Lightline ===================={{{
 let g:lightline = {'colorscheme': 'powerline'}
 set noshowmode "stops vims own showing below the statusbar.
-
+let g:lightline.tab = {'active': ['tabnum', 'filename', 'modified'], 'inactive': [ 'tabnum', 'filename', 'modified' ]}
 " }}}
 "============== Tabular ======================{{{
 vnoremap <silent> <Leader>t= :Tabularize /=<CR>
@@ -549,7 +555,7 @@ nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
 " " open NERDTree on startup
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-let NERDTreeIgnore=['\.pyc$', '\.pdf$', '\.png$', '\.aux$', '\.bbl$', '\.fls$', '\.blg$', '\.log$', '\.xml$', '\.fdb_latexmk$','\.gz$']
+let NERDTreeIgnore=['\.pyc$', '\.pdf$', '\.png$', '\.aux$', '\.bbl$', '\.fls$', '\.blg$', '\.log$', '\.fdb_latexmk$','\.gz$']
 let NERDTreeShowBookmarks = 1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 map <C-n> :NERDTreeToggle<CR>
@@ -680,7 +686,8 @@ let vim_markdown_preview_browser='Google Chrome'
 "}}}
 "============== VimWiki ======================{{{
 " Use markdown syntax
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+" ? look at this more. Mess with markdown syntax ?
+" let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_hl_cb_checked = 1  " make checked item lists highlighted
 let g:vimwiki_listsyms = '✗○◐●✓'
 let g:vimwiki_folding = 'custom'
@@ -691,6 +698,7 @@ let g:vimwiki_use_calendar = 1	"Enable calendar.vim integration
 nnoremap <leader>' :normal ysiw'<CR>
 nnoremap <leader>" :normal ysiw"<CR>
 nnoremap <leader>) :normal ysiw)<CR>
+nnoremap <leader>* :normal ysiw*<CR>
 "}}}
 "============== FZF =========================={{{
 " Customize fzf colors to match your color scheme

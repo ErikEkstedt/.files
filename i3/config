@@ -165,7 +165,7 @@ bindsym $mod+q exec rofi rofi -show  ssh\
 #}}}
 
 #========= FLOATING CLASSES ======{{{
-for_window [class="Spotify"] mark "music", move scratchpad
+for_window [class="Spotify"] mark "music", move scratchpad, [con_mark="music"] scratchpad show
 for_window [class="Simplescreenrecorder"] floating enable
 for_window [class="Videos"] floating enable
 for_window [class="Nautilus"] floating enable
@@ -181,6 +181,8 @@ for_window [class="File-roller"] floating enable
 for_window [class="feh"] floating enable
 for_window [class="Gnome-system-monitor"] floating enable
 for_window [class="Simulate"] floating enable
+for_window [class="Roboschool Simulator"] floating disable
+
 
 # Floating constraints
 floating_minimum_size 75 x 74
