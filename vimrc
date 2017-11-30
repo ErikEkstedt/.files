@@ -48,6 +48,7 @@ Plugin 'PotatoesMaster/i3-vim-syntax'       " syntax for i3 config
 Plugin 'hdima/python-syntax'                " extra help for python syntax (self etc)
 Plugin 'octol/vim-cpp-enhanced-highlight'   " Extra highlight for cpp
 Plugin 'othree/xml.vim'
+Plugin 'nelstrom/vim-markdown-folding'			" help with folding in markdown
 
 " ============ Snippets ===============================
 " Take an hour and install and make correct with YCM
