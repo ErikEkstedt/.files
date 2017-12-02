@@ -5,12 +5,16 @@ export ZSH=/home/erik/.oh-my-zsh
 export KEYTIMEOUT=1
 #export TERM="screen-256color"
 #export TERM="xterm-256color"
+export TERMINAL="Termite"
 export EDITOR='vim'
 export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
 export ROBOSCHOOL_PATH=/home/erik/roboschool
 export LANG=en_US.UTF-8
 export PATH="/home/erik/anaconda3/bin:$PATH"
+export BROWSER="google-chrome"
+export BROWSERCLI="w3m"
+
 
 stty -ixon # C-s, C-q 
 #}}}

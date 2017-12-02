@@ -34,7 +34,6 @@ bindsym $mod2+l exec bash -c "gnome-screensaver-command -l"
 bindsym $mod2+F1 exec bash -c "systemctl suspend"
 bindsym $mod+Ctrl+Delete exec gnome-system-monitor
 #}}}
-
 #========= WORKSPACES ============{{{
 set $ws1 "1:Web 1"
 set $ws2 "2:Web 2"
@@ -72,7 +71,6 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
 #}}}
-
 #========= STARTUP == ============{{{
 exec_always --no-startup-id ~/.files/Scripts/polybar_start.sh
 exec_always --no-startup-id ~/.files/Scripts/mouse_settings.sh
@@ -95,7 +93,6 @@ exec_always $term4 -t "rangerTerm" -e ~/.files/Scripts/tmux/ranger.sh
 exec $Browser
 	for_window [class="Google-chrome" title="browser"] mark "browser" move scratchpad
 #}}}
-
 #========= APPLICATIONS =========={{{
 bindsym $mod+Ctrl+n exec nautilus --no-desktop
 bindsym $mod+Ctrl+s exec shutter -s
@@ -163,7 +160,6 @@ bindsym $mod+q exec rofi rofi -show  ssh\
 											-lines 8 \
 											-padding 20
 #}}}
-
 #========= FLOATING CLASSES ======{{{
 for_window [class="Spotify"] mark "music", move scratchpad, [con_mark="music"] scratchpad show
 for_window [class="Simplescreenrecorder"] floating enable
@@ -188,7 +184,6 @@ for_window [class="Roboschool Simulator"] floating disable
 floating_minimum_size 75 x 74
 floating_maximum_size 1910 x 3000 
 #}}}
-
 #========= APPEARENCE ============{{{
 hide_edge_borders both
 for_window [class="^.*"] border pixel 1
@@ -218,7 +213,6 @@ bindsym Ctrl+Shift+g gaps inner current minus 5
 bindsym $mod+Ctrl+Shift+g gaps inner current set 15, gaps outer current set 0
 bindsym $mod+Ctrl+g gaps inner current set 0, gaps outer current set 0
 #}}}
-
 #========= MEDIA KEY BINDINGS ===={{{
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
@@ -250,17 +244,16 @@ bindsym XF86KbdBrightnessDown exec sudo ~/.files/Scripts/Laptop/backlit_keys dow
 # Hibernate
 bindsym XF86Sleep exec systemctl hybrid-sleep
 #}}}
-
 #========= MOVEMENTS ============={{{
 # change focus
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+bindsym $mod+Shift+h focus left
+bindsym $mod+Shift+j focus down
+bindsym $mod+Shift+k focus up
+bindsym $mod+Shift+l focus right
 
-# change workspace
-bindsym $mod+Ctrl+l workspace next
-bindsym $mod+Ctrl+h workspace prev
+# # change workspace
+# bindsym $mod+Ctrl+l workspace next
+# bindsym $mod+Ctrl+h workspace prev
 
 # resize
 set $growth 3
@@ -270,10 +263,10 @@ bindsym $mod+Shift+u resize shrink height $growth px or $growth ppt
 bindsym $mod+Shift+o resize grow width $growth px or $growth ppt
 
 # move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $mod+Ctrl+h move left
+bindsym $mod+Ctrl+j move down
+bindsym $mod+Ctrl+k move up
+bindsym $mod+Ctrl+l move right
 
 # split in horizontal orientation
 bindsym $mod+Shift+v split h
@@ -288,7 +281,6 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+Shift+z focus parent
 bindsym $mod+z focus child
 #}}}
-
 #========= i3-BAR ================{{{
 # Start i3bar to display a workspace bar (plus the system information i3status
 # bar {
@@ -313,7 +305,6 @@ bindsym $mod+z focus child
 # 	status_command i3status -c ~/.config/i3/i3status.conf
 # }
 #}}}
-
 #========= SHUTDOWN =============={{{
 # TODO : scripts that syncs github on exit/Start
 # Create Log out, Reboot, Poweroff bindings
@@ -329,7 +320,6 @@ mode $reboot_choice{
 }
 bindsym $mod+Ctrl+e mode $reboot_choice
 #}}}
-
 #========= CONFIG MENU ==========={{{
 set $config_choice "Config: (i)3, (V)im, (R)anger, (Z)sh, (X)defaults, (P)ython.vim, t(E)x.vim, (T)mux, (C)onfig folder in vim "
 mode $config_choice{

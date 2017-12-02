@@ -195,6 +195,9 @@ let &t_8b="\e[48;2;%ld;%ld;%ldm"
 colorscheme base16-classic-dark
 let base16colorspace=256
 
+" Toggle conceallevel
+map <LocalLeader>c :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
+
 " ======= HIGHLIGHTS =================
 hi CursorLineNr ctermfg=87 guifg=white
 hi MatchParen guibg=black guifg=lightblue
@@ -218,6 +221,7 @@ nnoremap <leader>et :tabnew ~/.tmux.conf<cr>
 nnoremap <leader>ebib :tabnew ~/documents/latex/references.bib<cr>
 nnoremap <leader>epy :tabnew ~/.vim/ftplugin/python.vim<cr>
 nnoremap <leader>ete :tabnew ~/.vim/ftplugin/tex.vim<cr>
+nnoremap <leader>ema :tabnew ~/.vim/ftplugin/markdown.vim<cr>
 
 " source config files
 nnoremap <leader>si3 :source ~/.config/i3/config<cr>
@@ -225,14 +229,7 @@ nnoremap <leader>sv :source ~/.vimrc<cr>
 nnoremap <leader>sz :source ~/.zshrc<cr>
 nnoremap <leader>sx :! xrdb ~/.Xresources<cr>
 nnoremap <leader>sot :source ~/.tmux.conf<cr>
-" }}}
-" Window Resizing {{{
-nnoremap <C-e> :vertical resize +3<cr>
-nnoremap <C-Q> :vertical resize -3<cr>
-" nnoremap <c-Q> :resize +3<cr>
-" nnoremap <c-q> :resize -3<cr>
 
-au VimResized * exe "normal! \<c-w>="
 " }}}
 " Visual selection {{{
 nnoremap vv V
@@ -242,11 +239,20 @@ nnoremap V v$
 " Keep search matches in the middle of the window.
 nnoremap n nzzzv
 nnoremap N Nzzzv
-nnoremap <leader>sw :%s/<C-r><C-w>//g<Left><Left>
+" stay on word instead of jumping directly
 nnoremap * *<c-o>
 nnoremap # #<c-o>
 
+" open quickfix window for latest vim search term.
+nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
+
+" toggle highlight search
+nnoremap <leader><space> :set hlsearch!<cr>
 "}}}
+
+
+" substitute word under cursor in entire file.
+nnoremap <leader>sw :%s/<C-r><C-w>//g<Left><Left>
 
 " Source lines
 vnoremap <leader>vs y:@"<CR>
@@ -257,14 +263,11 @@ nnoremap <leader><backspace> mz:%s/\s\+$//<cr>:let @/=''<cr>`z
 " standard saving options
 nnoremap <c-s> :w<cr>
 inoremap <c-s> <esc>:w<cr>
-" nnoremap <c-q> :q!<cr>
-" inoremap <c-q> <esc>:wq<cr>
+nnoremap <c-q> :q!<cr>
+inoremap <c-q> <esc>:wq<cr>
 
 " when sudo rights are needed but you did not sudo.
 cmap w!! %!sudo tee > /dev/null %
-
-" Toggle conceallevel
-map <LocalLeader>c :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
 
 " GO TO next comment (in syntastic - flake8 (python) at least)
 nnoremap <leader>e :lnext<cr>
@@ -285,11 +288,10 @@ nnoremap <i <C-I>
 inoremap <leader>å <esc>:hi normal ctermfg=255<cr>
 nnoremap <leader>å :hi normal ctermfg=255<cr>
 
-" try map öä
+" jump paragraph
 map ö {
 map ä }
 
-nnoremap <leader><space> :set hlsearch!<cr>
 
 "alternate keys for indenting/unindenting
 inoremap <s-tab> <esc><lt><lt>i
@@ -332,6 +334,33 @@ nnoremap <leader>mA A:7  {{{<esc>
 nnoremap <leader>me i}}}<esc>:TComment<cr>
 "}}}
 "=============== MOVEMENT ===================={{{
+" Move between windows {{{
+" Tmux now handles movement between windows.
+" nnoremap <C-h> <c-w><c-h>
+" nnoremap <C-l> <c-w><c-l>
+" nnoremap <C-k> <c-w><c-k>
+" nnoremap <C-j> <c-w><c-j>
+"
+" inoremap <C-h> <esc><c-w><c-h>i
+" inoremap <C-l> <esc><c-w><c-l>i
+" inoremap <C-j> <esc><c-w><c-j>i
+" inoremap <C-k> <esc><c-w><c-k>i
+"
+" vnoremap <C-h> <esc><c-w><c-h>gv
+" vnoremap <C-l> <esc><c-w><c-l>gv
+" vnoremap <C-j> <esc><c-w><c-j>gv
+" vnoremap <C-k> <esc><c-w><c-k>gv
+" }}}
+" Window Resizing {{{
+nnoremap <A-l> :vertical resize +3<cr>
+nnoremap <A-h> :vertical resize -3<cr>
+" nnoremap <c-Q> :resize +3<cr>
+" nnoremap <c-q> :resize -3<cr>
+
+au VimResized * exe "normal! \<c-w>="
+" }}}
+
+
 " move up and down naturally even if lines
 " extends over multiple rows
 nnoremap j gj
@@ -339,31 +368,13 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
+" natural end/beginning of line movement
 nnoremap L $
 nnoremap H 0
 
+" focus on special movements
 nnoremap G Gzz
 nnoremap <c-o> <c-o>zz
-
-"Move between splits
-nnoremap <c-h> <c-w><c-h>
-nnoremap <c-l> <c-w><c-l>
-nnoremap <c-k> <c-w><c-k>
-nnoremap <c-j> <c-w><c-j>
-
-inoremap <c-h> <esc><c-w><c-h>i
-inoremap <c-l> <esc><c-w><c-l>i
-inoremap <c-j> <esc><c-w><c-j>i
-inoremap <c-k> <esc><c-w><c-k>i
-
-vnoremap <c-h> <esc><c-w><c-h>gv
-vnoremap <c-l> <esc><c-w><c-l>gv
-vnoremap <c-j> <esc><c-w><c-j>gv
-vnoremap <c-k> <esc><c-w><c-k>gv
-
-" " Resize splits
-nnoremap <Leader>q :vertical resize -5<CR>
-nnoremap <Leader>w :vertical resize +5<CR>
 
 " go to placeholder
 nnoremap gj <esc>/<++><enter>"_c4l
@@ -373,7 +384,8 @@ inoremap gj <esc>/<++><enter>"_c4l
 " Toggle fold
 nnoremap ga zA
 nnoremap <leader>z zMzvzz
-" Nerdtree uses 'o' to open ''foldlike'' dirs.
+
+" Nerdtree uses 'o' to open "foldlike" dirs.
 " I want to use 'o' to open closed folds but everywhere else it
 " should work as regular (I use 'o' alot!)
 " foldclosed('.') returns -1 if not a closed fold or the linenumber
@@ -385,7 +397,6 @@ map <F6> :setlocal spell! spelllang=en_us<CR>
 
 nnoremap <f10> :set relativenumber!<cr>
 
-nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 
 " Some vim-diff settings
 if &diff
@@ -447,7 +458,6 @@ nnoremap <f1> :call Togglefocusmode()<cr>
 
 let g:fold_max=1
 function! Toggle_MaxMinFold()
-		echo "hello"
 		if g:fold_max == 0
 		let g:fold_max=1
 				:normal zM
@@ -456,7 +466,8 @@ function! Toggle_MaxMinFold()
 				:normal zR
 	endif
 endfunc
-nnoremap <leader>m :call Toggle_MaxMinFold()<CR>
+nnoremap <leader>mm :call Toggle_MaxMinFold()<CR>
+
 "}}}
 "============== AUTOCOMMANDS ================={{{
 " function to exit quickfix when exiting buffer
@@ -681,14 +692,16 @@ let g:indentLine_fileTypeExclude=['help']
 let g:indentLine_char = '┊'
 " }}}
 "============== Vim-Markdown-Preview ========={{{
+let vim_markdown_preview_toggle=2
 let vim_markdown_preview_github=1
-let vim_markdown_preview_hotkey='<C-m>'
+let vim_markdown_preview_hotkey='<p'
 let vim_markdown_preview_browser='Google Chrome'
 "}}}
 "============== VimWiki ======================{{{
 " Use markdown syntax
 " ? look at this more. Mess with markdown syntax ?
-" let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+let g:vimwiki_list = [{'path': '~/vimwiki/index.md', 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_hl_cb_checked = 1  " make checked item lists highlighted
 let g:vimwiki_listsyms = '✗○◐●✓'
 let g:vimwiki_folding = 'custom'
@@ -752,4 +765,3 @@ nnoremap <Leader>gb :Buffers<CR>
 " EOF
 "
 "}}}
-
