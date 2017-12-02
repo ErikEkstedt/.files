@@ -15,7 +15,6 @@ export PATH="/home/erik/anaconda3/bin:$PATH"
 export BROWSER="google-chrome"
 export BROWSERCLI="w3m"
 
-
 stty -ixon # C-s, C-q 
 #}}}
 

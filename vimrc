@@ -35,10 +35,10 @@ Plugin 'vimwiki/vimwiki'                    " Personal Wiki
 Plugin 'itchyny/calendar.vim'               " Calendar for vim
 
 " ============ Preview Text ===========================
-Plugin 'JamshedVesuna/vim-markdown-preview' " preview markdowns
 Plugin 'lervag/vimtex'                      " latex compiler and alot more.
 Plugin 'Rykka/riv.vim'                      " ReStructuredText plugin
 Plugin 'Rykka/InstantRst'                   " Preview rst in browser (Fast)
+Plugin 'shime/vim-livedown'									" Preview markdowns with npm/node Livedown
 
 " ============ Completion and Syntax ==================
 Plugin 'klen/python-mode'                   " Python mode (docs, refactor, lints...)
@@ -208,6 +208,41 @@ hi VertSplit ctermfg=51
 hi VertSplit guibg=bg guifg=#b5bd68
 endif
 
+" change text font color to white
+inoremap <leader>å <esc>:hi normal ctermfg=255<cr>
+nnoremap <leader>å :hi normal ctermfg=255<cr>
+
+"}}}
+"=============== Windows ====================={{{
+" Move between windows {{{
+" Tmux now handles movement between windows and resizing
+" Plugin 'edkolev/tmuxline.vim'
+" nnoremap <C-h> <c-w><c-h>
+" nnoremap <C-l> <c-w><c-l>
+" nnoremap <C-k> <c-w><c-k>
+" nnoremap <C-j> <c-w><c-j>
+"
+" inoremap <C-h> <esc><c-w><c-h>i
+" inoremap <C-l> <esc><c-w><c-l>i
+" inoremap <C-j> <esc><c-w><c-j>i
+" inoremap <C-k> <esc><c-w><c-k>i
+"
+" vnoremap <C-h> <esc><c-w><c-h>gv
+" vnoremap <C-l> <esc><c-w><c-l>gv
+" vnoremap <C-j> <esc><c-w><c-j>gv
+" vnoremap <C-k> <esc><c-w><c-k>gv
+" }}}
+" Window Resizing {{{
+" nnoremap <A-l> :vertical resize +3<cr>
+" nnoremap <A-h> :vertical resize -3<cr>
+" nnoremap <c-Q> :resize +3<cr>
+" nnoremap <c-q> :resize -3<cr>
+
+" Automatically resize when vim changes 
+au VimResized * exe "normal! \<c-w>="
+" }}}
+
+
 "}}}
 "=============== MAPPINGS ===================={{{
 " Config files {{{
@@ -239,80 +274,33 @@ nnoremap V v$
 " Keep search matches in the middle of the window.
 nnoremap n nzzzv
 nnoremap N Nzzzv
-" stay on word instead of jumping directly
-nnoremap * *<c-o>
-nnoremap # #<c-o>
 
 " open quickfix window for latest vim search term.
 nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 
 " toggle highlight search
 nnoremap <leader><space> :set hlsearch!<cr>
+
 "}}}
-
-
-" substitute word under cursor in entire file.
-nnoremap <leader>sw :%s/<C-r><C-w>//g<Left><Left>
-
-" Source lines
-vnoremap <leader>vs y:@"<CR>
-
-" Clean trailing whitespace
-nnoremap <leader><backspace> mz:%s/\s\+$//<cr>:let @/=''<cr>`z
-
-" standard saving options
+" standard saving options {{{
 nnoremap <c-s> :w<cr>
 inoremap <c-s> <esc>:w<cr>
 nnoremap <c-q> :q!<cr>
 inoremap <c-q> <esc>:wq<cr>
 
-" when sudo rights are needed but you did not sudo.
-cmap w!! %!sudo tee > /dev/null %
-
-" GO TO next comment (in syntastic - flake8 (python) at least)
-nnoremap <leader>e :lnext<cr>
-inoremap <leader>e <esc>:lnext<cr>
-
-" Buffers previous/next
-nnoremap <b :bp<CR>
-nnoremap <n :bn<CR>
-
-" indent entire file
-inoremap <leader>i <esc>gg=g<c-o>
-nnoremap <leader>i gg=g<c-o>
-
-" jump forward in jump list
-nnoremap <i <C-I>
-
-" change text font color to white
-inoremap <leader>å <esc>:hi normal ctermfg=255<cr>
-nnoremap <leader>å :hi normal ctermfg=255<cr>
-
-" jump paragraph
-map ö {
-map ä }
-
-
-"alternate keys for indenting/unindenting
+" }}}
+"indenting/unindenting {{{
 inoremap <s-tab> <esc><lt><lt>i
 nnoremap <tab> >>
 nnoremap <s-tab> <lt><lt>
 vnoremap <s-tab>   <gv
 vnoremap <tab> >gv|
 
-" tab
-nnoremap <silent> <c-t> :<c-u>tabnew<cr>
-inoremap <silent> <c-t> <esc>:<c-u>tabnew<cr>
-nnoremap <silent> g0 :<c-u>tabfirst<cr>
-nnoremap <silent> g$ :<c-u>tablast<cr>
-
-" G(o)-Commands
-" visual select last yanked/del/pasted text
-nnoremap <expr> gvp '`['.strpart(getregtype(), 0, 1).'`]'
-
-nnoremap gp %
-nnoremap gs ]sz=
-
+" indent entire file
+inoremap <leader>i <esc>gg=g<c-o>
+nnoremap <leader>i gg=g<c-o>
+"}}}
+" copy / paste {{{
 set pastetoggle=<f2> " system clipboard pastes preserves indentation
 
 " copy / paste from clipboard
@@ -322,44 +310,84 @@ vnoremap <c-p> "+p
 nnoremap <c-y> "+yy
 vnoremap <c-y> "+y
 
+"}}}
+
+" substitute word under cursor in entire file.
+nnoremap <leader>sw :%s/<C-r><C-w>//g<Left><Left>
+" Source lines
+vnoremap <leader>vs y:@"<CR>
+" Clean trailing whitespace
+nnoremap <leader><backspace> mz:%s/\s\+$//<cr>:let @/=''<cr>`z
+" when sudo rights are needed but you did not sudo.
+cmap w!! %!sudo tee > /dev/null %
+
+" tab
+nnoremap <silent> <c-t> :<c-u>tabnew<cr>
+inoremap <silent> <c-t> <esc>:<c-u>tabnew<cr>
+nnoremap <silent> g0 :<c-u>tabfirst<cr>
+nnoremap <silent> g$ :<c-u>tablast<cr>
+
+" G(o)-Commands
+" visual select last yanked/del/pasted text
+nnoremap <expr> gvp '`['.strpart(getregtype(), 0, 1).'`]i'
+
+"Spellcheck
+map <F6> :setlocal spell! spelllang=en_us<CR>
+
+nnoremap <f10> :set relativenumber!<cr>
+
+" Some vim-diff settings
+if &diff
+	noremap <leader>1 :diffget LOCAL<CR>
+	noremap <leader>2 :diffget BASE<CR>
+	noremap <leader>3 :diffget REMOTE<CR>
+	nnoremap <Leader>n ]c
+	nnoremap <Leader>p [c
+endif
+
 " visual select all
 nnoremap <leader>a ggvG$
 nnoremap Y y$
 
 " change word by put
 nnoremap S viw"0p
-" H
+
 " Marker line
 nnoremap <leader>mA A:7  {{{<esc>
 nnoremap <leader>me i}}}<esc>:TComment<cr>
+
 "}}}
 "=============== MOVEMENT ===================={{{
-" Move between windows {{{
-" Tmux now handles movement between windows.
-" nnoremap <C-h> <c-w><c-h>
-" nnoremap <C-l> <c-w><c-l>
-" nnoremap <C-k> <c-w><c-k>
-" nnoremap <C-j> <c-w><c-j>
-"
-" inoremap <C-h> <esc><c-w><c-h>i
-" inoremap <C-l> <esc><c-w><c-l>i
-" inoremap <C-j> <esc><c-w><c-j>i
-" inoremap <C-k> <esc><c-w><c-k>i
-"
-" vnoremap <C-h> <esc><c-w><c-h>gv
-" vnoremap <C-l> <esc><c-w><c-l>gv
-" vnoremap <C-j> <esc><c-w><c-j>gv
-" vnoremap <C-k> <esc><c-w><c-k>gv
-" }}}
-" Window Resizing {{{
-nnoremap <A-l> :vertical resize +3<cr>
-nnoremap <A-h> :vertical resize -3<cr>
-" nnoremap <c-Q> :resize +3<cr>
-" nnoremap <c-q> :resize -3<cr>
+" GO TO next comment (in syntastic - flake8 (python) at least)
+nnoremap <leader>e :lnext<cr>
+inoremap <leader>e <esc>:lnext<cr>
 
-au VimResized * exe "normal! \<c-w>="
-" }}}
+" Buffers previous/next
+nnoremap <b :bp<CR>
+nnoremap <n :bn<CR>
 
+nmap G Gzz
+
+" jump in jump list
+nnoremap <i <C-I>zz
+nmap <c-o> <c-o>zz
+
+" jump paragraph
+map ö {
+map ä }
+
+" stay on word instead of jumping directly
+" commented out b/c I tend to wanana go there directly.
+" nnoremap * *<c-o>
+" nnoremap # #<c-o>
+nnoremap gn *zz
+nnoremap gN #zz
+
+" next paren
+nnoremap gp %
+
+" go next spell error
+nnoremap gs ]s
 
 " move up and down naturally even if lines
 " extends over multiple rows
@@ -371,10 +399,6 @@ vnoremap k gk
 " natural end/beginning of line movement
 nnoremap L $
 nnoremap H 0
-
-" focus on special movements
-nnoremap G Gzz
-nnoremap <c-o> <c-o>zz
 
 " go to placeholder
 nnoremap gj <esc>/<++><enter>"_c4l
@@ -392,20 +416,6 @@ nnoremap <leader>z zMzvzz
 " where the closed fold is.
 nnoremap <silent> o @=(foldclosed('.')>0?'za':"o")<CR>
 
-"Spellcheck
-map <F6> :setlocal spell! spelllang=en_us<CR>
-
-nnoremap <f10> :set relativenumber!<cr>
-
-
-" Some vim-diff settings
-if &diff
-	noremap <leader>1 :diffget LOCAL<CR>
-	noremap <leader>2 :diffget BASE<CR>
-	noremap <leader>3 :diffget REMOTE<CR>
-	nnoremap <Leader>n ]c
-	nnoremap <Leader>p [c
-endif
 "}}}
 "=============== ABBREVIATIONS ==============={{{
 cnoreabbrev Wq wq
@@ -416,8 +426,12 @@ cnoreabbrev <expr> h getcmdtype() == ":" && getcmdline() == 'h' ? 'tab help' : '
 cnoreabbrev <expr> q getcmdtype() == ":" && getcmdline() == 'q' ? 'q' : 'q'
 "}}}
 "=============== FUNCTIONS ==================={{{
+" Set starting variables for functions
 let g:transpar=0
-function! Toggletransparency()
+let g:fold_max=1
+
+function! Toggletransparency() " {{{
+	" Worked on urxvt/xfce
 	if g:transpar == 0
 		hi Normal ctermbg=none
 				hi LineNr ctermbg=none
@@ -434,11 +448,11 @@ function! Toggletransparency()
 		hi CursorLineNr ctermfg=45
 		let g:transpar=0
 	endif
-endfunc
+endfunc 
 map <f12> :call Toggletransparency()<cr>
-
-function! Togglefocusmode()
-	if (&foldcolumn != 12z)
+" }}}
+function! Togglefocusmode() " {{{
+	if (&foldcolumn != 12)
 		set laststatus=0
 		set numberwidth=10
 		set foldcolumn=12
@@ -455,9 +469,8 @@ function! Togglefocusmode()
 	endif
 endfunc
 nnoremap <f1> :call Togglefocusmode()<cr>
-
-let g:fold_max=1
-function! Toggle_MaxMinFold()
+" }}} 
+function! Toggle_MaxMinFold() "{{{
 		if g:fold_max == 0
 		let g:fold_max=1
 				:normal zM
@@ -469,28 +482,38 @@ endfunc
 nnoremap <leader>mm :call Toggle_MaxMinFold()<CR>
 
 "}}}
+
+"}}}
 "============== AUTOCOMMANDS ================={{{
 " function to exit quickfix when exiting buffer
-aug qfclose
+aug qfclose "{{{
 	au!
 	au winenter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
-aug end
+aug end "}}}
 
-augroup VIM
+augroup VIM "{{{
 	au!
 	au WinLeave,InsertEnter * set nocursorline
 	au WinLeave,InsertEnter * set norelativenumber
 	au WinEnter,InsertLeave * set cursorline
 	au WinEnter,InsertLeave * set relativenumber
-augroup end
+augroup end " }}}
+
+augroup vimtex_event_1 "{{{
 " compile on initialization, cleanup on quit
-augroup vimtex_event_1
 	au!
 	au user vimtexeventquit     call vimtex#compiler#clean(0)
-	augroup end
+augroup end "}}}
+
+
+"}}}
+"============== Macros/ longer cmds =========={{{
+
+" find , and make new line | todo: 2gl -> execute command 2 times, etc.
+nnoremap gl f,a<CR><esc> 
+
 "}}}
 "============= PLUGIN SETTINGS ==============={{{
-
 "============== Python-Syntax ================{{{
 let python_highlight_all = 1
 "}}}
@@ -691,11 +714,21 @@ nnoremap <leader>lo :errors<cr>
 let g:indentLine_fileTypeExclude=['help']
 let g:indentLine_char = '┊'
 " }}}
-"============== Vim-Markdown-Preview ========={{{
-let vim_markdown_preview_toggle=2
-let vim_markdown_preview_github=1
-let vim_markdown_preview_hotkey='<p'
-let vim_markdown_preview_browser='Google Chrome'
+"============== Vim-livedown-markdown ========={{{
+" should markdown preview get shown automatically upon opening markdown buffer
+let g:livedown_autorun = 0
+
+" should the browser window pop-up upon previewing
+let g:livedown_open = 1 
+
+" the port on which Livedown server will run
+let g:livedown_port = 1337
+
+" the browser to use
+let g:livedown_browser = "'google-chrome'"
+
+nnoremap gm :LivedownToggle<CR>
+nnoremap gM :LivedownPreview<CR>
 "}}}
 "============== VimWiki ======================{{{
 " Use markdown syntax
