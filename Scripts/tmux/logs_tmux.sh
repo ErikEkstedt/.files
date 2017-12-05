@@ -2,7 +2,6 @@
 Img=~/.files/icons/red-icon.png
 VIM=~/.files/icons/vim-icon.png
 session="Logs"
-term="termite"
 path="~/.files"
 tmux has-session -t $session 2> /dev/null
 if [ "$?" -eq 1 ] 
@@ -14,14 +13,14 @@ then
 		tmux send-keys "cd $path;vim" C-m 
 		tmux splitw -h -p 25
 		tmux send-keys "cd $path;zathura" C-m 
-		exec $term -e "tmux attach-session -t $session"
+		exec $TERMINAL -e "tmux attach-session -t $session"
 else
     attached=$( tmux ls | grep $session | grep attached)
     if [ -z "$attached" ] 
     then
         killall notify-osd
         DISPLAY=:0 notify-send -t 3000 --urgency=critical --icon=$VIM "Attaching to $session"
-				exec $term -e "tmux attach-session -t $session"
+				exec $TERMINAL -e "tmux attach-session -t $session"
     else
         DISPLAY=:0 notify-send -t 3000 --urgency=critical --icon=$VIM "$session"
 				name=$(xdotool search -name $session:)  

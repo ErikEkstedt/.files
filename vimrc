@@ -22,7 +22,9 @@ Plugin 'junegunn/fzf.vim'                   " fuzzy filefinding
 Plugin 'chriskempson/base16-vim'
 Plugin 'Yggdroot/indentLine'                " see where there is indent
 Plugin 'itchyny/lightline.vim'              " light weight status bar
+Plugin 'vim-scripts/Wombat'		              " Wombat colorscheme
 Plugin 'edkolev/tmuxline.vim'
+" Plugin 'ryanoasis/vim-devicons'           " Dev Icons
 
 " ============ Useful Tools ===========================
 Plugin 'epeli/slimux'                       " vim+ipython REPL
@@ -33,6 +35,7 @@ Plugin 'tomtom/tcomment_vim'                " smart comments
 Plugin 'christoomey/vim-tmux-navigator'     " navigate between vim and tmuz seemlessly
 Plugin 'vimwiki/vimwiki'                    " Personal Wiki
 Plugin 'itchyny/calendar.vim'               " Calendar for vim
+Plugin 'Valloric/MatchTagAlways'
 
 " ============ Preview Text ===========================
 Plugin 'lervag/vimtex'                      " latex compiler and alot more.
@@ -60,7 +63,6 @@ Plugin 'nelstrom/vim-markdown-folding'			" help with folding in markdown
 " Plugin 'fisadev/FixedTaskList.vim'          " Pending tasks list
 " Plugin 'MattesGroeger/vim-bookmarks'        " Bookmarks
 " Plugin 'jreybert/vimagit'
-" Plugin 'ryanoasis/vim-devicons'             " Dev Icons
 
 " All of your Plugins must be added before the following line
 call vundle#end()            "}}}
@@ -187,14 +189,11 @@ set laststatus=2 "always show status bar
 set term=screen-256color
 set t_co=256 "colormode
 
-set termguicolors
-let &t_8f="\e[38;2;%ld;%ld;%ldm"
-let &t_8b="\e[48;2;%ld;%ld;%ldm"
-
+set termguicolors " Enable true color support.
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 " colors
-colorscheme base16-classic-dark
-let base16colorspace=256
-
+colorscheme base16-tomorrow-night
 " Toggle conceallevel
 map <LocalLeader>c :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
 
@@ -209,7 +208,7 @@ hi VertSplit guibg=bg guifg=#b5bd68
 endif
 
 " change text font color to white
-inoremap <leader>å <esc>:hi normal ctermfg=255<cr>
+inoremap <leader>å <esc>:hi normal ctermfg=255 guifg=white<cr>
 nnoremap <leader>å :hi normal ctermfg=255<cr>
 
 "}}}
@@ -217,31 +216,29 @@ nnoremap <leader>å :hi normal ctermfg=255<cr>
 " Move between windows {{{
 " Tmux now handles movement between windows and resizing
 " Plugin 'edkolev/tmuxline.vim'
-" nnoremap <C-h> <c-w><c-h>
-" nnoremap <C-l> <c-w><c-l>
-" nnoremap <C-k> <c-w><c-k>
-" nnoremap <C-j> <c-w><c-j>
+" nnoremap <C-H> <c-w><c-h>
+" nnoremap <C-L> <c-w><c-l>
+" nnoremap <C-K> <c-w><c-k>
+" nnoremap <C-J> <c-w><c-j>
+
+" inoremap <C-H> <c-w><c-h>
+" inoremap <C-L> <c-w><c-l>
+" inoremap <C-K> <c-w><c-k>
+" inoremap <C-J> <c-w><c-j>
 "
-" inoremap <C-h> <esc><c-w><c-h>i
-" inoremap <C-l> <esc><c-w><c-l>i
-" inoremap <C-j> <esc><c-w><c-j>i
-" inoremap <C-k> <esc><c-w><c-k>i
-"
-" vnoremap <C-h> <esc><c-w><c-h>gv
-" vnoremap <C-l> <esc><c-w><c-l>gv
-" vnoremap <C-j> <esc><c-w><c-j>gv
-" vnoremap <C-k> <esc><c-w><c-k>gv
+" nnoremap <C-H> <c-w><c-h>
+" nnoremap <C-L> <c-w><c-l>
+" nnoremap <C-K> <c-w><c-k>
+" nnoremap <C-J> <c-w><c-j>
 " }}}
 " Window Resizing {{{
-" nnoremap <A-l> :vertical resize +3<cr>
-" nnoremap <A-h> :vertical resize -3<cr>
-" nnoremap <c-Q> :resize +3<cr>
-" nnoremap <c-q> :resize -3<cr>
-
+nnoremap <C-h> :vertical resize -3<cr>
+nnoremap <C-l> :vertical resize +3<cr>
+nnoremap <C-k> :resize +3<cr>
+nnoremap <C-j> :resize -3<cr>
 " Automatically resize when vim changes 
 au VimResized * exe "normal! \<c-w>="
 " }}}
-
 
 "}}}
 "=============== MAPPINGS ===================={{{
@@ -382,6 +379,9 @@ map ä }
 " nnoremap # #<c-o>
 nnoremap gn *zz
 nnoremap gN #zz
+vnoremap gn *zz
+vnoremap gN #zz
+
 
 " next paren
 nnoremap gp %
@@ -514,6 +514,15 @@ nnoremap gl f,a<CR><esc>
 
 "}}}
 "============= PLUGIN SETTINGS ==============={{{
+"============== Tmux-navigation =============={{{
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> <Left> :TmuxNavigateLeft<cr>
+nnoremap <silent> <Down> :TmuxNavigateDown<cr>
+nnoremap <silent> <Up> :TmuxNavigateUp<cr>
+nnoremap <silent> <Right> :TmuxNavigateRight<cr>
+
+"}}}
 "============== Python-Syntax ================{{{
 let python_highlight_all = 1
 "}}}
@@ -548,13 +557,6 @@ let g:latex_view_general_viewer = 'zathura'
 let g:vimtex_view_method = "zathura"
 "let g:latex_view_general_options = shellescape("-s -e '" . exepath(v:progpath) . " --servername " . v:servername . " +{%line} {%input}'")
 let g:vimtex_complete_recursive_bib = 2
-
-" }}}
-"============== CtrlP ========================{{{
-let g:ctrlp_show_hidden = 2
-nnoremap <Leader>f :CtrlP<CR>
-nnoremap <Leader>fm :CtrlPMRU<CR>
-let g:ctrlp_map = ''
 
 " }}}
 "============== Fugitive ====================={{{
@@ -763,9 +765,25 @@ let g:fzf_colors =
 	\ 'marker':  ['fg', 'Keyword'],
 	\ 'spinner': ['fg', 'Label'],
 	\ 'header':  ['fg', 'Comment'] }
-nnoremap <Leader>gg :Lines<CR>
-nnoremap <Leader>gs :GFiles?<CR>
-nnoremap <Leader>gb :Buffers<CR>
+
+" Settings
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+
+" Mappings
+nnoremap <Leader>gg : Lines<CR>
+nnoremap <Leader>gs : GFiles?<CR>
+nnoremap <Leader>gb : Buffers<CR>
+nnoremap <Leader>fi  : Files<CR>
+nnoremap <Leader>h   : Helptags<CR>
+nnoremap <Leader>ff  : Ag<CR>
+
+" This is the default extra key bindings
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
 "}}}
 "===== TODO ====={{{
 	" " figure out highlightning. this affecter breakindentopt 'bg hl'

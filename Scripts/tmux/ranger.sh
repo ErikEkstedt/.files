@@ -1,6 +1,5 @@
 #!/bin/sh
 session="Ranger"
-term="termite"
 tmux has-session -t $session 2> /dev/null
 if [ "$?" -eq 1 ] 
 then

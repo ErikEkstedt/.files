@@ -31,7 +31,6 @@ setlocal foldmethod=indent
 
 " colors
 colorscheme base16-monokai
-let base16colorspace=256
 hi NERDTreeDir guifg=#90a959 
 hi Directory guifg=#404040
 hi NERDTreeCWD guifg=gray50
