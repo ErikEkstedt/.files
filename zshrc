@@ -8,7 +8,7 @@ export KEYTIMEOUT=1
 export EDITOR='vim'
 export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
-export ROBOSCHOOL_PATH=/home/erik/roboschool
+export ROBOSCHOOL_PATH=/home/erik/anaconda3/envs/robo/lib/python3.5/site-packages/roboschool
 export LANG=en_US.UTF-8
 export PATH="/home/erik/anaconda3/bin:$PATH"
 
