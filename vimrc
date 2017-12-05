@@ -1,10 +1,14 @@
+" Vimrc
+" Erik
+" Ubuntu 16.04
+
 "============= VUNDLE ========================{{{
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin() 
+call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " ============ Code/Project Navigation ================
@@ -18,7 +22,9 @@ Plugin 'junegunn/fzf.vim'                   " fuzzy filefinding
 Plugin 'chriskempson/base16-vim'
 Plugin 'Yggdroot/indentLine'                " see where there is indent
 Plugin 'itchyny/lightline.vim'              " light weight status bar
+Plugin 'vim-scripts/Wombat'		              " Wombat colorscheme
 Plugin 'edkolev/tmuxline.vim'
+" Plugin 'ryanoasis/vim-devicons'           " Dev Icons
 
 " ============ Useful Tools ===========================
 Plugin 'epeli/slimux'                       " vim+ipython REPL
@@ -28,12 +34,14 @@ Plugin 'godlygeek/tabular'                  " structure text
 Plugin 'tomtom/tcomment_vim'                " smart comments
 Plugin 'christoomey/vim-tmux-navigator'     " navigate between vim and tmuz seemlessly
 Plugin 'vimwiki/vimwiki'                    " Personal Wiki
+Plugin 'itchyny/calendar.vim'               " Calendar for vim
+Plugin 'Valloric/MatchTagAlways'
 
 " ============ Preview Text ===========================
-Plugin 'JamshedVesuna/vim-markdown-preview' " preview markdowns
 Plugin 'lervag/vimtex'                      " latex compiler and alot more.
 Plugin 'Rykka/riv.vim'                      " ReStructuredText plugin
 Plugin 'Rykka/InstantRst'                   " Preview rst in browser (Fast)
+Plugin 'shime/vim-livedown'									" Preview markdowns with npm/node Livedown
 
 " ============ Completion and Syntax ==================
 Plugin 'klen/python-mode'                   " Python mode (docs, refactor, lints...)
@@ -41,6 +49,9 @@ Plugin 'scrooloose/syntastic'               " Syntax checking plugin for Vim
 Plugin 'Valloric/YouCompleteMe'             " Autocomplete plugin
 Plugin 'PotatoesMaster/i3-vim-syntax'       " syntax for i3 config
 Plugin 'hdima/python-syntax'                " extra help for python syntax (self etc)
+Plugin 'octol/vim-cpp-enhanced-highlight'   " Extra highlight for cpp
+Plugin 'othree/xml.vim'
+Plugin 'nelstrom/vim-markdown-folding'			" help with folding in markdown
 
 " ============ Snippets ===============================
 " Take an hour and install and make correct with YCM
@@ -52,7 +63,6 @@ Plugin 'hdima/python-syntax'                " extra help for python syntax (self
 " Plugin 'fisadev/FixedTaskList.vim'          " Pending tasks list
 " Plugin 'MattesGroeger/vim-bookmarks'        " Bookmarks
 " Plugin 'jreybert/vimagit'
-" Plugin 'ryanoasis/vim-devicons'             " Dev Icons
 
 " All of your Plugins must be added before the following line
 call vundle#end()            "}}}
@@ -89,7 +99,7 @@ set autoindent
 set ruler                     " for cursor position in the bottom right corner
 set number                    " number lines
 set relativenumber
-set scrolloff=5               " visual rows above and below cursor
+set scrolloff=3               " visual rows above and below cursor
 set sidescroll=3              " visual columns on sides of cursor
 set cursorline                " highlight line where cursor is
 set hls                       " highlighting!
@@ -105,8 +115,8 @@ set mouse=a                   " mouse functionality
 set timeoutlen=500            " ms to wait for command completion
 set ttimeoutlen=0             " don't wait for <esc>
 set incsearch                 " search starts when typing instead of waiting for <enter>
-set virtualedit=block,onemore " 'block' makes it possible to edit empty space in visualblock
-set nobackup                  
+set virtualedit=block					" ,onemore " 'block' makes it possible to edit empty space in visualblock
+set nobackup
 set nowritebackup
 set noswapfile
 set ignorecase                " (in)case sensitive search
@@ -116,29 +126,120 @@ set wildmenu
 set wildchar=<tab>
 set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,resize
 
+set splitbelow
+set splitright
 " }}}
+"=============== Misc ======================={{{
+" Wildmenu completion {{{
+set wildmenu
+set wildmode=list:longest
+
+set wildignore+=.hg,.git,.svn                    " Version control
+set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
+set wildignore+=*.spl                            " compiled spelling word lists
+set wildignore+=*.sw?                            " Vim swap files
+set wildignore+=*.DS_Store                       " OSX bullshit
+set wildignore+=*.luac                           " Lua byte code
+
+set wildignore+=migrations                       " Django migrations
+set wildignore+=*.pyc                            " Python byte code
+
+set wildignore+=*.orig                           " Merge resolution files
+set wildignore+=*.fasl                           " Lisp FASLs
+
+" Clojure/Leiningen
+set wildignore+=classes
+set wildignore+=lib
+" }}}
+" Return to line {{{
+" Make sure Vim returns to the same line when you reopen a file.
+" Thanks, Amit
+augroup line_return
+    au!
+    au BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \     execute 'normal! g`"zvzz' |
+        \ endif
+augroup END
+" }}}
+" Backups {{{
+set backup                        " enable backups
+set noswapfile                    " it's 2013, Vim.
+
+set undodir=~/.vim/tmp/undo//     " undo files
+set backupdir=~/.vim/tmp/backup// " backups
+set directory=~/.vim/tmp/swap//   " swap files
+
+" Make those folders automatically if they don't already exist.
+if !isdirectory(expand(&undodir))
+    call mkdir(expand(&undodir), "p")
+endif
+if !isdirectory(expand(&backupdir))
+    call mkdir(expand(&backupdir), "p")
+endif
+if !isdirectory(expand(&directory))
+    call mkdir(expand(&directory), "p")
+endif
+" }}}
+"}}}
 "=============== APPEARENCE =================={{{
 set laststatus=2 "always show status bar
 set term=screen-256color
 set t_co=256 "colormode
 
-set termguicolors
-let &t_8f="\e[38;2;%ld;%ld;%ldm"
-let &t_8b="\e[48;2;%ld;%ld;%ldm"
-
+set termguicolors " Enable true color support.
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 " colors
-colorscheme base16-classic-dark
-let base16colorspace=256
+colorscheme base16-tomorrow-night
+" Toggle conceallevel
+map <LocalLeader>c :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
 
 " ======= HIGHLIGHTS =================
-hi CursorLineNr ctermfg=87 guifg=white  
+hi CursorLineNr ctermfg=87 guifg=white
 hi MatchParen guibg=black guifg=lightblue
 
 if has('windows')
-set fillchars=vert:\┃  " ┃ line with no breaks between vertical splits 
+set fillchars=vert:\┃  " ┃ line with no breaks between vertical splits
 hi VertSplit ctermfg=51
 hi VertSplit guibg=bg guifg=#b5bd68
 endif
+
+" change text font color to white
+inoremap <leader>å <esc>:hi normal ctermfg=255 guifg=white<cr>
+nnoremap <leader>å :hi normal ctermfg=255<cr>
+
+"}}}
+"=============== Windows ====================={{{
+" Move between windows {{{
+" Tmux now handles movement between windows and resizing
+" Plugin 'edkolev/tmuxline.vim'
+" nnoremap <C-H> <c-w><c-h>
+" nnoremap <C-L> <c-w><c-l>
+" nnoremap <C-K> <c-w><c-k>
+" nnoremap <C-J> <c-w><c-j>
+
+" inoremap <C-H> <c-w><c-h>
+" inoremap <C-L> <c-w><c-l>
+" inoremap <C-K> <c-w><c-k>
+" inoremap <C-J> <c-w><c-j>
+"
+" nnoremap <C-H> <c-w><c-h>
+" nnoremap <C-L> <c-w><c-l>
+" nnoremap <C-K> <c-w><c-k>
+" nnoremap <C-J> <c-w><c-j>
+" }}}
+" Window Resizing {{{
+nnoremap <C-h> :vertical resize -3<cr>
+nnoremap <C-l> :vertical resize +3<cr>
+nnoremap <C-k> :resize +3<cr>
+nnoremap <C-j> :resize -3<cr>
+" Automatically resize when vim changes 
+au VimResized * exe "normal! \<c-w>="
+" }}}
+
 "}}}
 "=============== MAPPINGS ===================={{{
 " Config files {{{
@@ -152,6 +253,7 @@ nnoremap <leader>et :tabnew ~/.tmux.conf<cr>
 nnoremap <leader>ebib :tabnew ~/documents/latex/references.bib<cr>
 nnoremap <leader>epy :tabnew ~/.vim/ftplugin/python.vim<cr>
 nnoremap <leader>ete :tabnew ~/.vim/ftplugin/tex.vim<cr>
+nnoremap <leader>ema :tabnew ~/.vim/ftplugin/markdown.vim<cr>
 
 " source config files
 nnoremap <leader>si3 :source ~/.config/i3/config<cr>
@@ -159,75 +261,43 @@ nnoremap <leader>sv :source ~/.vimrc<cr>
 nnoremap <leader>sz :source ~/.zshrc<cr>
 nnoremap <leader>sx :! xrdb ~/.Xresources<cr>
 nnoremap <leader>sot :source ~/.tmux.conf<cr>
+
 " }}}
+" Visual selection {{{
+nnoremap vv V
+nnoremap V v$
+" }}}
+" Search   {{{
+" Keep search matches in the middle of the window.
+nnoremap n nzzzv
+nnoremap N Nzzzv
 
-" Source lines
-vnoremap <leader>vs y:@"<CR>
+" open quickfix window for latest vim search term.
+nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 
-" standard saving options
+" toggle highlight search
+nnoremap <leader><space> :set hlsearch!<cr>
+
+"}}}
+" standard saving options {{{
 nnoremap <c-s> :w<cr>
 inoremap <c-s> <esc>:w<cr>
 nnoremap <c-q> :q!<cr>
 inoremap <c-q> <esc>:wq<cr>
 
-" when sudo rights are needed but you did not sudo. 
-cmap w!! %!sudo tee > /dev/null %
-
-" run scripts
-nnoremap <leader>r :! urxvt -e python % &<cr><cr>
-
-" Toggle conceallevel
-map <LocalLeader>c :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
-
-" GO TO next comment (in syntastic - flake8 (python) at least)
-nnoremap <leader>e :lnext<cr>
-inoremap <leader>e <esc>:lnext<cr>
-
-" Buffers previous/next
-nnoremap <b :bp<CR>
-nnoremap <n :bn<CR>
-
-" indent entire file
-inoremap <leader>i <esc>gg=g<c-o>
-nnoremap <leader>i gg=g<c-o>
-
-" jump forward in jump list
-nnoremap <i <C-I>
-
-" change text font color to white
-inoremap <leader>å <esc>:hi normal ctermfg=255<cr>
-nnoremap <leader>å :hi normal ctermfg=255<cr>
-
-" Calendar
-nnoremap <leader>cm :Calendar -view=month<CR>
-nnoremap <leader>cw :Calendar -view=week<CR>
-nnoremap <leader>cd :Calendar -view=day<CR>
-
-" try map öä
-map ö {
-map ä }
-
-nnoremap <leader>no :set hlsearch!<cr>
-
-"alternate keys for indenting/unindenting
+" }}}
+"indenting/unindenting {{{
 inoremap <s-tab> <esc><lt><lt>i
 nnoremap <tab> >>
 nnoremap <s-tab> <lt><lt>
 vnoremap <s-tab>   <gv
 vnoremap <tab> >gv|
 
-" tab
-nnoremap <silent> <c-t> :<c-u>tabnew<cr>
-inoremap <silent> <c-t> <esc>:<c-u>tabnew<cr>
-nnoremap <silent> g0 :<c-u>tabfirst<cr>
-nnoremap <silent> g$ :<c-u>tablast<cr>
-
-" G(o)-Commands
-nnoremap <expr> gvp '`['.strpart(getregtype(), 0, 1).'`]'
-
-nnoremap gp %
-nnoremap gs ]sz=
-
+" indent entire file
+inoremap <leader>i <esc>gg=g<c-o>
+nnoremap <leader>i gg=g<c-o>
+"}}}
+" copy / paste {{{
 set pastetoggle=<f2> " system clipboard pastes preserves indentation
 
 " copy / paste from clipboard
@@ -237,6 +307,41 @@ vnoremap <c-p> "+p
 nnoremap <c-y> "+yy
 vnoremap <c-y> "+y
 
+"}}}
+
+" substitute word under cursor in entire file.
+nnoremap <leader>sw :%s/<C-r><C-w>//g<Left><Left>
+" Source lines
+vnoremap <leader>vs y:@"<CR>
+" Clean trailing whitespace
+nnoremap <leader><backspace> mz:%s/\s\+$//<cr>:let @/=''<cr>`z
+" when sudo rights are needed but you did not sudo.
+cmap w!! %!sudo tee > /dev/null %
+
+" tab
+nnoremap <silent> <c-t> :<c-u>tabnew<cr>
+inoremap <silent> <c-t> <esc>:<c-u>tabnew<cr>
+nnoremap <silent> g0 :<c-u>tabfirst<cr>
+nnoremap <silent> g$ :<c-u>tablast<cr>
+
+" G(o)-Commands
+" visual select last yanked/del/pasted text
+nnoremap <expr> gvp '`['.strpart(getregtype(), 0, 1).'`]i'
+
+"Spellcheck
+map <F6> :setlocal spell! spelllang=en_us<CR>
+
+nnoremap <f10> :set relativenumber!<cr>
+
+" Some vim-diff settings
+if &diff
+	noremap <leader>1 :diffget LOCAL<CR>
+	noremap <leader>2 :diffget BASE<CR>
+	noremap <leader>3 :diffget REMOTE<CR>
+	nnoremap <Leader>n ]c
+	nnoremap <Leader>p [c
+endif
+
 " visual select all
 nnoremap <leader>a ggvG$
 nnoremap Y y$
@@ -245,45 +350,55 @@ nnoremap Y y$
 nnoremap S viw"0p
 
 " Marker line
-
-nnoremap <leader>mA A  %{{{<esc>
-nnoremap <leader>me i%}}}<esc>
+nnoremap <leader>mA A:7  {{{<esc>
+nnoremap <leader>me i}}}<esc>:TComment<cr>
 
 "}}}
 "=============== MOVEMENT ===================={{{
-" move up and down naturally even if lines 
+" GO TO next comment (in syntastic - flake8 (python) at least)
+nnoremap <leader>e :lnext<cr>
+inoremap <leader>e <esc>:lnext<cr>
+
+" Buffers previous/next
+nnoremap <b :bp<CR>
+nnoremap <n :bn<CR>
+
+nmap G Gzz
+
+" jump in jump list
+nnoremap <i <C-I>zz
+nmap <c-o> <c-o>zz
+
+" jump paragraph
+map ö {
+map ä }
+
+" stay on word instead of jumping directly
+" commented out b/c I tend to wanana go there directly.
+" nnoremap * *<c-o>
+" nnoremap # #<c-o>
+nnoremap gn *zz
+nnoremap gN #zz
+vnoremap gn *zz
+vnoremap gN #zz
+
+
+" next paren
+nnoremap gp %
+
+" go next spell error
+nnoremap gs ]s
+
+" move up and down naturally even if lines
 " extends over multiple rows
 nnoremap j gj
 nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
+" natural end/beginning of line movement
 nnoremap L $
 nnoremap H 0
-
-nnoremap G Gzz
-nnoremap <c-o> <c-o>zz
-
-"Move between splits
-nnoremap <c-h> <c-w><c-h>
-nnoremap <c-l> <c-w><c-l>
-nnoremap <c-k> <c-w><c-k>
-nnoremap <c-j> <c-w><c-j>
-
-inoremap <c-h> <esc><c-w><c-h>i
-inoremap <c-l> <esc><c-w><c-l>i
-inoremap <c-j> <esc><c-w><c-j>i
-inoremap <c-k> <esc><c-w><c-k>i
-
-vnoremap <c-h> <esc><c-w><c-h>gv
-vnoremap <c-l> <esc><c-w><c-l>gv
-vnoremap <c-j> <esc><c-w><c-j>gv
-vnoremap <c-k> <esc><c-w><c-k>gv
-
-" " Resize splits
-nnoremap <Leader>q :vertical resize -5<CR>
-nnoremap <Leader>w :vertical resize +5<CR>
-
 
 " go to placeholder
 nnoremap gj <esc>/<++><enter>"_c4l
@@ -292,19 +407,15 @@ inoremap gj <esc>/<++><enter>"_c4l
 
 " Toggle fold
 nnoremap ga zA
+nnoremap <leader>z zMzvzz
 
-"Spellcheck
-map <F6> :setlocal spell! spelllang=en_us<CR>
+" Nerdtree uses 'o' to open "foldlike" dirs.
+" I want to use 'o' to open closed folds but everywhere else it
+" should work as regular (I use 'o' alot!)
+" foldclosed('.') returns -1 if not a closed fold or the linenumber
+" where the closed fold is.
+nnoremap <silent> o @=(foldclosed('.')>0?'za':"o")<CR>
 
-nnoremap <f10> :set relativenumber!<cr>
-
-if &diff
-	noremap <leader>1 :diffget LOCAL<CR>
-	noremap <leader>2 :diffget BASE<CR>
-	noremap <leader>3 :diffget REMOTE<CR>
-	nnoremap <Leader>n ]c
-	nnoremap <Leader>p [c
-endif
 "}}}
 "=============== ABBREVIATIONS ==============={{{
 cnoreabbrev Wq wq
@@ -315,8 +426,12 @@ cnoreabbrev <expr> h getcmdtype() == ":" && getcmdline() == 'h' ? 'tab help' : '
 cnoreabbrev <expr> q getcmdtype() == ":" && getcmdline() == 'q' ? 'q' : 'q'
 "}}}
 "=============== FUNCTIONS ==================={{{
+" Set starting variables for functions
 let g:transpar=0
-function! Toggletransparency()
+let g:fold_max=1
+
+function! Toggletransparency() " {{{
+	" Worked on urxvt/xfce
 	if g:transpar == 0
 		hi Normal ctermbg=none
 				hi LineNr ctermbg=none
@@ -333,11 +448,11 @@ function! Toggletransparency()
 		hi CursorLineNr ctermfg=45
 		let g:transpar=0
 	endif
-endfunc
+endfunc 
 map <f12> :call Toggletransparency()<cr>
-
-function! Togglefocusmode()
-	if (&foldcolumn != 12z)
+" }}}
+function! Togglefocusmode() " {{{
+	if (&foldcolumn != 12)
 		set laststatus=0
 		set numberwidth=10
 		set foldcolumn=12
@@ -354,10 +469,8 @@ function! Togglefocusmode()
 	endif
 endfunc
 nnoremap <f1> :call Togglefocusmode()<cr>
-
-let g:fold_max=1
-function! Toggle_MaxMinFold()
-		echo "hello"
+" }}} 
+function! Toggle_MaxMinFold() "{{{
 		if g:fold_max == 0
 		let g:fold_max=1
 				:normal zM
@@ -366,22 +479,50 @@ function! Toggle_MaxMinFold()
 				:normal zR
 	endif
 endfunc
-nnoremap <leader>r :call Toggle_MaxMinFold()<CR>
+nnoremap <leader>mm :call Toggle_MaxMinFold()<CR>
+
+"}}}
+
 "}}}
 "============== AUTOCOMMANDS ================={{{
 " function to exit quickfix when exiting buffer
-aug qfclose
+aug qfclose "{{{
 	au!
 	au winenter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
-aug end
+aug end "}}}
 
+augroup VIM "{{{
+	au!
+	au WinLeave,InsertEnter * set nocursorline
+	au WinLeave,InsertEnter * set norelativenumber
+	au WinEnter,InsertLeave * set cursorline
+	au WinEnter,InsertLeave * set relativenumber
+augroup end " }}}
+
+augroup vimtex_event_1 "{{{
 " compile on initialization, cleanup on quit
-augroup vimtex_event_1
 	au!
 	au user vimtexeventquit     call vimtex#compiler#clean(0)
-	augroup end
+augroup end "}}}
+
+
+"}}}
+"============== Macros/ longer cmds =========={{{
+
+" find , and make new line | todo: 2gl -> execute command 2 times, etc.
+nnoremap gl f,a<CR><esc> 
+
 "}}}
 "============= PLUGIN SETTINGS ==============={{{
+"============== Tmux-navigation =============={{{
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> <Left> :TmuxNavigateLeft<cr>
+nnoremap <silent> <Down> :TmuxNavigateDown<cr>
+nnoremap <silent> <Up> :TmuxNavigateUp<cr>
+nnoremap <silent> <Right> :TmuxNavigateRight<cr>
+
+"}}}
 "============== Python-Syntax ================{{{
 let python_highlight_all = 1
 "}}}
@@ -396,7 +537,7 @@ vnoremap <C-c><C-x> :SlimuxREPLConfigure<CR>
 " }}}
 "============== Vim-netrw ===================={{{
 let g:netrw_banner = 0 "no banner
-let g:netrw_liststyle = 3 
+let g:netrw_liststyle = 3
 let g:netrw_sort_sequence = '[\/]$,*' " sort is affecting only: directories on the top, files below
 noremap <leader>ex :Explore<cr>
 nnoremap <leader>vv :Vexplore<cr>
@@ -405,6 +546,11 @@ nnoremap <leader>hh :Hexplore<cr>
 "============== Calendar ====================={{{
 let g:calendar_google_calendar = 1
 let g:calendar_google_task = 1
+
+nnoremap <leader>cm :Calendar -view=month<CR>
+nnoremap <leader>cw :Calendar -view=week<CR>
+nnoremap <leader>cd :Calendar -view=day<CR>
+
 " }}}
 "============== Vimtex ======================={{{
 let g:latex_view_general_viewer = 'zathura'
@@ -413,23 +559,16 @@ let g:vimtex_view_method = "zathura"
 let g:vimtex_complete_recursive_bib = 2
 
 " }}}
-"============== CtrlP ========================{{{
-let g:ctrlp_show_hidden = 2 
-nnoremap <Leader>f :CtrlP<CR>
-nnoremap <Leader>fm :CtrlPMRU<CR>
-let g:ctrlp_map = ''
-
-" }}}
 "============== Fugitive ====================={{{
 nnoremap <Leader>ga :Gwrite<CR>
 nnoremap <Leader>gc :Gcommit<CR>
 nnoremap <Leader>gp :Gpush<CR>
 
 " }}}
-"============== Ligthline ===================={{{
+"============== Lightline ===================={{{
 let g:lightline = {'colorscheme': 'powerline'}
 set noshowmode "stops vims own showing below the statusbar.
-
+let g:lightline.tab = {'active': ['tabnum', 'filename', 'modified'], 'inactive': [ 'tabnum', 'filename', 'modified' ]}
 " }}}
 "============== Tabular ======================{{{
 vnoremap <silent> <Leader>t= :Tabularize /=<CR>
@@ -453,7 +592,7 @@ nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
 " " open NERDTree on startup
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-let NERDTreeIgnore=['\.pyc$', '\.pdf$', '\.png$', '\.aux$', '\.bbl$', '\.fls$', '\.blg$', '\.log$', '\.xml$', '\.fdb_latexmk$','\.gz$']
+let NERDTreeIgnore=['\.pyc$', '\.pdf$', '\.png$', '\.aux$', '\.bbl$', '\.fls$', '\.blg$', '\.log$', '\.fdb_latexmk$','\.gz$']
 let NERDTreeShowBookmarks = 1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 map <C-n> :NERDTreeToggle<CR>
@@ -462,7 +601,7 @@ let g:NERDTreeDirArrowExpandable = ''
 let g:NERDTreeDirArrowCollapsible = ''
 
 "PaleTurquoise1
-hi NERDTreeDir guifg=#90a959 
+hi NERDTreeDir guifg=#90a959
 hi Directory guifg=#404040
 
 hi NERDTreeCWD guifg=gray50
@@ -577,10 +716,38 @@ nnoremap <leader>lo :errors<cr>
 let g:indentLine_fileTypeExclude=['help']
 let g:indentLine_char = '┊'
 " }}}
-"============== Vim-Markdown-Preview ========={{{
-let vim_markdown_preview_github=1
-let vim_markdown_preview_hotkey='<C-m>'
-let vim_markdown_preview_browser='Google Chrome'
+"============== Vim-livedown-markdown ========={{{
+" should markdown preview get shown automatically upon opening markdown buffer
+let g:livedown_autorun = 0
+
+" should the browser window pop-up upon previewing
+let g:livedown_open = 1 
+
+" the port on which Livedown server will run
+let g:livedown_port = 1337
+
+" the browser to use
+let g:livedown_browser = "'google-chrome'"
+
+nnoremap gm :LivedownToggle<CR>
+nnoremap gM :LivedownPreview<CR>
+"}}}
+"============== VimWiki ======================{{{
+" Use markdown syntax
+" ? look at this more. Mess with markdown syntax ?
+let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+let g:vimwiki_list = [{'path': '~/vimwiki/index.md', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_hl_cb_checked = 1  " make checked item lists highlighted
+let g:vimwiki_listsyms = '✗○◐●✓'
+let g:vimwiki_folding = 'custom'
+let g:vimwiki_use_calendar = 1	"Enable calendar.vim integration
+"}}}
+"============== Vim-surround ====================={{{
+" Use markdown syntax
+nnoremap <leader>' :normal ysiw'<CR>
+nnoremap <leader>" :normal ysiw"<CR>
+nnoremap <leader>) :normal ysiw)<CR>
+nnoremap <leader>* :normal ysiw*<CR>
 "}}}
 "============== FZF =========================={{{
 " Customize fzf colors to match your color scheme
@@ -598,14 +765,29 @@ let g:fzf_colors =
 	\ 'marker':  ['fg', 'Keyword'],
 	\ 'spinner': ['fg', 'Label'],
 	\ 'header':  ['fg', 'Comment'] }
-nnoremap <Leader>gg :Lines<CR>
-nnoremap <Leader>gs :GFiles?<CR>
-nnoremap <Leader>gb :Buffers<CR>
-"}}}
 
+" Settings
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+
+" Mappings
+nnoremap <Leader>gg : Lines<CR>
+nnoremap <Leader>gs : GFiles?<CR>
+nnoremap <Leader>gb : Buffers<CR>
+nnoremap <Leader>fi  : Files<CR>
+nnoremap <Leader>h   : Helptags<CR>
+nnoremap <Leader>ff  : Ag<CR>
+
+" This is the default extra key bindings
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+"}}}
 "===== TODO ====={{{
 	" " figure out highlightning. this affecter breakindentopt 'bg hl'
-	"set highlight+=@:colorcolumn 
+	"set highlight+=@:colorcolumn
 	"set highlight+=c:linenr
 	"set highlight+=n:difftext
 

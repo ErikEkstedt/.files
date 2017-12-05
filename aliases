@@ -97,6 +97,7 @@ function ag() { # auto git
 
 #====== Config Files ======={{{
 alias eal="vim ~/.files/aliases"
+alias ealiases="vim ~/.files/aliases"
 alias ev="vim ~/.vimrc"
 alias evtex="vim ~/.vim/ftplugin/tex.vim"
 alias evpython="vim ~/.vim/ftplugin/python.vim"
@@ -119,7 +120,7 @@ alias twork="sh ~/.files/Scripts/tmux/start_tmux.sh"
 
 # }}}
 
-# Environments{{{
+# Source{{{
 alias py35="source activate python3.5"
 alias gnao="cd ~/anaconda3/envs/Naoqi/lib/python2.7/site-packages/pynaoqi-python2.7-2.5.5.5-linux64/lib/python2.7/site-packages"
 alias gcho="cd /opt/Aldebaran/Choregraphe\ Suite\ 2.5"
@@ -127,9 +128,11 @@ function sonao() { # auto git
     source activate Naoqi
     export PYTHONPATH="/home/erik/anaconda3/envs/Naoqi/lib/python2.7/site-packages/pynaoqi-python2.7-2.5.5.5-linux64/lib/python2.7/site-packages"
 }
-alias sorob="cd ~/com_sci/Master_code/Roboschool/ && source activate robo && ls"
+alias sorobo="source activate robo"
 alias soros="source /opt/ros/kinetic/setup.zsh"
+alias sonupic="source activate nupic"
 
+alias sod="source deactivate"
 # }}}
 
 #============= SSH / WOL ================={{{

@@ -16,5 +16,9 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
+export TERMINAL="termite"
+export BROWSER="google-chrome"
+export BROWSERCLI="w3m"
+
 # set PATH so it includes user's private bin directories
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"

@@ -9,7 +9,6 @@
 * [icons](https://github.com/eeckee/.files/tree/master/icons "Icons for notify-send")
 * [Wallpapers](https://github.com/eeckee/.files/tree/master/Wallpapers "Some wallpapers that are nice as default")
 
-
 # Todo:
 - [ ] Steal background colors from base16-monokai, they be nice
 - [x] FIX colors in ranger... -> Base16
@@ -19,8 +18,17 @@
 - [x] Tweak the tmux scripts so if its attached i3 focuses on that container.
 - [ ] Fix Calendar vim - might help in productivty / goals.
 
+# [i3](i3/config)
 
-# .VIMRC
+* If window is Terminal `focus` window -> shift-alt-hjkl
+	* else: alt-hjkl
+
+
+* Send-keys to $PLAYER container (youtube/spotify).
+	* Space in vim - pause/play
+
+
+# [VIMRC](.VIMRC)
 
 ## Python-Ide
 1. [python-ide]( https://github.com/jarolrod/vim-python-ide )
