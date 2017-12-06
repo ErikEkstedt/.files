@@ -73,6 +73,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
 #}}}
 #========= STARTUP == ============{{{
 exec_always --no-startup-id ~/.files/Scripts/polybar_start.sh
+exec_always --no-startup-id ~/.files/Scripts/polybar_start_desktop.sh
 exec_always --no-startup-id ~/.files/Scripts/mouse_settings.sh
 exec_always --no-startup-id feh --bg-scale ~/.config/wall.png
 exec --no-startup-id ~/.files/Scripts/start_up.sh
@@ -182,7 +183,7 @@ for_window [class="File-roller"] floating enable
 for_window [class="feh"] floating enable
 for_window [class="Gnome-system-monitor"] floating enable
 for_window [class="Simulate"] floating enable
-for_window [class="Roboschool Simulator"] floating disable
+for_window [class="Roboschool Simulator"] floating enable
 
 
 # Floating constraints
@@ -194,6 +195,7 @@ hide_edge_borders both
 for_window [class="^.*"] border pixel 1
 for_window [class="Zathura"] border pixel 5
 for_window [class=" "] border pixel 5
+for_window [class="Google-chrome"] border pixel 5
 
 # color of focused window
 # client.focused #00CDFF #00CDFF #00CDFF  # Teal  
@@ -212,11 +214,24 @@ workspace $ws2 gaps outer 0
 workspace $ws8 gaps inner 0
 workspace $ws8 gaps outer 0
 
-# Chaning gap size, no gaps, initial gap size
-bindsym Ctrl+g gaps inner current plus 5
-bindsym Ctrl+Shift+g gaps inner current minus 5
-bindsym $mod+Ctrl+Shift+g gaps inner current set 15, gaps outer current set 0
-bindsym $mod+Ctrl+g gaps inner current set 0, gaps outer current set 0
+# Set floating window size
+bindsym $mod+Ctrl+b floating enable, resize set 1440 900,	move position center
+
+# Gap size
+set $gap "Gap size: (O/o)uter, (I/i)nner, (r)eset, (n)one"
+mode $gap{
+	bindsym Shift+i gaps inner current plus 5
+	bindsym i gaps inner current minus 5
+	bindsym Shift+o	gaps outer current plus 5
+	bindsym o gaps outer current minus 5
+
+	bindsym r gaps inner current set 15, gaps outer current set 15
+	bindsym N gaps inner current set 0, gaps outer current set 0
+
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+bindsym $mod+Shift+g mode $gap
 #}}}
 #========= MEDIA KEY BINDINGS ===={{{
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%

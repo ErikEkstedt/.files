@@ -31,13 +31,5 @@ setlocal foldmethod=indent
 
 " colors
 colorscheme base16-monokai
-hi NERDTreeDir guifg=#90a959 
-hi Directory guifg=#404040
-hi NERDTreeCWD guifg=gray50
-hi NERDTreeFile guifg=white
-hi NERDTreeBookmarksHeader guifg=gray50
-hi NERDTreeBookmarkName guifg=gray50
-
-
-
+call NERDTreeColors()  " own scirpt that gives Nerdtree nice colors
 

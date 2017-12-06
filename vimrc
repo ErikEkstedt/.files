@@ -1,6 +1,8 @@
 " Vimrc
 " Erik
 " Ubuntu 16.04
+" Unicode characters: https://www.w3schools.com/charsets/ref_utf_dingbats.asp
+"
 
 "============= VUNDLE ========================{{{
 set nocompatible              " be iMproved, required
@@ -36,7 +38,8 @@ Plugin 'christoomey/vim-tmux-navigator'     " navigate between vim and tmuz seem
 Plugin 'vimwiki/vimwiki'                    " Personal Wiki
 Plugin 'itchyny/calendar.vim'               " Calendar for vim
 Plugin 'Valloric/MatchTagAlways'
-
+Plugin 'nelstrom/vim-visual-star-search'    " * on visual select seraches for the snippet
+"
 " ============ Preview Text ===========================
 Plugin 'lervag/vimtex'                      " latex compiler and alot more.
 Plugin 'Rykka/riv.vim'                      " ReStructuredText plugin
@@ -48,7 +51,7 @@ Plugin 'klen/python-mode'                   " Python mode (docs, refactor, lints
 Plugin 'scrooloose/syntastic'               " Syntax checking plugin for Vim
 Plugin 'Valloric/YouCompleteMe'             " Autocomplete plugin
 Plugin 'PotatoesMaster/i3-vim-syntax'       " syntax for i3 config
-Plugin 'hdima/python-syntax'                " extra help for python syntax (self etc)
+" Plugin 'hdima/python-syntax'                " extra help for python syntax (self etc)
 Plugin 'octol/vim-cpp-enhanced-highlight'   " Extra highlight for cpp
 Plugin 'othree/xml.vim'
 Plugin 'nelstrom/vim-markdown-folding'			" help with folding in markdown
@@ -355,10 +358,6 @@ nnoremap <leader>me i}}}<esc>:TComment<cr>
 
 "}}}
 "=============== MOVEMENT ===================={{{
-" GO TO next comment (in syntastic - flake8 (python) at least)
-nnoremap <leader>e :lnext<cr>
-inoremap <leader>e <esc>:lnext<cr>
-
 " Buffers previous/next
 nnoremap <b :bp<CR>
 nnoremap <n :bn<CR>
@@ -482,6 +481,16 @@ endfunc
 nnoremap <leader>mm :call Toggle_MaxMinFold()<CR>
 
 "}}}
+function! NERDTreeColors() "{{{
+	hi NERDTreeDir guifg=#90a959 
+	hi Directory guifg=#404040
+	hi NERDTreeCWD guifg=gray50
+	hi NERDTreeFile guifg=white
+	hi NERDTreeBookmarksHeader guifg=gray50
+	hi NERDTreeBookmarkName guifg=gray50
+endfunc
+nnoremap <LocalLeader>n :call NERDTreeColors()<CR>
+"}}}
 
 "}}}
 "============== AUTOCOMMANDS ================={{{
@@ -582,7 +591,7 @@ vnoremap <silent> <Leader>t; :Tabularize /;<CR>
 set completeopt-=preview
 let g:ycm_python_binary_path = '/home/erik/anaconda3/bin/python3'
 let g:ycm_autoclose_preview_window_after_completion=1
-let g:ycm_min_num_of_chars_for_completion = 2
+let g:ycm_min_num_of_chars_for_completion = 3
 
 noremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>g :YcmCompleter GoTo<CR>
@@ -609,12 +618,19 @@ hi NERDTreeFile guifg=white
 hi NERDTreeBookmarksHeader guifg=gray50
 hi NERDTreeBookmarkName guifg=gray50
 " }}}
-"============== PyMode ======================={{{
-" python executables for different plugins
-let g:pymode_python                          = 'python'
-let g:syntastic_python_python_exec           = 'python'
+"============== Python-Mode ======================={{{
+" Bindings {{{
+let g:pymode_motion = 1
+" Go to next/previous method or class
+nnoremap gd :call pymode#motion#move('^\s*def\s', '')<CR>
+nnoremap gD :call pymode#motion#move('^\s*def\s', 'b')<CR>
 
-" rope
+" }}}
+" python executables for different plugins
+let g:pymode_python                          = 'python3'
+let g:syntastic_python_python_exec           = 'python3'
+
+" rope {{{
 let g:pymode_rope                            = 0
 let g:pymode_rope_completion                 = 0
 let g:pymode_rope_complete_on_dot            = 0
@@ -622,22 +638,21 @@ let g:pymode_rope_auto_project               = 0
 let g:pymode_rope_enable_autoimport          = 0
 let g:pymode_rope_autoimport_generate        = 0
 let g:pymode_rope_guess_project              = 0
+"}}}
 
 " documentation
 let g:pymode_doc                             = 0
-let g:pymode_doc_bind                        = 'K'
+let g:pymode_doc_bind                        = '<leader>K'
 
-" lints
-let g:pymode_lint                            = 0
-
-" virtualenv
-" let g:pymode_virtualenv                      = 1
+" lints (using syntastic for this)
+let g:pymode_lint														 = 0
+let g:pymode_lint_ignore										 = ["E501", "W",]
 
 " breakpoints
 let g:pymode_breakpoint                      = 1
 let g:pymode_breakpoint_key                  = '<leader>b'
 
-" syntax highlight
+" syntax highlight {{{
 let g:pymode_syntax                          = 1
 let g:pymode_syntax_slow_sync                = 1
 let g:pymode_syntax_all                      = 1
@@ -656,6 +671,7 @@ let g:pymode_syntax_builtin_objs             = g:pymode_syntax_all
 let g:pymode_syntax_builtin_types            = g:pymode_syntax_all
 let g:pymode_syntax_highlight_exceptions     = g:pymode_syntax_all
 let g:pymode_syntax_docstrings               = g:pymode_syntax_all
+"}}}
 
 " highlight 'long' lines (>= 80 symbols) in python files
 " augroup vimrc_autocmds
@@ -667,7 +683,7 @@ let g:pymode_syntax_docstrings               = g:pymode_syntax_all
 " augroup END
 
 " code folding
-let g:pymode_folding=0
+let g:pymode_folding=1
 
 " pep8 indents
 let g:pymode_indent=1
@@ -679,9 +695,6 @@ let g:pymode_rope_lookup_project = 0
 
 imap <F5> <Esc>:w<CR>:!clear;python %<CR>
 " }}}
-"============== Tagbar ======================={{{
-nmap <F8> :TagbarToggle<CR>
-" }}}
 "============== Syntastic ===================={{{
 " Recommended settings
 set statusline+=%#warningmsg#
@@ -692,18 +705,21 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_mode = "passive"
 
+let g:syntastic_auto_jump = 2
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_loc_list_height = 4
 let g:syntastic_enable_signs=1
 
 let g:syntastic_aggregate_errors=1
-let g:syntastic_error_symbol='X'
-let g:syntastic_style_error_symbol='X'
-let g:syntastic_warning_symbol='x'
+let g:syntastic_error_symbol='✘'
+let g:syntastic_style_error_symbol='✘'
+let g:syntastic_warning_symbol='❔'
 let g:syntastic_style_warning_symbol='x'
-let g:syntastic_python_checkers=['flake8', 'pydocstyle', 'python']
-"let g:syntastic_python_checkers =  ["flake8" ]
+let g:syntastic_python_checkers=['flake8', 'pydocstyle', 'pep8', 'python']
+" let g:syntastic_python_checkers=['pydocstyle', 'pep8', 'python']
+let g:syntastic_python_checker_args = '--ignore=E501'
+let g:syntastic_python_flake8_post_args='--ignore=E501,E128,E225'
 
 " bindings-------------------------------
 nnoremap <leader>sr :SyntasticReset<cr>
@@ -711,6 +727,11 @@ nnoremap <leader>st :SyntasticToggleMode<cr>
 nnoremap <leader>sc :SyntasticCheck<cr>
 nnoremap <leader>lc :lclose<cr>
 nnoremap <leader>lo :errors<cr>
+
+" GO TO next comment 
+nnoremap ge :lnext<cr>
+nnoremap gE :lprevious<cr>
+
 " }}}
 "============== Indentline ==================={{{
 let g:indentLine_fileTypeExclude=['help']
@@ -771,12 +792,13 @@ let g:fzf_colors =
 let g:fzf_buffers_jump = 1
 
 " Mappings
-nnoremap <Leader>gg : Lines<CR>
-nnoremap <Leader>gs : GFiles?<CR>
-nnoremap <Leader>gb : Buffers<CR>
-nnoremap <Leader>fi  : Files<CR>
-nnoremap <Leader>h   : Helptags<CR>
-nnoremap <Leader>ff  : Ag<CR>
+nnoremap <Leader>fi  :Files ~<CR>
+nnoremap <Leader>lfi :Files<CR>
+nnoremap <Leader>li  :Lines<CR>
+nnoremap <Leader>gs  :GFiles?<CR>
+nnoremap <Leader>gb  :Buffers<CR>
+nnoremap <Leader>h   :Helptags<CR>
+nnoremap <Leader>ff  :Ag<CR>
 
 " This is the default extra key bindings
 let g:fzf_action = {
