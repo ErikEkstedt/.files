@@ -89,10 +89,9 @@ exec --no-startup-id gnome-sound-applet
 exec --no-startup-id gnome-settings-daemon
 exec --no-startup-id nm-applet
 exec --no-startup-id udiskie
-exec_always $term -t "rangerTerm" -e ~/.files/Scripts/tmux/ranger.sh
-for_window [class="st-256color" title="rangerTerm"] mark "ranger" move scratchpad
-exec $Browser
-for_window [class="Google-chrome" title="browser"] mark "browser" move scratchpad
+
+exec $Browser 
+
 #}}}
 #========= APPLICATIONS =========={{{
 bindsym $mod+Ctrl+n exec nautilus --no-desktop

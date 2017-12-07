@@ -43,6 +43,7 @@ alias gho="cd ~/"
 alias gma="cd ~/com_sci/Master_code; ls"
 alias gml="cd ~/com_sci/ML; ls"
 alias gne="cd ~/com_sci/Nexus; ls"
+alias gpr="cd ~/com_sci/Master_code/Project; ls"
 
 alias gla="cd ~/Documents/latex; ls"
 alias gno="cd ~/Documents/latex/Notes; ls *.tex"
