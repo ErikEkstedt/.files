@@ -128,7 +128,7 @@ set switchbuf=usetab
 set wildmenu
 set wildchar=<tab>
 set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,resize
-set synmaxcol=90							" Maximum column in which to search for syntax items
+set synmaxcol=120							" Maximum column in which to search for syntax items
 set splitbelow
 set splitright
 

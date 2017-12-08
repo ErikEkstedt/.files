@@ -16,7 +16,7 @@ set $term2 termite
 set $term3 konsole
 set $term4 gnome-terminal
 
-set $Browser google-chrome
+set $chrome google-chrome
 set $Music spotify
 set $Editor vim
 
@@ -90,7 +90,7 @@ exec --no-startup-id gnome-settings-daemon
 exec --no-startup-id nm-applet
 exec --no-startup-id udiskie
 
-exec $Browser 
+exec firefox
 
 #}}}
 #========= APPLICATIONS =========={{{
@@ -100,7 +100,8 @@ bindsym $mod+Ctrl+s exec shutter -s
 bindsym $mod+Shift+f exec $Browser --app=https://www.facebook.com
 bindsym $mod+Shift+s exec $Music
 
-bindsym $mod+g exec $Browser 
+# bindsym $mod+g exec $Browser 
+bindsym $mod+g exec firefox
 bindsym $mod+a exec bash ~/.files/Scripts/Laptop/touchpad_onoff.sh
 bindsym $mod+y exec $Browser --app=https://www.youtube.com
 
@@ -183,6 +184,7 @@ for_window [class="feh"] floating enable
 for_window [class="Gnome-system-monitor"] floating enable
 for_window [class="Simulate"] floating enable
 for_window [class="Roboschool Simulator"] floating enable
+for_window [class="Bullet Physics"] floating enable
 
 
 # Floating constraints

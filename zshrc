@@ -9,11 +9,16 @@ export TERMINAL="st"
 export EDITOR='vim'
 export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
-export ROBOSCHOOL_PATH=/home/erik/anaconda3/envs/robo/lib/python3.5/site-packages/roboschool
+
+export ROBOSCHOOL_PATH=/home/erik/roboschool
 export LANG=en_US.UTF-8
-export PATH="/home/erik/anaconda3/bin:$PATH"
+export PATH=/home/erik/anaconda3/bin:${PATH}
 export BROWSER="google-chrome"
 export BROWSERCLI="w3m"
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/cuda/lib64
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/cuda-8.0/lib64
+export GIO_EXTRA_MODULES=/usr/lib/x86_64-linux-gnu/gio/modules/
+
 
 stty -ixon # C-s, C-q 
 #}}}

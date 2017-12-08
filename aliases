@@ -53,13 +53,30 @@ alias gdd="cd ~/Desktop/DATA; ls"
 alias gdw="cd ~/Downloads; la"
 alias ggit="cd ~/git-clones; ls"
 
-alias grosc="cd ~/anaconda3/envs/robo/lib/python3.5/site-packages/roboschool"
+alias grosc="cd ~/anaconda3/envs/roboschool/lib/python3.5/site-packages/roboschool"
+alias gbull="cd ~/anaconda3/envs/bullet/lib/python3.5/site-packages/pybullet_envs"
+alias
 
 # }}}
 
 # Mount Usb Stick
 alias umountusb="udiskie-umount /media/erik/*"
 
+# Source{{{
+alias py35="source activate python3.5"
+alias gnao="cd ~/anaconda3/envs/Naoqi/lib/python2.7/site-packages/pynaoqi-python2.7-2.5.5.5-linux64/lib/python2.7/site-packages"
+alias gcho="cd /opt/Aldebaran/Choregraphe\ Suite\ 2.5"
+function sonao() { # auto git
+    source activate Naoqi
+    export PYTHONPATH="/home/erik/anaconda3/envs/Naoqi/lib/python2.7/site-packages/pynaoqi-python2.7-2.5.5.5-linux64/lib/python2.7/site-packages"
+}
+alias sorobo="source activate roboschool"
+alias soros="source /opt/ros/kinetic/setup.zsh"
+alias sonupic="source activate nupic"
+alias sobull="source activate bullet"
+alias sod="source deactivate"
+
+# }}}
 # LATEX {{{
 alias tlog="sh ~/.files/Scripts/new_log.sh " "$1"
 alias tnew="sh ~/.files/Scripts/new_tex.sh " "$1"
@@ -69,7 +86,6 @@ alias tma="cd ~/Documents/latex; vim Master.tex"
 alias two="cd ~/Documents/latex; vim Master_todo.tex"
 alias tco="cd ~/Documents/latex; vim Computer_todo.tex"
 # }}}
-
 #====== Programs =========== {{{
 alias ip="ipython --no-autoindent"
 alias news="newsbeuter"
@@ -86,7 +102,6 @@ function ag() { # auto git
 	git push
 }
 # }}}
-
 #====== Tmux ======= {{{
 	alias tlist="tmux list-sessions"
 	alias tkill.="tmux kill-session -t ."
@@ -95,7 +110,6 @@ function ag() { # auto git
 	alias tst="tmux new-session"
 
 # }}}
-
 #====== Config Files ======={{{
 alias eal="vim ~/.files/aliases"
 alias ealiases="vim ~/.files/aliases"
@@ -120,22 +134,6 @@ alias twork="sh ~/.files/Scripts/tmux/start_tmux.sh"
 
 
 # }}}
-
-# Source{{{
-alias py35="source activate python3.5"
-alias gnao="cd ~/anaconda3/envs/Naoqi/lib/python2.7/site-packages/pynaoqi-python2.7-2.5.5.5-linux64/lib/python2.7/site-packages"
-alias gcho="cd /opt/Aldebaran/Choregraphe\ Suite\ 2.5"
-function sonao() { # auto git
-    source activate Naoqi
-    export PYTHONPATH="/home/erik/anaconda3/envs/Naoqi/lib/python2.7/site-packages/pynaoqi-python2.7-2.5.5.5-linux64/lib/python2.7/site-packages"
-}
-alias sorobo="source activate robo"
-alias soros="source /opt/ros/kinetic/setup.zsh"
-alias sonupic="source activate nupic"
-
-alias sod="source deactivate"
-# }}}
-
 #============= SSH / WOL ================={{{
 alias wake="wakeonlan -i 213.113.208.169 38:d5:47:14:d3:a1" 
 alias sshhome="ssh erik@213.113.208.169"
