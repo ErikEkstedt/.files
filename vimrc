@@ -79,6 +79,7 @@ filetype plugin indent on
 
 syntax enable
 
+let hostname = substitute(system('hostname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
 let mapleader = ','
 set spelllang=en_us            " US English spelling
 set ffs=unix,dos,mac           " File Format (relevant to line ending type)
@@ -635,7 +636,12 @@ nnoremap gK :call pymode#motion#move('^\s*class\s', 'b')<CR>
 
 " }}}
 " python executables for different plugins
-let g:pymode_python          = 'python3'
+
+if hostname == "erik-laptop"
+	let g:pymode_python = 'python'
+elseif hostname == "erik-desktop"
+	let g:pymode_python = 'python3'
+endif
 
 " rope {{{
 let g:pymode_rope                            = 0
