@@ -5,6 +5,7 @@
 "
 
 "============= VUNDLE ========================{{{
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -79,7 +80,9 @@ filetype plugin indent on
 
 syntax enable
 
-let hostname = substitute(system('hostname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
+let HOSTNAME = substitute(system('hostname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
+let BROWSER = "firefox"
+echo BROWSER
 let mapleader = ','
 set spelllang=en_us            " US English spelling
 set ffs=unix,dos,mac           " File Format (relevant to line ending type)
@@ -637,10 +640,13 @@ nnoremap gK :call pymode#motion#move('^\s*class\s', 'b')<CR>
 " }}}
 " python executables for different plugins
 
-if hostname == "erik-laptop"
+if HOSTNAME == "erik-laptop"
 	let g:pymode_python = 'python'
-elseif hostname == "erik-desktop"
+elseif HOSTNAME == "erik-desktop"
 	let g:pymode_python = 'python3'
+else
+	echo "New computer?"
+	let g:pymode_python = 'python'
 endif
 
 " rope {{{
@@ -767,7 +773,7 @@ let g:livedown_open = 1
 let g:livedown_port = 1337
 
 " the browser to use
-let g:livedown_browser = "'google-chrome'"
+let g:livedown_browser = BROWSER
 
 nnoremap gm :LivedownToggle<CR>
 nnoremap gM :LivedownPreview<CR>
