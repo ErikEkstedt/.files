@@ -82,7 +82,6 @@ syntax enable
 
 let HOSTNAME = substitute(system('hostname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
 let BROWSER = "firefox"
-echo BROWSER
 let mapleader = ','
 set spelllang=en_us            " US English spelling
 set ffs=unix,dos,mac           " File Format (relevant to line ending type)
