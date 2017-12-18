@@ -74,6 +74,8 @@ alias sorobo="source activate roboschool"
 alias soros="source /opt/ros/kinetic/setup.zsh"
 alias sonupic="source activate nupic"
 alias sobull="source activate bullet"
+alias sofitl="source activate fitl"
+
 alias sod="source deactivate"
 
 # }}}

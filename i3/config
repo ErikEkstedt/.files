@@ -17,6 +17,7 @@ set $term3 konsole
 set $term4 gnome-terminal
 
 set $chrome google-chrome
+set $Browser firefox
 set $Music spotify
 set $Editor vim
 
@@ -82,7 +83,7 @@ exec --no-startup-id gnome-settings-daemon
 exec --no-startup-id nm-applet
 exec --no-startup-id udiskie
 
-exec_always $term -t "rangerTerm" -e ~/.files/Scripts/tmux/ranger.sh
+exec $term -t "rangerTerm" -e ~/.files/Scripts/tmux/ranger.sh
 for_window [class="st-256color" title="rangerTerm"] mark "ranger" move scratchpad
 
 exec --no-startup-id gnome-sound-applet
@@ -90,20 +91,20 @@ exec --no-startup-id gnome-settings-daemon
 exec --no-startup-id nm-applet
 exec --no-startup-id udiskie
 
-exec firefox
-
 #}}}
 #========= MAPPINGS =============={{{
 bindsym $mod+Ctrl+n exec nautilus --no-desktop
 bindsym $mod+Ctrl+s exec shutter -s
 # bindsym $mod+Shift+t exec ~/Downloads/TeamSpeak3-Client-linux_amd64/ts3client_runscript.sh
-bindsym $mod+Shift+f exec $Browser --app=https://www.facebook.com
 bindsym $mod+Shift+s exec $Music
 
 # bindsym $mod+g exec $Browser 
-bindsym $mod+g exec firefox
+bindsym $mod+g exec $Browser
+bindsym $mod+y exec $Browser -new-window https://www.youtube.com
+bindsym $mod+Shift+f exec $Browser -new-window https://www.facebook.com
+
+# Touchpad
 bindsym $mod+a exec bash ~/.files/Scripts/Laptop/touchpad_onoff.sh
-bindsym $mod+y exec $Browser --app=https://www.youtube.com
 
 #============== TERMINAL ==========================
 bindsym $mod+Return exec $term
@@ -127,8 +128,15 @@ for_window [class="st-256color" title="rangerTerm"] mark "ranger", scratchpad sh
 bindsym $mod2+m move workspace to output up
 bindsym $mod2+F8 exec ~/.files/Scripts/monitor_toggle
 
+<<<<<<< HEAD
+#===== TMUX SESSIONS ===========
+||||||| merged common ancestors
+
+#===== TMUX SESSIONS ===========
+=======
 
 #===== SCRIPTS ==========={{{
+>>>>>>> 2a02fe56c0601d9f1941fc80ca6c3c9570db6339
 
 set $tmuxscripts ~/.files/Scripts/tmux
 # test
@@ -145,7 +153,7 @@ bindsym $mod+e workspace $ws1 focus, exec $tmuxscripts/SSH.sh
 # older
 bindsym $mod+Shift+d exec bash ~/.files/Scripts/open_last_log.sh
 bindsym $mod+Shift+n exec ~/.files/Scripts/new_note
-bindsym $mod+b exec $term4 -t ref -e "vim /home/erik/Documents/latex/References.bib"
+bindsym $mod+b exec $term -t "ref" -e "vim /home/erik/Documents/latex/References.bib"
 for_window [class="st-256color" title="ref"] floating enable, \
 resize grow left 20, resize grow right 300, \
 resize grow down 200, resize grow up 250 
@@ -187,14 +195,35 @@ for_window [class="0"] floating enable
 for_window [class="File-roller"] floating enable
 for_window [class="feh"] floating enable
 for_window [class="Gnome-system-monitor"] floating enable
+
+#  programs
 for_window [class="Simulate"] floating enable
 for_window [class="Roboschool Simulator"] floating enable
 for_window [class="Bullet Physics"] floating enable
-
+for_window [class="Frame"] floating enable, move 3000 px 1000 px
 
 # Floating constraints
 floating_minimum_size 75 x 74
-floating_maximum_size 1910 x 3000 
+floating_maximum_size 3440 x 1440 
+
+# Set floating window size
+bindsym $mod+Ctrl+b floating enable, resize set 1440 1200, move position center
+bindsym $mod+Shift+b floating enable, move position center
+
+# Floating Toggle
+set $FloatSize "Float size: 1-4, (f)loating enable "
+mode $FloatSize{
+	bindsym f floating enable
+	bindsym 1 resize set 1440 1200,	floating enable,move position center, move left 1000 px
+	bindsym 2 resize set 2440 1200,	floating enable, move position center
+	bindsym 3 resize set 1440 1200,	floating enable, move position center, move right 1000 px
+
+	bindsym b resize set 1440 900,	move position center
+
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+bindsym $mod+Shift+w mode $FloatSize
 #}}}
 #========= APPEARENCE ============{{{
 hide_edge_borders both
@@ -220,8 +249,6 @@ workspace $ws2 gaps outer 0
 workspace $ws8 gaps inner 0
 workspace $ws8 gaps outer 0
 
-# Set floating window size
-bindsym $mod+Ctrl+b floating enable, resize set 1440 900,	move position center
 
 # Gap size
 set $gap "Gap size: (O/o)uter, (I/i)nner, (r)eset, (n)one"
@@ -350,15 +377,15 @@ bindsym $mod+Ctrl+e mode $reboot_choice
 #========= CONFIG MENU ==========={{{
 set $config_choice "Config: (i)3, (V)im, (R)anger, (Z)sh, (X)defaults, (P)ython.vim, t(E)x.vim, (T)mux, (C)onfig folder in vim "
 mode $config_choice{
-	bindsym $mod+v exec $term3 -e bash -c "stty -ixon && vim ~/.files/vimrc", mode "default"
-	bindsym $mod+r exec $term3 -e bash -c "stty -ixon && vim ~/.files/ranger/rc.conf", mode "default"
-	bindsym $mod+z exec $term3 -e bash -c "stty -ixon && vim ~/.files/zshrc", mode "default"
-	bindsym $mod+i exec $term3 -e bash -c "stty -ixon && vim ~/.files/i3/config", mode "default"
-	bindsym $mod+x exec $term3 -e bash -c "stty -ixon && vim ~/.files/Xresources", mode "default"
-	bindsym $mod+p exec $term3 -e bash -c "stty -ixon && vim ~/.files/vim/ftplugin/python.vim ", mode "default"
-	bindsym $mod+e exec $term3 -e bash -c "stty -ixon && vim ~/.files/vim/ftplugin/tex.vim", mode "default"
-	bindsym $mod+t exec $term3 -e bash -c "stty -ixon && vim ~/.files/tmux.conf", mode "default"
-	bindsym $mod+o exec $term3 -e bash -c "stty -ixon && cd ~/com_sci/Master_code/Robot && vim"
+	bindsym $mod+v exec $term -e bash -c "stty -ixon && vim ~/.files/vimrc", mode "default"
+	bindsym $mod+r exec $term -e bash -c "stty -ixon && vim ~/.files/ranger/rc.conf", mode "default"
+	bindsym $mod+z exec $term -e bash -c "stty -ixon && vim ~/.files/zshrc", mode "default"
+	bindsym $mod+i exec $term -e bash -c "stty -ixon && vim ~/.files/i3/config", mode "default"
+	bindsym $mod+x exec $term -e bash -c "stty -ixon && vim ~/.files/Xresources", mode "default"
+	bindsym $mod+p exec $term -e bash -c "stty -ixon && vim ~/.files/vim/ftplugin/python.vim ", mode "default"
+	bindsym $mod+e exec $term -e bash -c "stty -ixon && vim ~/.files/vim/ftplugin/tex.vim", mode "default"
+	bindsym $mod+t exec $term -e bash -c "stty -ixon && vim ~/.files/tmux.conf", mode "default"
+	bindsym $mod+o exec $term -e bash -c "stty -ixon && cd ~/com_sci/Master_code/Robot && vim"
 
 	bindsym Return mode "default"
 	bindsym Escape mode "default"

@@ -24,7 +24,7 @@ stty -ixon # C-s, C-q
 #}}}
 
 # ========= Plugins ======={{{
-#
+
 #========= TMUX on start ==============
 if [ "$TMUX" = "" ]; then tmux new ; fi
 
