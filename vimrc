@@ -82,7 +82,6 @@ syntax enable
 
 let HOSTNAME = substitute(system('hostname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
 let BROWSER = "firefox"
-echo BROWSER
 let mapleader = ','
 set spelllang=en_us            " US English spelling
 set ffs=unix,dos,mac           " File Format (relevant to line ending type)
@@ -379,13 +378,12 @@ map ä }
 
 " stay on word instead of jumping directly
 " commented out b/c I tend to wanana go there directly.
-" nnoremap * *<c-o>
-" nnoremap # #<c-o>
+nnoremap * *<c-o>zz
+nnoremap # #<c-o>zz
 nnoremap gn *zz
 nnoremap gN #zz
 vnoremap gn *zz
 vnoremap gN #zz
-
 
 " next paren
 nnoremap gp %
@@ -529,6 +527,7 @@ nnoremap gl f,a<CR><esc>
 " save current buffer, close all buffers, open the buffer I was on
 " noremap <leader>bd :w | %bd | e#
 noremap <leader>bd :%bd<CR><C-O>:bd#<CR>
+" whitespace around operator nnoremap <leader>. f+i <esc>la <esc>0
 
 "}}}
 "============= PLUGIN SETTINGS ==============={{{
@@ -592,6 +591,7 @@ vnoremap <silent> <Leader>t" :Tabularize /"<CR>
 vnoremap <silent> <Leader>t% :Tabularize /%<CR>
 vnoremap <silent> <Leader>t: :Tabularize /:<CR>
 vnoremap <silent> <Leader>t; :Tabularize /;<CR>
+vnoremap <silent> <Leader>t- :Tabularize /-<CR>
 " }}}
 "============== YouCompleteMe ================{{{
 " set completeopt-=preview
@@ -632,10 +632,10 @@ hi NERDTreeBookmarkName guifg=gray50
 " Bindings {{{
 let g:pymode_motion = 1
 " Go to next/previous method or class
-nnoremap gj :call pymode#motion#move('^\s*def\s', '')<CR>
-nnoremap gk :call pymode#motion#move('^\s*def\s', 'b')<CR>
-nnoremap gJ :call pymode#motion#move('^\s*class\s', '')<CR>
-nnoremap gK :call pymode#motion#move('^\s*class\s', 'b')<CR>
+nnoremap gj :call pymode#motion#move('^\s*def\s', '')<CR>zz
+nnoremap gk :call pymode#motion#move('^\s*def\s', 'b')<CR>zz
+nnoremap gJ :call pymode#motion#move('^\s*class\s', '')<CR>zz
+nnoremap gK :call pymode#motion#move('^\s*class\s', 'b')<CR>zz
 
 " }}}
 " python executables for different plugins
