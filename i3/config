@@ -4,12 +4,12 @@
 #
 # =============================================
 
-#========= MOD/VARIABLES ========={{{
 # MOD-keys
 # mod: Alt, mod2: win
 set $mod Mod1
 set $mod2 Mod4
 
+#========= VARIABLES ============={{{
 # SET VARIABLES
 set $term st
 set $term2 termite
@@ -92,7 +92,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id udiskie
 
 #}}}
-#========= APPLICATIONS =========={{{
+#========= MAPPINGS =============={{{
 bindsym $mod+Ctrl+n exec nautilus --no-desktop
 bindsym $mod+Ctrl+s exec shutter -s
 # bindsym $mod+Shift+t exec ~/Downloads/TeamSpeak3-Client-linux_amd64/ts3client_runscript.sh
@@ -128,7 +128,15 @@ for_window [class="st-256color" title="rangerTerm"] mark "ranger", scratchpad sh
 bindsym $mod2+m move workspace to output up
 bindsym $mod2+F8 exec ~/.files/Scripts/monitor_toggle
 
+<<<<<<< HEAD
 #===== TMUX SESSIONS ===========
+||||||| merged common ancestors
+
+#===== TMUX SESSIONS ===========
+=======
+
+#===== SCRIPTS ==========={{{
+>>>>>>> 2a02fe56c0601d9f1941fc80ca6c3c9570db6339
 
 set $tmuxscripts ~/.files/Scripts/tmux
 # test
@@ -140,7 +148,9 @@ bindsym $mod+c workspace $ws7 focus, exec $tmuxscripts/config_tmux.sh
 bindsym $mod+i workspace $ws4 focus, exec $tmuxscripts/Vim.sh
 bindsym $mod+p workspace $ws6 focus, exec $tmuxscripts/personal.sh
 bindsym $mod+o workspace $ws3 focus, exec $tmuxscripts/work_tmux.sh
+bindsym $mod+e workspace $ws1 focus, exec $tmuxscripts/SSH.sh
 
+# older
 bindsym $mod+Shift+d exec bash ~/.files/Scripts/open_last_log.sh
 bindsym $mod+Shift+n exec ~/.files/Scripts/new_note
 bindsym $mod+b exec $term -t "ref" -e "vim /home/erik/Documents/latex/References.bib"
@@ -165,6 +175,9 @@ bindsym $mod+q exec rofi rofi -show  ssh\
 											-terminal $term \
 											-lines 8 \
 											-padding 20
+
+#}}}
+
 #}}}
 #========= FLOATING CLASSES ======{{{
 for_window [class="Spotify"] mark "music", move scratchpad, [con_mark="music"] scratchpad show
@@ -240,13 +253,13 @@ workspace $ws8 gaps outer 0
 # Gap size
 set $gap "Gap size: (O/o)uter, (I/i)nner, (r)eset, (n)one"
 mode $gap{
-	bindsym Shift+i gaps inner current plus 5
-	bindsym i gaps inner current minus 5
-	bindsym Shift+o	gaps outer current plus 5
-	bindsym o gaps outer current minus 5
+	bindsym $mod+Shift+i gaps inner current plus 5
+	bindsym $mod+i gaps inner current minus 5
+	bindsym $mod+Shift+o	gaps outer current plus 5
+	bindsym $mod+o gaps outer current minus 5
 
-	bindsym r gaps inner current set 15, gaps outer current set 15
-	bindsym N gaps inner current set 0, gaps outer current set 0
+	bindsym $mod+r gaps inner current set 15, gaps outer current set 15
+	bindsym $mod+N gaps inner current set 0, gaps outer current set 0
 
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
@@ -315,11 +328,12 @@ bindsym $mod+v split v
 # enter fullscreen mode for the focused container
 popup_during_fullscreen smart
 bindsym $mod+f fullscreen toggle
-bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 bindsym $mod+Shift+z focus parent
 bindsym $mod+z focus child
+# bindsym $mod+e layout toggle split
+
 #}}}
 #========= i3-BAR ================{{{
 # Start i3bar to display a workspace bar (plus the system information i3status
