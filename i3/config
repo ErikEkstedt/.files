@@ -128,15 +128,7 @@ for_window [class="st-256color" title="rangerTerm"] mark "ranger", scratchpad sh
 bindsym $mod2+m move workspace to output up
 bindsym $mod2+F8 exec ~/.files/Scripts/monitor_toggle
 
-<<<<<<< HEAD
-#===== TMUX SESSIONS ===========
-||||||| merged common ancestors
-
-#===== TMUX SESSIONS ===========
-=======
-
 #===== SCRIPTS ==========={{{
->>>>>>> 2a02fe56c0601d9f1941fc80ca6c3c9570db6339
 
 set $tmuxscripts ~/.files/Scripts/tmux
 # test
