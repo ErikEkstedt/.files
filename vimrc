@@ -591,6 +591,7 @@ vnoremap <silent> <Leader>t" :Tabularize /"<CR>
 vnoremap <silent> <Leader>t% :Tabularize /%<CR>
 vnoremap <silent> <Leader>t: :Tabularize /:<CR>
 vnoremap <silent> <Leader>t; :Tabularize /;<CR>
+vnoremap <silent> <Leader>t- :Tabularize /-<CR>
 " }}}
 "============== YouCompleteMe ================{{{
 " set completeopt-=preview
