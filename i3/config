@@ -125,6 +125,13 @@ bindsym $mod2+m move workspace to output up
 bindsym $mod2+F8 exec ~/.files/Scripts/monitor_toggle
 
 #===== SCRIPTS ==========={{{
+<<<<<<< HEAD
+||||||| merged common ancestors
+>>>>>>> 2a02fe56c0601d9f1941fc80ca6c3c9570db6339
+
+=======
+
+>>>>>>> 3f163675ba9efb5f5a6e3795c9c0ecd697fabfc7
 set $tmuxscripts ~/.files/Scripts/tmux
 # test
 # bindsym $mod+Shift+t exec $tmuxscripts/base.sh
