@@ -2,7 +2,6 @@
 " Erik
 " Ubuntu 16.04
 " Unicode characters: https://www.w3schools.com/charsets/ref_utf_dingbats.asp
-"
 
 "============= VUNDLE ========================{{{
 
@@ -363,8 +362,9 @@ nnoremap Y y$
 nnoremap S viw"0p
 
 " Marker line
-nnoremap <leader>mA A:7  {{{<esc>
-nnoremap <leader>me i}}}<esc>:TComment<cr>
+nnoremap <leader>mA :TComment<CR>A{{{<esc>
+nnoremap <leader>me :TComment<CR>A}}}<esc>
+
 "}}}
 "}}}
 "=============== MOVEMENT ===================={{{
@@ -382,8 +382,7 @@ nmap <c-o> <c-o>zz
 map ö {
 map ä }
 
-" stay on word instead of jumping directly
-" commented out b/c I tend to wanana go there directly.
+" */# now stays on a 
 nnoremap * *<c-o>zz
 nnoremap # #<c-o>zz
 nnoremap gn *zz
@@ -437,7 +436,6 @@ cnoreabbrev <expr> q getcmdtype() == ":" && getcmdline() == 'q' ? 'q' : 'q'
 " Set starting variables for functions
 let g:transpar=0
 let g:fold_max=1
-
 function! Toggletransparency() " {{{
 	" Worked on urxvt/xfce
 	if g:transpar == 0
@@ -500,13 +498,32 @@ function! NERDTreeColors() "{{{
 endfunc
 nnoremap <LocalLeader>n :call NERDTreeColors()<CR>
 "}}}
-
-" Moving visual lines vertically (greeg hurrell)
+" Moving visual lines vertically (greg hurrell){{{
 function! s:Visual()
 	return visualmode() == 'V'
 endfunction
 
+function! Move_up() abort range
+	let l:at_top=a:firstline == 1
+	if s:Visual() && !l:at_top
+		'<,'>move '<-2
+		call feedkeys('gv=','n')
+	endif
+	call feedkeys('gv','n')
+endfunction
 
+function! Move_down() abort range
+	let l:at_bottom=a:lastline == line('$')
+	if s:Visual() && !l:at_bottom
+		'<,'>move '>+1
+		call feedkeys('gv=','n')
+	endif
+	call feedkeys('gv','n')
+endfunction
+
+xnoremap K :call Move_up()<CR>
+xnoremap J :call Move_down()<CR>
+"}}}
 "}}}
 "============== AUTOCOMMANDS ================={{{
 " function to exit quickfix when exiting buffer
@@ -541,7 +558,6 @@ noremap <leader>bd :%bd<CR><C-O>:bd#<CR>
 " whitespace around operator nnoremap <leader>. f+i <esc>la <esc>0
 
 "}}}
-
 "============= PLUGIN SETTINGS ==============={{{
 "============== Tmux-navigation =============={{{
 let g:tmux_navigator_no_mappings = 1
@@ -592,10 +608,24 @@ nnoremap <Leader>gp :Gpush<CR>
 
 " }}}
 "============== Lightline ===================={{{
-let g:lightline = {'colorscheme': 'powerline'}
+"wombat, solarized, powerline, jellybeans, Tomorrow,
+"Tomorrow_Night, Tomorrow_Night_Blue, Tomorrow_Night_Eighties,
+"PaperColor, seoul256, landscape, one, Dracula, darcula,
+"molokai, materia, material, OldHope, nord and 16color
+
+let g:lightline = {'colorscheme': 'molokai'} 
+let g:lightline.inactive = {'left': [['filename'], ['gitbranch']]}
+let g:lightline.component_function = {'gitbranch': 'fugitive#head'}
+
+" color
+" let s:palette = g:lightline#colorscheme#{g:lightline.colorscheme}#palette
+" let s:palette.inactive.middle = [[ 'Pink' , 'DarkGreen', 'White', 'White']]
+
 set noshowmode "stops vims own showing below the statusbar.
-let g:lightline.tab = {'active': ['tabnum', 'filename', 'modified'], 'inactive': [ 'tabnum', 'filename', 'modified' ]}
+let g:lightline.tab = {'active': ['tabnum', 'filename', 'modified'],
+			\'inactive': [ 'tabnum', 'filename', 'modified' ]}
 " }}}
+"
 "============== Tabular ======================{{{
 vnoremap <silent> <Leader>t= :Tabularize /=<CR>
 vnoremap <silent> <Leader>t# :Tabularize /#<CR>
@@ -883,4 +913,3 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 nnoremap <leader>gg :Goyo<CR>
 
 "}}}
-
