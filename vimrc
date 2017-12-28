@@ -27,7 +27,8 @@ Plugin 'Yggdroot/indentLine'                " see where there is indent
 Plugin 'itchyny/lightline.vim'              " light weight status bar
 Plugin 'vim-scripts/Wombat'		              " Wombat colorscheme
 Plugin 'edkolev/tmuxline.vim'
-" Plugin 'ryanoasis/vim-devicons'           " Dev Icons
+Plugin 'junegunn/goyo.vim'									" Distraction free writing
+Plugin 'junegunn/limelight.vim'							" Focus colors
 
 " ============ Useful Tools ===========================
 Plugin 'epeli/slimux'                       " vim+ipython REPL
@@ -36,7 +37,7 @@ Plugin 'tpope/vim-repeat'                   " repeat commands not repeatable by 
 Plugin 'godlygeek/tabular'                  " structure text
 Plugin 'tomtom/tcomment_vim'                " smart comments
 Plugin 'christoomey/vim-tmux-navigator'     " navigate between vim and tmuz seemlessly
-Plugin 'vimwiki/vimwiki'                    " Personal Wiki
+" Plugin 'vimwiki/vimwiki'                    " Personal Wiki
 Plugin 'itchyny/calendar.vim'               " Calendar for vim
 Plugin 'Valloric/MatchTagAlways'
 Plugin 'nelstrom/vim-visual-star-search'    " * on visual select seraches for the snippet
@@ -49,19 +50,16 @@ Plugin 'shime/vim-livedown'									" Preview markdowns with npm/node Livedown
 
 " ============ Completion and Syntax ==================
 Plugin 'klen/python-mode'                   " Python mode (docs, refactor, lints...)
-Plugin 'scrooloose/syntastic'               " Syntax checking plugin for Vim
-Plugin 'Valloric/YouCompleteMe'             " Autocomplete plugin
-Plugin 'PotatoesMaster/i3-vim-syntax'       " syntax for i3 config
-" Plugin 'hdima/python-syntax'                " extra help for python syntax (self etc)
-Plugin 'octol/vim-cpp-enhanced-highlight'   " Extra highlight for cpp
+Plugin 'scrooloose/syntastic'             " Syntax checking plugin for Vim
+Plugin 'Valloric/YouCompleteMe'           " Autocomplete plugin
+Plugin 'PotatoesMaster/i3-vim-syntax'     " syntax for i3 config
+Plugin 'octol/vim-cpp-enhanced-highlight' " Extra highlight for cpp
 Plugin 'othree/xml.vim'
-Plugin 'nelstrom/vim-markdown-folding'			" help with folding in markdown
+Plugin 'nelstrom/vim-markdown-folding'    " help with folding in markdown
 
 " ============ Snippets ===============================
-" Take an hour and install and make correct with YCM
-" Plugin 'SirVer/ultisnips'
-" Snippets are separated from the engine. Add this if you want them:
-" Plugin 'honza/vim-snippets'
+Plugin 'SirVer/ultisnips'                 " snippet engine
+Plugin 'honza/vim-snippets'               " snippets
 
 " ============ Checkout ? ==============================
 " Plugin 'fisadev/FixedTaskList.vim'          " Pending tasks list
@@ -250,24 +248,24 @@ au VimResized * exe "normal! \<c-w>="
 "}}}
 "=============== MAPPINGS ===================={{{
 " Config files {{{
-nnoremap <leader>ev :tabnew ~/.vimrc<cr>
-nnoremap <leader>ez :tabnew ~/.zshrc<cr>
-nnoremap <leader>ea :tabnew ~/.files/aliases<cr>
-nnoremap <leader>ei3 :tabnew ~/.config/i3/config<cr>
-nnoremap <leader>er :tabnew ~/.config/ranger/rc.conf<cr>
-nnoremap <leader>ex :tabnew ~/.xresources<cr>
-nnoremap <leader>et :tabnew ~/.tmux.conf<cr>
+nnoremap <leader>ev   :tabnew ~/.vimrc<cr>
+nnoremap <leader>ez   :tabnew ~/.zshrc<cr>
+nnoremap <leader>ea   :tabnew ~/.files/aliases<cr>
+nnoremap <leader>ei3  :tabnew ~/.config/i3/config<cr>
+nnoremap <leader>er   :tabnew ~/.config/ranger/rc.conf<cr>
+nnoremap <leader>ex   :tabnew ~/.xresources<cr>
+nnoremap <leader>et   :tabnew ~/.tmux.conf<cr>
 nnoremap <leader>ebib :tabnew ~/documents/latex/references.bib<cr>
-nnoremap <leader>epy :tabnew ~/.vim/ftplugin/python.vim<cr>
-nnoremap <leader>ete :tabnew ~/.vim/ftplugin/tex.vim<cr>
-nnoremap <leader>ema :tabnew ~/.vim/ftplugin/markdown.vim<cr>
+nnoremap <leader>epy  :tabnew ~/.vim/ftplugin/python.vim<cr>
+nnoremap <leader>ete  :tabnew ~/.vim/ftplugin/tex.vim<cr>
+nnoremap <leader>ema  :tabnew ~/.vim/ftplugin/markdown.vim<cr>
 
 " source config files
-nnoremap <leader>si3 :source ~/.config/i3/config<cr>
-nnoremap <leader>sv :source ~/.vimrc<cr>
-nnoremap <leader>sz :source ~/.zshrc<cr>
-nnoremap <leader>sx :! xrdb ~/.Xresources<cr>
-nnoremap <leader>sot :source ~/.tmux.conf<cr>
+nnoremap <leader>si3  :source ~/.config/i3/config<cr>
+nnoremap <leader>sv   :source ~/.vimrc<cr>
+nnoremap <leader>sz   :source ~/.zshrc<cr>
+nnoremap <leader>sx   :!xrdb ~/.Xresources<cr>
+nnoremap <leader>sot  :source ~/.tmux.conf<cr>
 
 " }}}
 " Visual selection {{{
@@ -495,6 +493,12 @@ endfunc
 nnoremap <LocalLeader>n :call NERDTreeColors()<CR>
 "}}}
 
+" Moving visual lines vertically (greeg hurrell)
+function! s:Visual()
+	return visualmode() == 'V'
+endfunction
+
+
 "}}}
 "============== AUTOCOMMANDS ================={{{
 " function to exit quickfix when exiting buffer
@@ -503,20 +507,19 @@ aug qfclose "{{{
 	au winenter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
 aug end "}}}
 
-augroup VIM "{{{
-	au!
-	au WinLeave,InsertEnter * set nocursorline
-	au WinLeave,InsertEnter * set norelativenumber
-	au WinEnter,InsertLeave * set cursorline
-	au WinEnter,InsertLeave * set relativenumber
-augroup end " }}}
+" augroup VIM "{{{
+" 	au!
+" 	au WinLeave,InsertEnter * set nocursorline
+" 	au WinLeave,InsertEnter * set norelativenumber
+" 	au WinEnter,InsertLeave * set cursorline
+" 	au WinEnter,InsertLeave * set relativenumber
+" augroup end " }}}
 
 augroup vimtex_event_1 "{{{
 " compile on initialization, cleanup on quit
 	au!
 	au user vimtexeventquit     call vimtex#compiler#clean(0)
 augroup end "}}}
-
 
 "}}}
 "============== Macros/ longer cmds =========={{{
@@ -602,10 +605,10 @@ let g:ycm_register_as_syntastic_checker = 0
 
 let g:ycm_max_num_candidates = 10
 let g:ycm_max_num_identifier_candidates = 10
-"
+
 " nnoremap <leader>g :YcmCompleter GoTo<CR>
 " nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
-"
+
 " }}}
 "============== NerdTree ====================={{{
 " " open NERDTree on startup
@@ -628,7 +631,7 @@ hi NERDTreeFile guifg=white
 hi NERDTreeBookmarksHeader guifg=gray50
 hi NERDTreeBookmarkName guifg=gray50
 " }}}
-"============== Python-Mode ======================={{{
+"============== Python-Mode =================={{{
 " Bindings {{{
 let g:pymode_motion = 1
 " Go to next/previous method or class
@@ -675,10 +678,9 @@ let g:pymode_breakpoint            = 1
 let g:pymode_breakpoint_key        = '<leader>b'
 
 " syntax highlight {{{
-"
 let python_highlight_all                     = 1
 let g:pymode_syntax                          = 1
-let g:pymode_syntax_slow_sync                = 0
+let g:pymode_syntax_slow_sync                = 1
 let g:pymode_syntax_all                      = 1
 let g:pymode_syntax_print_as_function        = g:pymode_syntax_all
 let g:pymode_syntax_highlight_async_await    = 0
@@ -701,12 +703,6 @@ let g:pymode_syntax_docstrings               = g:pymode_syntax_all
 " code folding
 " YCM became super slow and the folding kinda stunk.
 let g:pymode_folding=0
-
-" augroup unset_folding_in_insert_mode
-" 		autocmd!
-" 		autocmd InsertEnter *.py setlocal foldmethod=marker
-" 		autocmd InsertLeave *.py setlocal foldmethod=expr
-" augroup END
 
 " pep8 indents
 let g:pymode_indent=1
@@ -762,7 +758,7 @@ nnoremap gE :lprevious<cr>
 let g:indentLine_fileTypeExclude=['help']
 let g:indentLine_char = '┊'
 " }}}
-"============== Vim-livedown-markdown ========={{{
+"============== Vim-livedown-markdown ========{{{
 " should markdown preview get shown automatically upon opening markdown buffer
 let g:livedown_autorun = 0
 
@@ -788,8 +784,7 @@ let g:vimwiki_listsyms = '✗○◐●✓'
 let g:vimwiki_folding = 'custom'
 let g:vimwiki_use_calendar = 1	"Enable calendar.vim integration
 "}}}
-"============== Vim-surround ====================={{{
-" Use markdown syntax
+"============== Vim-surround ================={{{
 nnoremap <leader>' :normal ysiw'<CR>
 nnoremap <leader>" :normal ysiw"<CR>
 nnoremap <leader>) :normal ysiw)<CR>
@@ -832,3 +827,51 @@ let g:fzf_action = {
   \ 'ctrl-v': 'vsplit' }
 
 "}}}
+"============== UltiSnips ===================={{{
+" Trigger configuration. 
+" Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe. 
+let g:UltiSnipsExpandTrigger                      = "<leader>c"
+let g:UltiSnipsJumpForwardTrigger                 = "<c-b>"
+let g:UltiSnipsJumpBackwardTrigger                = "<c-z>"
+
+"If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit                          = "vertical"
+let g:UltiSnipsUsePythonVersion                   = 3
+
+augroup markdown 
+	au! 
+	au BufNewFile,BufRead *.md,*.markdown,*.mmd set filetype=markdown 
+	au BufNewFile,BufRead *.md,*.markdown,*.mmd UltiSnipsAddFiletypes markdown 
+augroup END
+"}}}
+"============== GoYo ========================={{{
+" Trigger configuration. 
+" Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe. 
+let g:goyo_width  = 80  " (default: 80)
+let g:goyo_linenr = 0   " (default: 0)
+
+" Functions Goyo and tmux
+function! s:goyo_enter()
+  silent !tmux set status off
+  silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+endfunction
+
+function! s:goyo_leave()
+  silent !tmux set status on
+  silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  set showmode
+  set showcmd
+  set scrolloff=5
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+" mappings
+nnoremap <leader>gg :Goyo<CR>
+
+"}}}
+
