@@ -129,7 +129,7 @@ set switchbuf=usetab
 set wildmenu
 set wildchar=<tab>
 set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,resize
-set synmaxcol=120							" Maximum column in which to search for syntax items
+set synmaxcol=170							" Maximum column in which to search for syntax items
 set splitbelow
 set splitright
 
@@ -313,6 +313,12 @@ nnoremap <c-y> "+yy
 vnoremap <c-y> "+y
 
 "}}}
+" misc {{{
+
+" increment/decrement vis. selected numbers
+vnoremap <leader>aa <C-a>
+vnoremap <leader>AA <C-x>
+vnoremap ga g<C-a>
 
 " substitute word under cursor in entire file.
 nnoremap <leader>sw :%s/<C-r><C-w>//g<Left><Left>
@@ -320,6 +326,7 @@ nnoremap <leader>sw :%s/<C-r><C-w>//g<Left><Left>
 vnoremap <leader>vs y:@"<CR>
 " Clean trailing whitespace
 nnoremap <leader><backspace> mz:%s/\s\+$//<cr>:let @/=''<cr>`z
+
 " when sudo rights are needed but you did not sudo.
 cmap w!! %!sudo tee > /dev/null %
 
@@ -328,6 +335,7 @@ nnoremap <silent> <c-t> :<c-u>tabnew<cr>
 inoremap <silent> <c-t> <esc>:<c-u>tabnew<cr>
 nnoremap <silent> g0 :<c-u>tabfirst<cr>
 nnoremap <silent> g$ :<c-u>tablast<cr>
+
 
 " G(o)-Commands
 " visual select last yanked/del/pasted text
@@ -357,7 +365,7 @@ nnoremap S viw"0p
 " Marker line
 nnoremap <leader>mA A:7  {{{<esc>
 nnoremap <leader>me i}}}<esc>:TComment<cr>
-
+"}}}
 "}}}
 "=============== MOVEMENT ===================={{{
 " Buffers previous/next
@@ -533,6 +541,7 @@ noremap <leader>bd :%bd<CR><C-O>:bd#<CR>
 " whitespace around operator nnoremap <leader>. f+i <esc>la <esc>0
 
 "}}}
+
 "============= PLUGIN SETTINGS ==============={{{
 "============== Tmux-navigation =============={{{
 let g:tmux_navigator_no_mappings = 1

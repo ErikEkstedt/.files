@@ -97,11 +97,8 @@ bindsym $mod+Ctrl+n exec nautilus --no-desktop
 bindsym $mod+Ctrl+s exec shutter -s
 # bindsym $mod+Shift+t exec ~/Downloads/TeamSpeak3-Client-linux_amd64/ts3client_runscript.sh
 bindsym $mod+Shift+s exec $Music
-
-# bindsym $mod+g exec $Browser 
-bindsym $mod+g exec $Browser
-bindsym $mod+y exec $Browser -new-window https://www.youtube.com
-bindsym $mod+Shift+f exec $Browser -new-window https://www.facebook.com
+bindsym $mod+Ctrl+g exec $Browser -new-window
+bindsym $mod+Ctrl+y exec $chrome -new-window --app=https://www.youtube.com 
 
 # Touchpad
 bindsym $mod+a exec bash ~/.files/Scripts/Laptop/touchpad_onoff.sh
@@ -110,26 +107,31 @@ bindsym $mod+a exec bash ~/.files/Scripts/Laptop/touchpad_onoff.sh
 bindsym $mod+Return exec $term
 bindsym $mod+Shift+Return exec $term -T "scratchTerm"
 
+bindsym $mod+t exec ~/.files/Scripts/tlist.sh
+
 # Scratchpad
 bindsym Mod1+Tab scratchpad show
 bindsym Mod1+Shift+Tab move scratchpad
 
-#bindsym $mod+Shift+g exec $Browser, mark browser
-bindsym $mod2+g [con_mark="browser"] scratchpad show
-bindsym $mod2+t [con_mark="term"] scratchpad show
+bindsym $mod+g [con_mark="browser"] scratchpad show
 bindsym $mod+s [con_mark="music"] scratchpad show
-bindsym $mod+t exec ~/.files/Scripts/tlist.sh
 bindsym $mod+r [con_mark="ranger"] scratchpad show
+bindsym $mod+y [con_mark="youtube"] scratchpad show
 
 bindsym $mod+Shift+r exec $term -t "rangerTerm" -e ~/.files/Scripts/tmux/ranger.sh
-for_window [class="st-256color" title="rangerTerm"] mark "ranger", scratchpad show
 
 # Monitor Setup
 bindsym $mod2+m move workspace to output up
 bindsym $mod2+F8 exec ~/.files/Scripts/monitor_toggle
 
 #===== SCRIPTS ==========={{{
+<<<<<<< HEAD
+||||||| merged common ancestors
+>>>>>>> 2a02fe56c0601d9f1941fc80ca6c3c9570db6339
 
+=======
+
+>>>>>>> 3f163675ba9efb5f5a6e3795c9c0ecd697fabfc7
 set $tmuxscripts ~/.files/Scripts/tmux
 # test
 # bindsym $mod+Shift+t exec $tmuxscripts/base.sh
@@ -172,7 +174,23 @@ bindsym $mod+q exec rofi rofi -show  ssh\
 
 #}}}
 #========= FLOATING CLASSES ======{{{
+# Scratchpad floaters
+for_window [class="st-256color" title="rangerTerm"] mark "ranger", scratchpad show
 for_window [class="Spotify"] mark "music", move scratchpad, [con_mark="music"] scratchpad show
+for_window [class="Google-chrome" instance="www.youtube.com"] mark "youtube", \
+																															floating enable, \
+																															move scratchpad, \
+																															scratchpad show, \
+																															resize set 1440 1200, \
+																															move position center
+
+for_window [class="Firefox" instance="Navigator"] mark "browser", floating enable, \
+																									move scratchpad, \
+																									scratchpad show, \
+																									resize set 1440 1200, \
+																									move position center
+
+# Regular floaters
 for_window [class="Simplescreenrecorder"] floating enable
 for_window [class="Videos"] floating enable
 for_window [class="Nautilus"] floating enable
@@ -190,6 +208,7 @@ for_window [class="Gnome-system-monitor"] floating enable
 
 #  programs
 for_window [class="Simulate"] floating enable
+for_window [class="Python"] floating enable
 for_window [class="Roboschool Simulator"] floating enable
 for_window [class="Bullet Physics"] floating enable
 for_window [class="Frame"] floating enable, move 3000 px 1000 px
