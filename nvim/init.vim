@@ -45,6 +45,7 @@ Plug 'nelstrom/vim-visual-star-search'    " * on visual select seraches for the 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
 Plug 'Shougo/neco-vim'
+Plug 'davidhalter/jedi-vim'
 
 " ============ Preview Text ===========================
 Plug 'lervag/vimtex'                      " latex compiler and alot more.
@@ -69,6 +70,7 @@ call plug#end()
 " fzf path
 set rtp+=~/.fzf
 set rtp+=~/.vim/bundle/ultisnips
+set rtp+=~/.vim/bundle/jedi-vim
 
 filetype on
 filetype plugin on

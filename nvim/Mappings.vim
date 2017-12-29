@@ -2,6 +2,7 @@
 
 " Config files {{{
 nnoremap <leader>ev   :tabnew ~/.vimrc<cr>
+nnoremap <leader>env  :tabnew ~/.files/nvim/init.vim<cr>
 nnoremap <leader>ez   :tabnew ~/.zshrc<cr>
 nnoremap <leader>ea   :tabnew ~/.files/aliases<cr>
 nnoremap <leader>ei3  :tabnew ~/.config/i3/config<cr>
