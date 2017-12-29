@@ -3,6 +3,7 @@
 " Ubuntu 16.04
 " Unicode characters: https://www.w3schools.com/charsets/ref_utf_dingbats.asp
 
+echo "Vim8"
 "============= VUNDLE ========================{{{
 
 set nocompatible              " be iMproved, required

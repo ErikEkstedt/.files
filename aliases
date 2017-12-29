@@ -89,6 +89,7 @@ alias two="cd ~/Documents/latex; vim Master_todo.tex"
 alias tco="cd ~/Documents/latex; vim Computer_todo.tex"
 # }}}
 #====== Programs =========== {{{
+alias vim="nvim"
 alias ip="ipython --no-autoindent"
 alias news="newsbeuter"
 
