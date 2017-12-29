@@ -30,6 +30,6 @@ setlocal autoindent
 setlocal foldmethod=indent
 
 " colors
-colorscheme base16-monokai
-call NERDTreeColors()  " own scirpt that gives Nerdtree nice colors
+" colorscheme base16-monokai
+" call NERDTreeColors()  " own scirpt that gives Nerdtree nice colors
 

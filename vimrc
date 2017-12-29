@@ -21,13 +21,16 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'        " NerdTree git functionality rebuild
 Plugin 'junegunn/fzf.vim'                   " fuzzy filefinding
 
 " ============ Appearence =============================
-Plugin 'chriskempson/base16-vim'
 Plugin 'Yggdroot/indentLine'                " see where there is indent
 Plugin 'itchyny/lightline.vim'              " light weight status bar
 Plugin 'vim-scripts/Wombat'		              " Wombat colorscheme
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'junegunn/goyo.vim'									" Distraction free writing
 Plugin 'junegunn/limelight.vim'							" Focus colors
+
+" ============ Colorschemes ===========================
+Plugin 'chriskempson/base16-vim'
+Plugin 'skielbasa/vim-material-monokai'
 
 " ============ Useful Tools ===========================
 Plugin 'epeli/slimux'                       " vim+ipython REPL
@@ -613,19 +616,14 @@ nnoremap <Leader>gp :Gpush<CR>
 "PaperColor, seoul256, landscape, one, Dracula, darcula,
 "molokai, materia, material, OldHope, nord and 16color
 
-let g:lightline = {'colorscheme': 'molokai'} 
-let g:lightline.inactive = {'left': [['filename'], ['gitbranch']]}
-let g:lightline.component_function = {'gitbranch': 'fugitive#head'}
-
-" color
-" let s:palette = g:lightline#colorscheme#{g:lightline.colorscheme}#palette
-" let s:palette.inactive.middle = [[ 'Pink' , 'DarkGreen', 'White', 'White']]
+" let g:lightline = {'colorscheme': 'molokai'} 
+let g:lightline = {'colorscheme': 'mymolokaicolor'} 
+let g:lightline.inactive = {'left': [['absolutepath']] }
 
 set noshowmode "stops vims own showing below the statusbar.
 let g:lightline.tab = {'active': ['tabnum', 'filename', 'modified'],
 			\'inactive': [ 'tabnum', 'filename', 'modified' ]}
 " }}}
-"
 "============== Tabular ======================{{{
 vnoremap <silent> <Leader>t= :Tabularize /=<CR>
 vnoremap <silent> <Leader>t# :Tabularize /#<CR>
@@ -851,13 +849,14 @@ let g:fzf_colors =
 let g:fzf_buffers_jump = 1
 
 " Mappings
-nnoremap <Leader>fi  :Files ~<CR>
-nnoremap <Leader>lfi :Files<CR>
-nnoremap <Leader>li  :Lines<CR>
-nnoremap <Leader>gs  :GFiles?<CR>
-nnoremap <Leader>gb  :Buffers<CR>
-nnoremap <Leader>h   :Helptags<CR>
-nnoremap <Leader>ff  :Ag<CR>
+nnoremap <Leader>fi :Files ~<CR>
+nnoremap <Leader>fv :Files ~/.vim<CR>
+nnoremap <Leader>fl :Files<CR>
+nnoremap <Leader>ff :Ag<CR>
+nnoremap <Leader>li :Lines<CR>
+nnoremap <Leader>gs :GFiles?<CR>
+nnoremap <Leader>gb :Buffers<CR>
+nnoremap <Leader>he :Helptags<CR>
 
 " This is the default extra key bindings
 let g:fzf_action = {

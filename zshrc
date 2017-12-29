@@ -1,6 +1,8 @@
 # ========= SETTINGS ============
-
-#======== Export Variables ==========={{{
+# ZSH ubuntu 16.04 - simple terminal
+# Erik
+# 2017
+#====== Export ========={{{
 export ZSH=/home/erik/.oh-my-zsh
 export KEYTIMEOUT=1
 #export TERM="screen-256color"
@@ -22,13 +24,11 @@ export GIO_EXTRA_MODULES=/usr/lib/x86_64-linux-gnu/gio/modules/
 
 stty -ixon # C-s, C-q 
 #}}}
-
-# ========= Plugins ======={{{
-
-#========= TMUX on start ==============
+#====== Plugins ========{{{
+#==== TMUX ====
 if [ "$TMUX" = "" ]; then tmux new ; fi
 
-#==== Base 16 =====
+#==== Base16 ==
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
@@ -41,8 +41,7 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 # ( ) # Hide shell job control messages.
 # (wal -r &)
 #}}}
-
-#==== ZSH Themes ========{{{
+#====== ZSH Themes ====={{{
 #ZSH_THEME="terminalparty"
 ZSH_THEME="spaceship"
 
@@ -50,8 +49,8 @@ ZSH_THEME="spaceship"
 setopt RM_STAR_WAIT
 setopt interactivecomments #allows to type Bash style comments in the command line
 plugins=(gitfast python git-extras tmux vi-mode pip)
-#}}}
 
+#}}}
 #====== Source ========={{{
 source $ZSH/oh-my-zsh.sh
 source ~/.files/aliases
@@ -60,5 +59,3 @@ source "/home/erik/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
 
 HYPHEN_INSENSITIVE="true"
 #}}}
-
-# vim:fdm=marker
