@@ -4,9 +4,8 @@
 " Unicode characters: https://www.w3schools.com/charsets/ref_utf_dingbats.asp
 
 set nocompatible              " be iMproved, required
-
-if empty(glob('~/.vim/autoload/plug.vim'))
-	" Get vim-plug if it's not in autoload path
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+	echo "No Vim-Plug available... Downloading and running PlugInstall"
   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
