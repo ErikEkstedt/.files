@@ -1,6 +1,6 @@
 " MAPPINGS 
 
-" Config files {{{
+" Config files
 nnoremap <leader>ev   :tabnew ~/.vimrc<cr>
 nnoremap <leader>env  :tabnew ~/.files/nvim/init.vim<cr>
 nnoremap <leader>ez   :tabnew ~/.zshrc<cr>
@@ -21,8 +21,11 @@ nnoremap <leader>sz   :source ~/.zshrc<cr>
 nnoremap <leader>sx   :!xrdb ~/.Xresources<cr>
 nnoremap <leader>sot  :source ~/.tmux.conf<cr>
 
-" }}}
-" Visual selection{{{
+" Neovim
+" exit terminal
+tnoremap <Esc> <C-\><C-n>
+
+" Visual selection
 nnoremap vv V
 nnoremap V v$
 nnoremap <leader>a ggvG$
@@ -30,8 +33,7 @@ nnoremap Y y$
 
 " Source lines
 vnoremap <leader>vs y:@"<CR>
-"}}}
-" Search   {{{
+" Search   
 " Keep search matches in the middle of the window.
 nnoremap n nzzzv
 nnoremap N Nzzzv
@@ -42,15 +44,13 @@ nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 " toggle highlight search
 nnoremap <leader><space> :set hlsearch!<cr>
 
-"}}}
-" standard saving options {{{
+" standard saving options 
 nnoremap <c-s> :w<cr>
 inoremap <c-s> <esc>:w<cr>
 nnoremap <c-q> :q!<cr>
 inoremap <c-q> <esc>:wq<cr>
 
-" }}}
-"indenting/unindenting {{{
+"indenting/unindenting 
 inoremap <s-tab> <esc><lt><lt>i
 nnoremap <tab> >>
 nnoremap <s-tab> <lt><lt>
@@ -60,8 +60,7 @@ vnoremap <tab> >gv|
 " indent entire file
 inoremap <leader>i <esc>gg=g<c-o>
 nnoremap <leader>i gg=g<c-o>
-"}}}
-" copy / paste {{{
+" copy / paste 
 set pastetoggle=<f2> " system clipboard pastes preserves indentation
 
 " copy / paste from clipboard
@@ -71,8 +70,7 @@ vnoremap <c-p> "+p
 nnoremap <c-y> "+yy
 vnoremap <c-y> "+y
 
-"}}}
-" misc {{{
+" misc 
 
 " increment/decrement vis. selected numbers
 vnoremap <leader>aa <C-a>
@@ -119,8 +117,7 @@ nnoremap S viw"0p
 nnoremap <leader>mA :TComment<CR>A{{{<esc>
 nnoremap <leader>me :TComment<CR>A}}}<esc>
 
-"}}}
-" Movement {{{
+" Movement 
 " Buffers previous/next
 nnoremap <b :bp<CR>
 nnoremap <n :bn<CR>
@@ -171,8 +168,7 @@ nnoremap <leader>z zMzvzz
 " where the closed fold is.
 nnoremap <silent> o @=(foldclosed('.')>0?'za':"o")<CR>
 
-"}}}
-" Windows {{{
+" Windows 
 " Move between windows
 " Tmux now handles movement between windows and resizing
 " Plugin 'edkolev/tmuxline.vim'
@@ -184,4 +180,3 @@ nnoremap <C-j> :resize -3<cr>
 " Automatically resize when vim changes 
 au VimResized * exe "normal! \<c-w>="
 
-" }}}

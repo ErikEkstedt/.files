@@ -4,7 +4,13 @@
 " Unicode characters: https://www.w3schools.com/charsets/ref_utf_dingbats.asp
 
 set nocompatible              " be iMproved, required
-filetype off                  " required
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+	" Get vim-plug if it's not in autoload path
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
 "============= Vim-Plug ======================{{{
 " Plugins will be downloaded under the specified directory.
@@ -14,7 +20,7 @@ call plug#begin('~/.vim/bundle')
 Plug 'scrooloose/nerdtree'                " Project and file navigation
 Plug 'tpope/vim-fugitive'                 " git extension
 Plug 'airblade/vim-gitgutter'             " see git changes in file in the numberline
-Plug 'Xuyuanp/nerdtree-git-plug'        " NerdTree git functionality rebuilding pathogen
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/fzf.vim'                   " fuzzy filefinding
 
 " ============ Appearence =============================
@@ -72,10 +78,7 @@ set rtp+=~/.fzf
 set rtp+=~/.vim/bundle/ultisnips
 set rtp+=~/.vim/bundle/jedi-vim
 
-filetype on
-filetype plugin on
 filetype plugin indent on
-
 syntax enable
 
 let HOSTNAME = substitute(system('hostname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop

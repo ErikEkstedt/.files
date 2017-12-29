@@ -264,7 +264,7 @@ let g:fzf_buffers_jump = 1
 
 " Mappings
 nnoremap <Leader>fi :Files ~<CR>
-nnoremap <Leader>fv :Files ~/.vim<CR>
+nnoremap <Leader>fc :Files ~/.files<CR>
 nnoremap <Leader>fl :Files<CR>
 nnoremap <Leader>ff :Ag<CR>
 nnoremap <Leader>li :Lines<CR>
