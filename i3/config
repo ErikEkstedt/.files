@@ -82,14 +82,11 @@ exec --no-startup-id gnome-sound-applet
 exec --no-startup-id gnome-settings-daemon
 exec --no-startup-id nm-applet
 exec --no-startup-id udiskie
+exec --no-startup-id compton -b
 
 exec $term -t "rangerTerm" -e ~/.files/Scripts/tmux/ranger.sh
 for_window [class="st-256color" title="rangerTerm"] mark "ranger" move scratchpad
 
-exec --no-startup-id gnome-sound-applet
-exec --no-startup-id gnome-settings-daemon
-exec --no-startup-id nm-applet
-exec --no-startup-id udiskie
 
 #}}}
 #========= MAPPINGS =============={{{
@@ -147,6 +144,7 @@ resize grow down 200, resize grow up 250
 
 
 # start rofi (program launcher)
+
 bindsym $mod+Ctrl+d exec rofi rofi -show run -lines 8 -padding 20 \
 													-separator-style none \
 													-hide-scrollbar \
@@ -205,6 +203,7 @@ for_window [class="Python"] floating enable
 for_window [class="Roboschool Simulator"] floating enable
 for_window [class="Bullet Physics"] floating enable
 for_window [class="Frame"] floating enable, move 3000 px 1000 px
+for_window [class="Matplotlib"] floating enable
 
 # Floating constraints
 floating_minimum_size 75 x 74
