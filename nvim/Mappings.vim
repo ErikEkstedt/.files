@@ -140,6 +140,12 @@ nnoremap gN #zz
 vnoremap gn *zz
 vnoremap gN #zz
 
+" Go to next/previous Python method or class (PyMode)
+nnoremap gj :call pymode#motion#move('^\s*def\s', '')<CR>zz
+nnoremap gk :call pymode#motion#move('^\s*def\s', 'b')<CR>zz
+nnoremap gJ :call pymode#motion#move('^\s*class\s', '')<CR>zz
+nnoremap gK :call pymode#motion#move('^\s*class\s', 'b')<CR>zz
+
 " next paren
 nnoremap gp %
 

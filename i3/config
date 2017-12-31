@@ -230,14 +230,16 @@ bindsym $mod+Shift+w mode $FloatSize
 #}}}
 #========= APPEARENCE ============{{{
 hide_edge_borders both
-for_window [class="^.*"] border pixel 1
-for_window [class="Zathura"] border pixel 5
-for_window [class=" "] border pixel 5
-for_window [class="Google-chrome"] border pixel 5
+for_window [class="^.*"] border pixel 0
+
+# for_window [class="^.*"] border pixel 1
+# for_window [class="Zathura"] border pixel 5
+# for_window [class=" "] border pixel 5
+# for_window [class="Google-chrome"] border pixel 5
 
 # color of focused window
 # client.focused #00CDFF #00CDFF #00CDFF  # Teal  
-client.focused #A7A7A7 #A7A7A7 #A7A7A7
+# client.focused #A7A7A7 #A7A7A7 #A7A7A7
 # client.focused #ff6417 #ff6417 #ff6417
 
 # initial gap size
@@ -251,7 +253,6 @@ workspace $ws2 gaps inner 0
 workspace $ws2 gaps outer 0
 workspace $ws8 gaps inner 0
 workspace $ws8 gaps outer 0
-
 
 # Gap size
 set $gap "Gap size: (O/o)uter, (I/i)nner, (r)eset, (n)one"

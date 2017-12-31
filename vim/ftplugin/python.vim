@@ -6,6 +6,14 @@ inoremap ;cl class (<++>):<CR>'''<++>'''<CR>def __init__(self,<++>):<CR>super(<+
 " main
 inoremap ;ma if __name__ == '__main__':<CR>
 
+" main
+inoremap ;in input('Press Enter to continue')<CR>
+
+
+" main
+inoremap ;ma if __name__ == '__main__':<CR>
+
+
 " indentation for python
 setlocal tabstop=4
 setlocal softtabstop=4
