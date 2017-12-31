@@ -49,7 +49,7 @@ plugins=(gitfast python git-extras tmux vi-mode pip)
 #}}}
 #====== Source ========={{{
 source ~/.files/aliases >/dev/null 2>&1
-# source $ZSH/oh-my-zsh.sh
+source $ZSH/oh-my-zsh.sh
 source "/home/erik/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
 # source /opt/ros/kinetic/setup.zsh
 HYPHEN_INSENSITIVE="true"
