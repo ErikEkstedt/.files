@@ -74,7 +74,6 @@ bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
 #}}}
 #========= STARTUP == ============{{{
 exec_always --no-startup-id ~/.files/Scripts/polybar_start.sh
-exec_always --no-startup-id ~/.files/Scripts/polybar_start_desktop.sh
 exec_always --no-startup-id ~/.files/Scripts/mouse_settings.sh
 exec_always --no-startup-id feh --bg-scale ~/.config/wall.png
 exec --no-startup-id ~/.files/Scripts/start_up.sh
@@ -86,7 +85,6 @@ exec --no-startup-id compton -b
 
 exec $term -t "rangerTerm" -e ~/.files/Scripts/tmux/ranger.sh
 for_window [class="st-256color" title="rangerTerm"] mark "ranger" move scratchpad
-
 
 #}}}
 #========= MAPPINGS =============={{{
@@ -358,11 +356,11 @@ bindsym $mod+z focus child
 #     workspace_buttons yes # Show workspace buttons
 #     strip_workspace_numbers no # strip away WS numbers
 # 	position top # i3bar position
-#     
+#
 # 	# Using custom i3status.conf
 # 	status_command i3status -c ~/.config/i3/i3status.conf
 # }
-#}}}
+# }}}
 
 #========= SHUTDOWN =============={{{
 # TODO : scripts that syncs github on exit/Start

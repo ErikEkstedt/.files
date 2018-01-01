@@ -263,7 +263,7 @@ let g:fzf_colors =
 let g:fzf_buffers_jump = 1
 
 " Mappings
-nnoremap <Leader>fi :Files --hidden<CR>
+nnoremap <Leader>fi :Files ~/<CR>
 nnoremap <Leader>fc :Files ~/.files<CR>
 nnoremap <Leader>fl :Files<CR>
 nnoremap <Leader>ff :Ag<CR>

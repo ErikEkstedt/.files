@@ -2,6 +2,7 @@
 " Erik
 " Ubuntu 16.04
 " Unicode characters: https://www.w3schools.com/charsets/ref_utf_dingbats.asp
+" echo -ne "\uf026" | xclip -selection clipboard
 
 echo "Vim8"
 "============= VUNDLE ========================{{{
