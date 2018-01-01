@@ -5,6 +5,8 @@ aug qfclose
 	au winenter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
 aug end "}}}
 
+" set .conf files as dosini 
+autocmd BufRead,BufNewFile *.conf setf dosini
 
 " cleanup vimtex on quit {{{ 
 augroup vimtex_event_1
