@@ -15,7 +15,7 @@ nnoremap <leader>ete  :tabnew ~/.vim/ftplugin/tex.vim<cr>
 nnoremap <leader>ema  :tabnew ~/.vim/ftplugin/markdown.vim<cr>
 
 " source config files
-nnoremap <leader>si3  :source ~/.config/i3/config<cr>
+nnoremap <leader>snv  :source ~/.config/nvim/init.vim<cr>
 nnoremap <leader>sv   :source ~/.vimrc<cr>
 nnoremap <leader>sz   :source ~/.zshrc<cr>
 nnoremap <leader>sx   :!xrdb ~/.Xresources<cr>
@@ -186,3 +186,14 @@ nnoremap <C-j> :resize -3<cr>
 " Automatically resize when vim changes 
 au VimResized * exe "normal! \<c-w>="
 
+
+"============== Macros/ longer cmds =========={{{
+" find , and make new line | todo: 2gl -> execute command 2 times, etc.
+nnoremap gl f,a<CR><esc> 
+
+" save current buffer, close all buffers, open the buffer I was on
+" noremap <leader>bd :w | %bd | e#
+noremap <leader>bd :%bd<CR><C-O>:bd#<CR>
+" whitespace around operator nnoremap <leader>. f+i <esc>la <esc>0
+
+"}}}

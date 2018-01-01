@@ -134,8 +134,6 @@ set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,resi
 set synmaxcol=170							" Maximum column in which to search for syntax items
 set splitbelow
 set splitright
-" }}}
-"=============== Misc ======================={{{
 " Wildmenu completion {{{
 set wildmenu
 set wildmode=list:longest
@@ -179,25 +177,8 @@ if !isdirectory(expand(&directory))
 endif
 " }}}
 "}}}
-"=============== ABBREVIATIONS ==============={{{
-cnoreabbrev Wq wq
-cnoreabbrev WQ wq
-cnoreabbrev Q! q!
-cnoreabbrev Q q
-cnoreabbrev <expr> h getcmdtype() == ":" && getcmdline() == 'h' ? 'tab help' : 'h'
-cnoreabbrev <expr> q getcmdtype() == ":" && getcmdline() == 'q' ? 'q' : 'q'
-"}}}
-"============== Macros/ longer cmds =========={{{
-" find , and make new line | todo: 2gl -> execute command 2 times, etc.
-nnoremap gl f,a<CR><esc> 
 
-" save current buffer, close all buffers, open the buffer I was on
-" noremap <leader>bd :w | %bd | e#
-noremap <leader>bd :%bd<CR><C-O>:bd#<CR>
-" whitespace around operator nnoremap <leader>. f+i <esc>la <esc>0
-
-"}}}
-
+source ~/.config/nvim/Abbreviations.vim
 source ~/.config/nvim/Appearence.vim
 source ~/.config/nvim/Autocommands.vim
 source ~/.config/nvim/Mappings.vim
