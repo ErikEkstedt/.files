@@ -127,7 +127,8 @@ set $tmuxscripts ~/.files/Scripts/tmux
 bindsym $mod+n workspace $ws6 focus, exec $tmuxscripts/notes_tmux.sh
 bindsym $mod+d workspace $ws6 focus, exec ~/.files/Scripts/new_log
 bindsym $mod+c workspace $ws7 focus, exec $tmuxscripts/config_tmux.sh
-bindsym $mod+i workspace $ws4 focus, exec $tmuxscripts/Vim.sh
+# bindsym $mod+i workspace $ws4 focus, exec $tmuxscripts/Vim.sh
+bindsym $mod+i exec $tmuxscripts/Vim.sh
 bindsym $mod+p workspace $ws6 focus, exec $tmuxscripts/personal.sh
 bindsym $mod+o workspace $ws3 focus, exec $tmuxscripts/work_tmux.sh
 bindsym $mod+e workspace $ws1 focus, exec $tmuxscripts/SSH.sh

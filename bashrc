@@ -2,6 +2,7 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 stty -ixon
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -125,6 +126,5 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 export PATH="/home/erik/anaconda3/bin:$PATH"
 # added by erik
 export ROBOSCHOOL_PATH=/home/erik/roboschool
-
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
