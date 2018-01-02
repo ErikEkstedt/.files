@@ -208,7 +208,7 @@ floating_minimum_size 75 x 74
 floating_maximum_size 3440 x 1440 
 
 # Set floating window size
-bindsym $mod+Ctrl+b floating enable, resize set 1440 1200, move position center
+bindsym $mod+Ctrl+b floating enable, resize set 1440 1000, move position center
 bindsym $mod+Shift+b floating enable, move position center
 
 # Floating Toggle
@@ -255,13 +255,13 @@ workspace $ws8 gaps outer 0
 # Gap size
 set $gap "Gap size: (O/o)uter, (I/i)nner, (r)eset, (n)one"
 mode $gap{
-	bindsym $mod+Shift+i gaps inner current plus 5
-	bindsym $mod+i gaps inner current minus 5
-	bindsym $mod+Shift+o	gaps outer current plus 5
-	bindsym $mod+o gaps outer current minus 5
+	bindsym Shift+i gaps inner current plus 5
+	bindsym i gaps inner current minus 5
+	bindsym Shift+o	gaps outer current plus 5
+	bindsym o gaps outer current minus 5
 
-	bindsym $mod+r gaps inner current set 15, gaps outer current set 15
-	bindsym $mod+N gaps inner current set 0, gaps outer current set 0
+	bindsym r gaps inner current set 15, gaps outer current set 15
+	bindsym n gaps inner current set 0, gaps outer current set 0
 
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
