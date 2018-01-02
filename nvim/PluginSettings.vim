@@ -68,7 +68,9 @@ vnoremap <silent> <Leader>t" :Tabularize /"<CR>
 vnoremap <silent> <Leader>t% :Tabularize /%<CR>
 vnoremap <silent> <Leader>t: :Tabularize /:<CR>
 vnoremap <silent> <Leader>t; :Tabularize /;<CR>
+vnoremap <silent> <Leader>t, :Tabularize /,<CR>
 vnoremap <silent> <Leader>t- :Tabularize /-<CR>
+
 " }}}
 "============== NerdTree ====================={{{
 " " open NERDTree on startup
@@ -269,7 +271,7 @@ nnoremap <Leader>fl :Files<CR>
 nnoremap <Leader>ff :Ag<CR>
 nnoremap <Leader>li :Lines<CR>
 nnoremap <Leader>gs :GFiles?<CR>
-nnoremap <Leader>gb :Buffers<CR>
+nnoremap <Leader>bb :Buffers<CR>
 nnoremap <Leader>he :Helptags<CR>
 
 " This is the default extra key bindings

@@ -21,8 +21,7 @@ nnoremap <leader>sz   :source ~/.zshrc<cr>
 nnoremap <leader>sx   :!xrdb ~/.Xresources<cr>
 nnoremap <leader>sot  :source ~/.tmux.conf<cr>
 
-" Neovim
-" exit terminal
+" Neovim: exit terminal
 tnoremap <Esc> <C-\><C-n>
 
 " Visual selection
@@ -60,6 +59,11 @@ vnoremap <tab> >gv|
 " indent entire file
 inoremap <leader>i <esc>gg=g<c-o>
 nnoremap <leader>i gg=g<c-o>
+
+" indent paragraphs
+inoremap <leader>mm <esc>vip=
+nnoremap <leader>mm vip=
+
 " copy / paste 
 set pastetoggle=<f2> " system clipboard pastes preserves indentation
 
@@ -70,8 +74,7 @@ vnoremap <c-p> "+p
 nnoremap <c-y> "+yy
 vnoremap <c-y> "+y
 
-" misc 
-
+ 
 " increment/decrement vis. selected numbers
 vnoremap <leader>aa <C-a>
 vnoremap <leader>AA <C-x>
@@ -133,12 +136,10 @@ map ö {
 map ä }
 
 " */# now stays on a 
-nnoremap * *<c-o>zz
-nnoremap # #<c-o>zz
+nnoremap * *<c-o>
+nnoremap # #<c-o>
 nnoremap gn *zz
 nnoremap gN #zz
-vnoremap gn *zz
-vnoremap gN #zz
 
 " Go to next/previous Python method or class (PyMode)
 nnoremap gj :call pymode#motion#move('^\s*def\s', '')<CR>zz

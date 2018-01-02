@@ -3,7 +3,7 @@ Img=~/.files/icons/red-icon.png
 VIM=~/.files/icons/vim-icon.png
 term="st"
 session="Master"
-path="~/com_sci/Master_code/Project"
+path="~/com_sci/Master_code/project/project"
 tmux has-session -t $session 2> /dev/null
 if [ "$?" -eq 1 ] 
 then

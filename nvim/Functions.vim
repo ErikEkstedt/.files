@@ -1,17 +1,5 @@
 " FUNCTIONS 
 
-function! Toggle_MaxMinFold() "{{{
-		if g:fold_max == 0
-		let g:fold_max=1
-				:normal zM
-	else
-		let g:fold_max=0
-				:normal zR
-	endif
-endfunc
-nnoremap <leader>mm :call Toggle_MaxMinFold()<CR>
-"}}}
-
 function! NERDTreeColors() "{{{
 	hi NERDTreeDir guifg=#90a959 
 	hi Directory guifg=#404040
