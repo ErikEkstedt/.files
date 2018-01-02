@@ -19,10 +19,8 @@ class my_edit(Command):
     # The so-called doc-string of the class will be visible in the built-in
     # help that is accessible by typing "?c" inside ranger.
     """:my_edit <filename>
-
     A sample command for demonstration purposes that opens a file in an editor.
     """
-
     # The execute method is called when you run this command in ranger.
     def execute(self):
         # self.arg(1) is the first (space-separated) argument to the function.
@@ -37,7 +35,7 @@ class my_edit(Command):
             # reference to the currently selected file.
             target_filename = self.fm.thisfile.path
 
-        # This is a generic function to print text in ranger.  
+        # This is a generic function to print text in ranger.
         self.fm.notify("Let's edit the file " + target_filename + "!")
 
         # Using bad=True in fm.notify allows you to print error messages:
@@ -56,3 +54,34 @@ class my_edit(Command):
         # This is a generic tab-completion function that iterates through the
         # content of the current directory.
         return self._tab_directory_content()
+
+class fzf_select(Command):
+    """
+    :fzf_select
+
+    Find a file using fzf and fd.
+
+    With a prefix argument select only directories.
+
+    See:
+        https://github.com/junegunn/fzf
+        https://github.com/sharkdp/fd.git
+    """
+    def execute(self):
+        import subprocess
+        import os.path
+
+        if self.quantifier:
+            # match only directories
+            command="fd --type d --hidden --no-ignore . | fzf +m"
+        else:
+            # match files and directories
+            command=" fd --hidden --follow --no-ignore --exclude .git . | fzf +m"
+        fzf = self.fm.execute_command(command, stdout=subprocess.PIPE)
+        stdout, stderr = fzf.communicate()
+        if fzf.returncode == 0:
+            fzf_file = os.path.abspath(stdout.decode('utf-8').rstrip('\n'))
+            if os.path.isdir(fzf_file):
+                self.fm.cd(fzf_file)
+            else:
+                self.fm.select_file(fzf_file)

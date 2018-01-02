@@ -60,7 +60,7 @@ export FZF_DEFAULT_OPTS='--height 40% --reverse'
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude ".git"' 
 export FZF_CTRL_R_OPTS="--reverse"
 
-bindkey '^Q' exit
+bindkey -s '^Q' "exit\n"
 bindkey '^B' fzf-cd-widget
 bindkey '^F' fzf-file-widget
 
