@@ -161,7 +161,6 @@ bindsym $mod+q exec rofi rofi -show  ssh\
 											-padding 20
 
 #}}}
-
 #}}}
 #========= FLOATING CLASSES ======{{{
 # Scratchpad floaters
@@ -171,13 +170,13 @@ for_window [class="Google-chrome" instance="www.youtube.com"] mark "youtube", \
 																															floating enable, \
 																															move scratchpad, \
 																															scratchpad show, \
-																															resize set 1440 1200, \
+																															resize set 1440 1000, \
 																															move position center
 
 for_window [class="Firefox" instance="Navigator"] mark "browser", floating enable, \
 																									move scratchpad, \
 																									scratchpad show, \
-																									resize set 1440 1200, \
+																									resize set 1440 1000, \
 																									move position center
 
 # Regular floaters
