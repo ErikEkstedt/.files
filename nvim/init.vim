@@ -72,7 +72,7 @@ call plug#end()
 "=============== Basic ======================={{{
 " fzf path
 set rtp+=~/.fzf
-set rtp+=~/.files/vim
+set rtp+=~/.files/nvim/autoload/lightline
 
 filetype plugin indent on
 syntax enable
