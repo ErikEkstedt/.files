@@ -56,9 +56,8 @@ nnoremap <s-tab> <lt><lt>
 vnoremap <s-tab>   <gv
 vnoremap <tab> >gv|
 
-" indent entire file
-inoremap <leader>i <esc>gg=g<c-o>
-nnoremap <leader>i gg=g<c-o>
+inoremap <leader>i <esc>gg=G<C-o>
+nnoremap <leader>i gg=G<C-o>
 
 " indent paragraphs
 inoremap <leader>mm <esc>vip=
@@ -140,6 +139,11 @@ nnoremap * *<c-o>
 nnoremap # #<c-o>
 nnoremap gn *zz
 nnoremap gN #zz
+
+" [cmd] break lines by
+" gq{motion} % format the line that {motion} moves over
+" {Visual}gq % format the visually selected area
+" gqq        % format the current line
 
 " Go to next/previous Python method or class (PyMode)
 nnoremap gj :call pymode#motion#move('^\s*def\s', '')<CR>zz
