@@ -58,11 +58,8 @@ class my_edit(Command):
 class fzf_select(Command):
     """
     :fzf_select
-
     Find a file using fzf and fd.
-
     With a prefix argument select only directories.
-
     See:
         https://github.com/junegunn/fzf
         https://github.com/sharkdp/fd.git
@@ -70,13 +67,34 @@ class fzf_select(Command):
     def execute(self):
         import subprocess
         import os.path
-
         if self.quantifier:
             # match only directories
-            command="fd --type d --hidden --no-ignore . | fzf +m"
+            command="fd --type d --hidden --no-ignore | fzf +m -i"
         else:
             # match files and directories
-            command=" fd --hidden --follow --no-ignore --exclude .git . | fzf +m"
+            command="fd --hidden --follow --no-ignore --exclude .git | fzf +m -i"
+        fzf = self.fm.execute_command(command, stdout=subprocess.PIPE)
+        stdout, stderr = fzf.communicate()
+        if fzf.returncode == 0:
+            fzf_file = os.path.abspath(stdout.decode('utf-8').rstrip('\n'))
+            if os.path.isdir(fzf_file):
+                self.fm.cd(fzf_file)
+            else:
+                self.fm.select_file(fzf_file)
+
+class fzf_locate(Command):
+    """
+    :fzf_locate
+    Find a file using fzf and fd.
+    With a prefix argument select only directories.
+    See:
+        https://github.com/junegunn/fzf
+        https://github.com/sharkdp/fd.git
+    """
+    def execute(self):
+        import subprocess
+        import os.path
+        command="locate home | fzf +m -i"
         fzf = self.fm.execute_command(command, stdout=subprocess.PIPE)
         stdout, stderr = fzf.communicate()
         if fzf.returncode == 0:

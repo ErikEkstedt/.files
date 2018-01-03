@@ -74,8 +74,7 @@ call plug#end()
 "=============== Basic ======================={{{
 " fzf path
 set rtp+=~/.fzf
-set rtp+=~/.vim/bundle/ultisnips
-set rtp+=~/.vim/bundle/jedi-vim
+set rtp+=~/.files/vim
 
 filetype plugin indent on
 syntax enable
