@@ -40,6 +40,12 @@ let g:vimtex_view_method = "zathura"
 "let g:latex_view_general_options = shellescape("-s -e '" . exepath(v:progpath) . " --servername " . v:servername . " +{%line} {%input}'")
 let g:vimtex_complete_recursive_bib = 2
 
+" Deoplete
+if !exists('g:deoplete#omni#input_patterns')
+		let g:deoplete#omni#input_patterns = {}
+endif
+let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
+
 " }}}
 "============== Fugitive ====================={{{
 nnoremap <Leader>ga :Gwrite<CR>
@@ -55,7 +61,10 @@ nnoremap <Leader>gp :Gpush<CR>
 
 " let g:lightline = {'colorscheme': 'molokai'} 
 let g:lightline = {'colorscheme': 'mymolokaicolor'} 
-let g:lightline.inactive = {'left': [['absolutepath']] }
+let g:lightline.inactive = {
+			\	'left': [['absolutepath']],
+			\ 	'middle': [['absolutepath']],
+			\ 	'right': [['']] }
 
 set noshowmode "stops vims own showing below the statusbar.
 let g:lightline.tab = {'active': ['tabnum', 'filename', 'modified'],
@@ -287,14 +296,14 @@ let g:UltiSnipsSnippetsDir = "~/.vim/bundle/vim-snippets"
 let g:UltiSnipsSnippetDirectories = ["UltiSnips", "snips"]
 
 " Trigger configuration.
-let g:UltiSnipsExpandTrigger='<leader>c'
+let g:UltiSnipsExpandTrigger='<leader><leader>'
 let g:UltiSnipsJumpForwardTrigger="<c-b>" 
 let g:UltiSnipsJumpBackwardTrigger="<c-z>" 
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit='vertical'
 
-" Use Python Version
+" Use Python Version 
 let g:UltiSnipsUsePythonVersion = 3
 let g:ultisnips_python_style="google"
 
@@ -339,5 +348,5 @@ nnoremap <leader>gg :Goyo<CR>
 let g:deoplete#enable_at_startup = 1
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 "}}}
