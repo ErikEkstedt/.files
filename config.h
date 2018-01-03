@@ -7,9 +7,10 @@
  */
 
 // static char font[] = "xft:DejaVu Sans Mono Nerd Font:pixelsize=15:antialias=true; xft:Awesome Font:pixelsize=15:antialias=true";
-static char font[] = "Bitstream Vera Sans Mono Nerd Font:pixelsize=15:antialias=true:autohint=true";
+static char font[] = "Bitstream Vera Sans Mono Nerd Font:pixelsize=15.1:antialias=true:autohint=true";
+// static char font[] = "Bitstream Vera Sans Mono Nerd Font:pixelsize=11:antialias=false:autohint=true";
 // static char font[] = "Liberation Mono:pixelsize=15:antialias=true:autohint=true";
-static int borderpx = 2;
+static int borderpx = 3;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -131,7 +132,7 @@ static unsigned int defaultrcs = 257;
  * 6: Bar ("|")
  * 7: Snowman ("☃")
  */
-static unsigned int cursorshape = 2;
+static unsigned int cursorshape = 6;
 
 /*
  * Default colour and shape of the mouse cursor
