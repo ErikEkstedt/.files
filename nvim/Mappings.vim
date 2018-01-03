@@ -24,6 +24,10 @@ nnoremap <leader>sot  :source ~/.tmux.conf<cr>
 " Neovim: exit terminal
 tnoremap <Esc> <C-\><C-n>
 
+" Open visdom
+nnoremap <leader>vd :! firefox --new-window 192.168.0.104:8097 &<CR>
+nnoremap <leader>vl :! firefox --new-window localhost:8097 &<CR>
+
 " Visual selection
 nnoremap vv V
 nnoremap V v$

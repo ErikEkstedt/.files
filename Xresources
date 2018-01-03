@@ -70,7 +70,6 @@ URxvt.resize-font.bigger: C-plus
 *color8: #666666
 *color9: #cc6666
 *color10: #b5bd6
-
 *color11: #f0c674
 *color12: #81a2be
 *color13: #b294bb
@@ -78,8 +77,9 @@ URxvt.resize-font.bigger: C-plus
 *color15: #ecebec
 
 
-
 !======== ROFI SETTINGS =============
+rofi.color-enabled:  true
+
 !For each state the following 5 colors must be set:
 !	 bg    : Background color row
 !	 fg    : Text color
@@ -87,11 +87,10 @@ URxvt.resize-font.bigger: C-plus
 !	 hlfg  : Foreground color selected row
 !	 hlbg  : Background color selected row
 !
-rofi.color-enabled:  true
 ! State:           ´bg´,       ´fg´,       ´bgalt´,    ´hlbg´,     ´hlfg´
-rofi.color-normal: #8f00308F,  #ffffffff,  #8f00A0EF,	 #5fdccccc,  #ffffffff,
-rofi.color-urgent: #6F00F8FF,  #5fffffff,  #5f005000,	 #5f005000,  #ffffffff,
-rofi.color-active: #0f303030,  #5fffffff,	 #5f000050,	 #5f000050,  #ffffffff,
+rofi.color-normal: #8f00308F,  #ffffffff,  #8f00A0EF,	 #3fdeeeee,  #ff0f0f0f,
+rofi.color-urgent: #6F00F8FF,  #ffffffff,  #5f005000,	 #5f005000,  #ff0f0f0f,
+rofi.color-active: #0f303030,  #ffffffff,	 #5f000050,	 #5f000050,  #ff0f0f0f,
 
 !                  ´background´, ´border´
 ! rofi.color-window: #6FF0F8FF,  #8ffdf6e3
