@@ -43,10 +43,15 @@ URxvt*font:					xft:DejaVu\ Sans\ Mono\ Nerd\ Font:pixelsize=15:antialias=true\
 URxvt*boldFont:			xft:DejaVu\ Sans\ Mono\ Nerd\ Font:bold:pixelsize=14:antialias=true
 URxvt*italicFont:   xft:DejaVu\ Sans\ Mono\ Nerd\ Font:italic:pixelsize=14:antialias=true
 
-! URxvt*font:					xft:DejaVu\ Sans\ Mono\ for\ Powerline:pixelsize=15:antialias=true       
-! URxvt*boldFont:			xft:DejaVu\ Sans\ Mono\ for\ Powerline:bold:pixelsize=14:antialias=true  
-! URxvt*italicFont:   xft:DejaVu\ Sans\ Mono\ for\ Powerline:italic:pixelsize=14:antialias=true
+! Copy/Paste (disable ctrl-shift ---> iso14755 input mode
+URxvt*iso14755: False
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 
+URxvt.resize-font.smaller: C-minus
+URxvt.resize-font.bigger: C-plus
+
+! --------------------------------------------------------------------
 ! themes
 ! --------------------------------------------------------------------
 ! tomorow-night
@@ -73,20 +78,25 @@ URxvt*italicFont:   xft:DejaVu\ Sans\ Mono\ Nerd\ Font:italic:pixelsize=14:antia
 *color15: #ecebec
 
 
-!------------------------------------------------------
-! Copy/Paste (disable ctrl-shift ---> iso14755 input mode
-
-URxvt*iso14755: False
-URxvt.keysym.Shift-Control-V: eval:paste_clipboard
-URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
-
-URxvt.resize-font.smaller: C-minus
-URxvt.resize-font.bigger: C-plus
 
 !======== ROFI SETTINGS =============
-rofi.fake-transparency:	true
-rofi.bw:		0
-rofi.opacity:		"10"
+!For each state the following 5 colors must be set:
+!	 bg    : Background color row
+!	 fg    : Text color
+!	 bgalt : Background color alternating row
+!	 hlfg  : Foreground color selected row
+!	 hlbg  : Background color selected row
+!
+rofi.color-enabled:  true
+! State:           ´bg´,       ´fg´,       ´bgalt´,    ´hlbg´,     ´hlfg´
+rofi.color-normal: #8f00308F,  #ffffffff,  #8f00A0EF,	 #5fdccccc,  #ffffffff,
+rofi.color-urgent: #6F00F8FF,  #5fffffff,  #5f005000,	 #5f005000,  #ffffffff,
+rofi.color-active: #0f303030,  #5fffffff,	 #5f000050,	 #5f000050,  #ffffffff,
+
+!                  ´background´, ´border´
+! rofi.color-window: #6FF0F8FF,  #8ffdf6e3
+rofi.color-window: #AF000000,  #0f0030FF
+
 rofi.hide-scrollbar:	true
 rofi.kb-remove-to-eol: Control+p 
 rofi.kb-accept-entry: Return,KP_Enter

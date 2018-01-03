@@ -2,7 +2,6 @@
 " Erik
 " Ubuntu 16.04
 " Unicode characters: https://www.w3schools.com/charsets/ref_utf_dingbats.asp
-
 set nocompatible              " be iMproved, required
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
 	echo "No Vim-Plug available... Downloading and running PlugInstall"
@@ -10,7 +9,6 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-
 "============= Vim-Plug ======================{{{
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/bundle')
@@ -133,6 +131,7 @@ set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,resi
 set synmaxcol=170							" Maximum column in which to search for syntax items
 set splitbelow
 set splitright
+set gdefault "with this:  s/foo/bar --> s/foo/bar/g by default. ´g´ reverses its meaning.
 " Wildmenu completion {{{
 set wildmenu
 set wildmode=list:longest
