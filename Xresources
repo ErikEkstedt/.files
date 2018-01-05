@@ -98,5 +98,5 @@ rofi.color-window: #AF000000,  #0f0030FF
 rofi.hide-scrollbar:	true
 rofi.kb-remove-to-eol: Control+p 
 rofi.kb-accept-entry: Return,KP_Enter
-rofi.kb-row-up: Control+k
-rofi.kb-row-down: Control+j
+rofi.kb-row-up: Control+k,Up
+rofi.kb-row-down: Control+j,Down
