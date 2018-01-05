@@ -80,6 +80,14 @@ URxvt.resize-font.bigger: C-plus
 !======== ROFI SETTINGS =============
 rofi.color-enabled:  true
 
+! ! Purple/Pink color palette. 
+! dark0: #50000000
+! dark1: #50050a31
+! dark2: #50281058
+! dark3: #50461976
+! dark4: #509138a9
+! dark5: #50e757e1
+!
 !For each state the following 5 colors must be set:
 !	 bg    : Background color row
 !	 fg    : Text color
@@ -88,9 +96,13 @@ rofi.color-enabled:  true
 !	 hlbg  : Background color selected row
 !
 ! State:           ´bg´,       ´fg´,       ´bgalt´,    ´hlbg´,     ´hlfg´
-! rofi.color-normal: #8f00308F,  #ffffffff,  #00bfff,    #3fdeeeee,  #ff0f0f0f,
-! rofi.color-urgent: #6F00F8FF,  #ffffffff,  #5f005000,	 #5f005000,  #ff0f0f0f,
-! rofi.color-active: #0f303030,  #ffffffff,	 #5f000050,	 #5f000050,  #ff0f0f0f,
+
+! Themes
+! Purple/Pink Palette: http://www.color-hex.com/color-palette/52670
+rofi.color-normal: #d0050a31,   #ffffffff, #d0461976, #d0e757e1, #ffffffff
+rofi.color-urgent: #d0e757e1,   #ffffffff, #d0461976, #d0e757e1, #ffffffff
+rofi.color-active: #ffe757e1,   #ffffffff, #50461976, #50e757e1, #ffffffff
+
 
 !                  ´background´, ´border´
 ! rofi.color-window: #6FF0F8FF,  #8ffdf6e3

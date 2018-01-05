@@ -1,5 +1,4 @@
 #!/bin/bash
-
 #read -p "Please Enter a commit comment: '\n'> " uservar
 read -p "Please Enter a commit message: `echo '\n> '`" uservar
 if [ -z "$uservar" ]

@@ -360,5 +360,5 @@ xmap gs <plug>(scratch-selection-reuse)
 xmap gS <plug>(scratch-selection-clear)
 
 let g:scratch_height = 10
-
+let g:scratch_filetype = 'markdown'
 "}}}
