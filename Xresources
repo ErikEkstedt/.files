@@ -88,14 +88,13 @@ rofi.color-enabled:  true
 !	 hlbg  : Background color selected row
 !
 ! State:           ´bg´,       ´fg´,       ´bgalt´,    ´hlbg´,     ´hlfg´
-rofi.color-normal: #8f00308F,  #ffffffff,  #8f00A0EF,	 #3fdeeeee,  #ff0f0f0f,
-rofi.color-urgent: #6F00F8FF,  #ffffffff,  #5f005000,	 #5f005000,  #ff0f0f0f,
-rofi.color-active: #0f303030,  #ffffffff,	 #5f000050,	 #5f000050,  #ff0f0f0f,
+! rofi.color-normal: #8f00308F,  #ffffffff,  #00bfff,    #3fdeeeee,  #ff0f0f0f,
+! rofi.color-urgent: #6F00F8FF,  #ffffffff,  #5f005000,	 #5f005000,  #ff0f0f0f,
+! rofi.color-active: #0f303030,  #ffffffff,	 #5f000050,	 #5f000050,  #ff0f0f0f,
 
 !                  ´background´, ´border´
 ! rofi.color-window: #6FF0F8FF,  #8ffdf6e3
 rofi.color-window: #AF000000,  #0f0030FF
-
 rofi.hide-scrollbar:	true
 rofi.kb-remove-to-eol: Control+p 
 rofi.kb-accept-entry: Return,KP_Enter

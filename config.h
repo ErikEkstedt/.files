@@ -5,12 +5,9 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-
-// static char font[] = "xft:DejaVu Sans Mono Nerd Font:pixelsize=15:antialias=true; xft:Awesome Font:pixelsize=15:antialias=true";
-static char font[] = "Bitstream Vera Sans Mono Nerd Font:pixelsize=15.1:antialias=true:autohint=true";
-// static char font[] = "Bitstream Vera Sans Mono Nerd Font:pixelsize=11:antialias=false:autohint=true";
-// static char font[] = "Liberation Mono:pixelsize=15:antialias=true:autohint=true";
-static int borderpx = 3;
+static char font[] = "BitstreamVeraSansMono Nerd Font:size=12:antialias=true:autohint=true";
+// static char font[] = "Liberation Mono:size=12:antialias=true:autohint=true";
+static int borderpx = 1;
 
 /*
  * What program is execed by st depends of these precedence rules:
