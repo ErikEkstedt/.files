@@ -160,7 +160,7 @@ nnoremap gK :call pymode#motion#move('^\s*class\s', 'b')<CR>zz
 nnoremap gp %
 
 " go next spell error
-nnoremap gs ]s
+nnoremap <leader>gs ]s
 
 " move up and down naturally even if lines
 " extends over multiple rows

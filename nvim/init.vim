@@ -42,7 +42,8 @@ Plug 'christoomey/vim-tmux-navigator'     " navigate between vim and tmuz seemle
 Plug 'itchyny/calendar.vim'               " Calendar for vim
 Plug 'Valloric/MatchTagAlways'
 Plug 'nelstrom/vim-visual-star-search'    " * on visual select seraches for the snippet
-" Plug 'vimwiki/vimwiki'                    " Personal Wiki
+"  Plug 'vimwiki/vimwiki'                    " Personal Wiki
+Plug 'mtth/scratch.vim'   " Unobtrusive scratch
 
 " ============ Auto-Completion ========================
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }

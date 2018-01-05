@@ -48,11 +48,11 @@ let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
 
 " }}}
 "============== Fugitive ====================={{{
-nnoremap <Leader>ga :Gwrite<CR>
-nnoremap <Leader>gc :Gwrite<CR>:Gcommit<CR>
+nnoremap <Leader>ga  :Gwrite<CR>
+nnoremap <Leader>gcm :Gcommit<CR>
+nnoremap <Leader>gc  :Gwrite<CR>:Gcommit<CR>
 nnoremap <Leader>gps :Gpush<CR>
 nnoremap <Leader>gpl :Gpull<CR>
-
 " }}}
 "============== Lightline ===================={{{
 "wombat, solarized, powerline, jellybeans, Tomorrow,
@@ -350,4 +350,15 @@ let g:deoplete#enable_at_startup = 1
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"}}}
+"============== Scratch ======================{{{
+let g:scratch_insert_autohide = 0
+let g:scratch_no_mappings = 1
+nmap gs <plug>(scratch-insert-reuse)
+nmap gS <plug>(scratch-insert-clear)
+xmap gs <plug>(scratch-selection-reuse)
+xmap gS <plug>(scratch-selection-clear)
+
+let g:scratch_height = 10
+
 "}}}
