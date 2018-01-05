@@ -49,8 +49,9 @@ let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
 " }}}
 "============== Fugitive ====================={{{
 nnoremap <Leader>ga :Gwrite<CR>
-nnoremap <Leader>gc :Gcommit<CR>
-nnoremap <Leader>gp :Gpush<CR>
+nnoremap <Leader>gc :Gwrite<CR>:Gcommit<CR>
+nnoremap <Leader>gps :Gpush<CR>
+nnoremap <Leader>gpu :Gpull<CR>
 
 " }}}
 "============== Lightline ===================={{{
