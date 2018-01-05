@@ -51,7 +51,7 @@ let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
 nnoremap <Leader>ga :Gwrite<CR>
 nnoremap <Leader>gc :Gwrite<CR>:Gcommit<CR>
 nnoremap <Leader>gps :Gpush<CR>
-nnoremap <Leader>gpu :Gpull<CR>
+nnoremap <Leader>gpl :Gpull<CR>
 
 " }}}
 "============== Lightline ===================={{{
