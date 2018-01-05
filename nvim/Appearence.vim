@@ -16,7 +16,7 @@ map <LocalLeader>c :exec &conceallevel ? "set conceallevel=0" : "set concealleve
 hi CursorLineNr ctermfg=87 guifg=white
 
 if has('windows')
-	set fillchars=vert:\┃ " ┃ line with no breaks between vertical splits
+	set fillchars=vert:\┃  " ┃ line with no breaks between vertical splits
 	hi VertSplit ctermfg=51
 	hi VertSplit guibg=bg guifg=#b5bd68
 endif

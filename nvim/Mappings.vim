@@ -24,7 +24,7 @@ nnoremap <leader>sot  :source ~/.tmux.conf<cr>
 " Neovim: exit terminal
 tnoremap <Esc> <C-\><C-n>
 
-" Open visdom
+" Open Visdom
 nnoremap <leader>vd :! firefox --new-window 192.168.0.104:8097 &<CR>
 nnoremap <leader>vl :! firefox --new-window localhost:8097 &<CR>
 
@@ -36,6 +36,7 @@ nnoremap Y y$
 
 " Source lines
 vnoremap <leader>vs y:@"<CR>
+
 " Search   
 " Keep search matches in the middle of the window.
 nnoremap n nzzzv
