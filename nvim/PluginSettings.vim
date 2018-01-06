@@ -86,7 +86,7 @@ vnoremap <silent> <Leader>t- :Tabularize /-<CR>
 " " open NERDTree on startup
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-let NERDTreeIgnore=['\.pyc$', '\.pdf$', '\.png$', '\.aux$', '\.bbl$', '\.fls$', '\.blg$', '\.log$', '\.fdb_latexmk$','\.gz$']
+let NERDTreeIgnore=['\.pyc$', '\.png$', '\.aux$', '\.bbl$', '\.fls$', '\.blg$', '\.log$', '\.fdb_latexmk$','\.gz$']
 let NERDTreeShowBookmarks = 1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 map <C-n> :NERDTreeToggle<CR>
@@ -234,8 +234,8 @@ let g:livedown_port = 1337
 " the browser to use
 let g:livedown_browser = BROWSER
 
-nnoremap gm :LivedownToggle<CR>
-nnoremap gM :LivedownPreview<CR>
+nnoremap <leader>gt :LivedownToggle<CR>
+nnoremap <leader>gp :LivedownPreview<CR>
 "}}}
 "============== VimWiki ======================{{{
 " Use markdown syntax
@@ -279,9 +279,9 @@ nnoremap <Leader>fi :Files ~/<CR>
 nnoremap <Leader>fc :Files ~/.files<CR>
 nnoremap <Leader>fl :Files<CR>
 nnoremap <Leader>ff :Ag<CR>
+nnoremap <Leader>bu :Buffers<CR>
 nnoremap <Leader>li :Lines<CR>
 nnoremap <Leader>gs :GFiles?<CR>
-nnoremap <Leader>bb :Buffers<CR>
 nnoremap <Leader>he :Helptags<CR>
 
 " This is the default extra key bindings

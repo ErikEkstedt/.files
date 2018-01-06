@@ -14,7 +14,7 @@ inoremap ;ss \subsubsection{}<CR>%{{{<CR><++><Esc>kk12li
 inoremap ;line %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%<CR><Esc>
 
 " Itemize
-inoremap ;bi \begin{itemize}<CR>\item<CR>\end{itemize}<CR><++><Esc>2kA<Space>
+inoremap ;bi \begin{itemize}<CR>\item<CR>\end{itemize}<Esc>kA<Space>
 inoremap ;i \item 
 
 " Figure
@@ -34,7 +34,7 @@ inoremap ;url \url{} <++><Esc>5hi
 let g:vimtex_indent_enabled = 0
 let g:vimtex_motion_matchparen = 0
 let g:tex_fold_enabled=1
-let g:indentLine_enabled = 0 " need conceallevel 1 or 2. unneccessary in tex
+let g:indentLine_enabled = 0 " Don't need conceallevel 1 or 2. unneccessary in tex
 
 " Appearance
 " colorscheme base16-classic-dark
