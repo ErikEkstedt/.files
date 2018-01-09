@@ -155,8 +155,8 @@ bindsym $mod+q exec rofi rofi -show ssh -lines 8 -padding 10
 #========= FLOATING CLASSES ======{{{
 # Scratchpad floaters
 for_window [class="st-256color" title="rangerTerm"] mark "ranger", scratchpad show
-for_window [class="Spotify"] mark "music", move scratchpad, [con_mark="music"] scratchpad show
-
+# for_window [class="Spotify"] mark "music", move scratchpad, [con_mark="music"] scratchpad show
+for_window [class="Spotify"] mark "music", move $ws9, [con_mark="music"]
 for_window [class="Google-chrome" instance="www.youtube.com"] mark "youtube", \
 																															floating enable, \
 																															move scratchpad, \

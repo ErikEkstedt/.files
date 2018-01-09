@@ -8,10 +8,14 @@
 [push]
 	default = simple
 [web]
-	browser = google-chrome
-[diff]
-	tool = vimdiff
+	browser = firefox
 [merge]
-	tool = vimdiff
-	conflictstyle =  diff3
-	prompt = false
+  tool = vimdiff
+[mergetool]
+  prompt = true
+[mergetool "vimdiff"]
+  cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[difftool]
+  prompt = false
+[diff]
+tool = vimdiff

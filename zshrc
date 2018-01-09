@@ -1,4 +1,5 @@
 # ========= SETTINGS ============
+#
 # ZSH ubuntu 16.04 - simple terminal
 # Erik
 # 2017
@@ -43,7 +44,6 @@ source "/home/erik/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
 # source /opt/ros/kinetic/setup.zsh
 HYPHEN_INSENSITIVE="true"
 #}}}
-
 #====== Plugins ========{{{
 #==== TMUX ====
 if [ "$TMUX" = "" ]; then tmux new ; fi
@@ -59,16 +59,12 @@ export FZF_DEFAULT_OPTS='--height 40% --reverse'
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude ".git"' 
 export FZF_CTRL_R_OPTS="--reverse"
 
-bindkey -s '^Q' "exit\n"
-bindkey '^B' fzf-cd-widget
-bindkey '^F' fzf-file-widget
+export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 
-# Todo: Function that binds a key to open a file in vim
+export FZF_ALT_C_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
+export FZF_COMPLETION_OPTS='+c -x'
 
-# Use fd (https://github.com/sharkdp/fd) instead of the default find 
-# command for listing path candidates. 
-# - The first argument to
-# the function ($1) is the base path to start traversal 
+# - The first argument to the function ($1) is the base path to start traversal 
 # - See the source code (completion.{bash,zsh}) for the details. 
 #
 _fzf_compgen_path() { 
@@ -79,3 +75,8 @@ _fzf_compgen_path() {
 _fzf_compgen_dir() { 
 	fd --type d --hidden --follow --exclude ".git" . "$1" 
 }
+
+# bindkey '^B' __fzf_generic_path_completion
+bindkey -s '^Q' "exit\n"
+bindkey '^B' fzf-cd-widget
+bindkey '^F' fzf-file-widget
