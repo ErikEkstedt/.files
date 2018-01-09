@@ -2,6 +2,7 @@
 " Erik
 " Ubuntu 16.04
 " Unicode characters: https://www.w3schools.com/charsets/ref_utf_dingbats.asp
+"
 set nocompatible              " be iMproved, required
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
 	echo "No Vim-Plug available... Downloading and running PlugInstall"
@@ -9,6 +10,7 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+
 "============= Vim-Plug ======================{{{
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/bundle')
@@ -42,8 +44,9 @@ Plug 'christoomey/vim-tmux-navigator'     " navigate between vim and tmuz seemle
 Plug 'itchyny/calendar.vim'               " Calendar for vim
 Plug 'Valloric/MatchTagAlways'
 Plug 'nelstrom/vim-visual-star-search'    " * on visual select seraches for the snippet
-"  Plug 'vimwiki/vimwiki'                    " Personal Wiki
 Plug 'mtth/scratch.vim'   " Unobtrusive scratch
+
+"  Plug 'vimwiki/vimwiki'                    " Personal Wiki
 
 " ============ Auto-Completion ========================
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -84,59 +87,59 @@ let mapleader = ','
 set spelllang=en_us            " US English spelling
 set ffs=unix,dos,mac           " File Format (relevant to line ending type)
 set backspace=indent,eol,start " Make backspace work like most other apps.
-set history=1000              " Keep 1000 lines of command-line history.
-set undolevels=1000           " Keep 1000 lines of undo history.
-set showcmd                   " Display incomplete commands.
-set title                     " Change the title of the terminal/tab with the file name.
-set hidden                    " Allow unsaved background buffers.
-set shortmess=I               " Don't show Vim's welcome message.
-set shortmess+=a              " Make the save message shorter. Helps avoid the 'Hit ENTER to continue' message.
-set foldmethod=marker         " marker for all but specified filetypes (ex: python)
-set foldlevelstart=-1         " start with fold everything
-set foldclose=                " all
+set history=1000               " Keep 1000 lines of command-line history.
+set undolevels=1000            " Keep 1000 lines of undo history.
+set showcmd                    " Display incomplete commands.
+set title                      " Change the title of the terminal/tab with the file name.
+set hidden                     " Allow unsaved background buffers.
+set shortmess=I                " Don't show Vim's welcome message.
+set shortmess+=a               " Make the save message shorter. Helps avoid the 'Hit ENTER to continue' message.
+set foldmethod=marker          " marker for all but specified filetypes (ex: python)
+set foldlevelstart=-1          " start with fold everything
+set foldclose=                 " all
 set conceallevel=0
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set noexpandtab
 set autoindent
-set ruler                     " for cursor position in the bottom right corner
-set number                    " number lines
+set ruler                      " for cursor position in the bottom right corner
+set number                     " number lines
 set relativenumber
-set scrolloff=3               " visual rows above and below cursor
-set sidescroll=3              " visual columns on sides of cursor
-set cursorline                " highlight line where cursor is
-set hls                       " highlighting!
+set scrolloff=3                " visual rows above and below cursor
+set sidescroll=3               " visual columns on sides of cursor
+set cursorline                 " highlight line where cursor is
+set hls                        " highlighting!
 set wrap
-set nolinebreak               " break lines if window is too narrow
-set formatoptions+=j          " smart line joining. uncomments comments.
-set lazyredraw                " don't redraw screen during macros
-set breakindent               " wrapped line s keep indentation (set bri)
-let &showbreak=               " ↪ "
-set breakindentopt=shift:0    " how far in the breakindent:  ↪ showbreak should be
-set nuw=4                     " width of numberline
-set mouse=a                   " mouse functionality
-set timeoutlen=500            " ms to wait for command completion
-set ttimeoutlen=0             " don't wait for <esc>
-set incsearch                 " search starts when typing instead of waiting for <enter>
-set virtualedit=block					" ,onemore " 'block' makes it possible to edit empty space in visualblock
+set nolinebreak                " break lines if window is too narrow
+set formatoptions+=j           " smart line joining. uncomments comments.
+set lazyredraw                 " don't redraw screen during macros
+set breakindent                " wrapped line s keep indentation (set bri)
+let &showbreak=" ↪ "
+set breakindentopt=shift:0     " how far in the breakindent:  ↪ showbreak should be
+set nuw=4                      " width of numberline
+set mouse=a                    " mouse functionality
+set timeoutlen=500             " ms to wait for command completion
+set ttimeoutlen=0              " don't wait for <esc>
+set incsearch                  " search starts when typing instead of waiting for <enter>
+set virtualedit=block          " ,onemore" 'block' makes it possible to edit empty space in visualblock
 set nobackup
 set nowritebackup
 set noswapfile
-set ignorecase                " (in)case sensitive search
+set ignorecase								 " (in)case sensitive search
 set smartcase
 set switchbuf=usetab
 set wildmenu
 set wildchar=<tab>
 set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,resize
-set synmaxcol=170							" Maximum column in which to search for syntax items
+set synmaxcol=170   " Maximum column in which to search for syntax items
 set splitbelow
 set splitright
-set gdefault "with this:  s/foo/bar --> s/foo/bar/g by default. ´g´ reverses its meaning.
+set gdefault				"with this:  s/foo/bar --> s/foo/bar/g by default. ´g´ reverses its meaning.
+
 " Wildmenu completion {{{
 set wildmenu
 set wildmode=list:longest
-
 set wildignore+=.hg,.git,.svn                    " Version control
 set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
 set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
@@ -145,10 +148,8 @@ set wildignore+=*.spl                            " compiled spelling word lists
 set wildignore+=*.sw?                            " Vim swap files
 set wildignore+=*.DS_Store                       " OSX bullshit
 set wildignore+=*.luac                           " Lua byte code
-
 set wildignore+=migrations                       " Django migrations
 set wildignore+=*.pyc                            " Python byte code
-
 set wildignore+=*.orig                           " Merge resolution files
 set wildignore+=*.fasl                           " Lisp FASLs
 
