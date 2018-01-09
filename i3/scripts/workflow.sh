@@ -6,7 +6,6 @@ term=st
 # Todo: get the current screen used and use layout file that matches.
 i3-msg append_layout "$WS_LAYOUT_FILE"
 
-$term tmux -c ranger &
-$term -e tmux -c htop &
-$term -e tmux -c gtop &
+$term -e tmux &
+$term -e tmux -c "cd ~/com_sci/Master_code/project/project && vim" &
 $term -e tmux -c vtop &

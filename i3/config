@@ -120,6 +120,7 @@ bindsym $mod2+F8 exec ~/.files/Scripts/monitor_toggle
 
 #===== SCRIPTS ==========={{{
 set $tmuxscripts ~/.files/Scripts/tmux
+set $i3scripts ~/.files/i3/scripts
 # test
 # bindsym $mod+Shift+t exec $tmuxscripts/base.sh
 
@@ -131,6 +132,8 @@ bindsym $mod+i exec $tmuxscripts/Vim.sh
 bindsym $mod+p workspace $ws6 focus, exec $tmuxscripts/personal.sh
 bindsym $mod+o workspace $ws3 focus, exec $tmuxscripts/work_tmux.sh
 bindsym $mod+e workspace $ws1 focus, exec $tmuxscripts/SSH.sh
+
+bindsym $mod+Ctrl+o workspace $ws3 focus, exec $i3scripts/workflow.sh
 
 # older
 bindsym $mod+Shift+d exec bash ~/.files/Scripts/open_last_log.sh

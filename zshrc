@@ -1,5 +1,4 @@
 # ========= SETTINGS ============
-#
 # ZSH ubuntu 16.04 - simple terminal
 # Erik
 # 2017
@@ -54,19 +53,34 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 
 #==== FZF =====
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 export FZF_DEFAULT_OPTS='--height 40% --reverse'
-# export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude ".git"' 
-export FZF_CTRL_R_OPTS="--reverse"
-
-export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
-
-export FZF_ALT_C_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 export FZF_COMPLETION_OPTS='+c -x'
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude ".git"'  # export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+export FZF_CTRL_R_OPTS="--reverse"
+export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
+export FZF_ALT_C_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
+
+# Want a hot key and go to any directory from wherever I am
+# cf - fuzzy cd from anywhere
+# ex: cf word1 word2 ... (even part of a file name)
+# zsh autoload function
+cf() {
+  local file
+  file="$(locate -Ai -0 $@ | grep -z -vE '~$' | fzf --read0 -0 -1)"
+  if [[ -n $file ]]
+  then
+     if [[ -d $file ]]
+     then
+        cd -- $file
+     else
+        cd -- ${file:h}
+     fi
+  fi
+}
 
 # - The first argument to the function ($1) is the base path to start traversal 
 # - See the source code (completion.{bash,zsh}) for the details. 
-#
 _fzf_compgen_path() { 
 	fd --hidden --follow --exclude ".git" . "$1" 
 } 
