@@ -90,7 +90,6 @@ for_window [class="st-256color" title="rangerTerm"] mark "ranger" move scratchpa
 #========= MAPPINGS =============={{{
 bindsym $mod+Ctrl+n exec nautilus --no-desktop
 bindsym $mod+Ctrl+s exec shutter -s
-# bindsym $mod+Shift+t exec ~/Downloads/TeamSpeak3-Client-linux_amd64/ts3client_runscript.sh
 bindsym $mod+Shift+s exec $Music
 bindsym $mod+Ctrl+g exec $Browser -new-window
 bindsym $mod+Ctrl+y exec $chrome -new-window --app=https://www.youtube.com 
@@ -157,6 +156,7 @@ bindsym $mod+q exec rofi rofi -show ssh -lines 8 -padding 10
 # Scratchpad floaters
 for_window [class="st-256color" title="rangerTerm"] mark "ranger", scratchpad show
 for_window [class="Spotify"] mark "music", move scratchpad, [con_mark="music"] scratchpad show
+
 for_window [class="Google-chrome" instance="www.youtube.com"] mark "youtube", \
 																															floating enable, \
 																															move scratchpad, \
@@ -234,14 +234,6 @@ for_window [class="^.*"] border pixel 0
 # initial gap size
 gaps inner 10
 gaps outer 10 
-
-# Workspace specific gaps
-workspace $ws1 gaps inner 0
-workspace $ws1 gaps outer 0
-workspace $ws2 gaps inner 0
-workspace $ws2 gaps outer 0
-workspace $ws8 gaps inner 0
-workspace $ws8 gaps outer 0
 
 # Gap size
 set $gap "Gap size: (O/o)uter, (I/i)nner, (r)eset, (n)one"
@@ -328,31 +320,6 @@ bindsym $mod+z focus child
 # bindsym $mod+e layout toggle split
 
 #}}}
-#========= i3-BAR ================{{{
-# Start i3bar to display a workspace bar (plus the system information i3status
-# bar {
-# 	colors {
-# 		# Whole color settings
-# 		background #000000
-# 		statusline #00CDFF
-# 		separator  #FFFFFF
-#
-# 		# Type             border  background font
-# 		focused_workspace  #008FB3 #00CDFF #000000
-# 		active_workspace   #333333 #5f676a #ffffff
-# 		inactive_workspace #333333 #222222 #888888
-# 		urgent_workspace   #aa0000 #990000 #ffffff
-# 	}
-#     separator_symbol "|"
-#     workspace_buttons yes # Show workspace buttons
-#     strip_workspace_numbers no # strip away WS numbers
-# 	position top # i3bar position
-#
-# 	# Using custom i3status.conf
-# 	status_command i3status -c ~/.config/i3/i3status.conf
-# }
-# }}}
-
 #========= SHUTDOWN =============={{{
 # TODO : scripts that syncs github on exit/Start
 # Create Log out, Reboot, Poweroff bindings

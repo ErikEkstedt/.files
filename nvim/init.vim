@@ -64,6 +64,8 @@ Plug 'PotatoesMaster/i3-vim-syntax'     " syntax for i3 config
 Plug 'octol/vim-cpp-enhanced-highlight' " Extra highlight for cpp
 Plug 'othree/xml.vim'
 Plug 'nelstrom/vim-markdown-folding'    " help with folding in markdown
+Plug 'elzr/vim-json' 
+Plug 'ron89/thesaurus_query.vim'
 
 " ============ Snippets ===============================
 Plug 'SirVer/ultisnips'                 " snippet engine
@@ -79,7 +81,7 @@ filetype plugin indent on
 syntax enable
 
 let HOSTNAME = substitute(system('hostname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
-let BROWSER = "firefox"
+let g:BROWSER = "firefox"
 let mapleader = ','
 set spelllang=en_us            " US English spelling
 set ffs=unix,dos,mac           " File Format (relevant to line ending type)

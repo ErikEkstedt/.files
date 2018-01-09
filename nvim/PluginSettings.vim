@@ -86,7 +86,7 @@ vnoremap <silent> <Leader>t- :Tabularize /-<CR>
 " " open NERDTree on startup
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-let NERDTreeIgnore=['\.pyc$', '\.png$', '\.aux$', '\.bbl$', '\.fls$', '\.blg$', '\.log$', '\.fdb_latexmk$','\.gz$']
+let NERDTreeIgnore=['\.pyc$', '\.png$', '\.aux$', '\.out', '\.bbl$', '\.fls$', '\.blg$', '\.log$', '\.fdb_latexmk$','\.gz$']
 let NERDTreeShowBookmarks = 1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 map <C-n> :NERDTreeToggle<CR>
@@ -232,7 +232,7 @@ let g:livedown_open = 1
 let g:livedown_port = 1337
 
 " the browser to use
-let g:livedown_browser = BROWSER
+let g:livedown_browser = g:BROWSER
 
 nnoremap <leader>gt :LivedownToggle<CR>
 nnoremap <leader>gp :LivedownPreview<CR>
@@ -316,7 +316,6 @@ augroup END
 "}}}
 "============== GoYo ========================={{{
 " Trigger configuration. 
-" Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe. 
 let g:goyo_width  = 80  " (default: 80)
 let g:goyo_linenr = 0   " (default: 0)
 
@@ -326,7 +325,7 @@ function! s:goyo_enter()
   silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
   set noshowmode
   set noshowcmd
-  set scrolloff=999
+	set cursorline
 endfunction
 
 function! s:goyo_leave()
@@ -334,7 +333,6 @@ function! s:goyo_leave()
   silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
   set showmode
   set showcmd
-  set scrolloff=5
 endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
@@ -354,6 +352,8 @@ inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 "============== Scratch ======================{{{
 let g:scratch_insert_autohide = 0
 let g:scratch_no_mappings = 1
+
+" nmap gs :ScratchPreview<CR>
 nmap gs <plug>(scratch-insert-reuse)
 nmap gS <plug>(scratch-insert-clear)
 xmap gs <plug>(scratch-selection-reuse)
@@ -361,4 +361,13 @@ xmap gS <plug>(scratch-selection-clear)
 
 let g:scratch_height = 10
 let g:scratch_filetype = 'markdown'
+" let g:scratch_persistence_file = ".scratch.md"
+
+"}}}
+"============== vim-json ====================={{{
+
+" trick to format json
+"  :%!python -m json.tool  
+
+
 "}}}
