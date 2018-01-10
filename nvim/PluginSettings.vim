@@ -12,10 +12,10 @@ nnoremap <silent> <Right> :TmuxNavigateRight<cr>
 let g:instant_rst_bind_scroll = 0
 " }}}
 "============== Slimux ======================={{{
-nnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>
-vnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>gv<Esc>zz
-nnoremap <C-c><C-x> :SlimuxREPLConfigure<CR>
-vnoremap <C-c><C-x> :SlimuxREPLConfigure<CR>
+" nnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>
+" vnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>gv<Esc>zz
+" nnoremap <C-c><C-x> :SlimuxREPLConfigure<CR>
+" vnoremap <C-c><C-x> :SlimuxREPLConfigure<CR>
 " }}}
 "============== Vim-netrw ===================={{{
 let g:netrw_banner = 0 "no banner
@@ -365,9 +365,18 @@ let g:scratch_filetype = 'markdown'
 
 "}}}
 "============== vim-json ====================={{{
-
 " trick to format json
 "  :%!python -m json.tool  
+"}}}
+"============== vim-ipython =================={{{
+"Don't show the console in vim
+let g:ipy_monitor_subchannel = 0
 
+" only custom mappings
+let g:ipy_perform_mappings = 0
+
+nmap <C-c><C-c> <Plug>(IPython-RunLines)
+xmap <C-c><C-c> <Plug>(IPython-RunLines)
+vmap <C-c><C-c> <Plug>(IPython-RunLines)
 
 "}}}

@@ -36,6 +36,8 @@ Plug 'skielbasa/vim-material-monokai'
 
 " ============ Useful Tools ===========================
 Plug 'epeli/slimux'                       " vim+ipython REPL
+Plug 'wmvanvliet/vim-ipython'  
+
 Plug 'tpope/vim-surround'                 " Parentheses, brackets, quotes, XML tags, and more
 Plug 'tpope/vim-repeat'                   " repeat commands not repeatable by 'vanilla' vim
 Plug 'godlygeek/tabular'                  " structure text
