@@ -35,18 +35,18 @@ Plug 'chriskempson/base16-vim'
 Plug 'skielbasa/vim-material-monokai'
 
 " ============ Useful Tools ===========================
-Plug 'epeli/slimux'                       " vim+ipython REPL
-Plug 'wmvanvliet/vim-ipython'  
-
-Plug 'tpope/vim-surround'                 " Parentheses, brackets, quotes, XML tags, and more
-Plug 'tpope/vim-repeat'                   " repeat commands not repeatable by 'vanilla' vim
-Plug 'godlygeek/tabular'                  " structure text
-Plug 'tomtom/tcomment_vim'                " smart comments
-Plug 'christoomey/vim-tmux-navigator'     " navigate between vim and tmuz seemlessly
-Plug 'itchyny/calendar.vim'               " Calendar for vim
+" Plug 'epeli/slimux'
+Plug 'lotabout/slimux'                 " old: 'epeli/slimux' | vim+ipython OUtdated
+Plug 'wmvanvliet/vim-ipython'
+Plug 'tpope/vim-surround'              " Parentheses, brackets, quotes, XML tags, and more
+Plug 'tpope/vim-repeat'                " repeat commands not repeatable by 'vanilla' vim
+Plug 'godlygeek/tabular'               " structure text
+Plug 'tomtom/tcomment_vim'             " smart comments
+Plug 'christoomey/vim-tmux-navigator'  " navigate between vim and tmuz seemlessly
+Plug 'itchyny/calendar.vim'            " Calendar for vim
 Plug 'Valloric/MatchTagAlways'
-Plug 'nelstrom/vim-visual-star-search'    " * on visual select seraches for the snippet
-Plug 'mtth/scratch.vim'   " Unobtrusive scratch
+Plug 'nelstrom/vim-visual-star-search' " * on visual select seraches for the snippet
+Plug 'mtth/scratch.vim'                " Unobtrusive scratch
 
 "  Plug 'vimwiki/vimwiki'                    " Personal Wiki
 

@@ -252,7 +252,7 @@ c.ConsoleWidget.include_other_output = True
 #c.JupyterWidget.in_prompt = 'In [<span class="in-prompt-number">%i</span>]: '
 
 ##
-#c.JupyterWidget.input_sep = '\n'
+c.JupyterWidget.input_sep = '\n'
 
 ##
 #c.JupyterWidget.out_prompt = 'Out[<span class="out-prompt-number">%i</span>]: '
