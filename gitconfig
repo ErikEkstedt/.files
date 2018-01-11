@@ -3,7 +3,7 @@
 	email = eeckee@gmail.com
 	name = Erik
 [core]
-	editor = vim
+	editor = nvim
 	excludesfile = "~/.files/gitignore"
 [push]
 	default = simple
@@ -18,4 +18,4 @@
 [difftool]
   prompt = false
 [diff]
-tool = vimdiff
+	tool = vimdiff

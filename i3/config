@@ -145,12 +145,10 @@ resize grow down 200, resize grow up 250
 
 
 # start rofi (program launcher)
-
 bindsym $mod+Ctrl+d exec rofi rofi -show run -lines 8 -padding 10
 bindsym $mod+w exec rofi rofi -show window -lines 8 -padding 10
-# bindsym $mod+q exec rofi rofi -show ssh -terminal $term -lines 8 -padding 10
-bindsym $mod+q exec rofi rofi -show ssh -lines 8 -padding 10
-# bindsym $mod+w exec bash -c "ls /usr/share/man/man1 | rofi -dmenu -prompt 'Man>'" 
+bindsym $mod+q exec rofi rofi -show ssh -terminal $term -lines 8 -padding 10
+
 
 # 'ls /usr/local/share/man/'"
 #}}}
