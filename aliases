@@ -43,6 +43,7 @@ alias gho="cd ~/"
 alias gma="cd ~/com_sci/Master_code; ls"
 alias gml="cd ~/com_sci/ML; ls"
 alias gpr="cd ~/com_sci/Master_code/project/project; ls"
+alias gass="cd ~/com_sci/Ideas/assistant; ls"
 
 alias gla="cd ~/Documents/latex; ls"
 alias gno="cd ~/Documents/latex/Notes; ls *.tex"
@@ -70,6 +71,8 @@ function sonao() { # auto git
     export PYTHONPATH="/home/erik/anaconda3/envs/Naoqi/lib/python2.7/site-packages/pynaoqi-python2.7-2.5.5.5-linux64/lib/python2.7/site-packages"
 }
 alias sorobo="source activate roboschool"
+alias soasst="source activate assistant"
+
 alias soros="source /opt/ros/kinetic/setup.zsh"
 alias sonupic="source activate nupic"
 alias sobull="source activate bullet"

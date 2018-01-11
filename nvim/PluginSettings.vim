@@ -54,6 +54,13 @@ nnoremap <Leader>gcm :Gcommit<CR>
 nnoremap <Leader>gc  :Gwrite<CR>:Gcommit<CR>
 nnoremap <Leader>gps :Gpush<CR>
 nnoremap <Leader>gpl :Gpull<CR>
+
+"  Clue 1.
+"  * automerge diff track.
+" <<<<<<< 
+nnoremap <Leader>gdi  /<<<<<<<<CR>n<C-o>zz
+
+
 " }}}
 "============== Lightline ===================={{{
 "wombat, solarized, powerline, jellybeans, Tomorrow,
