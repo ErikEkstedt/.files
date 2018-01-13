@@ -204,7 +204,8 @@ for_window [class="^.*"] border pixel 0
 # for_window [class="Google-chrome"] border pixel 5
 
 set $color.gray = #A7A7A7  
-set $color.gray = #A7A7A7  
+set $color.white = #FFFFFF
+set $color.black = #000000
 
 # color of focused window
 client.focused $color.gray $color.gray $color.gray
@@ -213,16 +214,18 @@ client.focused $color.gray $color.gray $color.gray
 # initial gap size
 set $gi 5
 set $go 0
+set $ginc 1
+
 gaps inner $gi
 gaps outer $go
 
 # Gap size
 set $gap "Gap size: (O/o)uter, (I/i)nner, (r)eset, (n)one"
 mode $gap{
-	bindsym Shift+i gaps inner current plus 2
-	bindsym i gaps inner current minus 2
-	bindsym Shift+o	gaps outer current plus 2
-	bindsym o gaps outer current minus 2
+	bindsym Shift+i gaps inner current plus $ginc
+	bindsym i gaps inner current minus $ginc
+	bindsym Shift+o	gaps outer current plus $ginc
+	bindsym o gaps outer current minus $ginc
 
 	bindsym r gaps inner current set $gi, gaps outer current set $go
 	bindsym n gaps inner current set 0, gaps outer current set 0
