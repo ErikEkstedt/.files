@@ -1,3 +1,4 @@
+#vim:fdm=marker
 # =============================================
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
@@ -5,9 +6,10 @@
 # =============================================
 
 # MOD-keys
-# mod: Alt, mod2: win
+# BASH$ xmodmap
+# mod1: Alt, mod2: num_lock , mod3: , mod4: R_win, L_win
 set $mod Mod1
-set $mod2 Mod4
+set $win Mod4
 
 #========= VARIABLES ============={{{
 # SET VARIABLES
@@ -21,8 +23,6 @@ set $Browser firefox
 set $Music spotify
 set $Editor vim
 
-floating_modifier $mod
-focus_follows_mouse no
 bindsym $mod+Shift+q kill
 font pango:monospace 10
 
@@ -31,8 +31,8 @@ bindsym $mod+Ctrl+c reload
 bindsym $mod+Ctrl+r restart
 
 # Lock computer/ Ctrl Alt Delete 
-bindsym $mod2+l exec bash -c "gnome-screensaver-command -l"
-bindsym $mod2+F1 exec bash -c "systemctl suspend"
+bindsym $win+l exec bash -c "gnome-screensaver-command -l"
+bindsym $win+F1 exec bash -c "systemctl suspend"
 bindsym $mod+Ctrl+Delete exec gnome-system-monitor
 #}}}
 #========= WORKSPACES ============{{{
@@ -88,76 +88,57 @@ for_window [class="st-256color" title="rangerTerm"] mark "ranger" move scratchpa
 
 #}}}
 #========= MAPPINGS =============={{{
-bindsym $mod+Ctrl+n exec nautilus --no-desktop
-bindsym $mod+Ctrl+s exec shutter -s
-bindsym $mod+Shift+s exec $Music
-bindsym $mod+Ctrl+g exec $Browser -new-window
-bindsym $mod+Ctrl+y exec $chrome -new-window --app=https://www.youtube.com 
-
-# Touchpad
-bindsym $mod+a exec bash ~/.files/Scripts/Laptop/touchpad_onoff.sh
-
-#============== TERMINAL ==========================
-bindsym $mod+Return exec $term
-bindsym $mod+Shift+Return exec $term -T "scratchTerm"
-
-bindsym $mod+t exec ~/.files/Scripts/tlist.sh
+set $tmuxscripts ~/.files/Scripts/tmux
+set $i3scripts ~/.files/i3/scripts
 
 # Scratchpad
 bindsym Mod1+Tab scratchpad show
 bindsym Mod1+Shift+Tab move scratchpad
 
+bindsym $mod+Return exec $term
+bindsym $mod+a exec bash ~/.files/Scripts/Laptop/touchpad_onoff.sh
+bindsym $mod+t exec ~/.files/Scripts/tlist.sh
 bindsym $mod+g [con_mark="browser"] scratchpad show
 bindsym $mod+s [con_mark="music"] scratchpad show
 bindsym $mod+r [con_mark="ranger"] scratchpad show
 bindsym $mod+y [con_mark="youtube"] scratchpad show
-
-bindsym $mod+Shift+r exec $term -t "rangerTerm" -e ~/.files/Scripts/tmux/ranger.sh
-
-# Monitor Setup
-bindsym $mod2+m move workspace to output up
-bindsym $mod2+F8 exec ~/.files/Scripts/monitor_toggle
-
-#===== SCRIPTS ==========={{{
-set $tmuxscripts ~/.files/Scripts/tmux
-set $i3scripts ~/.files/i3/scripts
-# test
-# bindsym $mod+Shift+t exec $tmuxscripts/base.sh
-
 bindsym $mod+n workspace $ws6 focus, exec $tmuxscripts/notes_tmux.sh
 bindsym $mod+d workspace $ws6 focus, exec ~/.files/Scripts/new_log
 bindsym $mod+c workspace $ws7 focus, exec $tmuxscripts/config_tmux.sh
-# bindsym $mod+i workspace $ws4 focus, exec $tmuxscripts/Vim.sh
 bindsym $mod+i exec $tmuxscripts/Vim.sh
 bindsym $mod+p workspace $ws6 focus, exec $tmuxscripts/personal.sh
 bindsym $mod+o workspace $ws3 focus, exec $tmuxscripts/work_tmux.sh
 bindsym $mod+e workspace $ws1 focus, exec $tmuxscripts/SSH.sh
-
-bindsym $mod+Ctrl+o workspace $ws3 focus, exec $i3scripts/workflow.sh
-
-# older
-bindsym $mod+Shift+d exec bash ~/.files/Scripts/open_last_log.sh
-bindsym $mod+Shift+n exec ~/.files/Scripts/new_note
-bindsym $mod+b exec $term -t "ref" -e "vim /home/erik/Documents/latex/References.bib"
-for_window [class="st-256color" title="ref"] floating enable, \
-resize grow left 20, resize grow right 300, \
-resize grow down 200, resize grow up 250 
-
-
-# start rofi (program launcher)
-bindsym $mod+Ctrl+d exec rofi rofi -show run -lines 8 -padding 10
 bindsym $mod+w exec rofi rofi -show window -lines 8 -padding 10
 bindsym $mod+q exec rofi rofi -show ssh -terminal $term -lines 8 -padding 10
 
 
-# 'ls /usr/local/share/man/'"
-#}}}
+bindsym $mod+Shift+s workspace $ws9, exec $Music, mark "music
+bindsym $mod+Shift+r exec $term -t "rangerTerm" -e ~/.files/Scripts/tmux/ranger.sh
+bindsym $mod+Shift+Return exec $term -T "scratchTerm"
+bindsym $mod+Shift+b floating enable, move position center
+
+
+bindsym $mod+Ctrl+d exec rofi rofi -show run -lines 8 -padding 10
+bindsym $mod+Ctrl+o workspace $ws3 focus, exec $i3scripts/workflow.sh
+bindsym $mod+Ctrl+n exec nautilus --no-desktop
+bindsym $mod+Ctrl+s exec shutter -s
+bindsym $mod+Ctrl+g exec $Browser -new-window
+bindsym $mod+Ctrl+y exec $chrome -new-window --app=https://www.youtube.com 
+bindsym $mod+Ctrl+b floating enable, resize set 1440 1000, move position center
+
+# Monitor Setup
+bindsym $win+m move workspace to output up
+bindsym $win+F8 exec ~/.files/Scripts/monitor_toggle
+
 #}}}
 #========= FLOATING CLASSES ======{{{
+
+floating_modifier $mod
+focus_follows_mouse no
+
 # Scratchpad floaters
 for_window [class="st-256color" title="rangerTerm"] mark "ranger", scratchpad show
-# for_window [class="Spotify"] mark "music", move scratchpad, [con_mark="music"] scratchpad show
-for_window [class="Spotify"] mark "music", move $ws9, [con_mark="music"]
 for_window [class="Google-chrome" instance="www.youtube.com"] mark "youtube", \
 																															floating enable, \
 																															move scratchpad, \
@@ -165,11 +146,8 @@ for_window [class="Google-chrome" instance="www.youtube.com"] mark "youtube", \
 																															resize set 1440 1000, \
 																															move position center
 
-for_window [class="Firefox" instance="Navigator"] mark "browser", floating enable, \
-																									move scratchpad, \
-																									scratchpad show, \
-																									resize set 1440 1000, \
-																									move position center
+# for_window [class="Spotify"] mark "music", move scratchpad, [con_mark="music"] scratchpad show
+# for_window [class="Spotify"] mark "music", move $ws9, [con_mark="music"]
 
 # Regular floaters
 for_window [class="Simplescreenrecorder"] floating enable
@@ -199,9 +177,6 @@ for_window [class="Matplotlib"] floating enable
 floating_minimum_size 75 x 74
 floating_maximum_size 3440 x 1440 
 
-# Set floating window size
-bindsym $mod+Ctrl+b floating enable, resize set 1440 1000, move position center
-bindsym $mod+Shift+b floating enable, move position center
 
 # Floating Toggle
 set $FloatSize "Float size: 1-4, (f)loating enable "
@@ -217,9 +192,10 @@ mode $FloatSize{
 	bindsym Escape mode "default"
 }
 bindsym $mod+Shift+w mode $FloatSize
+
 #}}}
 #========= APPEARENCE ============{{{
-hide_edge_borders both
+hide_edge_borders smart
 for_window [class="^.*"] border pixel 0
 
 # for_window [class="^.*"] border pixel 1
@@ -227,14 +203,16 @@ for_window [class="^.*"] border pixel 0
 # for_window [class=" "] border pixel 5
 # for_window [class="Google-chrome"] border pixel 5
 
+set $color.gray = #A7A7A7  
+set $color.gray = #A7A7A7  
+
 # color of focused window
-# client.focused #00CDFF #00CDFF #00CDFF  # Teal  
-# client.focused #A7A7A7 #A7A7A7 #A7A7A7
+client.focused $color.gray $color.gray $color.gray
 # client.focused #ff6417 #ff6417 #ff6417
 
 # initial gap size
-gaps inner 10
-gaps outer 10 
+gaps inner 5
+gaps outer 5
 
 # Gap size
 set $gap "Gap size: (O/o)uter, (I/i)nner, (r)eset, (n)one"
@@ -244,31 +222,34 @@ mode $gap{
 	bindsym Shift+o	gaps outer current plus 5
 	bindsym o gaps outer current minus 5
 
-	bindsym r gaps inner current set 15, gaps outer current set 15
+	bindsym r gaps inner current set 5, gaps outer current set 5
 	bindsym n gaps inner current set 0, gaps outer current set 0
 
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
 }
 bindsym $mod+Shift+g mode $gap
+
 #}}}
 #========= MEDIA KEY BINDINGS ===={{{
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
-bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 
-# Desktop
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioStop exec playerctl stop
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# DESKTOP Settings
 bindsym Shift+XF86AudioRaiseVolume exec pactl set-sink-volume 1 +5%
 bindsym Shift+XF86AudioLowerVolume exec pactl set-sink-volume 1 -5%
 bindsym Shift+XF86AudioMute exec pactl set-sink-mute 1 toggle
 
-# Media player controls
-#bindsym XF86AudioPlay exec playerctl play
-#bindsym XF86AudioPause exec playerctl pause
-#bindsym XF86AudioNext exec playerctl next
-#bindsym XF86AudioPrev exec playerctl previous
-
 # LAPTOP Settings
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
+bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
+
+
 # Xrandr brightness
 bindsym XF86MonBrightnessUp exec ~/.files/Scripts/Laptop/screen_bright -u
 bindsym XF86MonBrightnessDown exec ~/.files/Scripts/Laptop/screen_bright -d
@@ -282,32 +263,25 @@ bindsym XF86KbdBrightnessDown exec sudo ~/.files/Scripts/Laptop/backlit_keys dow
 
 # Hibernate
 bindsym XF86Sleep exec systemctl hybrid-sleep
+
 #}}}
 #========= MOVEMENTS ============={{{
-# change focus
 bindsym $mod+Shift+h focus left
 bindsym $mod+Shift+j focus down
 bindsym $mod+Shift+k focus up
 bindsym $mod+Shift+l focus right
 
-# # change workspace
-# bindsym $mod+Ctrl+l workspace next
-# bindsym $mod+Ctrl+h workspace prev
-
-# resize
-set $growth 3
+set $growth 1
 bindsym $mod+Shift+y resize shrink width $growth px or $growth ppt
 bindsym $mod+Shift+i resize grow height $growth px or $growth ppt
 bindsym $mod+Shift+u resize shrink height $growth px or $growth ppt
 bindsym $mod+Shift+o resize grow width $growth px or $growth ppt
 
-# move focused window
 bindsym $mod+Ctrl+h move left
 bindsym $mod+Ctrl+j move down
 bindsym $mod+Ctrl+k move up
 bindsym $mod+Ctrl+l move right
 
-# split in horizontal orientation
 bindsym $mod+Shift+v split h
 bindsym $mod+v split v
 
@@ -318,12 +292,9 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 bindsym $mod+Shift+z focus parent
 bindsym $mod+z focus child
-# bindsym $mod+e layout toggle split
 
 #}}}
 #========= SHUTDOWN =============={{{
-# TODO : scripts that syncs github on exit/Start
-# Create Log out, Reboot, Poweroff bindings
 set $reboot_choice "Exit (L)ogout, (R)eboot, (P)oweroff"
 mode $reboot_choice{
 	bindsym $mod+r exec systemctl reboot
@@ -335,24 +306,5 @@ mode $reboot_choice{
 	bindsym Escape mode "default"
 }
 bindsym $mod+Ctrl+e mode $reboot_choice
-#}}}
-#========= CONFIG MENU ==========={{{
-set $config_choice "Config: (i)3, (V)im, (R)anger, (Z)sh, (X)defaults, (P)ython.vim, t(E)x.vim, (T)mux, (C)onfig folder in vim "
-mode $config_choice{
-	bindsym $mod+v exec $term -e bash -c "stty -ixon && vim ~/.files/vimrc", mode "default"
-	bindsym $mod+r exec $term -e bash -c "stty -ixon && vim ~/.files/ranger/rc.conf", mode "default"
-	bindsym $mod+z exec $term -e bash -c "stty -ixon && vim ~/.files/zshrc", mode "default"
-	bindsym $mod+i exec $term -e bash -c "stty -ixon && vim ~/.files/i3/config", mode "default"
-	bindsym $mod+x exec $term -e bash -c "stty -ixon && vim ~/.files/Xresources", mode "default"
-	bindsym $mod+p exec $term -e bash -c "stty -ixon && vim ~/.files/vim/ftplugin/python.vim ", mode "default"
-	bindsym $mod+e exec $term -e bash -c "stty -ixon && vim ~/.files/vim/ftplugin/tex.vim", mode "default"
-	bindsym $mod+t exec $term -e bash -c "stty -ixon && vim ~/.files/tmux.conf", mode "default"
-	bindsym $mod+o exec $term -e bash -c "stty -ixon && cd ~/com_sci/Master_code/Robot && vim"
 
-	bindsym Return mode "default"
-	bindsym Escape mode "default"
-}
-bindsym $mod+Shift+e mode $config_choice
 #}}}
-
-#vim:fdm=marker
