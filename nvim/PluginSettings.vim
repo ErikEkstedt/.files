@@ -60,7 +60,6 @@ nnoremap <Leader>gpl :Gpull<CR>
 " <<<<<<< 
 nnoremap <Leader>gdi  /<<<<<<<<CR>n<C-o>zz
 
-
 " }}}
 "============== Lightline ===================={{{
 "wombat, solarized, powerline, jellybeans, Tomorrow,
