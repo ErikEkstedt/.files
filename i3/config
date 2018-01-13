@@ -233,18 +233,20 @@ for_window [class="^.*"] border pixel 0
 # client.focused #ff6417 #ff6417 #ff6417
 
 # initial gap size
-gaps inner 10
-gaps outer 10 
+set $gi 10
+set $go 0
+gaps inner $gi
+gaps outer $go
 
 # Gap size
 set $gap "Gap size: (O/o)uter, (I/i)nner, (r)eset, (n)one"
 mode $gap{
-	bindsym Shift+i gaps inner current plus 5
-	bindsym i gaps inner current minus 5
-	bindsym Shift+o	gaps outer current plus 5
-	bindsym o gaps outer current minus 5
+	bindsym Shift+i gaps inner current plus 2
+	bindsym i gaps inner current minus 2
+	bindsym Shift+o	gaps outer current plus 2
+	bindsym o gaps outer current minus 2
 
-	bindsym r gaps inner current set 15, gaps outer current set 15
+	bindsym r gaps inner current set $gi, gaps outer current set $go
 	bindsym n gaps inner current set 0, gaps outer current set 0
 
 	bindsym Return mode "default"
