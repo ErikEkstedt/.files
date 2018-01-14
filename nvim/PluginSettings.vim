@@ -122,14 +122,14 @@ nnoremap gK :call pymode#motion#move('^\s*class\s', 'b')<CR>zz
 " }}}
 let g:pymode_python = 'python3'
 " rope {{{
-let g:pymode_rope                            = 1
+let g:pymode_rope                            = 0
 let g:pymode_rope_completion                 = 0
 let g:pymode_rope_complete_on_dot            = 0
 let g:pymode_rope_auto_project               = 0
 let g:pymode_rope_autoimport_generate        = 0
 let g:pymode_rope_guess_project              = 0
 
-let g:pymode_rope_enable_autoimport          = 1
+let g:pymode_rope_enable_autoimport          = 0
 let g:pymode_rope_organize_imports_bind = '<C-c>ro'
 
 "}}}
@@ -169,8 +169,7 @@ let g:pymode_syntax_docstrings               = g:pymode_syntax_all
 "}}}
 
 " code folding
-" YCM became super slow and the folding kinda stunk.
-let g:pymode_folding=1
+let g:pymode_folding=0
 
 " pep8 indents
 let g:pymode_indent=1
@@ -253,7 +252,9 @@ nnoremap <Leader>he :Helptags<CR>
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
+  \ 'ctrl-v': 'vsplit',
+  \ 'ctrl-o': 'edit',
+  \ 'Enter': 'vsplit', }
 
 "}}}
 "============== UltiSnips ===================={{{
@@ -308,6 +309,8 @@ nnoremap <leader>gg :Goyo<CR>
 
 "}}}
 "============== ALE =========================={{{
+" Start of, toggle to init
+let g:ale_enabled = 0
 " Use quickfix list. Open list
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
@@ -316,7 +319,7 @@ let g:ale_open_list = 1
 " Appearance
 " characters might messup appearance
 let g:ale_sign_error = '✘'
-let g:ale_sign_warning = '⁇'
+let g:ale_sign_warning = '?'
 let g:ale_sign_column_always = 1
 
 " highlight ALEWarningSign guibg=303030 guifg=
@@ -324,7 +327,7 @@ let g:ale_sign_column_always = 1
 
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_echo_msg_format = '[%linter%][%severity%] %s'
 
 " pylint
 "\   'python': ['pylint', 'pycodestyle', 'yapf', 'isort'],
@@ -332,8 +335,12 @@ let g:ale_linters = {
 \   'python': ['pylint', 'yapf', 'isort', 'mccabe'],
 \}
 
-nnoremap ge :ALENext<CR>
-nnoremap gr :ALEPrevious<CR>
+" Mappings
+nmap ge <Plug>(ale_next_wrap)
+nmap gr <Plug>(ale_previous_wrap)
+
+nmap <leader>at <Plug>(ale_toggle)
+
 "}}}
 "============== Deoplete ====================={{{
 " Use deoplete.
