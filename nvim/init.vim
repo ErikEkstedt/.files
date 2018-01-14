@@ -28,7 +28,8 @@ Plug 'itchyny/lightline.vim'              " light weight status bar
 Plug 'vim-scripts/Wombat'		              " Wombat colorscheme
 Plug 'edkolev/tmuxline.vim'
 Plug 'junegunn/goyo.vim'									" Distraction free writing
-Plug 'junegunn/limelight.vim'							" Focus colors
+Plug 'junegunn/limelight.vim'							" Focus color
+Plug 'luochen1990/rainbow'
 
 " ============ Colorschemes ===========================
 Plug 'chriskempson/base16-vim'
