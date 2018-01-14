@@ -64,13 +64,14 @@ Plug 'Rykka/InstantRst'                   " Preview rst in browser (Fast)
 Plug 'shime/vim-livedown'									" Preview markdowns with npm/node Livedown
 
 " ============ Completion and Syntax ==================
-Plug 'klen/python-mode'                   " Python mode (docs, refactor, lints...)
-Plug 'scrooloose/syntastic'             " Syntax checking plug for Vim
+Plug 'klen/python-mode'                 " Python mode (docs, refactor, lints...)
+Plug 'w0rp/ale'                         " asynchronous linting
 Plug 'PotatoesMaster/i3-vim-syntax'     " syntax for i3 config
 Plug 'octol/vim-cpp-enhanced-highlight' " Extra highlight for cpp
 Plug 'othree/xml.vim'
 Plug 'nelstrom/vim-markdown-folding'    " help with folding in markdown
-Plug 'elzr/vim-json' 
+
+Plug 'elzr/vim-json'
 Plug 'ron89/thesaurus_query.vim'
 
 " ============ Snippets ===============================

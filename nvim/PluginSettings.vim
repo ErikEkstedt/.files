@@ -121,7 +121,6 @@ nnoremap gK :call pymode#motion#move('^\s*class\s', 'b')<CR>zz
 
 " }}}
 let g:pymode_python = 'python3'
-
 " rope {{{
 let g:pymode_rope                            = 0
 let g:pymode_rope_completion                 = 0
@@ -136,7 +135,7 @@ let g:pymode_rope_guess_project              = 0
 let g:pymode_doc                   = 0
 let g:pymode_doc_bind              = '<leader>K'
 
-" lints (using syntastic for this)
+" lints (using ALE for this)
 let g:pymode_lint                  = 0
 let g:pymode_lint_on_write         = 0
 let g:pymode_lint_ignore           = ["E501", "W",]
@@ -183,46 +182,6 @@ let g:pymode_run_bind='<F5>'
 let g:pymode_rope_lookup_project = 0
 
 imap <F5> <Esc>:w<CR>:!clear;python %<CR>
-" }}}
-"============== Syntastic ===================={{{
-" Recommended settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let b:syntastic_mode          = "passive"
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq   = 0
-let g:syntastic_mode_map = { 'passive_filetypes': ['python']} 
-
-let g:syntastic_auto_jump                 = 2
-let g:syntastic_always_populate_loc_list  = 1
-let g:syntastic_auto_loc_list             = 1
-let g:syntastic_loc_list_height           = 7
-let g:syntastic_enable_signs              = 1
-
-let g:syntastic_aggregate_errors          = 1
-let g:syntastic_error_symbol              = '✘'
-let g:syntastic_style_error_symbol        = '✘'
-let g:syntastic_warning_symbol            = '❔'
-let g:syntastic_style_warning_symbol      = 'x'
-" let g:syntastic_python_python_exec        = 'python'
-" let g:syntastic_python_checkers         = ['flake8', 'pydocstyle', 'pep8', 'python']
-" let g:syntastic_python_flake8_post_args = '--ignore=E501,E128,E225'
-let g:syntastic_python_checkers           = ['pydocstyle', 'pep8', 'python']
-let g:syntastic_python_checker_args       = '--ignore=E501'
-
-" bindings-------------------------------
-nnoremap <leader>sr :SyntasticReset<cr>
-nnoremap <leader>st :SyntasticToggleMode<cr>
-nnoremap <leader>sc :SyntasticCheck<cr>
-nnoremap <leader>lc :lclose<cr>
-nnoremap <leader>lo :errors<cr>
-
-" GO TO next comment 
-nnoremap ge :lnext<cr>
-nnoremap gE :lprevious<cr>
-
 " }}}
 "============== Indentline ==================={{{
 let g:indentLine_fileTypeExclude=['help']
@@ -349,6 +308,34 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 nnoremap <leader>gg :Goyo<CR>
 
 "}}}
+"============== ALE =========================={{{
+" Use quickfix list. Open list
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+let g:ale_open_list = 1
+
+" Appearance
+" characters might messup appearance
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '⁇'
+let g:ale_sign_column_always = 1
+
+" highlight ALEWarningSign guibg=303030 guifg=
+" highlight ALEErrorSign guibg=303030 guifg=
+
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+" pylint
+"\   'python': ['pylint', 'pycodestyle', 'yapf', 'isort'],
+let g:ale_linters = {
+\   'python': ['pylint', 'yapf', 'isort'],
+\}
+
+nnoremap ge :ALENext<CR>
+nnoremap gr :ALEPrevious<CR>
+"}}}
 "============== Deoplete ====================={{{
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
@@ -376,27 +363,37 @@ let g:scratch_filetype = 'markdown'
 "  :%!python -m json.tool  
 "}}}
 "============== Rainbow ======================{{{
+" \	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
 let g:rainbow_conf = {
-	\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
-	\	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
-	\	'operators': '_,_',
-	\	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
-	\	'separately': {
-	\		'*': {},
-	\		'tex': {
-	\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
-	\		},
-	\		'lisp': {
-	\			'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
-	\		},
-	\		'vim': {
-	\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
-	\		},
-	\		'html': {
-	\			'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
-	\		},
-	\		'css': 0,
-	\	}
-	\}
+			\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+			\	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+			\	'operators': '_,_',
+			\	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+			\	'separately': {
+			\		'*': {},
+			\		'tex': {
+			\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+			\		},
+			\		'lisp': {
+			\			'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+			\		},
+			\		'vim': {
+			\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+			\		},
+			\		'html': {
+			\			'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+			\		},
+			\		'css': 0,
+			\	}
+			\}
+au VimEnter * RainbowToggleOn
+"}}}
+"============== GitGutter ===================={{{
+
+let g:gitgutter_sign_removed = '-'
+let g:gitgutter_override_sign_column_highlight = 0
+
+let g:gitgutter_realtime = 1
+let g:gitgutter_eager = 1
 
 "}}}
