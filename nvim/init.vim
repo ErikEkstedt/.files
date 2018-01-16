@@ -57,6 +57,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
 Plug 'Shougo/neco-vim'
 Plug 'davidhalter/jedi-vim'
+Plug 'tenfyzhong/CompleteParameter.vim'
 
 " ============ Preview Text ===========================
 Plug 'lervag/vimtex'                      " latex compiler and alot more.

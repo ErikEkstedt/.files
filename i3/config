@@ -97,13 +97,11 @@ bindsym Mod1+Shift+Tab move scratchpad
 
 bindsym $mod+Return exec $term
 bindsym $mod+a exec bash ~/.files/Scripts/Laptop/touchpad_onoff.sh
-bindsym $mod+t exec ~/.files/Scripts/tlist.sh
 bindsym $mod+g [con_mark="browser"] scratchpad show
 bindsym $mod+s [con_mark="music"] scratchpad show
 bindsym $mod+r [con_mark="ranger"] scratchpad show
 bindsym $mod+y [con_mark="youtube"] scratchpad show
 bindsym $mod+n workspace $ws6 focus, exec $tmuxscripts/notes_tmux.sh
-bindsym $mod+d workspace $ws6 focus, exec ~/.files/Scripts/new_log
 bindsym $mod+c workspace $ws7 focus, exec $tmuxscripts/config_tmux.sh
 bindsym $mod+i exec $tmuxscripts/Vim.sh
 bindsym $mod+p workspace $ws6 focus, exec $tmuxscripts/personal.sh
@@ -126,6 +124,10 @@ bindsym $mod+Ctrl+s exec shutter -s
 bindsym $mod+Ctrl+g exec $Browser -new-window
 bindsym $mod+Ctrl+y exec $chrome -new-window --app=https://www.youtube.com 
 bindsym $mod+Ctrl+b floating enable, resize set 1440 1000, move position center
+
+# Old/not working
+# bindsym $mod+d workspace $ws6 focus, exec ~/.files/Scripts/new_log
+# bindsym $mod+t exec ~/.files/Scripts/tlist.sh
 
 # Monitor Setup
 bindsym $win+m move workspace to output up

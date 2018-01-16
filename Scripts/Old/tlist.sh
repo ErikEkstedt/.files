@@ -1,5 +1,5 @@
 #!/bin/bash
-term="termite"
+term="st"
 
 function tlist {
 	session=$( tmux list-sessions | rofi -dmenu -i -p 'Tmux Sessions: ' )
