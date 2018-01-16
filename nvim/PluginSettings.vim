@@ -345,9 +345,13 @@ nmap <leader>at <Plug>(ale_toggle)
 "============== Deoplete ====================={{{
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
-" deoplete tab-complete
+
+" deoplete tab/s-tab/c-j/c-k complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+inoremap <expr><C-j> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 "}}}
 "============== Scratch ======================{{{
 let g:scratch_insert_autohide = 0
@@ -400,4 +404,31 @@ let g:gitgutter_override_sign_column_highlight = 0
 
 let g:gitgutter_realtime = 1
 let g:gitgutter_eager = 1
+"}}}
+"============== Complete-parameter ==========={{{
+let g:complete_parameter_use_ultisnips_mapping = 1
+
+" complete when pressing (
+" inoremap <silent><expr> ( complete_parameter#pre_complete("()")
+
+" complete when pressing Enter <CR>
+inoremap <silent><expr> <CR> complete_parameter#pre_complete("()")
+
+" move between parameters
+nmap <c-b> <Plug>(complete_parameter#goto_next_parameter)
+imap <c-b> <Plug>(complete_parameter#goto_next_parameter)
+smap <c-b> <Plug>(complete_parameter#goto_next_parameter)
+
+nmap <c-z> <Plug>(complete_parameter#goto_previous_parameter)
+imap <c-z> <Plug>(complete_parameter#goto_previous_parameter)
+smap <c-z> <Plug>(complete_parameter#goto_previous_parameter)
+
+nmap <m-d> <Plug>(complete_parameter#overload_down)
+imap <m-d> <Plug>(complete_parameter#overload_down)
+smap <m-d> <Plug>(complete_parameter#overload_down)
+
+nmap <m-u> <Plug>(complete_parameter#overload_up)
+imap <m-u> <Plug>(complete_parameter#overload_up)
+smap <m-u> <Plug>(complete_parameter#overload_up)
+
 "}}}
