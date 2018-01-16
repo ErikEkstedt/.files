@@ -51,31 +51,6 @@ URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 URxvt.resize-font.smaller: C-minus
 URxvt.resize-font.bigger: C-plus
 
-! --------------------------------------------------------------------
-! themes
-! --------------------------------------------------------------------
-! tomorow-night
-
-*foreground: #c5c8c6
-*background: #1d1f21
-*cursorColor: #aeafad
-*color0: #000000
-*color1: #912226
-*color2: #778900
-*color3: #ae7b00
-*color4: #1d2594
-*color5: #682a9b
-*color6: #2b6651
-*color7: #929593
-*color8: #666666
-*color9: #cc6666
-*color10: #b5bd6
-*color11: #f0c674
-*color12: #81a2be
-*color13: #b294bb
-*color14: #8abeb7
-*color15: #ecebec
-
 
 !======== ROFI SETTINGS =============
 rofi.color-enabled:  true
@@ -103,10 +78,8 @@ rofi.color-normal: #d0050a31,   #ffffffff, #d0461976, #d0e757e1, #ffffffff
 rofi.color-urgent: #d0e757e1,   #ffffffff, #d0461976, #d0e757e1, #ffffffff
 rofi.color-active: #ffe757e1,   #ffffffff, #50461976, #50e757e1, #ffffffff
 
-
 !                  ´background´, ´border´
 ! rofi.color-window: #6FF0F8FF,  #8ffdf6e3
-rofi.color-window: #AF000000,  #0f0030FF
 rofi.hide-scrollbar:	true
 rofi.kb-remove-to-eol: Control+p 
 rofi.kb-accept-entry: Return,KP_Enter

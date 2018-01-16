@@ -34,6 +34,7 @@ Plug 'luochen1990/rainbow'
 " ============ Colorschemes ===========================
 Plug 'chriskempson/base16-vim'
 Plug 'skielbasa/vim-material-monokai'
+Plug 'joshdick/onedark.vim'
 
 " ============ Useful Tools ===========================
 " Plug 'epeli/slimux'

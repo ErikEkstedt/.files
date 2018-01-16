@@ -9,6 +9,9 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 " colors
 colorscheme base16-monokai
 
+" colorscheme onedark
+" hi CursorLine guibg=#383838
+
 " Toggle conceallevel
 map <LocalLeader>c :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
 
@@ -23,4 +26,4 @@ endif
 
 " change text font color to white
 inoremap <leader>å <esc>:hi normal ctermfg=255 guifg=white<cr>
-nnoremap <leader>å :hi normal ctermfg=255<cr>
+nnoremap <leader>å :hi normal ctermfg=255 guifg=white<cr>
