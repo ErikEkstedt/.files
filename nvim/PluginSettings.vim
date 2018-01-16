@@ -412,13 +412,12 @@ let g:complete_parameter_use_ultisnips_mapping = 1
 " inoremap <silent><expr> ( complete_parameter#pre_complete("()")
 
 " complete when pressing Enter <CR>
-inoremap <silent><expr> <CR> complete_parameter#pre_complete("()")
+inoremap <silent><expr> <CR> pumvisible() ? complete_parameter#pre_complete("()"):"<CR>"
 
 " move between parameters
 nmap <c-b> <Plug>(complete_parameter#goto_next_parameter)
 imap <c-b> <Plug>(complete_parameter#goto_next_parameter)
 smap <c-b> <Plug>(complete_parameter#goto_next_parameter)
-
 nmap <c-z> <Plug>(complete_parameter#goto_previous_parameter)
 imap <c-z> <Plug>(complete_parameter#goto_previous_parameter)
 smap <c-z> <Plug>(complete_parameter#goto_previous_parameter)
@@ -426,7 +425,6 @@ smap <c-z> <Plug>(complete_parameter#goto_previous_parameter)
 nmap <m-d> <Plug>(complete_parameter#overload_down)
 imap <m-d> <Plug>(complete_parameter#overload_down)
 smap <m-d> <Plug>(complete_parameter#overload_down)
-
 nmap <m-u> <Plug>(complete_parameter#overload_up)
 imap <m-u> <Plug>(complete_parameter#overload_up)
 smap <m-u> <Plug>(complete_parameter#overload_up)
