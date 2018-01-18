@@ -148,7 +148,8 @@ for_window [class="Google-chrome" instance="www.youtube.com"] mark "youtube", \
 																															resize set 1440 1000, \
 																															move position center
 
-# for_window [class="Spotify"] mark "music", move scratchpad, [con_mark="music"] scratchpad show
+for_window [class="Spotify"] mark "music", move scratchpad, [con_mark="music"] scratchpad show
+for_window [class="Firefox"] mark "browser", move scratchpad, [con_mark="browser"] scratchpad show
 # for_window [class="Spotify"] mark "music", move $ws9, [con_mark="music"]
 
 # Regular floaters
