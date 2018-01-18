@@ -3,10 +3,11 @@
 # https://github.com/kugaevsky/vim-bundle-update/blob/master/vim-bundle-update.sh 
 
 dir0="/home/erik/.files"
-dir1="/home/erik/com_sci/Master_code/Robot"
-dir2="/home/erik/Documents/latex"
+dir1="/home/erik/com_sci/Master_code/project"
+dir2="/home/erik/com_sci/Ideas/assistant"
+dir3="/home/erik/Documents/latex"
 
-for directory in $dir0 $dir1 $dir2
+for directory in $dir0 $dir1 $dir2 $dir3
 do
 	echo "Checking for $directory update..."
 	if [ -d "$directory/.git" ]

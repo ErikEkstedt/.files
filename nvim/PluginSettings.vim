@@ -430,3 +430,8 @@ imap <m-u> <Plug>(complete_parameter#overload_up)
 smap <m-u> <Plug>(complete_parameter#overload_up)
 
 "}}}
+"============== himplete-parameter ==========={{{
+
+let g:highlightedyank_highlight_duration = 1000
+
+"}}}

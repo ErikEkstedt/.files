@@ -30,6 +30,7 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'junegunn/goyo.vim'									" Distraction free writing
 Plug 'junegunn/limelight.vim'							" Focus color
 Plug 'luochen1990/rainbow'
+Plug 'machakann/vim-highlightedyank'      " Highlight yanks 
 
 " ============ Colorschemes ===========================
 Plug 'chriskempson/base16-vim'
@@ -123,27 +124,28 @@ set nolinebreak                " break lines if window is too narrow
 set formatoptions+=j           " smart line joining. uncomments comments.
 set lazyredraw                 " don't redraw screen during macros
 set breakindent                " wrapped line s keep indentation (set bri)
-let &showbreak=" ↪ "
+let &showbreak=                " ↪                                                                               "
 set breakindentopt=shift:0     " how far in the breakindent:  ↪ showbreak should be
 set nuw=4                      " width of numberline
 set mouse=a                    " mouse functionality
 set timeoutlen=500             " ms to wait for command completion
 set ttimeoutlen=0              " don't wait for <esc>
 set incsearch                  " search starts when typing instead of waiting for <enter>
-set virtualedit=block          " ,onemore" 'block' makes it possible to edit empty space in visualblock
+set virtualedit=block          " onemore 'block' makes it possible to edit empty space in visualblock
 set nobackup
 set nowritebackup
 set noswapfile
-set ignorecase								 " (in)case sensitive search
+set ignorecase                 " (in)case sensitive search
 set smartcase
 set switchbuf=usetab
 set wildmenu
 set wildchar=<tab>
-set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,resize
-set synmaxcol=170   " Maximum column in which to search for syntax items
+set synmaxcol=170              " Maximum column in which to search for syntax items
 set splitbelow
 set splitright
-set gdefault				"with this:  s/foo/bar --> s/foo/bar/g by default. ´g´ reverses its meaning.
+set gdefault                   " with this:  s/foo/bar --> s/foo/bar/g by default. ´g´ reverses its meaning.
+set inccommand=nosplit
+set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,resize
 
 " Wildmenu completion {{{
 set wildmenu
