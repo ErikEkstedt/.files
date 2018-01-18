@@ -38,22 +38,19 @@ alias gfi="cd ~/.files; ls"
 alias gco="cd ~/com_sci"
 alias gro="cd ~/com_sci/Master_code/Robot/;ls"
 alias gmisc="cd ~/com_sci/misc/;ls"
-alias gle="cd ~/com_sci/Master_code/Learning/;ls"
 alias gho="cd ~/"
 alias gma="cd ~/com_sci/Master_code; ls"
 alias gml="cd ~/com_sci/ML; ls"
-alias gpr="cd ~/com_sci/Master_code/project/project; ls"
+alias gpr="cd ~/com_sci/Master_code/Gestures/gesture; ls"
 alias gass="cd ~/com_sci/Ideas/assistant; ls"
 
 alias gla="cd ~/Documents/latex; ls"
 alias gno="cd ~/Documents/latex/Notes; ls *.tex"
 
 alias gpa="cd ~/Documents/Papers; ls *.pdf"
-alias gdd="cd ~/Desktop/DATA; ls"
 alias gdw="cd ~/Downloads; la"
-alias ggit="cd ~/git-clones; ls"
 
-alias grosc="cd ~/anaconda3/envs/roboschool/lib/python3.5/site-packages/roboschool"
+alias gges="cd ~/anaconda3/envs/roboschool/lib/python3.5/site-packages/gesture"
 alias gbull="cd ~/anaconda3/envs/bullet/lib/python3.5/site-packages/pybullet_envs"
 alias
 
@@ -70,7 +67,7 @@ function sonao() { # auto git
     source activate Naoqi
     export PYTHONPATH="/home/erik/anaconda3/envs/Naoqi/lib/python2.7/site-packages/pynaoqi-python2.7-2.5.5.5-linux64/lib/python2.7/site-packages"
 }
-alias sorobo="source activate roboschool"
+alias sogest="source activate gesture"
 alias soasst="source activate assistant"
 
 alias soros="source /opt/ros/kinetic/setup.zsh"

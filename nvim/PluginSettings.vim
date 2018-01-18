@@ -372,8 +372,10 @@ let g:scratch_filetype = 'markdown'
 " trick to format json
 "  :%!python -m json.tool  
 "}}}
-"============== Rainbow ======================{{{
+"============== luochen1990/rainbow =========={{{
 " \	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+
+let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 let g:rainbow_conf = {
 			\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
 			\	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
@@ -430,8 +432,6 @@ imap <m-u> <Plug>(complete_parameter#overload_up)
 smap <m-u> <Plug>(complete_parameter#overload_up)
 
 "}}}
-"============== himplete-parameter ==========={{{
-
+"============== highlight-yank ==============={{{
 let g:highlightedyank_highlight_duration = 1000
-
 "}}}
