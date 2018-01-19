@@ -21,3 +21,4 @@ setlocal shiftwidth=4
 setlocal expandtab
 setlocal autoindent
 setlocal foldmethod=indent
+setlocal nowrap

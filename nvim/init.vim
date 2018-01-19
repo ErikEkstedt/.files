@@ -16,21 +16,21 @@ endif
 call plug#begin('~/.vim/bundle')
 
 " ============ Code/Project Navigation ================
-Plug 'scrooloose/nerdtree'                " Project and file navigation
-Plug 'tpope/vim-fugitive'                 " git extension
-Plug 'airblade/vim-gitgutter'             " see git changes in file in the numberline
+Plug 'scrooloose/nerdtree'         " Project and file navigation
+Plug 'tpope/vim-fugitive'          " git extension
+Plug 'airblade/vim-gitgutter'      " see git changes in file in the numberline
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'junegunn/fzf.vim'                   " fuzzy filefinding
+Plug 'junegunn/fzf.vim'            " fuzzy filefinding
 
 " ============ Appearence =============================
-Plug 'Yggdroot/indentLine'                " see where there is indent
-Plug 'itchyny/lightline.vim'              " light weight status bar
-Plug 'vim-scripts/Wombat'		              " Wombat colorscheme
+Plug 'Yggdroot/indentLine'           " see where there is indent
+Plug 'itchyny/lightline.vim'         " light weight status bar
+Plug 'vim-scripts/Wombat'            " Wombat colorscheme
 Plug 'edkolev/tmuxline.vim'
-Plug 'junegunn/goyo.vim'									" Distraction free writing
-Plug 'junegunn/limelight.vim'							" Focus color
+Plug 'junegunn/goyo.vim'             " Distraction free writing
+Plug 'junegunn/limelight.vim'        " Focus color
 Plug 'luochen1990/rainbow'
-Plug 'machakann/vim-highlightedyank'      " Highlight yanks 
+Plug 'machakann/vim-highlightedyank' " Highlight yanks
 
 " ============ Colorschemes ===========================
 Plug 'chriskempson/base16-vim'
@@ -61,10 +61,10 @@ Plug 'davidhalter/jedi-vim'
 Plug 'tenfyzhong/CompleteParameter.vim'
 
 " ============ Preview Text ===========================
-Plug 'lervag/vimtex'                      " latex compiler and alot more.
-Plug 'Rykka/riv.vim'                      " ReStructuredText plug
-Plug 'Rykka/InstantRst'                   " Preview rst in browser (Fast)
-Plug 'shime/vim-livedown'									" Preview markdowns with npm/node Livedown
+Plug 'lervag/vimtex'      " latex compiler and alot more.
+Plug 'Rykka/riv.vim'      " ReStructuredText plug
+Plug 'Rykka/InstantRst'   " Preview rst in browser (Fast)
+Plug 'shime/vim-livedown' " Preview markdowns with npm/node Livedown
 
 " ============ Completion and Syntax ==================
 Plug 'klen/python-mode'                 " Python mode (docs, refactor, lints...)
