@@ -360,8 +360,8 @@ let g:scratch_no_mappings = 1
 " nmap gs :ScratchPreview<CR>
 nmap gs <plug>(scratch-insert-reuse)
 nmap gS <plug>(scratch-insert-clear)
-xmap gs <plug>(scratch-selection-reuse)
-xmap gS <plug>(scratch-selection-clear)
+" xmap gs <plug>(scratch-selection-reuse) " uses these for sorting selection
+" xmap gS <plug>(scratch-selection-clear)
 
 let g:scratch_height = 10
 let g:scratch_filetype = 'markdown'

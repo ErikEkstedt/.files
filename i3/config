@@ -97,14 +97,19 @@ bindsym Mod1+Shift+Tab move scratchpad
 
 bindsym $mod+Return exec $term
 bindsym $mod+a exec bash ~/.files/Scripts/Laptop/touchpad_onoff.sh
+
+
+# The Four OS Programs. (must try more with youtube)
 bindsym $mod+g [con_mark="browser"] scratchpad show
-bindsym $mod+s [con_mark="music"] scratchpad show
 bindsym $mod+r [con_mark="ranger"] scratchpad show
+bindsym $mod+s [con_mark="music"] scratchpad show
 bindsym $mod+y [con_mark="youtube"] scratchpad show
+
 bindsym $mod+n workspace $ws6 focus, exec $tmuxscripts/notes_tmux.sh
 bindsym $mod+c workspace $ws7 focus, exec $tmuxscripts/config_tmux.sh
 bindsym $mod+i exec $tmuxscripts/Vim.sh
-bindsym $mod+p workspace $ws6 focus, exec $tmuxscripts/personal.sh
+# bindsym $mod+p workspace $ws6 focus, exec $tmuxscripts/personal.sh
+bindsym $mod+p workspace $ws6 focus, exec $tmuxscripts/conversational.sh
 bindsym $mod+o workspace $ws3 focus, exec $tmuxscripts/work_tmux.sh
 bindsym $mod+e workspace $ws1 focus, exec $tmuxscripts/SSH.sh
 bindsym $mod+w exec rofi rofi -show window -lines 8 -padding 10
@@ -204,7 +209,8 @@ for_window [class="^.*"] border pixel 0
 # for_window [class="^.*"] border pixel 1
 # for_window [class="Zathura"] border pixel 5
 # for_window [class=" "] border pixel 5
-# for_window [class="Google-chrome"] border pixel 5
+for_window [class="Google-chrome"] border pixel 3
+for_window [class="Firefox"] border pixel 3
 
 set $color.gray = #A7A7A7  
 set $color.white = #FFFFFF
@@ -215,9 +221,10 @@ client.focused $color.gray $color.gray $color.gray
 # client.focused #ff6417 #ff6417 #ff6417
 
 # initial gap size
-set $gi 5
+set $gi 15
 set $go 0
-set $ginc 1
+	
+set $ginc 60
 
 gaps inner $gi
 gaps outer $go
@@ -225,8 +232,13 @@ gaps outer $go
 # Gap size
 set $gap "Gap size: (O/o)uter, (I/i)nner, (r)eset, (n)one"
 mode $gap{
-	bindsym Shift+i gaps inner current plus $ginc
-	bindsym i gaps inner current minus $ginc
+	# bindsym Shift+i gaps inner current plus $ginc
+	# bindsym i gaps inner current minus $ginc
+	# bindsym Shift+o	gaps outer current plus $ginc
+	# bindsym o gaps outer current minus $ginc
+
+	bindsym j gaps inner current plus $ginc
+	bindsym k gaps inner current minus $ginc
 	bindsym Shift+o	gaps outer current plus $ginc
 	bindsym o gaps outer current minus $ginc
 
@@ -279,11 +291,12 @@ bindsym $mod+Shift+j focus down
 bindsym $mod+Shift+k focus up
 bindsym $mod+Shift+l focus right
 
-set $growth 1
-bindsym $mod+Shift+y resize shrink width $growth px or $growth ppt
-bindsym $mod+Shift+i resize grow height $growth px or $growth ppt
-bindsym $mod+Shift+u resize shrink height $growth px or $growth ppt
-bindsym $mod+Shift+o resize grow width $growth px or $growth ppt
+set $float_growth 10
+set $growth 355
+bindsym $mod+Shift+y resize shrink width $growth px or $float_growth ppt
+bindsym $mod+Shift+i resize grow height $growth px or $float_growth ppt
+bindsym $mod+Shift+u resize shrink height $growth px or $float_growth ppt
+bindsym $mod+Shift+o resize grow width $growth px or $float_growth ppt
 
 bindsym $mod+Ctrl+h move left
 bindsym $mod+Ctrl+j move down

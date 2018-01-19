@@ -16,7 +16,6 @@
 		xrandr --output eDP-1 --brightness 0."$1"
 	}
 # }}}
-
 # ===== Terminal ====== {{{
 	alias tmux="TERM=screen-256color-bce /usr/bin/tmux"
 
@@ -31,34 +30,24 @@
 	alias lpy="ls *.py"
 	alias lpdf="ls -ogl *.pdf"
 # }}}
-
 #==== Movement ==== {{{
-alias gbu="cd ~/.vim/bundle; ls"
-alias gfi="cd ~/.files; ls"
-alias gco="cd ~/com_sci"
-alias gro="cd ~/com_sci/Master_code/Robot/;ls"
-alias gmisc="cd ~/com_sci/misc/;ls"
-alias gho="cd ~/"
-alias gma="cd ~/com_sci/Master_code; ls"
-alias gml="cd ~/com_sci/ML; ls"
-alias gpr="cd ~/com_sci/Master_code/Gestures/gesture; ls"
 alias gass="cd ~/com_sci/Ideas/assistant; ls"
-
-alias gla="cd ~/Documents/latex; ls"
-alias gno="cd ~/Documents/latex/Notes; ls *.tex"
-
-alias gpa="cd ~/Documents/Papers; ls *.pdf"
-alias gdw="cd ~/Downloads; la"
-
-alias gges="cd ~/anaconda3/envs/roboschool/lib/python3.5/site-packages/gesture"
+alias gbu="cd ~/.vim/bundle; ls"
 alias gbull="cd ~/anaconda3/envs/bullet/lib/python3.5/site-packages/pybullet_envs"
-alias
-
+alias ggs="cd ~/com_sci/Conversational-Systems-KTH"
+alias gdw="cd ~/Downloads; la"
+alias gfi="cd ~/.files; ls"
+alias gges="cd ~/anaconda3/envs/roboschool/lib/python3.5/site-packages/gesture"
+alias gho="cd ~/"
+alias gla="cd ~/Documents/latex; ls"
+alias gma="cd ~/com_sci/Master_code; ls"
+alias gmisc="cd ~/com_sci/misc/;ls"
+alias gml="cd ~/com_sci/ML; ls"
+alias gno="cd ~/Documents/latex/Notes; ls *.tex"
+alias gpa="cd ~/Documents/Papers; ls *.pdf"
+alias gpr="cd ~/com_sci/Master_code/Gestures/gesture; ls"
+alias gro="cd ~/com_sci/Master_code/Robot/;ls"
 # }}}
-
-# Mount Usb Stick
-alias umountusb="udiskie-umount /media/erik/*"
-
 # Source{{{
 alias py35="source activate python3.5"
 alias gnao="cd ~/anaconda3/envs/Naoqi/lib/python2.7/site-packages/pynaoqi-python2.7-2.5.5.5-linux64/lib/python2.7/site-packages"
@@ -144,3 +133,6 @@ alias umountdesk="sudo umount /home/erik/Desktop"
 alias sshwork="ssh Erik@130.238.17.189"
 
 # }}}
+#
+# Mount Usb Stick
+alias umountusb="udiskie-umount /media/erik/*"
