@@ -66,10 +66,7 @@ Plug 'zchee/deoplete-jedi'
 Plug 'Shougo/neco-vim'
 Plug 'Shougo/neopairs.vim'
 Plug 'davidhalter/jedi-vim'
-<<<<<<< HEAD
-=======
 " Plug 'tenfyzhong/CompleteParameter.vim'
->>>>>>> 8801142aa0565162f10cde4c033287903085940d
 
 " ============ Preview Text ===========================
 Plug 'lervag/vimtex'      " latex compiler and alot more.

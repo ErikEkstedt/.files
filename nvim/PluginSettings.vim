@@ -389,15 +389,12 @@ let g:gitgutter_override_sign_column_highlight = 0
 let g:gitgutter_realtime = 1
 let g:gitgutter_eager = 1
 "}}}
-<<<<<<< HEAD
-"============== highlight-yank ==============={{{
-=======
 	"============== highlight-yank ==============={{{
->>>>>>> 8801142aa0565162f10cde4c033287903085940d
 let g:highlightedyank_highlight_duration = 1000
 "}}}
 "============== vim-easy-align ==============={{{
 " Start interactive EasyAlign in visual mode (e.g. vipga=, vapga", ...)
+"
 vmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip) 
