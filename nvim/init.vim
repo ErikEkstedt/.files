@@ -54,11 +54,18 @@ Plug 'mtth/scratch.vim'                " Unobtrusive scratch
 "  Plug 'vimwiki/vimwiki'                    " Personal Wiki
 
 " ============ Auto-Completion ========================
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 Plug 'zchee/deoplete-jedi'
 Plug 'Shougo/neco-vim'
+Plug 'Shougo/neopairs.vim'
 Plug 'davidhalter/jedi-vim'
-Plug 'tenfyzhong/CompleteParameter.vim'
+" Plug 'tenfyzhong/CompleteParameter.vim'
 
 " ============ Preview Text ===========================
 Plug 'lervag/vimtex'      " latex compiler and alot more.
@@ -119,12 +126,12 @@ set scrolloff=3                " visual rows above and below cursor
 set sidescroll=3               " visual columns on sides of cursor
 set cursorline                 " highlight line where cursor is
 set hls                        " highlighting!
-set wrap
-set nolinebreak                " break lines if window is too narrow
+set nolinebreak                " (No) break lines if window is too narrow
 set formatoptions+=j           " smart line joining. uncomments comments.
 set lazyredraw                 " don't redraw screen during macros
-set breakindent                " wrapped line s keep indentation (set bri)
+set wrap
 let &showbreak=                " ↪                                                                               "
+set breakindent                " wrapped line s keep indentation (set bri)
 set breakindentopt=shift:0     " how far in the breakindent:  ↪ showbreak should be
 set nuw=4                      " width of numberline
 set mouse=a                    " mouse functionality
@@ -132,9 +139,6 @@ set timeoutlen=500             " ms to wait for command completion
 set ttimeoutlen=0              " don't wait for <esc>
 set incsearch                  " search starts when typing instead of waiting for <enter>
 set virtualedit=block          " onemore 'block' makes it possible to edit empty space in visualblock
-set nobackup
-set nowritebackup
-set noswapfile
 set ignorecase                 " (in)case sensitive search
 set smartcase
 set switchbuf=usetab
@@ -163,9 +167,6 @@ set wildignore+=*.pyc                            " Python byte code
 set wildignore+=*.orig                           " Merge resolution files
 set wildignore+=*.fasl                           " Lisp FASLs
 
-" Clojure/Leiningen
-set wildignore+=classes
-set wildignore+=lib
 " }}}
 " Backups {{{
 set backup                        " enable backups

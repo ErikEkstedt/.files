@@ -107,6 +107,7 @@ bindsym $mod+y [con_mark="youtube"] scratchpad show
 
 bindsym $mod+n workspace $ws6 focus, exec $tmuxscripts/notes_tmux.sh
 bindsym $mod+c workspace $ws7 focus, exec $tmuxscripts/config_tmux.sh
+bindsym $mod+d exec rofi rofi -show run -lines 8 -padding 10
 bindsym $mod+i exec $tmuxscripts/Vim.sh
 # bindsym $mod+p workspace $ws6 focus, exec $tmuxscripts/personal.sh
 bindsym $mod+p workspace $ws6 focus, exec $tmuxscripts/conversational.sh
@@ -122,7 +123,6 @@ bindsym $mod+Shift+Return exec $term -T "scratchTerm"
 bindsym $mod+Shift+b floating enable, move position center
 
 
-bindsym $mod+Ctrl+d exec rofi rofi -show run -lines 8 -padding 10
 bindsym $mod+Ctrl+o workspace $ws3 focus, exec $i3scripts/workflow.sh
 bindsym $mod+Ctrl+n exec nautilus --no-desktop
 bindsym $mod+Ctrl+s exec shutter -s
@@ -207,10 +207,10 @@ hide_edge_borders smart
 for_window [class="^.*"] border pixel 0
 
 # for_window [class="^.*"] border pixel 1
-# for_window [class="Zathura"] border pixel 5
+for_window [class="Zathura"] border pixel 2
 # for_window [class=" "] border pixel 5
-for_window [class="Google-chrome"] border pixel 3
-for_window [class="Firefox"] border pixel 3
+for_window [class="Google-chrome"] border pixel 1
+for_window [class="Firefox"] border pixel 1
 
 set $color.gray = #A7A7A7  
 set $color.white = #FFFFFF

@@ -108,7 +108,7 @@ set scrolloff=3                " visual rows above and below cursor
 set sidescroll=3               " visual columns on sides of cursor
 set cursorline                 " highlight line where cursor is
 set hls                        " highlighting!
-set wrap
+set nowrap
 set nolinebreak                " break lines if window is too narrow
 set formatoptions+=j           " smart line joining. uncomments comments.
 set lazyredraw                 " don't redraw screen during macros
