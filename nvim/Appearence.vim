@@ -7,7 +7,9 @@ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 " colors
-colorscheme base16-monokai
+" colorscheme base16-monokai
+let g:seoul256_background = 234
+colo seoul256
 
 " colorscheme onedark
 " hi CursorLine guibg=#383838

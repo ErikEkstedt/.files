@@ -22,15 +22,17 @@ Plug 'airblade/vim-gitgutter'      " see git changes in file in the numberline
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/fzf.vim'            " fuzzy filefinding
 
+
 " ============ Appearence =============================
 Plug 'Yggdroot/indentLine'           " see where there is indent
-Plug 'itchyny/lightline.vim'         " light weight status bar
-Plug 'vim-scripts/Wombat'            " Wombat colorscheme
 Plug 'edkolev/tmuxline.vim'
+Plug 'itchyny/lightline.vim'         " light weight status bar
 Plug 'junegunn/goyo.vim'             " Distraction free writing
 Plug 'junegunn/limelight.vim'        " Focus color
+Plug 'junegunn/seoul256.vim'
 Plug 'luochen1990/rainbow'
 Plug 'machakann/vim-highlightedyank' " Highlight yanks
+Plug 'vim-scripts/Wombat'            " Wombat colorscheme
 
 " ============ Colorschemes ===========================
 Plug 'chriskempson/base16-vim'
@@ -39,21 +41,24 @@ Plug 'joshdick/onedark.vim'
 
 " ============ Useful Tools ===========================
 " Plug 'epeli/slimux'
-Plug 'lotabout/slimux'                 " old: 'epeli/slimux' | vim+ipython OUtdated
-Plug 'wmvanvliet/vim-ipython'
-Plug 'tpope/vim-surround'              " Parentheses, brackets, quotes, XML tags, and more
-Plug 'tpope/vim-repeat'                " repeat commands not repeatable by 'vanilla' vim
-Plug 'godlygeek/tabular'               " structure text
-Plug 'tomtom/tcomment_vim'             " smart comments
-Plug 'christoomey/vim-tmux-navigator'  " navigate between vim and tmuz seemlessly
-Plug 'itchyny/calendar.vim'            " Calendar for vim
 Plug 'Valloric/MatchTagAlways'
-Plug 'nelstrom/vim-visual-star-search' " * on visual select seraches for the snippet
+Plug 'christoomey/vim-tmux-navigator'  " navigate between vim and tmuz seemlessly
+" Plug 'godlygeek/tabular'               " structure text
+Plug 'itchyny/calendar.vim'            " Calendar for vim
+Plug 'junegunn/vim-after-object'
+Plug 'junegunn/vim-easy-align'
+Plug 'lotabout/slimux'                 " old: 'epeli/slimux' | vim+ipython OUtdated
 Plug 'mtth/scratch.vim'                " Unobtrusive scratch
-
+Plug 'nelstrom/vim-visual-star-search' " * on visual select seraches for the snippet
+Plug 'tomtom/tcomment_vim'             " smart comments
+Plug 'tpope/vim-repeat'                " repeat commands not repeatable by 'vanilla' vim
+Plug 'tpope/vim-surround'              " Parentheses, brackets, quotes, XML tags, and more
+Plug 'wmvanvliet/vim-ipython'
+"
 "  Plug 'vimwiki/vimwiki'                    " Personal Wiki
 
 " ============ Auto-Completion ========================
+<<<<<<< HEAD
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -62,31 +67,39 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 Plug 'zchee/deoplete-jedi'
+=======
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+>>>>>>> 888830fc1b2fa2f592ab694973acdab1599876dd
 Plug 'Shougo/neco-vim'
 Plug 'Shougo/neopairs.vim'
 Plug 'davidhalter/jedi-vim'
+<<<<<<< HEAD
 " Plug 'tenfyzhong/CompleteParameter.vim'
+=======
+Plug 'tenfyzhong/CompleteParameter.vim'
+Plug 'zchee/deoplete-jedi'
+>>>>>>> 888830fc1b2fa2f592ab694973acdab1599876dd
 
 " ============ Preview Text ===========================
-Plug 'lervag/vimtex'      " latex compiler and alot more.
-Plug 'Rykka/riv.vim'      " ReStructuredText plug
 Plug 'Rykka/InstantRst'   " Preview rst in browser (Fast)
+Plug 'Rykka/riv.vim'      " ReStructuredText plug
+Plug 'lervag/vimtex'      " latex compiler and alot more.
 Plug 'shime/vim-livedown' " Preview markdowns with npm/node Livedown
 
 " ============ Completion and Syntax ==================
-Plug 'klen/python-mode'                 " Python mode (docs, refactor, lints...)
-Plug 'w0rp/ale'                         " asynchronous linting
 Plug 'PotatoesMaster/i3-vim-syntax'     " syntax for i3 config
+Plug 'elzr/vim-json'
+Plug 'klen/python-mode'                 " Python mode (docs, refactor, lints...)
+Plug 'nelstrom/vim-markdown-folding'    " help with folding in markdown
 Plug 'octol/vim-cpp-enhanced-highlight' " Extra highlight for cpp
 Plug 'othree/xml.vim'
-Plug 'nelstrom/vim-markdown-folding'    " help with folding in markdown
-
-Plug 'elzr/vim-json'
 Plug 'ron89/thesaurus_query.vim'
+Plug 'w0rp/ale'                         " asynchronous linting
 
 " ============ Snippets ===============================
 Plug 'SirVer/ultisnips'                 " snippet engine
 Plug 'honza/vim-snippets'               " snippets
+
 call plug#end()
 "}}}
 "=============== Basic ======================={{{

@@ -416,6 +416,7 @@ let g:gitgutter_realtime = 1
 let g:gitgutter_eager = 1
 "}}}
 "============== Complete-parameter ==========={{{
+<<<<<<< HEAD
 " let g:complete_parameter_use_ultisnips_mapping = 1
 "
 " " complete when pressing (
@@ -439,7 +440,45 @@ let g:gitgutter_eager = 1
 " imap <m-u> <Plug>(complete_parameter#overload_up)
 " smap <m-u> <Plug>(complete_parameter#overload_up)
 "
+=======
+let g:complete_parameter_use_ultisnips_mapping = 1
+
+" complete when pressing (
+" inoremap <silent><expr> ( complete_parameter#pre_complete("()")
+
+" complete when pressing Enter <CR>
+inoremap <silent><expr> <CR> pumvisible() ? complete_parameter#pre_complete("()"):"<CR>"
+
+" move between parameters
+nmap <c-b> <Plug>(complete_parameter#goto_next_parameter)
+imap <c-b> <Plug>(complete_parameter#goto_next_parameter)
+smap <c-b> <Plug>(complete_parameter#goto_next_parameter)
+nmap <c-z> <Plug>(complete_parameter#goto_previous_parameter)
+imap <c-z> <Plug>(complete_parameter#goto_previous_parameter)
+smap <c-z> <Plug>(complete_parameter#goto_previous_parameter)
+nmap <m-d> <Plug>(complete_parameter#overload_down)
+imap <m-d> <Plug>(complete_parameter#overload_down)
+smap <m-d> <Plug>(complete_parameter#overload_down)
+nmap <m-u> <Plug>(complete_parameter#overload_up)
+imap <m-u> <Plug>(complete_parameter#overload_up)
+smap <m-u> <Plug>(complete_parameter#overload_up)
+
+>>>>>>> 888830fc1b2fa2f592ab694973acdab1599876dd
 "}}}
 "============== highlight-yank ==============={{{
 let g:highlightedyank_highlight_duration = 1000
+"}}}
+"============== vim-easy-align ==============={{{
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign) 
+" Start interactive EasyAlign for a motion/text object (e.g. gaip) 
+nmap ga <Plug>(EasyAlign)
+
+apple = red
+grass += green
+sky   -= blue
+
+"}}}
+"============== vim-after-object ============={{{
+autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ', '+', '*')
 "}}}
