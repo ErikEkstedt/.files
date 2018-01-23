@@ -58,7 +58,6 @@ Plug 'wmvanvliet/vim-ipython'
 "  Plug 'vimwiki/vimwiki'                    " Personal Wiki
 
 " ============ Auto-Completion ========================
-<<<<<<< HEAD
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -67,18 +66,9 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 Plug 'zchee/deoplete-jedi'
-=======
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
->>>>>>> 888830fc1b2fa2f592ab694973acdab1599876dd
 Plug 'Shougo/neco-vim'
 Plug 'Shougo/neopairs.vim'
 Plug 'davidhalter/jedi-vim'
-<<<<<<< HEAD
-" Plug 'tenfyzhong/CompleteParameter.vim'
-=======
-Plug 'tenfyzhong/CompleteParameter.vim'
-Plug 'zchee/deoplete-jedi'
->>>>>>> 888830fc1b2fa2f592ab694973acdab1599876dd
 
 " ============ Preview Text ===========================
 Plug 'Rykka/InstantRst'   " Preview rst in browser (Fast)
