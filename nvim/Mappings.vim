@@ -1,8 +1,10 @@
 " MAPPINGS 
 
 " Config files
-nnoremap <leader>ev   :tabnew ~/.vimrc<cr>
-nnoremap <leader>env  :tabnew ~/.files/nvim/init.vim<cr>
+" nnoremap <leader>ev   :tabnew ~/.vimrc<cr>
+" nnoremap <leader>sv   :source ~/.vimrc<cr>
+
+nnoremap <leader>ev  :tabnew ~/.files/nvim/init.vim<cr>
 nnoremap <leader>ez   :tabnew ~/.zshrc<cr>
 nnoremap <leader>ea   :tabnew ~/.files/aliases<cr>
 nnoremap <leader>ei3  :tabnew ~/.config/i3/config<cr>
@@ -15,8 +17,7 @@ nnoremap <leader>ete  :tabnew ~/.vim/ftplugin/tex.vim<cr>
 nnoremap <leader>ema  :tabnew ~/.vim/ftplugin/markdown.vim<cr>
 
 " source config files
-nnoremap <leader>snv  :source ~/.config/nvim/init.vim<cr>
-nnoremap <leader>sv   :source ~/.vimrc<cr>
+nnoremap <leader>sv  :source ~/.files/nvim/init.vim<cr>
 nnoremap <leader>sz   :source ~/.zshrc<cr>
 nnoremap <leader>sx   :!xrdb ~/.Xresources<cr>
 nnoremap <leader>sot  :source ~/.tmux.conf<cr>
@@ -79,14 +80,13 @@ nnoremap <c-y> "+yy
 vnoremap <c-y> "+y
 
  
-" increment/decrement vis. selected numbers
+" increment/decrement/ vis. selected numbers
 vnoremap <leader>aa <C-a>
 vnoremap <leader>AA <C-x>
-vnoremap ga g<C-a>
+vnoremap <leader>sn <C-a>
 
 " substitute word under cursor in entire file.
 nnoremap <leader>sw :%s/<C-r><C-w>//g<Left><Left>
-
 
 " Clean trailing whitespace
 nnoremap <leader><backspace> mz:%s/\s\+$//<cr>:let @/=''<cr>`z

@@ -423,7 +423,6 @@ smap <c-b> <Plug>(complete_parameter#goto_next_parameter)
 nmap <c-z> <Plug>(complete_parameter#goto_previous_parameter)
 imap <c-z> <Plug>(complete_parameter#goto_previous_parameter)
 smap <c-z> <Plug>(complete_parameter#goto_previous_parameter)
-
 nmap <m-d> <Plug>(complete_parameter#overload_down)
 imap <m-d> <Plug>(complete_parameter#overload_down)
 smap <m-d> <Plug>(complete_parameter#overload_down)
@@ -434,4 +433,18 @@ smap <m-u> <Plug>(complete_parameter#overload_up)
 "}}}
 "============== highlight-yank ==============={{{
 let g:highlightedyank_highlight_duration = 1000
+"}}}
+"============== vim-easy-align ==============={{{
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign) 
+" Start interactive EasyAlign for a motion/text object (e.g. gaip) 
+nmap ga <Plug>(EasyAlign)
+
+apple = red
+grass += green
+sky   -= blue
+
+"}}}
+"============== vim-after-object ============={{{
+autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ', '+', '*')
 "}}}
