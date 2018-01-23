@@ -36,6 +36,7 @@ Plug 'machakann/vim-highlightedyank' " Highlight yanks
 Plug 'chriskempson/base16-vim'
 Plug 'skielbasa/vim-material-monokai'
 Plug 'joshdick/onedark.vim'
+Plug 'junegunn/seoul256.vim'
 
 " ============ Useful Tools ===========================
 " Plug 'epeli/slimux'
