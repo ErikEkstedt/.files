@@ -8,7 +8,7 @@ export KEYTIMEOUT=1
 #export TERM="screen-256color"
 #export TERM="xterm-256color"
 export TERMINAL="st"
-export EDITOR='vim'
+export EDITOR='nvim'
 export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
 
@@ -43,28 +43,27 @@ source "/home/erik/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
 # source /opt/ros/kinetic/setup.zsh
 HYPHEN_INSENSITIVE="true"
 #}}}
-#====== Plugins ========{{{
-#==== TMUX ====
+#==== TMUX ===={{{
 if [ "$TMUX" = "" ]; then 
 	tmux new
 	(cat ~/.cache/wal/sequences &)
 fi
-
-
-
-#==== Base16 ==
+#}}}
+#==== Base16 =={{{
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
-#==== PyWal ===
+#}}}
+#==== PyWal ==={{{
 (cat ~/.cache/wal/sequences &)
 
-#==== FZF =====
+#}}}
+#==== FZF ====={{{
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export FZF_DEFAULT_OPTS='--height 40% --reverse'
 export FZF_COMPLETION_OPTS='+c -x'
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude ".git"'  # export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude ".git"'  # export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""' --color=always 
 export FZF_CTRL_R_OPTS="--reverse"
 export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 export FZF_ALT_C_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
@@ -95,10 +94,11 @@ _fzf_compgen_path() {
 
 # Use fd to generate the list for directory completion 
 _fzf_compgen_dir() { 
-	fd --type d --hidden --follow --exclude ".git" . "$1" 
+	fd --type d -p --hidden --follow --exclude ".git" . "$1" 
 }
 
 # bindkey '^B' __fzf_generic_path_completion
 bindkey -s '^Q' "exit\n"
 bindkey '^B' fzf-cd-widget
 bindkey '^F' fzf-file-widget
+#}}}

@@ -8,9 +8,6 @@ nnoremap <silent> <Up> :TmuxNavigateUp<cr>
 nnoremap <silent> <Right> :TmuxNavigateRight<cr>
 
 "}}}
-"============== Riv =========================={{{
-let g:instant_rst_bind_scroll = 0
-" }}}
 "============== Slimux ======================={{{
 let g:slimux_python_use_ipython = 1
 nnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>
@@ -80,17 +77,6 @@ let g:lightline.inactive = {
 set noshowmode "stops vims own showing below the statusbar.
 let g:lightline.tab = {'active': ['tabnum', 'filename', 'modified'],
 			\'inactive': [ 'tabnum', 'filename', 'modified' ]}
-" }}}
-"============== Tabular ======================{{{
-vnoremap <silent> <Leader>t= :Tabularize /=<CR>
-vnoremap <silent> <Leader>t# :Tabularize /#<CR>
-vnoremap <silent> <Leader>t" :Tabularize /"<CR>
-vnoremap <silent> <Leader>t% :Tabularize /%<CR>
-vnoremap <silent> <Leader>t: :Tabularize /:<CR>
-vnoremap <silent> <Leader>t; :Tabularize /;<CR>
-vnoremap <silent> <Leader>t, :Tabularize /,<CR>
-vnoremap <silent> <Leader>t- :Tabularize /-<CR>
-
 " }}}
 "============== NerdTree ====================={{{
 " " open NERDTree on startup
@@ -186,7 +172,7 @@ imap <F5> <Esc>:w<CR>:!clear;python %<CR>
 " }}}
 "============== Indentline ==================={{{
 let g:indentLine_fileTypeExclude=['help']
-let g:indentLine_char = '┊'
+let g:indentLine_char = '|' " '┊'  
 " }}}
 "============== Vim-livedown-markdown ========{{{
 " should markdown preview get shown automatically upon opening markdown buffer
@@ -214,11 +200,8 @@ let g:vimwiki_listsyms = '✗○◐●✓'
 let g:vimwiki_folding = 'custom'
 let g:vimwiki_use_calendar = 1	"Enable calendar.vim integration
 "}}}
-"============== Vim-surround ================={{{
-nnoremap <leader>' :normal ysiw'<CR>
-nnoremap <leader>" :normal ysiw"<CR>
-nnoremap <leader>) :normal ysiw)<CR>
-nnoremap <leader>* :normal ysiw*<CR>
+"============== Vim-surround ================{{{
+nnoremap <leader>' :normal ysiW'<CR>
 "}}}
 "============== FZF =========================={{{
 " Customize fzf colors to match your color scheme
@@ -258,10 +241,8 @@ let g:fzf_action = {
   \ 'ctrl-v': 'vsplit',
   \ 'ctrl-o': 'edit',
   \ 'Enter': 'vsplit', }
-
 "}}}
 "============== UltiSnips ===================={{{
-" Trigger configuration. 
 let g:UltiSnipsSnippetsDir = "~/.vim/bundle/vim-snippets"
 let g:UltiSnipsSnippetDirectories = ["UltiSnips", "snips"]
 
@@ -284,7 +265,7 @@ let g:ultisnips_python_style="google"
 " augroup END
 
 "}}}
-"============== GoYo ========================={{{ Trigger configuration. 
+"============== GoYo ========================={{{ 
 let g:goyo_width  = 80  " (default: 80)
 let g:goyo_linenr = 0   " (default: 0)
 
@@ -351,8 +332,6 @@ let g:deoplete#enable_at_startup = 1
 let g:loaded_neopairs = 1
 let g:neopairs#enable = 1
 
-" let g:deoplete#complete_method = 'omnifunc'
-
 " deoplete tab/s-tab/c-j/c-k complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -368,21 +347,16 @@ let g:scratch_no_mappings = 1
 " nmap gs :ScratchPreview<CR>
 nmap gs <plug>(scratch-insert-reuse)
 nmap gS <plug>(scratch-insert-clear)
-" xmap gs <plug>(scratch-selection-reuse) " uses these for sorting selection
-" xmap gS <plug>(scratch-selection-clear)
 
 let g:scratch_height = 10
 let g:scratch_filetype = 'markdown'
 " let g:scratch_persistence_file = ".scratch.md"
-
 "}}}
 "============== vim-json ====================={{{
 " trick to format json
 "  :%!python -m json.tool  
 "}}}
 "============== luochen1990/rainbow =========={{{
-" \	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
-
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 let g:rainbow_conf = {
 			\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
@@ -415,20 +389,22 @@ let g:gitgutter_override_sign_column_highlight = 0
 let g:gitgutter_realtime = 1
 let g:gitgutter_eager = 1
 "}}}
+<<<<<<< HEAD
 "============== highlight-yank ==============={{{
+=======
+	"============== highlight-yank ==============={{{
+>>>>>>> 8801142aa0565162f10cde4c033287903085940d
 let g:highlightedyank_highlight_duration = 1000
 "}}}
 "============== vim-easy-align ==============={{{
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign) 
+" Start interactive EasyAlign in visual mode (e.g. vipga=, vapga", ...)
+vmap ga <Plug>(EasyAlign)
+
 " Start interactive EasyAlign for a motion/text object (e.g. gaip) 
 nmap ga <Plug>(EasyAlign)
-
-apple = red
-grass += green
-sky   -= blue
 
 "}}}
 "============== vim-after-object ============={{{
 autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ', '+', '*')
+" ca=				change after '='
 "}}}

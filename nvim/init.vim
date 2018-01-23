@@ -22,40 +22,37 @@ Plug 'airblade/vim-gitgutter'      " see git changes in file in the numberline
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/fzf.vim'            " fuzzy filefinding
 
-
 " ============ Appearence =============================
 Plug 'Yggdroot/indentLine'           " see where there is indent
-Plug 'edkolev/tmuxline.vim'
+Plug 'edkolev/tmuxline.vim'          " tmux statusline same as vim example:	 :Tmuxline lightline
 Plug 'itchyny/lightline.vim'         " light weight status bar
 Plug 'junegunn/goyo.vim'             " Distraction free writing
 Plug 'junegunn/limelight.vim'        " Focus color
-Plug 'junegunn/seoul256.vim'
-Plug 'luochen1990/rainbow'
+Plug 'luochen1990/rainbow'           " Different color on paranthesis
 Plug 'machakann/vim-highlightedyank' " Highlight yanks
 Plug 'vim-scripts/Wombat'            " Wombat colorscheme
 
 " ============ Colorschemes ===========================
-Plug 'chriskempson/base16-vim'
-Plug 'skielbasa/vim-material-monokai'
-Plug 'joshdick/onedark.vim'
+Plug 'chriskempson/base16-vim'        " much color
+Plug 'skielbasa/vim-material-monokai' " I like this
+Plug 'joshdick/onedark.vim'           " look like atom?
+Plug 'junegunn/seoul256.vim'          " cool junegunn is coool
 
 " ============ Useful Tools ===========================
-" Plug 'epeli/slimux'
 Plug 'Valloric/MatchTagAlways'
 Plug 'christoomey/vim-tmux-navigator'  " navigate between vim and tmuz seemlessly
-" Plug 'godlygeek/tabular'               " structure text
 Plug 'itchyny/calendar.vim'            " Calendar for vim
-Plug 'junegunn/vim-after-object'
-Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-after-object'       " change everything after something
+Plug 'junegunn/vim-easy-align'         " better alignment than tabular
 Plug 'lotabout/slimux'                 " old: 'epeli/slimux' | vim+ipython OUtdated
 Plug 'mtth/scratch.vim'                " Unobtrusive scratch
 Plug 'nelstrom/vim-visual-star-search' " * on visual select seraches for the snippet
-Plug 'tomtom/tcomment_vim'             " smart comments
+Plug 'tpope/vim-commentary'            " commenting
 Plug 'tpope/vim-repeat'                " repeat commands not repeatable by 'vanilla' vim
 Plug 'tpope/vim-surround'              " Parentheses, brackets, quotes, XML tags, and more
 Plug 'wmvanvliet/vim-ipython'
-"
-"  Plug 'vimwiki/vimwiki'                    " Personal Wiki
+
+" Plug 'vimwiki/vimwiki'   " Personal Wiki
 
 " ============ Auto-Completion ========================
 if has('nvim')
@@ -69,10 +66,12 @@ Plug 'zchee/deoplete-jedi'
 Plug 'Shougo/neco-vim'
 Plug 'Shougo/neopairs.vim'
 Plug 'davidhalter/jedi-vim'
+<<<<<<< HEAD
+=======
+" Plug 'tenfyzhong/CompleteParameter.vim'
+>>>>>>> 8801142aa0565162f10cde4c033287903085940d
 
 " ============ Preview Text ===========================
-Plug 'Rykka/InstantRst'   " Preview rst in browser (Fast)
-Plug 'Rykka/riv.vim'      " ReStructuredText plug
 Plug 'lervag/vimtex'      " latex compiler and alot more.
 Plug 'shime/vim-livedown' " Preview markdowns with npm/node Livedown
 
