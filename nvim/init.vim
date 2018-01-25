@@ -51,6 +51,7 @@ Plug 'tpope/vim-commentary'            " commenting
 Plug 'tpope/vim-repeat'                " repeat commands not repeatable by 'vanilla' vim
 Plug 'tpope/vim-surround'              " Parentheses, brackets, quotes, XML tags, and more
 Plug 'wmvanvliet/vim-ipython'
+Plug 'easymotion/vim-easymotion' 
 
 " Plug 'vimwiki/vimwiki'   " Personal Wiki
 
