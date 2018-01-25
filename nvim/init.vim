@@ -130,9 +130,11 @@ set nolinebreak                " (No) break lines if window is too narrow
 set formatoptions+=j           " smart line joining. uncomments comments.
 set lazyredraw                 " don't redraw screen during macros
 set wrap
-let &showbreak=                " ↪                                                                               "
+let &showbreak="↪"
 set breakindent                " wrapped line s keep indentation (set bri)
-set breakindentopt=shift:0     " how far in the breakindent:  ↪ showbreak should be
+set cpo+=n
+set breakindentopt+=shift:0     " how far in the breakindent:  ↪ showbreak should be
+set breakindentopt+=min:20     " how far in the breakindent:  ↪ showbreak should be
 set nuw=4                      " width of numberline
 set mouse=a                    " mouse functionality
 set timeoutlen=500             " ms to wait for command completion
