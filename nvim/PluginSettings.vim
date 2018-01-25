@@ -49,9 +49,10 @@ let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
 
 " }}}
 "============== Fugitive ====================={{{
-nnoremap <Leader>ga  :Gwrite<CR>
+nnoremap <Leader>gst :Gstatus<CR>
+nnoremap <Leader>gwr  :Gwrite<CR>
 nnoremap <Leader>gcm :Gcommit<CR>
-nnoremap <Leader>gc  :Gwrite<CR>:Gcommit<CR>
+nnoremap <Leader>gcc  :Gwrite<CR>:Gcommit<CR>
 nnoremap <Leader>gps :Gpush<CR>
 nnoremap <Leader>gpl :Gpull<CR>
 
@@ -394,14 +395,26 @@ let g:highlightedyank_highlight_duration = 1000
 "}}}
 "============== vim-easy-align ==============={{{
 " Start interactive EasyAlign in visual mode (e.g. vipga=, vapga", ...)
-"
 vmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip) 
-nmap ga <Plug>(EasyAlign)
+nmap <leader>ga <Plug>(EasyAlign)
 
 "}}}
 "============== vim-after-object ============={{{
 autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ', '+', '*')
 " ca=				change after '='
+"}}}
+"============== easy-motion =================={{{
+
+" Gif config
+map <l <Plug>(easymotion-lineforward)
+map <j <Plug>(easymotion-j)
+map <k <Plug>(easymotion-k)
+map <h <Plug>(easymotion-linebackward)
+
+map <f <Plug>(easymotion-bd-f)
+nmap <s <Plug>(easymotion-overwin-f)
+
+let g:EasyMotion_startofline = 1 " Linejumps puts cursor at start of line
 "}}}
