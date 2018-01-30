@@ -40,12 +40,27 @@ let g:vimtex_view_method = "zathura"
 let g:vimtex_complete_recursive_bib = 2
 let g:vimtex_complete_enabled = 1
 let g:vimtex_complete_close_braces = 1
+let g:vimtex_fold_enabled = 1
+map <leader>ll <plug>(vimtex-compile-ss)
 
-" Deoplete
-if !exists('g:deoplete#omni#input_patterns')
-		let g:deoplete#omni#input_patterns = {}
-endif
-let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
+augroup vimtex_event_1
+	au!
+	au User VimtexEventQuit     call vimtex#compiler#clean(0)
+	au User VimtexEventInitPost call vimtex#compiler#compile()
+augroup END
+
+" Close viewers on quit
+function! CloseViewers()
+	if executable('xdotool') && exists('b:vimtex')
+			\ && exists('b:vimtex.viewer') && b:vimtex.viewer.xwin_id > 0
+		call system('xdotool windowclose '. b:vimtex.viewer.xwin_id)
+	endif
+endfunction
+
+augroup vimtex_event_2
+	au!
+	au User VimtexEventQuit call CloseViewers()
+augroup END
 
 " }}}
 "============== Fugitive ====================={{{
@@ -174,6 +189,8 @@ imap <F5> <Esc>:w<CR>:!clear;python %<CR>
 "============== Indentline ==================={{{
 let g:indentLine_fileTypeExclude=['help']
 let g:indentLine_char = '|' " '┊'  
+let g:indentLine_setColors = 0
+let g:indentLine_setConceal = 0
 " }}}
 "============== Vim-livedown-markdown ========{{{
 " should markdown preview get shown automatically upon opening markdown buffer
@@ -203,6 +220,9 @@ let g:vimwiki_use_calendar = 1	"Enable calendar.vim integration
 "}}}
 "============== Vim-surround ================{{{
 nnoremap <leader>' :normal ysiW'<CR>
+nnoremap <leader>" :normal ysiW"<CR>
+nnoremap <leader>b :normal ysiW)<CR>
+nnoremap <leader>B :normal ysiW]<CR>
 "}}}
 "============== FZF =========================={{{
 " Customize fzf colors to match your color scheme
@@ -234,6 +254,7 @@ nnoremap <Leader>bu :Buffers<CR>
 nnoremap <Leader>li :Lines<CR>
 nnoremap <Leader>gs :GFiles?<CR>
 nnoremap <Leader>he :Helptags<CR>
+nnoremap <Leader>fs :Snippets<CR>
 
 " This is the default extra key bindings
 let g:fzf_action = {
@@ -340,6 +361,15 @@ inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr><C-j> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
+" Deoplete and vimtex
+if !exists('g:deoplete#omni#input_patterns')
+		let g:deoplete#omni#input_patterns = {}
+endif
+
+let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
+
+call deoplete#custom#set('_', 'sorters', ['sorter_word'])
+call deoplete#custom#set('ultisnips', 'rank', 9999)
 "}}}
 "============== Scratch ======================{{{
 let g:scratch_insert_autohide = 0
@@ -396,6 +426,9 @@ let g:highlightedyank_highlight_duration = 1000
 "============== vim-easy-align ==============={{{
 " Start interactive EasyAlign in visual mode (e.g. vipga=, vapga", ...)
 vmap ga <Plug>(EasyAlign)
+
+" Align a markdown table -> hidden in autocommand ?
+vmap t <Plug>(EasyAlign)*\|
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip) 
 nmap <leader>ga <Plug>(EasyAlign)

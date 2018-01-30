@@ -109,6 +109,7 @@ bindsym $mod+n workspace $ws6 focus, exec $tmuxscripts/notes_tmux.sh
 bindsym $mod+c workspace $ws7 focus, exec $tmuxscripts/config_tmux.sh
 bindsym $mod+d exec rofi rofi -show run -lines 8 -padding 10
 bindsym $mod+i exec $tmuxscripts/Vim.sh
+bindsym $mod+t exec $tmuxscripts/Thesis.sh
 # bindsym $mod+p workspace $ws6 focus, exec $tmuxscripts/personal.sh
 bindsym $mod+p workspace $ws6 focus, exec $tmuxscripts/conversational.sh
 bindsym $mod+o workspace $ws3 focus, exec $tmuxscripts/work_tmux.sh

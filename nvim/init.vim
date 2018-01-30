@@ -2,8 +2,7 @@
 " Erik
 " Ubuntu 16.04
 " Unicode characters: https://www.w3schools.com/charsets/ref_utf_dingbats.asp
-"
-set nocompatible              " be iMproved, required
+
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
 	echo "No Vim-Plug available... Downloading and running PlugInstall"
   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
@@ -113,7 +112,7 @@ set shortmess+=a               " Make the save message shorter. Helps avoid the 
 set foldmethod=marker          " marker for all but specified filetypes (ex: python)
 set foldlevelstart=-1          " start with fold everything
 set foldclose=                 " all
-set conceallevel=0
+set conceallevel=0 
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
@@ -133,7 +132,7 @@ set wrap
 let &showbreak="↪"
 set breakindent                " wrapped line s keep indentation (set bri)
 set cpo+=n
-set breakindentopt+=shift:0     " how far in the breakindent:  ↪ showbreak should be
+set breakindentopt+=shift:3    " how far in the breakindent:  ↪ showbreak should be
 set breakindentopt+=min:20     " how far in the breakindent:  ↪ showbreak should be
 set nuw=4                      " width of numberline
 set mouse=a                    " mouse functionality
@@ -152,6 +151,8 @@ set splitright
 set gdefault                   " with this:  s/foo/bar --> s/foo/bar/g by default. ´g´ reverses its meaning.
 set inccommand=nosplit
 set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,resize
+
+let g:tex_flavor = "latex"     " assuem *.tex are all latex files
 
 " Wildmenu completion {{{
 set wildmenu

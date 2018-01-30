@@ -8,12 +8,6 @@ aug end "}}}
 " set .conf files as dosini 
 autocmd BufRead,BufNewFile *.conf setf dosini
 
-" cleanup vimtex on quit {{{ 
-augroup vimtex_event_1
-	au!
-	au user vimtexeventquit call vimtex#compiler#clean(0)
-augroup end "}}}
-
 
 " Return to line {{{
 " Make sure Vim returns to the same line when you reopen a file.
@@ -24,3 +18,13 @@ augroup line_return
         \     execute 'normal! g`"zvzz' |
         \ endif
 augroup END " }}}
+
+" LATEX
+augroup Latex
+	autocmd!
+	autocmd BufNewFile,BufRead *.tex set conceallevel=0
+	autocmd BufNewFile,BufRead *.tex set norelativenumber
+	autocmd BufNewFile,BufRead *.tex setlocal spell! spelllang=en_us
+	autocmd BufNewFile,BufRead *.tex set foldmethod=expr
+augroup END
+

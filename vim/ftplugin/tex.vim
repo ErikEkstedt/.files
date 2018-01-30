@@ -14,7 +14,6 @@ inoremap ;ss \subsubsection{}<CR>%{{{<CR><++><Esc>kk12li
 inoremap ;line %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%<CR><Esc>
 
 " Itemize
-inoremap ;bi \begin{itemize}<CR>\item<CR>\end{itemize}<Esc>kA<Space>
 inoremap ;i \item 
 
 " Figure
@@ -28,29 +27,12 @@ inoremap ;eq \begin{equation}<CR>\label{eq:<++>}<CR>\end{equation}<CR><CR><++><E
 
 " url
 inoremap ;url \url{} <++><Esc>5hi
-"
+
 " fix slowness
 "normal :NoMatchParen
-let g:vimtex_indent_enabled = 0
-let g:vimtex_motion_matchparen = 0
+let g:vimtex_indent_enabled = 1
+let g:vimtex_motion_matchparen = 1
 let g:tex_fold_enabled=1
-let g:indentLine_enabled = 0 " Don't need conceallevel 1 or 2. unneccessary in tex
+let g:indentLine_enabled = 1 
 
-" Appearance
-" colorscheme base16-classic-dark
-" let base16colorspace=256
-" hi NERDTreeDir guifg=#90a959 
-" hi Directory guifg=#404040
-" hi NERDTreeCWD guifg=gray50
-" hi NERDTreeFile guifg=white
-" hi NERDTreeBookmarksHeader guifg=gray50
-" hi NERDTreeBookmarkName guifg=gray50
-
-set foldmethod=marker
-set conceallevel=0
-set norelativenumber
-set nocursorline
-set linebreak
-set tw=80
-setlocal spell! spelllang=en_us
 
