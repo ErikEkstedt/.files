@@ -131,9 +131,9 @@ set wrap
 let &showbreak="↪"
 set breakindent                " wrapped line s keep indentation (set bri)
 set cpo+=n
-set breakindentopt+=shift:3    " how far in the breakindent:  ↪ showbreak should be
-set breakindentopt+=min:20     " how far in the breakindent:  ↪ showbreak should be
-set nuw=4                      " width of numberline
+set breakindentopt+=shift:3    " how far in the showbreak: " ↪ " is
+set breakindentopt+=min:20
+set numberwidth=4              " width of numberline
 set mouse=a                    " mouse functionality
 set timeoutlen=500             " ms to wait for command completion
 set ttimeoutlen=0              " don't wait for <esc>
@@ -180,13 +180,13 @@ set directory=~/.vim/tmp/swap//   " swap files
 
 " Make those folders automatically if they don't already exist.
 if !isdirectory(expand(&undodir))
-    call mkdir(expand(&undodir), "p")
+	call mkdir(expand(&undodir), "p")
 endif
 if !isdirectory(expand(&backupdir))
-    call mkdir(expand(&backupdir), "p")
+	call mkdir(expand(&backupdir), "p")
 endif
 if !isdirectory(expand(&directory))
-    call mkdir(expand(&directory), "p")
+	call mkdir(expand(&directory), "p")
 endif
 " }}}
 "}}}

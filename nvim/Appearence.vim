@@ -8,7 +8,15 @@ set termguicolors " Enable true color support.
 " colors
 " colorscheme base16-monokai
 let g:seoul256_background = 234
-colo seoul256
+colorscheme seoul256
+augroup seoul256_patch
+  autocmd!
+  autocmd VimEnter,ColorScheme * if g:colors_name =~ 'seoul256'
+        \|   if &background == 'dark'
+        \|     hi Conceal guibg=g:seoul256_current_bg
+        \|     hi Conceal guifg=g:seoul256_current_fg-20
+        \| endif
+augroup END
 
 " colorscheme onedark
 " hi CursorLine guibg=#383838
