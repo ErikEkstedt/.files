@@ -450,3 +450,7 @@ nmap <s <Plug>(easymotion-overwin-f)
 
 let g:EasyMotion_startofline = 1 " Linejumps puts cursor at start of line
 "}}}
+"============== Gundo ========================{{{
+let g:gundo_prefer_python3 = 1
+nnoremap gu :GundoToggle<CR>
+"}}}

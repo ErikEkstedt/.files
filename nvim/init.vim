@@ -51,8 +51,7 @@ Plug 'tpope/vim-repeat'                " repeat commands not repeatable by 'vani
 Plug 'tpope/vim-surround'              " Parentheses, brackets, quotes, XML tags, and more
 Plug 'wmvanvliet/vim-ipython'
 Plug 'easymotion/vim-easymotion' 
-
-" Plug 'vimwiki/vimwiki'   " Personal Wiki
+Plug 'sjl/gundo.vim'                   " Visualize undo tree
 
 " ============ Auto-Completion ========================
 if has('nvim')
