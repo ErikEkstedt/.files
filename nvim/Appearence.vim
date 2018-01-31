@@ -15,6 +15,8 @@ augroup seoul256_patch
         \|   if &background == 'dark'
         \|     hi Conceal guibg=g:seoul256_current_bg
         \|     hi Conceal guifg=g:seoul256_current_fg-20
+        \|     hi StatuslineNC guifg=#060606 guibg=#707070 
+        \|     hi Statusline guifg=#060606 guibg=#A0A0A0
         \| endif
 augroup END
 

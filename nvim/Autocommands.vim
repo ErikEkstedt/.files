@@ -8,7 +8,6 @@ aug end "}}}
 " set .conf files as dosini 
 autocmd BufRead,BufNewFile *.conf setf dosini
 
-
 " Return to line {{{
 " Make sure Vim returns to the same line when you reopen a file.
 augroup line_return
@@ -18,6 +17,14 @@ augroup line_return
         \     execute 'normal! g`"zvzz' |
         \ endif
 augroup END " }}}
+
+augroup CursorLine
+    au!
+    au VimEnter * setlocal cursorline
+    au WinEnter * setlocal cursorline
+    au BufWinEnter * setlocal cursorline
+    au WinLeave * setlocal nocursorline
+augroup END
 
 " LATEX
 augroup Latex
