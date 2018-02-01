@@ -1,3 +1,4 @@
+" vim fdm=marker
 " NeoVim
 " Erik
 " Ubuntu 16.04
@@ -23,13 +24,13 @@ Plug 'junegunn/fzf.vim'            " fuzzy filefinding
 
 " ============ Appearence =============================
 Plug 'Yggdroot/indentLine'           " see where there is indent
-Plug 'edkolev/tmuxline.vim'          " tmux statusline same as vim example:	 :Tmuxline lightline
-Plug 'itchyny/lightline.vim'         " light weight status bar
+Plug 'edkolev/tmuxline.vim'          " tmux statusline same as vim.	 :Tmuxline lightline
 Plug 'junegunn/goyo.vim'             " Distraction free writing
 Plug 'junegunn/limelight.vim'        " Focus color
 Plug 'luochen1990/rainbow'           " Different color on paranthesis
 Plug 'machakann/vim-highlightedyank' " Highlight yanks
 Plug 'vim-scripts/Wombat'            " Wombat colorscheme
+Plug 'itchyny/lightline.vim'
 
 " ============ Colorschemes ===========================
 Plug 'chriskempson/base16-vim'        " much color
@@ -90,7 +91,7 @@ call plug#end()
 "=============== Basic ======================={{{
 " fzf path
 set rtp+=~/.fzf
-set rtp+=~/.files/nvim/autoload/lightline
+" set rtp+=~/.files/nvim/autoload/lightline
 
 filetype plugin indent on
 syntax enable
@@ -104,6 +105,7 @@ set backspace=indent,eol,start " Make backspace work like most other apps.
 set history=1000               " Keep 1000 lines of command-line history.
 set undolevels=1000            " Keep 1000 lines of undo history.
 set showcmd                    " Display incomplete commands.
+set noshowmode                 " stops vims own showing below the statusbar.
 set title                      " Change the title of the terminal/tab with the file name.
 set hidden                     " Allow unsaved background buffers.
 set shortmess=I                " Don't show Vim's welcome message.
@@ -111,10 +113,11 @@ set shortmess+=a               " Make the save message shorter. Helps avoid the 
 set foldmethod=marker          " marker for all but specified filetypes (ex: python)
 set foldlevelstart=-1          " start with fold everything
 set foldclose=                 " all
-set conceallevel=0 
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
+set conceallevel=0
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+set smarttab
 set noexpandtab
 set autoindent
 set ruler                      " for cursor position in the bottom right corner
@@ -124,14 +127,15 @@ set scrolloff=3                " visual rows above and below cursor
 set sidescroll=3               " visual columns on sides of cursor
 set cursorline                 " highlight line where cursor is
 set hls                        " highlighting!
-set nolinebreak                " (No) break lines if window is too narrow
+set linebreak				   " break lines (only visually) if window is too narrow
 set formatoptions+=j           " smart line joining. uncomments comments.
 set lazyredraw                 " don't redraw screen during macros
 set wrap
+set wrapmargin=5
 let &showbreak="↪"
 set breakindent                " wrapped line s keep indentation (set bri)
 set cpo+=n
-set breakindentopt+=shift:3    " how far in the showbreak: " ↪ " is
+set breakindentopt+=shift:2    " how far in the showbreak: " ↪ " is
 set breakindentopt+=min:20
 set numberwidth=4              " width of numberline
 set mouse=a                    " mouse functionality

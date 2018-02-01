@@ -46,7 +46,6 @@ map <leader>ll <plug>(vimtex-compile-ss)
 augroup vimtex_event_1
 	au!
 	au User VimtexEventQuit     call vimtex#compiler#clean(0)
-	au User VimtexEventInitPost call vimtex#compiler#compile()
 augroup END
 
 " Close viewers on quit
@@ -78,42 +77,39 @@ nnoremap <Leader>gdi  /<<<<<<<<CR>n<C-o>zz
 
 " }}}
 "============== Lightline ===================={{{
-"wombat, solarized, powerline, jellybeans, Tomorrow,
-"Tomorrow_Night, Tomorrow_Night_Blue, Tomorrow_Night_Eighties,
-"PaperColor, seoul256, landscape, one, Dracula, darcula,
-"molokai, materia, material, OldHope, nord and 16color
-
-" let g:lightline = {'colorscheme': 'molokai'} 
-let g:lightline = {'colorscheme': 'mymolokaicolor'} 
+let g:lightline = {'colorscheme': 'seoul256'} 
 let g:lightline.inactive = {
 			\	'left': [['absolutepath']],
-			\ 	'middle': [['absolutepath']],
+			\ 	'middle': [['']],
 			\ 	'right': [['']] }
-
-set noshowmode "stops vims own showing below the statusbar.
 let g:lightline.tab = {'active': ['tabnum', 'filename', 'modified'],
 			\'inactive': [ 'tabnum', 'filename', 'modified' ]}
-" }}}
+" " }}}
 "============== NerdTree ====================={{{
 " " open NERDTree on startup
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-let NERDTreeIgnore=['\.pyc$', '\.png$', '\.aux$', '\.out', '\.bbl$', '\.fls$', '\.blg$', '\.log$', '\.fdb_latexmk$','\.gz$']
-let NERDTreeShowBookmarks = 1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 map <C-n> :NERDTreeToggle<CR>
 
+let NERDTreeIgnore=['\.pyc$', '\.aux$', '\.out', '\.bbl$', '\.fls$', '\.blg$', '\.log$', '\.fdb_latexmk$','\.gz$']
+let NERDTreeShowBookmarks = 1
 let g:NERDTreeDirArrowExpandable = ''
 let g:NERDTreeDirArrowCollapsible = ''
 
 "PaleTurquoise1
-hi NERDTreeDir guifg=#90a959
-hi Directory guifg=#404040
-
-hi NERDTreeCWD guifg=gray50
-hi NERDTreeFile guifg=white
-hi NERDTreeBookmarksHeader guifg=gray50
-hi NERDTreeBookmarkName guifg=gray50
+" Put inside autocommand
+augroup NerdTreeHi
+  autocmd!
+  autocmd VimEnter,ColorScheme * if g:colors_name =~ 'seoul256'
+	hi NERDTreeDir guifg=#90a959
+	hi Directory guifg=#404040
+	hi NERDTreeCWD guifg=gray90
+	hi NERDTreeFile guifg=gray90
+	hi NERDTreeUp guifg=gray90 guibg=gray20
+	hi NERDTreeBookmarksHeader guifg=#90a959
+	hi NERDTreeBookmarkName guifg=gray90 
+augroup END
 " }}}
 "============== Python-Mode =================={{{
 " Bindings {{{
@@ -306,7 +302,6 @@ endfunction
 function! s:goyo_leave()
   silent !tmux set status on
   silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
-  set showmode
   set showcmd
 endfunction
 

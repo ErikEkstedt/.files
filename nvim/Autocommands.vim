@@ -11,19 +11,19 @@ autocmd BufRead,BufNewFile *.conf setf dosini
 " Return to line {{{
 " Make sure Vim returns to the same line when you reopen a file.
 augroup line_return
-    au!
-    au BufReadPost *
-        \ if line("'\"") > 0 && line("'\"") <= line("$") |
-        \     execute 'normal! g`"zvzz' |
-        \ endif
+	au!
+	au BufReadPost *
+				\ if line("'\"") > 0 && line("'\"") <= line("$") |
+				\     execute 'normal! g`"zvzz' |
+				\ endif
 augroup END " }}}
 
 augroup CursorLine
-    au!
-    au VimEnter * setlocal cursorline
-    au WinEnter * setlocal cursorline
-    au BufWinEnter * setlocal cursorline
-    au WinLeave * setlocal nocursorline
+	au!
+	au VimEnter * setlocal cursorline
+	au WinEnter * setlocal cursorline
+	au BufWinEnter * setlocal cursorline
+	au WinLeave * setlocal nocursorline
 augroup END
 
 " LATEX
