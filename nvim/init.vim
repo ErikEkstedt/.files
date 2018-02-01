@@ -10,6 +10,9 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+" fzf path
+set rtp+=~/.fzf
+set rtp+=~/.files/nvim
 
 "============= Vim-Plug ======================{{{
 " Plugins will be downloaded under the specified directory.
@@ -89,9 +92,6 @@ Plug 'honza/vim-snippets'               " snippets
 call plug#end()
 "}}}
 "=============== Basic ======================={{{
-" fzf path
-set rtp+=~/.fzf
-" set rtp+=~/.files/nvim/autoload/lightline
 
 filetype plugin indent on
 syntax enable

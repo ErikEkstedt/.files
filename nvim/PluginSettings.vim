@@ -77,7 +77,8 @@ nnoremap <Leader>gdi  /<<<<<<<<CR>n<C-o>zz
 
 " }}}
 "============== Lightline ===================={{{
-let g:lightline = {'colorscheme': 'seoul256'} 
+let g:lightline = {'colorscheme': 'myseoul256'} 
+" let g:lightline = {'colorscheme': 'mymolokaicolor'} 
 let g:lightline.inactive = {
 			\	'left': [['absolutepath']],
 			\ 	'middle': [['']],
