@@ -5,4 +5,5 @@
 
 Utilize
 * onoremap
+	* [ ] onoremap m i\(    " change inner math  \( aaaa \) -> normal! cmbb<esc> -> \( bb \)
 	

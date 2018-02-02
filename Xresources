@@ -15,8 +15,7 @@ URxvt.depth:		32
 URxvt*dynamicColors: on
 URxvt.intensityStyles:	false
 URxvt*transparent: true
-URxvt*shading: 20
-URxvt*fading: 10
+URxvt*shading: 20 URxvt*fading: 10
 
 ! URxvt*tintColor: #1d1f21
 
@@ -81,6 +80,7 @@ rofi.color-active: #ffe757e1,   #ffffffff, #50461976, #50e757e1, #ffffffff
 !                  ´background´, ´border´
 ! rofi.color-window: #6FF0F8FF,  #8ffdf6e3
 rofi.hide-scrollbar:	true
+rofi.show-icons:	true
 rofi.kb-remove-to-eol: Control+p 
 rofi.kb-accept-entry: Return,KP_Enter
 rofi.kb-row-up: Control+k,Up

@@ -52,10 +52,11 @@ Plug 'mtth/scratch.vim'                " Unobtrusive scratch
 Plug 'nelstrom/vim-visual-star-search' " * on visual select seraches for the snippet
 Plug 'tpope/vim-commentary'            " commenting
 Plug 'tpope/vim-repeat'                " repeat commands not repeatable by 'vanilla' vim
-Plug 'tpope/vim-surround'              " Parentheses, brackets, quotes, XML tags, and more
+Plug 'tpope/vim-surround'              " Surround objects with quotes, brackets ...
 Plug 'wmvanvliet/vim-ipython'
 Plug 'easymotion/vim-easymotion' 
 Plug 'sjl/gundo.vim'                   " Visualize undo tree
+Plug 'Raimondi/delimitMate'			   " autoclosing of brackets, quotes ... 
 
 " ============ Auto-Completion ========================
 if has('nvim')

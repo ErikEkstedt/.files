@@ -13,6 +13,7 @@ let s:base0 = [ '#808070', 244 ]
 let s:base1 = [ '#949484', 246 ]
 let s:base2 = [ '#a8a897', 248 ]
 let s:base3 = [ '#e8e8d3', 253 ]
+
 let s:black = [ '#060606', 233 ]
 let s:yellow = [ '#d8af5f', 3 ]
 let s:orange = [ '#d7875f', 216 ]
@@ -26,9 +27,9 @@ let s:white = [ '#d0d0d0', 252 ]
 
 let s:p = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
 
-let s:p.normal.left     = [ [ s:base02, s:blue ],    [ s:base3,  s:base01 ] ]
-let s:p.normal.middle   = [ [ s:blue,  s:base02 ] ]
-let s:p.normal.right    = [ [ s:base02, s:base1 ],   [ s:base02,  s:blue ] ]
+let s:p.normal.left     = [ [ s:base02, s:blue ], [ s:base3,  s:base01 ] ]
+let s:p.normal.right    = [ [ s:base02, s:blue ], [ s:base3, s:base01 ] ]
+let s:p.normal.middle   = [ [ s:blue,  s:black ] ]
 let s:p.normal.warning  = [ [ s:yellow, s:base01 ] ]
 let s:p.normal.error    = [ [ s:red,    s:base02 ] ]
 

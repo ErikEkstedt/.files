@@ -266,12 +266,12 @@ let g:fzf_action = {
 "}}}
 "============== UltiSnips ===================={{{
 let g:UltiSnipsSnippetsDir = "~/.vim/bundle/vim-snippets"
-let g:UltiSnipsSnippetDirectories = ["UltiSnips", "snips"]
+let g:UltiSnipsSnippetDirectories = ["UltiSnips", "snips", "~/.files/nvim/mysnippets"]
 
 " Trigger configuration.
 let g:UltiSnipsExpandTrigger='<leader><leader>'
-let g:UltiSnipsJumpForwardTrigger="<c-b>" 
-let g:UltiSnipsJumpBackwardTrigger="<c-z>" 
+let g:UltiSnipsJumpForwardTrigger="<c-l>" 
+let g:UltiSnipsJumpBackwardTrigger="<c-h>" 
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit='vertical'
@@ -288,7 +288,7 @@ let g:ultisnips_python_style="google"
 
 "}}}
 "============== GoYo ========================={{{ 
-let g:goyo_width  = 80  " (default: 80)
+let g:goyo_width  = 100  " (default: 80)
 let g:goyo_linenr = 0   " (default: 0)
 
 " Functions Goyo and tmux
@@ -364,7 +364,6 @@ inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 if !exists('g:deoplete#omni#input_patterns')
 		let g:deoplete#omni#input_patterns = {}
 endif
-
 let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
 
 call deoplete#custom#set('_', 'sorters', ['sorter_word'])

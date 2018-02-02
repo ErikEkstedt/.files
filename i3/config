@@ -107,7 +107,8 @@ bindsym $mod+y [con_mark="youtube"] scratchpad show
 
 bindsym $mod+n workspace $ws6 focus, exec $tmuxscripts/notes_tmux.sh
 bindsym $mod+c workspace $ws7 focus, exec $tmuxscripts/config_tmux.sh
-bindsym $mod+d exec rofi rofi -show run -lines 8 -padding 10
+# bindsym $mod+d exec rofi rofi -show drun -lines 8 -padding 10
+bindsym $mod+d exec rofi rofi -show drun 
 bindsym $mod+i exec $tmuxscripts/Vim.sh
 bindsym $mod+t exec $tmuxscripts/Thesis.sh
 # bindsym $mod+p workspace $ws6 focus, exec $tmuxscripts/personal.sh
@@ -208,23 +209,32 @@ hide_edge_borders smart
 for_window [class="^.*"] border pixel 0
 
 # for_window [class="^.*"] border pixel 1
-for_window [class="Zathura"] border pixel 2
 # for_window [class=" "] border pixel 5
+for_window [class="Zathura"] border pixel 2
 for_window [class="Google-chrome"] border pixel 1
 for_window [class="Firefox"] border pixel 1
 
-set $color.gray = #A7A7A7  
-set $color.white = #FFFFFF
-set $color.black = #000000
+set $color.gray #A7A7A7  
+set $color.purple #78208c
+set $color.white #FFFFFF
+set $color.black #000000
+# Note that for the window decorations, the color around the child window is the "child_border", and "border" color
+# is only the two thin lines around the titlebar.
+# The indicator color is used for indicating where a new window will be opened. For horizontal split containers, the
+# right border will be painted in indicator color, for vertical split containers, the bottom border. This only
+# applies to single windows within a split container, which are otherwise indistinguishable from single windows
+# outside of a split container.
 
-# color of focused window
-client.focused $color.gray $color.gray $color.gray
-# client.focused #ff6417 #ff6417 #ff6417
+# class                 border		backgr.		text    indicator child_border
+# client.focused         #4c7899 	#285577 	#ffffff #2e9ef4   #285577   
+# client.focused	     $color.gray $color.gray $color.gray $color.gray $color.gray
+client.focused			$color.purple $color.purple $color.purple $color.purple $color.purple
+
+# client.focused			#78208c #78208c  #78208c #78208c #78208c 
 
 # initial gap size
 set $gi 15
 set $go 0
-	
 set $ginc 60
 
 gaps inner $gi
@@ -250,6 +260,8 @@ mode $gap{
 	bindsym Escape mode "default"
 }
 bindsym $mod+Shift+g mode $gap
+bindsym $mod+Shift+Ctrl+c exec bash -c "pkill compton"
+bindsym $mod+Shift+c exec bash -c "compton -b"
 
 #}}}
 #========= MEDIA KEY BINDINGS ===={{{
@@ -304,14 +316,15 @@ bindsym $mod+Ctrl+j move down
 bindsym $mod+Ctrl+k move up
 bindsym $mod+Ctrl+l move right
 
+popup_during_fullscreen smart
 bindsym $mod+Shift+v split h
 bindsym $mod+v split v
-
-# enter fullscreen mode for the focused container
-popup_during_fullscreen smart
 bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+f layout toggle tabbed split
+
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
+
 bindsym $mod+Shift+z focus parent
 bindsym $mod+z focus child
 

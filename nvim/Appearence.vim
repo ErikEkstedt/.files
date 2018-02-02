@@ -26,7 +26,7 @@ augroup seoul256_patch
   autocmd VimEnter,ColorScheme * if g:colors_name =~ 'seoul256'
         \|   if &background == 'dark'
         \|     hi Conceal guibg=g:seoul256_current_bg
-        \|     hi Conceal guifg=g:seoul256_current_fg-20
+        \|     hi Conceal guifg=#404040
         \|     hi StatuslineNC guifg=#060606 guibg=#707070 
         \|     hi Statusline guifg=#060606 guibg=#A0A0A0
         \| endif

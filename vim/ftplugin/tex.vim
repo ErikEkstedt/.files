@@ -26,7 +26,7 @@ inoremap ;bta \begin{table}[h]<CR>\caption{<++>}<CR>\label{tab:<++>}<CR>\centeri
 inoremap ;eq \begin{equation}<CR>\label{eq:<++>}<CR>\end{equation}<CR><CR><++><Esc>3kO
 
 " url
-inoremap ;url \url{} <++><Esc>5hi
+inoremap ;url \url{} <++><Esc>5h
 
 " fix slowness
 "normal :NoMatchParen
@@ -34,5 +34,4 @@ let g:vimtex_indent_enabled = 1
 let g:vimtex_motion_matchparen = 1
 let g:tex_fold_enabled=1
 let g:indentLine_enabled = 1 
-
-
+setlocal tw=100
