@@ -101,15 +101,15 @@ let g:NERDTreeDirArrowCollapsible = ''
 "PaleTurquoise1
 " Put inside autocommand
 augroup NerdTreeHi
-  autocmd!
-  autocmd VimEnter,ColorScheme * if g:colors_name =~ 'seoul256'
-	hi NERDTreeDir guifg=#90a959
-	hi Directory guifg=#404040
-	hi NERDTreeCWD guifg=gray90
-	hi NERDTreeFile guifg=gray90
-	hi NERDTreeUp guifg=gray90 guibg=gray20
-	hi NERDTreeBookmarksHeader guifg=#90a959
-	hi NERDTreeBookmarkName guifg=gray90 
+	autocmd!
+	autocmd VimEnter,ColorScheme * if g:colors_name =~ 'seoul256'
+		hi NERDTreeDir guifg=#90a959
+		hi Directory guifg=#404040
+		hi NERDTreeCWD guifg=gray90
+		hi NERDTreeFile guifg=gray90
+		hi NERDTreeUp guifg=gray90 guibg=gray20
+		hi NERDTreeBookmarksHeader guifg=#90a959
+		hi NERDTreeBookmarkName guifg=gray90 
 augroup END
 " }}}
 "============== Python-Mode =================={{{
@@ -369,6 +369,11 @@ let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
 call deoplete#custom#set('_', 'sorters', ['sorter_word'])
 call deoplete#custom#set('ultisnips', 'rank', 9999)
 "}}}
+
+"============== Jedi-vim ====================={{{
+let g:jedi#completions_command = ""
+"}}}
+
 "============== Scratch ======================{{{
 let g:scratch_insert_autohide = 0
 let g:scratch_no_mappings = 1

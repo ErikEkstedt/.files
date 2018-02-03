@@ -8,14 +8,14 @@
 # erik ALL=(root) NOPASSWD: /home/erik/.files/Scripts/Laptop/screen_bright
 
 current=$(cat /sys/class/backlight/intel_backlight/brightness)
-if [[ $current == 500 ]]; then
+if [[ $current -lt 101 ]]; then
+    bright=500
+    sudo echo $bright > /sys/class/backlight/intel_backlight/brightness
+elif [[ $current -lt 501 ]]; then
     bright=937
     sudo echo $bright > /sys/class/backlight/intel_backlight/brightness
-elif [[ $current == 937 ]]; then
+elif [[ $current -lt 1100 ]]; then
     bright=100
-    sudo echo $bright > /sys/class/backlight/intel_backlight/brightness
-elif [[ $current == 100 ]]; then
-    bright=500
     sudo echo $bright > /sys/class/backlight/intel_backlight/brightness
 else
     bright=$current

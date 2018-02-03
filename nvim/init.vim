@@ -6,9 +6,9 @@
 
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
 	echo "No Vim-Plug available... Downloading and running PlugInstall"
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 " fzf path
 set rtp+=~/.fzf
@@ -40,6 +40,7 @@ Plug 'chriskempson/base16-vim'        " much color
 Plug 'skielbasa/vim-material-monokai' " I like this
 Plug 'joshdick/onedark.vim'           " look like atom?
 Plug 'junegunn/seoul256.vim'          " cool junegunn is coool
+Plug 'vim-scripts/wombat256.vim'
 
 " ============ Useful Tools ===========================
 Plug 'Valloric/MatchTagAlways'
@@ -60,17 +61,16 @@ Plug 'Raimondi/delimitMate'			   " autoclosing of brackets, quotes ...
 
 " ============ Auto-Completion ========================
 if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
+	Plug 'Shougo/deoplete.nvim'
+	Plug 'roxma/nvim-yarp'
+	Plug 'roxma/vim-hug-neovim-rpc'
 endif
 Plug 'zchee/deoplete-jedi'
+Plug 'davidhalter/jedi-vim'
 Plug 'Shougo/neco-vim'
 Plug 'Shougo/neopairs.vim'
-Plug 'davidhalter/jedi-vim'
-" Plug 'tenfyzhong/CompleteParameter.vim'
 
 " ============ Preview Text ===========================
 Plug 'lervag/vimtex'      " latex compiler and alot more.

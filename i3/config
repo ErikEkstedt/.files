@@ -27,7 +27,7 @@ bindsym $mod+Shift+q kill
 font pango:monospace 10
 
 # Reload/Restart the configuration file
-bindsym $mod+Ctrl+c reload 
+bindsym $mod+Ctrl+c reload
 bindsym $mod+Ctrl+r restart
 
 # Lock computer/ Ctrl Alt Delete 
@@ -210,7 +210,7 @@ for_window [class="^.*"] border pixel 0
 
 # for_window [class="^.*"] border pixel 1
 # for_window [class=" "] border pixel 5
-for_window [class="Zathura"] border pixel 2
+for_window [class="Zathura"] border pixel 4
 for_window [class="Google-chrome"] border pixel 1
 for_window [class="Firefox"] border pixel 1
 
@@ -218,6 +218,9 @@ set $color.gray #A7A7A7
 set $color.purple #78208c
 set $color.white #FFFFFF
 set $color.black #000000
+set $color.blue #4286f4
+set $color.green #99d895
+
 # Note that for the window decorations, the color around the child window is the "child_border", and "border" color
 # is only the two thin lines around the titlebar.
 # The indicator color is used for indicating where a new window will be opened. For horizontal split containers, the
@@ -228,9 +231,8 @@ set $color.black #000000
 # class                 border		backgr.		text    indicator child_border
 # client.focused         #4c7899 	#285577 	#ffffff #2e9ef4   #285577   
 # client.focused	     $color.gray $color.gray $color.gray $color.gray $color.gray
-client.focused			$color.purple $color.purple $color.purple $color.purple $color.purple
-
-# client.focused			#78208c #78208c  #78208c #78208c #78208c 
+# client.focused			$color.purple $color.purple $color.purple $color.purple $color.purple
+client.focused			$color.green $color.green $color.green $color.green $color.green
 
 # initial gap size
 set $gi 15
@@ -239,19 +241,13 @@ set $ginc 60
 
 gaps inner $gi
 gaps outer $go
-
 # Gap size
-set $gap "Gap size: (O/o)uter, (I/i)nner, (r)eset, (n)one"
+set $gap "Gap size:  Inner: (j/k), Outer: (J/K), (r)eset, (n)one"
 mode $gap{
-	# bindsym Shift+i gaps inner current plus $ginc
-	# bindsym i gaps inner current minus $ginc
-	# bindsym Shift+o	gaps outer current plus $ginc
-	# bindsym o gaps outer current minus $ginc
-
 	bindsym j gaps inner current plus $ginc
 	bindsym k gaps inner current minus $ginc
-	bindsym Shift+o	gaps outer current plus $ginc
-	bindsym o gaps outer current minus $ginc
+	bindsym Shift+j	gaps outer current plus $ginc
+	bindsym Shift+k	gaps outer current minus $ginc
 
 	bindsym r gaps inner current set $gi, gaps outer current set $go
 	bindsym n gaps inner current set 0, gaps outer current set 0
