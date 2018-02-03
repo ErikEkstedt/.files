@@ -13,7 +13,7 @@ colorscheme seoul256
 augroup ColorSchemeGroup
 	autocmd!
 	autocmd VimEnter,ColorScheme * call ColorPatches()
-	autocmd ColorScheme * call s:lightline_update()
+	" autocmd ColorScheme * call s:lightline_update()
 augroup END
 
 function! ColorPatches()
@@ -36,7 +36,9 @@ function! Seoulpatch()
 		hi GitGutterChangeDelete guibg=#333233
 		hi SignColumn guibg=#333233
 		hi VertSplit guifg=#060606 guibg=#060606
+		hi NERDTreeDir guifg=#90a959 
 	endif
+	call s:set_lightline_colorscheme('myseoul256')
 	call NERDTreeColors()
 endfunc
 
@@ -45,34 +47,34 @@ function! Wombat256patch()
 	hi CursorLine guibg=#080808
 	hi CursorLineNr guibg=#080808
 	hi LineNr guibg=#333233
+
 	hi GitGutterAdd guibg=#333233
 	hi GitGutterChange guibg=#333233
 	hi GitGutterDelete guibg=#333233
 	hi GitGutterChangeDelete guibg=#333233
 	hi SignColumn guibg=#333233
+
 	hi VertSplit guifg=#080808 guibg=#242424
 	hi NonText guibg=#242424
 
+	call NERDTreeColors()
+	hi NERDTreeDir guifg=#0855d1
+	call s:set_lightline_colorscheme('mywombat')
 endfunc
 
-function! s:lightline_update()
-	if !exists('g:loaded_lightline')
-		return
-	endif
-	try
-		" if g:colors_name =~# 'solarized\|landscape\|jellybeans\|tomorrow'
-		" 	let g:lightline.colorscheme = substitute(substitute(g:colors_name, '-', '_', 'g'), '256.*', '', '') .
-		" 				\ (g:colors_name ==# 'solarized' ? '_' . &background : '')
-		if g:colors_name =~# 'wombat'
-			let g:lightline.colorscheme = 'wombat'
-		elseif g:colors_name =~# 'seoul256'
-			let g:lightline.colorscheme = 'myseoul256'
-		endif
-		call lightline#init()
-		call lightline#colorscheme()
-		call lightline#update()
-	catch
-	endtry
+function! NERDTreeColors()
+	hi Directory guifg=#404040
+	hi NERDTreeCWD guifg=gray50
+	hi NERDTreeFile guifg=white
+	hi NERDTreeBookmarksHeader guifg=gray50
+	hi NERDTreeBookmarkName guifg=gray50
+endfunc
+
+function! s:set_lightline_colorscheme(name) abort
+  let g:lightline.colorscheme = a:name
+  call lightline#init()
+  call lightline#colorscheme()
+  call lightline#update()
 endfunction
 
 "========= NERDTree ==============
@@ -84,14 +86,6 @@ function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
 	exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
 
-function! NERDTreeColors()
-	hi NERDTreeDir guifg=#90a959 
-	hi Directory guifg=#404040
-	hi NERDTreeCWD guifg=gray50
-	hi NERDTreeFile guifg=white
-	hi NERDTreeBookmarksHeader guifg=gray50
-	hi NERDTreeBookmarkName guifg=gray50
-endfunc
 " nnoremap <LocalLeader>n :call NERDTreeColors()<CR>
 
 
