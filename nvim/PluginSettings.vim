@@ -262,7 +262,8 @@ let g:fzf_action = {
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit',
   \ 'ctrl-o': 'edit',
-  \ 'Enter': 'vsplit', }
+  \ 'Enter': 'vsplit',
+  \ 'Esc': 'exit', }
 "}}}
 "============== UltiSnips ===================={{{
 let g:UltiSnipsSnippetsDir = "~/.vim/bundle/vim-snippets"
@@ -369,11 +370,9 @@ let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
 call deoplete#custom#set('_', 'sorters', ['sorter_word'])
 call deoplete#custom#set('ultisnips', 'rank', 9999)
 "}}}
-
 "============== Jedi-vim ====================={{{
 let g:jedi#completions_command = ""
 "}}}
-
 "============== Scratch ======================{{{
 let g:scratch_insert_autohide = 0
 let g:scratch_no_mappings = 1

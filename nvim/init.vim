@@ -32,7 +32,6 @@ Plug 'junegunn/goyo.vim'             " Distraction free writing
 Plug 'junegunn/limelight.vim'        " Focus color
 Plug 'luochen1990/rainbow'           " Different color on paranthesis
 Plug 'machakann/vim-highlightedyank' " Highlight yanks
-Plug 'vim-scripts/Wombat'            " Wombat colorscheme
 Plug 'itchyny/lightline.vim'
 
 " ============ Colorschemes ===========================

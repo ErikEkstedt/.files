@@ -8,46 +8,72 @@ set termguicolors " Enable true color support.
 " =========== COLORSCHEME =========={{{
 " colorscheme base16-monokai
 
-" augroup monokai
-"   autocmd!
-"   autocmd VimEnter,ColorScheme * if g:colors_name =~ 'base16-monokai'
-"         \|   if &background == 'dark'
-"         \|     hi Conceal guibg=g:seoul256_current_bg
-"         \|     hi Conceal guifg=g:seoul256_current_fg-20
-"         \|     hi StatuslineNC guifg=#060606 guibg=#707070 
-"         \|     hi Statusline guifg=#060606 guibg=#A0A0A0
-"         \| endif
-" augroup END
-
 let g:seoul256_background = 234
 colorscheme seoul256
-augroup colorshemechanges
+augroup ColorSchemeGroup
 	autocmd!
-	autocmd ColorScheme * if g:colors_name =~ 'seoul256' | :call Seoulpatch()
-	autocmd ColorScheme * if g:colors_name =~ 'wombat256mod'| :call Wombat256patch()
+	autocmd VimEnter,ColorScheme * call ColorPatches()
+	autocmd ColorScheme * call s:lightline_update()
 augroup END
+
+function! ColorPatches()
+	if g:colors_name =~ 'seoul256'
+		call Seoulpatch()
+	elseif g:colors_name =~ 'wombat256mod'
+		call Wombat256patch()
+	endif
+endfunc
 
 function! Seoulpatch()
 	if &background == 'dark'
-		hi Conceal guibg=g:seoul256_current_bg
-		hi Conceal guifg=#404040
+		hi Conceal guibg=g:seoul256_current_bg guifg=#404040
 		hi StatuslineNC guifg=#060606 guibg=#707070 
 		hi Statusline guifg=#060606 guibg=#A0A0A0
-		" hi VertSplit guifg=#252525
-		" hi VertSplit guibg=#060606
+		hi SignColumn guibg=#333233
+		hi GitGutterAdd guibg=#333233
+		hi GitGutterChange guibg=#333233
+		hi GitGutterDelete guibg=#333233
+		hi GitGutterChangeDelete guibg=#333233
+		hi SignColumn guibg=#333233
+		hi VertSplit guifg=#060606 guibg=#060606
 	endif
-	call lightline#enable()
 	call NERDTreeColors()
 endfunc
+
 function! Wombat256patch()
-	hi Conceal guibg=#AA0000
-	hi Conceal guifg=#00AA00
-	hi VertSplit guifg=#252525
-	hi VertSplit guibg=#060606
-	call lightline#disable()
-	let g:lightline = {'colorscheme': 'wombat'} 
-	call lightline#enable()
+	hi Conceal guibg=#242424 guifg=#00AA00
+	hi CursorLine guibg=#080808
+	hi CursorLineNr guibg=#080808
+	hi LineNr guibg=#333233
+	hi GitGutterAdd guibg=#333233
+	hi GitGutterChange guibg=#333233
+	hi GitGutterDelete guibg=#333233
+	hi GitGutterChangeDelete guibg=#333233
+	hi SignColumn guibg=#333233
+	hi VertSplit guifg=#080808 guibg=#242424
+	hi NonText guibg=#242424
+
 endfunc
+
+function! s:lightline_update()
+	if !exists('g:loaded_lightline')
+		return
+	endif
+	try
+		" if g:colors_name =~# 'solarized\|landscape\|jellybeans\|tomorrow'
+		" 	let g:lightline.colorscheme = substitute(substitute(g:colors_name, '-', '_', 'g'), '256.*', '', '') .
+		" 				\ (g:colors_name ==# 'solarized' ? '_' . &background : '')
+		if g:colors_name =~# 'wombat'
+			let g:lightline.colorscheme = 'wombat'
+		elseif g:colors_name =~# 'seoul256'
+			let g:lightline.colorscheme = 'myseoul256'
+		endif
+		call lightline#init()
+		call lightline#colorscheme()
+		call lightline#update()
+	catch
+	endtry
+endfunction
 
 "========= NERDTree ==============
 " overwrites colors for [✹] etc. looks dull
