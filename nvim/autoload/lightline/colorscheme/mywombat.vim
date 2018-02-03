@@ -5,33 +5,32 @@
 " Last Change: 2018-02-01
 " =============================================================================
 
-let s:base03 = [ '#151513', 233 ]
-let s:base02 = [ '#30302c ', 236 ]
-let s:base01 = [ '#4e4e43', 239 ]
-let s:base00 = [ '#666656', 242  ]
 let s:base0 = [ '#808070', 244 ]
+let s:base00 = [ '#666656', 242  ]
+let s:base01 = [ '#4e4e43', 239 ]
+let s:base02 = [ '#30302c ', 236 ]
+let s:base03 = [ '#151513', 233 ]
 let s:base1 = [ '#949484', 246 ]
 let s:base2 = [ '#a8a897', 248 ]
 let s:base3 = [ '#e8e8d3', 253 ]
 
-let s:black = [ '#060606', 233 ]
-let s:yellow = [ '#d8af5f', 3 ]
-let s:orange = [ '#d7875f', 216 ]
-let s:red = [ '#d68787', 131 ]
-let s:magenta = [ '#df5f87', 168 ]
-let s:peach = [ '#d7afaf', 181 ]
-let s:blue = [ '#88b8f6', 109 ]
-let s:orange = [ '#e5786d', 109 ]
-let s:green = [ '#95e454', 109 ]
 let s:beige = [ '#ff5f55', 109 ]
-
+let s:black = [ '#060606', 233 ]
+let s:blue = [ '#88b8f6', 109 ]
 let s:cyan = [ '#87d7d7', 23 ]
+let s:green = [ '#95e454', 109 ]
+let s:magenta = [ '#df5f87', 168 ]
+let s:orange = [ '#e5786d', 109 ]
+let s:peach = [ '#d7afaf', 181 ]
+let s:red = [ '#d68787', 131 ]
 let s:white = [ '#d0d0d0', 252 ]
+let s:yellow = [ '#d8af5f', 3 ]
+
 let s:p = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
 
 let s:p.normal.left     = [ [ s:base02, s:blue ], [ s:blue,  s:base01 ] ]
 let s:p.normal.right    = [ [ s:base02, s:blue ], [ s:base3, s:base01 ] ]
-let s:p.normal.middle   = [ [ s:blue,  s:black ] ]
+let s:p.normal.middle   = [ [ s:base0,  s:black ] ]
 let s:p.normal.warning  = [ [ s:yellow, s:base01 ] ]
 let s:p.normal.error    = [ [ s:red,    s:base02 ] ]
 
