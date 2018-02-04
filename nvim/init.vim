@@ -42,11 +42,8 @@ Plug 'Reewr/vim-monokai-phoenix'
 Plug 'joshdick/onedark.vim'           " look like atom?
 Plug 'junegunn/seoul256.vim'          " cool junegunn is coool
 Plug 'vim-scripts/wombat256.vim'
-<<<<<<< HEAD
 Plug 'danilo-augusto/vim-afterglow'
-=======
 Plug 'mhartington/oceanic-next'
->>>>>>> e097c0c6d9f11cd1a243da5ef275b940c459e947
 
 " ============ Useful Tools ===========================
 Plug 'Valloric/MatchTagAlways'
