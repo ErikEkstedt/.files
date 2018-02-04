@@ -34,6 +34,10 @@ nnoremap <leader>cd :Calendar -view=day<CR>
 " }}}
 "============== Vimtex ======================={{{
 let g:vimtex_enabled = 1
+
+" let g:latex_view_general_viewer = 'general'
+" let g:vimtex_view_method = "general"
+
 let g:latex_view_general_viewer = 'zathura'
 let g:vimtex_view_method = "zathura"
 

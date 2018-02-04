@@ -20,9 +20,11 @@ call plug#begin('~/.vim/bundle')
 
 " ============ Code/Project Navigation ================
 Plug 'scrooloose/nerdtree'         " Project and file navigation
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'ivalkeen/nerdtree-execute'
+
 Plug 'tpope/vim-fugitive'          " git extension
 Plug 'airblade/vim-gitgutter'      " see git changes in file in the numberline
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/fzf.vim'            " fuzzy filefinding
 
 " ============ Appearence =============================
