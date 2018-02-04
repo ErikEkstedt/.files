@@ -5,7 +5,6 @@ set termguicolors " Enable true color support.
 " let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 " let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
-" =========== COLORSCHEME =========={{{
 " colorscheme base16-monokai
 
 let g:seoul256_background = 234
@@ -29,14 +28,17 @@ function! Seoulpatch()
 		hi Conceal guibg=g:seoul256_current_bg guifg=#404040
 		hi Comment gui=italic
 		hi String gui=italic
+
 		hi StatuslineNC guifg=#060606 guibg=#707070 
 		hi Statusline guifg=#060606 guibg=#A0A0A0
+
 		hi SignColumn guibg=#333233
 		hi GitGutterAdd guibg=#333233
 		hi GitGutterChange guibg=#333233
 		hi GitGutterDelete guibg=#333233
 		hi GitGutterChangeDelete guibg=#333233
 		hi SignColumn guibg=#333233
+
 		hi VertSplit guifg=#060606 guibg=#060606
 		hi NERDTreeDir guifg=#90a959 
 	endif
@@ -45,7 +47,7 @@ function! Seoulpatch()
 endfunc
 
 function! Wombat256patch()
-	hi Conceal guibg=#242424 guifg=#00AA00
+	hi Conceal guibg=#242424 guifg=#404040
 	hi CursorLine guibg=#080808
 	hi CursorLineNr guibg=#080808
 	hi LineNr guibg=#333233
@@ -60,8 +62,8 @@ function! Wombat256patch()
 	hi NonText guibg=#242424
 
 	call NERDTreeColors()
-	hi NERDTreeDir guifg=#0855d1
 	call s:set_lightline_colorscheme('mywombat')
+	hi NERDTreeDir guifg=#0c58d3
 endfunc
 
 function! NERDTreeColors()

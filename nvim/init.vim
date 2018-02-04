@@ -38,10 +38,13 @@ Plug 'itchyny/lightline.vim'
 
 " ============ Colorschemes ===========================
 Plug 'chriskempson/base16-vim'        " much color
-Plug 'skielbasa/vim-material-monokai' " I like this
+Plug 'skielbasa/vim-material-monokai' 
+Plug 'kiddos/malokai.vim'
+Plug 'Reewr/vim-monokai-phoenix'
 Plug 'joshdick/onedark.vim'           " look like atom?
 Plug 'junegunn/seoul256.vim'          " cool junegunn is coool
 Plug 'vim-scripts/wombat256.vim'
+Plug 'danilo-augusto/vim-afterglow'
 Plug 'mhartington/oceanic-next'
 
 " ============ Useful Tools ===========================
