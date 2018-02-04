@@ -30,7 +30,6 @@ for f in folders:
         os.chdir(tmp_dir)
         print()
         print('='*80)
-
         if act in 'pull':
             print('Git pull:\t {}'.format(f))
             print('='*80)
@@ -47,4 +46,3 @@ for f in folders:
             call(["git", "status"])
         print('-'*80)
         print('-'*80)
-

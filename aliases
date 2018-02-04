@@ -94,6 +94,7 @@ function ag() { # auto git
 	git commit -m "$1"
 	git push
 }
+alias gpush="python ~/.files/Scripts/auto_git.py"
 # }}}
 #====== Tmux ======= {{{
 	alias tlist="tmux list-sessions"
