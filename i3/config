@@ -98,7 +98,6 @@ bindsym Mod1+Shift+Tab move scratchpad
 bindsym $mod+Return exec $term
 bindsym $mod+a exec bash ~/.files/Scripts/Laptop/touchpad_onoff.sh
 
-
 # The Four OS Programs. (must try more with youtube)
 bindsym $mod+g [con_mark="browser"] scratchpad show
 bindsym $mod+r [con_mark="ranger"] scratchpad show
@@ -115,7 +114,8 @@ bindsym $mod+t exec $tmuxscripts/Thesis.sh
 bindsym $mod+p workspace $ws6 focus, exec $tmuxscripts/conversational.sh
 bindsym $mod+o workspace $ws3 focus, exec $tmuxscripts/work_tmux.sh
 bindsym $mod+e workspace $ws1 focus, exec $tmuxscripts/SSH.sh
-bindsym $mod+w exec rofi rofi -show window -lines 8 -padding 10
+bindsym $mod+w exec cheese 
+# bindsym $mod+w exec rofi rofi -show window -lines 8 -padding 10
 bindsym $mod+q exec rofi rofi -show ssh -terminal $term -lines 8 -padding 10
 
 
@@ -123,7 +123,6 @@ bindsym $mod+Shift+s workspace $ws9, exec $Music, mark "music
 bindsym $mod+Shift+r exec $term -t "rangerTerm" -e ~/.files/Scripts/tmux/ranger.sh
 bindsym $mod+Shift+Return exec $term -T "scratchTerm"
 bindsym $mod+Shift+b floating enable, move position center
-
 
 bindsym $mod+Ctrl+o workspace $ws3 focus, exec $i3scripts/workflow.sh
 bindsym $mod+Ctrl+n exec nautilus --no-desktop
