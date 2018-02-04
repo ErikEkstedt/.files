@@ -1,0 +1,12 @@
+{
+	"git": {
+		{
+			"id": ".files",
+			"iscategorical": "0"
+		},
+		{
+			"id": "com_sci",
+			"iscategorical": "0"
+		}
+	}
+}
