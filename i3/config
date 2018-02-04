@@ -148,12 +148,7 @@ focus_follows_mouse no
 
 # Scratchpad floaters
 for_window [class="st-256color" title="rangerTerm"] mark "ranger", scratchpad show
-for_window [class="Google-chrome" instance="www.youtube.com"] mark "youtube", \
-																															floating enable, \
-																															move scratchpad, \
-																															scratchpad show, \
-																															resize set 1440 1000, \
-																															move position center
+for_window [class="Google-chrome" instance="www.youtube.com"] mark "youtube", \ floating enable, \ move scratchpad, \ scratchpad show, \ resize set 1440 1000, \ move position center 
 
 for_window [class="Spotify"] mark "music", move scratchpad, [con_mark="music"] scratchpad show
 for_window [class="Firefox"] mark "browser", move scratchpad, [con_mark="browser"] scratchpad show
@@ -182,6 +177,7 @@ for_window [class="Roboschool Simulator"] floating enable
 for_window [class="Bullet Physics"] floating enable
 for_window [class="Frame"] floating enable, move 3000 px 1000 px
 for_window [class="Matplotlib"] floating enable
+for_window [class="first_app.py "] floating enable
 
 # Floating constraints
 floating_minimum_size 75 x 74
