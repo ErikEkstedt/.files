@@ -40,6 +40,7 @@ Plug 'skielbasa/vim-material-monokai' " I like this
 Plug 'joshdick/onedark.vim'           " look like atom?
 Plug 'junegunn/seoul256.vim'          " cool junegunn is coool
 Plug 'vim-scripts/wombat256.vim'
+Plug 'mhartington/oceanic-next'
 
 " ============ Useful Tools ===========================
 Plug 'Valloric/MatchTagAlways'
