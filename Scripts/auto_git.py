@@ -30,12 +30,16 @@ for f in folders:
         os.chdir(tmp_dir)
         print()
         print('='*80)
-        print('Git pull:\t {}'.format(f))
-        print('='*80)
+
         if act in 'pull':
+            print('Git pull:\t {}'.format(f))
+            print('='*80)
             call(["git", "pull"])
         elif act in 'push':
+            print('Git push:\t {}'.format(f))
+            print('='*80)
             call(["git", "add", "."])
+            call(["git", "status", "."])
             msg = input('Commit msg: ')
             call(["git", "commit", "-m", "msg"])
             call(["git", "push"])
