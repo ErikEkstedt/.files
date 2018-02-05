@@ -15,18 +15,18 @@ from pprint import pprint
 # print(data)
 
 act = 'push'
+act = sys.argv[1]
 
 path_of_script = sys.argv[0]
-folders = ['.files', 'com_sci']
-if len(sys.argv) > 1:
-    folders += sys.argv[1:]
-
+folders = ['.files', 'Documents/latex/Notes/Thesis']
 prefix = str(Path.home())
 for f in folders:
-    print(f)
     tmp_dir = os.path.join(prefix, f)
-    print(tmp_dir)
-    if os.path.isdir(tmp_dir) and os.path.exists(os.path.join(tmp_dir, '.git')):
+    # if os.path.isdir(tmp_dir) and os.path.exists(os.path.join(tmp_dir, '.git')):
+    if os.path.isdir(tmp_dir):
+        print('='*80)
+        print()
+        print(tmp_dir)
         os.chdir(tmp_dir)
         print()
         print('='*80)
@@ -40,9 +40,8 @@ for f in folders:
             call(["git", "add", "."])
             call(["git", "status", "."])
             msg = input('Commit msg: ')
-            call(["git", "commit", "-m", "msg"])
+            call(["git", "commit", "-m", msg])
             call(["git", "push"])
         else:
             call(["git", "status"])
-        print('-'*80)
-        print('-'*80)
+        print('='*80)
