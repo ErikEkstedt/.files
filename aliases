@@ -48,11 +48,12 @@ alias gth="cd ~/Documents/latex/Notes/Thesis; ls *.tex"
 alias gpa="cd ~/Documents/Papers; ls *.pdf"
 alias gpr="cd ~/com_sci/Master_code/Gestures/gesture; ls"
 alias gro="cd ~/com_sci/Master_code/Robot/;ls"
+
+alias gnao="cd ~/anaconda3/envs/Naoqi/lib/python2.7/site-packages/pynaoqi-python2.7-2.5.5.5-linux64/lib/python2.7/site-packages"
+alias gcho="cd /opt/Aldebaran/Choregraphe\ Suite\ 2.5"
 # }}}
 # Source{{{
 alias py35="source activate python3.5"
-alias gnao="cd ~/anaconda3/envs/Naoqi/lib/python2.7/site-packages/pynaoqi-python2.7-2.5.5.5-linux64/lib/python2.7/site-packages"
-alias gcho="cd /opt/Aldebaran/Choregraphe\ Suite\ 2.5"
 function sonao() { # auto git
     source activate Naoqi
     export PYTHONPATH="/home/erik/anaconda3/envs/Naoqi/lib/python2.7/site-packages/pynaoqi-python2.7-2.5.5.5-linux64/lib/python2.7/site-packages"
