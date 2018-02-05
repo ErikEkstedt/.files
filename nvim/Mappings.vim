@@ -105,6 +105,8 @@ nnoremap <expr> gvp '`['.strpart(getregtype(), 0, 1).'`]i'
 
 "Spellcheck
 map <F6> :setlocal spell! spelllang=en_us<CR>
+nnoremap <leader>ge ]s
+nnoremap <leader>gf z=1<CR>	
 
 nnoremap <f10> :set relativenumber!<cr>
 
