@@ -31,16 +31,16 @@ inoremap ;url \url{} <++><Esc>5h
 
 "}}}
 
-
+" tpope/vim-surround
 " 109=m, 105=i, 101=e, 102=f
 let b:surround_109 = "\\( \r \\)"
 let b:surround_105 = "\\textit{\r\}"
 let b:surround_101 = "\\emph{\r\}"
 let b:surround_102 = "\\textbf{\r\}"
 
-nnoremap <buffer><leader>tb bi\textbf{<Esc>ea}<Esc>
-nnoremap <buffer><leader>ti bi\textit{<Esc>ea}<Esc>
-nnoremap <buffer><leader>te bi\emph{<Esc>ea}<Esc>
+nnoremap <leader>tb :normal ysiwf<CR> 
+nnoremap <leader>ti :normal ysiwi<CR>
+nnoremap <leader>te :normal ysiwe<CR>
 
 " fix slowness
 "normal :NoMatchParen

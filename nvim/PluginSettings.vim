@@ -190,7 +190,7 @@ imap <F5> <Esc>:w<CR>:!clear;python %<CR>
 "============== Indentline ==================={{{
 let g:indentLine_fileTypeExclude=['help']
 let g:indentLine_char = '┊'  
-" let g:indentLine_first_char = '│' " This is the first indent and the above
+let g:indentLine_first_char = '┊'  " '│' This is the first indent and the above
 " are for all other
 
 let g:indentLine_setColors = 0

@@ -19,8 +19,8 @@ function! ColorPatches() "{{{
 		call Seoulpatch()
 	elseif g:colors_name =~ 'wombat256mod'
 		call Wombat256patch()
-	elseif g:colors_name =~ 'material-monokai'
-		call Material_monokai_patch()
+	elseif g:colors_name =~ 'base16-monokai'
+		call Monokaipatch()
 	endif
 endfunc  "}}}
 
@@ -68,11 +68,11 @@ function! Wombat256patch() "{{{
 	hi NERDTreeDir guifg=#0c58d3
 endfunc "}}}
 
-function! Material_monokai_patch() "{{{
-	hi Conceal guibg=#242424 guifg=#404040
-	hi CursorLine guibg=#080808
-	hi CursorLineNr guibg=#080808
-	hi LineNr guibg=#333233
+function! Monokaipatch () "{{{
+	hi Comment gui=italic
+	hi String gui=italic
+	hi Conceal guifg=#404040
+	call s:set_lightline_colorscheme('molokai')
 endfunc "}}}
 
 function! NERDTreeColors() "{{{
