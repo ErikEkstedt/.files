@@ -19,8 +19,7 @@ set $term3 konsole
 set $term4 gnome-terminal
 
 set $chrome google-chrome
-# set $Browser firefox
-set $Browser google-chrome
+set $Browser firefox
 set $Music spotify
 set $Editor vim
 
@@ -99,11 +98,10 @@ bindsym Mod1+Shift+Tab move scratchpad
 bindsym $mod+Return exec $term
 bindsym $mod+a exec bash ~/.files/Scripts/Laptop/touchpad_onoff.sh
 
-# bindsym $mod+g [con_mark="browser"] scratchpad show
 bindsym $mod+c workspace $ws7 focus, exec $tmuxscripts/config_tmux.sh
 bindsym $mod+d exec rofi rofi -show drun 
 bindsym $mod+e workspace $ws1 focus, exec $tmuxscripts/SSH.sh
-bindsym $mod+g [con_mark="chrome"] scratchpad show
+bindsym $mod+g [con_mark="browser"] scratchpad show
 bindsym $mod+i exec $tmuxscripts/Vim.sh
 bindsym $mod+n workspace $ws6 focus, exec $tmuxscripts/notes_tmux.sh
 bindsym $mod+o workspace $ws3 focus, exec $tmuxscripts/work_tmux.sh
@@ -116,15 +114,15 @@ bindsym $mod+w exec cheese
 bindsym $mod+y [con_mark="youtube"] scratchpad show
 
 
-bindsym $mod+Shift+s exec $Music, mark "music, scratchpad move
-bindsym $mod+Shift+r exec $term -n "rangerTerm" -e ~/.files/Scripts/tmux/ranger.sh
 bindsym $mod+Shift+Return exec $term -T "scratchTerm"
 bindsym $mod+Shift+b floating enable, move position center
+bindsym $mod+Shift+r exec $term -n "rangerTerm" -e ~/.files/Scripts/tmux/ranger.sh
+bindsym $mod+Shift+s exec $Music, mark "music, scratchpad move
 
-bindsym $mod+Ctrl+o workspace $ws3 focus, exec $i3scripts/workflow.sh
+bindsym $mod+Ctrl+g exec $Browser, mark "browser" 
 bindsym $mod+Ctrl+n exec nautilus --no-desktop
+bindsym $mod+Ctrl+o workspace $ws3 focus, exec $i3scripts/workflow.sh
 bindsym $mod+Ctrl+s exec shutter -s
-bindsym $mod+Ctrl+g exec $Browser, mark "chrome" 
 # -new-window
 bindsym $mod+Ctrl+y exec $chrome -new-window --app=https://www.youtube.com 
 bindsym $mod+Ctrl+b floating enable, resize set 1440 1000, move position center
@@ -167,6 +165,7 @@ for_window [class="0"] floating enable
 for_window [class="File-roller"] floating enable
 for_window [class="feh"] floating enable
 for_window [class="Gnome-system-monitor"] floating enable
+for_window [title="video0 - mpv"] floating enable, sticky enable
 
 #  programs
 for_window [class="Simulate"] floating enable
