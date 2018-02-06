@@ -46,7 +46,7 @@ Plug 'junegunn/seoul256.vim'          " cool junegunn is coool
 Plug 'vim-scripts/wombat256.vim'
 Plug 'danilo-augusto/vim-afterglow'
 Plug 'mhartington/oceanic-next'
-
+Plug 'yuttie/hydrangea-vim'
 " ============ Useful Tools ===========================
 Plug 'Valloric/MatchTagAlways'
 Plug 'christoomey/vim-tmux-navigator'  " navigate between vim and tmuz seemlessly
@@ -133,9 +133,11 @@ set scrolloff=3                " visual rows above and below cursor
 set sidescroll=3               " visual columns on sides of cursor
 set cursorline                 " highlight line where cursor is
 set hls                        " highlighting!
+set lazyredraw                 " don't redraw screen during macros
+
+set textwidth=0
 set linebreak				   " break lines (only visually) if window is too narrow
 set formatoptions+=j           " smart line joining. uncomments comments.
-set lazyredraw                 " don't redraw screen during macros
 set wrap
 set wrapmargin=5
 let &showbreak="↪"
@@ -143,6 +145,7 @@ set breakindent                " wrapped line s keep indentation (set bri)
 set cpo+=n
 set breakindentopt+=shift:2    " how far in the showbreak: " ↪ " is
 set breakindentopt+=min:20
+
 set numberwidth=4              " width of numberline
 set mouse=a                    " mouse functionality
 set timeoutlen=500             " ms to wait for command completion
