@@ -84,7 +84,7 @@ exec --no-startup-id udiskie
 exec --no-startup-id compton -b
 
 exec $term -n "rangerTerm" -e ~/.files/Scripts/tmux/ranger.sh
-for_window [class="st-256color" title="rangerTerm"] mark "ranger" move scratchpad
+for_window [class="st-256color" title="rangerTerm"] mark "ranger", move scratchpad
 
 #}}}
 #========= MAPPINGS =============={{{
@@ -261,16 +261,10 @@ bindsym XF86AudioStop exec playerctl stop
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-# DESKTOP Settings
-bindsym Shift+XF86AudioRaiseVolume exec pactl set-sink-volume 1 +5%
-bindsym Shift+XF86AudioLowerVolume exec pactl set-sink-volume 1 -5%
-bindsym Shift+XF86AudioMute exec pactl set-sink-mute 1 toggle
-
-# LAPTOP Settings
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
-bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
-
+# Two settings desktop/laptop
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%; exec pactl set-sink-volume 1 +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%; exec pactl set-sink-volume 1 -5%
+bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle; exec pactl set-sink-mute 1 toggle
 
 # Xrandr brightness
 bindsym XF86MonBrightnessUp exec ~/.files/Scripts/Laptop/screen_bright -u
