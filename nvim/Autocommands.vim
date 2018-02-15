@@ -34,4 +34,3 @@ augroup Latex
 	autocmd BufNewFile,BufRead *.tex setlocal spell! spelllang=en_us
 	autocmd BufNewFile,BufRead *.tex set foldmethod=expr
 augroup END
-

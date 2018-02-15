@@ -101,7 +101,10 @@ let NERDTreeIgnore=['\.pyc$', '\.aux$', '\.out', '\.bbl$', '\.fls$', '\.blg$', '
 let NERDTreeShowBookmarks = 1
 let g:NERDTreeDirArrowExpandable = ''
 let g:NERDTreeDirArrowCollapsible = ''
-
+"
+" Single-click to toggle directory nodes, double-click to open non-directory
+" nodes.
+let g:NERDTreeMouseMode=2
 "PaleTurquoise1
 " Put inside autocommand
 augroup NerdTreeHi
