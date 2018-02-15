@@ -27,31 +27,14 @@
 * Send-keys to $PLAYER container (youtube/spotify).
 	* Space in vim - pause/play
 
+# Vim
 
-# [VIMRC](.VIMRC)
+[Nvim](.nvim)  |  [vim](.vim)
 
-## Python-Ide
-1. [python-ide]( https://github.com/jarolrod/vim-python-ide )
-	- [x] Installed python-mode
-		* Had problem with ´import git, vim´
-2. [python-ide]( https://github.com/ets-labs/python-vimrc )
+* Combine folders for vim and nvim
+	* Use same settings
 
-## 
-* Camelstyle and the other style vim objects (cw, dw ,...)
-
-* RST
-	* Syntax for rst
-	* Preview
-
-## Snippets
-snips
-
-## Vim
-- [ ] Look into a way for vimtex to open preview in tmux.
-- [ ] Latex ftplugin does not work? a function that sets linebreak and textwidth.
-  - tried to add linebreak whenever using a tex file. but i dont want linebreak in code. tried to add code in ftplugin tex.vim.
-- [ ] [vim-man](https://github.com/vim-utils/vim-man) - Read man files in vim. A nice way of open man pages in vim from terminal.
-
+- [ ] Markdown and latex in tmux split
 
 ## Useful tips
 Get unicode to clipboard

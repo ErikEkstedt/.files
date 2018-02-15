@@ -210,8 +210,8 @@ let g:livedown_port = 1337
 " the browser to use
 let g:livedown_browser = g:BROWSER
 
-nnoremap <leader>gt :LivedownToggle<CR>
-nnoremap <leader>gp :LivedownPreview<CR>
+" nnoremap <leader>gt :LivedownToggle<CR>
+" nnoremap <leader>gp :LivedownPreview<CR>
 "}}}
 "============== VimWiki ======================{{{
 " Use markdown syntax
