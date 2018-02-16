@@ -4,7 +4,6 @@ convolutional
 perceptron
 discretize
 programmatically
-l
 Mujoco
 Choregraphe
 OpenAI
@@ -13,3 +12,5 @@ ImageNet
 MLP
 relu
 PyTorch
+Roboschool
+roboschool
