@@ -230,7 +230,8 @@ let g:vimwiki_use_calendar = 1	"Enable calendar.vim integration
 nnoremap <leader>' :normal ysiW'<CR>
 nnoremap <leader>" :normal ysiW"<CR>
 nnoremap <leader>b :normal ysiW)<CR>
-nnoremap <leader>B :normal ysiW]<CR>
+nnoremap <leader>B :normal ysiW}<CR>
+nnoremap <leader>r :normal ysiW]<CR>
 "}}}
 "============== FZF =========================={{{
 " Customize fzf colors to match your color scheme
@@ -258,7 +259,7 @@ nnoremap <Leader>fi :Files ~/<CR>
 nnoremap <Leader>fc :Files ~/.files<CR>
 nnoremap <Leader>fl :Files<CR>
 nnoremap <Leader>ff :Ag<CR>
-nnoremap <Leader>bu :Buffers<CR>
+nnoremap <Leader>fb :Buffers<CR>
 nnoremap <Leader>li :Lines<CR>
 nnoremap <Leader>gs :GFiles?<CR>
 nnoremap <Leader>he :Helptags<CR>

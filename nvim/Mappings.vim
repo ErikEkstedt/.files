@@ -208,7 +208,7 @@ nnoremap gl f,a<CR><esc>
 
 " save current buffer, close all buffers, open the buffer I was on
 " noremap <leader>bd :w | %bd | e#
-noremap <leader>bd :%bd<CR><C-O>:bd#<CR>
+noremap <leader>db :%bd<CR><C-O>:bd#<CR>
 " whitespace around operator nnoremap <leader>. f+i <esc>la <esc>0
 
 "}}}
