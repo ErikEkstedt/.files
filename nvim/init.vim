@@ -35,7 +35,7 @@ Plug 'junegunn/limelight.vim'        " Focus color
 Plug 'luochen1990/rainbow'           " Different color on paranthesis
 Plug 'machakann/vim-highlightedyank' " Highlight yanks
 Plug 'itchyny/lightline.vim'
-Plug 'blueyed/vim-diminactive'       " dim inactive windows
+" Plug 'blueyed/vim-diminactive'       " dim inactive windows
 
 " ============ Colorschemes ===========================
 Plug 'chriskempson/base16-vim'        " much color
