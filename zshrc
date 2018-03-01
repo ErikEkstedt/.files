@@ -2,6 +2,9 @@
 # ZSH ubuntu 16.04 - simple terminal
 # Erik
 # 2017
+
+# zmodload zsh/zprof # see time and processes
+
 #====== Export ========={{{
 export ZSH=/home/erik/.oh-my-zsh
 export KEYTIMEOUT=1
@@ -21,6 +24,28 @@ export BROWSERCLI="w3m"
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/cuda/lib64
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/cuda-8.0/lib64
 export GIO_EXTRA_MODULES=/usr/lib/x86_64-linux-gnu/gio/modules/
+
+export GOROOT=/home/erik/go
+export GOPATH=/home/erik/gopath
+export PATH=$GOROOT/bin:${PATH}
+
+# QT
+export QT_VERSION="5.10.1"
+export QT_DIR=$HOME/Qt
+export QT_STUB="false"
+export QT_DEBUG="false"
+
+# temp fix/hack https://github.com/therecipe/qt/issues/549
+export CGO_CXXFLAGS_ALLOW=".*" 
+export CGO_LDFLAGS_ALLOW=".*" 
+export CGO_CFLAGS_ALLOW=".*" 
+
+# NVM
+function _nvm() { # auto git
+	export NVM_DIR="$HOME/.nvm"
+	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+}
 
 stty -ixon # C-s, C-q 
 #}}}
@@ -103,3 +128,5 @@ bindkey -s '^Q' "exit\n"
 bindkey '^B' fzf-cd-widget
 bindkey '^F' fzf-file-widget
 #}}}
+
+# zprof

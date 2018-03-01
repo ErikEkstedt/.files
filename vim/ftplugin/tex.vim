@@ -38,9 +38,10 @@ let b:surround_105 = "\\textit{\r\}"
 let b:surround_101 = "\\emph{\r\}"
 let b:surround_102 = "\\textbf{\r\}"
 
-nnoremap <leader>tb :normal ysiwf<CR> 
-nnoremap <leader>ti :normal ysiwi<CR>
-nnoremap <leader>te :normal ysiwe<CR>
+nnoremap <leader>tb :normal ysiWf<CR> 
+nnoremap <leader>ti :normal ysiWi<CR>
+nnoremap <leader>te :normal ysiWe<CR>
+nnoremap <leader>tm :normal ysiWm<CR>
 
 " fix slowness
 "normal :NoMatchParen
