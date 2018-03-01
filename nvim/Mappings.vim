@@ -38,6 +38,9 @@ nnoremap Y y$
 " Source lines
 vnoremap <leader>vs y:@"<CR>
 
+" redraw 
+nnoremap <leader><leader>r :redraw!<CR>
+
 " Search   
 " Keep search matches in the middle of the window.
 nnoremap n nzzzv
@@ -78,7 +81,6 @@ inoremap <c-p> <esc>"+pi
 vnoremap <c-p> "+p
 nnoremap <c-y> "+yy
 vnoremap <c-y> "+y
-
  
 " increment/decrement/ vis. selected numbers
 vnoremap <leader>aa <C-a>

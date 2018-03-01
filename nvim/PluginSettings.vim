@@ -460,8 +460,16 @@ map <f <Plug>(easymotion-bd-f)
 nmap <s <Plug>(easymotion-overwin-f)
 
 let g:EasyMotion_startofline = 1 " Linejumps puts cursor at start of line
+
 "}}}
 "============== Gundo ========================{{{
 let g:gundo_prefer_python3 = 1
 nnoremap gu :GundoToggle<CR>
+"}}}
+"============== Matlab ========================{{{
+
+let g:matlab_auto_mappings = 0 "automatic mappings disabled
+let g:matlab_server_launcher = 'tmux' "launch the server in a tmux split
+let g:matlab_server_split = 'horizontal' "launch the server in a horizontal split
+
 "}}}

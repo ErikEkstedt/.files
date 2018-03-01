@@ -92,6 +92,7 @@ Plug 'othree/xml.vim'
 Plug 'ron89/thesaurus_query.vim'
 Plug 'w0rp/ale'                         " asynchronous linting
 
+Plug 'daeyun/vim-matlab'   " MATLAB
 " ============ Snippets ===============================
 Plug 'SirVer/ultisnips'                 " snippet engine
 Plug 'honza/vim-snippets'               " snippets

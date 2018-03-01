@@ -15,6 +15,7 @@ export VISUAL=$EDITOR
 export ROBOSCHOOL_PATH=/home/erik/roboschool
 export LANG=en_US.UTF-8
 export PATH=/home/erik/anaconda3/bin:${PATH}
+export PATH=/usr/local/MATLAB/R2017b/bin:${PATH}
 export BROWSER="firefox"
 export BROWSERCLI="w3m"
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/cuda/lib64
