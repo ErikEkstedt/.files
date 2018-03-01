@@ -450,11 +450,12 @@ autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ', '+', '*')
 " ca=				change after '='
 "}}}
 "============== easy-motion =================={{{
-" Gif config
+let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz'
 map <l <Plug>(easymotion-lineforward)
 map <j <Plug>(easymotion-j)
 map <k <Plug>(easymotion-k)
 map <h <Plug>(easymotion-linebackward)
+nmap <space> <Plug>(easymotion-bd-w)
 
 map <f <Plug>(easymotion-bd-f)
 nmap <s <Plug>(easymotion-overwin-f)

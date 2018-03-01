@@ -38,6 +38,9 @@ nnoremap Y y$
 " Source lines
 vnoremap <leader>vs y:@"<CR>
 
+" Redraw lines
+nnoremap <leader><leader> :redraw!<CR>
+
 " Search   
 " Keep search matches in the middle of the window.
 nnoremap n nzzzv
