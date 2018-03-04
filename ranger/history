@@ -2,4 +2,19 @@ cd .local/
 cd /usr
 shell mkdir co
 shell mkdir kde
+open_with vim
+cd  /et
+shell vim chrome_startup.sh
+shell mkdir imgs
+shell mkdir code
+rename imgs
+shell mkdir probably_duplicates
+open_with 1
+rename convergence.png
+shell mkdir COMPLETED
+shell mkdir Presentationsteknik
+rename Matteknik
 delete
+cd .icon
+rename ranger-icon.png
+cd 
