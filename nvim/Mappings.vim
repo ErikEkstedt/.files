@@ -38,13 +38,8 @@ nnoremap Y y$
 " Source lines
 vnoremap <leader>vs y:@"<CR>
 
-<<<<<<< HEAD
 " redraw 
 nnoremap <leader><leader>r :redraw!<CR>
-=======
-" Redraw lines
-nnoremap <leader><leader> :redraw!<CR>
->>>>>>> ec437c10cfa2dc70ff1c6475993e5da8ba235620
 
 " Search   
 " Keep search matches in the middle of the window.
@@ -102,8 +97,6 @@ nnoremap <leader><backspace> mz:%s/\s\+$//<cr>:let @/=''<cr>`z
 cmap w!! %!sudo tee > /dev/null %
 
 " tab
-nnoremap <silent> <c-t> :<c-u>tabnew<cr>
-inoremap <silent> <c-t> <esc>:<c-u>tabnew<cr>
 nnoremap <silent> g0 :<c-u>tabfirst<cr>
 nnoremap <silent> g$ :<c-u>tablast<cr>
 

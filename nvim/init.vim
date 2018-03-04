@@ -134,6 +134,7 @@ set relativenumber
 set scrolloff=3                " visual rows above and below cursor
 set sidescroll=3               " visual columns on sides of cursor
 set cursorline                 " highlight line where cursor is
+set guicursor=
 set hls                        " highlighting!
 set lazyredraw                 " don't redraw screen during macros
 

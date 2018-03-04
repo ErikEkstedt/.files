@@ -47,7 +47,7 @@ alias gho="cd ~/"
 alias gla="cd ~/Documents/latex; ls"
 alias gmisc="cd ~/com_sci/misc/;ls"
 alias gml="cd ~/com_sci/ML; ls"
-alias gno="cd ~/Documents/latex/Notes; ls *.tex"
+alias gno="cd ~/Documents/latex/Notes; ls" 
 alias gpa="cd ~/Documents/Papers; ls *.pdf"
 
 alias gnao="cd ~/anaconda3/envs/Naoqi/lib/python2.7/site-packages/pynaoqi-python2.7-2.5.5.5-linux64/lib/python2.7/site-packages"
@@ -99,6 +99,12 @@ function ag() { # auto git
 alias gpush="python ~/.files/Scripts/auto_git.py push"
 alias gpull="python ~/.files/Scripts/auto_git.py pull"
 alias gstatus="python ~/.files/Scripts/auto_git.py status"
+
+function sms() { # auto git
+	kdeconnect-cli --send-sms "$1" \
+	--destination 0762060648 \
+	-n Samsung\ Galaxy\ Note\ 4
+}
 # }}}
 #====== Tmux ======= {{{
 	alias tlist="tmux list-sessions"

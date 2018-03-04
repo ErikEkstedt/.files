@@ -16,9 +16,5 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
-export TERMINAL="st"
-export BROWSER="firefox"
-export BROWSERCLI="w3m"
-
 # set PATH so it includes user's private bin directories
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"

@@ -130,3 +130,12 @@ bindkey '^F' fzf-file-widget
 #}}}
 
 # zprof
+
+
+source "/home/erik/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
+
+
+source "/home/erik/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
+
+
+source "/home/erik/.oh-my-zsh/custom/themes/spaceship.zsh-theme"

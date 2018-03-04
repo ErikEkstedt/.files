@@ -304,7 +304,7 @@ let g:goyo_linenr = 0   " (default: 0)
 " Functions Goyo and tmux
 function! s:goyo_enter()
   silent !tmux set status off
-  silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  " silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
   set noshowmode
   set noshowcmd
 	set cursorline
@@ -312,7 +312,7 @@ endfunction
 
 function! s:goyo_leave()
   silent !tmux set status on
-  silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  " silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
   set showcmd
 endfunction
 

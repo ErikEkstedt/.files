@@ -1,0 +1,5 @@
+cd .local/
+cd /usr
+shell mkdir co
+shell mkdir kde
+delete
