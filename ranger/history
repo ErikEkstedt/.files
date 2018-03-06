@@ -9,12 +9,14 @@ shell mkdir imgs
 shell mkdir code
 rename imgs
 shell mkdir probably_duplicates
-open_with 1
 rename convergence.png
 shell mkdir COMPLETED
 shell mkdir Presentationsteknik
 rename Matteknik
-delete
 cd .icon
 rename ranger-icon.png
 cd 
+cd /home/erik/.local/share/applications/
+open_with 1
+delete
+cd .local/share/applications

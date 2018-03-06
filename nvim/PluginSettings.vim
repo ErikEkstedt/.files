@@ -446,7 +446,7 @@ nmap <leader>ga <Plug>(EasyAlign)
 
 "}}}
 "============== vim-after-object ============={{{
-autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ', '+', '*')
+autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ', '+', '*', '{')
 " ca=				change after '='
 "}}}
 "============== easy-motion =================={{{

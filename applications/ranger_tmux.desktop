@@ -1,0 +1,7 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Ranger
+Exec=/home/erik/.files/applications/ranger_tmux.sh
+Terminal=false
+Type=Application
+Icon=/home/erik/.files/icons/ranger-icon.png

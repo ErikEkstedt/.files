@@ -48,12 +48,14 @@ Plug 'vim-scripts/wombat256.vim'
 Plug 'danilo-augusto/vim-afterglow'
 Plug 'mhartington/oceanic-next'
 Plug 'yuttie/hydrangea-vim'
+
 " ============ Useful Tools ===========================
 Plug 'Valloric/MatchTagAlways'
 Plug 'christoomey/vim-tmux-navigator'  " navigate between vim and tmuz seemlessly
 Plug 'itchyny/calendar.vim'            " Calendar for vim
 Plug 'junegunn/vim-after-object'       " change everything after something
 Plug 'junegunn/vim-easy-align'         " better alignment than tabular
+Plug 'junegunn/vim-peekaboo'
 Plug 'lotabout/slimux'                 " old: 'epeli/slimux' | vim+ipython OUtdated
 Plug 'mtth/scratch.vim'                " Unobtrusive scratch
 Plug 'nelstrom/vim-visual-star-search' " * on visual select seraches for the snippet
