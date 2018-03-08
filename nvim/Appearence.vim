@@ -15,7 +15,6 @@ augroup ColorSchemeGroup "{{{
 	autocmd VimEnter,ColorScheme * call ColorPatches()
 	" autocmd ColorScheme * call s:lightline_update()
 augroup END "}}}
-
 function! ColorPatches() "{{{
 	if g:colors_name =~ 'seoul256'
 		call Seoulpatch()
@@ -44,6 +43,10 @@ function! Seoulpatch() "{{{
 
 		hi VertSplit guifg=#060606 guibg=#060606
 		hi NERDTreeDir guifg=#90a959 
+
+		hi Pmenu guibg=#050505 guifg=#719872
+		hi PmenuSel guifg=#dddd00 guibg=#1f82cd
+		hi PmenuSbar guibg=#242424	
 	endif
 	call s:set_lightline_colorscheme('myseoul256')
 	call NERDTreeColors()
@@ -88,19 +91,19 @@ function! s:set_lightline_colorscheme(name) abort "{{{
   call lightline#colorscheme()
   call lightline#update()
 endfunction "}}}
-
-"========= NERDTree ==============
-" overwrites colors for [✹] etc. looks dull
-function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg) "{{{
+" NERDTree{{{
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg) 
+	" overwrites colors for [✹] etc. looks dull
 	" example:
 	" call NERDTreeHighlightFile('py', 'green', 'none', 'PaleTurquoise', g:seoul256_background)
 	exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
 	exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
-endfunction "}}}
+endfunction 
 " nnoremap <LocalLeader>n :call NERDTreeColors()<CR>
-
+"}}}
+" TransparentBackground{{{
 let g:transparent_background = 0
-function! TransparentBackground () "{{{
+function! TransparentBackground () 
 	if g:transparent_background 
 		let g:transparent_background = 0
 		execute 'colorscheme' g:colors_name
@@ -114,9 +117,12 @@ function! TransparentBackground () "{{{
 		hi GitGutterAdd guibg=#000000
 		hi GitGutterChange guibg=#000000
 	endif
-endfunc "}}}
+endfunc 
 nnoremap <C-t> :call TransparentBackground()<CR>
+"}}}
 
+" Pmenu (completionmenu - deoplete) {{{
+"}}}
 " change text font color to white
 inoremap <leader>å <esc>:hi normal ctermfg=255 guifg=white<cr>
 nnoremap <leader>å :hi normal ctermfg=255 guifg=white<cr>

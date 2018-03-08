@@ -75,16 +75,22 @@ else
 	Plug 'roxma/nvim-yarp'
 	Plug 'roxma/vim-hug-neovim-rpc'
 endif
+
 Plug 'zchee/deoplete-jedi'
-Plug 'davidhalter/jedi-vim'
+" Plug 'davidhalter/jedi-vim'
 Plug 'Shougo/neco-vim'
 Plug 'Shougo/neopairs.vim'
+
+" Plug 'autozimu/LanguageClient-neovim', {
+"     \ 'branch': 'next',
+"     \ 'do': 'bash install.sh',
+"     \ }
 
 " ============ Preview Text ===========================
 Plug 'lervag/vimtex'      " latex compiler and alot more.
 Plug 'shime/vim-livedown' " Preview markdowns with npm/node Livedown
 
-" ============ Completion and Syntax ==================
+" ============ Completion and Syntax =================={{{
 Plug 'PotatoesMaster/i3-vim-syntax'     " syntax for i3 config
 Plug 'elzr/vim-json'
 Plug 'klen/python-mode'                 " Python mode (docs, refactor, lints...)
@@ -93,8 +99,8 @@ Plug 'octol/vim-cpp-enhanced-highlight' " Extra highlight for cpp
 Plug 'othree/xml.vim'
 Plug 'ron89/thesaurus_query.vim'
 Plug 'w0rp/ale'                         " asynchronous linting
+Plug 'daeyun/vim-matlab'   " MATLAB }}}
 
-Plug 'daeyun/vim-matlab'   " MATLAB
 " ============ Snippets ===============================
 Plug 'SirVer/ultisnips'                 " snippet engine
 Plug 'honza/vim-snippets'               " snippets

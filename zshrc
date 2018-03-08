@@ -84,7 +84,7 @@ if [ "$TMUX" = "" ]; then
 fi
 #}}}
 #
-#==== CrytoPrice {{{
+#==== CryptoPrice {{{
 function price() {
   local pair="${1:-etheur}" # default pair
   local exchange="${2:-kraken}" # default exchange

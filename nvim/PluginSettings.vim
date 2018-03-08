@@ -216,16 +216,6 @@ let g:livedown_browser = g:BROWSER
 " nnoremap <leader>gt :LivedownToggle<CR>
 " nnoremap <leader>gp :LivedownPreview<CR>
 "}}}
-"============== VimWiki ======================{{{
-" Use markdown syntax
-" ? look at this more. Mess with markdown syntax ?
-let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-let g:vimwiki_list = [{'path': '~/vimwiki/index.md', 'syntax': 'markdown', 'ext': '.md'}]
-let g:vimwiki_hl_cb_checked = 1  " make checked item lists highlighted
-let g:vimwiki_listsyms = '✗○◐●✓'
-let g:vimwiki_folding = 'custom'
-let g:vimwiki_use_calendar = 1	"Enable calendar.vim integration
-"}}}
 "============== Vim-surround ================{{{
 nnoremap <leader>' :normal ysiW'<CR>
 nnoremap <leader>" :normal ysiW"<CR>
@@ -362,11 +352,12 @@ nmap <leader>at <Plug>(ale_toggle)
 let g:deoplete#enable_at_startup = 1
 let g:loaded_neopairs = 1
 let g:neopairs#enable = 1
+let g:deoplete#max_abbr_width = 40
+let g:deoplete#max_menu_width = 40
 
 " deoplete tab/s-tab/c-j/c-k complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
 inoremap <expr><C-j> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
@@ -376,8 +367,14 @@ if !exists('g:deoplete#omni#input_patterns')
 endif
 let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
 
+"close the preview window after completion is done.
+autocmd CompleteDone * pclose!
+
 call deoplete#custom#set('_', 'sorters', ['sorter_word'])
 call deoplete#custom#set('ultisnips', 'rank', 9999)
+call deoplete#custom#source('_', 'converters', ['converter_auto_paren'])
+
+
 "}}}
 "============== Jedi-vim ====================={{{
 let g:jedi#completions_command = ""
@@ -472,5 +469,16 @@ nnoremap gu :GundoToggle<CR>
 let g:matlab_auto_mappings = 0 "automatic mappings disabled
 let g:matlab_server_launcher = 'tmux' "launch the server in a tmux split
 let g:matlab_server_split = 'horizontal' "launch the server in a horizontal split
+
+"}}}
+"============== Language Server Protocol ========================{{{
+" let g:LanguageClient_serverCommands = {
+"     \ 'python': ['pyls'],
+"     \ 'javascript': ['javascript-typescript-stdio'],
+"     \ 'javascript.jsx': ['javascript-typescript-stdio'],
+" 	\ }
+" nnoremap <leader><leader>K :call LanguageClient_textDocument_hover()<CR>
+" nnoremap <leader><leader>gd :call LanguageClient_textDocument_definition()<CR>
+" nnoremap <leader><leader><F2> :call LanguageClient_textDocument_rename()<CR>
 
 "}}}

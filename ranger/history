@@ -6,7 +6,6 @@ open_with vim
 cd  /et
 shell vim chrome_startup.sh
 shell mkdir imgs
-shell mkdir code
 rename imgs
 shell mkdir probably_duplicates
 rename convergence.png
@@ -20,3 +19,4 @@ cd /home/erik/.local/share/applications/
 open_with 1
 delete
 cd .local/share/applications
+shell mkdir code
