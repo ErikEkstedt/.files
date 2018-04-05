@@ -1,12 +1,13 @@
 {
-    "window.zoomLevel": 1,
+    "window.zoomLevel"    : 2,
     "workbench.colorTheme": "OneDark++",
-    "keyboard.dispatch": "keyCode", // modified keymappings work
+    "keyboard.dispatch"   : "keyCode",     // modified keymappings work
 
     // EDITOR
-    "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-    "editor.autoIndent": true,
-    "editor.lineNumbers": "relative",
+    "editor.fontFamily"    : "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontSize"      : 12,
+    "editor.autoIndent"    : true,
+    "editor.lineNumbers"   : "relative",
     "editor.cursorBlinking": "solid",
 
     //============================================================================
@@ -16,45 +17,42 @@
     "vim.leader": ",",
     // "vim.enableNeovim": true,
     // vim.neovimPath": "nvim",
-    "vim.incsearch": true,
+    "vim.incsearch"  : true,
     "vim.useCtrlKeys": true,
-    "vim.hlsearch": true,
-    "vim.handleKeys":{
+    "vim.hlsearch"   : true,
+    "vim.handleKeys" : {
         "<C-a>": true,
         "<C-f>": false
     },
     "vim.cursorStylePerMode" : {
-        "normal": "line-thin",
-        "insert": "line-thin",
-        "visual": "line-thin",
+        "normal" : "line-thin",
+        "insert" : "line-thin",
+        "visual" : "line-thin",
         "replace": "block-outline"
     },
 
-    "vim.easymotion": true,
-    "vim.easymotionKeys": "hklyuiopnmqwertzxcvbasdgjf",
-    "vim.easymotionMarkerFontSize": "14",
+    "vim.easymotion"                : true,
+    "vim.easymotionKeys"            : "hklyuiopnmqwertzxcvbasdgjf",
+    "vim.easymotionMarkerFontSize"  : "14",
     "vim.easymotionMarkerFontFamily": "Monospace",
 
     "vim.otherModesKeyBindingsNonRecursive": [
         { "before": [" "], "after": ["leader", "leader", "leader", "b", "d", "w"] },
         { "before":["leader", " "], "after":[], "commands": [ {"command": ":nohl!"} ] },
 
-        { "before":["g", "t"], "after":[], "commands": [ { "command": "workbench.action.nextEditor" } ] },
-        { "before":["g", "T"], "after":[], "commands": [ { "command": "workbench.action.previousEditor" } ] },
-
         { "before":["\\", "l", "v"], "after":[], "command": "markdown-preview-enhanced.openPreview", },
         { "before":["v", "v"], "after":["V"], }, 
+        { "before":["Y"], "after":[], "command":  }, 
         { "before":["L"], "after":["$"], }, 
         { "before":["H"], "after":["0"] },
         { "before":["tab"], "after":[">"] },
-
         // Plugins
         { "before": ["leader", "g", "a"], "after":[],  "command": "wwm.aligncode", "when": "editorTextFocus && !editorReadonly" }
     ],
 
     // Markdown plugin
     "markdown.preview.scrollPreviewWithEditorSelection": true,
-    "markdown-preview-enhanced.scrollSync": false,
+    "markdown-preview-enhanced.scrollSync"             : false,
 
     // Bracket Colors
     "bracketPairColorizer.consecutivePairColors": [
@@ -68,13 +66,12 @@
         ],
         "Red"
     ],
-
     // Latex
     "latex-preview.command": "latexmk",
 
     // Python
+    "python.jediPath"                : "",
     "python.autoComplete.addBrackets": true,
-    "python.jediPath": "",
-
+    "editor.tabCompletion"           : true,
 
 }

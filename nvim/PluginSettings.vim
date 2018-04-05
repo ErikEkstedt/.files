@@ -1,19 +1,25 @@
+" vim: fdm=marker
 " PLUGIN SETTINGS
 "============== Tmux-navigation =============={{{
 let g:tmux_navigator_no_mappings = 1
 
-nnoremap <silent> <Left> :TmuxNavigateLeft<cr>
-nnoremap <silent> <Down> :TmuxNavigateDown<cr>
-nnoremap <silent> <Up> :TmuxNavigateUp<cr>
-nnoremap <silent> <Right> :TmuxNavigateRight<cr>
+nnoremap <silent><Left> :TmuxNavigateLeft<cr>
+nnoremap <silent><Down> :TmuxNavigateDown<cr>
+nnoremap <silent><Up> :TmuxNavigateUp<cr>
+nnoremap <silent><Right> :TmuxNavigateRight<cr>
 
+if exists('g:gui_oni')
+	nnoremap <silent><A-h> <c-w>h
+	nnoremap <silent><A-l> <c-w>l
+	nnoremap <silent><A-k> <c-w>k
+	nnoremap <silent><A-j> <c-w>j
+endif
 "}}}
 "============== Slimux ======================={{{
 let g:slimux_python_use_ipython = 1
 nnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>
 vnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>gv<Esc>zz
 nnoremap <C-c><C-x> :SlimuxREPLConfigure<CR>
-vnoremap <C-c><C-x> :SlimuxREPLConfigure<CR>
 " }}}
 "============== Vim-netrw ===================={{{
 let g:netrw_banner = 0 "no banner
@@ -22,15 +28,6 @@ let g:netrw_sort_sequence = '[\/]$,*' " sort is affecting only: directories on t
 noremap <leader>ex :Explore<cr>
 nnoremap <leader>vv :Vexplore<cr>
 nnoremap <leader>hh :Hexplore<cr>
-" }}}
-"============== Calendar ====================={{{
-let g:calendar_google_calendar = 1
-let g:calendar_google_task = 1
-
-nnoremap <leader>cm :Calendar -view=month<CR>
-nnoremap <leader>cw :Calendar -view=week<CR>
-nnoremap <leader>cd :Calendar -view=day<CR>
-
 " }}}
 "============== Vimtex ======================={{{
 let g:vimtex_enabled = 1
@@ -92,9 +89,11 @@ let g:lightline.tab = {'active': ['tabnum', 'filename', 'modified'],
 " " }}}
 "============== NerdTree ====================={{{
 " " open NERDTree on startup
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+if !exists("g:gui_oni")
+	autocmd StdinReadPre * let s:std_in=1
+	autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+endif
 map <C-n> :NERDTreeToggle<CR>
 
 let NERDTreeIgnore=['\.pyc$', '\.aux$', '\.out', '\.bbl$', '\.fls$', '\.blg$', '\.log$', '\.fdb_latexmk$','\.gz$']
@@ -107,17 +106,20 @@ let g:NERDTreeDirArrowCollapsible = ''
 let g:NERDTreeMouseMode=2
 "PaleTurquoise1
 " Put inside autocommand
-augroup NerdTreeHi
-	autocmd!
-	autocmd VimEnter,ColorScheme * if g:colors_name =~ 'seoul256'
-		hi NERDTreeDir guifg=#90a959
-		hi Directory guifg=#404040
-		hi NERDTreeCWD guifg=gray90
-		hi NERDTreeFile guifg=gray90
-		hi NERDTreeUp guifg=gray90 guibg=gray20
-		hi NERDTreeBookmarksHeader guifg=#90a959
-		hi NERDTreeBookmarkName guifg=gray90 
-augroup END
+
+if !exists("g:gui_oni")
+	augroup NerdTreeHi
+		autocmd!
+		autocmd VimEnter,ColorScheme * if g:colors_name =~ 'seoul256'
+			hi NERDTreeDir guifg=#90a959
+			hi Directory guifg=#404040
+			hi NERDTreeCWD guifg=gray90
+			hi NERDTreeFile guifg=gray90
+			hi NERDTreeUp guifg=gray90 guibg=gray20
+			hi NERDTreeBookmarksHeader guifg=#90a959
+			hi NERDTreeBookmarkName guifg=gray90 
+	augroup END
+endif
 " }}}
 "============== Python-Mode =================={{{
 " Bindings {{{
@@ -217,43 +219,60 @@ let g:livedown_browser = g:BROWSER
 " nnoremap <leader>gp :LivedownPreview<CR>
 "}}}
 "============== Vim-surround ================{{{
-nnoremap <leader>' :normal ysiW'<CR>
+nnoremap ' :normal ysiW'<CR>
+nnoremap '' :normal ysiW"<CR>
+nnoremap ( :normal ysiW)<CR>
+nnoremap ) :normal ysiW)<CR>
+nnoremap { :normal ysiW}<CR>
+nnoremap } :normal ysiW}<CR>
+nnoremap [ :normal ysiW]<CR>
+nnoremap ] :normal ysiW]<CR>
 nnoremap <leader>" :normal ysiW"<CR>
-nnoremap <leader>b :normal ysiW)<CR>
-nnoremap <leader>B :normal ysiW}<CR>
-nnoremap <leader>r :normal ysiW]<CR>
+" nnoremap <leader>B :normal ysiW}<CR>
+" nnoremap <leader>r :normal ysiW]<CR>
 "}}}
 "============== FZF =========================={{{
 " Customize fzf colors to match your color scheme
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-	\ 'bg':      ['bg', 'Normal'],
-	\ 'hl':      ['fg', 'Comment'],
-	\ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-	\ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-	\ 'hl+':     ['fg', 'Statement'],
-	\ 'info':    ['fg', 'PreProc'],
-	\ 'border':  ['fg', 'Ignore'],
-	\ 'prompt':  ['fg', 'Conditional'],
-	\ 'pointer': ['fg', 'Exception'],
-	\ 'marker':  ['fg', 'Keyword'],
-	\ 'spinner': ['fg', 'Label'],
-	\ 'header':  ['fg', 'Comment'] }
+" let g:fzf_colors =
+" \ { 'fg':      ['fg', 'Normal'],
+" 	\ 'bg':      ['bg', 'Normal'],
+" 	\ 'hl':      ['fg', 'Comment'],
+" 	\ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+" 	\ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+" 	\ 'hl+':     ['fg', 'Statement'],
+" 	\ 'info':    ['fg', 'PreProc'],
+" 	\ 'border':  ['fg', 'Ignore'],
+" 	\ 'prompt':  ['fg', 'Conditional'],
+" 	\ 'pointer': ['fg', 'Exception'],
+" 	\ 'marker':  ['fg', 'Keyword'],
+" 	\ 'spinner': ['fg', 'Label'],
+" 	\ 'header':  ['fg', 'Comment'] 
+" }
 
 " Settings
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
 
 " Mappings
+nnoremap <Leader>fl :Files<CR>
 nnoremap <Leader>fi :Files ~/<CR>
 nnoremap <Leader>fc :Files ~/.files<CR>
-nnoremap <Leader>fl :Files<CR>
+nnoremap <Leader>fr :Files /<CR>
 nnoremap <Leader>ff :Ag<CR>
-nnoremap <Leader>fb :Buffers<CR>
+nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>li :Lines<CR>
 nnoremap <Leader>gs :GFiles?<CR>
 nnoremap <Leader>he :Helptags<CR>
 nnoremap <Leader>fs :Snippets<CR>
+
+" Default fzf layout
+" - down / up / left / right
+let g:fzf_layout = { 'down': '~50%' }
+
+" In Neovim, you can set up fzf window using a Vim command
+" let g:fzf_layout = { 'window': 'enew' }
+" let g:fzf_layout = { 'window': '-tabnew' }
+" let g:fzf_layout = { 'window': '10split enew' }
 
 " This is the default extra key bindings
 let g:fzf_action = {
@@ -315,7 +334,7 @@ nnoremap <leader>gg :Goyo<CR>
 "}}}
 "============== ALE =========================={{{
 " Start of, toggle to init
-let g:ale_enabled = 0
+let g:ale_enabled = 1
 " Use quickfix list. Open list
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
@@ -330,6 +349,7 @@ let g:ale_sign_column_always = 1
 " highlight ALEWarningSign guibg=303030 guifg=
 " highlight ALEErrorSign guibg=303030 guifg=
 
+
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%][%severity%] %s'
@@ -343,18 +363,18 @@ let g:ale_linters = {
 " Mappings
 nmap ge <Plug>(ale_next_wrap)
 nmap gr <Plug>(ale_previous_wrap)
-
 nmap <leader>at <Plug>(ale_toggle)
 
 "}}}
 "============== Deoplete ====================={{{
 " Use deoplete.
-let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 0
 let g:loaded_neopairs = 1
 let g:neopairs#enable = 1
 let g:deoplete#max_abbr_width = 40
 let g:deoplete#max_menu_width = 40
 
+let g:deoplete#auto_complete_delay = 10
 " deoplete tab/s-tab/c-j/c-k complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -365,6 +385,7 @@ inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 if !exists('g:deoplete#omni#input_patterns')
 		let g:deoplete#omni#input_patterns = {}
 endif
+
 let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
 
 "close the preview window after completion is done.
@@ -374,10 +395,16 @@ call deoplete#custom#set('_', 'sorters', ['sorter_word'])
 call deoplete#custom#set('ultisnips', 'rank', 9999)
 call deoplete#custom#source('_', 'converters', ['converter_auto_paren'])
 
-
 "}}}
 "============== Jedi-vim ====================={{{
 let g:jedi#completions_command = ""
+" let g:jedi#goto_command = "<leader><leader>d"
+" let g:jedi#goto_assignments_command = "<leader><leader>g"
+" let g:jedi#goto_definitions_command = ""
+" let g:jedi#documentation_command = "<leader><leader>K"
+" let g:jedi#usages_command = "<leader><leader>n"
+" let g:jedi#rename_command = "<leader><leader>r"
+
 "}}}
 "============== Scratch ======================{{{
 let g:scratch_insert_autohide = 0
@@ -390,10 +417,6 @@ nmap gS <plug>(scratch-insert-clear)
 let g:scratch_height = 10
 let g:scratch_filetype = 'markdown'
 " let g:scratch_persistence_file = ".scratch.md"
-"}}}
-"============== vim-json ====================={{{
-" trick to format json
-"  :%!python -m json.tool  
 "}}}
 "============== luochen1990/rainbow =========={{{
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
@@ -428,18 +451,19 @@ let g:gitgutter_override_sign_column_highlight = 0
 let g:gitgutter_realtime = 1
 let g:gitgutter_eager = 1
 "}}}
-	"============== highlight-yank ==============={{{
+"============== highlight-yank ==============={{{
 let g:highlightedyank_highlight_duration = 1000
 "}}}
 "============== vim-easy-align ==============={{{
-" Start interactive EasyAlign in visual mode (e.g. vipga=, vapga", ...)
-vmap ga <Plug>(EasyAlign)
 
 " Align a markdown table -> hidden in autocommand ?
-vmap t <Plug>(EasyAlign)*\|
+autocmd FileType markdown vmap t <Plug>(EasyAlign)*\|
 
-" Start interactive EasyAlign for a motion/text object (e.g. gaip) 
-nmap <leader>ga <Plug>(EasyAlign)
+" Start interactive EasyAlign in visual mode (e.g. vipea=, vapea", ...)
+vmap ea <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. ,eaip) 
+nmap <leader>ea <Plug>(EasyAlign)
 
 "}}}
 "============== vim-after-object ============={{{
@@ -447,12 +471,14 @@ autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ', '+', '*', '
 " ca=				change after '='
 "}}}
 "============== easy-motion =================={{{
-let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz'
+let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyzåöä'
 map <l <Plug>(easymotion-lineforward)
 map <j <Plug>(easymotion-j)
 map <k <Plug>(easymotion-k)
 map <h <Plug>(easymotion-linebackward)
-nmap <space> <Plug>(easymotion-bd-w)
+nmap <space><space> <Plug>(easymotion-bd-w)
+nmap <space>w <Plug>(easymotion-bd-w)
+nmap <space>e <Plug>(easymotion-bd-e)
 
 map <f <Plug>(easymotion-bd-f)
 nmap <s <Plug>(easymotion-overwin-f)
@@ -465,20 +491,23 @@ let g:gundo_prefer_python3 = 1
 nnoremap gu :GundoToggle<CR>
 "}}}
 "============== Matlab ========================{{{
-
 let g:matlab_auto_mappings = 0 "automatic mappings disabled
 let g:matlab_server_launcher = 'tmux' "launch the server in a tmux split
 let g:matlab_server_split = 'horizontal' "launch the server in a horizontal split
 
 "}}}
-"============== Language Server Protocol ========================{{{
-" let g:LanguageClient_serverCommands = {
-"     \ 'python': ['pyls'],
-"     \ 'javascript': ['javascript-typescript-stdio'],
-"     \ 'javascript.jsx': ['javascript-typescript-stdio'],
-" 	\ }
-" nnoremap <leader><leader>K :call LanguageClient_textDocument_hover()<CR>
-" nnoremap <leader><leader>gd :call LanguageClient_textDocument_definition()<CR>
-" nnoremap <leader><leader><F2> :call LanguageClient_textDocument_rename()<CR>
+"============== Vimpyter ========================{{{
+autocmd Filetype ipynb nnoremap <silent><Leader>b :VimpyterInsertPythonBlock<CR>
+" autocmd Filetype ipynb nnoremap <silent><localleader>ll :VimpyterStartNteract<CR>
+autocmd Filetype ipynb nnoremap <silent><localleader>ll :VimpyterStartJupyter<CR>
+"}}}
+"============== vim-javascript ========================{{{
+augroup javascript
+    au!
+    au FileType javascript setlocal foldmethod=syntax
+augroup END
 
+"}}}
+"============== vim-polyglot ========================{{{
+let g:polyglot_disabled = ['latex', 'markdown']
 "}}}

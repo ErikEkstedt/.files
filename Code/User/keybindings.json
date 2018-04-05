@@ -1,0 +1,43 @@
+// Place your key bindings in this file to overwrite the defaults 
+[   
+	// Navigate workbench and movements
+	{ "key": "alt+l", "command": "workbench.action.navigateRight", },
+	{ "key": "alt+h", "command": "workbench.action.navigateLeft" },
+	{ "key": "alt+j", "command": "workbench.action.navigateDown", },
+	{ "key": "alt+k", "command": "workbench.action.navigateUp" },
+
+	{ "key": "ctrl+j", "command": "workbench.action.quickOpenNavigateNext", "when": "inQuickOpen" },
+	{ "key": "ctrl+k", "command": "workbench.action.quickOpenNavigatePrevious", "when": "inQuickOpen" },
+	{ "key": "ctrl+w shift+L", "command": "workbench.action.moveEditorToNextGroup" },
+	{ "key": "ctrl+w shift+H", "command": "workbench.action.moveEditorToPreviousGroup" },
+	{ "key": "g t", "command": "workbench.action.nextEditor", "when": "!inputFocus"},
+	{ "key": "g shift+t", "command": "workbench.action.previousEditor", "when": "!inputFocus"},
+	{ "key": "ctrl+l", "command": "workbench.action.increaseViewSize"}, 
+	{ "key": "ctrl+h", "command": "workbench.action.decreaseViewSize"}, 
+
+	// Settings, Keybindings windows
+	{ "key": "escape", "command": "settings.action.focusSettingsFile", "when": "inSettingsSearch" },
+	{ "key": "o", "command": "list.toggleExpand", "when": "!inputFocus" }, // nerdtree-esque
+
+	{ "key": "escape", "command": "keybindings.editor.focusKeybindings", "when": "inKeybindings && inKeybindingsSearch"},
+	{ "key": "escape", "command": "keybindings.editor.searchKeybindings", "when": "inKeybindings && keybindingFocus"},
+	// { "key": "ctrl+pag", "command": "workbench.action.nextEditor" },
+
+	// Autocomplete
+	{ "key": "tab", "command": "selectNextSuggestion", "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible" },
+	{ "key": "shift+tab", "command": "selectPrevSuggestion", "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible" },
+	{ "key": "tab", "command": "editor.action.indentLines", "when": "editorTextFocus && !editorReadonly && !suggestWidgetVisible" },
+
+	{ "key": "ctrl+enter", "command": "workbench.action.terminal.new" },
+	{ "key": "ctrl+shift+j", "command": "workbench.action.togglePanel" },
+
+	{ "key": "ctrl+n", "command": "workbench.action.toggleSidebarVisibility" },
+
+
+	// quit
+	{ "key": "ctrl+alt+q", "command": "workbench.action.quit" },
+	{ "key": "ctrl+q", "command": "-workbench.action.quit" },
+	{ "key": "ctrl+q", "command": "workbench.action.closeActiveEditor" },
+	{ "key": "ctrl+w", "command": "workbench.action.closeActiveEditor", "when": "!editorTextFocus" },
+
+]

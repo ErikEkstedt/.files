@@ -1,0 +1,1 @@
+xnoremap gs :sort<CR>

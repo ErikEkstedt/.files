@@ -1,8 +1,3 @@
-cd .local/
-cd /usr
-shell mkdir co
-shell mkdir kde
-open_with vim
 cd  /et
 shell vim chrome_startup.sh
 shell mkdir imgs
@@ -17,6 +12,39 @@ rename ranger-icon.png
 cd 
 cd /home/erik/.local/share/applications/
 open_with 1
-delete
 cd .local/share/applications
 shell mkdir code
+rename rc.conf_old
+rename rifle.conf_old
+rename scope.sh_old
+rename rc.conf
+rename Lab2EkstedtErik.pdf
+rename main.pdf
+rename Lab2_EkstedtErik_WangCheng.pdf
+search 
+open_with 
+shell mkdir Analog_electro
+shell mkdir MekanikII
+shell mkdir material
+shell mkdir rapport1
+shell ln -fs 
+rename School
+open_with j
+open_with jjgho
+shell 
+delete'
+rename setup.png
+cd .oni
+shell mkdir public
+shell mkdir css
+shell touch Vmappings.vim
+rename jkneovim-component
+cd  phg
+shell mkdir wiki
+shell vim 
+rename Understand2.png
+open_withk
+delete
+shell mkdir Distributed-representations
+shell touch notes.md
+open_with

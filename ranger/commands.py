@@ -55,6 +55,7 @@ class my_edit(Command):
         # content of the current directory.
         return self._tab_directory_content()
 
+
 class fzf_select(Command):
     """
     :fzf_select
@@ -82,9 +83,10 @@ class fzf_select(Command):
             else:
                 self.fm.select_file(fzf_file)
 
-class fzf_locate(Command):
+
+class fzf_cd_or_vim(Command):
     """
-    :fzf_locate
+    :fzf_select
     Find a file using fzf and fd.
     With a prefix argument select only directories.
     See:
@@ -94,7 +96,37 @@ class fzf_locate(Command):
     def execute(self):
         import subprocess
         import os.path
-        command="locate home | fzf +m -i"
+        if self.quantifier:
+            # match only directories
+            command="fd --type d --hidden --no-ignore | fzf-tmux -d 50% +m -i"
+        else:
+            # match files and directories
+            command="fd --hidden --follow --no-ignore --exclude .git | fzf-tmux -d 50% +m -i"
+        fzf = self.fm.execute_command(command, stdout=subprocess.PIPE)
+        stdout, stderr = fzf.communicate()
+        if fzf.returncode == 0:
+            fzf_file = os.path.abspath(stdout.decode('utf-8').rstrip('\n'))
+            if os.path.isdir(fzf_file):
+                self.fm.cd(fzf_file)
+            else:
+                subprocess.call(["vim", fzf_file])
+
+
+class fzf_cd(Command):
+    """
+    :fzf_select
+    Find a file using fzf and fd.
+    With a prefix argument select only directories.
+    See:
+        https://github.com/junegunn/fzf
+        https://github.com/sharkdp/fd.git
+    """
+    def execute(self):
+        import subprocess
+        import os.path
+        cwd = os.path.curdir
+        os.chdir('/home/erik')
+        command="fd --type d --hidden --follow --no-ignore --exclude .git | fzf +m -i"
         fzf = self.fm.execute_command(command, stdout=subprocess.PIPE)
         stdout, stderr = fzf.communicate()
         if fzf.returncode == 0:

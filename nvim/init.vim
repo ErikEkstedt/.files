@@ -1,4 +1,4 @@
-" vim fdm=marker
+" vim: fdm=marker
 " NeoVim
 " Erik
 " Ubuntu 16.04
@@ -10,6 +10,7 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+
 " fzf path
 set rtp+=~/.fzf
 set rtp+=~/.files/nvim
@@ -18,41 +19,50 @@ set rtp+=~/.files/nvim
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/bundle')
 
-" ============ Code/Project Navigation ================
+" ============ Code/Project Navigation ================{{{
 Plug 'scrooloose/nerdtree'         " Project and file navigation
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ivalkeen/nerdtree-execute'
-
 Plug 'tpope/vim-fugitive'          " git extension
 Plug 'airblade/vim-gitgutter'      " see git changes in file in the numberline
 Plug 'junegunn/fzf.vim'            " fuzzy filefinding
-
-" ============ Appearence =============================
+"}}}
+" ============ Appearence ============================={{{
+if !exists("g:gui_oni")
+	Plug 'itchyny/lightline.vim'
+	Plug 'edkolev/tmuxline.vim'          " tmux statusline same as vim.	 :Tmuxline lightline
+	Plug 'blueyed/vim-diminactive'       " dim inactive windows
+endif
 Plug 'Yggdroot/indentLine'           " see where there is indent
-Plug 'edkolev/tmuxline.vim'          " tmux statusline same as vim.	 :Tmuxline lightline
 Plug 'junegunn/goyo.vim'             " Distraction free writing
 Plug 'junegunn/limelight.vim'        " Focus color
 Plug 'luochen1990/rainbow'           " Different color on paranthesis
 Plug 'machakann/vim-highlightedyank' " Highlight yanks
-Plug 'itchyny/lightline.vim'
-" Plug 'blueyed/vim-diminactive'       " dim inactive windows
-
-" ============ Colorschemes ===========================
-Plug 'chriskempson/base16-vim'        " much color
-Plug 'skielbasa/vim-material-monokai' 
-Plug 'kiddos/malokai.vim'
-Plug 'Reewr/vim-monokai-phoenix'
-Plug 'joshdick/onedark.vim'           " look like atom?
+"}}}
+" ============ Colorschemes ==========================={{{
+if !exists("g:gui_oni")
+	Plug 'chriskempson/base16-vim'        " much color
+	Plug 'skielbasa/vim-material-monokai' 
+	Plug 'kiddos/malokai.vim'
+	Plug 'Reewr/vim-monokai-phoenix'
+	Plug 'joshdick/onedark.vim'           " look like atom?
+	Plug 'vim-scripts/wombat256.vim'
+	Plug 'danilo-augusto/vim-afterglow'
+	Plug 'mhartington/oceanic-next'
+	Plug 'yuttie/hydrangea-vim'
+endif
 Plug 'junegunn/seoul256.vim'          " cool junegunn is coool
-Plug 'vim-scripts/wombat256.vim'
-Plug 'danilo-augusto/vim-afterglow'
-Plug 'mhartington/oceanic-next'
-Plug 'yuttie/hydrangea-vim'
+"}}}
+" ============ Useful Tools ==========================={{{
 
-" ============ Useful Tools ===========================
+if !exists("g:gui_oni")
+	Plug 'christoomey/vim-tmux-navigator'  " navigate between vim and tmuz seemlessly
+	" Plug 'Raimondi/delimitMate'			   " autoclosing of brackets, quotes ... 
+	" Plug 'cohama/lexima.vim'
+endif
+
+Plug 'easymotion/vim-easymotion' 
 Plug 'Valloric/MatchTagAlways'
-Plug 'christoomey/vim-tmux-navigator'  " navigate between vim and tmuz seemlessly
-Plug 'itchyny/calendar.vim'            " Calendar for vim
 Plug 'junegunn/vim-after-object'       " change everything after something
 Plug 'junegunn/vim-easy-align'         " better alignment than tabular
 Plug 'junegunn/vim-peekaboo'
@@ -62,12 +72,11 @@ Plug 'nelstrom/vim-visual-star-search' " * on visual select seraches for the sni
 Plug 'tpope/vim-commentary'            " commenting
 Plug 'tpope/vim-repeat'                " repeat commands not repeatable by 'vanilla' vim
 Plug 'tpope/vim-surround'              " Surround objects with quotes, brackets ...
-Plug 'wmvanvliet/vim-ipython'
-Plug 'easymotion/vim-easymotion' 
+Plug 'vyzyv/vimpyter' "vim-plug
 Plug 'sjl/gundo.vim'                   " Visualize undo tree
-Plug 'Raimondi/delimitMate'			   " autoclosing of brackets, quotes ... 
 
-" ============ Auto-Completion ========================
+"}}}
+" ============ Auto-Completion ========================{{{
 if has('nvim')
 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -75,31 +84,28 @@ else
 	Plug 'roxma/nvim-yarp'
 	Plug 'roxma/vim-hug-neovim-rpc'
 endif
-
 Plug 'zchee/deoplete-jedi'
-" Plug 'davidhalter/jedi-vim'
 Plug 'Shougo/neco-vim'
 Plug 'Shougo/neopairs.vim'
 
-" Plug 'autozimu/LanguageClient-neovim', {
-"     \ 'branch': 'next',
-"     \ 'do': 'bash install.sh',
-"     \ }
-
-" ============ Preview Text ===========================
-Plug 'lervag/vimtex'      " latex compiler and alot more.
-Plug 'shime/vim-livedown' " Preview markdowns with npm/node Livedown
-
+"}}}
 " ============ Completion and Syntax =================={{{
 Plug 'PotatoesMaster/i3-vim-syntax'     " syntax for i3 config
 Plug 'elzr/vim-json'
 Plug 'klen/python-mode'                 " Python mode (docs, refactor, lints...)
-Plug 'nelstrom/vim-markdown-folding'    " help with folding in markdown
+Plug ('nelstrom/vim-markdown-folding')  " help with folding in markdown
 Plug 'octol/vim-cpp-enhanced-highlight' " Extra highlight for cpp
 Plug 'othree/xml.vim'
 Plug 'ron89/thesaurus_query.vim'
 Plug 'w0rp/ale'                         " asynchronous linting
-Plug 'daeyun/vim-matlab'   " MATLAB }}}
+Plug 'daeyun/vim-matlab'                " MATLAB
+Plug 'sheerun/vim-polyglot'             " All the syntax
+Plug 'othree/html5.vim'
+Plug 'pangloss/vim-javascript'
+
+" ============ Preview Text ===========================
+Plug 'lervag/vimtex'      " latex compiler and alot more.
+Plug 'shime/vim-livedown' " Preview markdowns with npm/node Livedown
 
 " ============ Snippets ===============================
 Plug 'SirVer/ultisnips'                 " snippet engine
@@ -113,7 +119,7 @@ filetype plugin indent on
 syntax enable
 
 let HOSTNAME = substitute(system('hostname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
-let g:BROWSER = "firefox"
+let g:BROWSER = "google-chrome"
 let mapleader = ','
 set spelllang=en_us            " US English spelling
 set ffs=unix,dos,mac           " File Format (relevant to line ending type)
@@ -126,6 +132,7 @@ set title                      " Change the title of the terminal/tab with the f
 set hidden                     " Allow unsaved background buffers.
 set shortmess=I                " Don't show Vim's welcome message.
 set shortmess+=a               " Make the save message shorter. Helps avoid the 'Hit ENTER to continue' message.
+set modeline
 set foldmethod=marker          " marker for all but specified filetypes (ex: python)
 set foldlevelstart=-1          " start with fold everything
 set foldclose=                 " all
@@ -177,6 +184,16 @@ set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,resi
 
 let g:tex_flavor = "latex"     " assuem *.tex are all latex files
 
+if has('windows')
+	set fillchars=vert:\┃  " ┃ line with no breaks between vertical splits
+endif
+
+if !exists("g:gui_oni")
+	set laststatus=2 "always show status bar
+else
+	set laststatus=0 "always show status bar
+endif
+
 " Wildmenu completion {{{
 set wildmenu
 set wildmode=list:longest
@@ -215,9 +232,16 @@ endif
 " }}}
 "}}}
 
+source ~/.config/nvim/mappings/Nmappings.vim
+source ~/.config/nvim/mappings/Imappings.vim
+source ~/.config/nvim/mappings/Vmappings.vim
+source ~/.config/nvim/mappings/Xmappings.vim
+source ~/.config/nvim/mappings/oni-mappings.vim
 source ~/.config/nvim/Abbreviations.vim
-source ~/.config/nvim/Appearence.vim
+if !exists("g:gui_oni")
+	source ~/.config/nvim/Appearence.vim
+endif
+
 source ~/.config/nvim/Autocommands.vim
-source ~/.config/nvim/Mappings.vim
 source ~/.config/nvim/Functions.vim
 source ~/.config/nvim/PluginSettings.vim

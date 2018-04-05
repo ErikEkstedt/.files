@@ -15,7 +15,7 @@ inoremap ;ss \subsubsection{}<CR>hi
 inoremap ;line %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%<CR><Esc>
 
 " Itemize
-inoremap ;i \item
+inoremap ;i \item<space>
 
 " Figure
 inoremap ;fi \begin{figure}<CR>\centering<CR>\includegraphics[]{<++>}<CR>\caption{<++>}<CR>\label{fig:<++>}<CR>\end{figure}<Esc>6k<Space><Space>
@@ -27,13 +27,13 @@ inoremap ;bta \begin{table}[h]<CR>\caption{<++>}<CR>\label{tab:<++>}<CR>\centeri
 inoremap ;eq \begin{equation}<CR>\label{eq:<++>}<CR>\end{equation}<CR><CR><++><Esc>3kO
 
 " url
-inoremap ;url \url{} <++><Esc>5h
+inoremap ;url \url{} <++><Esc>5hi
 
 "}}}
 
 " tpope/vim-surround
 " 109=m, 105=i, 101=e, 102=f
-let b:surround_109 = "\\( \r \\)"
+let b:surround_109 = "\\(\r\\)"
 let b:surround_105 = "\\textit{\r\}"
 let b:surround_101 = "\\emph{\r\}"
 let b:surround_102 = "\\textbf{\r\}"
@@ -42,8 +42,17 @@ nnoremap <leader>tb :normal ysiWf<CR>
 nnoremap <leader>ti :normal ysiWi<CR>
 nnoremap <leader>te :normal ysiWe<CR>
 nnoremap <leader>tm :normal ysiWm<CR>
+inoremap <c-space> <esc>/<++><CR>c4l
+nnoremap <c-space> <esc>/<++><CR>c4l
 
-" fix slowness
+" move up and down naturally even if lines
+" extends over multiple rows
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+
+" fix slowness - disable these
 "normal :NoMatchParen
 let g:vimtex_indent_enabled = 1
 let g:vimtex_motion_matchparen = 1

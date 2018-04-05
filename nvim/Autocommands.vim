@@ -1,11 +1,11 @@
-" AUTOCOMMANDS 
+" AUTOCOMMANDS
 " exit quickfix when exiting buffer {{{
-aug qfclose 
+aug qfclose
 	au!
 	au winenter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
 aug end "}}}
 
-" set .conf files as dosini 
+" set .conf files as dosini
 autocmd BufRead,BufNewFile *.conf setf dosini
 
 " Return to line {{{
@@ -33,4 +33,15 @@ augroup Latex
 	autocmd BufNewFile,BufRead *.tex set norelativenumber
 	autocmd BufNewFile,BufRead *.tex setlocal spell! spelllang=en_us
 	autocmd BufNewFile,BufRead *.tex set foldmethod=expr
+augroup END
+
+
+augroup html
+	autocmd!
+	autocmd BufNewFile,BufRead *.html iabbrev <buffer> p  <p>
+	autocmd BufNewFile,BufRead *.html iabbrev <buffer> h1 <h1>
+	autocmd BufNewFile,BufRead *.html iabbrev <buffer> h2 <h2>
+	autocmd BufNewFile,BufRead *.html iabbrev <buffer> h4 <h3>
+	autocmd BufNewFile,BufRead *.html iabbrev <buffer> h6 <h4>
+	autocmd BufNewFile,BufRead *.html iabbrev <buffer> div <div>
 augroup END

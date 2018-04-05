@@ -2,33 +2,23 @@
 # =================   ALIASES  ====================
 # =================================================
 
-# ===== Screen ====== {{{
-	alias lock="gnome-screensaver-command -l"
-	alias multscreen_laptop="xrandr --output eDP-1 --auto --output HDMI-2 --auto --above eDP-1; feh --bg-scale ~/.config/wall.png "
-	alias multscreen_desk="xrandr --output DP-0 --auto --output HDMI-0 -s 1920x1080; feh --bg-scale ~/.config/wall.png "
-	alias onescreen="xrandr --output eDP-1 --auto --output HDMI-2 --off; feh --bg-scale ~/.config/wall.png"
-	alias tv_size=" xrandr -s 1080x1920"
-	alias desktop_size=" xrandr -s 1440"
-	alias bgw="cd ~/Pictures/wallpaper && ./bg_wal  ~/.config/wall.png" # Background color/terminal ui-color 
-	alias wnvi="watch nvidia-smi"
-	alias bget="xrandr --verbose | grep -m 1 -i brightness | cut -f2 -d ' '"
-	function b() {
-		xrandr --output eDP-1 --brightness 0."$1"
-	}
-# }}}
 # ===== Terminal ====== {{{
-	alias tmux="TERM=screen-256color-bce /usr/bin/tmux"
+alias tmux="TERM=screen-256color-bce /usr/bin/tmux"
 
-	alias cd..="cd .."
-	alias e="exit"
-	alias ls="ls --color=auto"
-	alias la="ls -A"
-	alias ll="ls -l"
-	alias lrt="ls -lrt"
-	alias ltt="ls -ogl *.tex"
-	alias lt="ls *.tex"
-	alias lpy="ls *.py"
-	alias lpdf="ls -ogl *.pdf"
+alias cd..="cd .."
+alias e="exit"
+alias :q='exit'
+alias :wq='exit'
+
+alias ls="ls --color=auto"
+alias la="ls -A"
+alias ll="ls -l"
+alias ld="ls -ld */"
+alias lrt="ls -lrt"
+alias ltt="ls -ogl *.tex"
+alias ltx="ls *.tex"
+alias lpy="ls *.py"
+alias lpdf="ls -ogl *.pdf"
 # }}}
 #==== Movement ==== {{{
 alias gfi="cd ~/.files; ls"
@@ -54,21 +44,29 @@ alias gnao="cd ~/anaconda3/envs/Naoqi/lib/python2.7/site-packages/pynaoqi-python
 alias gcho="cd /opt/Aldebaran/Choregraphe\ Suite\ 2.5"
 # }}}
 # Source{{{
+function so() { #{{{
+	source activate "$1"
+} #}}}
+alias sod="source deactivate"
+
+function junb() { #{{{
+	jupyter notebook "$1"
+}
+
 alias py35="source activate python3.5"
-function sonao() { # auto git
+
+function sonao() {
     source activate Naoqi
     export PYTHONPATH="/home/erik/anaconda3/envs/Naoqi/lib/python2.7/site-packages/pynaoqi-python2.7-2.5.5.5-linux64/lib/python2.7/site-packages"
 }
+
 alias sogest="source activate gesture"
 alias soasst="source activate assistant"
-
 alias soros="source /opt/ros/kinetic/setup.zsh"
 alias sonupic="source activate nupic"
 alias sobull="source activate bullet"
 alias sofitl="source activate fitl"
 alias sokivy="source activate kivy"
-
-alias sod="source deactivate"
 
 # }}}
 # LATEX {{{
@@ -82,7 +80,7 @@ alias tco="cd ~/Documents/latex; vim Computer_todo.tex"
 # }}}
 #====== Programs =========== {{{
 alias vim="nvim"
-alias ip="ipython --profile=erik"
+alias ipy="ipython --profile=erik"
 alias news="newsbeuter"
 
 #Git
@@ -91,39 +89,31 @@ alias gcm="git commit -m "
 alias gps="git push"
 alias gpl="git pull"
 alias gst="git status"
-function ag() { # auto git
-	git add .
-	git commit -m "$1"
-	git push
-}
+
+
 alias gpush="python ~/.files/Scripts/auto_git.py push"
 alias gpull="python ~/.files/Scripts/auto_git.py pull"
 alias gstatus="python ~/.files/Scripts/auto_git.py status"
 
-function sms() { # auto git
-	kdeconnect-cli --send-sms "$1" \
-	--destination 0762060648 \
-	-n Samsung\ Galaxy\ Note\ 4
-}
+
 # }}}
 #====== Tmux ======= {{{
-	alias tlist="tmux list-sessions"
-	alias tkill.="tmux kill-session -t ."
-	alias tkill="tmux kill-session -t"
-	alias tka="tmux kill-session -a"
-	alias tst="tmux new-session"
-
+alias tls="tmux list-sessions"
+alias tkill.="tmux kill-session -t ."
+alias tkill="tmux kill-session -t"
+alias tka="tmux kill-session -a"
+alias tst="tmux new-session"
 # }}}
 #====== Config Files ======={{{
 alias eal="vim ~/.files/aliases"
 alias ealiases="vim ~/.files/aliases"
-alias ev="vim ~/.vimrc"
+alias ev="vim ~/.files/nvim/init.vim"
 alias evtex="vim ~/.vim/ftplugin/tex.vim"
 alias evpython="vim ~/.vim/ftplugin/python.vim"
 
 alias ebib="vim ~/Documents/latex/References.bib"
-alias ez="vim ~/.zshrc"
-alias rz="source ~/.zshrc"
+alias ez="vim ~/.files/zshrc"
+alias rz="source ~/.files/zshrc"
 alias ru="xrdb -load ~/.Xresources"
 
 alias et="vim ~/.tmux.conf"
@@ -146,6 +136,5 @@ alias umountdesk="sudo umount /home/erik/Desktop"
 alias sshwork="ssh Erik@130.238.17.189"
 
 # }}}
-#
 # Mount Usb Stick
 alias umountusb="udiskie-umount /media/erik/*"

@@ -24,6 +24,7 @@ let s:blue = [ '#87afaf', 109 ]
 let s:cyan = [ '#87d7d7', 23 ]
 let s:green = [ '#87af87', 108 ]
 let s:white = [ '#d0d0d0', 252 ]
+let s:trans = [ '#000000', 0 ]
 
 let s:p = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
 
@@ -44,8 +45,11 @@ let s:p.visual.right     = [ [ s:base02, s:peach ],   [ s:base3,  s:base01 ] ]
 let s:p.replace.left    = [ [ s:base02, s:magenta ], [ s:base3,  s:base01 ] ]
 let s:p.replace.right    = [ [ s:base02, s:magenta ], [ s:base3,  s:base01 ] ]
 
-let s:p.tabline.left    = [ [ s:base3,  s:base00 ] ]
-let s:p.tabline.middle  = [ [ s:base01, s:base1 ] ]
+" let s:p.tabline.left    = [ [ s:base3,  s:base02 ] ]
+" let s:p.tabline.middle  = [ [ s:base01, s:base1 ] ]
+" let s:p.tabline.tabsel  = [ [ s:base3, s:base02 ] ]
+let s:p.tabline.tabsel  = [ [ s:black, s:green ] ]
+let s:p.tabline.left    = [ [ s:base00,  s:trans ] ]
+let s:p.tabline.middle  = [ [ s:base01, s:trans ] ]
 let s:p.tabline.right   = copy(s:p.normal.right)
-let s:p.tabline.tabsel  = [ [ s:base3, s:base02 ] ]
 let g:lightline#colorscheme#myseoul256#palette = lightline#colorscheme#flatten(s:p)

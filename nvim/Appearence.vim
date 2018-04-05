@@ -1,19 +1,14 @@
+" vim: fdm=marker
 " APPEARENCE
-if has('windows')
-	set fillchars=vert:\┃  " ┃ line with no breaks between vertical splits
-endif
-set laststatus=2 "always show status bar
 set termguicolors " Enable true color support.
 
-" set winhighlight=NormalNC:LineNr
-
-" colorscheme base16-monokai
+" COLORSCHEME 
 let g:seoul256_background = 234
 colorscheme seoul256
+" colorscheme hydrangea
 augroup ColorSchemeGroup "{{{
 	autocmd!
 	autocmd VimEnter,ColorScheme * call ColorPatches()
-	" autocmd ColorScheme * call s:lightline_update()
 augroup END "}}}
 function! ColorPatches() "{{{
 	if g:colors_name =~ 'seoul256'
@@ -22,6 +17,8 @@ function! ColorPatches() "{{{
 		call Wombat256patch()
 	elseif g:colors_name =~ 'base16-monokai'
 		call Monokaipatch()
+	elseif g:colors_name =~ 'hydrangea'
+		call Hydrangeapatch()
 	endif
 endfunc  "}}}
 function! Seoulpatch() "{{{
@@ -78,6 +75,11 @@ function! Monokaipatch () "{{{
 	hi Conceal guifg=#404040
 	call s:set_lightline_colorscheme('molokai')
 endfunc "}}}
+function! Hydrangeapatch () "{{{
+	hi Comment gui=italic
+	hi String gui=italic
+	hi Number guibg=#1e222c
+endfunc "}}}
 function! NERDTreeColors() "{{{
 	hi Directory guifg=#404040
 	hi NERDTreeCWD guifg=gray50
@@ -85,12 +87,16 @@ function! NERDTreeColors() "{{{
 	hi NERDTreeBookmarksHeader guifg=gray50
 	hi NERDTreeBookmarkName guifg=gray50
 endfunc "}}}
+
 function! s:set_lightline_colorscheme(name) abort "{{{
-  let g:lightline.colorscheme = a:name
-  call lightline#init()
-  call lightline#colorscheme()
-  call lightline#update()
+	if !exists("g:gui_oni")
+		let g:lightline.colorscheme = a:name
+		call lightline#init()
+		call lightline#colorscheme()
+		call lightline#update()
+	endif
 endfunction "}}}
+
 " NERDTree{{{
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg) 
 	" overwrites colors for [✹] etc. looks dull
@@ -121,8 +127,6 @@ endfunc
 nnoremap <C-t> :call TransparentBackground()<CR>
 "}}}
 
-" Pmenu (completionmenu - deoplete) {{{
-"}}}
 " change text font color to white
 inoremap <leader>å <esc>:hi normal ctermfg=255 guifg=white<cr>
 nnoremap <leader>å :hi normal ctermfg=255 guifg=white<cr>

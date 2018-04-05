@@ -1,0 +1,30 @@
+{
+	"For Loop": {
+		"prefix": "for",
+		"body": [
+			"for (const ${2:element} of ${1:array}) {",
+				"\t$0",
+				"}"
+		],
+		"description": "For Loop"
+	},
+	"While Loop": {
+		"prefix": "while",
+		"body": [
+			"while (const ${2:element} of ${1:array}) {",
+				"\t$0",
+				"}"
+		],
+		"description": "while"
+	},
+	"Class Snippet": {
+		"prefix": "class",
+		"body": [
+			"class ${1:className}(${1:inheritance}):",
+			"\t\'\'\' ${3:doc} \'\'\'",
+			"\t def __init__(self, ${3:input})",
+			"self.${3:input} = ${3:input}",
+		],
+		"description": "class"
+	}
+}

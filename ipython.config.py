@@ -303,7 +303,7 @@ c.TerminalInteractiveShell.highlight_matching_brackets = True
 #         highlighting:
 #  monokai, algol, paraiso-dark, borland, tango, colorful, vs, rrt, xcode, abap, algol_nu, native, fruity, murphy, manni, perldoc, default, igor, bw, paraiso-light, vim, rainbow_dash, friendly, pastie, autumn, emacs, lovelace, trac, arduino
 # c.TerminalInteractiveShell.highlighting_style = traitlets.Undefined
-c.TerminalInteractiveShell.highlighting_style = "monokai"
+# c.TerminalInteractiveShell.highlighting_style = "monokai"
 
 ## Override highlighting format for specific tokens
 #c.TerminalInteractiveShell.highlighting_style_overrides = {}
