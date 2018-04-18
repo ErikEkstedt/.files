@@ -29,6 +29,7 @@ augroup END
 " LATEX
 augroup Latex
 	autocmd!
+	autocmd BufNewFile,BufRead *.tex call deoplete#enable()
 	autocmd BufNewFile,BufRead *.tex set conceallevel=0
 	autocmd BufNewFile,BufRead *.tex set norelativenumber
 	autocmd BufNewFile,BufRead *.tex setlocal spell! spelllang=en_us

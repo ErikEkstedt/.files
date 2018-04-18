@@ -33,7 +33,6 @@ nnoremap <leader>i gg=G<C-o>
 " indent paragraphs
 nnoremap <leader>mm vip=
 
-
 " redraw 
 nnoremap <leader><leader>r :redraw!<CR>
 
@@ -60,6 +59,7 @@ if &diff
 	nnoremap <Leader>p [c
 endif
 
+" delete all bufers except current
 " noremap <leader>bd :w | %bd | e#
 noremap <leader>db :%bd<CR><C-O>:bd#<CR>
 
@@ -73,9 +73,6 @@ nnoremap <s-tab> <lt><lt>
 nnoremap <c-s> :w<cr>
 nnoremap <c-q> :q!<cr>
 
-inoremap <c-s> <esc>:w<cr>
-inoremap <c-q> <esc>:q!<cr>
-
 " copy / paste 
 set pastetoggle=<f2> " system clipboard pastes preserves indentation
 
@@ -84,6 +81,11 @@ nnoremap <c-p> "+p
 nnoremap <c-y> "+yy
 inoremap <c-p> <esc>"+pi
 
+" Repeat last macro if in a normal buffer.
+nnoremap <expr> <CR> empty(&buftype) ? '@@' : '<CR>'
+
+" fuzzy search nmap and the chosen one is implemented
+nmap <leader><tab> <plug>(fzf-maps-n)
 
 " Windows 
 " Move between windows
@@ -94,7 +96,6 @@ nnoremap <C-h> :vertical resize -3<cr>
 nnoremap <C-l> :vertical resize +3<cr>
 nnoremap <C-k> :resize +3<cr>
 nnoremap <C-j> :resize -3<cr>
-"}}}
 
 function! ChangeToLocalDir()
 	lchdir %:p:h
@@ -142,6 +143,8 @@ nnoremap S viw"0p
 " Buffers previous/next
 nnoremap <b :bp<CR>
 nnoremap <n :bn<CR>
+nnoremap <h :bp<CR>
+nnoremap <l :bn<CR>
 
 " jump in jump list
 nnoremap <i <C-I>zz

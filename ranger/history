@@ -1,9 +1,3 @@
-cd  /et
-shell vim chrome_startup.sh
-shell mkdir imgs
-rename imgs
-shell mkdir probably_duplicates
-rename convergence.png
 shell mkdir COMPLETED
 shell mkdir Presentationsteknik
 rename Matteknik
@@ -21,7 +15,6 @@ rename rc.conf
 rename Lab2EkstedtErik.pdf
 rename main.pdf
 rename Lab2_EkstedtErik_WangCheng.pdf
-search 
 open_with 
 shell mkdir Analog_electro
 shell mkdir MekanikII
@@ -44,7 +37,14 @@ shell mkdir wiki
 shell vim 
 rename Understand2.png
 open_withk
-delete
-shell mkdir Distributed-representations
-shell touch notes.md
+search 
+rename Skip-gram.png
+shell mkdir images
+shell mkdir neuro
+rename rom.md
+open_withr
 open_with
+ope
+open_withjjjjjj
+rename GAE.png
+delete

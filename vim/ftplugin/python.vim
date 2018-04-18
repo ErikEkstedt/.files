@@ -20,8 +20,8 @@ nnoremap gJ :call pymode#motion#move('^\s*class\s', '')<CR>zz
 nnoremap gK :call pymode#motion#move('^\s*class\s', 'b')<CR>zz
 
 " <CR> is indistinguishable from <C-m>
-nnoremap <CR> vip:SlimuxREPLSendLine<CR> 
-vnoremap <CR> :SlimuxREPLSendLine<CR>gv<Esc>zz
+nnoremap <buffer> <CR> vip:SlimuxREPLSendLine<CR> 
+vnoremap <buffer> <CR> :SlimuxREPLSendLine<CR>gv<Esc>zz
 
 " indentation for python
 setlocal tabstop=4

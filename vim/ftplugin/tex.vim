@@ -18,13 +18,6 @@ inoremap ;line %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 inoremap ;i \item<space>
 
 " Figure
-inoremap ;fi \begin{figure}<CR>\centering<CR>\includegraphics[]{<++>}<CR>\caption{<++>}<CR>\label{fig:<++>}<CR>\end{figure}<Esc>6k<Space><Space>
-
-" Table
-inoremap ;bta \begin{table}[h]<CR>\caption{<++>}<CR>\label{tab:<++>}<CR>\centering<CR>\begin{tabular}{lll} <CR>& <++> & <++>\\\hline<CR><BS><BS>\end{tabular}<CR>\end{table}<CR><CR><++><Esc>?aa<CR>"_c2l
-
-" Equation
-inoremap ;eq \begin{equation}<CR>\label{eq:<++>}<CR>\end{equation}<CR><CR><++><Esc>3kO
 
 " url
 inoremap ;url \url{} <++><Esc>5hi
@@ -44,6 +37,9 @@ nnoremap <leader>te :normal ysiWe<CR>
 nnoremap <leader>tm :normal ysiWm<CR>
 inoremap <c-space> <esc>/<++><CR>c4l
 nnoremap <c-space> <esc>/<++><CR>c4l
+
+" nnoremap <buffer> <leader>ll <plug>(vimtex-compile)
+" nnoremap <buffer> <leader>lv <plug>(vimtex-view)
 
 " move up and down naturally even if lines
 " extends over multiple rows

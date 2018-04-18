@@ -13,12 +13,12 @@ endif
 
 " fzf path
 set rtp+=~/.fzf
-set rtp+=~/.files/nvim
+" set rtp+=~/.files/nvim
+
 
 "============= Vim-Plug ======================{{{
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/bundle')
-
 " ============ Code/Project Navigation ================{{{
 Plug 'scrooloose/nerdtree'         " Project and file navigation
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -32,10 +32,14 @@ if !exists("g:gui_oni")
 	Plug 'itchyny/lightline.vim'
 	Plug 'edkolev/tmuxline.vim'          " tmux statusline same as vim.	 :Tmuxline lightline
 	Plug 'blueyed/vim-diminactive'       " dim inactive windows
+else
+	let &termguicolors = 1
+    set statusline=
+    set statusline+=%#LineNr#
+    set statusline+=\ %f
 endif
 Plug 'Yggdroot/indentLine'           " see where there is indent
 Plug 'junegunn/goyo.vim'             " Distraction free writing
-Plug 'junegunn/limelight.vim'        " Focus color
 Plug 'luochen1990/rainbow'           " Different color on paranthesis
 Plug 'machakann/vim-highlightedyank' " Highlight yanks
 "}}}
@@ -68,12 +72,13 @@ Plug 'junegunn/vim-easy-align'         " better alignment than tabular
 Plug 'junegunn/vim-peekaboo'
 Plug 'lotabout/slimux'                 " old: 'epeli/slimux' | vim+ipython OUtdated
 Plug 'mtth/scratch.vim'                " Unobtrusive scratch
-Plug 'nelstrom/vim-visual-star-search' " * on visual select seraches for the snippet
+Plug 'nelstrom/vim-visual-star-search' " * on visual select searches for the snippet
 Plug 'tpope/vim-commentary'            " commenting
 Plug 'tpope/vim-repeat'                " repeat commands not repeatable by 'vanilla' vim
 Plug 'tpope/vim-surround'              " Surround objects with quotes, brackets ...
 Plug 'vyzyv/vimpyter' "vim-plug
 Plug 'sjl/gundo.vim'                   " Visualize undo tree
+Plug 'tommcdo/vim-exchange'
 
 "}}}
 " ============ Auto-Completion ========================{{{
@@ -100,8 +105,6 @@ Plug 'ron89/thesaurus_query.vim'
 Plug 'w0rp/ale'                         " asynchronous linting
 Plug 'daeyun/vim-matlab'                " MATLAB
 Plug 'sheerun/vim-polyglot'             " All the syntax
-Plug 'othree/html5.vim'
-Plug 'pangloss/vim-javascript'
 
 " ============ Preview Text ===========================
 Plug 'lervag/vimtex'      " latex compiler and alot more.
@@ -113,11 +116,14 @@ Plug 'honza/vim-snippets'               " snippets
 
 call plug#end()
 "}}}
+" }}}
 "=============== Basic ======================={{{
 
 filetype plugin indent on
 syntax enable
 
+" let g:python_host_prog = '/home/erik/miniconda3/envs/nvim2/bin/python'
+" let g:python3_host_prog = '/home/erik/miniconda3/envs/nvim3/bin/python'
 let HOSTNAME = substitute(system('hostname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
 let g:BROWSER = "google-chrome"
 let mapleader = ','
@@ -134,7 +140,7 @@ set shortmess=I                " Don't show Vim's welcome message.
 set shortmess+=a               " Make the save message shorter. Helps avoid the 'Hit ENTER to continue' message.
 set modeline
 set foldmethod=marker          " marker for all but specified filetypes (ex: python)
-set foldlevelstart=-1          " start with fold everything
+set foldlevelstart=1          " start with fold everything
 set foldclose=                 " all
 set conceallevel=0
 set shiftwidth=4
@@ -149,7 +155,7 @@ set relativenumber
 set scrolloff=3                " visual rows above and below cursor
 set sidescroll=3               " visual columns on sides of cursor
 set cursorline                 " highlight line where cursor is
-set guicursor=
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 set hls                        " highlighting!
 set lazyredraw                 " don't redraw screen during macros
 
@@ -173,8 +179,7 @@ set virtualedit=block          " onemore 'block' makes it possible to edit empty
 set ignorecase                 " (in)case sensitive search
 set smartcase
 set switchbuf=usetab
-set wildmenu
-set wildchar=<tab>
+
 set synmaxcol=170              " Maximum column in which to search for syntax items
 set splitbelow
 set splitright
@@ -196,7 +201,8 @@ endif
 
 " Wildmenu completion {{{
 set wildmenu
-set wildmode=list:longest
+set wildmode=full
+
 set wildignore+=.hg,.git,.svn                    " Version control
 set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
 set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
@@ -231,11 +237,13 @@ if !isdirectory(expand(&directory))
 endif
 " }}}
 "}}}
+"=============== Source ======================={{{
 
 source ~/.config/nvim/mappings/Nmappings.vim
 source ~/.config/nvim/mappings/Imappings.vim
 source ~/.config/nvim/mappings/Vmappings.vim
 source ~/.config/nvim/mappings/Xmappings.vim
+source ~/.config/nvim/mappings/Cmappings.vim
 source ~/.config/nvim/mappings/oni-mappings.vim
 source ~/.config/nvim/Abbreviations.vim
 if !exists("g:gui_oni")
@@ -245,3 +253,4 @@ endif
 source ~/.config/nvim/Autocommands.vim
 source ~/.config/nvim/Functions.vim
 source ~/.config/nvim/PluginSettings.vim
+" }}}

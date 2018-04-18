@@ -5,6 +5,7 @@
 # ===== Terminal ====== {{{
 alias tmux="TERM=screen-256color-bce /usr/bin/tmux"
 
+alias drop="/home/erik/.files/Scripts/tmux/dropdown.sh"
 alias cd..="cd .."
 alias e="exit"
 alias :q='exit'
@@ -21,6 +22,7 @@ alias lpy="ls *.py"
 alias lpdf="ls -ogl *.pdf"
 # }}}
 #==== Movement ==== {{{
+alias gp="cd ~/PhD; ls"
 alias gfi="cd ~/.files; ls"
 alias gma="cd ~/com_sci/Master_code; ls"
 alias gpr="cd ~/com_sci/Master_code/Gestures/gesture; ls"

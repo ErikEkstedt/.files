@@ -3,17 +3,13 @@
 "============== Tmux-navigation =============={{{
 let g:tmux_navigator_no_mappings = 1
 
-nnoremap <silent><Left> :TmuxNavigateLeft<cr>
-nnoremap <silent><Down> :TmuxNavigateDown<cr>
-nnoremap <silent><Up> :TmuxNavigateUp<cr>
-nnoremap <silent><Right> :TmuxNavigateRight<cr>
-
-if exists('g:gui_oni')
-	nnoremap <silent><A-h> <c-w>h
-	nnoremap <silent><A-l> <c-w>l
-	nnoremap <silent><A-k> <c-w>k
-	nnoremap <silent><A-j> <c-w>j
+if !exists('g:gui_oni')
+	nnoremap <silent><Left> :TmuxNavigateLeft<cr>
+	nnoremap <silent><Down> :TmuxNavigateDown<cr>
+	nnoremap <silent><Up> :TmuxNavigateUp<cr>
+	nnoremap <silent><Right> :TmuxNavigateRight<cr>
 endif
+
 "}}}
 "============== Slimux ======================={{{
 let g:slimux_python_use_ipython = 1
@@ -35,6 +31,8 @@ let g:vimtex_enabled = 1
 " let g:latex_view_general_viewer = 'general'
 " let g:vimtex_view_method = "general"
 
+" let g:latex_view_general_viewer = 'okular'
+" let g:vimtex_view_method = "okular"
 let g:latex_view_general_viewer = 'zathura'
 let g:vimtex_view_method = "zathura"
 
@@ -42,7 +40,6 @@ let g:vimtex_complete_recursive_bib = 2
 let g:vimtex_complete_enabled = 1
 let g:vimtex_complete_close_braces = 1
 let g:vimtex_fold_enabled = 1
-map <leader>ll <plug>(vimtex-compile-ss)
 
 augroup vimtex_event_1
 	au!
@@ -219,35 +216,32 @@ let g:livedown_browser = g:BROWSER
 " nnoremap <leader>gp :LivedownPreview<CR>
 "}}}
 "============== Vim-surround ================{{{
-nnoremap ' :normal ysiW'<CR>
-nnoremap '' :normal ysiW"<CR>
+nnoremap <leader>' :normal ysiW'<CR>
+nnoremap <leader>" :normal ysiW"<CR>
 nnoremap ( :normal ysiW)<CR>
 nnoremap ) :normal ysiW)<CR>
 nnoremap { :normal ysiW}<CR>
 nnoremap } :normal ysiW}<CR>
 nnoremap [ :normal ysiW]<CR>
 nnoremap ] :normal ysiW]<CR>
-nnoremap <leader>" :normal ysiW"<CR>
 " nnoremap <leader>B :normal ysiW}<CR>
 " nnoremap <leader>r :normal ysiW]<CR>
 "}}}
 "============== FZF =========================={{{
 " Customize fzf colors to match your color scheme
-" let g:fzf_colors =
-" \ { 'fg':      ['fg', 'Normal'],
-" 	\ 'bg':      ['bg', 'Normal'],
-" 	\ 'hl':      ['fg', 'Comment'],
-" 	\ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-" 	\ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-" 	\ 'hl+':     ['fg', 'Statement'],
-" 	\ 'info':    ['fg', 'PreProc'],
-" 	\ 'border':  ['fg', 'Ignore'],
-" 	\ 'prompt':  ['fg', 'Conditional'],
-" 	\ 'pointer': ['fg', 'Exception'],
-" 	\ 'marker':  ['fg', 'Keyword'],
-" 	\ 'spinner': ['fg', 'Label'],
-" 	\ 'header':  ['fg', 'Comment'] 
-" }
+" let g:fzf_colors = { 'fg': ['fg', 'Normal'],
+" 			\ 'bg':      ['bg', 'Normal'],
+" 			\ 'hl':      ['fg', 'Comment'],
+" 			\ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+" 			\ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+" 			\ 'hl+':     ['fg', 'Statement'],
+" 			\ 'info':    ['fg', 'PreProc'],
+" 			\ 'border':  ['fg', 'Ignore'],
+" 			\ 'prompt':  ['fg', 'Conditional'],
+" 			\ 'pointer': ['fg', 'Exception'],
+" 			\ 'marker':  ['fg', 'Keyword'],
+" 			\ 'spinner': ['fg', 'Label'],
+" 			\ 'header':  ['fg', 'Comment']}
 
 " Settings
 " [Buffers] Jump to the existing window if possible
@@ -257,6 +251,7 @@ let g:fzf_buffers_jump = 1
 nnoremap <Leader>fl :Files<CR>
 nnoremap <Leader>fi :Files ~/<CR>
 nnoremap <Leader>fc :Files ~/.files<CR>
+nnoremap <Leader>fo :Files /opt/Oni<CR>
 nnoremap <Leader>fr :Files /<CR>
 nnoremap <Leader>ff :Ag<CR>
 nnoremap <Leader>b :Buffers<CR>
@@ -329,12 +324,12 @@ autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 " mappings
-nnoremap <leader>gg :Goyo<CR>
+nnoremap <silent> <leader>gg :Goyo<CR>
 
 "}}}
 "============== ALE =========================={{{
-" Start of, toggle to init
-let g:ale_enabled = 1
+let g:ale_enabled = 0
+
 " Use quickfix list. Open list
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
@@ -355,10 +350,7 @@ let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%][%severity%] %s'
 
 " pylint
-"\   'python': ['pylint', 'pycodestyle', 'yapf', 'isort'],
-let g:ale_linters = {
-\   'python': ['pylint', 'yapf', 'isort', 'mccabe'],
-\}
+let g:ale_linters = { 'python': ['pylint', 'yapf', 'isort', 'mccabe'],}
 
 " Mappings
 nmap ge <Plug>(ale_next_wrap)
@@ -472,13 +464,13 @@ autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ', '+', '*', '
 "}}}
 "============== easy-motion =================={{{
 let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyzåöä'
-map <l <Plug>(easymotion-lineforward)
 map <j <Plug>(easymotion-j)
 map <k <Plug>(easymotion-k)
-map <h <Plug>(easymotion-linebackward)
-nmap <space><space> <Plug>(easymotion-bd-w)
-nmap <space>w <Plug>(easymotion-bd-w)
-nmap <space>e <Plug>(easymotion-bd-e)
+" map <h <Plug>(easymotion-linebackward)
+" map <l <Plug>(easymotion-lineforward)
+
+nmap <space> <Plug>(easymotion-bd-w)
+nmap <leader>ee <Plug>(easymotion-bd-e)
 
 map <f <Plug>(easymotion-bd-f)
 nmap <s <Plug>(easymotion-overwin-f)
