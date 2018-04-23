@@ -1,6 +1,3 @@
-shell mkdir COMPLETED
-shell mkdir Presentationsteknik
-rename Matteknik
 cd .icon
 rename ranger-icon.png
 cd 
@@ -47,4 +44,7 @@ open_with
 ope
 open_withjjjjjj
 rename GAE.png
+shell mkdir imgs
+rename exp_schematic.png
+shell mkdir content
 delete

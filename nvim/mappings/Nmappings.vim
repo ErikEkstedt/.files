@@ -49,6 +49,8 @@ nnoremap <leader><backspace> mz:%s/\s\+$//<cr>:let @/=''<cr>`z
 " Spell
 nnoremap <leader>ge ]s
 nnoremap <leader>gf z=1<CR>	
+nnoremap <localleader>sv :set spelllang=sv<CR> 
+nnoremap <localleader>en :set spelllang=en<CR>
 
 " Some vim-diff settings
 if &diff

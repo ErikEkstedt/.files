@@ -55,6 +55,24 @@ class my_edit(Command):
         # content of the current directory.
         return self._tab_directory_content()
 
+class git_add_commit_push(Command):
+    """
+    :mkcd <dirname>
+    Creates a directory with the name <dirname> and enters it.
+    """
+    def execute(self):
+        from os.path import join, expanduser, lexists
+        from os import makedirs
+        import re
+        commit_msg = expanduser(self.rest(1))
+        if commit_msg is not None:
+            command = "git add . ; git commit -m \"" + commit_msg + "\"; git push"
+            self.fm.execute_command("git add .")
+            self.fm.execute_command("git commit -m" + command)
+            self.fm.execute_command("git push")
+        else:
+            self.fm.notify("Commit message required!", bad=True)
+
 
 class fzf_select(Command):
     """
@@ -135,3 +153,4 @@ class fzf_cd(Command):
                 self.fm.cd(fzf_file)
             else:
                 self.fm.select_file(fzf_file)
+

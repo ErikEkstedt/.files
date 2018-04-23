@@ -127,7 +127,7 @@ syntax enable
 let HOSTNAME = substitute(system('hostname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
 let g:BROWSER = "google-chrome"
 let mapleader = ','
-set spelllang=en_us            " US English spelling
+set spelllang=sv,en_us            " US English spelling
 set ffs=unix,dos,mac           " File Format (relevant to line ending type)
 set backspace=indent,eol,start " Make backspace work like most other apps.
 set history=1000               " Keep 1000 lines of command-line history.

@@ -21,8 +21,18 @@ alias ltx="ls *.tex"
 alias lpy="ls *.py"
 alias lpdf="ls -ogl *.pdf"
 # }}}
+
 #==== Movement ==== {{{
 alias gp="cd ~/PhD; ls"
+alias phd="PhD"
+
+function mkpr() { #{{{
+	project_init "$1"
+} #}}}
+
+#}}}
+#==== Movement ==== {{{
+
 alias gfi="cd ~/.files; ls"
 alias gma="cd ~/com_sci/Master_code; ls"
 alias gpr="cd ~/com_sci/Master_code/Gestures/gesture; ls"
