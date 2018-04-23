@@ -1,5 +1,9 @@
 #!/bin/bash
-sudo apt-get install texlive-full -y
-latexm
-wakeonlan
-unclutter
+
+
+
+sudo apt-get install -y \
+	texlive-full latexm wakeonlan
+
+
+
