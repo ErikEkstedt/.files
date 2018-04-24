@@ -24,9 +24,9 @@ export BROWSER="google-chrome"
 export LANG=en_US.UTF-8
 
 # Conda / Python / Node Envs
+export PATH=$HOMEE/.node_modules_global/bin:$PATH
 export PATH=/home/erik/anaconda3/bin:${PATH}
 export PATH=/home/erik/miniconda3/bin:$PATH
-export PATH=$HOME/.node_modules_global/bin:$PATH
 export ROBOSCHOOL_PATH=/home/erik/roboschool
 
 export PATH=/usr/local/MATLAB/R2017b/bin:${PATH}
@@ -212,3 +212,6 @@ bindkey '^B' cd-from-home
 bindkey '^N' fzf-cd-widget
 bindkey '^_' cd-from-root 
 # zprof
+
+
+source "/home/erik/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
