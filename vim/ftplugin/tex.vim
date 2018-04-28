@@ -30,7 +30,6 @@ let b:surround_109 = "\\(\r\\)"
 let b:surround_105 = "\\textit{\r\}"
 let b:surround_101 = "\\emph{\r\}"
 let b:surround_102 = "\\textbf{\r\}"
-
 nnoremap <leader>tb :normal ysiWf<CR> 
 nnoremap <leader>ti :normal ysiWi<CR>
 nnoremap <leader>te :normal ysiWe<CR>

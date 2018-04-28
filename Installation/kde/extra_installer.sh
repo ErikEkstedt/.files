@@ -1,9 +1,3 @@
 #!/bin/bash
-
-
-
 sudo apt-get install -y \
-	texlive-full latexm wakeonlan
-
-
-
+	texlive-full latexmk wakeonlan

@@ -1,7 +1,7 @@
 " vim: fdm=marker
 " NeoVim
 " Erik
-" Ubuntu 16.04
+" Ubuntu 16.04 and 17.10
 " Unicode characters: https://www.w3schools.com/charsets/ref_utf_dingbats.asp
 
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
@@ -14,7 +14,6 @@ endif
 " fzf path
 set rtp+=~/.fzf
 " set rtp+=~/.files/nvim
-
 
 "============= Vim-Plug ======================{{{
 " Plugins will be downloaded under the specified directory.
@@ -202,7 +201,6 @@ endif
 " Wildmenu completion {{{
 set wildmenu
 set wildmode=full
-
 set wildignore+=.hg,.git,.svn                    " Version control
 set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
 set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images

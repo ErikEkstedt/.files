@@ -19,8 +19,13 @@ export const activate = (oni: Oni.Plugin.Api) => { // {{{
     oni.input.bind("<tab>", "contextMenu.select")
 
     // oni.input.bind("<C-f>", "workspace.openFolder")
-    oni.input.bind("<C-f>", "quickOpen")
+    // oni.input.bind("<C-f>", "quickOpen")
+    oni.input.bind("<C-f>", "quickOpen.show")
     oni.input.bind("<s-c-r>", "language.findAllReferences")
+
+
+
+	// oni. input.bind("<c-p>", "quickOpen.show", () => isNormalMode() && !isMenuOpen())
 } // }}}
 
 export const deactivate = (oni: Oni.Plugin.Api) => { //{{{
@@ -44,12 +49,11 @@ export const configuration = { //{{{
     "oni.loadInitVim": true,
 	"oni.hideMenu": false, // hide the gui menu (i have menu in os top bar so does not matter) 
 
-
 	// could effect LSP
     "environment.additionalPaths": ['/home/erik/miniconda3/envs/oni-env/bin'], 
 	
     // Editor
-    "editor.fontSize": "16px",
+    "editor.fontSize": "14px",
 	"editor.linePadding": 0,
     "editor.clipboard.enabled": false,
     "editor.clipboard.synchronizeYank": false,

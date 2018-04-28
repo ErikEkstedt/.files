@@ -383,8 +383,8 @@ let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
 "close the preview window after completion is done.
 autocmd CompleteDone * pclose!
 
-call deoplete#custom#set('_', 'sorters', ['sorter_word'])
-call deoplete#custom#set('ultisnips', 'rank', 9999)
+call deoplete#custom#source('_', 'sorters', ['sorter_word'])
+call deoplete#custom#source('ultisnips', 'rank', 9999)
 call deoplete#custom#source('_', 'converters', ['converter_auto_paren'])
 
 "}}}

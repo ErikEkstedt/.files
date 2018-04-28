@@ -24,30 +24,34 @@ export BROWSER="google-chrome"
 export LANG=en_US.UTF-8
 
 # Conda / Python / Node Envs
-export PATH=$HOMEE/.node_modules_global/bin:$PATH
+export PATH=$HOME/.node_modules_global/bin:${PATH}
 export PATH=/home/erik/anaconda3/bin:${PATH}
-export PATH=/home/erik/miniconda3/bin:$PATH
-export ROBOSCHOOL_PATH=/home/erik/roboschool
+export PATH=/home/erik/miniconda3/bin:${PATH}
 
-export PATH=/usr/local/MATLAB/R2017b/bin:${PATH}
+# export ROBOSCHOOL_PATH=/home/erik/roboschool
+# export PATH=/usr/local/MATLAB/R2017b/bin:${PATH}
+
+
+# CUDA
+export PATH=/usr/local/cuda-9.0/bin:${PATH}
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/cuda/lib64
-export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/cuda-8.0/lib64
-export GIO_EXTRA_MODULES=/usr/lib/x86_64-linux-gnu/gio/modules/
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/cuda-9.0/lib64
+# export GIO_EXTRA_MODULES=/usr/lib/x86_64-linux-gnu/gio/modules/
 
-export GOROOT=/home/erik/go
-export GOPATH=/home/erik/gopath
-export PATH=$GOROOT/bin:${PATH}
+# export GOROOT=/home/erik/go
+# export GOPATH=/home/erik/gopath
+# export PATH=$GOROOT/bin:${PATH}
 
-# QT
-export QT_VERSION="5.10.1"
-export QT_DIR=$HOME/Qt
-export QT_STUB="false"
-export QT_DEBUG="false"
+# # QT
+# export QT_VERSION="5.10.1"
+# export QT_DIR=$HOME/Qt
+# export QT_STUB="false"
+# export QT_DEBUG="false"
 
-# temp fix/hack https://github.com/therecipe/qt/issues/549
-export CGO_CXXFLAGS_ALLOW=".*" 
-export CGO_LDFLAGS_ALLOW=".*" 
-export CGO_CFLAGS_ALLOW=".*" 
+# # temp fix/hack https://github.com/therecipe/qt/issues/549
+# export CGO_CXXFLAGS_ALLOW=".*" 
+# export CGO_LDFLAGS_ALLOW=".*" 
+# export CGO_CFLAGS_ALLOW=".*" 
 
 # NVM
 function _nvm() { # auto git
@@ -174,7 +178,6 @@ _fzf_compgen_dir() {
 
 #}}}
 ##==== Custom {{{
-
 # Blurred transparency
 # https://www.reddit.com/r/kde/comments/6jzuwu/konsole_and_yakuake_blur/
 if [[ $(ps --no-header -p $PPID -o comm | grep -Ev '^(yakuake|konsole)$' ) ]]; then
@@ -194,8 +197,13 @@ function sms() { #{{{
 function g() {  #{{{
 	la | grep -i $1
 } #}}}
-
-vf() {
+function print_path() {  #{{{
+	for p in $path;
+	do
+		echo "$p"
+	done
+} #}}}
+vf() {#{{{
 	local files
 	# files=(${(f)"$(locate -Ai -0 ~ | grep -z -vE '~$' | fzf --reverse --read0 -0 -1 -m)"})
 	files="$(locate -Ai -0 ~ | grep -z -vE '~$' | fzf --reverse --read0 -0 -1 -m)s"
@@ -203,7 +211,6 @@ vf() {
 }
 zle -N vf
 #}}}
-
 source ~/.files/aliases >/dev/null 2>&1
 # alt+s to prepend 'sudo ' to current command and move to EOL
 bindkey -s '^S' '^Asudo ^E'
@@ -212,6 +219,5 @@ bindkey '^B' cd-from-home
 bindkey '^N' fzf-cd-widget
 bindkey '^_' cd-from-root 
 # zprof
-
 
 source "/home/erik/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
