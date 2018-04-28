@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# [ $(echo -e "No\nYes" | rofi -dmenu -p "$1") == "Yes" ] && $2
+
+IFS=':'
+
+get_selection() {
+	for p in $ERIKPATH; 
+	do
+		ls "$p"
+	done \
+		| fzf
+}
+
+if selection=$( get_selection ); then
+  exec "$selection"
+fi
