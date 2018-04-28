@@ -24,6 +24,7 @@ export BROWSER="google-chrome"
 export LANG=en_US.UTF-8
 
 # Conda / Python / Node Envs
+<<<<<<< HEAD
 export PATH=$HOME/.node_modules_global/bin:${PATH}
 export PATH=/home/erik/anaconda3/bin:${PATH}
 export PATH=/home/erik/miniconda3/bin:${PATH}
@@ -34,6 +35,19 @@ export PATH=/home/erik/miniconda3/bin:${PATH}
 
 # CUDA
 export PATH=/usr/local/cuda-9.0/bin:${PATH}
+=======
+export PATH=$HOME/.node_modules_global/bin:$PATH
+export PATH=/home/erik/anaconda3/bin:${PATH}
+export PATH=/home/erik/miniconda3/bin:$PATH
+
+export ERIKPATH=/home/erik/com_sci
+export ERIKPATH=/home/erik/phd:$ERIKPATH
+export ERIKPATH=/home/erik/Documents/latex:$ERIKPATH
+
+export ROBOSCHOOL_PATH=/home/erik/roboschool
+export PATH=/usr/local/MATLAB/R2017b/bin:${PATH}
+
+>>>>>>> f16ecb6f5fb7955db4e46f4343ef7579781ca25f
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/cuda/lib64
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/cuda-9.0/lib64
 # export GIO_EXTRA_MODULES=/usr/lib/x86_64-linux-gnu/gio/modules/
@@ -138,6 +152,29 @@ cd-from-home() { #{{{
 	typeset -f zle-line-init >/dev/null && zle zle-line-init
 	return $ret
 }
+zle -N cd-from-home
+
+file-from-home() { #{{{
+	current_dir=$(pwd); cd
+	local f=$(__fsel)
+	echo "Open file: $f"
+	local fullpath="$HOME/$f"
+	# echo "fullpath: $fullpath"
+	xdg-open $fullpath
+
+	# if [[ -z "$f" ]]; then
+	# 	cd $current_dir
+	# 	zle redisplay
+	# 	return 0
+	# fi
+	local ret=$?
+	zle fzf-redraw-prompt
+	typeset -f zle-line-init >/dev/null && zle zle-line-init
+	# exec $f
+	# return $ret
+}
+zle -N file-from-home
+
 # }}}
 cd-from-root() { #{{{
 	current_dir=$(pwd); cd /
@@ -161,9 +198,8 @@ cd-from-root() { #{{{
 	typeset -f zle-line-init >/dev/null && zle zle-line-init
 	return $ret
 }
-#}}}
-zle -N cd-from-home
 zle -N cd-from-root
+#}}}
 
 # - The first argument to the function ($1) is the base path to start traversal 
 # - See the source code (completion.{bash,zsh}) for the details. 
@@ -197,6 +233,7 @@ function sms() { #{{{
 function g() {  #{{{
 	la | grep -i $1
 } #}}}
+<<<<<<< HEAD
 function print_path() {  #{{{
 	for p in $path;
 	do
@@ -205,9 +242,23 @@ function print_path() {  #{{{
 } #}}}
 vf() {#{{{
 	local files
+=======
+
+vf() {
+	current_dir=$(pwd); cd
+	local f=$(__fsel)
+	echo "Open file: $f"
+	local fullpath="$HOME/$f"
+	zle fzf-redraw-prompt
+	# echo "fullpath: $fullpath"
+	# nvim "$fullpath"
+
+>>>>>>> f16ecb6f5fb7955db4e46f4343ef7579781ca25f
 	# files=(${(f)"$(locate -Ai -0 ~ | grep -z -vE '~$' | fzf --reverse --read0 -0 -1 -m)"})
-	files="$(locate -Ai -0 ~ | grep -z -vE '~$' | fzf --reverse --read0 -0 -1 -m)s"
-	vim "${files[@]}"
+	# local files="$(locate -Ai -0 ~ | grep -z -vE '~$' | fzf --reverse --read0 -0 -1 -m)"
+	# nvim "${files}"
+	# local ret=$?
+	# typeset -f zle-line-init >/dev/null && zle zle-line-init
 }
 zle -N vf
 #}}}
@@ -216,6 +267,8 @@ source ~/.files/aliases >/dev/null 2>&1
 bindkey -s '^S' '^Asudo ^E'
 bindkey -s '^Q' "exit\r"
 bindkey '^B' cd-from-home
+bindkey '^F' file-from-home
+bindkey '^V' vf
 bindkey '^N' fzf-cd-widget
 bindkey '^_' cd-from-root 
 # zprof
