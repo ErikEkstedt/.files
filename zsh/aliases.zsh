@@ -2,15 +2,12 @@
 # =================   ALIASES  ====================
 # =================================================
 
-# ===== Terminal ====== {{{
+# Terminal {{{
 alias tmux="TERM=screen-256color-bce /usr/bin/tmux"
-
-alias drop="/home/erik/.files/Scripts/tmux/dropdown.sh"
 alias cd..="cd .."
 alias e="exit"
 alias :q='exit'
 alias :wq='exit'
-
 alias ls="ls --color=auto"
 alias la="ls -A"
 alias ll="ls -l"
@@ -20,18 +17,13 @@ alias ltt="ls -ogl *.tex"
 alias ltx="ls *.tex"
 alias lpy="ls *.py"
 alias lpdf="ls -ogl *.pdf"
+
 # }}}
 
-#==== Movement ==== {{{
+# Movement {{{
+
 alias gp="cd ~/PhD; ls"
 alias phd="PhD"
-
-function mkpr() { #{{{
-	project_init "$1"
-} #}}}
-
-#}}}
-#==== Movement ==== {{{
 
 alias gfi="cd ~/.files; ls"
 alias gma="cd ~/com_sci/Master_code; ls"
@@ -55,32 +47,7 @@ alias gpa="cd ~/Documents/Papers; ls *.pdf"
 alias gnao="cd ~/anaconda3/envs/Naoqi/lib/python2.7/site-packages/pynaoqi-python2.7-2.5.5.5-linux64/lib/python2.7/site-packages"
 alias gcho="cd /opt/Aldebaran/Choregraphe\ Suite\ 2.5"
 # }}}
-# Source{{{
-function so() { #{{{
-	source activate "$1"
-} #}}}
-alias sod="source deactivate"
 
-function junb() { #{{{
-	jupyter notebook "$1"
-}
-
-alias py35="source activate python3.5"
-
-function sonao() {
-    source activate Naoqi
-    export PYTHONPATH="/home/erik/anaconda3/envs/Naoqi/lib/python2.7/site-packages/pynaoqi-python2.7-2.5.5.5-linux64/lib/python2.7/site-packages"
-}
-
-alias sogest="source activate gesture"
-alias soasst="source activate assistant"
-alias soros="source /opt/ros/kinetic/setup.zsh"
-alias sonupic="source activate nupic"
-alias sobull="source activate bullet"
-alias sofitl="source activate fitl"
-alias sokivy="source activate kivy"
-
-# }}}
 # LATEX {{{
 alias tlog="sh ~/.files/Scripts/new_log.sh " "$1"
 alias tnew="sh ~/.files/Scripts/new_tex.sh " "$1"
@@ -90,57 +57,52 @@ alias tma="cd ~/Documents/latex; vim Master.tex"
 alias two="cd ~/Documents/latex; vim Master_todo.tex"
 alias tco="cd ~/Documents/latex; vim Computer_todo.tex"
 # }}}
-#====== Programs =========== {{{
+
+# Nvim/ipython/dropdown/yakuake){{{
 alias vim="nvim"
 alias ipy="ipython --profile=erik"
-alias news="newsbeuter"
 
-#Git
+alias drop="/home/erik/.files/Scripts/tmux/dropdown.sh"
+function mkpr() { project_init "$1" } 
+# }}}
+
+# Git {{{
 alias gad="git add"
 alias gcm="git commit -m "
 alias gps="git push"
 alias gpl="git pull"
 alias gst="git status"
 
-
 alias gpush="python ~/.files/Scripts/auto_git.py push"
 alias gpull="python ~/.files/Scripts/auto_git.py pull"
 alias gstatus="python ~/.files/Scripts/auto_git.py status"
-
-
 # }}}
-#====== Tmux ======= {{{
+
+# Tmux {{{
 alias tls="tmux list-sessions"
 alias tkill.="tmux kill-session -t ."
 alias tkill="tmux kill-session -t"
 alias tka="tmux kill-session -a"
 alias tst="tmux new-session"
 # }}}
-#====== Config Files ======={{{
-alias eal="vim ~/.files/aliases"
-alias ealiases="vim ~/.files/aliases"
-alias ev="vim ~/.files/nvim/init.vim"
-alias evtex="vim ~/.vim/ftplugin/tex.vim"
-alias evpython="vim ~/.vim/ftplugin/python.vim"
 
-alias ebib="vim ~/Documents/latex/References.bib"
-alias ez="vim ~/.files/zshrc"
-alias rz="source ~/.files/zshrc"
+# Config {{{
+alias eal="vim ~/.files/zsh/aliases"
+alias ealiases="vim ~/.files/zsh/aliases"
+alias ev="vim ~/.files/nvim/init.vim"
+alias ez="vim ~/.files/zsh/zshrc"
+alias et="vim ~/.tmux.conf"
+alias er="vim ~/.config/ranger/rc.conf"
+
+alias rz="source ~/.files/zsh/zshrc"
 alias ru="xrdb -load ~/.Xresources"
 
-alias et="vim ~/.tmux.conf"
-alias eb="vim ~/.bashrc"
-alias er="vim ~/.config/ranger/rc.conf"
-alias ei3="vim ~/.config/i3/config"
-alias eza="vim ~/.config/zathura/zathurarc"
-alias eterm="vim ~/.Xresources"
-alias eco="vim ~/.config/.compton.conf"
-
-alias twork="sh ~/.files/Scripts/tmux/start_tmux.sh"
-
+# Mount Usb Stick
+alias umountusb="udiskie-umount /media/erik/*"
 
 # }}}
-#============= SSH / WOL ================={{{
+
+# SSH / WOL {{{
 alias wake="wakeonlan -i 213.113.208.169 38:d5:47:14:d3:a1" 
 alias sshhome="ssh erik@213.113.208.169"
 alias mountdesk="sshfs -p 2002 -o ssh_command='ssh -i /home/erik/.ssh//id_rsa' erik@213.113.208.169:/home/erik/ /home/erik/Desktop-home"
@@ -148,5 +110,3 @@ alias umountdesk="sudo umount /home/erik/Desktop"
 alias sshwork="ssh Erik@130.238.17.189"
 
 # }}}
-# Mount Usb Stick
-alias umountusb="udiskie-umount /media/erik/*"
