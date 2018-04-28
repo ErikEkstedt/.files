@@ -111,6 +111,9 @@ source $ZSH/oh-my-zsh.sh
 source ~/.files/zsh/aliases.zsh >/dev/null 2>&1
 source ~/.files/zsh/zsh-functions.zsh >/dev/null 2>&1
 source "/home/erik/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
+source "/home/erik/.node_modules_global/lib/node_modules/spaceship-zsh-theme/spaceship.zsh"
 bindkey '^ ' autosuggest-accept
   
 #}}}
+
+
