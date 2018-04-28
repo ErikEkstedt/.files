@@ -24,34 +24,25 @@ export BROWSER="google-chrome"
 export LANG=en_US.UTF-8
 
 # Conda / Python / Node Envs
-<<<<<<< HEAD
 export PATH=$HOME/.node_modules_global/bin:${PATH}
-export PATH=/home/erik/anaconda3/bin:${PATH}
 export PATH=/home/erik/miniconda3/bin:${PATH}
-
-# export ROBOSCHOOL_PATH=/home/erik/roboschool
-# export PATH=/usr/local/MATLAB/R2017b/bin:${PATH}
-
-
-# CUDA
-export PATH=/usr/local/cuda-9.0/bin:${PATH}
-=======
-export PATH=$HOME/.node_modules_global/bin:$PATH
-export PATH=/home/erik/anaconda3/bin:${PATH}
-export PATH=/home/erik/miniconda3/bin:$PATH
 
 export ERIKPATH=/home/erik/com_sci
 export ERIKPATH=/home/erik/phd:$ERIKPATH
 export ERIKPATH=/home/erik/Documents/latex:$ERIKPATH
 
-export ROBOSCHOOL_PATH=/home/erik/roboschool
-export PATH=/usr/local/MATLAB/R2017b/bin:${PATH}
-
->>>>>>> f16ecb6f5fb7955db4e46f4343ef7579781ca25f
+# CUDA
+export PATH=/usr/local/cuda-9.0/bin:${PATH}
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/cuda/lib64
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/cuda-9.0/lib64
+
+
+# OLD
 # export GIO_EXTRA_MODULES=/usr/lib/x86_64-linux-gnu/gio/modules/
 
+# export ROBOSCHOOL_PATH=/home/erik/roboschool
+# export PATH=/usr/local/MATLAB/R2017b/bin:${PATH}
+#
 # export GOROOT=/home/erik/go
 # export GOPATH=/home/erik/gopath
 # export PATH=$GOROOT/bin:${PATH}
