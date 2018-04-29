@@ -23,7 +23,7 @@ exports.deactivate = function (oni) {
 }; // }}}
 exports.configuration = {
     // Experimental
-    // "snippets.enabled": false,
+    "snippets.enabled": true,
     // "experimental.particles.enabled": false,
     // "experimental.preview.enabled": true,
     // "experimental.welcome.enabled": false,
@@ -35,12 +35,12 @@ exports.configuration = {
     "oni.loadInitVim": true,
     // // "oni.hideMenu": false, // hide the gui menu (i have menu in os top bar so does not matter) 
     // // Editor
-    "editor.fontSize": "12px",
-    "editor.linePadding": 0,
+    "editor.fontSize": "15px", "editor.linePadding": 0,
     "editor.clipboard.enabled": false,
     "editor.clipboard.synchronizeYank": false,
     "editor.clipboard.synchronizeDelete": false,
     "editor.completions.mode": "oni",
+    "editor.quickInfo.delay": 200,
     // "editor.completions.mode": "hidden", 
     "editor.cursorLine": true,
     "editor.cursorLineOpacity": 0.5,
@@ -53,5 +53,9 @@ exports.configuration = {
     ,
     // // plugins
     "sidebar.enabled": false,
-    "statusbar.fontSize": "14px"
+    "statusbar.fontSize": "14px",
+    "language.python.languageServer.command": "pyls",
+    "environment.additionalPaths": [
+        "/home/erik/miniconda3/bin",
+    ]
 }; // }}}

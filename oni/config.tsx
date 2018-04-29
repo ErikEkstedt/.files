@@ -23,8 +23,6 @@ export const activate = (oni: Oni.Plugin.Api) => { // {{{
     oni.input.bind("<C-f>", "quickOpen.show")
     oni.input.bind("<s-c-r>", "language.findAllReferences")
 
-
-
 	// oni. input.bind("<c-p>", "quickOpen.show", () => isNormalMode() && !isMenuOpen())
 } // }}}
 
@@ -35,7 +33,7 @@ export const deactivate = (oni: Oni.Plugin.Api) => { //{{{
 export const configuration = { //{{{
 
     // Experimental
-	// "snippets.enabled": false,
+	"snippets.enabled": true,
     // "experimental.particles.enabled": false,
     // "experimental.preview.enabled": true,
     // "experimental.welcome.enabled": false,
@@ -50,12 +48,12 @@ export const configuration = { //{{{
 	// // "oni.hideMenu": false, // hide the gui menu (i have menu in os top bar so does not matter) 
 
     // // Editor
-    "editor.fontSize": "12px",
-	"editor.linePadding": 0,
+    "editor.fontSize": "15px", "editor.linePadding": 0,
     "editor.clipboard.enabled": false,
     "editor.clipboard.synchronizeYank": false,
     "editor.clipboard.synchronizeDelete": false,
 	"editor.completions.mode": "oni", 
+    "editor.quickInfo.delay": 200,
 	// "editor.completions.mode": "hidden", 
 
     "editor.cursorLine": true,
@@ -70,7 +68,11 @@ export const configuration = { //{{{
     // // plugins
     "sidebar.enabled": false, 
     "statusbar.fontSize": "14px",
+    "language.python.languageServer.command": "pyls",
 
+    "environment.additionalPaths": [
+    "/home/erik/miniconda3/bin",
+    ],
 
     // Colors ------------------{{{
     

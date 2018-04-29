@@ -1,6 +1,6 @@
 [Appearance]
 ColorScheme=base16-pico
-Font=DejaVuSansMono Nerd Font Mono,12,-1,5,50,0,0,0,0,0,Book
+Font=DejaVuSansMono Nerd Font Mono,11,-1,5,50,0,0,0,0,0,Regular
 UseFontLineChararacters=true
 
 [Cursor Options]
