@@ -40,6 +40,12 @@ export ERIKPATH=/home/erik/com_sci
 export ERIKPATH=/home/erik/phd:$ERIKPATH
 export ERIKPATH=/home/erik/Documents/latex:$ERIKPATH
 
+# CUDA
+export PATH=/usr/local/cuda-9.0/bin:${PATH}
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/cuda/lib64
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/cuda-9.0/lib64
+
+
 # OLD {{{
 # export GIO_EXTRA_MODULES=/usr/lib/x86_64-linux-gnu/gio/modules/
 
@@ -62,6 +68,7 @@ export ERIKPATH=/home/erik/Documents/latex:$ERIKPATH
 # export CGO_CFLAGS_ALLOW=".*" 
 # }}}
 # }}}
+
 
 source ~/.files/zsh/aliases.zsh >/dev/null 2>&1
 source ~/.files/zsh/zsh-functions.zsh >/dev/null 2>&1
