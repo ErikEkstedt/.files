@@ -87,14 +87,16 @@ alias tst="tmux new-session"
 # }}}
 
 # Config {{{
-alias eal="vim ~/.files/zsh/aliases"
-alias ealiases="vim ~/.files/zsh/aliases"
+alias eal="vim ~/.files/zsh/aliases.zsh"
+alias ealiases="vim ~/.files/zsh/aliases.zsh"
 alias ev="vim ~/.files/nvim/init.vim"
-alias ez="vim ~/.files/zsh/zshrc"
+alias ez="vim ~/.zshrc"
+alias ezl="vim ~/.files/zsh/zshrc-laptop"
+alias ezd="vim ~/.files/zsh/zshrc-desktop"
 alias et="vim ~/.tmux.conf"
 alias er="vim ~/.config/ranger/rc.conf"
 
-alias rz="source ~/.files/zsh/zshrc"
+alias rz="source ~/.zshrc"
 alias ru="xrdb -load ~/.Xresources"
 
 # Mount Usb Stick

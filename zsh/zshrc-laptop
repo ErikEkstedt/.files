@@ -10,11 +10,18 @@ setopt RM_STAR_WAIT
 setopt interactivecomments 
 
 # zmodload zsh/zprof # see time and processes
-
+# oh-my-zsh
+export ZSH=/home/erik/.oh-my-zsh
+ZSH_THEME="spaceship"
 # }}}
 
+##==== TMUX {{{
+if [ "$TMUX" = "" ]; then 
+	tmux new
+fi
+##}}}
+
 #==== Export {{{
-export ZSH=/home/erik/.oh-my-zsh
 export KEYTIMEOUT=1
 export TERM="xterm-256color"
 export EDITOR='nvim'
@@ -25,8 +32,9 @@ export LANG=en_US.UTF-8
 
 # Conda / Python / Node Envs
 export PATH=$HOME/.node_modules_global/bin:${PATH}
-export PATH=/home/erik/miniconda3/bin:${PATH}
-export PATH=/home/erik/PhD/meta/:${PATH}
+export PATH=$HOME/miniconda3/bin:${PATH}
+export PATH=$HOME/.local/bin:${PATH}
+export PATH=$HOME/PhD/meta/:${PATH}
 
 export ERIKPATH=/home/erik/com_sci
 export ERIKPATH=/home/erik/phd:$ERIKPATH
@@ -38,7 +46,7 @@ export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/cuda/lib64
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/cuda-9.0/lib64
 
 
-# OLD
+# OLD {{{
 # export GIO_EXTRA_MODULES=/usr/lib/x86_64-linux-gnu/gio/modules/
 
 # export ROBOSCHOOL_PATH=/home/erik/roboschool
@@ -59,12 +67,64 @@ export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/cuda-9.0/lib64
 # export CGO_LDFLAGS_ALLOW=".*" 
 # export CGO_CFLAGS_ALLOW=".*" 
 # }}}
+# }}}
 
-function _nvm() { # auto git {{{
-	export NVM_DIR="$HOME/.nvm"
-	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-} #}}}
+
+source ~/.files/zsh/aliases.zsh >/dev/null 2>&1
+source ~/.files/zsh/zsh-functions.zsh >/dev/null 2>&1
+
+#==== ZSH Theme {{{
+plugins=(vi-mode zsh-autosuggestions)
+# export RPS1="%{$reset_color%}"
+source $ZSH/oh-my-zsh.sh
+source "/home/erik/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
+bindkey '^ ' autosuggest-accept
+#}}}
+
+# # Spaceship {{{
+
+# VI_MODE
+SPACESHIP_VI_MODE_PREFIX=""
+SPACESHIP_VI_MODE_SUFFIX=" "
+SPACESHIP_VI_MODE_INSERT="[I]"
+SPACESHIP_VI_MODE_NORMAL="[N]"
+SPACESHIP_VI_MODE_COLOR=""
+
+SPACESHIP_PROMPT_ORDER=(
+  time          # Time stampts section
+  user          # Username section
+  host          # Hostname section
+  dir           # Current directory section
+  git           # Git section (git_branch + git_status)
+  hg            # Mercurial section (hg_branch  + hg_status)
+  package       # Package version
+  node          # Node.js section
+  ruby          # Ruby section
+  elixir        # Elixir section
+  xcode         # Xcode section
+  swift         # Swift section
+  golang        # Go section
+  php           # PHP section
+  rust          # Rust section
+  haskell       # Haskell Stack section
+  julia         # Julia section
+  docker        # Docker section
+  aws           # Amazon Web Services section
+  venv          # virtualenv section
+  conda         # conda virtualenv section
+  pyenv         # Pyenv section
+  dotnet        # .NET section
+  ember         # Ember.js section
+  kubecontext   # Kubectl context section
+  exec_time     # Execution time
+  line_sep      # Line break
+  battery       # Battery level and status
+  jobs          # Backgound jobs indicator
+  exit_code     # Exit code section
+  vi_mode       # Vi-mode indicator
+  char          # Prompt character
+)
+# }}}
 
 # Color in Less Pager {{{
 export LESS_TERMCAP_mb=$'\E[1;31m'     # begin bold
@@ -77,11 +137,6 @@ export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 export GROFF_NO_SGR=1                  # for konsole and gnome-terminal
 #}}}
 
-#==== TMUX {{{
-if [ "$TMUX" = "" ]; then 
-	tmux new
-fi
-#}}}
 
 #==== Base16 {{{
 BASE16_SHELL=$HOME/.config/base16-shell/
@@ -102,18 +157,4 @@ export FZF_CTRL_R_OPTS="--reverse"
 export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 export FZF_ALT_C_OPTS="--preview '(highlight -O ansi -l {} 1> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 #}}}
-
-
-#==== ZSH Final {{{
-plugins=(vi-mode zsh-autosuggestions)
-ZSH_THEME="spaceship"
-source $ZSH/oh-my-zsh.sh
-source ~/.files/zsh/aliases.zsh >/dev/null 2>&1
-source ~/.files/zsh/zsh-functions.zsh >/dev/null 2>&1
-source "/home/erik/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
-source "/home/erik/.node_modules_global/lib/node_modules/spaceship-zsh-theme/spaceship.zsh"
-bindkey '^ ' autosuggest-accept
-  
-#}}}
-
 
