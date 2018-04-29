@@ -23,7 +23,8 @@ fi
 
 #==== Export {{{
 export KEYTIMEOUT=1
-export TERM="xterm-256color"
+# export TERM="xterm-256color"
+export TERM="screen-256color"
 export EDITOR='nvim'
 export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
@@ -70,12 +71,8 @@ export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/cuda-9.0/lib64
 # }}}
 
 
-source ~/.files/zsh/aliases.zsh >/dev/null 2>&1
-source ~/.files/zsh/zsh-functions.zsh >/dev/null 2>&1
-
 #==== ZSH Theme {{{
 plugins=(vi-mode zsh-autosuggestions)
-# export RPS1="%{$reset_color%}"
 source $ZSH/oh-my-zsh.sh
 source "/home/erik/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
 bindkey '^ ' autosuggest-accept
@@ -91,39 +88,40 @@ SPACESHIP_VI_MODE_NORMAL="[N]"
 SPACESHIP_VI_MODE_COLOR=""
 
 SPACESHIP_PROMPT_ORDER=(
-  time          # Time stampts section
-  user          # Username section
-  host          # Hostname section
-  dir           # Current directory section
-  git           # Git section (git_branch + git_status)
-  hg            # Mercurial section (hg_branch  + hg_status)
-  package       # Package version
-  node          # Node.js section
-  ruby          # Ruby section
-  elixir        # Elixir section
-  xcode         # Xcode section
-  swift         # Swift section
-  golang        # Go section
-  php           # PHP section
-  rust          # Rust section
-  haskell       # Haskell Stack section
-  julia         # Julia section
-  docker        # Docker section
-  aws           # Amazon Web Services section
-  venv          # virtualenv section
-  conda         # conda virtualenv section
-  pyenv         # Pyenv section
-  dotnet        # .NET section
-  ember         # Ember.js section
-  kubecontext   # Kubectl context section
-  exec_time     # Execution time
-  line_sep      # Line break
-  battery       # Battery level and status
-  jobs          # Backgound jobs indicator
-  exit_code     # Exit code section
-  vi_mode       # Vi-mode indicator
-  char          # Prompt character
+	time          # Time stampts section
+	user          # Username section
+	host          # Hostname section
+	dir           # Current directory section
+	git           # Git section (git_branch + git_status)
+	hg            # Mercurial section (hg_branch  + hg_status)
+	package       # Package version
+	node          # Node.js section
+	ruby          # Ruby section
+	elixir        # Elixir section
+	xcode         # Xcode section
+	swift         # Swift section
+	golang        # Go section
+	php           # PHP section
+	rust          # Rust section
+	haskell       # Haskell Stack section
+	julia         # Julia section
+	docker        # Docker section
+	aws           # Amazon Web Services section
+	venv          # virtualenv section
+	conda         # conda virtualenv section
+	pyenv         # Pyenv section
+	dotnet        # .NET section
+	ember         # Ember.js section
+	kubecontext   # Kubectl context section
+	exec_time     # Execution time
+	line_sep      # Line break
+	battery       # Battery level and status
+	jobs          # Backgound jobs indicator
+	exit_code     # Exit code section
+	vi_mode       # Vi-mode indicator
+	char          # Prompt character
 )
+
 # }}}
 
 # Color in Less Pager {{{
@@ -136,7 +134,6 @@ export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
 export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 export GROFF_NO_SGR=1                  # for konsole and gnome-terminal
 #}}}
-
 
 #==== Base16 {{{
 BASE16_SHELL=$HOME/.config/base16-shell/
@@ -157,4 +154,20 @@ export FZF_CTRL_R_OPTS="--reverse"
 export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 export FZF_ALT_C_OPTS="--preview '(highlight -O ansi -l {} 1> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 #}}}
+
+
+# Alias & functions {{{
+
+if [ -f ~/.files/zsh/zsh-functions.zsh ]; then
+    source ~/.files/zsh/zsh-functions.zsh
+else
+    print "404: ~/.files/zsh/zsh-functions.zsh not found."
+fi
+
+if [ -f ~/.files/zsh/aliases.zsh ]; then
+    source ~/.files/zsh/aliases.zsh
+else
+    print "404: ~/.files/zsh/aliases.zsh not found."
+fi
+# }}}
 

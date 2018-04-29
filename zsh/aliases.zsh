@@ -31,21 +31,23 @@ alias gpr="cd ~/com_sci/Master_code/Gestures/gesture; ls"
 alias gro="cd ~/com_sci/Master_code/Robot/;ls"
 alias gth="cd ~/Documents/latex/Notes/Thesis; ls *.tex"
 
-alias gass="cd ~/com_sci/Ideas/assistant; ls"
 alias gbu="cd ~/.vim/bundle; ls"
-alias gbull="cd ~/anaconda3/envs/bullet/lib/python3.5/site-packages/pybullet_envs"
 alias gdw="cd ~/Downloads; la"
+alias gho="cd ~/"
+alias gno="cd ~/Documents/latex/Notes; ls" 
+
+alias gass="cd ~/com_sci/Ideas/assistant; ls"
+alias gbull="cd ~/anaconda3/envs/bullet/lib/python3.5/site-packages/pybullet_envs"
 alias gges="cd ~/anaconda3/envs/roboschool/lib/python3.5/site-packages/gesture"
 alias ggs="cd ~/com_sci/Conversational-Systems-KTH"
-alias gho="cd ~/"
 alias gla="cd ~/Documents/latex; ls"
 alias gmisc="cd ~/com_sci/misc/;ls"
 alias gml="cd ~/com_sci/ML; ls"
-alias gno="cd ~/Documents/latex/Notes; ls" 
 alias gpa="cd ~/Documents/Papers; ls *.pdf"
 
-alias gnao="cd ~/anaconda3/envs/Naoqi/lib/python2.7/site-packages/pynaoqi-python2.7-2.5.5.5-linux64/lib/python2.7/site-packages"
-alias gcho="cd /opt/Aldebaran/Choregraphe\ Suite\ 2.5"
+# alias gnao="cd ~/anaconda3/envs/Naoqi/lib/python2.7/site-packages/pynaoqi-python2.7-2.5.5.5-linux64/lib/python2.7/site-packages"
+# alias gcho="cd /opt/Aldebaran/Choregraphe\ Suite\ 2.5"
+
 # }}}
 
 # LATEX {{{

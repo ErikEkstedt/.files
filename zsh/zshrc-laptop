@@ -63,9 +63,6 @@ export ERIKPATH=/home/erik/Documents/latex:$ERIKPATH
 # }}}
 # }}}
 
-source ~/.files/zsh/aliases.zsh >/dev/null 2>&1
-source ~/.files/zsh/zsh-functions.zsh >/dev/null 2>&1
-
 #==== ZSH Theme {{{
 plugins=(vi-mode zsh-autosuggestions)
 # export RPS1="%{$reset_color%}"
@@ -151,3 +148,18 @@ export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat 
 export FZF_ALT_C_OPTS="--preview '(highlight -O ansi -l {} 1> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 #}}}
 
+
+# Alias & functions {{{
+
+if [ -f ~/.files/zsh/zsh-functions.zsh ]; then
+    source ~/.files/zsh/zsh-functions.zsh
+else
+    print "404: ~/.files/zsh/zsh-functions.zsh not found."
+fi
+
+if [ -f ~/.files/zsh/aliases.zsh ]; then
+    source ~/.files/zsh/aliases.zsh
+else
+    print "404: ~/.files/zsh/aliases.zsh not found."
+fi
+# }}}

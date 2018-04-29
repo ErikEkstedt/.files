@@ -122,22 +122,22 @@ function print_path() {  #{{{
 	done
 } #}}}
 
-vf() {#{{{
-	current_dir=$(pwd); cd
-	local f=$(__fsel)
-	echo "Open file: $f"
-	local fullpath="$HOME/$f"
-	zle fzf-redraw-prompt
-	# echo "fullpath: $fullpath"
-	# nvim "$fullpath"
+# vf() {#{{{
+# 	current_dir=$(pwd); cd
+# 	local f=$(__fsel)
+# 	echo "Open file: $f"
+# 	local fullpath="$HOME/$f"
+# 	zle fzf-redraw-prompt
+# 	# echo "fullpath: $fullpath"
+# 	# nvim "$fullpath"
 	
-	# files=(${(f)"$(locate -Ai -0 ~ | grep -z -vE '~$' | fzf --reverse --read0 -0 -1 -m)"})
-	# local files="$(locate -Ai -0 ~ | grep -z -vE '~$' | fzf --reverse --read0 -0 -1 -m)"
-	# nvim "${files}"
-	# local ret=$?
-	# typeset -f zle-line-init >/dev/null && zle zle-line-init
-}
-zle -N vf
+# 	# files=(${(f)"$(locate -Ai -0 ~ | grep -z -vE '~$' | fzf --reverse --read0 -0 -1 -m)"})
+# 	# local files="$(locate -Ai -0 ~ | grep -z -vE '~$' | fzf --reverse --read0 -0 -1 -m)"
+# 	# nvim "${files}"
+# 	# local ret=$?
+# 	# typeset -f zle-line-init >/dev/null && zle zle-line-init
+# }
+# zle -N vf
 #}}}
 
 function cfg() { #{{{
@@ -158,10 +158,6 @@ function junb() { #{{{
 	jupyter notebook "$1"
 } #}}}
 
-function sonao() { #{{{
-    source activate Naoqi
-    export PYTHONPATH="/home/erik/anaconda3/envs/Naoqi/lib/python2.7/site-packages/pynaoqi-python2.7-2.5.5.5-linux64/lib/python2.7/site-packages"
-} #}}}
 
 # BINDINGS {{{
 # alt+s to prepend 'sudo ' to current command and move to EOL
@@ -169,7 +165,6 @@ bindkey -s '^S' '^Asudo ^E'
 bindkey -s '^Q' "exit\r"
 bindkey '^B' cd-from-home
 bindkey '^F' file-from-home
-bindkey '^V' vf
 bindkey '^N' fzf-cd-widget
 bindkey '^_' cd-from-root 
 # }}}
