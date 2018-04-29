@@ -1,36 +1,32 @@
 # DotFiles
 
-## Directories
-* [Installation](https://github.com/eeckee/.files/tree/master/Installation "Installation directory")
-* [Scripts](https://github.com/eeckee/.files/tree/master/Scripts "Scripts used in mostly i3/bash")
-* [i3](https://github.com/eeckee/.files/tree/master/i3 "i3 config directory")
-* [ranger](https://github.com/eeckee/.files/tree/master/ranger "Ranger config directory")
-* [vim](https://github.com/eeckee/.files/tree/master/vim "Vim config directory")
-* [icons](https://github.com/eeckee/.files/tree/master/icons "Icons for notify-send")
-* [Wallpapers](https://github.com/eeckee/.files/tree/master/Wallpapers "Some wallpapers that are nice as default")
+My configuration. 
+Workflow relies on zsh+tmux+vim/oni.
 
-# Todo:
-- [ ] Steal background colors from base16-monokai, they be nice
-- [x] FIX colors in ranger... -> Base16
-- [ ] Write terminal installation script.
-- [ ] Script that starts a terminal and run mountdesk and ssh to desktop. 
-# [i3](i3/config)
+* Most things are configured around vim/nvim and vim keybindings
+* Minimize mouse use	
+* Used i3 but currently on kde
+* Want a regular desktop wm with good tiling capabilities and keyboard
+  movement
 
-* If window is Terminal `focus` window -> shift-alt-hjkl
-	* else: alt-hjkl
 
-* Send-keys to $PLAYER container (youtube/spotify).
-	* Space in vim - pause/play
+* Development environment
+* Nvidia for machine learning
 
-# Vim
-[Nvim](.nvim)  |  [vim](.vim)
+---------------
 
-* Combine folders for vim and nvim
-	* Use same settings
+**Trying out:** 
+* Oni
+  * Vim is by far the best and most comfortable way of coding
+  * Plugins to atom/vscode is not keyboard friendly enough. Relies on
+	mouse too heavily.
+  * UI - electron. Nice colors. Nice menus.
 
-- [ ] Markdown and latex in tmux split
-	* GUI ?
 
+--------------
 ## Useful tips
 Get unicode to clipboard
 	echo -ne "\uf026" | xclip -selection clipboard
+
+
+
