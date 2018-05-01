@@ -18,13 +18,12 @@ sudo apt-get install neovim -y
 # fzf 
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
-
 # Relies on fd in my setup
 # https://github.com/sharkdp/fd.git
 # go to:
 #    https://github.com/sharkdp/fd/releases
 #    download and then run
-#    sudo dpkg -i fd-foobar-fd.deb
+#	 sudo dpkg -i fd_7.0.0_amd64.deb  # adapt version number and architecture
 
 
 # 3. Set up Zsh
@@ -40,13 +39,13 @@ echo "Node & npm"
 curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
-# update npm
-npm install npm@latest -g
-
 # change global modules directory and reinstall npm there
 cd ~ && mkdir .node_modules_global
 npm config set prefix=$HOME/.node_modules_global
 npm install npm --global
+
+# update npm
+npm install npm@latest -g
 
 # Spaceship theme for zsh
 npm install -g spaceship-zsh-theme

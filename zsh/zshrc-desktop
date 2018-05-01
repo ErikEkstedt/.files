@@ -171,3 +171,6 @@ else
 fi
 # }}}
 
+
+
+source "/home/erik/.oh-my-zsh/custom/themes/spaceship.zsh-theme"

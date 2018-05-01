@@ -20,6 +20,6 @@ HistoryMode=1
 ScrollBarPosition=2
 
 [Terminal Features]
-BlinkingCursorEnabled=true
+BlinkingCursorEnabled=false
 FlowControlEnabled=false
 UrlHintsModifiers=33554432
