@@ -29,6 +29,7 @@ Plug 'ivalkeen/nerdtree-execute'
 Plug 'tpope/vim-fugitive'          " git extension
 Plug 'airblade/vim-gitgutter'      " see git changes in file in the numberline
 Plug 'junegunn/fzf.vim'            " fuzzy filefinding
+Plug 'easymotion/vim-easymotion' 
 "}}}
 " ============ Appearence ============================={{{
 if !exists("g:gui_oni")
@@ -67,23 +68,22 @@ if !exists("g:gui_oni")
 	" Plug 'cohama/lexima.vim'
 endif
 
-Plug 'easymotion/vim-easymotion' 
-Plug 'Valloric/MatchTagAlways'
 Plug 'junegunn/vim-after-object'       " change everything after something
 Plug 'junegunn/vim-easy-align'         " better alignment than tabular
 Plug 'junegunn/vim-peekaboo'
-Plug 'lotabout/slimux'                 " old: 'epeli/slimux' | vim+ipython OUtdated
-Plug 'mtth/scratch.vim'                " Unobtrusive scratch
-Plug 'nelstrom/vim-visual-star-search' " * on visual select searches for the snippet
 Plug 'tpope/vim-commentary'            " commenting
 Plug 'tpope/vim-repeat'                " repeat commands not repeatable by 'vanilla' vim
 Plug 'tpope/vim-surround'              " Surround objects with quotes, brackets ...
-Plug 'vyzyv/vimpyter' "vim-plug
+Plug 'Valloric/MatchTagAlways'
+Plug 'lotabout/slimux'                 " old: 'epeli/slimux' | vim+ipython OUtdated
+Plug 'mtth/scratch.vim'                " Unobtrusive scratch
+Plug 'nelstrom/vim-visual-star-search' " * on visual select searches for the snippet
+Plug 'vyzyv/vimpyter'                  " vim-plug
 Plug 'sjl/gundo.vim'                   " Visualize undo tree
-Plug 'tommcdo/vim-exchange'
+Plug 'tommcdo/vim-exchange'            " cxw
 
 "}}}
-" ============ Auto-Completion ========================{{{
+" ============ Completion and Syntax =================={{{
 if has('nvim')
 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -95,26 +95,29 @@ Plug 'zchee/deoplete-jedi'
 Plug 'Shougo/neco-vim'
 Plug 'Shougo/neopairs.vim'
 
-"}}}
-" ============ Completion and Syntax =================={{{
+" Snippets 
+" Plug 'SirVer/ultisnips'                 " snippet engine
+Plug 'honza/vim-snippets'               " snippets
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+
+" Syntax 
 Plug 'PotatoesMaster/i3-vim-syntax'     " syntax for i3 config
-Plug 'elzr/vim-json'
 Plug 'klen/python-mode'                 " Python mode (docs, refactor, lints...)
-Plug ('nelstrom/vim-markdown-folding')  " help with folding in markdown
+Plug 'nelstrom/vim-markdown-folding'    " help with folding in markdown
 Plug 'octol/vim-cpp-enhanced-highlight' " Extra highlight for cpp
 Plug 'othree/xml.vim'
 Plug 'ron89/thesaurus_query.vim'
-Plug 'w0rp/ale'                         " asynchronous linting
 Plug 'daeyun/vim-matlab'                " MATLAB
 Plug 'sheerun/vim-polyglot'             " All the syntax
+Plug 'elzr/vim-json'
 
-" ============ Preview Text ===========================
+Plug 'w0rp/ale'                         " asynchronous linting
+
+
+" Preview Text 
 Plug 'lervag/vimtex'      " latex compiler and alot more.
 Plug 'shime/vim-livedown' " Preview markdowns with npm/node Livedown
-
-" ============ Snippets ===============================
-Plug 'SirVer/ultisnips'                 " snippet engine
-Plug 'honza/vim-snippets'               " snippets
 
 call plug#end()
 "}}}

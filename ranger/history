@@ -1,1 +1,9 @@
+<<<<<<< HEAD
 find i
+=======
+rename YoutubeNotes.md
+rename CourseMaterial.md
+delete
+shell mkdir notes
+shell vim 
+>>>>>>> f838c01a86f4b630cddc5d084c6c0851843e4519
