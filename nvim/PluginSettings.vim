@@ -1,5 +1,152 @@
 " vim: fdm=marker
 " PLUGIN SETTINGS
+"============== Deoplete ====================={{{
+" Use deoplete.
+let g:deoplete#enable_at_startup = 0
+let g:loaded_neopairs = 1
+let g:neopairs#enable = 1
+let g:deoplete#max_abbr_width = 40
+let g:deoplete#max_menu_width = 40
+
+let g:deoplete#auto_complete_delay = 10
+" deoplete tab/s-tab/c-j/c-k complete
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr><C-j> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Deoplete and vimtex
+if !exists('g:deoplete#omni#input_patterns')
+		let g:deoplete#omni#input_patterns = {}
+endif
+
+let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
+
+"close the preview window after completion is done.
+autocmd CompleteDone * pclose!
+
+call deoplete#custom#source('_', 'sorters', ['sorter_word'])
+call deoplete#custom#source('ultisnips', 'rank', 9999)
+call deoplete#custom#source('neosnippet', 'rank', 9999)
+call deoplete#custom#source('_', 'converters', ['converter_auto_paren'])
+
+"}}}
+"============== Neosnippet ====================={{{
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <leader><leader> <Plug>(neosnippet_expand_or_jump)
+smap <leader><leader> <Plug>(neosnippet_expand_or_jump)
+xmap <leader><leader> <Plug>(neosnippet_expand_target)
+
+imap <expr><C-l>
+\ neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<C-n>"
+
+imap <expr><C-h>
+\ neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<C-p>"
+
+le g:neosnippet#enable_snipmate_compatibility = 1
+let g:neosnippet#snippets_directory='~/.files/nvim/mysnippets'
+let g:neosnippet#enable_conceal_markers = 0
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+"}}}
+"============== UltiSnips ===================={{{
+let g:UltiSnipsSnippetsDir = "~/.files/nvim/mysnippets" 
+let g:UltiSnipsSnippetDirectories = ["UltiSnips", "snips", "~/.vim/bundle/vim-snippets"]
+
+" let g:UltiSnipsSnippetsDir = "~/.vim/bundle/vim-snippets"
+" let g:UltiSnipsSnippetDirectories = ["UltiSnips", "snips", "~/.files/nvim/mysnippets"]
+
+" Trigger configuration.
+let g:UltiSnipsExpandTrigger='<leader><leader>'
+let g:UltiSnipsJumpForwardTrigger="<c-l>" 
+let g:UltiSnipsJumpBackwardTrigger="<c-h>" 
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit='vertical'
+
+" Use Python Version 
+let g:UltiSnipsUsePythonVersion = 3
+
+" augroup markdown 
+" 	au! 
+" 	au BufNewFile,BufRead *.md,*.markdown,*.mmd set filetype=markdown 
+" 	au BufNewFile,BufRead *.md,*.markdown,*.mmd UltiSnipsAddFiletypes markdown 
+" augroup END
+
+"}}}
+"============== FZF =========================={{{
+" Customize fzf colors to match your color scheme
+" let g:fzf_colors = { 'fg': ['fg', 'Normal'],
+" 			\ 'bg':      ['bg', 'Normal'],
+" 			\ 'hl':      ['fg', 'Comment'],
+" 			\ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+" 			\ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+" 			\ 'hl+':     ['fg', 'Statement'],
+" 			\ 'info':    ['fg', 'PreProc'],
+" 			\ 'border':  ['fg', 'Ignore'],
+" 			\ 'prompt':  ['fg', 'Conditional'],
+" 			\ 'pointer': ['fg', 'Exception'],
+" 			\ 'marker':  ['fg', 'Keyword'],
+" 			\ 'spinner': ['fg', 'Label'],
+" 			\ 'header':  ['fg', 'Comment']}
+
+" Settings
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+
+" Mappings
+nnoremap <Leader>fl :Files<CR>
+nnoremap <Leader>fi :Files ~/<CR>
+nnoremap <Leader>fc :Files ~/.files<CR>
+nnoremap <Leader>fo :Files /opt/Oni<CR>
+nnoremap <Leader>fr :Files /<CR>
+nnoremap <Leader>ff :Ag<CR>
+nnoremap <Leader>b :Buffers<CR>
+nnoremap <Leader>li :Lines<CR>
+nnoremap <Leader>gs :GFiles?<CR>
+nnoremap <Leader>he :Helptags<CR>
+nnoremap <Leader>fs :Snippets<CR>
+
+" Default fzf layout
+" - down / up / left / right
+let g:fzf_layout = { 'down': '~50%' }
+
+" In Neovim, you can set up fzf window using a Vim command
+" let g:fzf_layout = { 'window': 'enew' }
+" let g:fzf_layout = { 'window': '-tabnew' }
+" let g:fzf_layout = { 'window': '10split enew' }
+
+" This is the default extra key bindings
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit',
+  \ 'ctrl-o': 'edit',
+  \ 'Enter': 'vsplit',
+  \ 'Esc': 'exit', }
+"}}}
+"============== easy-motion =================={{{
+let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyzåöä'
+map <j <Plug>(easymotion-j)
+map <k <Plug>(easymotion-k)
+" map <h <Plug>(easymotion-linebackward)
+" map <l <Plug>(easymotion-lineforward)
+
+nmap <space> <Plug>(easymotion-bd-w)
+nmap <leader>ee <Plug>(easymotion-bd-e)
+
+map <f <Plug>(easymotion-bd-f)
+nmap <s <Plug>(easymotion-overwin-f)
+
+let g:EasyMotion_startofline = 1 " Linejumps puts cursor at start of line
+
+"}}}
 "============== Tmux-navigation =============={{{
 let g:tmux_navigator_no_mappings = 1
 
@@ -18,6 +165,83 @@ vnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>gv<Esc>zz
 nnoremap <C-c><C-x> :SlimuxREPLConfigure<CR>
 
 " }}}
+"============== Vimpyter ========================{{{
+autocmd Filetype ipynb nnoremap <silent><Leader>b :VimpyterInsertPythonBlock<CR>
+" autocmd Filetype ipynb nnoremap <silent><localleader>ll :VimpyterStartNteract<CR>
+autocmd Filetype ipynb nnoremap <silent><localleader>ll :VimpyterStartJupyter<CR>
+"}}}
+"============== Python-Mode =================={{{
+" Bindings {{{
+let g:pymode_motion = 1
+" Go to next/previous method or class
+nnoremap gj :call pymode#motion#move('^\s*def\s', '')<CR>zz
+nnoremap gk :call pymode#motion#move('^\s*def\s', 'b')<CR>zz
+nnoremap gJ :call pymode#motion#move('^\s*class\s', '')<CR>zz
+nnoremap gK :call pymode#motion#move('^\s*class\s', 'b')<CR>zz
+
+" }}}
+let g:pymode_python = 'python3'
+" rope {{{
+let g:pymode_rope                            = 0
+let g:pymode_rope_completion                 = 0
+let g:pymode_rope_complete_on_dot            = 0
+let g:pymode_rope_auto_project               = 0
+let g:pymode_rope_autoimport_generate        = 0
+let g:pymode_rope_guess_project              = 0
+
+let g:pymode_rope_enable_autoimport          = 0
+let g:pymode_rope_organize_imports_bind = '<C-c>ro'
+
+"}}}
+
+" documentation
+let g:pymode_doc                   = 0
+let g:pymode_doc_bind              = '<leader>K'
+
+" lints (using ALE for this)
+let g:pymode_lint                  = 0
+
+" breakpoints
+let g:pymode_breakpoint            = 1
+let g:pymode_breakpoint_key        = '<leader>b'
+
+" syntax highlight {{{
+let python_highlight_all                     = 1
+let g:pymode_syntax                          = 1
+let g:pymode_syntax_slow_sync                = 1
+let g:pymode_syntax_all                      = 1
+
+let g:pymode_syntax_print_as_function        = g:pymode_syntax_all
+let g:pymode_syntax_highlight_async_await    = g:pymode_syntax_all
+let g:pymode_syntax_highlight_equal_operator = g:pymode_syntax_all
+let g:pymode_syntax_highlight_stars_operator = g:pymode_syntax_all
+let g:pymode_syntax_highlight_self           = g:pymode_syntax_all
+let g:pymode_syntax_indent_errors            = g:pymode_syntax_all
+let g:pymode_syntax_string_formatting        = g:pymode_syntax_all
+let g:pymode_syntax_space_errors             = g:pymode_syntax_all
+let g:pymode_syntax_string_format            = g:pymode_syntax_all
+let g:pymode_syntax_string_templates         = g:pymode_syntax_all
+let g:pymode_syntax_doctests                 = g:pymode_syntax_all
+let g:pymode_syntax_builtin_objs             = g:pymode_syntax_all
+let g:pymode_syntax_builtin_types            = g:pymode_syntax_all
+let g:pymode_syntax_highlight_exceptions     = g:pymode_syntax_all
+let g:pymode_syntax_docstrings               = g:pymode_syntax_all
+"}}}
+
+" code folding
+let g:pymode_folding=0
+
+" pep8 indents
+let g:pymode_indent=1
+
+" code running
+let g:pymode_run=0
+let g:pymode_run_bind='<F5>'
+let g:pymode_rope_lookup_project = 0
+imap <F5> <Esc>:w<CR>:!clear;python %<CR>
+
+" }}}
+
 "============== Vim-netrw ===================={{{
 let g:netrw_banner = 0 "no banner
 let g:netrw_liststyle = 3
@@ -119,77 +343,6 @@ if !exists("g:gui_oni")
 	augroup END
 endif
 " }}}
-"============== Python-Mode =================={{{
-" Bindings {{{
-let g:pymode_motion = 1
-" Go to next/previous method or class
-nnoremap gj :call pymode#motion#move('^\s*def\s', '')<CR>zz
-nnoremap gk :call pymode#motion#move('^\s*def\s', 'b')<CR>zz
-nnoremap gJ :call pymode#motion#move('^\s*class\s', '')<CR>zz
-nnoremap gK :call pymode#motion#move('^\s*class\s', 'b')<CR>zz
-
-" }}}
-let g:pymode_python = 'python3'
-" rope {{{
-let g:pymode_rope                            = 0
-let g:pymode_rope_completion                 = 0
-let g:pymode_rope_complete_on_dot            = 0
-let g:pymode_rope_auto_project               = 0
-let g:pymode_rope_autoimport_generate        = 0
-let g:pymode_rope_guess_project              = 0
-
-let g:pymode_rope_enable_autoimport          = 0
-let g:pymode_rope_organize_imports_bind = '<C-c>ro'
-
-"}}}
-
-" documentation
-let g:pymode_doc                   = 0
-let g:pymode_doc_bind              = '<leader>K'
-
-" lints (using ALE for this)
-let g:pymode_lint                  = 0
-
-" breakpoints
-let g:pymode_breakpoint            = 1
-let g:pymode_breakpoint_key        = '<leader>b'
-
-" syntax highlight {{{
-let python_highlight_all                     = 1
-let g:pymode_syntax                          = 1
-let g:pymode_syntax_slow_sync                = 1
-let g:pymode_syntax_all                      = 1
-
-let g:pymode_syntax_print_as_function        = g:pymode_syntax_all
-let g:pymode_syntax_highlight_async_await    = g:pymode_syntax_all
-let g:pymode_syntax_highlight_equal_operator = g:pymode_syntax_all
-let g:pymode_syntax_highlight_stars_operator = g:pymode_syntax_all
-let g:pymode_syntax_highlight_self           = g:pymode_syntax_all
-let g:pymode_syntax_indent_errors            = g:pymode_syntax_all
-let g:pymode_syntax_string_formatting        = g:pymode_syntax_all
-let g:pymode_syntax_space_errors             = g:pymode_syntax_all
-let g:pymode_syntax_string_format            = g:pymode_syntax_all
-let g:pymode_syntax_string_templates         = g:pymode_syntax_all
-let g:pymode_syntax_doctests                 = g:pymode_syntax_all
-let g:pymode_syntax_builtin_objs             = g:pymode_syntax_all
-let g:pymode_syntax_builtin_types            = g:pymode_syntax_all
-let g:pymode_syntax_highlight_exceptions     = g:pymode_syntax_all
-let g:pymode_syntax_docstrings               = g:pymode_syntax_all
-"}}}
-
-" code folding
-let g:pymode_folding=0
-
-" pep8 indents
-let g:pymode_indent=1
-
-" code running
-let g:pymode_run=0
-let g:pymode_run_bind='<F5>'
-let g:pymode_rope_lookup_project = 0
-imap <F5> <Esc>:w<CR>:!clear;python %<CR>
-
-" }}}
 "============== Indentline ==================={{{
 let g:indentLine_fileTypeExclude=['help']
 let g:indentLine_char = '┊'  
@@ -231,80 +384,6 @@ nnoremap [ :normal ysiW]<CR>
 nnoremap ] :normal ysiW]<CR>
 " nnoremap <leader>B :normal ysiW}<CR>
 " nnoremap <leader>r :normal ysiW]<CR>
-"}}}
-"============== FZF =========================={{{
-" Customize fzf colors to match your color scheme
-" let g:fzf_colors = { 'fg': ['fg', 'Normal'],
-" 			\ 'bg':      ['bg', 'Normal'],
-" 			\ 'hl':      ['fg', 'Comment'],
-" 			\ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-" 			\ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-" 			\ 'hl+':     ['fg', 'Statement'],
-" 			\ 'info':    ['fg', 'PreProc'],
-" 			\ 'border':  ['fg', 'Ignore'],
-" 			\ 'prompt':  ['fg', 'Conditional'],
-" 			\ 'pointer': ['fg', 'Exception'],
-" 			\ 'marker':  ['fg', 'Keyword'],
-" 			\ 'spinner': ['fg', 'Label'],
-" 			\ 'header':  ['fg', 'Comment']}
-
-" Settings
-" [Buffers] Jump to the existing window if possible
-let g:fzf_buffers_jump = 1
-
-" Mappings
-nnoremap <Leader>fl :Files<CR>
-nnoremap <Leader>fi :Files ~/<CR>
-nnoremap <Leader>fc :Files ~/.files<CR>
-nnoremap <Leader>fo :Files /opt/Oni<CR>
-nnoremap <Leader>fr :Files /<CR>
-nnoremap <Leader>ff :Ag<CR>
-nnoremap <Leader>b :Buffers<CR>
-nnoremap <Leader>li :Lines<CR>
-nnoremap <Leader>gs :GFiles?<CR>
-nnoremap <Leader>he :Helptags<CR>
-nnoremap <Leader>fs :Snippets<CR>
-
-" Default fzf layout
-" - down / up / left / right
-let g:fzf_layout = { 'down': '~50%' }
-
-" In Neovim, you can set up fzf window using a Vim command
-" let g:fzf_layout = { 'window': 'enew' }
-" let g:fzf_layout = { 'window': '-tabnew' }
-" let g:fzf_layout = { 'window': '10split enew' }
-
-" This is the default extra key bindings
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit',
-  \ 'ctrl-o': 'edit',
-  \ 'Enter': 'vsplit',
-  \ 'Esc': 'exit', }
-"}}}
-"============== UltiSnips ===================={{{
-let g:UltiSnipsSnippetsDir = "~/.vim/bundle/vim-snippets"
-let g:UltiSnipsSnippetDirectories = ["UltiSnips", "snips", "~/.files/nvim/mysnippets"]
-
-" Trigger configuration.
-let g:UltiSnipsExpandTrigger='<leader><leader>'
-let g:UltiSnipsJumpForwardTrigger="<c-l>" 
-let g:UltiSnipsJumpBackwardTrigger="<c-h>" 
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit='vertical'
-
-" Use Python Version 
-let g:UltiSnipsUsePythonVersion = 3
-let g:ultisnips_python_style="google"
-
-" augroup markdown 
-" 	au! 
-" 	au BufNewFile,BufRead *.md,*.markdown,*.mmd set filetype=markdown 
-" 	au BufNewFile,BufRead *.md,*.markdown,*.mmd UltiSnipsAddFiletypes markdown 
-" augroup END
-
 "}}}
 "============== GoYo ========================={{{ 
 let g:goyo_width  = 100  " (default: 80)
@@ -361,36 +440,6 @@ let g:ale_linters = { 'python': ['pylint', 'yapf', 'isort', 'mccabe'],}
 nmap ge <Plug>(ale_next_wrap)
 nmap gr <Plug>(ale_previous_wrap)
 nmap <leader>at <Plug>(ale_toggle)
-
-"}}}
-"============== Deoplete ====================={{{
-" Use deoplete.
-let g:deoplete#enable_at_startup = 0
-let g:loaded_neopairs = 1
-let g:neopairs#enable = 1
-let g:deoplete#max_abbr_width = 40
-let g:deoplete#max_menu_width = 40
-
-let g:deoplete#auto_complete_delay = 10
-" deoplete tab/s-tab/c-j/c-k complete
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr><C-j> pumvisible() ? "\<c-n>" : "\<tab>"
-inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" Deoplete and vimtex
-if !exists('g:deoplete#omni#input_patterns')
-		let g:deoplete#omni#input_patterns = {}
-endif
-
-let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
-
-"close the preview window after completion is done.
-autocmd CompleteDone * pclose!
-
-call deoplete#custom#source('_', 'sorters', ['sorter_word'])
-call deoplete#custom#source('ultisnips', 'rank', 9999)
-call deoplete#custom#source('_', 'converters', ['converter_auto_paren'])
 
 "}}}
 "============== Jedi-vim ====================={{{
@@ -467,22 +516,6 @@ nmap <leader>ea <Plug>(EasyAlign)
 autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ', '+', '*', '{')
 " ca=				change after '='
 "}}}
-"============== easy-motion =================={{{
-let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyzåöä'
-map <j <Plug>(easymotion-j)
-map <k <Plug>(easymotion-k)
-" map <h <Plug>(easymotion-linebackward)
-" map <l <Plug>(easymotion-lineforward)
-
-nmap <space> <Plug>(easymotion-bd-w)
-nmap <leader>ee <Plug>(easymotion-bd-e)
-
-map <f <Plug>(easymotion-bd-f)
-nmap <s <Plug>(easymotion-overwin-f)
-
-let g:EasyMotion_startofline = 1 " Linejumps puts cursor at start of line
-
-"}}}
 "============== Gundo ========================{{{
 let g:gundo_prefer_python3 = 1
 nnoremap gu :GundoToggle<CR>
@@ -492,11 +525,6 @@ let g:matlab_auto_mappings = 0 "automatic mappings disabled
 let g:matlab_server_launcher = 'tmux' "launch the server in a tmux split
 let g:matlab_server_split = 'horizontal' "launch the server in a horizontal split
 
-"}}}
-"============== Vimpyter ========================{{{
-autocmd Filetype ipynb nnoremap <silent><Leader>b :VimpyterInsertPythonBlock<CR>
-" autocmd Filetype ipynb nnoremap <silent><localleader>ll :VimpyterStartNteract<CR>
-autocmd Filetype ipynb nnoremap <silent><localleader>ll :VimpyterStartJupyter<CR>
 "}}}
 "============== vim-javascript ========================{{{
 augroup javascript

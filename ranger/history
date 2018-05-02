@@ -1,0 +1,5 @@
+rename YoutubeNotes.md
+rename CourseMaterial.md
+delete
+shell mkdir notes
+shell vim 
