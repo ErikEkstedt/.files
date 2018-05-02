@@ -34,14 +34,13 @@ export const configuration = { //{{{
 
     // Experimental
 	"snippets.enabled": true,
+    "experimental.preview.enabled": true,
     // "experimental.particles.enabled": false,
-    // "experimental.preview.enabled": true,
     // "experimental.welcome.enabled": false,
 
     // Settings
     // "autoClosingPairs.enabled": true,
     "autoUpdate.enabled": true,
-    // "autoClosingPairs.enabled": true,
 
     // "oni.useDefaultConfig": false,
     "oni.loadInitVim": true,
@@ -52,10 +51,9 @@ export const configuration = { //{{{
     "editor.clipboard.enabled": false,
     "editor.clipboard.synchronizeYank": false,
     "editor.clipboard.synchronizeDelete": false,
-	"editor.completions.mode": "oni", 
     "editor.quickInfo.delay": 200,
-	// "editor.completions.mode": "hidden", 
-
+    "editor.split.mode": 'oni',
+	"editor.completions.mode": "oni", 
     "editor.cursorLine": true,
     "editor.cursorLineOpacity": 0.5,
 
@@ -66,12 +64,15 @@ export const configuration = { //{{{
     "ui.fontSize": "14px"
 
     // // plugins
-    "sidebar.enabled": false, 
+    "sidebar.enabled": true, 
     "statusbar.fontSize": "14px",
-    "language.python.languageServer.command": "pyls",
+    // "language.python.languageServer.command": "pyls",
+    "language.python.languageServer.command": "/home/erik/miniconda3/bin/pyls",
 
     "environment.additionalPaths": [
-    "/home/erik/miniconda3/bin",
+        "/usr/bin/",
+        "/home/erik/miniconda3/bin",
+        "/home/erik/.node_modules_global/bin"
     ],
 
     // Colors ------------------{{{

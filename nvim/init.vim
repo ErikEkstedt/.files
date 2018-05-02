@@ -15,6 +15,10 @@ endif
 set rtp+=~/.fzf
 " set rtp+=~/.files/nvim
 
+
+"PythonPath
+let g:python3_host_prog='/home/erik/miniconda3/bin/python3'
+
 "============= Vim-Plug ======================{{{
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/bundle')
@@ -30,7 +34,6 @@ Plug 'junegunn/fzf.vim'            " fuzzy filefinding
 if !exists("g:gui_oni")
 	Plug 'itchyny/lightline.vim'
 	Plug 'edkolev/tmuxline.vim'          " tmux statusline same as vim.	 :Tmuxline lightline
-	Plug 'blueyed/vim-diminactive'       " dim inactive windows
 else
 	let &termguicolors = 1
     set statusline=
@@ -121,8 +124,6 @@ call plug#end()
 filetype plugin indent on
 syntax enable
 
-" let g:python_host_prog = '/home/erik/miniconda3/envs/nvim2/bin/python'
-" let g:python3_host_prog = '/home/erik/miniconda3/envs/nvim3/bin/python'
 let HOSTNAME = substitute(system('hostname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
 let g:BROWSER = "google-chrome"
 let mapleader = ','

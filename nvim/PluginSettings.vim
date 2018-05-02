@@ -365,7 +365,12 @@ nmap <leader>at <Plug>(ale_toggle)
 "}}}
 "============== Deoplete ====================={{{
 " Use deoplete.
-let g:deoplete#enable_at_startup = 0
+if !exists('g:gui_oni')
+	let g:deoplete#enable_at_startup = 1
+else
+	let g:deoplete#enable_at_startup = 0
+endif
+
 let g:loaded_neopairs = 1
 let g:neopairs#enable = 1
 let g:deoplete#max_abbr_width = 40
@@ -382,6 +387,8 @@ inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 if !exists('g:deoplete#omni#input_patterns')
 		let g:deoplete#omni#input_patterns = {}
 endif
+
+nnoremap <leader>dd :call deoplete#enable()<CR>
 
 let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
 

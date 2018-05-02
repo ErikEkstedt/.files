@@ -6,6 +6,3 @@ sudo apt-get install -y \
 
 # Ultrawide-Wallpapers: 
 # https://imgur.com/gallery/UWHsIS
-
-
-
