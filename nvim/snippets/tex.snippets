@@ -25,3 +25,15 @@ snippet article ["Custom"] b
 
 	${0}
 	\end{document}
+snippet procon (pros and cons list)
+	\\begin{itemize}
+		\\item Pro:
+		\\begin{itemize}
+		 	\\item ${1:Pro}
+		\\end{itemize}
+		\\item Con:
+		\\begin{itemize}
+		 	\\item ${2:Con}
+		\\end{itemize}
+	\\end{itemize}
+	${0}

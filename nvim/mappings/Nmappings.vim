@@ -108,6 +108,9 @@ nnoremap <expr> _c ChangeToLocalDir()
 " Neovim: exit terminal
 tnoremap <Esc> <C-\><C-n>
 
+" Conceallevel
+nnoremap <localleader>cc :set conceallevel=0<CR>
+
 " Visual selection
 nnoremap vv V
 nnoremap V v$

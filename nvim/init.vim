@@ -18,6 +18,7 @@ set rtp+=~/.fzf
 
 "PythonPath
 let g:python3_host_prog='/home/erik/miniconda3/bin/python3'
+let g:python_host_prog='/home/erik/miniconda3/envs/py27/bin/python'
 
 "============= Vim-Plug ======================{{{
 " Plugins will be downloaded under the specified directory.
@@ -68,6 +69,7 @@ if !exists("g:gui_oni")
 	" Plug 'cohama/lexima.vim'
 endif
 
+Plug 'wellle/targets.vim'
 Plug 'junegunn/vim-after-object'       " change everything after something
 Plug 'junegunn/vim-easy-align'         " better alignment than tabular
 Plug 'junegunn/vim-peekaboo'
@@ -96,7 +98,7 @@ Plug 'Shougo/neco-vim'
 Plug 'Shougo/neopairs.vim'
 
 " Snippets 
-" Plug 'SirVer/ultisnips'                 " snippet engine
+Plug 'SirVer/ultisnips'                 " snippet engine
 Plug 'honza/vim-snippets'               " snippets
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
