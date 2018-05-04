@@ -442,46 +442,6 @@ nmap gr <Plug>(ale_previous_wrap)
 nmap <leader>at <Plug>(ale_toggle)
 
 "}}}
-<<<<<<< HEAD
-"============== Deoplete ====================={{{
-" Use deoplete.
-if !exists('g:gui_oni')
-	let g:deoplete#enable_at_startup = 1
-else
-	let g:deoplete#enable_at_startup = 0
-endif
-
-let g:loaded_neopairs = 1
-let g:neopairs#enable = 1
-let g:deoplete#max_abbr_width = 40
-let g:deoplete#max_menu_width = 40
-
-let g:deoplete#auto_complete_delay = 10
-" deoplete tab/s-tab/c-j/c-k complete
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr><C-j> pumvisible() ? "\<c-n>" : "\<tab>"
-inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" Deoplete and vimtex
-if !exists('g:deoplete#omni#input_patterns')
-		let g:deoplete#omni#input_patterns = {}
-endif
-
-nnoremap <leader>dd :call deoplete#enable()<CR>
-
-let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
-
-"close the preview window after completion is done.
-autocmd CompleteDone * pclose!
-
-call deoplete#custom#source('_', 'sorters', ['sorter_word'])
-call deoplete#custom#source('ultisnips', 'rank', 9999)
-call deoplete#custom#source('_', 'converters', ['converter_auto_paren'])
-
-"}}}
-=======
->>>>>>> f838c01a86f4b630cddc5d084c6c0851843e4519
 "============== Jedi-vim ====================={{{
 let g:jedi#completions_command = ""
 " let g:jedi#goto_command = "<leader><leader>d"

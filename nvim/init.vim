@@ -96,7 +96,7 @@ Plug 'Shougo/neco-vim'
 Plug 'Shougo/neopairs.vim'
 
 " Snippets 
-" Plug 'SirVer/ultisnips'                 " snippet engine
+Plug 'SirVer/ultisnips'                 " snippet engine
 Plug 'honza/vim-snippets'               " snippets
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
