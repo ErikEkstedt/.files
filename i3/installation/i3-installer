@@ -1,4 +1,11 @@
 #!/bin/bash
+
+###################
+# DEPRECATED
+###################
+
+
+
 # Upgrading
 echo Upgrading "(apt-get update/upgrade/dist-upgrade)"
 echo "########################################################"

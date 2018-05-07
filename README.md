@@ -9,7 +9,6 @@ Workflow relies on zsh+tmux+vim/oni.
 * Want a regular desktop wm with good tiling capabilities and keyboard
   movement
 
-
 * Development environment
 * Nvidia for machine learning
 
@@ -21,6 +20,7 @@ Workflow relies on zsh+tmux+vim/oni.
   * Plugins to atom/vscode is not keyboard friendly enough. Relies on
 	mouse too heavily.
   * UI - electron. Nice colors. Nice menus.
+  * After some time in Oni getting back to terminal vim felt really good...
 
 
 --------------

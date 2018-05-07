@@ -42,7 +42,7 @@
 
 ## Enable GUI event loop integration with any of ('glut', 'gtk', 'gtk2', 'gtk3',
 #  'osx', 'pyglet', 'qt', 'qt4', 'qt5', 'tk', 'wx', 'gtk2', 'qt4').
-c.InteractiveShellApp.gui = 'qt5'
+#c.InteractiveShellApp.gui = None
 
 ## Should variables loaded at startup (by startup files, exec_lines, etc.) be
 #  hidden from tools like %who?
@@ -165,7 +165,7 @@ c.InteractiveShell.autoindent = True
 #c.InteractiveShell.automagic = True
 
 ## The part of the banner to be printed before the profile
-#c.InteractiveShell.banner1 = "Python 3.5.4 |Anaconda custom (64-bit)| (default, Oct 13 2017, 11:22:58) \nType 'copyright', 'credits' or 'license' for more information\nIPython 6.2.1 -- An enhanced Interactive Python. Type '?' for help.\n"
+#c.InteractiveShell.banner1 = "Python 3.6.4 |Anaconda, Inc.| (default, Jan 16 2018, 18:10:19) \nType 'copyright', 'credits' or 'license' for more information\nIPython 6.3.1 -- An enhanced Interactive Python. Type '?' for help.\n"
 
 ## The part of the banner to be printed after the profile
 #c.InteractiveShell.banner2 = ''
@@ -285,7 +285,10 @@ c.InteractiveShell.autoindent = True
 c.TerminalInteractiveShell.editing_mode = 'vi'
 
 ## Set the editor used by IPython (default to $EDITOR/vi/notepad).
-c.TerminalInteractiveShell.editor = 'vim'
+c.TerminalInteractiveShell.editor = 'nvim'
+
+## Allows to enable/disable the prompt toolkit history search
+#c.TerminalInteractiveShell.enable_history_search = True
 
 ## Enable vi (v) or Emacs (C-X C-E) shortcuts to open an external editor. This is
 #  in addition to the F2 binding, which is always enabled.
@@ -299,11 +302,9 @@ c.TerminalInteractiveShell.editor = 'vim'
 ## Highlight matching brackets.
 c.TerminalInteractiveShell.highlight_matching_brackets = True
 
-## The name or class of a Pygments style to use for syntax
-#         highlighting:
-#  monokai, algol, paraiso-dark, borland, tango, colorful, vs, rrt, xcode, abap, algol_nu, native, fruity, murphy, manni, perldoc, default, igor, bw, paraiso-light, vim, rainbow_dash, friendly, pastie, autumn, emacs, lovelace, trac, arduino
-# c.TerminalInteractiveShell.highlighting_style = traitlets.Undefined
-# c.TerminalInteractiveShell.highlighting_style = "monokai"
+## The name or class of a Pygments style to use for syntax highlighting. To see
+#  available styles, run `pygmentize -L styles`.
+#c.TerminalInteractiveShell.highlighting_style = traitlets.Undefined
 
 ## Override highlighting format for specific tokens
 #c.TerminalInteractiveShell.highlighting_style_overrides = {}
@@ -352,7 +353,7 @@ c.TerminalInteractiveShell.true_color = True
 ## Options for configuring the SQLite connection
 #
 #  These options are passed as keyword args to sqlite3.connect when establishing
-#  database conenctions.
+#  database connections.
 #c.HistoryAccessor.connection_options = {}
 
 ## enable the SQLite history
@@ -516,9 +517,8 @@ c.TerminalInteractiveShell.true_color = True
 #  hurt performance by preventing jedi to build its cache.
 #c.Completer.jedi_compute_type_timeout = 400
 
-## Experimental: Use Jedi to generate autocompletions. Default to True if jedi is
-#  installed
-#c.Completer.use_jedi = True
+## Experimental: Use Jedi to generate autocompletions. Off by default.
+#c.Completer.use_jedi = False
 
 #------------------------------------------------------------------------------
 # IPCompleter(Completer) configuration
