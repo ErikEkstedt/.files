@@ -119,7 +119,7 @@ Plug 'w0rp/ale'                         " asynchronous linting
 
 " Preview Text 
 Plug 'lervag/vimtex'      " latex compiler and alot more.
-Plug 'shime/vim-livedown' " Preview markdowns with npm/node Livedown
+" Plug 'shime/vim-livedown' " Preview markdowns with npm/node Livedown
 
 call plug#end()
 "}}}

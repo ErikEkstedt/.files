@@ -108,7 +108,8 @@ nnoremap <Leader>fi :Files ~/<CR>
 nnoremap <Leader>fc :Files ~/.files<CR>
 nnoremap <Leader>fo :Files /opt/Oni<CR>
 nnoremap <Leader>fr :Files /<CR>
-nnoremap <Leader>ff :Ag<CR>
+nnoremap <Leader>ff :Rg<CR>
+nnoremap <Leader>ff :Rg<CR>
 nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>li :Lines<CR>
 nnoremap <Leader>gs :GFiles?<CR>
@@ -118,6 +119,33 @@ nnoremap <Leader>fs :Snippets<CR>
 " Default fzf layout
 " - down / up / left / right
 let g:fzf_layout = { 'down': '~50%' }
+
+
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+" Advanced customization using autoload functions
+inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
+
+" Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
+command! -bang -nargs=* Rg
+			\ call fzf#vim#grep(
+			\   'rg --column --line-number --no-heading --hidden --color=always '.shellescape(<q-args>), 1,
+			\   <bang>0 ? fzf#vim#with_preview('up:60%')
+			\           : fzf#vim#with_preview('right:50%:hidden', '?'),
+			\   <bang>0)
+
+" Likewise, Files command with preview window
+command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
 
 " In Neovim, you can set up fzf window using a Vim command
 " let g:fzf_layout = { 'window': 'enew' }
