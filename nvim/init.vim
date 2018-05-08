@@ -80,9 +80,9 @@ Plug 'Valloric/MatchTagAlways'
 Plug 'lotabout/slimux'                 " old: 'epeli/slimux' | vim+ipython OUtdated
 Plug 'mtth/scratch.vim'                " Unobtrusive scratch
 Plug 'nelstrom/vim-visual-star-search' " * on visual select searches for the snippet
-Plug 'vyzyv/vimpyter'                  " vim-plug
+" Plug 'vyzyv/vimpyter'                  " vim-plug
 Plug 'sjl/gundo.vim'                   " Visualize undo tree
-Plug 'tommcdo/vim-exchange'            " cxw
+Plug 'tommcdo/vim-exchange'            " exchange two words. ex: cxw (on first word) . (on second)
 
 "}}}
 " ============ Completion and Syntax =================={{{
@@ -119,7 +119,7 @@ Plug 'w0rp/ale'                         " asynchronous linting
 
 " Preview Text 
 Plug 'lervag/vimtex'      " latex compiler and alot more.
-" Plug 'shime/vim-livedown' " Preview markdowns with npm/node Livedown
+Plug 'shime/vim-livedown' " Preview markdowns with npm/node Livedown
 
 call plug#end()
 "}}}

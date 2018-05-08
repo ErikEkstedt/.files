@@ -3,11 +3,6 @@
 sudo -H -u erik bash -c 'ssh-keygen -t rsa -b 4096 -C "eeckee@gmail.com"'
 sudo -H -u erik bash -c 'eval "$(ssh-agent -s)"'
 sudo -H -u erik bash -c 'ssh-add ~/.ssh/id_rsa'
-
-
-echo "Script copied rsa key to system clipboard"
-xclip -sel clip < ~/.ssh/id_rsa.pub
+xclip -sel clip < ~/.ssh/id_rsa.pub  # copies id to clipboard (sudo apt install xclip)
 echo "Script copied rsa key to system clipboard"
 echo "...paste it on GitHub ssh settings."
-
-
