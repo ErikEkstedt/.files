@@ -2,13 +2,18 @@
 " PLUGIN SETTINGS
 "============== Deoplete ====================={{{
 " Use deoplete.
-let g:deoplete#enable_at_startup = 0
+if !exists('g:gui_oni')
+	let g:deoplete#enable_at_startup = 1
+else
+	let g:deoplete#enable_at_startup = 0
+endif
+
 let g:loaded_neopairs = 1
 let g:neopairs#enable = 1
 let g:deoplete#max_abbr_width = 40
 let g:deoplete#max_menu_width = 40
-
 let g:deoplete#auto_complete_delay = 10
+
 " deoplete tab/s-tab/c-j/c-k complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -59,7 +64,7 @@ endif
 "}}}
 "============== UltiSnips ===================={{{
 let g:UltiSnipsSnippetsDir = "~/.files/nvim/mysnippets" 
-let g:UltiSnipsSnippetDirectories = ["UltiSnips", "snips", "~/.vim/bundle/vim-snippets"]
+let g:UltiSnipsSnippetDirectories = ["UltiSnips", "snips", "~/.vim/bundle/vim-snippets/snippets"]
 
 " let g:UltiSnipsSnippetsDir = "~/.vim/bundle/vim-snippets"
 " let g:UltiSnipsSnippetDirectories = ["UltiSnips", "snips", "~/.files/nvim/mysnippets"]
@@ -84,19 +89,21 @@ let g:UltiSnipsUsePythonVersion = 3
 "}}}
 "============== FZF =========================={{{
 " Customize fzf colors to match your color scheme
-" let g:fzf_colors = { 'fg': ['fg', 'Normal'],
-" 			\ 'bg':      ['bg', 'Normal'],
-" 			\ 'hl':      ['fg', 'Comment'],
-" 			\ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-" 			\ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-" 			\ 'hl+':     ['fg', 'Statement'],
-" 			\ 'info':    ['fg', 'PreProc'],
-" 			\ 'border':  ['fg', 'Ignore'],
-" 			\ 'prompt':  ['fg', 'Conditional'],
-" 			\ 'pointer': ['fg', 'Exception'],
-" 			\ 'marker':  ['fg', 'Keyword'],
-" 			\ 'spinner': ['fg', 'Label'],
-" 			\ 'header':  ['fg', 'Comment']}
+let g:fzf_colors = { 'fg': ['fg', 'Normal'], 
+			\ 'bg':      ['bg', 'Normal'],
+			\ 'hl':      ['fg', 'Comment'],
+			\ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+			\ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+			\ 'hl+':     ['fg', 'Statement'],
+			\ 'info':    ['fg', 'PreProc'],
+			\ 'border':  ['fg', 'Ignore'],
+			\ 'prompt':  ['fg', 'Conditional'],
+			\ 'pointer': ['fg', 'Exception'],
+			\ 'marker':  ['fg', 'Keyword'],
+			\ 'spinner': ['fg', 'Label'],
+			\ 'header':  ['fg', 'Comment']}
+
+" let g:fzf_colors = { 'border': ['fg', 'Normal']}
 
 " Settings
 " [Buffers] Jump to the existing window if possible
@@ -109,9 +116,9 @@ nnoremap <Leader>fc :Files ~/.files<CR>
 nnoremap <Leader>fo :Files /opt/Oni<CR>
 nnoremap <Leader>fr :Files /<CR>
 nnoremap <Leader>ff :Rg<CR>
-nnoremap <Leader>ff :Rg<CR>
 nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>li :Lines<CR>
+nnoremap <Leader>fli :FZFLines<CR>
 nnoremap <Leader>gs :GFiles?<CR>
 nnoremap <Leader>he :Helptags<CR>
 nnoremap <Leader>fs :Snippets<CR>
@@ -119,7 +126,6 @@ nnoremap <Leader>fs :Snippets<CR>
 " Default fzf layout
 " - down / up / left / right
 let g:fzf_layout = { 'down': '~50%' }
-
 
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
@@ -132,9 +138,6 @@ imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
-" Advanced customization using autoload functions
-inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
-
 " Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
 command! -bang -nargs=* Rg
 			\ call fzf#vim#grep(
@@ -146,21 +149,41 @@ command! -bang -nargs=* Rg
 " Likewise, Files command with preview window
 command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
+" Search lines in all open vim buffers {{{
 
-" In Neovim, you can set up fzf window using a Vim command
-" let g:fzf_layout = { 'window': 'enew' }
-" let g:fzf_layout = { 'window': '-tabnew' }
-" let g:fzf_layout = { 'window': '10split enew' }
+function! s:line_handler(l)
+  let keys = split(a:l, ':\t')
+  exec 'buf' keys[0]
+  exec keys[1]
+  normal! ^zz
+endfunction
+
+function! s:buffer_lines()
+  let res = []
+  for b in filter(range(1, bufnr('$')), 'buflisted(v:val)')
+    call extend(res, map(getbufline(b,0,"$"), 'b . ":\t" . (v:key + 1) . ":\t" . v:val '))
+  endfor
+  return res
+endfunction
+
+command! FZFLines call fzf#run({
+			\   'source':  <sid>buffer_lines(),
+			\   'sink':    function('<sid>line_handler'),
+			\   'options': '--extended --nth=3..',
+			\   'down':    '60%'
+			\}) "}}}
 
 " This is the default extra key bindings
 let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit',
-  \ 'ctrl-o': 'edit',
-  \ 'Enter': 'vsplit',
-  \ 'Esc': 'exit', }
+			\ 'ctrl-t': 'tab split',
+			\ 'ctrl-x': 'split',
+			\ 'ctrl-v': 'vsplit',
+			\ 'ctrl-o': 'edit',
+			\ 'Enter': 'vsplit',
+			\ 'Esc': 'exit', }
 "}}}
+
+"
 "============== easy-motion =================={{{
 let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyzåöä'
 map <j <Plug>(easymotion-j)
@@ -542,6 +565,9 @@ nmap <leader>ea <Plug>(EasyAlign)
 "============== vim-after-object ============={{{
 autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ', '+', '*', '{')
 " ca=				change after '='
+"}}}
+"============== vim-peekaboo ============={{{
+let g:peekaboo_window="vert bo 50new"
 "}}}
 "============== Gundo ========================{{{
 let g:gundo_prefer_python3 = 1
