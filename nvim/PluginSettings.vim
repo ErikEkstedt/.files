@@ -530,6 +530,7 @@ let g:highlightedyank_highlight_duration = 1000
 
 " Align a markdown table -> hidden in autocommand ?
 autocmd FileType markdown vmap t <Plug>(EasyAlign)*\|
+autocmd FileType latex vmap t <Plug>(EasyAlign)*\&
 
 " Start interactive EasyAlign in visual mode (e.g. vipea=, vapea", ...)
 vmap ea <Plug>(EasyAlign)

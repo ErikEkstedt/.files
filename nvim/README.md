@@ -20,4 +20,5 @@
 ## Learned
 
 * nnoremap on regular bindings
-  * nmap ... <plug>
+* nmap ... <plug>
+
