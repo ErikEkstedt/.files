@@ -17,8 +17,8 @@ tmux new-window -t $session:2
 tmux rename-window -t $session:2 "Htop"
 tmux send-keys -t $session:2 "htop" Enter
 
-tmux new-window -t $session:2
-tmux rename-window -t $session:2 "IPython"
+# tmux new-window -t $session:2
+# tmux rename-window -t $session:2 "IPython"
 
 tmux select-window -t $session:0
 tmux attach-session -d -t $session

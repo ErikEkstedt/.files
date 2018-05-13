@@ -47,6 +47,9 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
+" Use easy align plugin to align table
+nnoremap <leader>ta vip:EasyAlign<CR>*&
+
 " fix slowness - disable these
 "normal :NoMatchParen
 let g:vimtex_indent_enabled = 1

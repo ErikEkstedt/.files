@@ -37,7 +37,7 @@ ln -sf ~/.files/nvim ~/.config/
 echo "Removing konsole directory (~/.local/share/konsole)"
 rm -rf ~/.local/share/konsole
 echo ln -sf ~/.files/konsole ~/.local/share/
-ln -sf ~/.files/konsole ~/.local/share/
+ln -sf ~/.files/terminals/konsole ~/.local/share/
 
 
 
