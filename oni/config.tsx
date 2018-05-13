@@ -47,7 +47,7 @@ export const configuration = { //{{{
 	// // "oni.hideMenu": false, // hide the gui menu (i have menu in os top bar so does not matter) 
 
     // // Editor
-    "editor.fontSize": "15px", "editor.linePadding": 0,
+    "editor.fontSize": "15px", "editor.linePadding": 1,
     "editor.clipboard.enabled": false,
     "editor.clipboard.synchronizeYank": false,
     "editor.clipboard.synchronizeDelete": false,
@@ -64,7 +64,7 @@ export const configuration = { //{{{
     "ui.fontSize": "14px"
 
     // // plugins
-    "sidebar.enabled": true, 
+    "sidebar.enabled": false, 
     "statusbar.fontSize": "14px",
     // "language.python.languageServer.command": "pyls",
     "language.python.languageServer.command": "/home/erik/miniconda3/bin/pyls",

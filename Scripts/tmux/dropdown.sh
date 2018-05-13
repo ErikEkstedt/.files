@@ -3,10 +3,17 @@
 # Starts in the home directory and initializes a tmux session called DropDown
 # with ranger, a terminal and htop 
 
-cd ~
+# todo:
+# make it work in a tmux session as well as outside
 session="DropDown"
+if [ "$TMUX" = "" ]; then 
+	tmux new-session -d -s $session
+else
+	tmux rename-session $session
+fi
 
-tmux new-session -d -s $session
+cd ~
+
 tmux rename-window -t $session:0 "Ranger"
 tmux send-keys -t $session:0 "ranger" Enter
 
@@ -17,8 +24,8 @@ tmux new-window -t $session:2
 tmux rename-window -t $session:2 "Htop"
 tmux send-keys -t $session:2 "htop" Enter
 
-# tmux new-window -t $session:2
-# tmux rename-window -t $session:2 "IPython"
+tmux new-window -t $session:3
+tmux rename-window -t $session:3 "IPython"
 
 tmux select-window -t $session:0
 tmux attach-session -d -t $session

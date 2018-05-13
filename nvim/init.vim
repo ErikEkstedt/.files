@@ -28,6 +28,8 @@ Plug 'scrooloose/nerdtree'         " Project and file navigation
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ivalkeen/nerdtree-execute'
 Plug 'tpope/vim-fugitive'          " git extension
+Plug 'tpope/vim-fugitive'          " git extension
+Plug 'tpope/vim-obsession'         " :mksession | saves a vim instance
 Plug 'airblade/vim-gitgutter'      " see git changes in file in the numberline
 Plug 'junegunn/fzf.vim'            " fuzzy filefinding
 Plug 'easymotion/vim-easymotion' 
@@ -100,8 +102,8 @@ Plug 'Shougo/neopairs.vim'
 " Snippets 
 Plug 'SirVer/ultisnips'                 " snippet engine
 Plug 'honza/vim-snippets'               " snippets
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
+" Plug 'Shougo/neosnippet.vim'
+" Plug 'Shougo/neosnippet-snippets'
 
 " Syntax 
 Plug 'PotatoesMaster/i3-vim-syntax'     " syntax for i3 config

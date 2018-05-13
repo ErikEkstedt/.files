@@ -9,7 +9,6 @@ sudo apt-get install g++ freeglut3-dev build-essential libx11-dev libxmu-dev lib
 sudo apt install gcc-6
 sudo apt install g++-6
 
-
 # Download (latest?) runfile (local) from Nvidia
 wget https://developer.nvidia.com/compute/cuda/9.0/Prod/local_installers/cuda_9.0.176_384.81_linux-run
 
