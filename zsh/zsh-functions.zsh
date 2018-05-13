@@ -152,6 +152,7 @@ function so() { #{{{
 	source activate "$env"
 } 
 alias sod="source deactivate"
+zle -N so
 #}}}
 
 function junb() { #{{{
@@ -163,8 +164,18 @@ function junb() { #{{{
 # alt+s to prepend 'sudo ' to current command and move to EOL
 bindkey -s '^S' '^Asudo ^E'
 bindkey -s '^Q' "exit\r"
+
+# Vim
+bindkey -M vicmd H beginning-of-line
+bindkey -M vicmd L end-of-line
+
+# FZF - functions
 bindkey '^B' cd-from-home
+bindkey -M vicmd '^B' cd-from-home
 bindkey '^F' file-from-home
+bindkey -M vicmd '^F' file-from-home
 bindkey '^N' fzf-cd-widget
+bindkey -M vicmd '^N' fzf-cd-widget
 bindkey '^_' cd-from-root 
+bindkey -M vicmd '^_' cd-from-root 
 # }}}

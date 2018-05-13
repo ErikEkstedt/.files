@@ -5,4 +5,4 @@ sudo apt-get install -y \
 	texlive-full latexmk wakeonlan
 
 # Ultrawide-Wallpapers: 
-# https://imgur.com/gallery/UWHsIS
+# https://imgur.com/gallery/UWHsS

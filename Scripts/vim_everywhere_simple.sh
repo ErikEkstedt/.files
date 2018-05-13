@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Source:
+# [Martins Code Snippets](https://snippets.martinwagner.co/2018-03-04/vim-anywhere)
+
 function setclip {
   xclip -selection c
 }
