@@ -105,7 +105,7 @@ Plug 'honza/vim-snippets'               " snippets
 " Plug 'Shougo/neosnippet.vim'
 " Plug 'Shougo/neosnippet-snippets'
 
-" Syntax 
+" Syntax
 Plug 'PotatoesMaster/i3-vim-syntax'     " syntax for i3 config
 Plug 'klen/python-mode'                 " Python mode (docs, refactor, lints...)
 Plug 'nelstrom/vim-markdown-folding'    " help with folding in markdown
