@@ -185,22 +185,6 @@ let g:fzf_action = {
 			\ 'Enter': 'vsplit',
 			\ 'Esc': 'exit', }
 "}}}
-"============== easy-motion =================={{{
-let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyzåöä'
-map <j <Plug>(easymotion-j)
-map <k <Plug>(easymotion-k)
-" map <h <Plug>(easymotion-linebackward)
-" map <l <Plug>(easymotion-lineforward)
-
-nmap <space> <Plug>(easymotion-bd-w)
-nmap <leader>ee <Plug>(easymotion-bd-e)
-
-map <f <Plug>(easymotion-bd-f)
-nmap <s <Plug>(easymotion-overwin-f)
-
-let g:EasyMotion_startofline = 1 " Linejumps puts cursor at start of line
-
-"}}}
 "============== Tmux-navigation =============={{{
 let g:tmux_navigator_no_mappings = 1
 
@@ -295,15 +279,48 @@ let g:pymode_rope_lookup_project = 0
 imap <F5> <Esc>:w<CR>:!clear;python %<CR>
 
 " }}}
+"============== ALE =========================={{{
+let g:ale_enabled = 0
 
-"============== Vim-netrw ===================={{{
-let g:netrw_banner = 0 "no banner
-let g:netrw_liststyle = 3
-let g:netrw_sort_sequence = '[\/]$,*' " sort is affecting only: directories on the top, files below
-noremap <leader>ex :Explore<cr>
-nnoremap <leader>vv :Vexplore<cr>
-nnoremap <leader>hh :Hexplore<cr>
-" }}}
+" Use quickfix list. Open list
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+let g:ale_open_list = 1
+
+" Appearance
+" characters might messup appearance
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '?'
+let g:ale_sign_column_always = 1
+
+" highlight ALEWarningSign guibg=303030 guifg=
+" highlight ALEErrorSign guibg=303030 guifg=
+
+
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%][%severity%] %s'
+
+" pylint
+let g:ale_linters = { 'python': ['pylint', 'yapf', 'isort', 'mccabe'],}
+
+" Mappings
+nmap ge <Plug>(ale_next_wrap)
+nmap gr <Plug>(ale_previous_wrap)
+nmap <leader>at <Plug>(ale_toggle)
+
+"}}}
+"============== Jedi-vim ====================={{{
+let g:jedi#completions_command = ""
+" let g:jedi#goto_command = "<leader><leader>d"
+" let g:jedi#goto_assignments_command = "<leader><leader>g"
+" let g:jedi#goto_definitions_command = ""
+" let g:jedi#documentation_command = "<leader><leader>K"
+" let g:jedi#usages_command = "<leader><leader>n"
+" let g:jedi#rename_command = "<leader><leader>r"
+
+"}}}
+
 "============== Vimtex ======================={{{
 let g:vimtex_enabled = 1
 
@@ -335,6 +352,44 @@ augroup vimtex_event_2
 augroup END
 
 " }}}
+"============== Vim-livedown-markdown ========{{{
+" should markdown preview get shown automatically upon opening markdown buffer
+let g:livedown_autorun = 0
+
+" should the browser window pop-up upon previewing
+let g:livedown_open = 1 
+
+" the port on which Livedown server will run
+let g:livedown_port = 1337
+
+" the browser to use
+let g:livedown_browser = g:BROWSER
+" let g:livedown_browser = "firefox -P" 
+
+" mappings in ftplugin/markdown
+" nnoremap <localleader>ll :LivedownToggle<CR>
+" nnoremap <localleader>lv  :LivedownPreview<CR>
+
+"}}}
+"============== Vim-markdown-preview ========{{{
+" let vim_markdown_preview_github=1  " use grip
+" let vim_markdown_preview_hotkey='<localleader>lv'
+" let g:vim_markdown_preview_browser='firefox'
+
+" " 1: To display images with the hotkey mapping (defaults to Control p).
+" " 2: To display images automatically on buffer write.
+" " 3: To disregard images and still automatically preview on buffer write.
+" let vim_markdown_preview_toggle=2
+"}}}
+
+"============== Vim-netrw ===================={{{
+let g:netrw_banner = 0 "no banner
+let g:netrw_liststyle = 3
+let g:netrw_sort_sequence = '[\/]$,*' " sort is affecting only: directories on the top, files below
+noremap <leader>ex :Explore<cr>
+nnoremap <leader>vv :Vexplore<cr>
+nnoremap <leader>hh :Hexplore<cr>
+" }}}
 "============== Fugitive ====================={{{
 nnoremap <Leader>gst :Gstatus<CR>
 nnoremap <Leader>gwr  :Gwrite<CR>
@@ -349,16 +404,13 @@ nnoremap <Leader>gpl :Gpull<CR>
 nnoremap <Leader>gdi  /<<<<<<<<CR>n<C-o>zz
 
 " }}}
-"============== Lightline ===================={{{
-let g:lightline = {'colorscheme': 'myseoul256'} 
-" let g:lightline = {'colorscheme': 'mymolokaicolor'} 
-let g:lightline.inactive = {
-			\	'left': [['absolutepath']],
-			\ 	'middle': [['']],
-			\ 	'right': [['']] }
-let g:lightline.tab = {'active': ['tabnum', 'filename', 'modified'],
-			\'inactive': [ 'tabnum', 'filename', 'modified' ]}
-" " }}}
+"============== GitGutter ===================={{{
+let g:gitgutter_sign_removed = '-'
+let g:gitgutter_override_sign_column_highlight = 0
+
+let g:gitgutter_realtime = 1
+let g:gitgutter_eager = 1
+"}}}
 "============== NerdTree ====================={{{
 " " open NERDTree on startup
 if !exists("g:gui_oni")
@@ -407,34 +459,17 @@ let g:indentLine_first_char = '┊'  " '│' This is the first indent and the ab
 " let g:indentLine_showFirstIndentLevel=1
 
 " }}}
-"============== Vim-livedown-markdown ========{{{
-" should markdown preview get shown automatically upon opening markdown buffer
-let g:livedown_autorun = 0
+"============== Lightline ===================={{{
+let g:lightline = {'colorscheme': 'myseoul256'} 
+" let g:lightline = {'colorscheme': 'mymolokaicolor'} 
+let g:lightline.inactive = {
+			\	'left': [['absolutepath']],
+			\ 	'middle': [['']],
+			\ 	'right': [['']] }
+let g:lightline.tab = {'active': ['tabnum', 'filename', 'modified'],
+			\'inactive': [ 'tabnum', 'filename', 'modified' ]}
+" " }}}
 
-" should the browser window pop-up upon previewing
-let g:livedown_open = 1 
-
-" the port on which Livedown server will run
-let g:livedown_port = 1337
-
-" the browser to use
-let g:livedown_browser = g:BROWSER
-
-" nnoremap <leader>gt :LivedownToggle<CR>
-" nnoremap <leader>gp :LivedownPreview<CR>
-"}}}
-"============== Vim-surround ================{{{
-nnoremap <leader>' :normal ysiW'<CR>
-nnoremap <leader>" :normal ysiW"<CR>
-nnoremap ( :normal ysiW)<CR>
-nnoremap ) :normal ysiW)<CR>
-nnoremap { :normal ysiW}<CR>
-nnoremap } :normal ysiW}<CR>
-nnoremap [ :normal ysiW]<CR>
-nnoremap ] :normal ysiW]<CR>
-" nnoremap <leader>B :normal ysiW}<CR>
-" nnoremap <leader>r :normal ysiW]<CR>
-"}}}
 "============== GoYo ========================={{{ 
 let g:goyo_width  = 100  " (default: 80)
 let g:goyo_linenr = 0   " (default: 0)
@@ -461,46 +496,9 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 nnoremap <silent> <leader>gg :Goyo<CR>
 
 "}}}
-"============== ALE =========================={{{
-let g:ale_enabled = 0
-
-" Use quickfix list. Open list
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
-let g:ale_open_list = 1
-
-" Appearance
-" characters might messup appearance
-let g:ale_sign_error = '✘'
-let g:ale_sign_warning = '?'
-let g:ale_sign_column_always = 1
-
-" highlight ALEWarningSign guibg=303030 guifg=
-" highlight ALEErrorSign guibg=303030 guifg=
-
-
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%][%severity%] %s'
-
-" pylint
-let g:ale_linters = { 'python': ['pylint', 'yapf', 'isort', 'mccabe'],}
-
-" Mappings
-nmap ge <Plug>(ale_next_wrap)
-nmap gr <Plug>(ale_previous_wrap)
-nmap <leader>at <Plug>(ale_toggle)
-
-"}}}
-"============== Jedi-vim ====================={{{
-let g:jedi#completions_command = ""
-" let g:jedi#goto_command = "<leader><leader>d"
-" let g:jedi#goto_assignments_command = "<leader><leader>g"
-" let g:jedi#goto_definitions_command = ""
-" let g:jedi#documentation_command = "<leader><leader>K"
-" let g:jedi#usages_command = "<leader><leader>n"
-" let g:jedi#rename_command = "<leader><leader>r"
-
+"============== Gundo ========================{{{
+let g:gundo_prefer_python3 = 1
+nnoremap gu :GundoToggle<CR>
 "}}}
 "============== Scratch ======================{{{
 let g:scratch_insert_autohide = 0
@@ -514,6 +512,7 @@ let g:scratch_height = 10
 let g:scratch_filetype = 'markdown'
 " let g:scratch_persistence_file = ".scratch.md"
 "}}}
+
 "============== luochen1990/rainbow =========={{{
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 let g:rainbow_conf = {
@@ -540,15 +539,55 @@ let g:rainbow_conf = {
 			\}
 au VimEnter * RainbowToggleOn
 "}}}
-"============== GitGutter ===================={{{
-let g:gitgutter_sign_removed = '-'
-let g:gitgutter_override_sign_column_highlight = 0
-
-let g:gitgutter_realtime = 1
-let g:gitgutter_eager = 1
-"}}}
 "============== highlight-yank ==============={{{
 let g:highlightedyank_highlight_duration = 1000
+"}}}
+
+"============== Pikachu ==============={{{
+let g:pickachu_default_color_format = "hex"
+
+" Mapping the default color, file and date picker to 
+nnoremap <a-c> :Pickachu<CR>
+inoremap <a-c> <esc>:Pickachu<CR>a
+nnoremap <leader>pf :Pickachu file<CR>
+nnoremap <leader>pd :Pickachu date<CR>
+
+"}}}
+
+"============== highlight-yank ==============={{{
+let g:highlightedyank_highlight_duration = 1000
+"}}}
+
+"============== vim-easy-motion =================={{{
+let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+nmap <space><space> <Plug>(easymotion-bd-w)
+nmap <space>e <Plug>(easymotion-bd-e)
+
+nmap <space>l <Plug>(easymotion-lineforward)
+nmap <space>h <Plug>(easymotion-linebackward)
+nmap <space>j <Plug>(easymotion-j)
+nmap <space>k <Plug>(easymotion-k)
+
+nmap <space>f <Plug>(easymotion-overwin-f)
+
+nmap <space>w <Plug>(easymotion-bd-wl)
+nmap <space>i <Plug>(easymotion-bd-jk)
+
+let g:EasyMotion_startofline = 1 " Linejumps puts cursor at start of line
+
+"}}}
+"============== vim-surround ================{{{
+nnoremap <leader>' :normal ysiW'<CR>
+nnoremap <leader>" :normal ysiW"<CR>
+nnoremap ( :normal ysiW)<CR>
+nnoremap ) :normal ysiW)<CR>
+nnoremap { :normal ysiW}<CR>
+nnoremap } :normal ysiW}<CR>
+nnoremap [ :normal ysiW]<CR>
+nnoremap ] :normal ysiW]<CR>
+" nnoremap <leader>B :normal ysiW}<CR>
+" nnoremap <leader>r :normal ysiW]<CR>
 "}}}
 "============== vim-easy-align ==============={{{
 
@@ -570,10 +609,7 @@ autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ', '+', '*', '
 "============== vim-peekaboo ============={{{
 let g:peekaboo_window="vert bo 50new"
 "}}}
-"============== Gundo ========================{{{
-let g:gundo_prefer_python3 = 1
-nnoremap gu :GundoToggle<CR>
-"}}}
+
 "============== Matlab ========================{{{
 let g:matlab_auto_mappings = 0 "automatic mappings disabled
 let g:matlab_server_launcher = 'tmux' "launch the server in a tmux split

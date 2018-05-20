@@ -4,7 +4,7 @@ setlocal fdm=indent
 nnoremap j gj
 nnoremap k gk
 
-nnoremap <leader>li  i<li><esc>A</li><esc>0
+nnoremap <leader>li  0wi<li><esc>A</li><esc>0
 
 " Marker
 nnoremap <buffer> <c-space> <esc>/<++><CR>"_ciw

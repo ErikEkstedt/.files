@@ -154,3 +154,26 @@ class fzf_cd(Command):
             else:
                 self.fm.select_file(fzf_file)
 
+class fzf_cd_from_here(Command):
+    """
+    :fzf_select
+    Find a file using fzf and fd.
+    With a prefix argument select only directories.
+    See:
+        https://github.com/junegunn/fzf
+        https://github.com/sharkdp/fd.git
+    """
+    def execute(self):
+        import subprocess
+        import os.path
+        cwd = os.path.curdir
+        command="fd --type d --hidden --follow --no-ignore --exclude .git | fzf +m -i"
+        fzf = self.fm.execute_command(command, stdout=subprocess.PIPE)
+        stdout, stderr = fzf.communicate()
+        if fzf.returncode == 0:
+            fzf_file = os.path.abspath(stdout.decode('utf-8').rstrip('\n'))
+            if os.path.isdir(fzf_file):
+                self.fm.cd(fzf_file)
+            else:
+                self.fm.select_file(fzf_file)
+

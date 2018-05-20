@@ -62,5 +62,6 @@ Icon?
 Thumbs.db
 
 # npm
-node_modules/
+# node_modules/
+# Messes up fzf search
 

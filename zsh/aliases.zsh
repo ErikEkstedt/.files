@@ -82,9 +82,10 @@ alias gstatus="python ~/.files/Scripts/auto_git.py status"
 
 # Tmux {{{
 alias tls="tmux list-sessions"
-alias tkill.="tmux kill-session -t ."
+alias tk="tmux kill-session -t ."
 alias tkill="tmux kill-session -t"
-alias tka="tmux kill-session -a"
+alias tatt="tmux attach -t"
+alias tkillall="tmux kill-session -a"
 alias tst="tmux new-session"
 # }}}
 

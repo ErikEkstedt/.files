@@ -46,6 +46,8 @@ export const configuration = { //{{{
     "oni.loadInitVim": true,
 	// // "oni.hideMenu": false, // hide the gui menu (i have menu in os top bar so does not matter) 
 
+    "workspace.defaultWorkspace": "/home/erik/blog",
+
     // // Editor
     "editor.fontSize": "15px", "editor.linePadding": 1,
     "editor.clipboard.enabled": false,
@@ -53,10 +55,15 @@ export const configuration = { //{{{
     "editor.clipboard.synchronizeDelete": false,
     "editor.quickInfo.delay": 200,
     "editor.split.mode": 'oni',
-	"editor.completions.mode": "oni", 
+	// "editor.completions.mode": "oni", 
     "editor.cursorLine": true,
     "editor.cursorLineOpacity": 0.5,
 
+    "language.html.languageServer.command": "/opt/Oni/resources/app/node_modules/vscode-html-languageserver-bin/htmlServerMain.js",
+    "language.html.languageServer.arguments": [
+    "--stdio"
+    ],
+    
     // // UI customizations ---------
     // "ui.colorscheme": "onedark",
     "ui.animations.enabled": true,

@@ -17,7 +17,7 @@ set rtp+=~/.fzf
 
 
 "PythonPath
-let g:python3_host_prog='/home/erik/miniconda3/bin/python3'
+let g:python3_host_prog='/home/erik/miniconda3/bin/python'
 let g:python_host_prog='/home/erik/miniconda3/envs/py27/bin/python'
 
 "============= Vim-Plug ======================{{{
@@ -82,10 +82,12 @@ Plug 'Valloric/MatchTagAlways'
 Plug 'lotabout/slimux'                 " old: 'epeli/slimux' | vim+ipython OUtdated
 Plug 'mtth/scratch.vim'                " Unobtrusive scratch
 Plug 'nelstrom/vim-visual-star-search' " * on visual select searches for the snippet
-" Plug 'vyzyv/vimpyter'                  " vim-plug
+                                       " Plug 'vyzyv/vimpyter'                  " vim-plug
 Plug 'sjl/gundo.vim'                   " Visualize undo tree
 Plug 'tommcdo/vim-exchange'            " exchange two words. ex: cxw (on first word) . (on second)
 
+Plug 'DougBeney/pickachu'
+Plug 'lilydjwg/colorizer'              " colorize hexcolor in editor
 "}}}
 " ============ Completion and Syntax =================={{{
 if has('nvim')
@@ -122,6 +124,7 @@ Plug 'w0rp/ale'                         " asynchronous linting
 " Preview Text 
 Plug 'lervag/vimtex'      " latex compiler and alot more.
 Plug 'shime/vim-livedown' " Preview markdowns with npm/node Livedown
+" Plug 'JamshedVesuna/vim-markdown-preview'
 
 call plug#end()
 "}}}
