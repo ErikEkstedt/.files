@@ -33,8 +33,8 @@ export LANG=en_US.UTF-8
 # Conda / Python / Node Envs
 export PATH=$HOME/.node_modules_global/bin:${PATH}
 export PATH=$HOME/miniconda3/bin:${PATH}
+export PATH=$HOME/.files/bin:${PATH}
 export PATH=$HOME/.local/bin:${PATH}
-export PATH=$HOME/PhD/meta/:${PATH}
 
 export ERIKPATH=/home/erik/com_sci
 export ERIKPATH=/home/erik/phd:$ERIKPATH

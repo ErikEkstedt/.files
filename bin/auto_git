@@ -1,0 +1,119 @@
+#!/usr/bin/env python
+import sys
+import git
+from git import Repo
+import json
+import os
+import subprocess
+from subprocess import call
+from pathlib import Path
+import shutil
+
+class bcolors:
+    darkgreen = '\033[90m'
+    WARNING = '\033[91m'
+    red = '\033[91m'
+    FAIL = '\033[91m'
+    green = '\033[92m'
+    yellow = '\033[93m'
+    purple = '\033[94m'
+    pink = '\033[95m'
+    blue = '\033[96m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+
+
+def printAllColors():
+    print(bcolors.darkgreen + "this is color" + bcolors.ENDC)
+    print(bcolors.red + "this is color" + bcolors.ENDC)
+    print(bcolors.green + "this is color" + bcolors.ENDC)
+    print(bcolors.yellow + "this is color" + bcolors.ENDC)
+    print(bcolors.purple + "this is color" + bcolors.ENDC)
+    print(bcolors.pink + "this is color" + bcolors.ENDC)
+    print(bcolors.blue + "this is color" + bcolors.ENDC)
+    print(bcolors.FAIL + "this is color" + bcolors.ENDC)
+    print(bcolors.BOLD + "this is BOLDcolor" + bcolors.ENDC)
+
+
+def isClean():
+    cmd = "git status"
+    ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+    output = ps.communicate()[0]
+    if len(output) > 105:
+        return False
+    return True
+
+def checkFolders(folders):
+    status = {}
+    for f in folders:
+        tmp_dir = os.path.join(Path.home(), f)
+        if os.path.isdir(tmp_dir):
+            os.chdir(tmp_dir)
+            status[tmp_dir] = isClean()
+    return status
+
+def printStatus(status):
+    print()
+    dirty = []
+    for path, clean in status.items():
+        if clean:
+            print(bcolors.green + path +  bcolors.ENDC)
+        else:
+            dirty.append(path)
+    [print(bcolors.red + path +  bcolors.ENDC) for path in dirty]
+    return dirty
+
+def printDirty(dirty):
+    columns = shutil.get_terminal_size().columns
+    for path in dirty:
+        os.chdir(path)
+        cmd = "git status"
+        ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+        output = ps.communicate()[0]
+        line = '-'*50
+        print(bcolors.red)
+        print(line)
+        print(path)
+        # print(path.center(columns))
+        print(bcolors.ENDC)
+        print(output.decode())
+
+def gitStatus(folders):
+    status = checkFolders(folders)
+    dirty = printStatus(status)
+    printDirty(dirty)
+
+def git_status():
+    repo = Repo('./')
+    o = repo.remotes.origin
+    o.fetch()
+    # Tags
+    tags = []
+    for t in repo.tags:
+        tags.append({"name": t.name, "commit": str(t.commit), "date": t.commit.committed_date,
+                        "committer": t.commit.committer.name, "message": t.commit.message})
+    try:
+        branch_name = repo.active_branch.name
+        # test1
+    except:
+        branch_name = None
+
+    changes = []
+    commits_behind = repo.iter_commits('master..origin/master')
+
+    for c in list(commits_behind):
+        changes.append({"committer": c.committer.name, "message": c.message})
+
+    return json.dumps({"tags": tags, "headcommit": str(repo.head.commit), "branchname": branch_name,
+                        "master": {"changes": changes}})
+
+
+path_of_script = sys.argv[0]
+if len(sys.argv) > 1:
+    act = sys.argv[1]
+else:
+    act = 'status'
+
+folders = ['.files', 'blog', 'phd', 'Documents/latex/Notes']
+gitStatus(folders)

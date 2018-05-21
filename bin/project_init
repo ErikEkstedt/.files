@@ -1,0 +1,46 @@
+#!/usr/bin/python3
+
+'''
+DEpendencies:
+    tree (sudo apt install tree)
+
+-----------------------
+Skeleton project maker.
+
+Creates:
+    * files:
+        * README.md
+        * blog.md
+    * dir:
+        *images
+
+
+Todo:
+    block diagram for main concepts
+'''
+
+from pathlib import Path
+import os
+import sys
+import re
+
+dirname = sys.argv[1]
+
+print('-'*50)
+
+if not os.path.exists(dirname):
+    os.makedirs(dirname)
+    os.makedirs(os.path.join(dirname, "imgs"))
+    os.makedirs(os.path.join(dirname, "code"))
+    Path(os.path.join(dirname, 'README.md')).touch()
+    Path(os.path.join(dirname, 'blog.md')).touch()
+    print('Created skeleton for project: ', dirname)
+    os.chdir(dirname)
+else:
+    print("Directory already exists")
+
+print()
+print(dirname+':')
+os.system('tree')
+print()
+print('-'*50)
