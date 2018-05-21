@@ -21,76 +21,12 @@ let g:python3_host_prog='/home/erik/miniconda3/bin/python'
 let g:python_host_prog='/home/erik/miniconda3/envs/py27/bin/python'
 
 "============= Vim-Plug ======================{{{
+" Plugins marked with XXX I know I use/like a lot.
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/bundle')
-" ============ Code/Project Navigation ================{{{
-Plug 'scrooloose/nerdtree'         " Project and file navigation
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'ivalkeen/nerdtree-execute'
-Plug 'tpope/vim-fugitive'          " git extension
-Plug 'tpope/vim-fugitive'          " git extension
-Plug 'tpope/vim-obsession'         " :mksession | saves a vim instance
-Plug 'airblade/vim-gitgutter'      " see git changes in file in the numberline
-Plug 'junegunn/fzf.vim'            " fuzzy filefinding
-Plug 'easymotion/vim-easymotion' 
-"}}}
-" ============ Appearence ============================={{{
-if !exists("g:gui_oni")
-	Plug 'itchyny/lightline.vim'
-	Plug 'edkolev/tmuxline.vim'          " tmux statusline same as vim.	 :Tmuxline lightline
-else
-	let &termguicolors = 1
-    set statusline=
-    set statusline+=%#LineNr#
-    set statusline+=\ %f
-endif
-Plug 'Yggdroot/indentLine'           " see where there is indent
-Plug 'junegunn/goyo.vim'             " Distraction free writing
-Plug 'luochen1990/rainbow'           " Different color on paranthesis
-Plug 'machakann/vim-highlightedyank' " Highlight yanks
-"}}}
-" ============ Colorschemes ==========================={{{
-if !exists("g:gui_oni")
-	Plug 'chriskempson/base16-vim'        " much color
-	Plug 'skielbasa/vim-material-monokai' 
-	Plug 'kiddos/malokai.vim'
-	Plug 'Reewr/vim-monokai-phoenix'
-	Plug 'joshdick/onedark.vim'           " look like atom?
-	Plug 'vim-scripts/wombat256.vim'
-	Plug 'danilo-augusto/vim-afterglow'
-	Plug 'mhartington/oceanic-next'
-	Plug 'yuttie/hydrangea-vim'
-endif
-Plug 'junegunn/seoul256.vim'          " cool junegunn is coool
-"}}}
-" ============ Useful Tools ==========================={{{
 
-if !exists("g:gui_oni")
-	Plug 'christoomey/vim-tmux-navigator'  " navigate between vim and tmuz seemlessly
-	" Plug 'Raimondi/delimitMate'			   " autoclosing of brackets, quotes ... 
-	" Plug 'cohama/lexima.vim'
-endif
-
-Plug 'wellle/targets.vim'
-Plug 'junegunn/vim-after-object'       " change everything after something
-Plug 'junegunn/vim-easy-align'         " better alignment than tabular
-Plug 'junegunn/vim-peekaboo'
-Plug 'tpope/vim-commentary'            " commenting
-Plug 'tpope/vim-repeat'                " repeat commands not repeatable by 'vanilla' vim
-Plug 'tpope/vim-surround'              " Surround objects with quotes, brackets ...
-Plug 'Valloric/MatchTagAlways'
-Plug 'lotabout/slimux'                 " old: 'epeli/slimux' | vim+ipython OUtdated
-Plug 'mtth/scratch.vim'                " Unobtrusive scratch
-Plug 'nelstrom/vim-visual-star-search' " * on visual select searches for the snippet
-                                       " Plug 'vyzyv/vimpyter'                  " vim-plug
-Plug 'sjl/gundo.vim'                   " Visualize undo tree
-Plug 'tommcdo/vim-exchange'            " exchange two words. ex: cxw (on first word) . (on second)
-
-Plug 'DougBeney/pickachu'
-Plug 'lilydjwg/colorizer'              " colorize hexcolor in editor
-"}}}
-" ============ Completion and Syntax =================={{{
-if has('nvim')
+" Deoplete
+if has('nvim') 
 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
 	Plug 'Shougo/deoplete.nvim'
@@ -101,33 +37,88 @@ Plug 'zchee/deoplete-jedi'
 Plug 'Shougo/neco-vim'
 Plug 'Shougo/neopairs.vim'
 
-" Snippets 
-Plug 'SirVer/ultisnips'                 " snippet engine
-Plug 'honza/vim-snippets'               " snippets
-" Plug 'Shougo/neosnippet.vim'
-" Plug 'Shougo/neosnippet-snippets'
+" Snippets
+Plug 'SirVer/ultisnips'                " XXX snippet engine
+Plug 'honza/vim-snippets'              " XXX snippets
 
 " Syntax
-Plug 'PotatoesMaster/i3-vim-syntax'     " syntax for i3 config
-Plug 'klen/python-mode'                 " Python mode (docs, refactor, lints...)
-Plug 'nelstrom/vim-markdown-folding'    " help with folding in markdown
-Plug 'octol/vim-cpp-enhanced-highlight' " Extra highlight for cpp
-Plug 'othree/xml.vim'
-Plug 'ron89/thesaurus_query.vim'
-Plug 'daeyun/vim-matlab'                " MATLAB
-Plug 'sheerun/vim-polyglot'             " All the syntax
-Plug 'elzr/vim-json'
 
-Plug 'w0rp/ale'                         " asynchronous linting
+Plug 'sheerun/vim-polyglot'            " All the syntax
+Plug 'daeyun/vim-matlab'               " MATLAB
+Plug 'othree/xml.vim'                  " xml highlight
+Plug 'klen/python-mode'                " Python mode (docs, refactor, lints...)
 
+" Tools
+
+Plug 'tpope/vim-obsession'             " :mksession | saves a vim instance | used when saving tmux session
+Plug 'tpope/vim-fugitive'              " git tools
+Plug 'tpope/vim-commentary'            " XXX commenting
+Plug 'tpope/vim-repeat'                " XXX repeat commands not repeatable by 'vanilla' vim
+Plug 'tpope/vim-surround'              " XXX Surround objects with quotes, brackets ...
+Plug 'junegunn/fzf.vim'                " XXX fuzzy filefinding
+Plug 'junegunn/vim-after-object'       " change everything after something
+Plug 'junegunn/vim-easy-align'         " XXX better alignment than tabular
+Plug 'junegunn/vim-peekaboo'           " when pressing quotes shows what's stored in the different registers
+Plug 'junegunn/goyo.vim'               " Distraction free writing
+Plug 'DougBeney/pickachu'              " Pick Color/date/
+Plug 'Valloric/MatchTagAlways' 
+Plug 'Xuyuanp/nerdtree-git-plugin'     " show git status of files
+Plug 'Yggdroot/indentLine'             " see where there is indent
+Plug 'airblade/vim-gitgutter'          " XXX see git changes in file in the numberline
+Plug 'easymotion/vim-easymotion'       " XXX visualize targets tot move to specific words
+Plug 'ivalkeen/nerdtree-execute'       " open files from nerdtree
+Plug 'lilydjwg/colorizer'              " colorize hexcolor in editor
+Plug 'lotabout/slimux'                 " XXX old: 'epeli/slimux' | vim+ipython OUtdated
+Plug 'luochen1990/rainbow'             " Different color on paranthesis
+Plug 'machakann/vim-highlightedyank'   " XXX Highlight yanks
+Plug 'mtth/scratch.vim'                " Unobtrusive scratch
+Plug 'nelstrom/vim-visual-star-search' " * on visual select searches for the snippet
+Plug 'nelstrom/vim-markdown-folding'   " help with folding in markdown
+Plug 'pangloss/vim-javascript'
+Plug 'scrooloose/nerdtree'             " XXX Project and file navigation
+Plug 'sjl/gundo.vim'                   " Visualize undo tree
+Plug 'tommcdo/vim-exchange'            " exchange two words. ex: cxw (on first word) . (on second)
+Plug 'w0rp/ale'                        " asynchronous linting
+Plug 'wellle/targets.vim'              " XXX ci' works on (, [, {, <
+
+
+if !exists("g:gui_oni")
+	Plug 'christoomey/vim-tmux-navigator' " navigate between vim and tmuz seemlessly
+	" Plug 'Raimondi/delimitMate'           " autoclosing of brackets, quotes ...
+	Plug 'cohama/lexima.vim'              " autoclosing brackets
+endif
 
 " Preview Text 
-Plug 'lervag/vimtex'      " latex compiler and alot more.
-Plug 'shime/vim-livedown' " Preview markdowns with npm/node Livedown
-" Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'lervag/vimtex'      " XXX latex compiler and alot more.
+Plug 'shime/vim-livedown' " XXX Preview markdowns with npm/node Livedown
+
+" ============ Colorschemes and Appearence ==========================={{{
+if !exists("g:gui_oni")
+	Plug 'chriskempson/base16-vim'        " many colorschemes
+	Plug 'skielbasa/vim-material-monokai' 
+	Plug 'kiddos/malokai.vim'
+	Plug 'Reewr/vim-monokai-phoenix'
+	Plug 'joshdick/onedark.vim'           " look like atom?
+	Plug 'vim-scripts/wombat256.vim'
+	Plug 'danilo-augusto/vim-afterglow'
+	Plug 'mhartington/oceanic-next'
+	Plug 'yuttie/hydrangea-vim'
+endif
+Plug 'junegunn/seoul256.vim'          " cool junegunn is coool
+
+if !exists("g:gui_oni")
+	Plug 'itchyny/lightline.vim'
+	Plug 'edkolev/tmuxline.vim'          " tmux statusline same as vim.	 :Tmuxline lightline
+else
+	let &termguicolors = 1
+    set statusline=
+    set statusline+=%#LineNr#
+    set statusline+=\ %f
+endif
+"}}}
+
 
 call plug#end()
-"}}}
 " }}}
 "=============== Basic ======================={{{
 

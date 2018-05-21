@@ -146,8 +146,8 @@ nnoremap S viw"0p
 
 " Movement 
 " Buffers previous/next
-nnoremap <b :bp<CR>
-nnoremap <n :bn<CR>
+nnoremap <space>b :bp<CR>
+nnoremap <space>n :bn<CR>
 nnoremap <h :bp<CR>
 nnoremap <l :bn<CR>
 
