@@ -62,6 +62,7 @@ alias tco="cd ~/Documents/latex; vim Computer_todo.tex"
 
 # Nvim/ipython/dropdown/yakuake){{{
 alias vim="nvim"
+alias v="nvim"
 alias ipy="ipython"  #--profile=erik"
 
 alias drop="/home/erik/.files/Scripts/tmux/dropdown.sh"

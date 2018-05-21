@@ -1,0 +1,3 @@
+#!/bin/bash
+echo "ln -sf ~/.files/Code/User ~/.config/Code/User"
+ln -sf ~/.files/Code/User ~/.config/Code/User

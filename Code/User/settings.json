@@ -1,77 +1,38 @@
 {
-    "window.zoomLevel"    : 2,
-    "workbench.colorTheme": "OneDark++",
-    "keyboard.dispatch"   : "keyCode",     // modified keymappings work
-
-    // EDITOR
-    "editor.fontFamily"    : "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-    "editor.fontSize"      : 12,
-    "editor.autoIndent"    : true,
-    "editor.lineNumbers"   : "relative",
     "editor.cursorBlinking": "solid",
+    "keyboard.dispatch"   : "keyCode",     // modified keymappings work
+    "workbench.colorTheme": "Nord",
 
-    //============================================================================
-    // VIM 
-    //============================================================================
-
-    "vim.leader": ",",
-    // "vim.enableNeovim": true,
-    // vim.neovimPath": "nvim",
-    "vim.incsearch"  : true,
-    "vim.useCtrlKeys": true,
-    "vim.hlsearch"   : true,
-    "vim.handleKeys" : {
-        "<C-a>": true,
-        "<C-f>": false
-    },
-    "vim.cursorStylePerMode" : {
-        "normal" : "line-thin",
-        "insert" : "line-thin",
-        "visual" : "line-thin",
-        "replace": "block-outline"
-    },
-
-    "vim.easymotion"                : true,
-    "vim.easymotionKeys"            : "hklyuiopnmqwertzxcvbasdgjf",
-    "vim.easymotionMarkerFontSize"  : "14",
-    "vim.easymotionMarkerFontFamily": "Monospace",
+    "vim.leader": " ",
+    "vim.easymotion": true,
+    "vim.easymotionKeys": "hklyuiopnm,qwertzxcvbasdgjf",
 
     "vim.otherModesKeyBindingsNonRecursive": [
-        { "before": [" "], "after": ["leader", "leader", "leader", "b", "d", "w"] },
-        { "before":["leader", " "], "after":[], "commands": [ {"command": ":nohl!"} ] },
-
-        { "before":["\\", "l", "v"], "after":[], "command": "markdown-preview-enhanced.openPreview", },
+        { "before":["Y"], "after":["y", "$"], }, 
         { "before":["v", "v"], "after":["V"], }, 
-        { "before":["Y"], "after":[], "command":  }, 
         { "before":["L"], "after":["$"], }, 
         { "before":["H"], "after":["0"] },
         { "before":["tab"], "after":[">"] },
-        // Plugins
-        { "before": ["leader", "g", "a"], "after":[],  "command": "wwm.aligncode", "when": "editorTextFocus && !editorReadonly" }
+
+        { "before": ["leader", "l"], "after": ["leader", "leader", "w"]},
+        { "before": ["leader", "h"], "after": ["leader", "leader", "b"]},
+        { "before": ["leader", "j"], "after": ["leader", "leader", "j"]},
+        { "before": ["leader", "k"], "after": ["leader", "leader", "k"]},
+        { "before": ["leader", "leader"], "after": ["leader", "leader","leader", "b", "d", "w"]},
+
+        { "before":["\\", "l", "v"], "after":[], "command": "markdown-preview-enhanced.openPreview", },
+
+        //
+        { "before": ["Ö"], "after": ["A", ";", "escape"]},
     ],
 
-    // Markdown plugin
-    "markdown.preview.scrollPreviewWithEditorSelection": true,
-    "markdown-preview-enhanced.scrollSync"             : false,
-
-    // Bracket Colors
-    "bracketPairColorizer.consecutivePairColors": [
-        "()",
-        "[]",
-        "{}",
-        [
-            "HotPink",
-            "LightGreen",
-            "LightSkyBlue",
-        ],
-        "Red"
-    ],
-    // Latex
-    "latex-preview.command": "latexmk",
-
-    // Python
-    "python.jediPath"                : "",
-    "python.autoComplete.addBrackets": true,
-    "editor.tabCompletion"           : true,
-
+    "window.zoomLevel": 0,
+    "vim.easymotionMarkerFontFamily": "monospace",
+    "vim.easymotionMarkerFontSize": "16",
+    "vim.easymotionMarkerFontWeight": "bold",
+    "vim.easymotionMarkerBackgroundColor": "#000",
+    "vim.easymotionMarkerForegroundColorOneChar": "#FFF",
+    "vim.easymotionMarkerForegroundColorTwoChar": "#AA9999",
+    "vim.easymotionMarkerHeight": 18,
+    "vim.easymotionMarkerWidthPerChar": 15,
 }
