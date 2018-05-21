@@ -24,26 +24,27 @@ exports.deactivate = function (oni) {
 exports.configuration = {
     // Experimental
     "snippets.enabled": true,
-    // "experimental.particles.enabled": false,
-    // "experimental.preview.enabled": true,
-    // "experimental.welcome.enabled": false,
+    "experimental.preview.enabled": true,
     // Settings
     // "autoClosingPairs.enabled": true,
     "autoUpdate.enabled": true,
-    // "autoClosingPairs.enabled": true,
-    // "oni.useDefaultConfig": false,
     "oni.loadInitVim": true,
     // // "oni.hideMenu": false, // hide the gui menu (i have menu in os top bar so does not matter) 
+    "workspace.defaultWorkspace": "/home/erik/blog",
     // // Editor
-    "editor.fontSize": "15px", "editor.linePadding": 0,
+    "editor.fontSize": "15px", "editor.linePadding": 1,
     "editor.clipboard.enabled": false,
     "editor.clipboard.synchronizeYank": false,
     "editor.clipboard.synchronizeDelete": false,
-    "editor.completions.mode": "oni",
     "editor.quickInfo.delay": 200,
-    // "editor.completions.mode": "hidden", 
+    "editor.split.mode": 'oni',
+    // "editor.completions.mode": "oni", 
     "editor.cursorLine": true,
     "editor.cursorLineOpacity": 0.5,
+    "language.html.languageServer.command": "/opt/Oni/resources/app/node_modules/vscode-html-languageserver-bin/htmlServerMain.js",
+    "language.html.languageServer.arguments": [
+        "--stdio"
+    ],
     // // UI customizations ---------
     // "ui.colorscheme": "onedark",
     "ui.animations.enabled": true,
@@ -54,8 +55,12 @@ exports.configuration = {
     // // plugins
     "sidebar.enabled": false,
     "statusbar.fontSize": "14px",
-    "language.python.languageServer.command": "pyls",
+    // "language.python.languageServer.command": "pyls",
+    "language.python.languageServer.command": "/home/erik/miniconda3/bin/pyls",
     "environment.additionalPaths": [
+        "/usr/bin/",
         "/home/erik/miniconda3/bin",
+        "/home/erik/.node_modules_global/bin",
+        "/home/erik/.node_modules_global"
     ]
 }; // }}}

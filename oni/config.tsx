@@ -35,14 +35,11 @@ export const configuration = { //{{{
     // Experimental
 	"snippets.enabled": true,
     "experimental.preview.enabled": true,
-    // "experimental.particles.enabled": false,
-    // "experimental.welcome.enabled": false,
 
     // Settings
     // "autoClosingPairs.enabled": true,
     "autoUpdate.enabled": true,
 
-    // "oni.useDefaultConfig": false,
     "oni.loadInitVim": true,
 	// // "oni.hideMenu": false, // hide the gui menu (i have menu in os top bar so does not matter) 
 
@@ -79,7 +76,8 @@ export const configuration = { //{{{
     "environment.additionalPaths": [
         "/usr/bin/",
         "/home/erik/miniconda3/bin",
-        "/home/erik/.node_modules_global/bin"
+        "/home/erik/.node_modules_global/bin",
+        "/home/erik/.node_modules_global"
     ],
 
     // Colors ------------------{{{
