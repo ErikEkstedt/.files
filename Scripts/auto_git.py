@@ -1,24 +1,31 @@
+#!/usr/bin/env python
 import sys
 import os
+import subprocess
 from subprocess import call
 from pathlib import Path
 
-import json
 from pprint import pprint
 
-# path = os.path.join(os.path.realpath(__file__), 'common/folder.json')
 
-# path= '/home/erik/.files/Scripts/common/data.json'
-# data = json.load(open(path))
-# pprint(data)
-# print('-'*80)
-# print(data)
+def getStatus():
+    # a  = call(["git", "status"])
+    # print('printing a: ', a)
+    cmd = "git status"
+    ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+    output = ps.communicate()[0]
+    # print(output)
+    print(len(output))
+    if len(output) > 105:
+        print(output.decode("utf-8"))
+    else:
+        print("Synced!")
 
 act = 'push'
 act = sys.argv[1]
 
 path_of_script = sys.argv[0]
-folders = ['.files', 'Documents/latex/Notes/Thesis']
+folders = ['.files', 'blog', 'phd']
 prefix = str(Path.home())
 for f in folders:
     tmp_dir = os.path.join(prefix, f)
@@ -43,5 +50,5 @@ for f in folders:
             call(["git", "commit", "-m", msg])
             call(["git", "push"])
         else:
-            call(["git", "status"])
+            getStatus()
         print('='*80)
