@@ -1,13 +1,13 @@
 #!/usr/bin/env python
-import sys
-import git
-from git import Repo
-import json
+# Checks relevant folders hardcoded in the script on their git status.
+# DISCLOSURE: Only checks 'git status' and can not see if repo is behind remote.
+# Displays paths as green if they are up to date and red if something needs
+# doing.
 import os
 import subprocess
-from subprocess import call
-from pathlib import Path
-import shutil
+# import git
+# from git import Repo
+# import json
 
 class bcolors:
     DARKGREEN = '\033[90m'
@@ -47,7 +47,7 @@ def isClean():
 def checkFolders(folders):
     status = {}
     for f in folders:
-        tmp_dir = os.path.join(Path.home(), f)
+        tmp_dir = os.path.join(os.path.expanduser('~'), f)
         if os.path.isdir(tmp_dir):
             os.chdir(tmp_dir)
             status[tmp_dir] = isClean()
@@ -65,7 +65,6 @@ def printStatus(status):
     return dirty
 
 def printDirty(dirty):
-    columns = shutil.get_terminal_size().columns
     for path in dirty:
         os.chdir(path)
         cmd = "git status"
@@ -75,7 +74,6 @@ def printDirty(dirty):
         print(bcolors.RED)
         print(line)
         print(path)
-        # print(path.center(columns))
         print(bcolors.ENDC)
         print(output.decode())
 
@@ -84,6 +82,7 @@ def gitStatus(folders):
     dirty = printStatus(status)
     printDirty(dirty)
 
+# Not mine. Do not know exactly how it works. Uses GitPython "import git"
 def git_status():
     repo = Repo('./')
     o = repo.remotes.origin
@@ -108,12 +107,6 @@ def git_status():
     return json.dumps({"tags": tags, "headcommit": str(repo.head.commit), "branchname": branch_name,
                         "master": {"changes": changes}})
 
-
-path_of_script = sys.argv[0]
-if len(sys.argv) > 1:
-    act = sys.argv[1]
-else:
-    act = 'status'
 
 folders = ['.files', 'blog', 'phd', 'Documents/latex/Notes']
 gitStatus(folders)
