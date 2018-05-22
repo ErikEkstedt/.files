@@ -1,7 +1,7 @@
 {
     "editor.cursorBlinking": "solid",
     "keyboard.dispatch"    : "keyCode",     // modified keymappings work
-    "workbench.colorTheme" : "OneDark++",
+    "workbench.colorTheme": "Panda Syntax",
 
     "vim.leader"        : " ",
     "vim.easymotion"    : true,
@@ -25,8 +25,11 @@
         //
         { "before": ["Ö"], "after": ["A", ";", "escape"]},
     ],
+    "vim.insertModeKeyBindings": [
 
-    "window.zoomLevel"                          : 1,
+    ],
+
+    "window.zoomLevel": 0,
     "vim.easymotionMarkerFontFamily"            : "monospace",
     "vim.easymotionMarkerFontSize"              : "16",
     "vim.easymotionMarkerFontWeight"            : "bold",
@@ -37,4 +40,8 @@
     "vim.easymotionMarkerWidthPerChar"          : 15,
 
     "workbench.iconTheme": "vscode-icons",
+    "workbench.colorCustomizations": {},
+    "materialTheme.cache.workbench.settings": {
+        "accentPrevious": "Cyan"
+    },
 }
