@@ -11,6 +11,31 @@ import git
 from git import Repo
 import json
 
+bcolorDict = { 'DARKGREEN' : '\033[90m',
+              'WARNING' : '\033[91m',
+              'RED' : '\033[91m',
+              'FAIL' : '\033[91m',
+              'GREEN' : '\033[92m',
+              'YELLOW' : '\033[93m',
+              'PURPLE' : '\033[94m',
+              'PINK' : '\033[95m',
+              'BLUE' : '\033[96m',
+              'ENDC' : '\033[0m',
+              'BOLD' : '\033[1m',
+              'UNDERLINE' : '\033[4m',
+              }
+
+def printAllColors():
+    print(bcolorDict['DARKGREEN'] + "this is color" + bcolorDict['ENDC'])
+    print(bcolorDict['RED'] + "this is color" + bcolorDict['ENDC'])
+    print(bcolorDict['GREEN'] + "this is color" + bcolorDict['ENDC'])
+    print(bcolorDict['YELLOW'] + "this is color" + bcolorDict['ENDC'])
+    print(bcolorDict['PURPLE'] + "this is color" + bcolorDict['ENDC'])
+    print(bcolorDict['PINK'] + "this is color" + bcolorDict['ENDC'])
+    print(bcolorDict['BLUE'] + "this is color" + bcolorDict['ENDC'])
+    print(bcolorDict['FAIL'] + "this is color" + bcolorDict['ENDC'])
+    print(bcolorDict['BOLD'] + "this is BOLDcolor" + bcolorDict['ENDC'])
+
 class bcolors:
     DARKGREEN = '\033[90m'
     WARNING = '\033[91m'
@@ -24,18 +49,6 @@ class bcolors:
     ENDC = '\033[0m'
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
-
-    def printAllColors():
-        print(bcolors.DARKGREEN + "this is color" + bcolors.ENDC)
-        print(bcolors.RED + "this is color" + bcolors.ENDC)
-        print(bcolors.GREEN + "this is color" + bcolors.ENDC)
-        print(bcolors.YELLOW + "this is color" + bcolors.ENDC)
-        print(bcolors.PURPLE + "this is color" + bcolors.ENDC)
-        print(bcolors.PINK + "this is color" + bcolors.ENDC)
-        print(bcolors.BLUE + "this is color" + bcolors.ENDC)
-        print(bcolors.FAIL + "this is color" + bcolors.ENDC)
-        print(bcolors.BOLD + "this is BOLDcolor" + bcolors.ENDC)
-
 
 def isClean():
     cmd = "git status --porcelain"
@@ -73,7 +86,10 @@ def printStatus(status):
 
 # This probably will break and could be more robust
 # Works for now
-def printClearly(output):
+def printStatusClearly():
+    cmd = "git status --porcelain"
+    ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+    output = ps.communicate()[0]
     text = output.decode()
     text = text.split('\n')
     text = text[:-1]   # empty last line
@@ -88,45 +104,44 @@ def printClearly(output):
             print(bcolors.GREEN + 'Added: ', line[3:], bcolors.ENDC)
 
 
-def printDirty(dirty):
+def gitStatus(folders):
+    status = checkFolders(folders)
+    dirty = printStatus(status)
+    print()
     for path in dirty:
         os.chdir(path)
-        cmd = "git status"
-        cmd = "git status --porcelain"
-        ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
-        output = ps.communicate()[0]
         line = '-'*50
         print(bcolors.RED + line)
         print(path)
         print(bcolors.ENDC)
-        printClearly(output)
+        printStatusClearly()
 
-
-def gitStatus(folders):
-    status = checkFolders(folders)
-    dirty = printStatus(status)
-    printDirty(dirty)
-
+def printPathLine(path, length=50, color='RED'):
+    line = '-'*length
+    print(bcolorDict[color] + line)
+    print(path)
+    print(bcolors.ENDC)
 
 def gitPush(folders):
-    for f in folders:
-        tmp_dir = os.path.join(os.path.expanduser('~'), f)
-        if os.path.isdir(tmp_dir):
-            os.chdir(tmp_dir)
-            print(bcolors.YELLOW)
-            print('-'*50)
-            print(tmp_dir)
-            print(bcolors.ENDC)
+    status = checkFolders(folders)
+    dirty = printStatus(status)
+    print()
+    for path in dirty:
+        os.chdir(path)
+        printPathLine(path, color='RED')
+        printStatusClearly()
+        printPathLine('Push', length=25, color='YELLOW')
+        gitAddCommitPush(path)
 
-            cmd = "git add ."
-            ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
-            cmd = 'git commit -m "{}"'.format(input('Commit message: '))
-            ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
-            cmd = "git push"
-            ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
-            output = ps.communicate()[0]
-            print(output.decode())
-
+def gitAddCommitPush(path):
+    cmd = "git add ."
+    ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+    cmd = 'git commit -m "{}"'.format(input('Commit message: '))
+    ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+    cmd = "git push"
+    ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+    output = ps.communicate()[0]
+    print(output.decode())
 
 
 def gitPull(folders):
@@ -170,13 +185,12 @@ def git_status():
 # print(git_status())
 
 
-folders = ['.files', 'blog', 'phd', 'Documents/latex/Notes']
+folders = ['blog', 'phd','.files', 'Documents/latex/Notes']
 
 if len(sys.argv) > 1:
     if sys.argv[1] == 'pull':
         gitPull(folders)
     elif sys.argv[1] == 'push':
-        gitStatus(folders)
         gitPush(folders)
     else:
         print(bcolors.WARNING)
