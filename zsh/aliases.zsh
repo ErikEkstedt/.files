@@ -76,9 +76,9 @@ alias gps="git push"
 alias gpl="git pull"
 alias gst="git status"
 
-alias gpush="python ~/.files/bin/git-status-personal push"
-alias gpull="python ~/.files/bin/git-status-personal pull"
-alias gstatus="python ~/.files/bin/git-status-personal"
+alias gpush="python ~/.files/bin/git-script push"
+alias gpull="python ~/.files/bin/git-script pull"
+alias gstatus="python ~/.files/bin/git-script"
 # }}}
 
 # Tmux {{{
