@@ -1,8 +1,30 @@
 #!/usr/bin/env python
 # Checks relevant folders hardcoded in the script on their git status.
-# DISCLOSURE: Only checks 'git status' and can not see if repo is behind remote.
+# DISCLOSURE: Only checks 'git status --porcelain' and can not see if repo
+# is behind remote.
+#
 # Displays paths as green if they are up to date and red if something needs
 # doing.
+#
+# Example
+#
+# ´´´Bash
+#       $ git-script
+# ´´´
+# Shows clean repos as green and dirty as red. prints out a
+# status from each dirty repo
+
+# ´´´Bash
+#       $ git-script pull
+# ´´´
+# iterates through all defined repos and pull
+# (have to input ssh password for each TODO: fix)
+
+# ´´´Bash
+#       $ git-script push
+# ´´´
+# Shows status of all repos and the iterates through the
+# dirty ones. Displaying status in each and asks user for commit message.
 
 import os
 import sys
@@ -119,6 +141,7 @@ def gitPush(folders):
         printPathLine('Push', length=25, color='YELLOW')
         gitAddCommitPush(path)
 
+
 def gitAddCommitPush(path):
     cmd = "git add ."
     ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
@@ -135,19 +158,14 @@ def gitPull(folders):
         tmp_dir = os.path.join(os.path.expanduser('~'), f)
         if os.path.isdir(tmp_dir):
             os.chdir(tmp_dir)
-            print(bcolors['YELLOW'])
-            print('-'*50)
-            print(tmp_dir)
-            print(bcolors['ENDC'])
+            printPathLine(tmp_dir, color='YELLOW')
             cmd = "git pull"
             ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
             output = ps.communicate()[0]
             print(output.decode())
 
 
-
 folders = ['blog', 'phd','.files', 'Documents/latex/Notes']
-
 if len(sys.argv) > 1:
     if sys.argv[1] == 'pull':
         gitPull(folders)

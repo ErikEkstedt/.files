@@ -65,7 +65,7 @@ alias vim="nvim"
 alias v="nvim"
 alias ipy="ipython"  #--profile=erik"
 
-alias drop="/home/erik/.files/Scripts/tmux/dropdown.sh"
+alias drop="/home/erik/.files/bin/dropdown"
 function mkpr() { project_init "$1" } 
 # }}}
 

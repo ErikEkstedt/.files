@@ -105,6 +105,16 @@ function ag() { #{{{
 	git push
 } #}}}
 
+function init-project() { #{{{
+	if [[ $1 ]]; then
+		project-init.py $1
+		cd $1
+	else
+		echo "No project name..."
+		echo "Please add a name as argument"
+	fi
+} #}}}
+
 function sms() { #{{{
 	kdeconnect-cli --send-sms "$1" \
 	--destination 0762060648 \
