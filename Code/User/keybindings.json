@@ -17,6 +17,10 @@
 	{ "key": "ctrl+j", "command": "workbench.action.quickOpenNavigateNext", "when": "inQuickOpen" },
 	{ "key": "ctrl+k", "command": "workbench.action.quickOpenNavigatePrevious", "when": "inQuickOpen" },
 
+	{ "key": "z shift+m", "command": "editor.foldAll", "when": "editorTextFocus" },
+	{ "key": "z shift+R", "command": "editor.unfoldAll", "when": "editorTextFocus" },
+	{ "key": "z a", "command": "editor.fold", "when": "editorTextFocus" },
+	{ "key": "z o", "command": "editor.unfold", "when": "editorTextFocus" },
 
 	// All upArrow mappings
 	// trying to solve menu when changing a setting in settings 

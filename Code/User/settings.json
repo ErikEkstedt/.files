@@ -29,7 +29,7 @@
 
     ],
 
-    "window.zoomLevel": 0,
+    "window.zoomLevel": 1,
     "vim.easymotionMarkerFontFamily"            : "monospace",
     "vim.easymotionMarkerFontSize"              : "16",
     "vim.easymotionMarkerFontWeight"            : "bold",
