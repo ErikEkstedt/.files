@@ -1,3 +1,6 @@
 #!/bin/bash
-echo "ln -sf ~/.files/Code/User ~/.config/Code/User"
-ln -sf ~/.files/Code/User ~/.config/Code/User
+
+ln -sf ~/.files/Code/User/keybindings.json ~/.config/Code/User/keybindings.json
+ln -sf ~/.files/Code/User/settings.json ~/.config/Code/User/settings.json
+ln -sf ~/.files/Code/User/snippets  ~/.config/Code/User
+echo "Created links for keybindings.json, settings.json and snippets"

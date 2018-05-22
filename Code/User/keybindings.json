@@ -17,6 +17,7 @@
 	{ "key": "ctrl+j", "command": "workbench.action.quickOpenNavigateNext", "when": "inQuickOpen" },
 	{ "key": "ctrl+k", "command": "workbench.action.quickOpenNavigatePrevious", "when": "inQuickOpen" },
 
+
 	// All upArrow mappings
 	// trying to solve menu when changing a setting in settings 
 	// { "key": "ctrl+k", "command": "repl.action.historyPrevious", "when": "inDebugRepl && onFirstDebugReplLine" },

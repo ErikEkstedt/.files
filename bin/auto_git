@@ -10,28 +10,28 @@ from pathlib import Path
 import shutil
 
 class bcolors:
-    darkgreen = '\033[90m'
+    DARKGREEN = '\033[90m'
     WARNING = '\033[91m'
-    red = '\033[91m'
+    RED = '\033[91m'
     FAIL = '\033[91m'
-    green = '\033[92m'
-    yellow = '\033[93m'
-    purple = '\033[94m'
-    pink = '\033[95m'
-    blue = '\033[96m'
+    GREEN = '\033[92m'
+    YELLOW = '\033[93m'
+    PURPLE = '\033[94m'
+    PINK = '\033[95m'
+    BLUE = '\033[96m'
     ENDC = '\033[0m'
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
 
 def printAllColors():
-    print(bcolors.darkgreen + "this is color" + bcolors.ENDC)
-    print(bcolors.red + "this is color" + bcolors.ENDC)
-    print(bcolors.green + "this is color" + bcolors.ENDC)
-    print(bcolors.yellow + "this is color" + bcolors.ENDC)
-    print(bcolors.purple + "this is color" + bcolors.ENDC)
-    print(bcolors.pink + "this is color" + bcolors.ENDC)
-    print(bcolors.blue + "this is color" + bcolors.ENDC)
+    print(bcolors.DARKGREEN + "this is color" + bcolors.ENDC)
+    print(bcolors.RED + "this is color" + bcolors.ENDC)
+    print(bcolors.GREEN + "this is color" + bcolors.ENDC)
+    print(bcolors.YELLOW + "this is color" + bcolors.ENDC)
+    print(bcolors.PURPLE + "this is color" + bcolors.ENDC)
+    print(bcolors.PINK + "this is color" + bcolors.ENDC)
+    print(bcolors.BLUE + "this is color" + bcolors.ENDC)
     print(bcolors.FAIL + "this is color" + bcolors.ENDC)
     print(bcolors.BOLD + "this is BOLDcolor" + bcolors.ENDC)
 
@@ -58,10 +58,10 @@ def printStatus(status):
     dirty = []
     for path, clean in status.items():
         if clean:
-            print(bcolors.green + path +  bcolors.ENDC)
+            print(bcolors.GREEN + path +  bcolors.ENDC)
         else:
             dirty.append(path)
-    [print(bcolors.red + path +  bcolors.ENDC) for path in dirty]
+    [print(bcolors.RED + path +  bcolors.ENDC) for path in dirty]
     return dirty
 
 def printDirty(dirty):
@@ -72,7 +72,7 @@ def printDirty(dirty):
         ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
         output = ps.communicate()[0]
         line = '-'*50
-        print(bcolors.red)
+        print(bcolors.RED)
         print(line)
         print(path)
         # print(path.center(columns))

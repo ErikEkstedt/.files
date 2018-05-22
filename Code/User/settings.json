@@ -1,10 +1,10 @@
 {
     "editor.cursorBlinking": "solid",
-    "keyboard.dispatch"   : "keyCode",     // modified keymappings work
-    "workbench.colorTheme": "Nord",
+    "keyboard.dispatch"    : "keyCode",     // modified keymappings work
+    "workbench.colorTheme" : "OneDark++",
 
-    "vim.leader": " ",
-    "vim.easymotion": true,
+    "vim.leader"        : " ",
+    "vim.easymotion"    : true,
     "vim.easymotionKeys": "hklyuiopnm,qwertzxcvbasdgjf",
 
     "vim.otherModesKeyBindingsNonRecursive": [
@@ -26,13 +26,15 @@
         { "before": ["Ö"], "after": ["A", ";", "escape"]},
     ],
 
-    "window.zoomLevel": 0,
-    "vim.easymotionMarkerFontFamily": "monospace",
-    "vim.easymotionMarkerFontSize": "16",
-    "vim.easymotionMarkerFontWeight": "bold",
-    "vim.easymotionMarkerBackgroundColor": "#000",
+    "window.zoomLevel"                          : 1,
+    "vim.easymotionMarkerFontFamily"            : "monospace",
+    "vim.easymotionMarkerFontSize"              : "16",
+    "vim.easymotionMarkerFontWeight"            : "bold",
+    "vim.easymotionMarkerBackgroundColor"       : "#000",
     "vim.easymotionMarkerForegroundColorOneChar": "#FFF",
     "vim.easymotionMarkerForegroundColorTwoChar": "#AA9999",
-    "vim.easymotionMarkerHeight": 18,
-    "vim.easymotionMarkerWidthPerChar": 15,
+    "vim.easymotionMarkerHeight"                : 18,
+    "vim.easymotionMarkerWidthPerChar"          : 15,
+
+    "workbench.iconTheme": "vscode-icons",
 }
