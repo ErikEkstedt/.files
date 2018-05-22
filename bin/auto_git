@@ -3,6 +3,7 @@
 # DISCLOSURE: Only checks 'git status' and can not see if repo is behind remote.
 # Displays paths as green if they are up to date and red if something needs
 # doing.
+
 import os
 import subprocess
 # import git
@@ -23,26 +24,30 @@ class bcolors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
-
-def printAllColors():
-    print(bcolors.DARKGREEN + "this is color" + bcolors.ENDC)
-    print(bcolors.RED + "this is color" + bcolors.ENDC)
-    print(bcolors.GREEN + "this is color" + bcolors.ENDC)
-    print(bcolors.YELLOW + "this is color" + bcolors.ENDC)
-    print(bcolors.PURPLE + "this is color" + bcolors.ENDC)
-    print(bcolors.PINK + "this is color" + bcolors.ENDC)
-    print(bcolors.BLUE + "this is color" + bcolors.ENDC)
-    print(bcolors.FAIL + "this is color" + bcolors.ENDC)
-    print(bcolors.BOLD + "this is BOLDcolor" + bcolors.ENDC)
+    def printAllColors():
+        print(bcolors.DARKGREEN + "this is color" + bcolors.ENDC)
+        print(bcolors.RED + "this is color" + bcolors.ENDC)
+        print(bcolors.GREEN + "this is color" + bcolors.ENDC)
+        print(bcolors.YELLOW + "this is color" + bcolors.ENDC)
+        print(bcolors.PURPLE + "this is color" + bcolors.ENDC)
+        print(bcolors.PINK + "this is color" + bcolors.ENDC)
+        print(bcolors.BLUE + "this is color" + bcolors.ENDC)
+        print(bcolors.FAIL + "this is color" + bcolors.ENDC)
+        print(bcolors.BOLD + "this is BOLDcolor" + bcolors.ENDC)
 
 
 def isClean():
-    cmd = "git status"
+    cmd = "git status --porcelain"
     ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
     output = ps.communicate()[0]
-    if len(output) > 105:
+    text = output.decode()
+    text = text.split('\n')
+    text = text[:-1]   # empty last line
+    print(text)
+    if len(text) > 0:
         return False
     return True
+
 
 def checkFolders(folders):
     status = {}
@@ -64,18 +69,33 @@ def printStatus(status):
     [print(bcolors.RED + path +  bcolors.ENDC) for path in dirty]
     return dirty
 
+def printClearly(output):
+    # This probably will break and could be more robust
+    # Works for now
+    text = output.decode()
+    text = text.split('\n')
+    text = text[:-1]   # empty last line
+    for line in text:
+        if line[1] =='M':
+            print(bcolors.PINK, 'Modified: ', line[3:], bcolors.ENDC)
+        elif line[1]=='?':
+            print(bcolors.BLUE, 'Untracked: ', line[3:], bcolors.ENDC)
+        elif line[0]=='D':
+            print(bcolors.RED, 'Deleted: ', line[3:], bcolors.ENDC)
+        elif line[0]=='A':
+            print(bcolors.GREEN, 'Added: ', line[3:], bcolors.ENDC)
+
 def printDirty(dirty):
     for path in dirty:
         os.chdir(path)
         cmd = "git status"
+        cmd = "git status --porcelain"
         ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
         output = ps.communicate()[0]
         line = '-'*50
-        print(bcolors.RED)
-        print(line)
-        print(path)
-        print(bcolors.ENDC)
-        print(output.decode())
+        print(bcolors.RED + line)
+        print(path + bcolors.ENDC)
+        printClearly(output)
 
 def gitStatus(folders):
     status = checkFolders(folders)

@@ -33,7 +33,6 @@ if not os.path.exists(dirname):
     os.makedirs(os.path.join(dirname, "imgs"))
     os.makedirs(os.path.join(dirname, "code"))
     Path(os.path.join(dirname, 'README.md')).touch()
-    Path(os.path.join(dirname, 'blog.md')).touch()
     print('Created skeleton for project: ', dirname)
     os.chdir(dirname)
 else:
