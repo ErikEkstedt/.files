@@ -5,10 +5,11 @@
 # doing.
 
 import os
+import sys
 import subprocess
-# import git
-# from git import Repo
-# import json
+import git
+from git import Repo
+import json
 
 class bcolors:
     DARKGREEN = '\033[90m'
@@ -43,7 +44,6 @@ def isClean():
     text = output.decode()
     text = text.split('\n')
     text = text[:-1]   # empty last line
-    print(text)
     if len(text) > 0:
         return False
     return True
@@ -58,6 +58,7 @@ def checkFolders(folders):
             status[tmp_dir] = isClean()
     return status
 
+
 def printStatus(status):
     print()
     dirty = []
@@ -69,21 +70,23 @@ def printStatus(status):
     [print(bcolors.RED + path +  bcolors.ENDC) for path in dirty]
     return dirty
 
+
+# This probably will break and could be more robust
+# Works for now
 def printClearly(output):
-    # This probably will break and could be more robust
-    # Works for now
     text = output.decode()
     text = text.split('\n')
     text = text[:-1]   # empty last line
     for line in text:
         if line[1] =='M':
-            print(bcolors.PINK, 'Modified: ', line[3:], bcolors.ENDC)
+            print(bcolors.PINK +'Modified: ', line[3:], bcolors.ENDC)
         elif line[1]=='?':
-            print(bcolors.BLUE, 'Untracked: ', line[3:], bcolors.ENDC)
-        elif line[0]=='D':
-            print(bcolors.RED, 'Deleted: ', line[3:], bcolors.ENDC)
+            print(bcolors.BLUE +'Untracked: ', line[3:], bcolors.ENDC)
+        elif line[1]=='D':
+            print(bcolors.RED + 'Deleted: ', line[3:], bcolors.ENDC)
         elif line[0]=='A':
-            print(bcolors.GREEN, 'Added: ', line[3:], bcolors.ENDC)
+            print(bcolors.GREEN + 'Added: ', line[3:], bcolors.ENDC)
+
 
 def printDirty(dirty):
     for path in dirty:
@@ -94,13 +97,51 @@ def printDirty(dirty):
         output = ps.communicate()[0]
         line = '-'*50
         print(bcolors.RED + line)
-        print(path + bcolors.ENDC)
+        print(path)
+        print(bcolors.ENDC)
         printClearly(output)
+
 
 def gitStatus(folders):
     status = checkFolders(folders)
     dirty = printStatus(status)
     printDirty(dirty)
+
+
+def gitPush(folders):
+    for f in folders:
+        tmp_dir = os.path.join(os.path.expanduser('~'), f)
+        if os.path.isdir(tmp_dir):
+            os.chdir(tmp_dir)
+            print(bcolors.YELLOW)
+            print('-'*50)
+            print(tmp_dir)
+            print(bcolors.ENDC)
+
+            cmd = "git add ."
+            ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+            cmd = 'git commit -m "{}"'.format(input('Commit message: '))
+            ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+            cmd = "git push"
+            ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+            output = ps.communicate()[0]
+            print(output.decode())
+
+
+
+def gitPull(folders):
+    for f in folders:
+        tmp_dir = os.path.join(os.path.expanduser('~'), f)
+        if os.path.isdir(tmp_dir):
+            os.chdir(tmp_dir)
+            print(bcolors.YELLOW)
+            print('-'*50)
+            print(tmp_dir)
+            print(bcolors.ENDC)
+            cmd = "git pull"
+            ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+            output = ps.communicate()[0]
+            print(output.decode())
 
 # Not mine. Do not know exactly how it works. Uses GitPython "import git"
 def git_status():
@@ -126,7 +167,21 @@ def git_status():
 
     return json.dumps({"tags": tags, "headcommit": str(repo.head.commit), "branchname": branch_name,
                         "master": {"changes": changes}})
+# print(git_status())
 
 
 folders = ['.files', 'blog', 'phd', 'Documents/latex/Notes']
-gitStatus(folders)
+
+if len(sys.argv) > 1:
+    if sys.argv[1] == 'pull':
+        gitPull(folders)
+    elif sys.argv[1] == 'push':
+        gitStatus(folders)
+        gitPush(folders)
+    else:
+        print(bcolors.WARNING)
+        print('Unknown input: ', bcolors.ENDC, sys.argv[1])
+        print(bcolors.WARNING + 'Use "pull", "push" or no input.', bcolors.ENDC)
+        sys.exit()
+else:
+    gitStatus(folders)
