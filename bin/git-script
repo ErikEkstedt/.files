@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 # Checks relevant folders hardcoded in the script on their git status.
 # DISCLOSURE: Only checks 'git status --porcelain' and can not see if repo
 # is behind remote.
@@ -30,19 +31,21 @@ import os
 import sys
 import subprocess
 
+FOLDERS = ['blog', 'phd','.files', 'Documents/latex/Notes']
+
 bcolors = { 'DARKGREEN' : '\033[90m',
-              'WARNING' : '\033[91m',
-              'RED' : '\033[91m',
-              'FAIL' : '\033[91m',
-              'GREEN' : '\033[92m',
-              'YELLOW' : '\033[93m',
-              'PURPLE' : '\033[94m',
-              'PINK' : '\033[95m',
-              'BLUE' : '\033[96m',
-              'ENDC' : '\033[0m',
-              'BOLD' : '\033[1m',
-              'UNDERLINE' : '\033[4m',
-              }
+           'WARNING' : '\033[91m',
+           'RED' : '\033[91m',
+           'FAIL' : '\033[91m',
+           'GREEN' : '\033[92m',
+           'YELLOW' : '\033[93m',
+           'PURPLE' : '\033[94m',
+           'PINK' : '\033[95m',
+           'BLUE' : '\033[96m',
+           'ENDC' : '\033[0m',
+           'BOLD' : '\033[1m',
+           'UNDERLINE' : '\033[4m',
+           }
 
 def printAllColors():
     print(bcolors['DARKGREEN'] + "this is color" + bcolors['ENDC'])
@@ -92,6 +95,7 @@ def printStatus(status):
 
 # This probably will break and could be more robust
 # Works for now
+
 def printStatusClearly():
     cmd = "git status --porcelain"
     ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
@@ -100,7 +104,7 @@ def printStatusClearly():
     text = text.split('\n')
     text = text[:-1]   # empty last line
     for line in text:
-        if line[1] =='M':
+        if line[0] =='M' or line[1] == 'M':
             print(bcolors['PINK'] +'Modified: ', line[3:], bcolors['ENDC'])
         elif line[1]=='?':
             print(bcolors['BLUE'] +'Untracked: ', line[3:], bcolors['ENDC'])
@@ -165,16 +169,82 @@ def gitPull(folders):
             print(output.decode())
 
 
-folders = ['blog', 'phd','.files', 'Documents/latex/Notes']
-if len(sys.argv) > 1:
-    if sys.argv[1] == 'pull':
-        gitPull(folders)
-    elif sys.argv[1] == 'push':
-        gitPush(folders)
+def main():
+    if len(sys.argv) > 1:
+        if sys.argv[1] == 'pull':
+            gitPull(FOLDERS)
+        elif sys.argv[1] == 'push':
+            gitPush(FOLDERS)
+        else:
+            print(bcolors['WARNING'])
+            print('Unknown input: ', bcolors['ENDC'], sys.argv[1])
+            print(bcolors['WARNING'] + 'Use "pull", "push" or no input.', bcolors['ENDC'])
+            sys.exit()
     else:
-        print(bcolors['WARNING'])
-        print('Unknown input: ', bcolors['ENDC'], sys.argv[1])
-        print(bcolors['WARNING'] + 'Use "pull", "push" or no input.', bcolors['ENDC'])
-        sys.exit()
-else:
-    gitStatus(folders)
+        gitStatus(FOLDERS)
+
+if __name__ == "__main__":
+    main()
+
+# relevant 'man git status' output:
+#
+#   Short Format
+#       In the short-format, the status of each path is shown as
+#
+#           XY PATH1 -> PATH2
+#
+#       where PATH1 is the path in the HEAD, and the " -> PATH2" part is shown only when
+#       PATH1 corresponds to a different path in the index/worktree (i.e. the file is
+#       renamed). The XY is a two-letter status code.
+#
+#       The fields (including the ->) are separated from each other by a single space. If a
+#       filename contains whitespace or other nonprintable characters, that field will be
+#       quoted in the manner of a C string literal: surrounded by ASCII double quote (34)
+#       characters, and with interior special characters backslash-escaped.
+#
+#       For paths with merge conflicts, X and Y show the modification states of each side of
+#       the merge. For paths that do not have merge conflicts, X shows the status of the
+#       index, and Y shows the status of the work tree. For untracked paths, XY are ??.
+#       Other status codes can be interpreted as follows:
+#
+#       ·   ' ' = unmodified
+#
+#       ·   M = modified
+#
+#       ·   A = added
+#
+#       ·   D = deleted
+#
+#       ·   R = renamed
+#
+#       ·   C = copied
+#
+#       ·   U = updated but unmerged
+#
+#       Ignored files are not listed, unless --ignored option is in effect, in which case XY
+#       are !!.
+#
+#           X          Y     Meaning
+#           -------------------------------------------------
+#                     [MD]   not updated
+#           M        [ MD]   updated in index
+#           A        [ MD]   added to index
+#           D         [ M]   deleted from index
+#           R        [ MD]   renamed in index
+#           C        [ MD]   copied in index
+#           [MARC]           index and work tree matches
+#           [ MARC]     M    work tree changed since index
+#           [ MARC]     D    deleted in work tree
+#           -------------------------------------------------
+#           D           D    unmerged, both deleted
+#           A           U    unmerged, added by us
+#           U           D    unmerged, deleted by them
+#           U           A    unmerged, added by them
+#           D           U    unmerged, deleted by us
+#           A           A    unmerged, both added
+#           U           U    unmerged, both modified
+#           -------------------------------------------------
+#           ?           ?    untracked
+#           !           !    ignored
+#           -------------------------------------------------
+#
