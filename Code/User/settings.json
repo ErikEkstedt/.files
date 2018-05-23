@@ -1,11 +1,12 @@
 {
     "editor.cursorBlinking": "solid",
-    "keyboard.dispatch"    : "keyCode",     // modified keymappings work
-    "workbench.colorTheme": "Monokai",
+    "keyboard.dispatch"    : "keyCode",   // modified keymappings work
+    "workbench.colorTheme" : "Monokai",
 
     "vim.leader"        : " ",
     "vim.easymotion"    : true,
     "vim.easymotionKeys": "hklyuiopnm,qwertzxcvbasdgjf",
+    "vim.foldfix"       : true,
 
     "vim.otherModesKeyBindingsNonRecursive": [
         { "before":["Y"], "after":["y", "$"], }, 
@@ -29,7 +30,7 @@
 
     ],
 
-    "window.zoomLevel": 0,
+    "window.zoomLevel"                          : 0,
     "vim.easymotionMarkerFontFamily"            : "monospace",
     "vim.easymotionMarkerFontSize"              : "16",
     "vim.easymotionMarkerFontWeight"            : "bold",
@@ -39,10 +40,9 @@
     "vim.easymotionMarkerHeight"                : 18,
     "vim.easymotionMarkerWidthPerChar"          : 15,
 
-    "workbench.iconTheme": "vscode-icons",
-    "workbench.colorCustomizations": {},
+    "workbench.iconTheme"                   : "vscode-icons",
+    "workbench.colorCustomizations"         : {},
     "materialTheme.cache.workbench.settings": {
         "accentPrevious": "Cyan"
     },
-    "vim.foldfix": true,
 }

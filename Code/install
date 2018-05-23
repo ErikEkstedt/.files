@@ -1,6 +1,8 @@
 #!/bin/bash
 
+echo "Removing ~/.config/Code/User/snippets folder"
+echo "Creating links for keybindings.json, settings.json and snippets"
 ln -sf ~/.files/Code/User/keybindings.json ~/.config/Code/User/keybindings.json
 ln -sf ~/.files/Code/User/settings.json ~/.config/Code/User/settings.json
+rm -rf ~/.config/Code/User/snipets
 ln -sf ~/.files/Code/User/snippets  ~/.config/Code/User
-echo "Created links for keybindings.json, settings.json and snippets"
