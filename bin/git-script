@@ -152,8 +152,8 @@ def gitAddCommitPush(path):
     ps.communicate()
     cmd = 'git commit -m "{}"'.format(input('Commit message: '))
     ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+    ps.communicate()  # I believe this might be needed so the code waits before pushing
     cmd = "git push"
-    ps.communicate()
     ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
     output = ps.communicate()[0]
     print(output.decode())
