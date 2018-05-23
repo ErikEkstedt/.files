@@ -1,7 +1,7 @@
 {
     "editor.cursorBlinking": "solid",
     "keyboard.dispatch"    : "keyCode",     // modified keymappings work
-    "workbench.colorTheme": "Panda Syntax",
+    "workbench.colorTheme": "Monokai",
 
     "vim.leader"        : " ",
     "vim.easymotion"    : true,
@@ -29,7 +29,7 @@
 
     ],
 
-    "window.zoomLevel": 1,
+    "window.zoomLevel": 0,
     "vim.easymotionMarkerFontFamily"            : "monospace",
     "vim.easymotionMarkerFontSize"              : "16",
     "vim.easymotionMarkerFontWeight"            : "bold",
@@ -44,4 +44,5 @@
     "materialTheme.cache.workbench.settings": {
         "accentPrevious": "Cyan"
     },
+    "vim.foldfix": true,
 }

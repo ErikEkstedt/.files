@@ -63,9 +63,10 @@
 	// Autocomplete
 	{ "key": "ctrl+j", "command": "selectNextSuggestion", "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible" },
 	{ "key": "ctrl+k", "command": "selectPrevSuggestion", "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible" },
-	{ "key": "tab", "command": "selectNextSuggestion", "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible" },
-	{ "key": "shift+tab", "command": "selectPrevSuggestion", "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible" },
+	// { "key": "tab", "command": "selectNextSuggestion", "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible" },
+	// { "key": "shift+tab", "command": "selectPrevSuggestion", "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible" },
 	{ "key": "enter", "command": "acceptSelectedSuggestionOnEnter", "when": "acceptSuggestionOnEnter && suggestWidgetVisible && suggestionMakesTextEdit && textInputFocus"},
+	{ "key": "tab", "command": "acceptSelectedSuggestionOnEnter", "when": "acceptSuggestionOnEnter && suggestWidgetVisible && suggestionMakesTextEdit && textInputFocus"},
 
 	{ "key": "ctrl+q", "command": "workbench.action.closeActiveEditor" },
 
