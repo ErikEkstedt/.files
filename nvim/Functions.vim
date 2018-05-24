@@ -2,50 +2,61 @@
 " FUNCTIONS 
 
 function! NERDTreeColors() "{{{
-	hi NERDTreeDir guifg=#90a959 
-	hi Directory guifg=#404040
-	hi NERDTreeCWD guifg=gray50
-	hi NERDTreeFile guifg=white
-	hi NERDTreeBookmarksHeader guifg=gray50
-	hi NERDTreeBookmarkName guifg=gray50
+	if g:colors_name =~ 'seoul256'
+        hi NERDTreeDir guifg=#90a959 
+        hi Directory guifg=#404040
+        hi NERDTreeCWD guifg=gray50
+        hi NERDTreeFile guifg=white
+        hi NERDTreeBookmarksHeader guifg=gray50
+        hi NERDTreeBookmarkName guifg=gray50
+	elseif g:colors_name =~ 'monokai'
+        hi NERDTreeDir guifg=#90a959 
+        hi Directory guifg=white
+        hi NERDTreeCWD guifg=pink
+        hi NERDTreeBookmarksHeader guifg=pink
+        hi NERDTreeBookmarkName guifg=white
+        hi NERDTreeBookmark guifg=orange
+    endif
 endfunc
 nnoremap <LocalLeader>n :call NERDTreeColors()<CR>
 "}}}
 
 " Moving visual lines vertically (greg hurrell){{{
 function! s:Visual()
-	return visualmode() == 'V'
+    return visualmode() == 'V'
 endfunction
 
 function! Move_up() abort range
-	let l:at_top=a:firstline == 1
-	if s:Visual() && !l:at_top
-		'<,'>move '<-2
-		call feedkeys('gv=','n')
-	endif
-	call feedkeys('gv','n')
+    let l:at_top=a:firstline == 1
+    if s:Visual() && !l:at_top
+        '<,'>move '<-2
+        call feedkeys('gv=','n')
+    endif
+    call feedkeys('gv','n')
 endfunction
 
 function! Move_down() abort range
-	let l:at_bottom=a:lastline == line('$')
-	if s:Visual() && !l:at_bottom
-		'<,'>move '>+1
-		call feedkeys('gv=','n')
-	endif
-	call feedkeys('gv','n')
+    let l:at_bottom=a:lastline == line('$')
+    if s:Visual() && !l:at_bottom
+        '<,'>move '>+1
+        call feedkeys('gv=','n')
+    endif
+    call feedkeys('gv','n')
 endfunction
 
 xnoremap K :call Move_up()<CR>
 xnoremap J :call Move_down()<CR>
 "}}}
 
-function! s:ShowMaps() "{{{
+function! ShowMaps() "{{{
+    " Shows the current ma
     let old_reg = getreg("a")          " save the current content of register a
     let old_reg_type = getregtype("a") " save the type of the register as well
     try
         redir @a                           " redirect output to register a
         " Get the list of all key mappings silently, satisfy "Press ENTER to continue"
-        silent verbose map | call feedkeys("\<CR>")    
+        " TODO: fix verbose mappings.  (without sort?)
+        silent map | call feedkeys("\<CR>")
         redir END                          " end output redirection
         vnew                               " new buffer in vertical window
         put a                              " put content of register
@@ -55,13 +66,24 @@ function! s:ShowMaps() "{{{
         call setreg("a", old_reg, old_reg_type) " restore register a
     endtry
 endfunction
-com! ShowMaps call s:ShowMaps()      " Enable :ShowMaps to call the function
+nnoremap \m :call ShowMaps()<CR>
+" Map keys to call the function }}}
 
-nnoremap \m :call s:ShowMaps<CR>            " Map keys to call the function }}}
-
-
+" Highlight/syntax group{{{
+" Shows what highlight group the word under cursor belongs to.
+function! <SID>SynStack() 
+    if !exists("*synstack")
+        return
+    endif
+    echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+nmap <leader>sp :call <SID>SynStack()<CR>
+" }}}
 
 " Stolen from onedark-theme
+" Sets all syntax colors. Plugins overwrites the colorscheme so I overwrite
+" the plugins. 
+" TODO: Need to automate this
 function! SyntaxColors() "{{{
     function! s:h(group, style) "{{{
         let s:ctermformat = "NONE"

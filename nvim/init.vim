@@ -1,14 +1,14 @@
 " vim: fdm=marker
 " NeoVim
 " Erik
-" Ubuntu 16.04 and 17.10, 18.04
+" Kubuntu 18.04
 " Unicode characters: https://www.w3schools.com/charsets/ref_utf_dingbats.asp
 
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
-	echo "No Vim-Plug available... Downloading and running PlugInstall"
-	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    echo "No Vim-Plug available... Downloading and running PlugInstall"
+    silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 " fzf path
@@ -45,14 +45,13 @@ Plug 'honza/vim-snippets'              " XXX snippets
 " Syntax
 
 if !exists("g:gui_oni")
-    Plug 'sheerun/vim-polyglot'            " All the syntax
+    Plug 'sheerun/vim-polyglot'            " All the syntax messed upp syntax for oni ( turned .js -> javascript.jsx
     Plug 'daeyun/vim-matlab'               " MATLAB
     Plug 'othree/xml.vim'                  " xml highlight
     Plug 'klen/python-mode'                " Python mode (docs, refactor, lints...)
 endif
 
 " Tools
-
 Plug 'tpope/vim-obsession'             " :mksession | saves a vim instance | used when saving tmux session
 Plug 'tpope/vim-fugitive'              " git tools
 Plug 'tpope/vim-commentary'            " XXX commenting
@@ -82,7 +81,6 @@ Plug 'sjl/gundo.vim'                   " Visualize undo tree
 Plug 'tommcdo/vim-exchange'            " exchange two words. ex: cxw (on first word) . (on second)
 Plug 'w0rp/ale'                        " asynchronous linting
 Plug 'wellle/targets.vim'              " XXX ci' works on (, [, {, <
-
 
 if !exists("g:gui_oni")
 	Plug 'christoomey/vim-tmux-navigator' " navigate between vim and tmuz seemlessly

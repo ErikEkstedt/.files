@@ -40,13 +40,6 @@ nnoremap <c-space> <esc>/<++><CR>c4l
 " nnoremap <buffer> <leader>ll <plug>(vimtex-compile)
 " nnoremap <buffer> <leader>lv <plug>(vimtex-view)
 
-" move up and down naturally even if lines
-" extends over multiple rows
-nnoremap j gj
-nnoremap k gk
-vnoremap j gj
-vnoremap k gk
-
 " Use easy align plugin to align table
 nnoremap <leader>ta vip:EasyAlign<CR>*&
 

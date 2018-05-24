@@ -25,13 +25,9 @@ nnoremap <c-a><c-j> :split+terminal<CR>
 nnoremap <c-a>l :vsplit+terminal<CR>
 nnoremap <c-a><c-l> :vsplit+terminal<CR>
 
-nmap <leader>sp :call <SID>SynStack()<CR>
-function! <SID>SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
+nnoremap j gj
+nnoremap k gk
+
 
 " LEADER {{{
 
