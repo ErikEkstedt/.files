@@ -32,6 +32,15 @@ export const deactivate = (oni: Oni.Plugin.Api) => { //{{{
 
 export const configuration = { //{{{
 
+    // // UI customizations ---------
+    // "ui.colorscheme": "onedark",
+    "ui.animations.enabled": true,
+    "ui.fontSmoothing": "auto",
+    "ui.fontSize": "14px"
+
+    // // plugins
+    "sidebar.enabled": true, 
+    "statusbar.fontSize": "14px",
     // Experimental
 	"snippets.enabled": true,
     "experimental.preview.enabled": true,
@@ -40,7 +49,7 @@ export const configuration = { //{{{
     // "autoClosingPairs.enabled": true,
     "autoUpdate.enabled": true,
 
-    "oni.loadInitVim": true,
+    "oni.loadInitVim": false,
 	// // "oni.hideMenu": false, // hide the gui menu (i have menu in os top bar so does not matter) 
 
     "workspace.defaultWorkspace": "/home/erik/blog",
@@ -52,31 +61,15 @@ export const configuration = { //{{{
     "editor.clipboard.synchronizeDelete": false,
     "editor.quickInfo.delay": 200,
     "editor.split.mode": 'oni',
-	// "editor.completions.mode": "oni", 
     "editor.cursorLine": true,
     "editor.cursorLineOpacity": 0.5,
 
-    "language.html.languageServer.command": "/opt/Oni/resources/app/node_modules/vscode-html-languageserver-bin/htmlServerMain.js",
-    "language.html.languageServer.arguments": [
-    "--stdio"
-    ],
-    
-    // // UI customizations ---------
-    // "ui.colorscheme": "onedark",
-    "ui.animations.enabled": true,
-    "ui.fontSmoothing": "auto",
-    "ui.fontSize": "14px"
-
-    // // plugins
-    "sidebar.enabled": false, 
-    "statusbar.fontSize": "14px",
     // "language.python.languageServer.command": "pyls",
     "language.python.languageServer.command": "/home/erik/miniconda3/bin/pyls",
 
     "environment.additionalPaths": [
         "/usr/bin/",
         "/home/erik/miniconda3/bin",
-        "/home/erik/.node_modules_global/bin",
         "/home/erik/.node_modules_global"
     ],
 

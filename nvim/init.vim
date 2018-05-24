@@ -1,7 +1,7 @@
 " vim: fdm=marker
 " NeoVim
 " Erik
-" Ubuntu 16.04 and 17.10
+" Ubuntu 16.04 and 17.10, 18.04
 " Unicode characters: https://www.w3schools.com/charsets/ref_utf_dingbats.asp
 
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
@@ -26,12 +26,13 @@ let g:python_host_prog='/home/erik/miniconda3/envs/py27/bin/python'
 call plug#begin('~/.vim/bundle')
 
 " Deoplete
+"
 if has('nvim') 
-	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
-	Plug 'Shougo/deoplete.nvim'
-	Plug 'roxma/nvim-yarp'
-	Plug 'roxma/vim-hug-neovim-rpc'
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
 endif
 Plug 'zchee/deoplete-jedi'
 Plug 'Shougo/neco-vim'
@@ -43,10 +44,12 @@ Plug 'honza/vim-snippets'              " XXX snippets
 
 " Syntax
 
-Plug 'sheerun/vim-polyglot'            " All the syntax
-Plug 'daeyun/vim-matlab'               " MATLAB
-Plug 'othree/xml.vim'                  " xml highlight
-Plug 'klen/python-mode'                " Python mode (docs, refactor, lints...)
+if !exists("g:gui_oni")
+    Plug 'sheerun/vim-polyglot'            " All the syntax
+    Plug 'daeyun/vim-matlab'               " MATLAB
+    Plug 'othree/xml.vim'                  " xml highlight
+    Plug 'klen/python-mode'                " Python mode (docs, refactor, lints...)
+endif
 
 " Tools
 
@@ -69,7 +72,6 @@ Plug 'easymotion/vim-easymotion'       " XXX visualize targets tot move to speci
 Plug 'ivalkeen/nerdtree-execute'       " open files from nerdtree
 Plug 'lilydjwg/colorizer'              " colorize hexcolor in editor
 Plug 'lotabout/slimux'                 " XXX old: 'epeli/slimux' | vim+ipython OUtdated
-Plug 'luochen1990/rainbow'             " Different color on paranthesis
 Plug 'machakann/vim-highlightedyank'   " XXX Highlight yanks
 Plug 'mtth/scratch.vim'                " Unobtrusive scratch
 Plug 'nelstrom/vim-visual-star-search' " * on visual select searches for the snippet
@@ -103,17 +105,17 @@ if !exists("g:gui_oni")
 	Plug 'danilo-augusto/vim-afterglow'
 	Plug 'mhartington/oceanic-next'
 	Plug 'yuttie/hydrangea-vim'
+    Plug 'junegunn/seoul256.vim'          " cool junegunn is coool
 endif
-Plug 'junegunn/seoul256.vim'          " cool junegunn is coool
 
 if !exists("g:gui_oni")
 	Plug 'itchyny/lightline.vim'
 	Plug 'edkolev/tmuxline.vim'          " tmux statusline same as vim.	 :Tmuxline lightline
-else
-	let &termguicolors = 1
-    set statusline=
-    set statusline+=%#LineNr#
-    set statusline+=\ %f
+" else
+	" let &termguicolors = 1
+    " set statusline=
+    " set statusline+=%#LineNr#
+    " set statusline+=\ %f
 endif
 "}}}
 
@@ -170,6 +172,9 @@ set breakindent                " wrapped line s keep indentation (set bri)
 set cpo+=n
 set breakindentopt+=shift:2    " how far in the showbreak: " ↪ " is
 set breakindentopt+=min:20
+
+set list
+set listchars=tab:▶\ ,trail:·,extends:\#,nbsp:.
 
 set numberwidth=4              " width of numberline
 set mouse=a                    " mouse functionality
@@ -252,5 +257,7 @@ endif
 
 source ~/.config/nvim/Autocommands.vim
 source ~/.config/nvim/Functions.vim
+source ~/.config/nvim/SyntaxColors.vim
 source ~/.config/nvim/PluginSettings.vim
+
 " }}}

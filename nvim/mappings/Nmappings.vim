@@ -19,7 +19,22 @@ nnoremap <leader>sz   :source ~/.zshrc<cr>
 nnoremap <leader>sx   :!xrdb ~/.Xresources<cr>
 nnoremap <leader>sot  :source ~/.tmux.conf<cr>
 " }}}
+
+nnoremap <c-a>j :split+terminal<CR>
+nnoremap <c-a><c-j> :split+terminal<CR>
+nnoremap <c-a>l :vsplit+terminal<CR>
+nnoremap <c-a><c-l> :vsplit+terminal<CR>
+
+nmap <leader>sp :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+
 " LEADER {{{
+
 
 " open quickfix window for latest vim search term.
 nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
@@ -39,6 +54,9 @@ nnoremap <leader><leader>r :redraw!<CR>
 " Open Visdom
 nnoremap <leader>vd :! firefox --new-window 192.168.0.104:8097 &<CR>
 nnoremap <leader>vl :! firefox --new-window localhost:8097 &<CR>
+
+" Open blog
+nnoremap <leader>ob :! firefox --new-window --url=localhost:3003 &<CR>
 
 " substitute word under cursor in entire file.
 nnoremap <leader>sw :%s/<C-r><C-w>//g<Left><Left>

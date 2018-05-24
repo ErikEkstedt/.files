@@ -6,11 +6,11 @@ set termguicolors " Enable true color support.
 let g:seoul256_background = 234
 colorscheme seoul256
 " colorscheme hydrangea
-augroup ColorSchemeGroup "{{{
+augroup ColorSchemeGroup 
 	autocmd!
 	autocmd VimEnter,ColorScheme * call ColorPatches()
-augroup END "}}}
-function! ColorPatches() "{{{
+augroup END 
+function! ColorPatches() 
 	if g:colors_name =~ 'seoul256'
 		call Seoulpatch()
 	elseif g:colors_name =~ 'wombat256mod'
@@ -20,8 +20,9 @@ function! ColorPatches() "{{{
 	elseif g:colors_name =~ 'hydrangea'
 		call Hydrangeapatch()
 	endif
-endfunc  "}}}
-function! Seoulpatch() "{{{
+endfunc  
+
+function! Seoulpatch() 
 	if &background == 'dark'
 		hi Conceal guibg=g:seoul256_current_bg guifg=#404040
 		hi Comment gui=italic
@@ -47,8 +48,9 @@ function! Seoulpatch() "{{{
 	endif
 	call s:set_lightline_colorscheme('myseoul256')
 	call NERDTreeColors()
-endfunc "}}}
-function! Wombat256patch() "{{{
+endfunc 
+
+function! Wombat256patch() 
 	hi Conceal guibg=#242424 guifg=#404040
 	hi CursorLine guibg=#080808
 	hi CursorLineNr guibg=#080808
@@ -68,36 +70,36 @@ function! Wombat256patch() "{{{
 	call NERDTreeColors()
 	call s:set_lightline_colorscheme('mywombat')
 	hi NERDTreeDir guifg=#0c58d3
-endfunc "}}}
-function! Monokaipatch () "{{{
+endfunc 
+function! Monokaipatch () 
 	hi Comment gui=italic
 	hi String gui=italic
 	hi Conceal guifg=#404040
 	call s:set_lightline_colorscheme('molokai')
-endfunc "}}}
-function! Hydrangeapatch () "{{{
+endfunc 
+function! Hydrangeapatch () 
 	hi Comment gui=italic
 	hi String gui=italic
 	hi Number guibg=#1e222c
-endfunc "}}}
-function! NERDTreeColors() "{{{
+endfunc 
+function! NERDTreeColors() 
 	hi Directory guifg=#404040
 	hi NERDTreeCWD guifg=gray50
 	hi NERDTreeFile guifg=white
 	hi NERDTreeBookmarksHeader guifg=gray50
 	hi NERDTreeBookmarkName guifg=gray50
-endfunc "}}}
+endfunc 
 
-function! s:set_lightline_colorscheme(name) abort "{{{
+function! s:set_lightline_colorscheme(name) abort 
 	if !exists("g:gui_oni")
 		let g:lightline.colorscheme = a:name
 		call lightline#init()
 		call lightline#colorscheme()
 		call lightline#update()
 	endif
-endfunction "}}}
+endfunction 
 
-" NERDTree{{{
+" NERDTree
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg) 
 	" overwrites colors for [✹] etc. looks dull
 	" example:
@@ -106,8 +108,8 @@ function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
 	exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction 
 " nnoremap <LocalLeader>n :call NERDTreeColors()<CR>
-"}}}
-" TransparentBackground{{{
+
+" TransparentBackground
 let g:transparent_background = 0
 function! TransparentBackground () 
 	if g:transparent_background 
@@ -125,7 +127,7 @@ function! TransparentBackground ()
 	endif
 endfunc 
 nnoremap <C-t> :call TransparentBackground()<CR>
-"}}}
+
 
 " change text font color to white
 inoremap <leader>å <esc>:hi normal ctermfg=255 guifg=white<cr>

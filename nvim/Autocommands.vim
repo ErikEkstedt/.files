@@ -8,6 +8,7 @@ aug end "}}}
 " set .conf files as dosini
 autocmd BufRead,BufNewFile *.conf setf dosini
 
+
 " Return to line {{{
 " Make sure Vim returns to the same line when you reopen a file.
 augroup line_return
@@ -35,7 +36,6 @@ augroup Latex
 	autocmd BufNewFile,BufRead *.tex setlocal spell! spelllang=en_us
 	autocmd BufNewFile,BufRead *.tex set foldmethod=expr
 augroup END
-
 
 augroup html
 	autocmd!

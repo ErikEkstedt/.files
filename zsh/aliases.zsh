@@ -22,10 +22,11 @@ alias lpdf="ls -ogl *.pdf"
 
 # Movement {{{
 
-alias gp="cd ~/PhD; ls"
-alias phd="PhD"
-
+alias gp="cd ~/phd; ls"
+alias gz="cd ~/.files/zsh; ls"
 alias gfi="cd ~/.files; ls"
+alias gbl="cd ~/blog; ls"
+
 alias gma="cd ~/com_sci/Master_code; ls"
 alias gpr="cd ~/com_sci/Master_code/Gestures/gesture; ls"
 alias gro="cd ~/com_sci/Master_code/Robot/;ls"
