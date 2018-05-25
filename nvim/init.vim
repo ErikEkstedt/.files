@@ -249,8 +249,9 @@ source ~/.config/nvim/mappings/Xmappings.vim
 source ~/.config/nvim/mappings/Cmappings.vim
 source ~/.config/nvim/mappings/oni-mappings.vim
 source ~/.config/nvim/Abbreviations.vim
+
 if !exists("g:gui_oni")
-	source ~/.config/nvim/Appearence.vim
+    source ~/.config/nvim/Appearence.vim
 endif
 
 source ~/.config/nvim/Autocommands.vim

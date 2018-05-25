@@ -33,37 +33,37 @@ endif
 let colors_name = "monokai"
 
 function! s:h(group, style) "{{{
-	let s:ctermformat = "NONE"
-	let s:guiformat = "NONE"
-	if has_key(a:style, "format")
-		let s:ctermformat = a:style.format
-		let s:guiformat = a:style.format
-	endif
-	if g:monokai_term_italic == 0
-		let s:ctermformat = substitute(s:ctermformat, ",italic", "", "")
-		let s:ctermformat = substitute(s:ctermformat, "italic,", "", "")
-		let s:ctermformat = substitute(s:ctermformat, "italic", "", "")
-	endif
-	if g:monokai_gui_italic == 0
-		let s:guiformat = substitute(s:guiformat, ",italic", "", "")
-		let s:guiformat = substitute(s:guiformat, "italic,", "", "")
-		let s:guiformat = substitute(s:guiformat, "italic", "", "")
-	endif
-	if g:monokai_termcolors == 16
-		let l:ctermfg = (has_key(a:style, "fg") ? a:style.fg.cterm16 : "NONE")
-		let l:ctermbg = (has_key(a:style, "bg") ? a:style.bg.cterm16 : "NONE")
-	else
-		let l:ctermfg = (has_key(a:style, "fg") ? a:style.fg.cterm : "NONE")
-		let l:ctermbg = (has_key(a:style, "bg") ? a:style.bg.cterm : "NONE")
-	end
-	execute "highlight" a:group
-				\ "guifg="   (has_key(a:style, "fg")      ? a:style.fg.gui   : "NONE")
-				\ "guibg="   (has_key(a:style, "bg")      ? a:style.bg.gui   : "NONE")
-				\ "guisp="   (has_key(a:style, "sp")      ? a:style.sp.gui   : "NONE")
-				\ "gui="     (!empty(s:guiformat) ? s:guiformat   : "NONE")
-				\ "ctermfg=" . l:ctermfg
-				\ "ctermbg=" . l:ctermbg
-				\ "cterm="   (!empty(s:ctermformat) ? s:ctermformat   : "NONE")
+    let s:ctermformat = "NONE"
+    let s:guiformat = "NONE"
+    if has_key(a:style, "format")
+        let s:ctermformat = a:style.format
+        let s:guiformat = a:style.format
+    endif
+    if g:monokai_term_italic == 0
+        let s:ctermformat = substitute(s:ctermformat, ",italic", "", "")
+        let s:ctermformat = substitute(s:ctermformat, "italic,", "", "")
+        let s:ctermformat = substitute(s:ctermformat, "italic", "", "")
+    endif
+    if g:monokai_gui_italic == 0
+        let s:guiformat = substitute(s:guiformat, ",italic", "", "")
+        let s:guiformat = substitute(s:guiformat, "italic,", "", "")
+        let s:guiformat = substitute(s:guiformat, "italic", "", "")
+    endif
+    if g:monokai_termcolors == 16
+        let l:ctermfg = (has_key(a:style, "fg") ? a:style.fg.cterm16 : "NONE")
+        let l:ctermbg = (has_key(a:style, "bg") ? a:style.bg.cterm16 : "NONE")
+    else
+        let l:ctermfg = (has_key(a:style, "fg") ? a:style.fg.cterm : "NONE")
+        let l:ctermbg = (has_key(a:style, "bg") ? a:style.bg.cterm : "NONE")
+    end
+    execute "highlight" a:group
+                \ "guifg="   (has_key(a:style, "fg")      ? a:style.fg.gui   : "NONE")
+                \ "guibg="   (has_key(a:style, "bg")      ? a:style.bg.gui   : "NONE")
+                \ "guisp="   (has_key(a:style, "sp")      ? a:style.sp.gui   : "NONE")
+                \ "gui="     (!empty(s:guiformat) ? s:guiformat   : "NONE")
+                \ "ctermfg=" . l:ctermfg
+                \ "ctermbg=" . l:ctermbg
+                \ "cterm="   (!empty(s:ctermformat) ? s:ctermformat   : "NONE")
 endfunction "}}}
 
 let s:white       = { "gui": "#E8E8E3", "cterm": "252" }
@@ -76,7 +76,7 @@ let s:lightgrey   = { "gui": "#575b61", "cterm": "237" }
 let s:darkgrey    = { "gui": "#64645e", "cterm": "239" }
 let s:warmgrey    = { "gui": "#75715E", "cterm": "59" }
 
-let s:pink        = { "gui": "#F92772", "cterm": "197" }
+let s:pink        = { "gui": "#F92772", "cterm": "162" }
 let s:green       = { "gui": "#A6E22D", "cterm": "148" }
 let s:aqua        = { "gui": "#66d9ef", "cterm": "81" }
 let s:yellow      = { "gui": "#E6DB74", "cterm": "186" }

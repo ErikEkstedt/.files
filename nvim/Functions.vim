@@ -2,24 +2,36 @@
 " FUNCTIONS 
 
 function! NERDTreeColors() "{{{
-	if g:colors_name =~ 'seoul256'
+    if g:colors_name =~ 'seoul256'
         hi NERDTreeDir guifg=#90a959 
         hi Directory guifg=#404040
         hi NERDTreeCWD guifg=gray50
         hi NERDTreeFile guifg=white
         hi NERDTreeBookmarksHeader guifg=gray50
         hi NERDTreeBookmarkName guifg=gray50
-	elseif g:colors_name =~ 'monokai'
-        hi NERDTreeDir guifg=#90a959 
+    elseif g:colors_name =~ 'monokai'
+        " let l:aqua        = #66d9ef
+        " let l:yellow      = #E6DB74
+        " let l:orange      = #FD9720
+        " let l:purple      = #ae81ff
+        hi NERDTreeBookmarkName guifg=#a6e22d
+        hi NERDTreeDir guifg=#a6e22d
         hi Directory guifg=white
-        hi NERDTreeCWD guifg=pink
-        hi NERDTreeBookmarksHeader guifg=pink
-        hi NERDTreeBookmarkName guifg=white
-        hi NERDTreeBookmark guifg=orange
+        hi NERDTreeCWD guifg=#f92772
+        hi NERDTreeBookmarksHeader guifg=#f92772
+        hi NERDTreeBookmark guifg=#a6e22d
+        hi NERDTreeBookmark guifg=white
+        echo 'NerdTree got new colors'
     endif
 endfunc
 nnoremap <LocalLeader>n :call NERDTreeColors()<CR>
 "}}}
+
+function! ShowGlobalVariables()
+    for k in keys(g:)
+        echo k ':'  g:[k]
+    endfor
+endfunction
 
 " Moving visual lines vertically (greg hurrell){{{
 function! s:Visual()
@@ -119,6 +131,7 @@ function! SyntaxColors() "{{{
                     \ "cterm="   (!empty(s:ctermformat) ? s:ctermformat   : "NONE")
     endfunction "}}}
 
+" Monokai
 let s:white       = { "gui": "#E8E8E3", "cterm": "252" }
 let s:black       = { "gui": "#34352d", "cterm": "234" }
 let s:lightblack  = { "gui": "#44453d", "cterm": "235" }

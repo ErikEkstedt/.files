@@ -41,7 +41,7 @@ call deoplete#custom#source('neosnippet', 'rank', 9999)
 call deoplete#custom#source('_', 'converters', ['converter_auto_paren'])
 
 "}}}
-""============== Neosnippet ====================={{{
+"============== Neosnippet ====================={{{
 "" Plugin key-mappings.
 "" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
 "imap <leader><leader> <Plug>(neosnippet_expand_or_jump)
@@ -91,22 +91,25 @@ let g:UltiSnipsUsePythonVersion = 3
 
 "}}}
 "============== FZF =========================={{{
-" Customize fzf colors to match your color scheme
-let g:fzf_colors = { 'fg': ['fg', 'Normal'], 
-			\ 'bg':      ['bg', 'Normal'],
-			\ 'hl':      ['fg', 'Comment'],
-			\ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-			\ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-			\ 'hl+':     ['fg', 'Statement'],
-			\ 'info':    ['fg', 'PreProc'],
-			\ 'border':  ['fg', 'Ignore'],
-			\ 'prompt':  ['fg', 'Conditional'],
-			\ 'pointer': ['fg', 'Exception'],
-			\ 'marker':  ['fg', 'Keyword'],
-			\ 'spinner': ['fg', 'Label'],
-			\ 'header':  ['fg', 'Comment']}
 
-" let g:fzf_colors = { 'border': ['fg', 'Normal']}
+" if g:colors_name =~ 'monokai'
+"     let g:fzf_colors = { 'fg':['fg', 'Normal'],  'bg':['bg', 'Comment'],  'hl':['fg', 'Function'],  'fg+':['fg', 'Normal', 'Function', 'Normal'],  'bg+':['bg', 'Comment', 'Comment'],  'hl+':['fg', 'Special'], 'info': ['fg', 'PreProc'], 'border':  ['fg', 'SpecialComment'], 'prompt':  ['fg', 'SpecialComment'], 'pointer': ['fg', 'Normal'], 'marker':  ['fg', 'Keyword'], 'spinner': ['fg', 'Label'], 'header':  ['fg', 'Comment'] } 
+" else
+"     " Customize fzf colors to match your color scheme
+"     let g:fzf_colors = { 'fg': ['fg', 'Normal'], 
+"                 \ 'bg':      ['bg', 'Normal'],
+"                 \ 'hl':      ['fg', 'Comment'],
+"                 \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+"                 \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+"                 \ 'hl+':     ['fg', 'Statement'],
+"                 \ 'info':    ['fg', 'PreProc'],
+"                 \ 'border':  ['fg', 'Ignore'],
+"                 \ 'prompt':  ['fg', 'Conditional'],
+"                 \ 'pointer': ['fg', 'Exception'],
+"                 \ 'marker':  ['fg', 'Keyword'],
+"                 \ 'spinner': ['fg', 'Label'],
+"                 \ 'header':  ['fg', 'Comment']}
+" endif
 
 " Settings
 " [Buffers] Jump to the existing window if possible
@@ -143,11 +146,11 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 
 " Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
 command! -bang -nargs=* Rg
-			\ call fzf#vim#grep(
-			\   'rg --column --line-number --no-heading --hidden --color=always '.shellescape(<q-args>), 1,
-			\   <bang>0 ? fzf#vim#with_preview('up:60%')
-			\           : fzf#vim#with_preview('right:50%:hidden', '?'),
-			\   <bang>0)
+            \ call fzf#vim#grep(
+            \   'rg --column --line-number --no-heading --hidden --color=always '.shellescape(<q-args>), 1,
+            \   <bang>0 ? fzf#vim#with_preview('down:60%')
+            \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+            \   <bang>0)
 
 " Likewise, Files command with preview window
 command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
@@ -178,21 +181,21 @@ command! FZFLines call fzf#run({
 
 " This is the default extra key bindings
 let g:fzf_action = {
-			\ 'ctrl-t': 'tab split',
-			\ 'ctrl-x': 'split',
-			\ 'ctrl-v': 'vsplit',
-			\ 'ctrl-o': 'edit',
-			\ 'Enter': 'vsplit',
-			\ 'Esc': 'exit', }
+            \ 'ctrl-t': 'tab split',
+            \ 'ctrl-x': 'split',
+            \ 'ctrl-v': 'vsplit',
+            \ 'ctrl-o': 'edit',
+            \ 'Enter': 'vsplit',
+            \ 'Esc': 'exit', }
 "}}}
 "============== Tmux-navigation =============={{{
 let g:tmux_navigator_no_mappings = 1
 
 if !exists('g:gui_oni')
-	nnoremap <silent><Left> :TmuxNavigateLeft<cr>
-	nnoremap <silent><Down> :TmuxNavigateDown<cr>
-	nnoremap <silent><Up> :TmuxNavigateUp<cr>
-	nnoremap <silent><Right> :TmuxNavigateRight<cr>
+    nnoremap <silent><Left> :TmuxNavigateLeft<cr>
+    nnoremap <silent><Down> :TmuxNavigateDown<cr>
+    nnoremap <silent><Up> :TmuxNavigateUp<cr>
+    nnoremap <silent><Right> :TmuxNavigateRight<cr>
 endif
 
 "}}}
@@ -624,5 +627,5 @@ augroup END
 
 "}}}
 "============== vim-polyglot ========================{{{
-let g:polyglot_disabled = ['latex', 'markdown']
+let g:polyglot_disabled = ['latex', 'markdown', 'javascript']
 "}}}
