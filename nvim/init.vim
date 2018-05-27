@@ -19,6 +19,7 @@ set rtp+=~/.fzf
 "PythonPath
 let g:python3_host_prog='/home/erik/miniconda3/bin/python'
 let g:python_host_prog='/home/erik/miniconda3/envs/py27/bin/python'
+let g:node_host_prog = '/home/erik/.node_modules_global/bin/neovim-node-host' 
 
 "============= Vim-Plug ======================{{{
 " Plugins marked with XXX I know I use/like a lot.
@@ -48,8 +49,8 @@ if !exists("g:gui_oni")
     Plug 'sheerun/vim-polyglot'            " All the syntax messed upp syntax for oni ( turned .js -> javascript.jsx
     Plug 'daeyun/vim-matlab'               " MATLAB
     Plug 'othree/xml.vim'                  " xml highlight
-    Plug 'klen/python-mode'                " Python mode (docs, refactor, lints...)
 endif
+Plug 'klen/python-mode'                " Python mode (docs, refactor, lints...)
 
 " Tools
 Plug 'tpope/vim-obsession'             " :mksession | saves a vim instance | used when saving tmux session
@@ -196,6 +197,7 @@ let g:tex_flavor = "latex"     " assuem *.tex are all latex files
 if has('windows')
 	set fillchars=vert:\┃  " ┃ line with no breaks between vertical splits
 endif
+
 
 if !exists("g:gui_oni")
 	set laststatus=2 "always show status bar

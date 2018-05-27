@@ -1,0 +1,22 @@
+[Desktop Entry]
+Categories=Education;Programming
+Comment[en_US]=A powerful web-based interface for neovim
+Comment=A powerful web-based interface for neovim
+GenericName[en_US]=The Oni text-editor
+GenericName=The Oni text-editor
+
+Type=Application
+Path=
+Exec=/home/erik/.files/bin/Oni-launcher
+Icon=oni
+Terminal=false
+MimeType=
+Name[en_US]=Oni
+Name=Oni
+StartupNotify=true
+nTerminalOptions=
+Version=3.4
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=

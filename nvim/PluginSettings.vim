@@ -270,7 +270,7 @@ let g:pymode_syntax_docstrings               = g:pymode_syntax_all
 "}}}
 
 " code folding
-let g:pymode_folding=0
+let g:pymode_folding = 1
 
 " pep8 indents
 let g:pymode_indent=1

@@ -48,11 +48,21 @@ nnoremap <leader>mm vip=
 nnoremap <leader><leader>r :redraw!<CR>
 
 " Open Visdom
-nnoremap <leader>vd :! firefox --new-window 192.168.0.104:8097 &<CR>
-nnoremap <leader>vl :! firefox --new-window localhost:8097 &<CR>
+" mneumonic: 
+"   Visualize-Google-VIsdom
+"   Visualize-Firefox-VIsdom
+nnoremap <leader>vgvi :! google-chrome --new-window 192.168.0.104:8097 &<CR>
+nnoremap <leader>vfvi :! firefox --new-window localhost:8097 &<CR>
+
+" Open Tensorboard
+" mneumonic: 
+"   Visualize-Google-TensorBoard
+"   Visualize-Firefox-TensorBoard
+nnoremap <leader>vgtb :! google-chrome --new-window 192.168.0.104:6006 &<CR>
+nnoremap <leader>vftb :! firefox --new-window localhost:6006 &<CR>
 
 " Open blog
-nnoremap <leader>ob :! firefox --new-window --url=localhost:3003 &<CR>
+noremap <leader>ob :! firefox --new-window --url=localhost:3003 &<CR>
 
 " substitute word under cursor in entire file.
 nnoremap <leader>sw :%s/<C-r><C-w>//g<Left><Left>

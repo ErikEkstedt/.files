@@ -61,41 +61,24 @@ let s:changefg    = { "gui": "#d7d7ff", "cterm": "189" }
 let s:changebg    = { "gui": "#5f5f87", "cterm": "60" }
 
 " Language-Specific Highlighting {{{
-"" CSS {{{
+" PYTHON {{{
+call s:h("pythonClassParameter", { "fg": s:changebg })
+" call s:h("pythonAttribute", { "fg": s:orange })
 
-"call s:h("cssAttrComma", { "fg": s:purple })
-"call s:h("cssAttributeSelector", { "fg": s:green })
+call s:h("pythonVars", { "fg": s:orange })
+call s:h("pythonParameters", { "fg": s:white })
+call s:h("pythonParam", { "fg": s:orange })
+call s:h("pythonSelf", { "fg": s:purple })
+
+" }}}
+
+"" CSS {{{
 call s:h("cssAttrRegion", { "fg": s:pink })
-"call s:h("cssBraces", { "fg": s:white })
-"call s:h("cssClassName", { "fg": s:dark_yellow })
-"call s:h("cssClassNameDot", { "fg": s:dark_yellow })
-"call s:h("cssDefinition", { "fg": s:purple })
-"call s:h("cssFontAttr", { "fg": s:dark_yellow })
-"call s:h("cssFontDescriptor", { "fg": s:purple })
-"call s:h("cssFunctionName", { "fg": s:aqua })
-"call s:h("cssIdentifier", { "fg": s:aqua })
-"call s:h("cssImportant", { "fg": s:purple })
-"call s:h("cssInclude", { "fg": s:white })
-"call s:h("cssIncludeKeyword", { "fg": s:purple })
-"call s:h("cssMediaType", { "fg": s:dark_yellow })
 call s:h("cssUnitDecorators", { "fg": s:pink })
-"call s:h("cssProp", { "fg": s:white })
-"call s:h("cssPseudoClassId", { "fg": s:dark_yellow })
-"call s:h("cssSelectorOp", { "fg": s:purple })
-"call s:h("cssSelectorOp2", { "fg": s:purple })
-"call s:h("cssTagName", { "fg": s:red })
 
 ""}}}
 "" HTML {{{
-"call s:h("htmlTitle", { "fg": s:white })
-"call s:h("htmlArg", { "fg": s:dark_yellow })
-"call s:h("htmlEndTag", { "fg": s:white })
-"call s:h("htmlH1", { "fg": s:white })
-"call s:h("htmlLink", { "fg": s:purple })
-"call s:h("htmlSpecialChar", { "fg": s:dark_yellow })
-"call s:h("htmlSpecialTagName", { "fg": s:red })
-"call s:h("htmlTag", { "fg": s:white })
-"call s:h("htmlTagName", { "fg": s:red })
+call s:h("htmlTitle", { "fg": s:pink })
 ""}}}
 "" JavaScript {{{
 call s:h("javaScriptBraces", { "fg": s:white })
@@ -156,8 +139,8 @@ call s:h("jsStorageClass", { "fg": s:purple })
 ""}}}
 "" JSON {{{
 call s:h("jsonCommentError", { "fg": s:white })
-call s:h("jsonKeyword", { "fg": s:pink })
-call s:h("jsonBoolean", { "fg": s:aqua })
+call s:h("jsonKeyword", { "fg": s:yellow })
+call s:h("jsonBoolean", { "fg": s:pink })
 call s:h("jsonNumber", { "fg": s:purple })
 call s:h("jsonQuote", { "fg": s:white })
 call s:h("jsonMissingCommaError", { "fg": s:red, "gui": "reverse" })
@@ -168,29 +151,21 @@ call s:h("jsonStringSQError", { "fg": s:red, "gui": "reverse" })
 call s:h("jsonSemicolonError", { "fg": s:red, "gui": "reverse" })
 "" }}}
 "" Markdown {{{
-"call s:h("markdownCode", { "fg": s:green })
-"call s:h("markdownCodeBlock", { "fg": s:green })
-"call s:h("markdownCodeDelimiter", { "fg": s:green })
-"call s:h("markdownHeadingDelimiter", { "fg": s:red })
-"call s:h("markdownRule", { "fg": s:warmgrey })
-"call s:h("markdownHeadingRule", { "fg": s:warmgrey })
-"call s:h("markdownH1", { "fg": s:red })
-"call s:h("markdownH2", { "fg": s:red })
-"call s:h("markdownH3", { "fg": s:red })
-"call s:h("markdownH4", { "fg": s:red })
-"call s:h("markdownH5", { "fg": s:red })
-"call s:h("markdownH6", { "fg": s:red })
-"call s:h("markdownIdDelimiter", { "fg": s:purple })
-"call s:h("markdownId", { "fg": s:purple })
-"call s:h("markdownBlockquote", { "fg": s:warmgrey })
-"call s:h("markdownItalic", { "fg": s:purple, "gui": "italic", "cterm": "italic" })
-"call s:h("markdownBold", { "fg": s:dark_yellow, "gui": "bold", "cterm": "bold" })
-"call s:h("markdownListMarker", { "fg": s:red })
-"call s:h("markdownOrderedListMarker", { "fg": s:red })
-"call s:h("markdownIdDeclaration", { "fg": s:aqua })
-"call s:h("markdownLinkText", { "fg": s:aqua })
-"call s:h("markdownLinkDelimiter", { "fg": s:white })
-"call s:h("markdownUrl", { "fg": s:purple })
+call s:h("markdownCode", { "fg": s:green })
+call s:h("markdownCodeBlock", { "fg": s:yellow })
+call s:h("markdownCodeDelimiter", { "fg": s:green })
+call s:h("markdownHeadingDelimiter", { "fg": s:pink })
+call s:h("markdownRule", { "fg": s:warmgrey })
+call s:h("markdownHeadingRule", { "fg": s:warmgrey })
+call s:h("markdownH1", { "fg": s:purple })
+call s:h("markdownH2", { "fg": s:yellow })
+call s:h("markdownH3", { "fg": s:yellow })
+call s:h("markdownH4", { "fg": s:yellow })
+call s:h("markdownH5", { "fg": s:yellow })
+call s:h("markdownH6", { "fg": s:yellow })
+call s:h("markdownBlockquote", { "fg": s:warmgrey })
+call s:h("markdownItalic", { "fg": s:yellow, "gui": "italic", "cterm": "italic" })
+call s:h("markdownBold", { "fg": s:yellow, "gui": "bold", "cterm": "bold" })
 "" }}}
 "" Ruby{{{
 "call s:h("rubyBlockParameter", { "fg": s:red})
