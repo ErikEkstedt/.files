@@ -65,6 +65,12 @@ let s:changefg    = { "gui": "#d7d7ff", "cterm": "189" }
 let s:changebg    = { "gui": "#5f5f87", "cterm": "60" }
 
 " Language-Specific Highlighting {{{
+<<<<<<< HEAD
+" Vim
+call s:h("vimFunction", { "fg": s:green })
+
+"" CSS {{{
+=======
 " PYTHON {{{
 call s:h("pythonClassParameter", { "fg": s:changebg })
 " call s:h("pythonAttribute", { "fg": s:orange })
@@ -73,6 +79,8 @@ call s:h("pythonVars", { "fg": s:orange })
 call s:h("pythonParameters", { "fg": s:white })
 call s:h("pythonParam", { "fg": s:orange })
 call s:h("pythonSelf", { "fg": s:purple })
+>>>>>>> 98bbea239f8a094670962b4bcc8b485d2c63239d
+
 " }}}
 
 "" CSS {{{
@@ -141,8 +149,13 @@ call s:h("jsStorageClass", { "fg": s:purple })
 ""}}}
 "" JSON {{{
 call s:h("jsonCommentError", { "fg": s:white })
+<<<<<<< HEAD
+call s:h("jsonKeyword", { "fg": s:red })
+call s:h("jsonBoolean", { "fg": s:dark_yellow })
+=======
 call s:h("jsonKeyword", { "fg": s:yellow })
 call s:h("jsonBoolean", { "fg": s:pink })
+>>>>>>> 98bbea239f8a094670962b4bcc8b485d2c63239d
 call s:h("jsonNumber", { "fg": s:purple })
 call s:h("jsonQuote", { "fg": s:white })
 call s:h("jsonMissingCommaError", { "fg": s:red, "gui": "reverse" })

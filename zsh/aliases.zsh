@@ -86,7 +86,7 @@ alias gstatus="python ~/.files/bin/git-script"
 alias tls="tmux list-sessions"
 alias tkd="tmux-kill-detached-sessions"
 alias tk="tmux kill-session -t ."
-alias tatt="tmux attach -t"
+# alias tatt="tmux attach -t"
 alias tkill="tmux kill-session -t"
 alias tst="tmux new-session"
 # }}}
