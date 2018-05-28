@@ -140,7 +140,7 @@ call s:h("jsStorageClass", { "fg": s:purple })
 
 ""}}}
 "" JSON {{{
-call s:h("jsonCommentError", { "fg": s:white })
+call s:h("jsonCommentError", { "fg": s:warmgrey })
 call s:h("jsonKeyword", { "fg": s:yellow })
 call s:h("jsonBoolean", { "fg": s:pink })
 call s:h("jsonNumber", { "fg": s:purple })

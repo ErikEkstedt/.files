@@ -622,5 +622,5 @@ augroup END
 
 "}}}
 "============== vim-polyglot ========================{{{
-let g:polyglot_disabled = ['latex', 'markdown', 'javascript']
+let g:polyglot_disabled = ['latex', 'markdown', 'javascript', 'js']
 "}}}
