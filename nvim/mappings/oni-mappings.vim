@@ -1,6 +1,3 @@
-nnoremap <silent> gd :<C-u>call OniCommand("language.gotoDefinition")<CR>
-
-
 tnoremap <A-h> <C-\><C-N><C-w>h
 tnoremap <A-j> <C-\><C-N><C-w>j
 tnoremap <A-k> <C-\><C-N><C-w>k

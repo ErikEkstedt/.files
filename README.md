@@ -29,6 +29,3 @@ Workflow relies on zsh+tmux+vim/oni.
 ## Useful tips
 Get unicode to clipboard
 	echo -ne "\uf026" | xclip -selection clipboard
-
-
-

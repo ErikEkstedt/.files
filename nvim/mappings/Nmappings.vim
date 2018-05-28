@@ -20,6 +20,7 @@ nnoremap <leader>sx   :!xrdb ~/.Xresources<cr>
 nnoremap <leader>sot  :source ~/.tmux.conf<cr>
 " }}}
 
+" Tmux mappings for terminals (moslty in oni otherwise tmux will handle this)
 nnoremap <c-a>j :split+terminal<CR>
 nnoremap <c-a><c-j> :split+terminal<CR>
 nnoremap <c-a>l :vsplit+terminal<CR>
@@ -30,7 +31,6 @@ nnoremap k gk
 
 
 " LEADER {{{
-
 
 " open quickfix window for latest vim search term.
 nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
@@ -47,6 +47,7 @@ nnoremap <leader>mm vip=
 " redraw 
 nnoremap <leader><leader>r :redraw!<CR>
 
+" Browser Mappings
 " Open Visdom
 " mneumonic: 
 "   Visualize-Google-VIsdom
@@ -90,7 +91,6 @@ endif
 noremap <leader>db :%bd<CR><C-O>:bd#<CR>
 
 " }}}
-" CTRL & TAB {{{
 "indenting/unindenting 
 nnoremap <tab> >>
 nnoremap <s-tab> <lt><lt>
@@ -203,7 +203,7 @@ nnoremap H 0
 " foldclosed('.') returns -1 if not a closed fold or the linenumber
 " where the closed fold is.
 nnoremap <silent> o @=(foldclosed('.')>0?'za':"o")<CR>
-"}}}
+
 
 function SetFold() "{{{
 	:set foldtext=v:folddashes.substitute(getline(v:foldstart),'/\\*\\\|\\*/\\\|{{{\\d\\=','','g')

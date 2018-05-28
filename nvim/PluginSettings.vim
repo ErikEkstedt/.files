@@ -2,11 +2,7 @@
 " PLUGIN SETTINGS
 "============== Deoplete ====================={{{
 " Use deoplete.
-if !exists('g:gui_oni')
-	let g:deoplete#enable_at_startup = 1
-else
-	let g:deoplete#enable_at_startup = 0
-endif
+let g:deoplete#enable_at_startup = 1
 
 let g:loaded_neopairs = 1
 let g:neopairs#enable = 1
@@ -37,7 +33,6 @@ autocmd CompleteDone * pclose!
 
 call deoplete#custom#source('_', 'sorters', ['sorter_word'])
 call deoplete#custom#source('ultisnips', 'rank', 9999)
-call deoplete#custom#source('neosnippet', 'rank', 9999)
 call deoplete#custom#source('_', 'converters', ['converter_auto_paren'])
 
 "}}}
@@ -366,8 +361,8 @@ let g:livedown_open = 1
 let g:livedown_port = 1337
 
 " the browser to use
-let g:livedown_browser = g:BROWSER
-" let g:livedown_browser = "firefox -P" 
+" let g:livedown_browser = g:BROWSER
+let g:livedown_browser = "firefox" 
 
 " mappings in ftplugin/markdown
 " nnoremap <localleader>ll :LivedownToggle<CR>

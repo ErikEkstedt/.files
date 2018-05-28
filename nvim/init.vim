@@ -45,48 +45,46 @@ Plug 'honza/vim-snippets'              " XXX snippets
 
 " Syntax
 
-if !exists("g:gui_oni")
-    Plug 'sheerun/vim-polyglot'            " All the syntax messed upp syntax for oni ( turned .js -> javascript.jsx
-    Plug 'daeyun/vim-matlab'               " MATLAB
-    Plug 'othree/xml.vim'                  " xml highlight
-endif
+Plug 'sheerun/vim-polyglot'            " All the syntax messed upp syntax for oni ( turned .js -> javascript.jsx
+Plug 'daeyun/vim-matlab'               " MATLAB
+Plug 'othree/xml.vim'                  " xml highlight
 Plug 'klen/python-mode'                " Python mode (docs, refactor, lints...)
 
 " Tools
-Plug 'tpope/vim-obsession'             " :mksession | saves a vim instance | used when saving tmux session
-Plug 'tpope/vim-fugitive'              " git tools
-Plug 'tpope/vim-commentary'            " XXX commenting
-Plug 'tpope/vim-repeat'                " XXX repeat commands not repeatable by 'vanilla' vim
-Plug 'tpope/vim-surround'              " XXX Surround objects with quotes, brackets ...
-Plug 'junegunn/fzf.vim'                " XXX fuzzy filefinding
-Plug 'junegunn/vim-after-object'       " change everything after something
-Plug 'junegunn/vim-easy-align'         " XXX better alignment than tabular
-Plug 'junegunn/vim-peekaboo'           " when pressing quotes shows what's stored in the different registers
-Plug 'junegunn/goyo.vim'               " Distraction free writing
 Plug 'DougBeney/pickachu'              " Pick Color/date/
 Plug 'Valloric/MatchTagAlways' 
 Plug 'Xuyuanp/nerdtree-git-plugin'     " show git status of files
 Plug 'Yggdroot/indentLine'             " see where there is indent
 Plug 'airblade/vim-gitgutter'          " XXX see git changes in file in the numberline
+Plug 'cohama/lexima.vim'              " autoclosing brackets
 Plug 'easymotion/vim-easymotion'       " XXX visualize targets tot move to specific words
 Plug 'ivalkeen/nerdtree-execute'       " open files from nerdtree
+Plug 'junegunn/fzf.vim'                " XXX fuzzy filefinding
+Plug 'junegunn/goyo.vim'               " Distraction free writing
+Plug 'junegunn/vim-after-object'       " change everything after something
+Plug 'junegunn/vim-easy-align'         " XXX better alignment than tabular
+Plug 'junegunn/vim-peekaboo'           " when pressing quotes shows what's stored in the different registers
 Plug 'lilydjwg/colorizer'              " colorize hexcolor in editor
 Plug 'lotabout/slimux'                 " XXX old: 'epeli/slimux' | vim+ipython OUtdated
 Plug 'machakann/vim-highlightedyank'   " XXX Highlight yanks
 Plug 'mtth/scratch.vim'                " Unobtrusive scratch
-Plug 'nelstrom/vim-visual-star-search' " * on visual select searches for the snippet
 Plug 'nelstrom/vim-markdown-folding'   " help with folding in markdown
+Plug 'nelstrom/vim-visual-star-search' " * on visual select searches for the snippet
 Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/nerdtree'             " XXX Project and file navigation
 Plug 'sjl/gundo.vim'                   " Visualize undo tree
 Plug 'tommcdo/vim-exchange'            " exchange two words. ex: cxw (on first word) . (on second)
+Plug 'tpope/vim-commentary'            " XXX commenting
+Plug 'tpope/vim-fugitive'              " git tools
+Plug 'tpope/vim-obsession'             " :mksession | saves a vim instance | used when saving tmux session
+Plug 'tpope/vim-repeat'                " XXX repeat commands not repeatable by 'vanilla' vim
+Plug 'tpope/vim-surround'              " XXX Surround objects with quotes, brackets ...
 Plug 'w0rp/ale'                        " asynchronous linting
 Plug 'wellle/targets.vim'              " XXX ci' works on (, [, {, <
 
 if !exists("g:gui_oni")
 	Plug 'christoomey/vim-tmux-navigator' " navigate between vim and tmuz seemlessly
 	" Plug 'Raimondi/delimitMate'           " autoclosing of brackets, quotes ...
-	Plug 'cohama/lexima.vim'              " autoclosing brackets
 endif
 
 " Preview Text 
