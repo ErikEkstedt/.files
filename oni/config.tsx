@@ -36,12 +36,12 @@ export const configuration = { //{{{
     "ui.colorscheme": "monokai",
     "ui.animations.enabled": true,
     "ui.fontSmoothing": "auto",
-    "ui.fontSize": "14px"
+    "ui.fontSize": "16px"
 
     // // plugins
     "sidebar.enabled": true, 
     "sidebar.default.open": false,
-    "statusbar.fontSize": "14px",
+    "statusbar.fontSize": "16px",
 
     // Experimental
 	"snippets.enabled": true,
@@ -54,7 +54,7 @@ export const configuration = { //{{{
     "oni.loadInitVim": true,
 
     // Editor
-    "editor.fontSize": "15px", "editor.linePadding": 1,
+    "editor.fontSize": "19px", "editor.linePadding": 1,
     "editor.clipboard.enabled": false,
     "editor.clipboard.synchronizeYank": false,
     "editor.clipboard.synchronizeDelete": false,
