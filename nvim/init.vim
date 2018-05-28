@@ -247,13 +247,14 @@ source ~/.config/nvim/mappings/Imappings.vim
 source ~/.config/nvim/mappings/Vmappings.vim
 source ~/.config/nvim/mappings/Xmappings.vim
 source ~/.config/nvim/mappings/Cmappings.vim
-source ~/.config/nvim/mappings/oni-mappings.vim
-source ~/.config/nvim/Abbreviations.vim
 
-if !exists("g:gui_oni")
+if exists("g:gui_oni")
+    source ~/.config/nvim/mappings/oni-mappings.vim
+else
     source ~/.config/nvim/Appearence.vim
 endif
 
+source ~/.config/nvim/Abbreviations.vim
 source ~/.config/nvim/Autocommands.vim
 source ~/.config/nvim/Functions.vim
 source ~/.config/nvim/SyntaxColors.vim

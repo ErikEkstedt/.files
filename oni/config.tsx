@@ -33,28 +33,27 @@ export const deactivate = (oni: Oni.Plugin.Api) => { //{{{
 export const configuration = { //{{{
 
     // // UI customizations ---------
-    // "ui.colorscheme": "onedark",
+    "ui.colorscheme": "monokai",
     "ui.animations.enabled": true,
     "ui.fontSmoothing": "auto",
     "ui.fontSize": "14px"
 
     // // plugins
     "sidebar.enabled": true, 
+    "sidebar.default.open": false,
     "statusbar.fontSize": "14px",
+
     // Experimental
 	"snippets.enabled": true,
     "experimental.preview.enabled": true,
 
     // Settings
-    // "autoClosingPairs.enabled": true,
+    "autoClosingPairs.enabled": false,
     "autoUpdate.enabled": true,
 
-    "oni.loadInitVim": false,
-	// // "oni.hideMenu": false, // hide the gui menu (i have menu in os top bar so does not matter) 
+    "oni.loadInitVim": true,
 
-    "workspace.defaultWorkspace": "/home/erik/blog",
-
-    // // Editor
+    // Editor
     "editor.fontSize": "15px", "editor.linePadding": 1,
     "editor.clipboard.enabled": false,
     "editor.clipboard.synchronizeYank": false,
@@ -63,42 +62,16 @@ export const configuration = { //{{{
     "editor.split.mode": 'oni',
     "editor.cursorLine": true,
     "editor.cursorLineOpacity": 0.5,
+    "editor.textMateHighlighting.enabled": true,
+
 
     // "language.python.languageServer.command": "pyls",
-    "language.python.languageServer.command": "/home/erik/miniconda3/bin/pyls",
+    // "language.python.languageServer.command": "/home/erik/miniconda3/bin/pyls",
 
+    "workspace.defaultWorkspace": "/home/erik/blog",
     "environment.additionalPaths": [
         "/usr/bin/",
         "/home/erik/miniconda3/bin",
         "/home/erik/.node_modules_global"
     ],
-
-    // Colors ------------------{{{
-    
-    // "colors.tabs.background": "#000000",
-    // "colors.tabs.foreground": "#000000",
-    
-    // "colors.toolTip.background": "#000000",
-    // "colors.toolTip.foreground": "#000000",
-    // "colors.toolTip.border": "#aa0000",
-
-    // "colors.editor.hover.title.background": "#241234",
-    // "colors.editor.hover.title.foreground": "#aa0000",
-    // "colors.editor.hover.border": "#000000",
-    // "colors.editor.hover.contents.background": "#aa0000",
-    // "colors.editor.hover.contents.foreground": "#000000",
-    // "colors.editor.hover.contents.codeblock.background": "#000000",
-    // "colors.editor.hover.contents.codeblock.foreground": "#000000",
-    
-    // "colors.contextMenu.background": "#000000",
-    // "colors.contextMenu.foreground": "#000000",
-    // "colors.contextMenu.border": "#aaaaaa",
-    // "colors.contextMenu.highlight": "#000000",
-    
-    // "colors.menu.background": "#151515",
-    // "colors.menu.foreground": "#aaaaaa",
-    // "colors.menu.border": "#aaaaaa",
-    // "colors.menu.highlight": "#aaaaaa",
-    // }}}
-
 } // }}}

@@ -1,4 +1,7 @@
 " Stolen from onedark-theme
+" Sets all syntax colors. Plugins overwrites the colorscheme so I overwrite
+" the plugins. 
+" TODO: Need to automate this
 function! SyntaxColors() "{{{
     function! s:h(group, style) "{{{
         let s:ctermformat = "NONE"
@@ -34,6 +37,7 @@ function! SyntaxColors() "{{{
                     \ "cterm="   (!empty(s:ctermformat) ? s:ctermformat   : "NONE")
     endfunction "}}}
 
+" Monokai
 let s:white       = { "gui": "#E8E8E3", "cterm": "252" }
 let s:black       = { "gui": "#34352d", "cterm": "234" }
 let s:lightblack  = { "gui": "#44453d", "cterm": "235" }
@@ -61,6 +65,9 @@ let s:changefg    = { "gui": "#d7d7ff", "cterm": "189" }
 let s:changebg    = { "gui": "#5f5f87", "cterm": "60" }
 
 " Language-Specific Highlighting {{{
+" Vim
+call s:h("vimFunction", { "fg": s:green })
+
 "" CSS {{{
 
 "call s:h("cssAttrComma", { "fg": s:purple })
@@ -100,7 +107,7 @@ call s:h("cssUnitDecorators", { "fg": s:pink })
 "" JavaScript {{{
 call s:h("javaScriptBraces", { "fg": s:white })
 call s:h("javaScriptFunction", { "fg": s:green })
-call s:h("javaScriptIdentifier", { "fg": s:white })
+call s:h("javaScriptIdentifier", { "fg": s:aqua })
 call s:h("javaScriptNull", { "fg": s:dark_yellow })
 call s:h("javaScriptNumber", { "fg": s:purple })
 call s:h("javaScriptRequire", { "fg": s:aqua })
@@ -115,10 +122,9 @@ call s:h("javascriptEndColons", { "fg": s:white })
 call s:h("javascriptExport", { "fg": s:purple })
 call s:h("javascriptFuncArg", { "fg": s:white })
 call s:h("javascriptFuncKeyword", { "fg": s:purple })
-call s:h("javascriptIdentifier", { "fg": s:red })
 call s:h("javascriptImport", { "fg": s:purple })
 call s:h("javascriptObjectLabel", { "fg": s:white })
-	call s:h("javascriptOpSymbol", { "fg": s:aqua })
+call s:h("javascriptOpSymbol", { "fg": s:aqua })
 call s:h("javascriptOpSymbols", { "fg": s:aqua })
 call s:h("javascriptPropertyName", { "fg": s:green })
 call s:h("javascriptTemplateSB", { "fg": s:darkred })
@@ -156,14 +162,14 @@ call s:h("jsStorageClass", { "fg": s:purple })
 ""}}}
 "" JSON {{{
 call s:h("jsonCommentError", { "fg": s:white })
-call s:h("jsonKeyword", { "fg": s:pink })
-call s:h("jsonBoolean", { "fg": s:aqua })
+call s:h("jsonKeyword", { "fg": s:red })
+call s:h("jsonBoolean", { "fg": s:dark_yellow })
 call s:h("jsonNumber", { "fg": s:purple })
 call s:h("jsonQuote", { "fg": s:white })
 call s:h("jsonMissingCommaError", { "fg": s:red, "gui": "reverse" })
 call s:h("jsonNoQuotesError", { "fg": s:red, "gui": "reverse" })
 call s:h("jsonNumError", { "fg": s:red, "gui": "reverse" })
-call s:h("jsonString", { "fg": s:yellow })
+call s:h("jsonString", { "fg": s:green })
 call s:h("jsonStringSQError", { "fg": s:red, "gui": "reverse" })
 call s:h("jsonSemicolonError", { "fg": s:red, "gui": "reverse" })
 "" }}}
@@ -240,3 +246,5 @@ call s:h("jsonSemicolonError", { "fg": s:red, "gui": "reverse" })
 "" }}}
 "}}}
 endfunction "}}}
+
+

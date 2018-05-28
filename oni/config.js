@@ -22,45 +22,40 @@ exports.deactivate = function (oni) {
     console.log("config deactivated");
 }; // }}}
 exports.configuration = {
-    // Experimental
-    "snippets.enabled": true,
-    "experimental.preview.enabled": true,
-    // Settings
-    // "autoClosingPairs.enabled": true,
-    "autoUpdate.enabled": true,
-    "oni.loadInitVim": true,
-    // // "oni.hideMenu": false, // hide the gui menu (i have menu in os top bar so does not matter) 
-    "workspace.defaultWorkspace": "/home/erik/blog",
-    // // Editor
-    "editor.fontSize": "15px", "editor.linePadding": 1,
-    "editor.clipboard.enabled": false,
-    "editor.clipboard.synchronizeYank": false,
-    "editor.clipboard.synchronizeDelete": false,
-    "editor.quickInfo.delay": 200,
-    "editor.split.mode": 'oni',
-    // "editor.completions.mode": "oni", 
-    "editor.cursorLine": true,
-    "editor.cursorLineOpacity": 0.5,
-    "language.html.languageServer.command": "/opt/Oni/resources/app/node_modules/vscode-html-languageserver-bin/htmlServerMain.js",
-    "language.html.languageServer.arguments": [
-        "--stdio"
-    ],
     // // UI customizations ---------
-    // "ui.colorscheme": "onedark",
+    "ui.colorscheme": "monokai",
     "ui.animations.enabled": true,
     "ui.fontSmoothing": "auto",
     "ui.fontSize": "14px"
     // // plugins
     ,
     // // plugins
-    "sidebar.enabled": false,
+    "sidebar.enabled": true,
+    "sidebar.default.open": false,
     "statusbar.fontSize": "14px",
+    // Experimental
+    "snippets.enabled": true,
+    "experimental.preview.enabled": true,
+    // Settings
+    "autoClosingPairs.enabled": false,
+    "autoUpdate.enabled": true,
+    "oni.loadInitVim": true,
+    // Editor
+    "editor.fontSize": "15px", "editor.linePadding": 1,
+    "editor.clipboard.enabled": false,
+    "editor.clipboard.synchronizeYank": false,
+    "editor.clipboard.synchronizeDelete": false,
+    "editor.quickInfo.delay": 200,
+    "editor.split.mode": 'oni',
+    "editor.cursorLine": true,
+    "editor.cursorLineOpacity": 0.5,
+    "editor.textMateHighlighting.enabled": true,
     // "language.python.languageServer.command": "pyls",
-    "language.python.languageServer.command": "/home/erik/miniconda3/bin/pyls",
+    // "language.python.languageServer.command": "/home/erik/miniconda3/bin/pyls",
+    "workspace.defaultWorkspace": "/home/erik/blog",
     "environment.additionalPaths": [
         "/usr/bin/",
         "/home/erik/miniconda3/bin",
-        "/home/erik/.node_modules_global/bin",
         "/home/erik/.node_modules_global"
     ]
 }; // }}}
