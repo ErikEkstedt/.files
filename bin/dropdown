@@ -27,9 +27,9 @@ tmux send-keys -t $session:2 "htop" Enter
 tmux new-window -t $session:3
 tmux rename-window -t $session:3 "IPython"
 
-tmux new-window -t $session:3
-tmux rename-window -t $session:3 "Server"
-tmux send-keys -t $session:3 "cd ~/blog" Enter
+tmux new-window -t $session:4
+tmux rename-window -t $session:4 "Server"
+tmux send-keys -t $session:4 "cd ~/blog && nodemon app.js" Enter
 
 tmux select-window -t $session:0
 tmux attach-session -d -t $session
