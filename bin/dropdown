@@ -5,31 +5,8 @@
 
 session="DropDown"
 
-if [ "$TMUX" = "" ]; then
-	# No tmux server running. Start a new sesssion.
-	kdialog --icon ~/.files/icons/tmux.png --passivepopup "Making new tmux-session $session"
-	tmux new-session -d -s $session
-	_init
-else
-	if (tmux has-session -t "$session" 2> /dev/null); then
-		# A tmux server is running and DropDown already exists. Switch to DropDown.
-		echo "Session $session exists."
-		kdialog --icon ~/.files/icons/tmux.png --passivepopup "Tmux-session $session exists. Attaching!"
-		tmux switch-client -t $session
-	else
-		# A tmux server is running but DropDown does not exists. 
-		# Rename this session to DropDown and create windows.
-		kdialog --icon ~/.files/icons/tmux.png --passivepopup "Renaming Tmux-session to $session"
-		echo "Renaming this session to $session."
-		tmux rename-session $session
-		_init
-	fi
-
-fi
-
 function _init {
 	# Creates windows and runs services.
-
 	tmux rename-window -t $session:0 "Ranger"
 	tmux send-keys -t $session:0 "ranger" Enter
 
@@ -54,3 +31,26 @@ function _init {
 	tmux select-window -t $session:
 	tmux attach-session -d -t $session
 }
+
+if [ "$TMUX" = "" ]; then
+	# No tmux server running. Start a new sesssion.
+	kdialog --icon ~/.files/icons/tmux.png --passivepopup "Making new tmux-session $session"
+	tmux new-session -d -s $session
+	_init
+else
+	if (tmux has-session -t "$session" 2> /dev/null); then
+		# A tmux server is running and DropDown already exists. Switch to DropDown.
+		echo "Session $session exists."
+		kdialog --icon ~/.files/icons/tmux.png --passivepopup "Tmux-session $session exists. Attaching!"
+		tmux switch-client -t $session
+	else
+		# A tmux server is running but DropDown does not exists. 
+		# Rename this session to DropDown and create windows.
+		kdialog --icon ~/.files/icons/tmux.png --passivepopup "Renaming Tmux-session to $session"
+		echo "Renaming this session to $session."
+		tmux rename-session $session
+		_init
+	fi
+
+fi
+
