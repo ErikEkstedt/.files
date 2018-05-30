@@ -171,7 +171,8 @@ set breakindentopt+=shift:2    " how far in the showbreak: " ↪ " is
 set breakindentopt+=min:20
 
 set list
-set listchars=tab:▶\ ,trail:·,extends:\#,nbsp:.
+set listchars=tab:\|\ ,trail:·,extends:\#,nbsp:.
+" set listchars=tab:▶\ ,trail:·,extends:\#,nbsp:.
 
 set numberwidth=4              " width of numberline
 set mouse=a                    " mouse functionality
