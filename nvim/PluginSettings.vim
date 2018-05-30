@@ -202,7 +202,7 @@ nnoremap <C-c><C-x> :SlimuxREPLConfigure<CR>
 
 " }}}
 "============== Vimpyter ========================{{{
-autocmd Filetype ipynb nnoremap <silent><Leader>b :VimpyterInsertPythonBlock<CR>
+autocmd Filetype ipynb nnoremap <silent><Leader>bb :VimpyterInsertPythonBlock<CR>
 " autocmd Filetype ipynb nnoremap <silent><localleader>ll :VimpyterStartNteract<CR>
 autocmd Filetype ipynb nnoremap <silent><localleader>ll :VimpyterStartJupyter<CR>
 "}}}
@@ -239,7 +239,7 @@ let g:pymode_lint                  = 0
 
 " breakpoints
 let g:pymode_breakpoint            = 1
-let g:pymode_breakpoint_key        = '<leader>b'
+let g:pymode_breakpoint_key        = '<leader>bp'
 
 " syntax highlight {{{
 let python_highlight_all                     = 1
@@ -623,4 +623,5 @@ augroup END
 "}}}
 "============== vim-polyglot ========================{{{
 let g:polyglot_disabled = ['latex', 'markdown', 'javascript', 'js']
+let g:jsx_ext_required = 1
 "}}}

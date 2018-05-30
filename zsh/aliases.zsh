@@ -17,7 +17,6 @@ alias ltt="ls -ogl *.tex"
 alias ltx="ls *.tex"
 alias lpy="ls *.py"
 alias lpdf="ls -ogl *.pdf"
-
 # }}}
 
 # Movement {{{
@@ -61,13 +60,15 @@ alias two="cd ~/Documents/latex; vim Master_todo.tex"
 alias tco="cd ~/Documents/latex; vim Computer_todo.tex"
 # }}}
 
-# Nvim/ipython/dropdown/yakuake){{{
+# CUSTOM {{{
 alias vim="nvim"
 alias v="nvim"
 alias ipy="ipython"  #--profile=erik"
 
 alias drop="/home/erik/.files/bin/dropdown"
 function mkpr() { project_init "$1" } 
+
+alias somy="source $HOME/mycroft-core/.venv/bin/activate"
 # }}}
 
 # Git {{{
