@@ -82,6 +82,11 @@ call s:h("cssUnitDecorators", { "fg": s:pink })
 ""}}}
 "" HTML {{{
 call s:h("htmlTitle", { "fg": s:pink })
+call s:h("htmlEndTag", { "fg": s:white })
+""}}}
+"" HTML.handlerbars mustache {{{
+call s:h("mustacheInside", { "fg": s:pink })
+call s:h("mustacheUnescape", { "fg": s:purple })
 ""}}}
 "" JavaScript {{{
 call s:h("javaScriptBraces", { "fg": s:white })
