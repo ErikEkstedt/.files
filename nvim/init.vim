@@ -35,6 +35,7 @@ else
     Plug 'roxma/nvim-yarp'
     Plug 'roxma/vim-hug-neovim-rpc'
 endif
+
 Plug 'zchee/deoplete-jedi'
 Plug 'Shougo/neco-vim'
 Plug 'Shougo/neopairs.vim'
@@ -82,9 +83,9 @@ Plug 'tpope/vim-surround'              " XXX Surround objects with quotes, brack
 Plug 'w0rp/ale'                        " asynchronous linting
 Plug 'wellle/targets.vim'              " XXX ci' works on (, [, {, <
 
+	" Plug 'Raimondi/delimitMate'           " autoclosing of brackets, quotes ...
 if !exists("g:gui_oni")
 	Plug 'christoomey/vim-tmux-navigator' " navigate between vim and tmuz seemlessly
-	" Plug 'Raimondi/delimitMate'           " autoclosing of brackets, quotes ...
 endif
 
 " Preview Text 
