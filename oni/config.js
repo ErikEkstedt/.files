@@ -41,7 +41,8 @@ exports.configuration = {
     "autoUpdate.enabled": true,
     "oni.loadInitVim": true,
     // Editor
-    "editor.fontSize": "19px", "editor.linePadding": 1,
+    "editor.fontSize": "19px",
+    "editor.linePadding": 0,
     "editor.clipboard.enabled": false,
     "editor.clipboard.synchronizeYank": false,
     "editor.clipboard.synchronizeDelete": false,
