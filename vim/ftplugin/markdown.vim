@@ -21,3 +21,5 @@ nnoremap <leader>tb :normal ysiWf<CR>
 nnoremap <leader>ti :normal ysiWi<CR>
 nnoremap <leader>te :normal ysiWe<CR>
 nnoremap <leader>tm :normal ysiWm<CR>
+
+set tw=90
