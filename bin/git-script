@@ -106,11 +106,11 @@ def printStatusClearly():
     for line in text:
         if line[0] =='M' or line[1] == 'M':
             print(bcolors['PINK'] +'Modified: ', line[3:], bcolors['ENDC'])
-        elif line[1]=='?':
+        if line[0] == '?' or line[1] == '?':
             print(bcolors['BLUE'] +'Untracked: ', line[3:], bcolors['ENDC'])
-        elif line[1]=='D':
+        if line[0] == 'D' or line[1] == 'D':
             print(bcolors['RED'] + 'Deleted: ', line[3:], bcolors['ENDC'])
-        elif line[0]=='A':
+        if line[0] == 'A' or line[1] == 'A':
             print(bcolors['GREEN'] + 'Added: ', line[3:], bcolors['ENDC'])
 
 

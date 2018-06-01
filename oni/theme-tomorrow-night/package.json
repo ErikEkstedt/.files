@@ -1,0 +1,21 @@
+{
+    "name": "theme-tomorrow-night",
+    "version": "0.0.1",
+    "description": "Tomorrow-night theme, set for Oni",
+    "engines": {
+        "oni": "0.2.18"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "contributes": {
+        "themes": [
+            {
+                "name": "tomorrow-night",
+                "path": "colors/tomorrow-night.json"
+            }
+        ]
+    },
+    "author": "",
+    "license": "MIT"
+}

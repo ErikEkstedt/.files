@@ -127,7 +127,7 @@ if g:colors_name =~ 'monokai' "{{{
     "call s:h("jsNull", { "fg": s:dark_yellow })
     "call s:h("jsTemplateBraces", { "fg": s:darkred })
     "call s:h("jsTemplateVar", { "fg": s:green })
-    "call s:h("jsThis", { "fg": s:red })
+    call s:h("jsThis", { "fg": s:pink })
     "call s:h("jsUndefined", { "fg": s:dark_yellow })
     call s:h("jsArrowFunction", { "fg": s:purple })
     call s:h("jsClassKeywords", { "fg": s:purple })
