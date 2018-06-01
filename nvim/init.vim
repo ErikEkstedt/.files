@@ -23,7 +23,7 @@ let g:node_host_prog = '/home/erik/.node_modules_global/bin/neovim-node-host'
 
 "============= Vim-Plug ======================{{{
 " Plugins marked with XXX I know I use/like a lot.
-" Plugins will be downloaded under the specified directory.
+" Plugins will be downloaded under the specified directory. 
 call plug#begin('~/.vim/bundle')
 
 " Deoplete
@@ -45,7 +45,6 @@ Plug 'SirVer/ultisnips'                " XXX snippet engine
 Plug 'honza/vim-snippets'              " XXX snippets
 
 " Syntax
-
 Plug 'sheerun/vim-polyglot'            " All the syntax messed upp syntax for oni ( turned .js -> javascript.jsx
 Plug 'daeyun/vim-matlab'               " MATLAB
 Plug 'othree/xml.vim'                  " xml highlight
