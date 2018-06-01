@@ -68,7 +68,10 @@ if g:colors_name =~ 'monokai' "{{{
     let s:changefg    = { "gui": "#d7d7ff", "cterm": "189" }
     let s:changebg    = { "gui": "#5f5f87", "cterm": "60" }
     " }}}
-
+    " NERDTree {{{
+    call s:h("NERDTreeOpenable", { "fg": s:addbg })
+    call s:h("NERDTreeClosable", { "fg": s:addbg })
+    " }}}
     " Language-Specific Highlighting {{{
     " PYTHON {{{
     call s:h("pythonClassParameter", { "fg": s:changebg })
@@ -200,13 +203,13 @@ elseif g:colors_name =~ 'nord'  "{{{
     let s:nord14_gui= { "gui": "#A3BE8C", "cterm": "2"  }
     let s:nord15_gui= { "gui": "#B48EAD", "cterm": "5"  }
     " }}}
-
+    " NERDTree {{{
     call s:h("NERDTreeOpenable", { "fg": s:nord14_gui })
     call s:h("NERDTreeClosable", { "fg": s:nord14_gui })
     call s:h("NERDTreeCWD", { "fg": s:nord7_gui })
     call s:h("NERDTreeBookmark", { "fg": s:nord13_gui })
     call s:h("NERDTreeBookmarkName", { "fg": s:nord15_gui })
-    
+    " }}}
     " CSS
     call s:h("cssBoxProp", { "fg": s:nord8_gui })
     call s:h("cssDefinition", { "fg": s:nord8_gui })
