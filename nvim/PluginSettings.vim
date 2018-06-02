@@ -3,7 +3,6 @@
 "============== Deoplete ====================={{{
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
-
 let g:loaded_neopairs = 1
 let g:neopairs#enable = 1
 let g:deoplete#max_abbr_width = 40
@@ -23,7 +22,7 @@ nnoremap <leader>dd :call deoplete#toggle()<CR>
 
 " Deoplete and vimtex
 if !exists('g:deoplete#omni#input_patterns')
-		let g:deoplete#omni#input_patterns = {}
+    let g:deoplete#omni#input_patterns = {}
 endif
 
 let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
@@ -177,6 +176,7 @@ command! FZFLines call fzf#run({
 " This is the default extra key bindings
 let g:fzf_action = {
             \ 'ctrl-t': 'tab split',
+            \ 'ctrl-l': 'tab split',
             \ 'ctrl-x': 'split',
             \ 'ctrl-v': 'vsplit',
             \ 'ctrl-o': 'edit',
