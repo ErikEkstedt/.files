@@ -558,7 +558,7 @@ let g:highlightedyank_highlight_duration = 1000
 "}}}
 
 "============== vim-easy-motion =================={{{
-let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz'
 
 nmap <space><space> <Plug>(easymotion-bd-w)
 nmap <space>e <Plug>(easymotion-bd-e)

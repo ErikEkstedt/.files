@@ -1,7 +1,7 @@
 {
     "editor.cursorBlinking": "solid",
     "keyboard.dispatch"    : "keyCode",   // modified keymappings work
-    "workbench.colorTheme" : "Monokai",
+    "workbench.colorTheme": "One Dark Operator Theme",
 
     "vim.leader"        : " ",
     "vim.easymotion"    : true,
@@ -30,7 +30,7 @@
 
     ],
 
-    "window.zoomLevel"                          : 0,
+    "window.zoomLevel": 2,
     "vim.easymotionMarkerFontFamily"            : "monospace",
     "vim.easymotionMarkerFontSize"              : "16",
     "vim.easymotionMarkerFontWeight"            : "bold",
