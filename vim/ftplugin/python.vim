@@ -29,6 +29,8 @@ nnoremap ,= :s/\s\@<!=\+\s\@!/ = /g<CR>
 "   / \0   - Add spaces around the match
 "   /g     - Replace globally
 
+nnoremap Ö A:<esc>
+
 " <CR> is indistinguishable from <C-m>
 nnoremap <buffer> <CR> vip:SlimuxREPLSendLine<CR> 
 vnoremap <buffer> <CR> :SlimuxREPLSendLine<CR>gv<Esc>zz
