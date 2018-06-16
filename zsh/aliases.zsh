@@ -34,7 +34,7 @@ alias gth="cd ~/Documents/latex/Notes/Thesis; ls *.tex"
 alias gbu="cd ~/.vim/bundle; ls"
 alias gdw="cd ~/Downloads; la"
 alias gho="cd ~/"
-alias gno="cd ~/Documents/latex/Notes; ls" 
+alias gno="cd ~/blog/public/notes; ls" 
 
 alias gass="cd ~/com_sci/Ideas/assistant; ls"
 alias gbull="cd ~/anaconda3/envs/bullet/lib/python3.5/site-packages/pybullet_envs"
