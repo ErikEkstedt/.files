@@ -49,3 +49,6 @@ okay
 CLEVR
 workflow
 rollout
+GPU
+pretrain
+LSTM

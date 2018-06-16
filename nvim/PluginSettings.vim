@@ -579,10 +579,10 @@ let g:EasyMotion_startofline = 1 " Linejumps puts cursor at start of line
 "============== vim-surround ================{{{
 nnoremap <leader>' :normal ysiW'<CR>
 nnoremap <leader>" :normal ysiW"<CR>
+nnoremap <leader>} :normal ysiW}<CR>
+nnoremap <leader>{ :normal ysiW}<CR>
 nnoremap ( :normal ysiW)<CR>
 nnoremap ) :normal ysiW)<CR>
-nnoremap { :normal ysiW}<CR>
-nnoremap } :normal ysiW}<CR>
 nnoremap [ :normal ysiW]<CR>
 nnoremap ] :normal ysiW]<CR>
 nnoremap < :normal ysiW><CR>

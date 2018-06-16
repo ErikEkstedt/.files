@@ -5,8 +5,10 @@ import * as Oni from "/opt/Oni/resources/app/node_modules/oni-api"
 export const activate = (oni: Oni.Plugin.Api) => { // {{{
     console.log("config activated")
 
+    // UNBINDS
     oni.input.unbind("<c-p>")
-    // oni.input.unbind("<c-f>")
+    oni.input.unbind("<c-f>")
+    oni.input.unbind("<c-t>")
     oni.input.unbind("<c-s>")
 
     // Movement
@@ -18,12 +20,11 @@ export const activate = (oni: Oni.Plugin.Api) => { // {{{
     oni.input.bind("<C-k>", "contextMenu.previous")
     oni.input.bind("<tab>", "contextMenu.select")
 
-    // oni.input.bind("<C-f>", "workspace.openFolder")
-    // oni.input.bind("<C-f>", "quickOpen")
-    oni.input.bind("<C-f>", "quickOpen.show")
+    oni.input.bind("<C-ö>", "quickOpen.show")
     oni.input.bind("<s-c-r>", "language.findAllReferences")
 
-	// oni. input.bind("<c-p>", "quickOpen.show", () => isNormalMode() && !isMenuOpen())
+    // tools
+    // oni. input.bind("<c-p>", "quickOpen.show", () => isNormalMode() && !isMenuOpen())
 } // }}}
 
 export const deactivate = (oni: Oni.Plugin.Api) => { //{{{
@@ -39,37 +40,32 @@ export const configuration = { //{{{
     "ui.fontSize": "16px"
 
     // // plugins
-    "sidebar.enabled": true, 
+    "sidebar.enabled": true,
     "sidebar.default.open": false,
     "statusbar.fontSize": "16px",
 
     // Experimental
-	"snippets.enabled": true,
+    "snippets.enabled": true,
     "experimental.preview.enabled": true,
 
     // Settings
     "autoClosingPairs.enabled": false,
-    "autoUpdate.enabled": true,
+    "autoUpdate.enabled": false,
 
     "oni.loadInitVim": true,
 
     // Editor
-    "editor.fontSize": "19px", 
+    "editor.fontSize": "20px",
     "editor.linePadding": 0,
-    "editor.clipboard.enabled": false,
+    "editor.clipboard.enabled": true,
     "editor.clipboard.synchronizeYank": false,
     "editor.clipboard.synchronizeDelete": false,
     "editor.quickInfo.delay": 200,
-    "editor.split.mode": 'oni',
     "editor.cursorLine": true,
     "editor.cursorLineOpacity": 0.5,
     "editor.textMateHighlighting.enabled": true,
 
-
-    // "language.python.languageServer.command": "pyls",
-    // "language.python.languageServer.command": "/home/erik/miniconda3/bin/pyls",
-
-    "workspace.defaultWorkspace": "/home/erik/blog",
+    "workspace.defaultWorkspace": "/home/erik",
     "environment.additionalPaths": [
         "/usr/bin/",
         "/home/erik/miniconda3/bin",
