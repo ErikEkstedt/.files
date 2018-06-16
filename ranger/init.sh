@@ -1,4 +1,14 @@
 #!/bin/bash
+
+# echo "----------------------------------------"
+# echo "Checking if private key exists"
+# rsaPub=~/.ssh/id_rsa.pub
+# if [[ -e $rsaPub ]]; then
+#     echo "Public key exists"
+# else
+#     echo "Public key does NOT NOT NOT exists"
+# fi
+
 echo "Creating ~/.config/ranger directory and links"
 mkdir -p ~/.config/ranger
 ln -sf ~/.files/ranger/rc.conf ~/.config/ranger/rc.conf
