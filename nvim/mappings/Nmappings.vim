@@ -4,14 +4,13 @@
 nnoremap <leader>ev  :tabnew ~/.files/nvim/init.vim<cr>
 nnoremap <leader>ez   :tabnew ~/.zshrc<cr>
 nnoremap <leader>eal   :tabnew ~/.files/aliases<cr>
-nnoremap <leader>ei3  :tabnew ~/.config/i3/config<cr>
+
+" nnoremap <leader>ei3  :tabnew ~/.config/i3/config<cr>
+" nnoremap <leader>ex   :tabnew ~/.xresources<cr>
+" nnoremap <leader>ebib :tabnew ~/documents/latex/references.bib<cr>
+
 nnoremap <leader>er   :tabnew ~/.config/ranger/rc.conf<cr>
-nnoremap <leader>ex   :tabnew ~/.xresources<cr>
 nnoremap <leader>et   :tabnew ~/.tmux.conf<cr>
-nnoremap <leader>ebib :tabnew ~/documents/latex/references.bib<cr>
-nnoremap <leader>epy  :tabnew ~/.vim/ftplugin/python.vim<cr>
-nnoremap <leader>ete  :tabnew ~/.vim/ftplugin/tex.vim<cr>
-nnoremap <leader>ema  :tabnew ~/.vim/ftplugin/markdown.vim<cr>
 
 " source config files
 nnoremap <leader>sv  :source ~/.files/nvim/init.vim<cr>
@@ -182,8 +181,10 @@ nmap <c-o> <c-o>zz
 nmap G Gzz
 
 " jump paragraph
-nnoremap ö {
-nnoremap ä }
+" nnoremap ö {
+" nnoremap ä }
+map ö {
+map ä }
 
 " */# now stays on a 
 nnoremap * *<c-o>

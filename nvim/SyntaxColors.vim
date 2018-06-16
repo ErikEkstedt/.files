@@ -42,31 +42,31 @@ function! SyntaxColors() "{{{
 if g:colors_name =~ 'monokai' "{{{
     echo 'Monokai'
     " Colors {{{
-    let s:white       = { "gui": "#E8E8E3", "cterm": "252" }
-    let s:black       = { "gui": "#34352d", "cterm": "234" }
-    let s:lightblack  = { "gui": "#44453d", "cterm": "235" }
-    let s:lightblack2 = { "gui": "#383a3e", "cterm": "236" }
-    let s:darkblack   = { "gui": "#211F1C", "cterm": "233" }
-    let s:grey        = { "gui": "#8F908A", "cterm": "243" }
-    let s:lightgrey   = { "gui": "#575b61", "cterm": "237" }
-    let s:darkgrey    = { "gui": "#64645e", "cterm": "239" }
-    let s:warmgrey    = { "gui": "#75715E", "cterm": "59" }
+    let s:white       = { "gui": "E8E8E3", "cterm": "252" }
+    let s:black       = { "gui": "34352d", "cterm": "234" }
+    let s:lightblack  = { "gui": "44453d", "cterm": "235" }
+    let s:lightblack2 = { "gui": "383a3e", "cterm": "236" }
+    let s:darkblack   = { "gui": "211F1C", "cterm": "233" }
+    let s:grey        = { "gui": "8F908A", "cterm": "243" }
+    let s:lightgrey   = { "gui": "575b61", "cterm": "237" }
+    let s:darkgrey    = { "gui": "64645e", "cterm": "239" }
+    let s:warmgrey    = { "gui": "75715E", "cterm": "59" }
 
-    let s:pink        = { "gui": "#F92772", "cterm": "197" }
-    let s:green       = { "gui": "#A6E22D", "cterm": "148" }
-    let s:aqua        = { "gui": "#66d9ef", "cterm": "81" }
-    let s:yellow      = { "gui": "#E6DB74", "cterm": "186" }
-    let s:dark_yellow = { "gui": "#968B24", "cterm": "186" }
-    let s:orange      = { "gui": "#FD9720", "cterm": "208" }
-    let s:purple      = { "gui": "#ae81ff", "cterm": "141" }
-    let s:red         = { "gui": "#e73c50", "cterm": "196" }
-    let s:darkred     = { "gui": "#5f0000", "cterm": "52" }
+    let s:pink        = { "gui": "F92772", "cterm": "197" }
+    let s:green       = { "gui": "A6E22D", "cterm": "148" }
+    let s:aqua        = { "gui": "66d9ef", "cterm": "81" }
+    let s:yellow      = { "gui": "E6DB74", "cterm": "186" }
+    let s:dark_yellow = { "gui": "968B24", "cterm": "186" }
+    let s:orange      = { "gui": "FD9720", "cterm": "208" }
+    let s:purple      = { "gui": "ae81ff", "cterm": "141" }
+    let s:red         = { "gui": "e73c50", "cterm": "196" }
+    let s:darkred     = { "gui": "5f0000", "cterm": "52" }
 
-    let s:addfg       = { "gui": "#d7ffaf", "cterm": "193" }
-    let s:addbg       = { "gui": "#5f875f", "cterm": "65" }
-    let s:delbg       = { "gui": "#f75f5f", "cterm": "167" }
-    let s:changefg    = { "gui": "#d7d7ff", "cterm": "189" }
-    let s:changebg    = { "gui": "#5f5f87", "cterm": "60" }
+    let s:addfg       = { "gui": "d7ffaf", "cterm": "193" }
+    let s:addbg       = { "gui": "5f875f", "cterm": "65" }
+    let s:delbg       = { "gui": "f75f5f", "cterm": "167" }
+    let s:changefg    = { "gui": "d7d7ff", "cterm": "189" }
+    let s:changebg    = { "gui": "5f5f87", "cterm": "60" }
     " }}}
     " NERDTree {{{
     call s:h("NERDTreeOpenable", { "fg": s:addbg })
@@ -151,6 +151,10 @@ if g:colors_name =~ 'monokai' "{{{
     call s:h("jsStorageClass", { "fg": s:purple })
 
     ""}}}
+    call s:h("typescriptIdentifier", { "fg": s:aqua })
+    "" JavaScript {{{
+        
+    " }}}
     "" JSON {{{
     call s:h("jsonCommentError", { "fg": s:warmgrey })
     call s:h("jsonKeyword", { "fg": s:yellow })
@@ -186,22 +190,22 @@ if g:colors_name =~ 'monokai' "{{{
 elseif g:colors_name =~ 'nord'  "{{{
     echo 'Nord Color Syntax set!'
     " Colors {{{
-    let s:nord0_gui = { "gui": "#2E3440", "cterm": "252" }
-    let s:nord1_gui = { "gui": "#3B4252", "cterm": "0" }
-    let s:nord2_gui = { "gui": "#434C5E", "cterm": "235" }
-    let s:nord3_gui = { "gui": "#4C566A", "cterm": "236" }
-    let s:nord4_gui = { "gui": "#D8DEE9", "cterm": "233" }
-    let s:nord5_gui = { "gui": "#E5E9F0", "cterm": "7" }
-    let s:nord6_gui = { "gui": "#ECEFF4", "cterm": "15" }
-    let s:nord7_gui = { "gui": "#8FBCBB", "cterm": "14" }
-    let s:nord8_gui = { "gui": "#88C0D0", "cterm": "6" }
-    let s:nord9_gui = { "gui": "#81A1C1", "cterm": "4"  }
-    let s:nord10_gui= { "gui": "#5E81AC", "cterm": "12" }
-    let s:nord11_gui= { "gui": "#BF616A", "cterm": "1" }
-    let s:nord12_gui= { "gui": "#D08770", "cterm": "11" }
-    let s:nord13_gui= { "gui": "#EBCB8B", "cterm": "3"  }
-    let s:nord14_gui= { "gui": "#A3BE8C", "cterm": "2"  }
-    let s:nord15_gui= { "gui": "#B48EAD", "cterm": "5"  }
+    let s:nord0_gui = { "gui": "2E3440", "cterm": "252" }
+    let s:nord1_gui = { "gui": "3B4252", "cterm": "0" }
+    let s:nord2_gui = { "gui": "434C5E", "cterm": "235" }
+    let s:nord3_gui = { "gui": "4C566A", "cterm": "236" }
+    let s:nord4_gui = { "gui": "D8DEE9", "cterm": "233" }
+    let s:nord5_gui = { "gui": "E5E9F0", "cterm": "7" }
+    let s:nord6_gui = { "gui": "ECEFF4", "cterm": "15" }
+    let s:nord7_gui = { "gui": "8FBCBB", "cterm": "14" }
+    let s:nord8_gui = { "gui": "88C0D0", "cterm": "6" }
+    let s:nord9_gui = { "gui": "81A1C1", "cterm": "4"  }
+    let s:nord10_gui= { "gui": "5E81AC", "cterm": "12" }
+    let s:nord11_gui= { "gui": "BF616A", "cterm": "1" }
+    let s:nord12_gui= { "gui": "D08770", "cterm": "11" }
+    let s:nord13_gui= { "gui": "EBCB8B", "cterm": "3"  }
+    let s:nord14_gui= { "gui": "A3BE8C", "cterm": "2"  }
+    let s:nord15_gui= { "gui": "B48EAD", "cterm": "5"  }
     " }}}
     " NERDTree {{{
     call s:h("NERDTreeOpenable", { "fg": s:nord14_gui })
