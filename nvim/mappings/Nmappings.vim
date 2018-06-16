@@ -175,8 +175,8 @@ nnoremap <h :bp<CR>
 nnoremap <l :bn<CR>
 
 " jump in jump list
-nnoremap <i <C-I>zz
-nmap <c-o> <c-o>zz
+" nnoremap <i <C-I>zz
+" nmap <c-o> <c-o>zz
 
 nmap G Gzz
 

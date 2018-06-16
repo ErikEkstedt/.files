@@ -60,6 +60,9 @@ def printAllColors():
 
 
 def isClean():
+    ''' Checks if repoDir is clean
+    output from $cmd is empty if clean
+    '''
     cmd = "git status --porcelain"
     ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
     output = ps.communicate()[0]

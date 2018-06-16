@@ -69,6 +69,7 @@ alias drop="/home/erik/.files/bin/dropdown"
 function mkpr() { project_init "$1" } 
 
 alias somy="source $HOME/mycroft-core/.venv/bin/activate"
+alias sonlp="source activate pytorch-nlp"
 # }}}
 
 # Git {{{
@@ -111,10 +112,9 @@ alias umountusb="udiskie-umount /media/erik/*"
 # }}}
 
 # SSH / WOL {{{
-alias wake="wakeonlan -i 213.113.208.169 38:d5:47:14:d3:a1" 
-alias sshhome="ssh erik@213.113.208.169"
-alias mountdesk="sshfs -p 2002 -o ssh_command='ssh -i /home/erik/.ssh//id_rsa' erik@213.113.208.169:/home/erik/ /home/erik/Desktop-home"
-alias umountdesk="sudo umount /home/erik/Desktop"
-alias sshwork="ssh Erik@130.238.17.189"
+export MOUNTPATH=~/LAN
+alias wake="wakeonlan -i xxx.xxx.xxx.xxx yy:yy:yy:yy:yy:yy" 
+alias mountmachine="sshfs -p 2002 -o ssh_command='ssh -i ~/.ssh//id_rsa' user@xxx.xxx.xxx.xxx:/PATH/ ~/$MOUNTPATH"
+alias umountall="sudo umount ~/Machines/*"
 
 # }}}
