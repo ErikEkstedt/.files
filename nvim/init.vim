@@ -66,6 +66,7 @@ Plug 'junegunn/vim-easy-align'         " XXX better alignment than tabular
 Plug 'junegunn/vim-peekaboo'           " when pressing quotes shows what's stored in the different registers
 Plug 'lilydjwg/colorizer'              " colorize hexcolor in editor
 Plug 'lotabout/slimux'                 " XXX old: 'epeli/slimux' | vim+ipython OUtdated
+Plug 'wmvanvliet/vim-ipython'
 Plug 'machakann/vim-highlightedyank'   " XXX Highlight yanks
 Plug 'mtth/scratch.vim'                " Unobtrusive scratch
 Plug 'nelstrom/vim-markdown-folding'   " help with folding in markdown

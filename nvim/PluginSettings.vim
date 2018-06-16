@@ -201,6 +201,16 @@ vnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>gv<Esc>zz
 nnoremap <C-c><C-x> :SlimuxREPLConfigure<CR>
 
 " }}}
+" IPYTHON {{{
+
+let g:ipy_perform_mappings=0
+let g:ipy_monitor_subchannel=0
+
+map <space><CR> <Plug>(IPython-RunLines)
+map <space>p <Plug>(IPython-RunLine)
+
+
+" }}}
 "============== Vimpyter ========================{{{
 autocmd Filetype ipynb nnoremap <silent><Leader>bb :VimpyterInsertPythonBlock<CR>
 " autocmd Filetype ipynb nnoremap <silent><localleader>ll :VimpyterStartNteract<CR>
