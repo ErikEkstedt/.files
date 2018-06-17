@@ -113,6 +113,7 @@ let g:fzf_buffers_jump = 1
 nnoremap <Leader>fl :Files<CR>
 nnoremap <Leader>fi :Files ~/<CR>
 nnoremap <Leader>fc :Files ~/.files<CR>
+nnoremap <Leader>fb :Files ~/blog<CR>
 nnoremap <Leader>fo :Files /opt/Oni<CR>
 nnoremap <Leader>fr :Files /<CR>
 nnoremap <Leader>ff :Rg<CR>
