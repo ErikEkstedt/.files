@@ -1,0 +1,12 @@
+# /home/erik/.config/tmuxinator/dropdown.yml
+
+name: dropdown
+root: ~/
+windows:
+  - Terminal:
+  - Ranger: 
+      - ranger
+  - Server: 
+      panes:
+        - Blog
+        - Mycroft

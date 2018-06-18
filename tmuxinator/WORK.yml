@@ -1,0 +1,14 @@
+# /home/erik/.config/tmuxinator/project0.yml
+
+name: WORK
+root: ~/phd/projects/project0
+
+windows:
+  - VIM:
+      layout: main-horizontal
+      panes:
+        - vim
+        - source activate project0 
+        - source activate project0 
+  - BLOG: 
+      root: ~/blog/public/notes
