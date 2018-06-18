@@ -1,4 +1,16 @@
 # ==== ZSHRC ====
+#
+#
+# TODO
+#	Add conditional $HOST to use
+#	same config file across
+#	computers.
+
+
+
+
+
+
 # Settings {{{
 stty -ixon # C-s, C-q 
 
