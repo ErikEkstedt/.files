@@ -11,12 +11,14 @@ nnoremap <buffer> <c-space> <esc>/<++><CR>"_ciw
 nnoremap ,ee i(EE: )<esc>i
 
 " tpope/vim-surround
-" 109=m, 105=i, 101=e, 102=f
+" 101=e, 102=f, 105=i, 109=m,
 " let b:surround_109 = "\\(\r\\)"
 let b:surround_105 = "*\r*"
 let b:surround_102 = "**\r**"
 let b:surround_101 = "[<++>](\r\)"
+let g:surround_108 = "[\r]()"
 
+nnoremap <leader>tl :normal ysiWl<CR> 
 nnoremap <leader>tb :normal ysiWf<CR> 
 nnoremap <leader>ti :normal ysiWi<CR>
 nnoremap <leader>te :normal ysiWe<CR>

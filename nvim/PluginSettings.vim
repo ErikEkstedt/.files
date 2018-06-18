@@ -177,11 +177,11 @@ command! FZFLines call fzf#run({
 " This is the default extra key bindings
 let g:fzf_action = {
             \ 'ctrl-t': 'tab split',
-            \ 'ctrl-l': 'tab split',
+            \ 'ctrl-l': 'vsplit',
             \ 'ctrl-x': 'split',
             \ 'ctrl-v': 'vsplit',
             \ 'ctrl-o': 'edit',
-            \ 'Enter': 'vsplit',
+            \ 'Enter': 'edit',
             \ 'Esc': 'exit', }
 "}}}
 "============== Tmux-navigation =============={{{
