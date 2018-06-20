@@ -5,8 +5,13 @@ windows:
     - VIM:
         layout: main-vertical
         panes:
+          - Editor:
             - vim
+          - Repl:
             - source activate project0
+            - ipy
+            - import numpy as np
+          - Script:
             - source activate project0
     - BLOG:
         root: ~/blog/public/notes

@@ -19,12 +19,6 @@ nnoremap <leader>sx   :!xrdb ~/.Xresources<cr>
 nnoremap <leader>sot  :source ~/.tmux.conf<cr>
 " }}}
 
-" Tmux mappings for terminals (moslty in oni otherwise tmux will handle this)
-nnoremap <c-a>j :split+terminal<CR>
-nnoremap <c-a><c-j> :split+terminal<CR>
-nnoremap <c-a>l :vsplit+terminal<CR>
-nnoremap <c-a><c-l> :vsplit+terminal<CR>
-
 nnoremap j gj
 nnoremap k gk
 
@@ -179,6 +173,7 @@ nnoremap <l :bn<CR>
 " nmap <c-o> <c-o>zz
 
 nmap G Gzz
+
 
 " jump paragraph
 " nnoremap ö {

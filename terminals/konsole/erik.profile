@@ -15,6 +15,10 @@ Name=erik
 Parent=FALLBACK/
 ShowTerminalSizeHint=false
 
+[Interaction Options]
+OpenLinksByDirectClickEnabled=true
+UnderlineFilesEnabled=true
+
 [Scrolling]
 HistoryMode=1
 ScrollBarPosition=2
@@ -22,4 +26,4 @@ ScrollBarPosition=2
 [Terminal Features]
 BlinkingCursorEnabled=false
 FlowControlEnabled=false
-UrlHintsModifiers=33554432
+UrlHintsModifiers=0

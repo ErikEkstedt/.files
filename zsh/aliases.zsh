@@ -70,6 +70,9 @@ function mkpr() { project_init "$1" }
 
 alias somy="source $HOME/mycroft-core/.venv/bin/activate"
 alias sonlp="source activate pytorch-nlp"
+
+# tmuxinator
+alias work="tmuxinator start WORK"
 # }}}
 
 # Git {{{

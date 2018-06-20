@@ -16,3 +16,9 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
+
+" Tmux mappings for terminals (moslty in oni otherwise tmux will handle this)
+nnoremap <c-a>j :split+terminal<CR>
+nnoremap <c-a><c-j> :split+terminal<CR>
+nnoremap <c-a>l :vsplit+terminal<CR>
+nnoremap <c-a><c-l> :vsplit+terminal<CR>
