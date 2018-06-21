@@ -10,6 +10,10 @@ nnoremap <buffer> <c-space> <esc>/<++><CR>"_ciw
 " my quote 
 nnoremap ,ee i(EE: )<esc>i
 
+
+" Text manipulation
+nnoremap <leader>tL I[<esc>A]()<esc>h
+
 " tpope/vim-surround
 " 101=e, 102=f, 105=i, 109=m,
 " let b:surround_109 = "\\(\r\\)"

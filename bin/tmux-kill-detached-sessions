@@ -1,6 +1,7 @@
 #!/bin/bash
 
+echo "Killing detached tmux sessions:"
 tmux list-sessions | grep -E -v '\(attached\)$' | while IFS='\n' read line; do
     tmux kill-session -t "${line%%:*}"
-	echo "Killing: ${line%%:*}"
+	echo "Killing session: ${line%%:*}"
 done
