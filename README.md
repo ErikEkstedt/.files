@@ -1,8 +1,22 @@
 # DotFiles
 
-My configuration. Workflow relies on zsh+tmux+vim/oni+ssh+synergy.
+## Installation
+1. Clone repo 
+```bash
+cd ~ && git clone https://github.com/ErikEkstedt/.files.git
+```
+2. Run install script 
+```bash
+~/.files/Install.sh
+```
+
+[Wallpaper dump](https://imgur.com/gallery/UWHsS)
+
+## Setup
+
+Workflow relies on zsh+tmux+vim/oni+ssh+synergy.
 * Most things are configured around <strong>vim/nvim</strong> and <strong>vim keybindings</strong> 
-* Minimize mouse use	
+  * Minimize mouse use	
 * Used [i3-gaps](https://github.com/Airblader/i3) but currently on [kde](https://www.kde.org/)
   * Want a regular desktop wm with good tiling capabilities and keyboard movement
 * SSH: Reach all files from all machines
@@ -24,18 +38,8 @@ My configuration. Workflow relies on zsh+tmux+vim/oni+ssh+synergy.
 * Vim-plugin makes it on the surface really great. But 
 * Has really great built-in support for web-dev
 
-
 --------------
 ## Useful tips
 Get unicode to clipboard
 	echo -ne "\uf026" | xclip -selection clipboard
-
-## Installation
-
-
-1. Clone repo 
-```bash
-cd ~ && git clone https://github.com/ErikEkstedt/.files.git
-```
-
 
