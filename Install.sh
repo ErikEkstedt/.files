@@ -5,6 +5,9 @@
 # 1. Download dotfiles: https://github.com/ErikEkstedt/.files
 # 2. Run ~/.files/Install.sh (this file)
 ######################################################################
+# Remember sudo
+#     Cant install conda/pip with sudo etc...
+######################################################################
 
 miscDir=./Installation/misc
 
@@ -33,9 +36,9 @@ printf "${Yellow}OS:${NC} $OS\n"
 printf "${Yellow}version:${NC} $VERSION\n"
 printf "${Yellow}ARCH:${NC} $ARCH\n"
 
-# 1. Upgrade Plasma (for ubuntu 17.10 at least)
-printSection "17.10 Backports kubuntu"
 if [[ $OS == "ubuntu" && $VERSION == "17.10" ]]; then
+	# Add Kubuntu backports Plasma for ubuntu 17.10
+	printSection "17.10 Backports kubuntu"
 	echo "Adds kubuntu backports and updates system"
 	sudo add-apt-repository ppa:kubuntu-ppa/backports
 	sudo apt update -yyqq
@@ -46,43 +49,43 @@ fi
 printSection "TERMINAL MISC"
 sudo apt install -yyqq \
 	git tmux xclip xsel zsh feh curl zathura \
-	ranger wget autoconf xdotool
+	ranger wget autoconf xdotool gcc
 
 # Nvim
 printSection "NEOVIM"
-sudo ~/.files/nvim/install.sh
+sh ~/.files/nvim/install.sh
 
 # fzf
 printSection "FZF"
-sudo $miscDir/fzf.sh
+sh $miscDir/fzf.sh
 
 # Node & npm
 printSection "NODE & NPM"
-sudo $miscDir/nodeNpm.sh
+sh $miscDir/nodeNpm.sh
 
 # Set up Zsh
 printSection "ZSH"
-sudo ~/.files/zsh/install.sh
+sh ~/.files/zsh/install.sh
 
 # Ranger
 printSection "RANGER"
-sudo ~/.files/ranger/install.sh
+sh ~/.files/ranger/install.sh
 
 # Nerdfonts
 printSection "NERDFONTS"
-sudo $miscDir/nerdfonts.sh
+sh $miscDir/nerdfonts.sh
 
 # Conda
 printSection "CONDA"
-sudo $miscDir/conda.sh
+sh $miscDir/conda.sh
 
 # Synergy
 printSection "SYNERGY"
-sudo $miscDir/synergy.sh
+sh $miscDir/synergy.sh
 
 # Misc Links
 printSection "Miscellaneous links"
-sudo $miscDir/misc-links.sh
+sh $miscDir/misc-links.sh
 
 # Latex
 prg=Latex
@@ -90,5 +93,5 @@ printSection $prg
 echo "Do you wish to install $prg? (y/n)"
 read answer
 if [[ $answer == 'y' || $answer == 'Y'   ]]; then
-	sudo $miscDir/latex.sh
+	sh $miscDir/latex.sh
 fi
