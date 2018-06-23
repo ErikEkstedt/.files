@@ -2,7 +2,6 @@
 
 mkdir -p ~/Tiling && cd ~/Tiling
 
-
 #########################
 # faho - kwin-tiling
 #########################
