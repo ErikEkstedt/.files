@@ -9,8 +9,8 @@ cd ~ && git clone https://github.com/ErikEkstedt/.files.git
 ```bash
 ~/.files/Install.sh
 ```
-
-[Wallpaper dump](https://imgur.com/gallery/UWHsS)
+3. Customize appearance
+  * [Appearance.md](./Installation/appearance.md)
 
 ## Setup
 
