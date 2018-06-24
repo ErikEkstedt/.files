@@ -1,7 +1,13 @@
 # i3
 
-## The Four OS programs
+DEPRECATED
 
+DEPRECATED
+DEPRECATED
+DEPRECATED
+DEPRECATED
+
+## The Four OS programs
 * Browser
 * Ranger (file browser)
 * Music
@@ -13,14 +19,9 @@
 	* HBO
 	* Alluc(?)
 
-
 ## OS Settings
 
 * [ ] Different gaps for different containers
 	* [ ] Set horisontal/vertical gaps
 	* Global
 	* Local
-
-
-
-

@@ -1,41 +1,55 @@
 #!/bin/bash
 
+echo "Install ethtool"
+sudo apt install ethtool
+
 # Find out your network card
 # look for logical name (eth0 / enp....)
-lshw -class network 
+sudo lshw -class network 
 # or
-lshw -class network |grep logical
 
-#ethtool settings
-Name=enp0s31f6
-ethtool $Name
-# or
-ethtool $Name | grep wake
+echo "Find name of connection"
+sudo lshw -class network | grep logical
+logical=$(sudo lshw -class network | grep logical)
+logical="${logical##* }"
+echo "The relevant name is: $logical"
+echo 
+
+echo "Ethtool: Wake on Lan Settings for $logical"
+ethtool $logical | grep wake
+
+
+echo "cp ~/.files/Installation/Wol/wol@.service /etc/systemd/system/"
+sudo cp ~/.files/Installation/Wol/wol@.service /etc/systemd/system/
+
+echo "systemctl enable wol@$logical"
+sudo systemctl enable wol@$logical
+
+echo "Ethtool: Wake on Lan Settings for $logical"
+ethtool $logical
+
 
 # went here and did second answer.
 # https://askubuntu.com/questions/764158/how-to-enable-wake-on-lan-wol-in-ubuntu-16-04
 
-
 # sudo powers needed.
 # First, create the file /etc/systemd/system/wol@.service
-sudo cp ~/.files/Installation/Wol/wol@.service /etc/systemd/system/
+# sudo cp ~/.files/Installation/Wol/wol@.service /etc/systemd/system/
 
 # Enable this for the interface on boot. 
 # Run the following command (change eth3 with your interface):
-systemctl enable wol@eth3
+# systemctl enable wol@$logical
 
 #You should see something like this:
-"Created symlink from /etc/systemd/system/multi-user.target.wants/wol@eth3.service to /etc/systemd/system/wol@.service."    
+# "Created symlink from /etc/systemd/system/multi-user.target.wants/wol@eth3.service to /etc/systemd/system/wol@.service."    
 
 #To check if it's enabled, run the following command (change eth3 with your interface) and it should return enabled:
-systemctl is-enabled wol@eth3
+# systemctl is-enabled wol@$logical
 #To test this, reboot and run (change eth3 with your interface):
-ethtool $Name 
+# ethtool $Name 
 #You should see a line with the following:
-Wake-on: g
+# Wake-on: g
 
 #########################
 # In start_up_desktop.sh
-sudo ethtool enp0s31f6 wol g
-
-
+# sudo ethtool enp0s31f6 wol g

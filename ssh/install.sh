@@ -1,5 +1,10 @@
 #!/bin/bash
 
+##############################
+#########  Not Done  #########
+#########  Not Done  #########
+##############################
+
 # This is meant to be script that installs ssh and checks if
 # public keys and config exists and links config files and
 # creates a key if necessary

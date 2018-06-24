@@ -18,7 +18,7 @@ cp ~/.local/share/kwin/scripts/kwin-script-tiling/metadata.desktop ~/.local/shar
 # this.blacklist = "systemsettings,yakuake,krunner,plasma,plasma-desktop,plugin-container,Wine,klipper,plasmashell,Plasma,ksmserver, pinentry".split(",");
 
 #########################
-# faho - kwin-tiling
+# Jazqa:  kwin-quarter-tiling
 #########################
 cd ~/Tiling
 git clone https://github.com/Jazqa/kwin-quarter-tiling.git
