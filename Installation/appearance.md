@@ -1,7 +1,8 @@
 # Wallpapers
 
 [wallpaper 1080](https://imgur.com/gallery/XnnPe)
-[wallpaper ultrwide](https://imgur.com/gallery/UWHsS)
+
+[wallpaper ultra-wide](https://imgur.com/gallery/UWHsS)
 
 
 ## KDE
