@@ -1,7 +1,36 @@
 #!/bin/bash
+# A script that kills all detached tmux sessions
+# Bloated text
 
-echo "Killing detached tmux sessions:"
-tmux list-sessions | grep -E -v '\(attached\)$' | while IFS='\n' read line; do
-    tmux kill-session -t "${line%%:*}"
-	echo "Killing session: ${line%%:*}"
-done
+Red='\033[0;31m'
+Cyan='\033[0;36m'
+Green='\033[0;32m'
+NC='\033[0m' # No Color
+
+notAttached=$(tmux list-sessions | grep -E -v '\(attached\)$')
+if [[ -n $notAttached ]]; then
+	# Looping over the same stuff over and over again
+	# This could be better but.. shell...
+	echo
+	echo "-------------------------"
+	echo Current Sessions:
+	printf "${Cyan}"
+	tmux list-sessions
+	printf "${NC}\n"
+	echo "-------------------------"
+	echo Removing Sessions:
+	printf "${Red}\n"
+	tmux list-sessions | grep -E -v '\(attached\)$' | while IFS='\n' read line; do
+		tmux kill-session -t "${line%%:*}"
+			echo "Killing session: ${line%%:*}"
+	done
+	printf "${NC}\n"
+	echo "-------------------------"
+	printf "${Green}\n"
+	tmux list-sessions
+	printf "${NC}\n"
+	echo "-------------------------"
+else
+	echo
+	echo No unattached sessions!
+fi

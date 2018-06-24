@@ -7,6 +7,7 @@
 ######################################################################
 # Remember sudo
 #     Cant install conda/pip with sudo etc...
+#		Only use sudo at the "leaf" commands. Not executing new scripts.
 ######################################################################
 
 miscDir=./Installation/misc

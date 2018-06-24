@@ -75,6 +75,7 @@ alias sonlp="source activate pytorch-nlp"
 alias work="tmuxinator start WORK"
 # }}}
 
+alias patchwork="cd ~/patchwork && npm start"
 # Git {{{
 alias gad="git add"
 alias gcm="git commit -m "

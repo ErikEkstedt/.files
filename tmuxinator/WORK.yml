@@ -19,3 +19,5 @@ windows:
             - vim
     - PHD:
         root: ~/phd
+    - CONFIG:
+        root: ~/.files
