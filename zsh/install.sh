@@ -5,8 +5,8 @@
 # Dependencies: npm
 
 echo Links: zsh
-echo ln -sf ~/.files/zshrc ~/.zshrc
-ln -sf ~/.files/zsh/zshrc-desktop ~/.zshrc
+echo ln -sf ~/.files/zsh/zshrc ~/.zshrc
+ln -sf ~/.files/zsh/zshrc ~/.zshrc
 
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 

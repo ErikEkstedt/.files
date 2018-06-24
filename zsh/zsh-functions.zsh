@@ -121,7 +121,6 @@ function sms() { #{{{
 	-n Samsung\ Galaxy\ Note\ 4
 } #}}}
 
-
 function g() {  #{{{
 	la | grep -i $1
 } #}}}
@@ -166,11 +165,9 @@ alias sod="source deactivate"
 zle -N so
 #}}}
 
-
 function junb() { #{{{
 	jupyter notebook "$1"
 } #}}}
-
 
 # BINDINGS {{{
 # alt+s to prepend 'sudo ' to current command and move to EOL

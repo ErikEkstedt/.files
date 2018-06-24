@@ -1,17 +1,27 @@
 #/bin/bash
-
 # https://github.com/tmuxinator/tmuxinator 
 
-# Going to require sudo. How to install gem as user ?
-# gem install tmuxinator -y
+prg=tmuxinator
+if ! [ -x "$(command -v $prg)" ]; then
+	echo "Installing $prg" >&2
+	gem install tmuxinator -y
+else
+	echo "$prg is already installed" >&2
+fi
 
-# Link config files and add completion to zshrc
-# TODO
-# mkdir -p ~/.config/tmuxinator
-echo "Links: Tmuxinator"
+# Completion
+# add the line below to zsrc
+echo 
+echo "For completion add the following line to zsrc:"
+echo \> source ~/.files/tmuxinator/tmuxinator.zsh
+echo 
+
+echo -----------------------------------------------
+echo "Creating ~/.config/tmuxinator folder and links"
+echo ln -sf ~/.files/tmuxinator/dropdown.yml ~/.config/tmuxinator
+echo ln -sf ~/.files/tmuxinator/WORK.yml ~/.config/tmuxinator
+
+mkdir -p ~/.config/tmuxinator
 ln -sf ~/.files/tmuxinator/dropdown.yml ~/.config/tmuxinator
 ln -sf ~/.files/tmuxinator/WORK.yml ~/.config/tmuxinator
-
-
-
-
+echo Done!
