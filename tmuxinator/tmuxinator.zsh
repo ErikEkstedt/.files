@@ -13,7 +13,6 @@ _tmuxinator() {
       ;;
     esac
   fi
-
   return
 }
 

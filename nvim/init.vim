@@ -17,9 +17,18 @@ set rtp+=~/.fzf
 
 
 "PythonPath
-let g:python3_host_prog='/home/erik/miniconda3/bin/python'
-let g:python_host_prog='/home/erik/miniconda3/envs/py27/bin/python'
-let g:node_host_prog = '/home/erik/.node_modules_global/bin/neovim-node-host' 
+if has("unix")
+	let s:uname = system("uname")
+	if s:uname == "Darwin\n"
+		let g:python3_host_prog='/Users/erik/miniconda3/bin/python'
+		let g:python_host_prog ='/Users/erik/miniconda3/envs/py27/bin/python'
+		let g:node_host_prog   ='/Users/erik/.node_modules_global/bin/neovim-node-host' 
+	else
+		let g:python3_host_prog='/home/erik/miniconda3/bin/python'
+		let g:python_host_prog='/home/erik/miniconda3/envs/py27/bin/python'
+		let g:node_host_prog='/home/erik/.node_modules_global/bin/neovim-node-host' 
+	endif
+endif
 
 "============= Vim-Plug ======================{{{
 " Plugins marked with XXX I know I use/like a lot.

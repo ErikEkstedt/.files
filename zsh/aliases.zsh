@@ -3,12 +3,12 @@
 # =================================================
 
 # Terminal {{{
-alias tmux="TERM=screen-256color-bce /usr/bin/tmux"
+# alias tmux="TERM=screen-256color-bce /usr/bin/tmux"
 alias cd..="cd .."
 alias e="exit"
 alias :q='exit'
 alias :wq='exit'
-alias ls="ls --color=auto"
+# alias ls="ls --color=auto"
 alias la="ls -A"
 alias ll="ls -l"
 alias ld="ls -ld */"
