@@ -5,10 +5,6 @@
 # 1. Download dotfiles: https://github.com/ErikEkstedt/.files
 # 2. Run ~/.files/Install.sh (this file)
 ######################################################################
-# Remember sudo
-#     Cant install conda/pip with sudo etc...
-#		Only use sudo at the "leaf" commands. Not executing new scripts.
-######################################################################
 
 miscDir=./Installation/misc
 
@@ -24,33 +20,58 @@ function printSection() {
 	printf "${NC}\n\n"
 }
 
-# Check what type of config
-dist=$(lsb_release -is)  # Ubuntu
-release=$(lsb_release -rs)  # 17.10, 18.04
-OS=$(awk '/DISTRIB_ID=/' /etc/*-release | sed 's/DISTRIB_ID=//' | tr '[:upper:]' '[:lower:]')
-ARCH=$(uname -m | sed 's/x86_//;s/i[3-6]86/32/')
-VERSION=$(awk '/DISTRIB_RELEASE=/' /etc/*-release | sed 's/DISTRIB_RELEASE=//' | sed 's/[.]0/./')
+case `uname` in
+  Darwin)
+    # commands for OS X go here
 
-printSection "OS Information"
-printf "${Yellow}Distribution:${NC} $dist\n"
-printf "${Yellow}OS:${NC} $OS\n"
-printf "${Yellow}version:${NC} $VERSION\n"
-printf "${Yellow}ARCH:${NC} $ARCH\n"
+	# Terminal apps, important tools.
+	printSection "HomeBrew"
+	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-if [[ $OS == "ubuntu" && $VERSION == "17.10" ]]; then
-	# Add Kubuntu backports Plasma for ubuntu 17.10
-	printSection "17.10 Backports kubuntu"
-	echo "Adds kubuntu backports and updates system"
-	sudo add-apt-repository ppa:kubuntu-ppa/backports
-	sudo apt update -yyqq
-	sudo apt full-upgrade
-fi
+	printSection "TERMINAL MISC"
+	brew install git \ 
+		wget \
+		curl \ 
+		tmux \ 
+		zsh \ 
+		zathura \
+		ranger \ 
+  ;;
+  Linux)
+    # commands for Linux go here
+	# Check what type of config
+	dist=$(lsb_release -is)  # Ubuntu
+	release=$(lsb_release -rs)  # 17.10, 18.04
+	OS=$(awk '/DISTRIB_ID=/' /etc/*-release | sed 's/DISTRIB_ID=//' | tr '[:upper:]' '[:lower:]')
+	ARCH=$(uname -m | sed 's/x86_//;s/i[3-6]86/32/')
+	VERSION=$(awk '/DISTRIB_RELEASE=/' /etc/*-release | sed 's/DISTRIB_RELEASE=//' | sed 's/[.]0/./')
 
-# Terminal apps, important tools.
-printSection "TERMINAL MISC"
-sudo apt install -yyqq \
-	git tmux xclip xsel zsh feh curl zathura \
-	ranger wget autoconf xdotool gcc
+	printSection "OS Information"
+	printf "${Yellow}Distribution:${NC} $dist\n"
+	printf "${Yellow}OS:${NC} $OS\n"
+	printf "${Yellow}version:${NC} $VERSION\n"
+	printf "${Yellow}ARCH:${NC} $ARCH\n"
+
+	if [[ $OS == "ubuntu" && $VERSION == "17.10" ]]; then
+		# Add Kubuntu backports Plasma for ubuntu 17.10
+		printSection "17.10 Backports kubuntu"
+		echo "Adds kubuntu backports and updates system"
+		sudo add-apt-repository ppa:kubuntu-ppa/backports
+		sudo apt update -yyqq
+		sudo apt full-upgrade
+	fi
+
+	# Terminal apps, important tools.
+	printSection "TERMINAL MISC"
+	sudo apt install -yyqq \
+		git tmux xclip xsel zsh feh curl zathura \
+		ranger wget autoconf xdotool gcc
+  ;;
+  FreeBSD)
+    # commands for FreeBSD go here
+  ;;
+esac
+
 
 # Nvim
 printSection "NEOVIM"
