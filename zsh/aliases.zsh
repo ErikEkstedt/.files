@@ -65,7 +65,6 @@ alias vim="nvim"
 alias v="nvim"
 alias ipy="ipython"  #--profile=erik"
 
-alias drop="/home/erik/.files/bin/dropdown"
 function mkpr() { project_init "$1" } 
 
 alias somy="source $HOME/mycroft-core/.venv/bin/activate"
@@ -73,6 +72,7 @@ alias sonlp="source activate pytorch-nlp"
 
 # tmuxinator
 alias work="tmuxinator start WORK"
+alias drop="tmuxinator start dropdown"
 # }}}
 
 alias patchwork="cd ~/patchwork && npm start"
