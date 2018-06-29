@@ -13,11 +13,10 @@ endif
 
 " fzf path
 set rtp+=~/.fzf
-" set rtp+=~/.files/nvim
 
-
-"PythonPath
+"Python & Node
 if has("unix")
+	" This is probably not necessary and $HOME or similar might work.
 	let s:uname = system("uname")
 	if s:uname == "Darwin\n"
 		let g:python3_host_prog='/Users/erik/miniconda3/bin/python'
@@ -36,7 +35,6 @@ endif
 call plug#begin('~/.vim/bundle')
 
 " Deoplete
-"
 if has('nvim') 
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -59,13 +57,13 @@ Plug 'daeyun/vim-matlab'               " MATLAB
 Plug 'othree/xml.vim'                  " xml highlight
 Plug 'klen/python-mode'                " Python mode (docs, refactor, lints...)
 
-" Tools
+                                       " Tools
 Plug 'DougBeney/pickachu'              " Pick Color/date/
 Plug 'Valloric/MatchTagAlways' 
 Plug 'Xuyuanp/nerdtree-git-plugin'     " show git status of files
 Plug 'Yggdroot/indentLine'             " see where there is indent
 Plug 'airblade/vim-gitgutter'          " XXX see git changes in file in the numberline
-Plug 'cohama/lexima.vim'              " autoclosing brackets
+Plug 'Raimondi/delimitMate'            " auto complete parens etc.
 Plug 'easymotion/vim-easymotion'       " XXX visualize targets tot move to specific words
 Plug 'ivalkeen/nerdtree-execute'       " open files from nerdtree
 Plug 'junegunn/fzf.vim'                " XXX fuzzy filefinding
@@ -113,19 +111,10 @@ if !exists("g:gui_oni")
 	Plug 'mhartington/oceanic-next'
 	Plug 'yuttie/hydrangea-vim'
     Plug 'junegunn/seoul256.vim'          " cool junegunn is coool
-endif
-
-if !exists("g:gui_oni")
+	
 	Plug 'itchyny/lightline.vim'
 	Plug 'edkolev/tmuxline.vim'          " tmux statusline same as vim.	 :Tmuxline lightline
-" else
-	" let &termguicolors = 1
-    " set statusline=
-    " set statusline+=%#LineNr#
-    " set statusline+=\ %f
 endif
-"}}}
-
 
 call plug#end()
 " }}}
