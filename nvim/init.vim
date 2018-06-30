@@ -14,6 +14,8 @@ endif
 " fzf path
 set rtp+=~/.fzf
 
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=0
+
 "Python & Node
 if has("unix")
 	" This is probably not necessary and $HOME or similar might work.
@@ -154,7 +156,8 @@ set relativenumber
 set scrolloff=3                " visual rows above and below cursor
 set sidescroll=3               " visual columns on sides of cursor
 set cursorline                 " highlight line where cursor is
-set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+" set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+set guicursor=
 set hls                        " highlighting!
 set lazyredraw                 " don't redraw screen during macros
 
