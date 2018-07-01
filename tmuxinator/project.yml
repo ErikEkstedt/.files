@@ -1,0 +1,23 @@
+# $HOME/.config/tmuxinator/project.yml
+name: ~/<%= @args[0] %>
+root: ~/phd/projects/<%= @args[0] %>
+windows:
+    - VIM:
+        layout: main-vertical
+        panes:
+          - Editor:
+            - vim
+          - Repl:
+            - source activate project0
+            - ipy
+            - import numpy as np
+          - Script:
+            - source activate project0
+    - BLOG:
+        root: ~/blog/public/notes
+        panes:
+            - vim
+    - PHD:
+        root: ~/phd
+    - CONFIG:
+        root: ~/.files

@@ -21,6 +21,8 @@ echo "Creating ~/.config/tmuxinator folder and links"
 echo ln -sf ~/.files/tmuxinator/dropdown.yml ~/.config/tmuxinator
 echo ln -sf ~/.files/tmuxinator/WORK.yml ~/.config/tmuxinator
 
+# TODO
+# Loop&Link all .yml files from target dir to $HOME/.config/tmuxinator
 mkdir -p ~/.config/tmuxinator
 ln -sf ~/.files/tmuxinator/dropdown.yml ~/.config/tmuxinator
 ln -sf ~/.files/tmuxinator/WORK.yml ~/.config/tmuxinator
