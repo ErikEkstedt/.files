@@ -62,11 +62,14 @@ alias tco="cd ~/Documents/latex; vim Computer_todo.tex"
 
 # CUSTOM {{{
 alias vim="nvim"
+alias VIM="vim"
 alias v="nvim"
 alias ipy="ipython"  #--profile=erik"
 
 function mkpr() { project_init "$1" } 
 
+alias scroll="xinput set-prop 12 285 -303 303"
+alias wif="sudo iwconfig wlp2s0 txpower 10dBm"
 alias somy="source $HOME/mycroft-core/.venv/bin/activate"
 alias sonlp="source activate pytorch-nlp"
 
