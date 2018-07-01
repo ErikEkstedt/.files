@@ -6,7 +6,7 @@
 # 2. Run ~/.files/Install.sh (this file)
 ######################################################################
 
-miscDir=./Installation/misc
+miscDir=$HOME/.files/Installation/misc
 
 # Colors
 Red='\033[0;31m'
@@ -72,42 +72,78 @@ case `uname` in
   ;;
 esac
 
-
-# Nvim
-printSection "NEOVIM"
-sh ~/.files/nvim/install.sh
-
-# fzf
-printSection "FZF"
-sh $miscDir/fzf.sh
+# Conda
+prg="CONDA"
+printSection $prg
+echo "Do you wish to install $prg? (y/n)"
+read answer
+if [[ $answer == 'y' || $answer == 'Y'   ]]; then
+	sh $miscDir/conda.sh
+fi
 
 # Node & npm
-printSection "NODE & NPM"
-sh $miscDir/nodeNpm.sh
+prg="NODE & NPM"
+printSection $prg
+echo "Do you wish to install $prg? (y/n)"
+read answer
+if [[ $answer == 'y' || $answer == 'Y'   ]]; then
+	sh $miscDir/nodeNpm.sh
+fi
 
-# Set up Zsh
-printSection "ZSH"
-sh ~/.files/zsh/install.sh
+# Nvim
+prg="NEOVIM"
+printSection $prg
+echo "Do you wish to install $prg? (y/n)"
+read answer
+if [[ $answer == 'y' || $answer == 'Y'   ]]; then
+	sh ~/.files/nvim/install.sh
+fi
+
+# fzf
+prg="FZF"
+printSection $prg
+echo "Do you wish to install $prg? (y/n)"
+read answer
+if [[ $answer == 'y' || $answer == 'Y'   ]]; then
+	sh $miscDir/fzf.sh
+fi
 
 # Ranger
-printSection "RANGER"
-sh ~/.files/ranger/install.sh
-
-# Nerdfonts
-printSection "NERDFONTS"
-sh $miscDir/nerdfonts.sh
-
-# Conda
-printSection "CONDA"
-sh $miscDir/conda.sh
+prg="RANGER"
+printSection $prg
+echo "Do you wish to install $prg? (y/n)"
+read answer
+if [[ $answer == 'y' || $answer == 'Y'   ]]; then
+	sh ~/.files/ranger/install.sh
+fi
 
 # Synergy
-printSection "SYNERGY"
-sh $miscDir/synergy.sh
+prg="SYNERGY"
+printSection $prg
+echo "Do you wish to install $prg? (y/n)"
+read answer
+if [[ $answer == 'y' || $answer == 'Y'   ]]; then
+	sh $miscDir/synergy.sh
+fi
 
-# Misc Links
-printSection "Miscellaneous links"
-sh $miscDir/misc-links.sh
+
+# Set up Zsh
+prg="ZSH"
+printSection $prg
+echo "Do you wish to install $prg? (y/n)"
+read answer
+if [[ $answer == 'y' || $answer == 'Y'   ]]; then
+	sh ~/.files/zsh/install.sh
+fi
+
+# Nerdfonts
+prg=NerdFonts
+printSection $prg
+echo "Do you wish to install $prg? (y/n)"
+read answer
+if [[ $answer == 'y' || $answer == 'Y'   ]]; then
+	sh $miscDir/nerdfonts.sh
+fi
 
 # Latex
 prg=Latex
@@ -117,3 +153,7 @@ read answer
 if [[ $answer == 'y' || $answer == 'Y'   ]]; then
 	sh $miscDir/latex.sh
 fi
+
+# Misc Links
+printSection "Miscellaneous links"
+sh $miscDir/misc-links.sh

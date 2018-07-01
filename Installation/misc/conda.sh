@@ -1,9 +1,10 @@
 #!/bin/bash
 # download miniconda
 
-wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh ~/Downloads -P ~/Downloads
+if [ ! -f ~/Downloads/Miniconda3-latest-Linux-x86_64.sh ]; then 
+	wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh ~/Downloads -P ~/Downloads
+fi
 
-cd ~/Downloads
-sh Miniconda3-latest-Linux-x86_64.sh
+sh $HOME/Downloads/Miniconda3-latest-Linux-x86_64.sh
 
 conda update conda
