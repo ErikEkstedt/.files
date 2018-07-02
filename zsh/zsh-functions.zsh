@@ -163,7 +163,7 @@ function cfg() { #{{{
 } #}}}
 
 function so() { #{{{
-	local env=$(ls /home/erik/miniconda3/envs | fzf)
+	local env=$(ls $HOME/miniconda3/envs | fzf)
 	# source activate "$1"
 	source activate "$env"
 } 
