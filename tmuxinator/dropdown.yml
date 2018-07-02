@@ -7,8 +7,7 @@ windows:
   - Ranger: 
       - ranger
   - Server: 
-      layout: even-vertical
+      layout: even-horizontal
       panes:
-        - Blog
-        - Mycroft
-
+        - cd ~/blog && nodemon app.js
+        - cd mycroft 
