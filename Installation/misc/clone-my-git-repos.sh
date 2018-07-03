@@ -18,11 +18,11 @@ fi
 echo "Do you wish to clone .personal ? (y/n)"
 read answer
 if [[ $answer == 'y' || $answer == 'Y'   ]]; then
-	git@github.com:ErikEkstedt/.personal.git
+	git clone git@github.com:ErikEkstedt/.personal.git
 fi
 
 echo "Do you wish to clone LatexDocs? (y/n)"
 read answer
 if [[ $answer == 'y' || $answer == 'Y'   ]]; then
-	git@github.com:ErikEkstedt/LatexDocs.git
+	git clone git@github.com:ErikEkstedt/LatexDocs.git
 fi
