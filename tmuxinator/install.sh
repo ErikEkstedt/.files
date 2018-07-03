@@ -4,7 +4,7 @@
 prg=tmuxinator
 if ! [ -x "$(command -v $prg)" ]; then
 	echo "Installing $prg" >&2
-	gem install tmuxinator -y
+	gem install tmuxinator
 else
 	echo "$prg is already installed" >&2
 fi
