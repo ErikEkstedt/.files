@@ -17,7 +17,7 @@ windows:
     - BLOG:
         root: ~/blog/public/notes
         panes:
-          - vim /projects/voice-generation.md
+          - vim /ML/voice-generation.md
     - PHD:
         root: ~/phd
     - CONFIG:

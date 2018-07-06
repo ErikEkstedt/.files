@@ -14,6 +14,8 @@ Parent=FALLBACK/
 ShowTerminalSizeHint=false
 
 [Interaction Options]
+AutoCopySelectedText=true
+MiddleClickPasteMode=1
 OpenLinksByDirectClickEnabled=true
 UnderlineFilesEnabled=true
 
