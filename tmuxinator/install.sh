@@ -26,4 +26,6 @@ echo ln -sf ~/.files/tmuxinator/WORK.yml ~/.config/tmuxinator
 mkdir -p ~/.config/tmuxinator
 ln -sf ~/.files/tmuxinator/dropdown.yml ~/.config/tmuxinator
 ln -sf ~/.files/tmuxinator/WORK.yml ~/.config/tmuxinator
+ln -sf ~/.files/tmuxinator/project.yml ~/.config/tmuxinator
+
 echo Done!
