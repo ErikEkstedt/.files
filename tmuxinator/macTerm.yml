@@ -1,0 +1,24 @@
+# /home/erik/.config/tmuxinator/WORK.yml
+name: WORK
+root: ~/phd/projects/voice-generation
+windows:
+    - VIM:
+        layout: main-vertical
+        panes:
+          - Editor:
+            - vim
+          - Repl:
+            - cd code
+            - source activate project0
+            - ipy
+            - import numpy as np
+          - Script:
+            - source activate project0
+    - BLOG:
+        root: ~/blog/public/notes
+        panes:
+          - vim /ML/voice-generation.md
+    - PHD:
+        root: ~/phd
+    - CONFIG:
+        root: ~/.files
