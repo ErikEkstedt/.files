@@ -110,22 +110,30 @@ let g:UltiSnipsUsePythonVersion = 3
 let g:fzf_buffers_jump = 1
 
 " Mappings
-nnoremap <Leader>fl :Files<CR>
+" FuzzyFind files in /, $HOME or current folder
+nnoremap <Leader>fr :Files /<CR>
 nnoremap <Leader>fi :Files ~/<CR>
+nnoremap <Leader>fl :Files<CR>
+
+" FuzzyFind files in predefined folders I commonly use
 nnoremap <Leader>fc :Files ~/.files<CR>
 nnoremap <Leader>fb :Files ~/blog<CR>
-nnoremap <Leader>fo :Files /opt/Oni<CR>
-nnoremap <Leader>fr :Files /<CR>
+nnoremap <Leader>fp :Files ~/phd<CR>
+
+" FuzzyFind in files. FzF lines in current buffer
 nnoremap <Leader>ff :Rg<CR>
-nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>li :Lines<CR>
 nnoremap <Leader>fli :FZFLines<CR>
+
+nnoremap <Leader>bu :Buffers<CR>
+
 nnoremap <Leader>gs :GFiles?<CR>
 nnoremap <Leader>he :Helptags<CR>
 nnoremap <Leader>fs :Snippets<CR>
 
 " Default fzf layout
 " - down / up / left / right
+" let g:fzf_layout = { 'up': '~50%' }
 let g:fzf_layout = { 'down': '~50%' }
 
 " Mapping selecting mappings

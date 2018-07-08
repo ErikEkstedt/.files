@@ -68,7 +68,7 @@ alias ipy="ipython"  #--profile=erik"
 
 function mkpr() { project_init "$1" } 
 
-alias scroll="xinput set-prop 12 285 -303 303"
+alias scroll="xinput set-prop 12 284 -303 303"
 alias wif="sudo iwconfig wlp2s0 txpower 10dBm"
 alias somy="source $HOME/mycroft-core/.venv/bin/activate"
 alias sonlp="source activate pytorch-nlp"
@@ -76,6 +76,7 @@ alias sonlp="source activate pytorch-nlp"
 # tmuxinator
 alias work="tmuxinator start WORK"
 alias drop="tmuxinator start dropdown"
+alias proj="tmuxinator start project"
 # }}}
 
 alias patchwork="cd ~/patchwork && npm start"

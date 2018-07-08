@@ -10,8 +10,7 @@ if ! [ -x "$(command -v $prg)" ]; then
 	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 	~/.fzf/install
 else
-	echo
-	echo "Success: $prg is installed!" >&2
+	echo "\nSuccess: $prg is installed!" >&2
 fi
 
 echo "Downloading and Installing fd"
@@ -26,3 +25,10 @@ case `uname` in
 	;;
 esac
 
+
+# TODO 
+# RipGrep installer
+#
+# curl -LO https://github.com/BurntSushi/ripgrep/releases/download/0.8.1/ripgrep_0.8.1_amd64.deb
+
+# sudo dpkg -i ripgrep_0.8.1_amd64.deb
