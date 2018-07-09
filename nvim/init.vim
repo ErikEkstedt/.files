@@ -107,15 +107,15 @@ if !exists("g:gui_oni")
 	Plug 'skielbasa/vim-material-monokai' 
 	Plug 'kiddos/malokai.vim'
 	Plug 'Reewr/vim-monokai-phoenix'
-	Plug 'joshdick/onedark.vim'           " look like atom?
 	Plug 'vim-scripts/wombat256.vim'
 	Plug 'danilo-augusto/vim-afterglow'
 	Plug 'mhartington/oceanic-next'
 	Plug 'yuttie/hydrangea-vim'
     Plug 'junegunn/seoul256.vim'          " cool junegunn is coool
-	
+	Plug 'joshdick/onedark.vim'           " look like atom?
+	Plug 'crusoexia/vim-monokai'
 	Plug 'itchyny/lightline.vim'
-	Plug 'edkolev/tmuxline.vim'          " tmux statusline same as vim.	 :Tmuxline lightline
+	" Plug 'edkolev/tmuxline.vim'          " tmux statusline same as vim.	 :Tmuxline lightline
 endif
 
 call plug#end()
@@ -124,6 +124,7 @@ call plug#end()
 
 filetype plugin indent on
 syntax enable
+syntax on
 
 let HOSTNAME = substitute(system('hostname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
 let g:BROWSER = "google-chrome"
@@ -199,7 +200,6 @@ if has('windows')
 	set fillchars=vert:\┃  " ┃ line with no breaks between vertical splits
 endif
 
-
 if !exists("g:gui_oni")
 	set laststatus=2 "always show status bar
 else
@@ -254,6 +254,9 @@ source ~/.config/nvim/mappings/Cmappings.vim
 if exists("g:gui_oni")
     source ~/.config/nvim/mappings/oni-mappings.vim
 else
+	let g:onedark_terminal_italics=1
+	set termguicolors " Enable true color support.
+	colorscheme onedark
     source ~/.config/nvim/Appearence.vim
 endif
 
