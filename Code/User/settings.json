@@ -1,7 +1,7 @@
 {
     "editor.cursorBlinking": "solid",
     "keyboard.dispatch"    : "keyCode",   // modified keymappings work
-    "workbench.colorTheme": "One Dark Operator Theme",
+    "workbench.colorTheme": "Monokai",
 
     "vim.leader"        : " ",
     "vim.easymotion"    : true,
