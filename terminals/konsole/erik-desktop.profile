@@ -1,5 +1,5 @@
 [Appearance]
-ColorScheme=base16-pop
+ColorScheme=base16-onedark
 Font=DejaVuSansMono Nerd Font Mono,12,-1,5,50,0,0,0,0,0,Regular
 UseFontLineChararacters=true
 
