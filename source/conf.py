@@ -23,7 +23,7 @@ class Config(object):
         self.terminal = self._terminal()  # wants
         self.implemented = self._implemented()  # wants implemented in real configs
         self.keyVariables = self._keyVariables()  # Keys
-        self.dotfilePath = join(Path.home(), '~/.files')
+        self.dotfilePath = join(Path.home(), '.files')
 
 
     def _os(self):
