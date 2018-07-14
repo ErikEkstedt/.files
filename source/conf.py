@@ -1,7 +1,8 @@
-import numpy as np
 import os
 from os.path import join, exists
+from pathlib import Path
 import platform
+import numpy as np
 
 
 
@@ -22,7 +23,7 @@ class Config(object):
         self.terminal = self._terminal()  # wants
         self.implemented = self._implemented()  # wants implemented in real configs
         self.keyVariables = self._keyVariables()  # Keys
-        self.dotfilePath = os.path.abspath('~/.files')
+        self.dotfilePath = join(Path.home(), '~/.files')
 
 
     def _os(self):
@@ -106,7 +107,6 @@ class Config(object):
         s += stringDict(self.terminal)
         s += "-"*50
         return s
-
 
 
 def testConfig():
