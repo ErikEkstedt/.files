@@ -23,10 +23,11 @@ alias ldt="tree -d -L 2"
 
 # Movement {{{
 
-alias gp="cd ~/phd; ls"
-alias gz="cd ~/.files/zsh; ls"
 alias gfi="cd ~/.files; ls"
+alias gz="cd ~/.files/zsh; ls"
 alias gbl="cd ~/blog; ls"
+alias gph="cd ~/phd; ls"
+alias gpe="cd ~/.personal; ls"
 
 alias gma="cd ~/com_sci/Master_code; ls"
 alias gpr="cd ~/com_sci/Master_code/Gestures/gesture; ls"

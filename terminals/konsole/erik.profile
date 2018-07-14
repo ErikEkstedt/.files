@@ -1,6 +1,6 @@
 [Appearance]
-ColorScheme=base16-pop
-Font=DejaVuSansMono Nerd Font Mono,16,-1,5,50,0,0,0,0,0,Regular
+ColorScheme=base16-onedark
+Font=DejaVuSansMono Nerd Font Mono,14,-1,5,50,0,0,0,0,0,Regular
 UseFontLineChararacters=true
 
 [Cursor Options]
