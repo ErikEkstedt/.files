@@ -17,6 +17,8 @@ alias ltt="ls -ogl *.tex"
 alias ltx="ls *.tex"
 alias lpy="ls *.py"
 alias lpdf="ls -ogl *.pdf"
+
+alias ldt="tree -d -L 2"
 # }}}
 
 # Movement {{{
