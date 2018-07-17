@@ -31,7 +31,7 @@ import os
 import sys
 import subprocess
 
-FOLDERS = ['blog', 'phd','.files', 'fun', 'Documents/latex/Notes']
+FOLDERS = ['blog', 'phd','.files', 'fun', '.personal', 'Documents/latex/Notes']
 
 bcolors = { 'DARKGREEN' : '\033[90m',
            'WARNING' : '\033[91m',
