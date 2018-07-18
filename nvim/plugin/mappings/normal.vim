@@ -1,22 +1,17 @@
 " vim: fdm=marker
 " MAPPINGS 
 " Config files {{{
-nnoremap <leader>ev  :tabnew ~/.files/nvim/init.vim<cr>
-nnoremap <leader>ez   :tabnew ~/.zshrc<cr>
-nnoremap <leader>eal   :tabnew ~/.files/aliases<cr>
-
-" nnoremap <leader>ei3  :tabnew ~/.config/i3/config<cr>
-" nnoremap <leader>ex   :tabnew ~/.xresources<cr>
-" nnoremap <leader>ebib :tabnew ~/documents/latex/references.bib<cr>
-
-nnoremap <leader>er   :tabnew ~/.config/ranger/rc.conf<cr>
-nnoremap <leader>et   :tabnew ~/.tmux.conf<cr>
+nnoremap <leader>ev :tabnew ~/.files/nvim/init.vim<cr>
+nnoremap <leader>ez :tabnew ~/.zshrc<cr>
+nnoremap <leader>eal :tabnew ~/.files/aliases<cr>
+nnoremap <leader>er :tabnew ~/.config/ranger/rc.conf<cr>
+nnoremap <leader>et :tabnew ~/.tmux.conf<cr>
 
 " source config files
-nnoremap <leader>sv  :source ~/.files/nvim/init.vim<cr>
-nnoremap <leader>sz   :source ~/.zshrc<cr>
-nnoremap <leader>sx   :!xrdb ~/.Xresources<cr>
-nnoremap <leader>sot  :source ~/.tmux.conf<cr>
+nnoremap <leader>sv :source ~/.files/nvim/init.vim<cr>
+nnoremap <leader>sz :source ~/.zshrc<cr>
+nnoremap <leader>sx :!xrdb ~/.Xresources<cr>
+nnoremap <leader>sot :source ~/.tmux.conf<cr>
 " }}}
 
 nnoremap j gj
