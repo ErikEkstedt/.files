@@ -1,7 +1,12 @@
 [Appearance]
 ColorScheme=base16-pico
+<<<<<<< HEAD
 Font=DejaVuSansMono Nerd Font Mono,12,-1,5,50,0,0,0,0,0,Regular
+useFontLineChararacters=true
+=======
+Font=DejaVuSansMono Nerd Font Mono,14,-1,5,50,0,0,0,0,0,Regular
 UseFontLineChararacters=true
+>>>>>>> 109dff2783726392c778a6b8211cad4c1a929c33
 
 [Cursor Options]
 CursorShape=0
@@ -11,7 +16,7 @@ UseCustomCursorColor=false
 Command=/bin/zsh
 Environment=COLORTERM=truecolor
 Icon=utilities-terminal
-Name=erik-desktop
+Name=erik
 Parent=FALLBACK/
 ShowTerminalSizeHint=false
 

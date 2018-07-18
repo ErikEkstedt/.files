@@ -1,6 +1,6 @@
 # /home/erik/.config/tmuxinator/WORK.yml
 name: WORK
-root: ~/phd/projects/voice-generation
+root: ~/phd/projects/voicegeneration/voicegeneration
 windows:
     - VIM:
         layout: main-vertical

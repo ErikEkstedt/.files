@@ -244,15 +244,10 @@ endif
 " }}}
 "}}}
 "=============== Source ======================={{{
-
-source ~/.config/nvim/mappings/Nmappings.vim
-source ~/.config/nvim/mappings/Imappings.vim
-source ~/.config/nvim/mappings/Vmappings.vim
-source ~/.config/nvim/mappings/Xmappings.vim
-source ~/.config/nvim/mappings/Cmappings.vim
+" Files in ./plugin/ folder are sourced automatically
 
 if exists("g:gui_oni")
-    source ~/.config/nvim/mappings/oni-mappings.vim
+	source ~/.config/nvim/oni/mappings/oni.vim
 else
 	let g:onedark_terminal_italics=1
 	set termguicolors " Enable true color support.
@@ -260,10 +255,5 @@ else
     source ~/.config/nvim/Appearence.vim
 endif
 
-source ~/.config/nvim/Abbreviations.vim
-source ~/.config/nvim/Autocommands.vim
-source ~/.config/nvim/Functions.vim
-source ~/.config/nvim/SyntaxColors.vim
-source ~/.config/nvim/PluginSettings.vim
 
 " }}}

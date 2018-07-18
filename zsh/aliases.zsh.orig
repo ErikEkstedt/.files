@@ -21,12 +21,25 @@ alias lpdf="ls -ogl *.pdf"
 
 alias ldt="tree -d -L 2"
 
+<<<<<<< HEAD
 # Movement {{{
 alias gz="cd ~/.files/zsh; ls"
+=======
+>>>>>>> 85339ebb1071e896c3f247c49c497f5c7a0f795c
 alias gfi="cd ~/.files; ls"
+alias gz="cd ~/.files/zsh; ls"
 alias gbl="cd ~/blog; ls"
+<<<<<<< HEAD
+alias gp="cd ~/phd; ls"
+=======
 alias gph="cd ~/phd; ls"
 alias gpe="cd ~/.personal; ls"
+
+alias gma="cd ~/com_sci/Master_code; ls"
+alias gpr="cd ~/com_sci/Master_code/Gestures/gesture; ls"
+alias gro="cd ~/com_sci/Master_code/Robot/;ls"
+alias gth="cd ~/Documents/latex/Notes/Thesis; ls *.tex"
+>>>>>>> 85339ebb1071e896c3f247c49c497f5c7a0f795c
 
 alias gbu="cd ~/.vim/bundle; ls"
 alias gdw="cd ~/Downloads; la"
@@ -62,8 +75,6 @@ alias scroll="xinput set-prop 12 284 -303 303"
 alias wif="sudo iwconfig wlp2s0 txpower 10dBm"
 alias somy="source $HOME/mycroft-core/.venv/bin/activate"
 alias sonlp="source activate pytorch-nlp"
-
-alias friture="python $HOME/friture/main.py"
 
 # tmuxinator
 alias work="tmuxinator start WORK"

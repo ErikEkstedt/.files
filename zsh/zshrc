@@ -2,23 +2,21 @@
 # (K)Ubuntu 16.04, 17.10, 18.04
 
 case `uname` in
-  Darwin)
-    # commands for OS X go here
-  ;;
-  Linux)
-    # commands for Linux go here
-	stty -ixon # C-s, C-q 
-  ;;
-  FreeBSD)
-    # commands for FreeBSD go here
-  ;;
+	Darwin)
+		# commands for OS X go here
+		;;
+	Linux)
+		# commands for Linux go here
+		stty -ixon # C-s, C-q 
+		;;
+	FreeBSD)
+		# commands for FreeBSD go here
+		;;
 esac
 
 # Settings {{{
-
 # Uncomment the following line to disable auto-setting terminal title.
 DISABLE_AUTO_TITLE="true"
-
 # if you do a 'rm *', Zsh will give you a sanity check!
 setopt RM_STAR_WAIT
 
@@ -26,7 +24,6 @@ setopt RM_STAR_WAIT
 setopt interactivecomments 
 
 # zmodload zsh/zprof # see time and processes
-
 # }}}
 
 #==== Export {{{
@@ -46,10 +43,11 @@ export PATH=$HOME/.node_modules_global/bin:${PATH}
 export PATH=$HOME/.local/bin:${PATH}
 export PATH=$HOME/.files/bin:${PATH}  # For my custom scripts
 
+export PYTHONPATH=$HOME/.files/pythonpath
+
 ## CUDA
 if [[ $(hostname) == 'erik-Desktop' ]]; then
 	export PATH=/usr/local/cuda-9.0/bin:${PATH}
-	export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/cuda/lib64
 	export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/cuda-9.0/lib64
 fi
 

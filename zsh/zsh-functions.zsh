@@ -187,10 +187,17 @@ bindkey -M vicmd L end-of-line
 # FZF - functions
 bindkey '^B' cd-from-home
 bindkey -M vicmd '^B' cd-from-home
+
 bindkey '^F' file-from-home
 bindkey -M vicmd '^F' file-from-home
+
 bindkey '^N' fzf-cd-widget
 bindkey -M vicmd '^N' fzf-cd-widget
+
 bindkey '^_' cd-from-root 
 bindkey -M vicmd '^_' cd-from-root 
+
+bindkey '^k' fzf-history-widget
+bindkey -M vicmd '^k' fzf-history-widget
+
 # }}}

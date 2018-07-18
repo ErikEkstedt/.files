@@ -1,10 +1,14 @@
 import os
-from os.path import join, exists
+from os.path import join, exists, split
 from pathlib import Path
 import platform
+from subprocess import call
 import numpy as np
 
-
+DOTFILE_PATH = join(Path.home(), '.files')
+PHD_PATH = join(Path.home(), 'phd')
+BLOG_PATH = join(Path.home(), 'blog')
+FUN_PATH = join(Path.home(), 'fun')
 
 class Config(object):
     """Docstring for OSConfig.
@@ -23,8 +27,12 @@ class Config(object):
         self.terminal = self._terminal()  # wants
         self.implemented = self._implemented()  # wants implemented in real configs
         self.keyVariables = self._keyVariables()  # Keys
-        self.dotfilePath = join(Path.home(), '.files')
 
+        # Important Paths
+        self.dotfilePath = join(Path.home(), '.files')
+        self.phdPath = join(Path.home(), 'phd')
+        self.blogPath = join(Path.home(), 'blog')
+        self.funPath = join(Path.home(), 'fun')
 
     def _os(self):
         return {'system': platform.system(),
@@ -89,7 +97,10 @@ class Config(object):
             return string
 
         s = "\n"
-        s += "DotFile Path: " + self.dotfilePath + "\n"
+        s += "DotFile Path: " + self.dotfilePath   + "\n"
+        s += "phd Path: " + self.phdPath       + "\n"
+        s += "blog Path: " + self.blogPath      + "\n"
+        s += "fun Path: " + self.funPath       + "\n"
         s += "-"*50
         s += "\nOS\n"
         s += stringDict(self.os)
@@ -109,10 +120,49 @@ class Config(object):
         return s
 
 
+
+class Installer(object):
+    '''
+    Python class of:
+        DOTFILES/Installer.sh
+    '''
+
+    miscInstallPath = join(DOTFILE_PATH, 'Installation/misc')
+
+    ApplicationPaths = {'conda': join(miscInstallPath, 'conda.sh'),
+                        'node': join(miscInstallPath, 'nodeNpm.sh'),
+                        'gitClone': join(miscInstallPath, 'clone-my-git-repos.sh'),
+                        'cuda': join(miscInstallPath, 'cuda9.sh'),
+                        'fzf': join(miscInstallPath, 'fzf.sh'),
+                        'latex': join(miscInstallPath, 'latex.sh'),
+                        'latte': join(miscInstallPath, 'latte.sh'),
+                        'misc-links': join(miscInstallPath, 'misc-links.sh'),
+                        'nerdfont': join(miscInstallPath, 'nerdfonts.sh'),
+                        'synergy': join(miscInstallPath, 'synergy.sh'),
+                        'zsh': join(DOTFILE_PATH, 'zsh/install.sh'),
+                        'nvim': join(DOTFILE_PATH, 'nvim/install.sh'),
+                        'tmux': join(DOTFILE_PATH, 'tmux/install.sh'),
+                        'ranger': join(DOTFILE_PATH, 'ranger/install.sh')}
+
+    rootList = ['conda', 'zsh', 'nvim', 'ranger']
+
+    def __init__(self):
+        self.os = platform.system()
+
+    def installRoot(self):
+
+        for app, path in ApplicationPaths.items():
+            if app in rootList:
+                print(path)
+
+
+
 def testConfig():
     config = Config()
     print(config)
 
+    installer = Installer()
+    print(installer.Applications)
 
 if __name__ == '__main__':
     testConfig()
