@@ -21,9 +21,10 @@ alias lpdf="ls -ogl *.pdf"
 
 alias ldt="tree -d -L 2"
 
+<<<<<<< HEAD
 # Movement {{{
-alias gz="cd ~/.files/zsh; ls"
 alias gfi="cd ~/.files; ls"
+alias gz="cd ~/.files/zsh; ls"
 alias gbl="cd ~/blog; ls"
 alias gph="cd ~/phd; ls"
 alias gpe="cd ~/.personal; ls"
