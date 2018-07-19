@@ -55,13 +55,13 @@ alias vim="nvim"
 alias VIM="vim"
 alias v="nvim"
 alias ipy="ipython"  #--profile=erik"
+function mkpr() { project_init "$1" }  # I dont use this but good idea. Revisit
 
-function mkpr() { project_init "$1" } 
+alias wnvi="watch nvidia-smi"
 
 alias scroll="xinput set-prop 12 284 -303 303"
 alias wif="sudo iwconfig wlp2s0 txpower 10dBm"
 alias somy="source $HOME/mycroft-core/.venv/bin/activate"
-alias sonlp="source activate pytorch-nlp"
 
 alias friture="python $HOME/friture/main.py"
 
