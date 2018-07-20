@@ -152,6 +152,7 @@ nnoremap gN #zz
 " next paren
 nnoremap gp %
 nnoremap gl f,a<CR><esc> 
+nnoremap gL f;a<CR><esc> 
 
 " change word by put
 nnoremap S viw"0p

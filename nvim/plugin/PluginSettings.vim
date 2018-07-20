@@ -33,8 +33,8 @@ autocmd CompleteDone * pclose!
 call deoplete#custom#source('_', 'sorters', ['sorter_word'])
 call deoplete#custom#source('ultisnips', 'rank', 9999)
 call deoplete#custom#source('_', 'converters', ['converter_auto_paren'])
-
 "}}}
+
 "============== Neosnippet ====================={{{
 "" Plugin key-mappings.
 "" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
@@ -123,7 +123,6 @@ nnoremap <Leader>fp :Files ~/phd<CR>
 " FuzzyFind in files. FzF lines in current buffer
 nnoremap <Leader>ff :Rg<CR>
 nnoremap <Leader>li :Lines<CR>
-nnoremap <Leader>fli :FZFLines<CR>
 
 nnoremap <Leader>bu :Buffers<CR>
 
