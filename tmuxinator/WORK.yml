@@ -1,6 +1,6 @@
 # /home/erik/.config/tmuxinator/WORK.yml
 name: WORK
-root: ~/phd/projects/voicegeneration/voicegeneration
+root: ~/voicegen
 windows:
     - VIM:
         layout: main-vertical
@@ -8,7 +8,7 @@ windows:
           - Editor:
             - vim
           - Repl:
-            - cd code
+            - cd voicegen
             - source activate project0
             - ipy
             - import numpy as np
@@ -17,7 +17,7 @@ windows:
     - BLOG:
         root: ~/blog/public/notes
         panes:
-          - vim /ML/voice-generation.md
+          - vim ./ML/voice-generation.md
     - PHD:
         root: ~/phd
     - CONFIG:

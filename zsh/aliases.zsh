@@ -20,6 +20,7 @@ alias lpdf="ls -ogl *.pdf"
 # }}}
 
 alias ldt="tree -d -L 2"
+alias la="ls -A -1 --group-directories-first"
 
 # Movement {{{
 alias gfi="cd ~/.files; ls"
