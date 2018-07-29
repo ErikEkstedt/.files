@@ -34,7 +34,6 @@ function! Seoulpatch() "{{{
         hi Conceal guibg=g:seoul256_current_bg guifg=#404040
         hi Comment gui=italic
         hi String gui=italic
-
         hi Normal guibg=#242424
         hi StatuslineNC guifg=#060606 guibg=#707070 
         hi Statusline guifg=#060606 guibg=#A0A0A0
