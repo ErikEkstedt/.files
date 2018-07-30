@@ -4,7 +4,7 @@ Font=DejaVuSansMono Nerd Font Mono,12,-1,5,50,0,0,0,0,0,Regular
 UseFontLineChararacters=true
 
 [Cursor Options]
-CursorShape=0
+CursorShape=1
 UseCustomCursorColor=false
 
 [General]

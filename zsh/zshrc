@@ -225,3 +225,6 @@ source ~/.files/tmuxinator/tmuxinator.zsh
 ###}}}
 #
 # }}}
+
+
+source "/home/erik/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
