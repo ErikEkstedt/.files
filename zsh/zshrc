@@ -82,7 +82,6 @@ ZSH_THEME="spaceship"
 plugins=(vi-mode zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 ## I believe npm install of spaceship makes the line below obsolete..
-# source "~/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
 #bindkey '^ ' autosuggest-accept
 
 # Spaceship {{{
@@ -219,6 +218,9 @@ if [ -f .oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ];
 	source .oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
+if [ -f $HOME/.oh-my-zsh/custom/themes/spaceship.zsh-theme ]; then
+	source "$HOME/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
+fi
 
 ###==== TMUXINATOR {{{
 source ~/.files/tmuxinator/tmuxinator.zsh
@@ -226,5 +228,3 @@ source ~/.files/tmuxinator/tmuxinator.zsh
 #
 # }}}
 
-
-source "/home/erik/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
