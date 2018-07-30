@@ -4,6 +4,7 @@ nnoremap <buffer> Ö A;<esc>
 
 inoremap <buffer> ;co console.log('')<esc>hi
 
-if exists("g:gui_oni")
-    :call deoplete#disable()
-endif
+" indentation for python
+setlocal tabstop=2
+setlocal softtabstop=2
+setlocal shiftwidth=2

@@ -50,8 +50,30 @@ Plug 'Shougo/neco-vim'
 Plug 'Shougo/neopairs.vim'
 
 " Snippets
+
+" --------------------
+" Installed for react play
+" ES2015 code snippets (Optional)
+Plug 'epilande/vim-es2015-snippets'
+" React code snippets
+Plug 'epilande/vim-react-snippets'
+" post install (yarn install | npm install) then load plugin only for editing supported files
+
+
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
+
+Plug 'mxw/vim-jsx'
+
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+" --------------------
+"
 Plug 'SirVer/ultisnips'                " XXX snippet engine
-Plug 'honza/vim-snippets'              " XXX snippets
+" Plug 'honza/vim-snippets'              " XXX snippets
 
 " Syntax
 Plug 'sheerun/vim-polyglot'            " All the syntax messed upp syntax for oni ( turned .js -> javascript.jsx
@@ -249,11 +271,8 @@ endif
 if exists("g:gui_oni")
 	source ~/.config/nvim/oni/mappings/oni.vim
 else
-	let g:onedark_terminal_italics=1
-	set termguicolors " Enable true color support.
 	colorscheme onedark
-    source ~/.config/nvim/Appearence.vim
+	" source ~/.config/nvim/Appearence.vim
 endif
-
 
 " }}}
