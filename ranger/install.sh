@@ -3,6 +3,15 @@ echo "Linking ~/.files/ranger -> ~/.config/ranger"
 rm -rf ~/.config/ranger
 ln -sf ~/.files/ranger ~/.config
 
+case `uname` in
+    Darwin)
+		# Switch rc file for macos rc file
+		ln -sf ~/.files/ranger/macrc.conf ~/.config/ranger/rc.conf
+            ;;
+    Linux)
+        ;;
+esac
+
 # echo "Creating ~/.config/ranger directory and links"
 # mkdir -p ~/.config/ranger
 # ln -sf ~/.files/ranger/rc.conf ~/.config/ranger/rc.conf

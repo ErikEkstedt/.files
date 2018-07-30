@@ -1,0 +1,42 @@
+{
+	"title": "Launch apps",
+	"rules": [
+		{
+			"description": "Launch apps by left alt+letters.",
+			"manipulators": [
+				{
+					"type": "basic",
+					"from": {
+						"key_code": "g",
+						"modifiers": {
+							"mandatory": [
+								"left_option"
+							]
+						}
+					},
+					"to": [
+						{
+							"shell_command": "open '/Applications/Google Chrome.app'"
+						}
+					]
+				},
+				{
+					"type": "basic",
+					"from": {
+						"key_code": "return_or_enter",
+						"modifiers": {
+							"mandatory": [
+								"left_option"
+							]
+						}
+					},
+					"to": [
+						{
+							"shell_command": "open '/Applications/kitty.app'"
+						}
+					]
+				}
+			]
+		}
+	]
+}

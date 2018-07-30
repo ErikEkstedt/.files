@@ -9,18 +9,30 @@ alias :q='exit'
 alias :wq='exit'
 # pneumonic: (l)ist(.)...
 # alias la="ls -A"
-alias ll="ls -l"
-alias ld="ls -ld */"
-alias lrt="ls -lrt"
-alias ltt="ls -ogl *.tex"
-alias ltx="ls *.tex"
-alias lpy="ls *.py"
-alias lpdf="ls -ogl *.pdf"
 
-# }}}
+if [[ $(uname) == 'Darwin' ]]; then
+	alias ll="gls -l --color"
+	alias ld="gls -ld */ --color"
+	alias lrt="gls -lrt --color"
+	alias ltt="gls -ogl *.tex --color"
+	alias ltx="gls *.tex --color"
+	alias lpy="gls *.py --color"
+	alias lpdf="gls -ogl *.pdf --color"
 
-alias ldt="tree -d -L 2"
-alias la="ls -A -1 --group-directories-first"
+	alias ldt="tree -d -L 2"
+	alias la="gls -A -1 --group-directories-first --color"
+else
+	alias ll="ls -l"
+	alias ld="ls -ld */"
+	alias lrt="ls -lrt"
+	alias ltt="ls -ogl *.tex"
+	alias ltx="ls *.tex"
+	alias lpy="ls *.py"
+	alias lpdf="ls -ogl *.pdf"
+
+	alias ldt="tree -d -L 2"
+	alias la="ls -A -1 --group-directories-first"
+fi
 
 # Movement {{{
 alias gfi="cd ~/.files; ls"
