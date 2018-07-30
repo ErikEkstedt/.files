@@ -8,7 +8,7 @@ alias e="exit"
 alias :q='exit'
 alias :wq='exit'
 # pneumonic: (l)ist(.)...
-alias la="ls -A"
+# alias la="ls -A"
 alias ll="ls -l"
 alias ld="ls -ld */"
 alias lrt="ls -lrt"

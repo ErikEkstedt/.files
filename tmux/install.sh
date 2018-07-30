@@ -8,10 +8,6 @@ if ! [ -x "$(command -v $prg)" ]; then
 		Darwin)
 			brew install tmux
 
-			echo 
-			echo "Linking Tmux config file"
-			printf "ln -sf $HOME/.files/tmux/tmux.conf $HOME/.tmux.conf"
-			ln -sf $HOME/.files/tmux/mac-tmux.conf $HOME/.tmux.conf
 			;;
 		Linux)
 			# commands for Linux go here
@@ -36,10 +32,6 @@ if ! [ -x "$(command -v $prg)" ]; then
 			sudo rm -rf /usr/local/src/tmux-*
 			sudo mv tmux-${VERSION} /usr/local/src
 
-			echo 
-			echo "Linking Tmux config file"
-			printf "ln -sf $HOME/.files/tmux/tmux.conf $HOME/.tmux.conf"
-			ln -sf $HOME/.files/tmux/tmux.conf $HOME/.tmux.conf
 			;;
 	esac
 	## Logout and login to the shell again and run.
@@ -48,7 +40,18 @@ else
 	echo "Tmux already installed"
 fi
 
-
+echo 
+echo "Linking Tmux config file"
+case `uname` in
+	Darwin)
+		printf "ln -sf $HOME/.files/tmux/mac-tmux.conf $HOME/.tmux.conf"
+		ln -sf $HOME/.files/tmux/mac-tmux.conf $HOME/.tmux.conf
+		;;
+	Linux)
+		printf "ln -sf $HOME/.files/tmux/tmux.conf $HOME/.tmux.conf"
+		ln -sf $HOME/.files/tmux/tmux.conf $HOME/.tmux.conf
+		;;
+esac
 
 if [ -f ~/.tmux/plugins/tpm ]; then
 	echo "Tmux-plugins already installed"
