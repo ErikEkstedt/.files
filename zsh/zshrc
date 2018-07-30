@@ -215,6 +215,11 @@ else
     print "404: ~/.files/zsh/aliases.zsh not found."
 fi
 
+if [ -f .oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
+	source .oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+
+
 ###==== TMUXINATOR {{{
 source ~/.files/tmuxinator/tmuxinator.zsh
 ###}}}

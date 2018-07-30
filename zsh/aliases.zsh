@@ -34,7 +34,6 @@ alias gdw="cd ~/Downloads; la"
 alias gho="cd ~/"
 alias gno="cd ~/blog/public/notes; ls" 
 
-
 # }}}
 
 ####################### 
