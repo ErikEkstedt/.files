@@ -11,3 +11,6 @@ vnoremap <tab> >gv|
 
 " Source lines
 vnoremap <leader>vs y:@"<CR>
+
+" Go to correlating pare
+vnoremap gp %
