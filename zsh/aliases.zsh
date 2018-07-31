@@ -45,6 +45,7 @@ alias gbu="cd ~/.vim/bundle; ls"
 alias gdw="cd ~/Downloads; la"
 alias gho="cd ~/"
 alias gno="cd ~/blog/public/notes; ls" 
+alias gpi="cd ~/Pictures"
 
 # }}}
 

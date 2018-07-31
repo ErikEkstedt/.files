@@ -26,7 +26,7 @@ function! ColorPatches() "{{{
 endfunc  "}}}
 
 function! Onedarkpatch() "{{{
-
+    call s:set_lightline_colorscheme('myonedark')
 endfunc  "}}}
 
 function! Seoulpatch() "{{{

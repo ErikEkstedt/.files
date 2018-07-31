@@ -1,9 +1,8 @@
 # NVIDIA
 
+## :bulb: Go here 
+
 In hindsight I believe this [Hackernoon post](https://hackernoon.com/up-and-running-with-ubuntu-nvidia-cuda-cudnn-tensorflow-and-pytorch-a54ec2ec907d) is a very good starting point.
-
-
-
 
 
 ## Identify Graphic Card
@@ -80,10 +79,10 @@ Changed installation to
 sudo apt install nvidia-390
 ```
 
-#### AND IT WORKS!
+And now the resolution is normal and both cards are working.
+
 
 ## Fixin
-
 To reverse everything just run 
 ```bash
 sudo apt purge "nvidia-*" 
@@ -94,7 +93,7 @@ and reboot
 sudo reboot
 ```
 
-## Cuda
+## Install Cuda
 
 [Cuda website](https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=1604&target_type=debnetwork)
 
@@ -103,7 +102,6 @@ Trying with
 <img width="500px" src="./screen.png" />
 
 After which the screen is black with a prompt stating:
-
 > The screen locker is broken and unlocking is not possible anymore.
 > In order to unlock switch to a virtual terminal (e.g Ctrl+Alt+F2),
 > log in and execute the command:
@@ -116,12 +114,12 @@ After doing this I got back to kde.
 
 :bulb:
 
-After `sudo apt update` and reboot the resolution is messed up. The nvidia repo updated to
+After installing newest cuda, running `sudo apt update` and a reboot the resolution is messed up again. The nvidia repo updated to
 396.xx!
 
-:bulb:
+Thus I purged the nvidia installation and installed nvidia-390 again...
 
-[Devtalk nvidia](https://devtalk.nvidia.com/default/topic/1028960/cuda-setup-and-installation/looking-for-cuda-compatibility-chart-for-nvidia-drivers/)
+### :bulb: [Devtalk nvidia](https://devtalk.nvidia.com/default/topic/1028960/cuda-setup-and-installation/looking-for-cuda-compatibility-chart-for-nvidia-drivers/)
 
 > Your 384.111 driver will work with CUDA 9.
 >
@@ -188,16 +186,20 @@ Install all 3 files and run tests ackording to post
 [askubuntu](https://askubuntu.com/questions/746369/how-can-i-install-and-use-gcc-6-on-xenial/746480)
 
 
-## Set CUDA_VISIBLE_DEVICES
+## Set Variable $CUDA_VISIBLE_DEVICES
+
+At work I had two graphics cards, one of which is too old for any computations and was
+making it difficult to run gpu computations on pytorch and tensorflow. Tensorflow
+straight-up does not work and pytorch needs "detailed" device settings.
 
 Use `nvidia-smi -L` list command to see the available GPU's. Notice which id you wich to
 run computations on (in my case id=0) and set a variable:
+
+<img width="500px" src="./nvidia-smi-list.png" />
 
 ```bash
 export CUDA_VISIBLE_DEVICES=0
 ```
 
-<img width="500px" src="./nvidia-smi-list.png" />
 
-At work I had two graphics cards, one of which is too old for any computations and was
-making it difficult to run gpu computations on pytorch and tensorflow.
+After this both Tensorflow and PyTorch works great.
