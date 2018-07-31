@@ -1,0 +1,10 @@
+# /home/erik/.config/tmuxinator/WORK.yml
+name: Terminal
+root: ~/
+windows:
+    - PHD:
+        root: ~/phd
+    - BLOG:
+        root: ~/blog
+    - DOTFILES:
+        root: ~/.files
