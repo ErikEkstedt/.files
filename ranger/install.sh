@@ -1,18 +1,27 @@
 #!/bin/bash
-echo "Linking ~/.files/ranger -> ~/.config/ranger"
 
+mkdir -p ~/.config/ranger  # does not delete if already exists
+
+# ln -sf  = symbolic link, forced (removes existing file)
 echo "Creating ~/.config/ranger directory and links"
-rm -rf ~/.config/ranger
-mkdir -p ~/.config/ranger
+echo "-> rifle.conf" 
 ln -sf ~/.files/ranger/rifle.conf ~/.config/ranger/rifle.conf
+
+echo "-> scope.sh" 
 ln -sf ~/.files/ranger/scope.sh ~/.config/ranger/scope.sh
+
+echo "-> commands.py" 
 ln -sf ~/.files/ranger/commands.py ~/.config/ranger/commands.py
-ln -sf ~/.files/ranger/commands_full.py ~/.config/ranger/commands_full.py
 
-echo "Cloning ranger_devicons into ranger directory"
-git clone https://github.com/alexanderjeurissen/ranger_devicons.git ~/.config/ranger/ranger_devicons
-cd ~/.config/ranger/ranger_devicons && make install
 
+# Installs Devicons (if directory does not exist)
+if [ -d  ~/.config/ranger/ranger_devicons ]; then
+	echo "Ranger devicons already cloned"
+else
+	echo "Downloading and installing RANGER DEVICONS"
+	git clone https://github.com/alexanderjeurissen/ranger_devicons.git ~/.config/ranger/ranger_devicons
+	cd ~/.config/ranger/ranger_devicons && make install
+fi
 
 case `uname` in
     Darwin)

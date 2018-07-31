@@ -1,6 +1,0 @@
-yank path
-open_with q
-rename commands_full.old.py
-rename commands_full.py
-rename commands_sample.py
-rename commands.py
