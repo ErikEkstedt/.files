@@ -3,7 +3,6 @@
 
 prg=tmux
 if ! [ -x "$(command -v $prg)" ]; then
-
 	case `uname` in
 		Darwin)
 			brew install tmux
@@ -21,6 +20,7 @@ if ! [ -x "$(command -v $prg)" ]; then
 
 			sudo apt-get -y remove tmux
 			sudo apt-get -y install wget tar libevent-dev libncurses-dev
+			sudo apt -y install build-essential
 			wget https://github.com/tmux/tmux/releases/download/${VERSION}/tmux-${VERSION}.tar.gz
 			tar xf tmux-${VERSION}.tar.gz
 			rm -f tmux-${VERSION}.tar.gz
