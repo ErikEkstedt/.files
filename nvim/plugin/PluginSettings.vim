@@ -11,7 +11,6 @@ let g:deoplete#auto_complete_delay = 5
 let g:deoplete#auto_refresh_delay= 5
 let g:deoplete#min_pattern_length = 1
 
-
 " deoplete tab/s-tab/c-j/c-k complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -129,6 +128,7 @@ let g:fzf_buffers_jump = 1
 nnoremap <Leader>fr :Files /<CR>
 nnoremap <Leader>fi :Files ~/<CR>
 nnoremap <Leader>fl :Files<CR>
+nnoremap <Leader>ll :Files<CR>
 
 " FuzzyFind files in predefined folders I commonly use
 nnoremap <Leader>fc :Files ~/.files<CR>
@@ -148,7 +148,7 @@ nnoremap <Leader>fs :Snippets<CR>
 " Default fzf layout
 " - down / up / left / right
 " let g:fzf_layout = { 'up': '~50%' }
-let g:fzf_layout = { 'down': '~50%' }
+let g:fzf_layout = { 'down': '~40%' }
 
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
@@ -492,12 +492,11 @@ let g:indentLine_first_char = '┊'  " '│' This is the first indent and the ab
 
 " }}}
 "============== Lightline ===================={{{
-let g:lightline = {'colorscheme': 'myseoul256'} 
-" let g:lightline = {'colorscheme': 'mymolokaicolor'} 
+let g:lightline = {'colorscheme': 'myonedark'}  " mymolokaicolor, myseoul, mywombat256 
 let g:lightline.inactive = {
 			\	'left': [['absolutepath']],
 			\ 	'middle': [['']],
-			\ 	'right': [['']] }
+			\ 	'right': [['filetype']] }
 let g:lightline.tab = {'active': ['tabnum', 'filename', 'modified'],
 			\'inactive': [ 'tabnum', 'filename', 'modified' ]}
 " " }}}

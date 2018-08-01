@@ -28,7 +28,7 @@ endfunc  "}}}
 
 function! OnedarkPatch() "{{{
 	let g:onedark_terminal_italics = 1
-	call s:set_lightline_colorscheme('molokai')
+	call s:set_lightline_colorscheme('myonedark')
 endfunc  "}}}
 
 function! Seoulpatch() "{{{

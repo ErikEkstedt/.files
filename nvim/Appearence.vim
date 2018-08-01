@@ -3,6 +3,7 @@
 
 " COLORSCHEME 
 let g:seoul256_background = 234
+
 " colorscheme seoul256
 colorscheme onedark
 augroup ColorSchemeGroup 
