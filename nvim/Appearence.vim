@@ -394,6 +394,3 @@ endfunction "}}}
 inoremap <leader>å <esc>:hi normal ctermfg=255 guifg=white<cr>
 nnoremap <leader>å :hi normal ctermfg=255 guifg=white<cr>
 
-" Toggle conceallevel
-map <LocalLeader>c :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
-

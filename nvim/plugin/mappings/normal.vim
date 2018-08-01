@@ -31,6 +31,7 @@ nnoremap <leader>i gg=G<C-o>
 
 " indent paragraphs
 nnoremap <leader>mm vip=
+nnoremap <leader>cc 
 
 " redraw 
 nnoremap <leader><leader>r :redraw!<CR>
@@ -121,7 +122,9 @@ nnoremap <expr> _c ChangeToLocalDir()
 tnoremap <Esc> <C-\><C-n>
 
 " Conceallevel
-nnoremap <localleader>cc :set conceallevel=0<CR>
+" nnoremap <localleader>cc :set conceallevel=0<CR>
+
+nnoremap <leader>cc :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
 
 " Visual selection
 nnoremap vv V
