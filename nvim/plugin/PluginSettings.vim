@@ -147,7 +147,6 @@ nnoremap <Leader>fs :Snippets<CR>
 
 " Default fzf layout
 " - down / up / left / right
-" let g:fzf_layout = { 'up': '~50%' }
 let g:fzf_layout = { 'down': '~40%' }
 
 " Mapping selecting mappings
@@ -497,6 +496,11 @@ let g:lightline.inactive = {
 			\	'left': [['absolutepath']],
 			\ 	'middle': [['']],
 			\ 	'right': [['filetype']] }
+
+let g:lightline.active = { 
+			\ 'left': [['mode', 'paste'], ['filename', 'readonly', 'modified'] ],
+			\ 'right': [['filetype'], ['percent'] ]}
+
 let g:lightline.tab = {'active': ['tabnum', 'filename', 'modified'],
 			\'inactive': [ 'tabnum', 'filename', 'modified' ]}
 " " }}}
