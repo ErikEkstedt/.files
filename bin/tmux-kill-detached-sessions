@@ -26,6 +26,7 @@ if [[ -n $notAttached ]]; then
 	done
 	printf "${NC}\n"
 	echo "-------------------------"
+	echo Remaining Sessions:
 	printf "${Green}\n"
 	tmux list-sessions
 	printf "${NC}\n"

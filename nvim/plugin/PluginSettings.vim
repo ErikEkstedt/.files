@@ -495,6 +495,7 @@ let g:lightline = {'colorscheme': 'myonedark'}  " mymolokaicolor, myseoul, mywom
 let g:lightline = {
       \ 'component_function': {
       \   'lineinfo': "MyLineinfo",
+      \   'nlines': "NLines",
       \ },
       \ }
 
@@ -502,10 +503,14 @@ function! MyLineinfo() abort
   return '[' . line('.') . '/' . line('$') . ']'
 endfunction
 
+function! NLines() abort
+  return '[' . line('$') . ']'
+endfunction
+
 let g:lightline.inactive = {
 			\	'left': [['absolutepath']],
 			\ 	'middle': [['']],
-			\ 	'right': [ ['filetype'], ['line']] }
+			\ 	'right': [ ['filetype'], ['nlines']] }
 
 let g:lightline.active = { 
 			\ 'left': [['mode', 'paste'], ['filename', 'readonly', 'modified', 'fugitive'] ],

@@ -63,9 +63,8 @@ function! SyntaxColors() "{{{
 					\ "cterm="   (!empty(s:ctermformat) ? s:ctermformat   : "NONE")
 	endfunction 
 
-	let s:comment = { "gui": "9BA6A5", "cterm": "252" }
+	let s:comment = { "gui": "#8AA695", "cterm": "252" }
 	" let s:comment = { "gui":  "#613434", "cterm": "252" }
-
 	call s:h("vimLineComment", { "fg": s:comment })
 
 	
