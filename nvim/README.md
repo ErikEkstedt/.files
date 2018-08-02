@@ -1,4 +1,20 @@
-# Vim settings
+# (N)Vim settings
+
+## [Work In Progress](./wip)
+
+* [conceal.vim](./wip/conceal.vim): syntax and conceal
+
+
+## Free mappings
+
+| Leader (,) |
+|:---:|
+| n |
+
+| Ctrl |
+|:---:|
+| C-D |
+
 
 ## Todo
 
@@ -7,10 +23,14 @@
   * I think fzf already have similar method to implement a mapping
 	* nmap <leader><tab> <plug>(fzf-maps-n)
 
-## Utilize
+## Objects
 * onoremap
 	* [ ] onoremap m i\(    " change inner math  \( aaaa \) -> normal! cmbb<esc> -> \( bb \)
 	
+
+
+
+
 ## Plugins to check out ?
 
 * [codi](https://github.com/metakirby5/codi.vim)

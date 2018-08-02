@@ -1,9 +1,10 @@
 " vim: fdm=marker
 " NeoVim
 " Erik
-" Kubuntu 18.04
+" Kubuntu 18.04 / KDE neon 16.04 / kubuntu 17.10
 " Unicode characters: https://www.w3schools.com/charsets/ref_utf_dingbats.asp
 
+" Startup and Installation {{{
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
     echo "No Vim-Plug available... Downloading and running PlugInstall"
     silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
@@ -30,8 +31,8 @@ if has("unix")
 		let g:node_host_prog='/home/erik/.node_modules_global/bin/neovim-node-host' 
 	endif
 endif
-
-"============= Vim-Plug ======================{{{
+" }}}
+" Vim-Plug {{{ 
 " Plugins marked with XXX I know I use/like a lot.
 " Plugins will be downloaded under the specified directory. 
 call plug#begin('~/.vim/bundle')
@@ -123,7 +124,7 @@ endif
 Plug 'lervag/vimtex'      " XXX latex compiler and alot more.
 Plug 'shime/vim-livedown' " XXX Preview markdowns with npm/node Livedown
 
-" ============ Colorschemes and Appearence ==========================={{{
+" Colorschemes and Appearence {{{ 
 if !exists("g:gui_oni")
 	Plug 'chriskempson/base16-vim'        " many colorschemes
 	Plug 'skielbasa/vim-material-monokai' 
@@ -142,7 +143,8 @@ endif
 
 call plug#end()
 " }}}
-"=============== Basic ======================={{{
+" }}}
+" Basic Settings {{{
 
 filetype plugin indent on
 syntax enable
@@ -151,7 +153,8 @@ syntax on
 let HOSTNAME = substitute(system('hostname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
 let g:BROWSER = "google-chrome"
 let mapleader = ','
-set spelllang=sv,en_us            " US English spelling
+let localleader = '\'
+set spelllang=sv,en_us         " US English spelling
 set ffs=unix,dos,mac           " File Format (relevant to line ending type)
 set backspace=indent,eol,start " Make backspace work like most other apps.
 set history=1000               " Keep 1000 lines of command-line history.
@@ -162,10 +165,21 @@ set title                      " Change the title of the terminal/tab with the f
 set hidden                     " Allow unsaved background buffers.
 set shortmess=I                " Don't show Vim's welcome message.
 set shortmess+=a               " Make the save message shorter. Helps avoid the 'Hit ENTER to continue' message.
-set modeline
+set modeline                   " example at top of script:  " vim: ft=tmux
+
+" FOLD
 set foldmethod=marker          " marker for all but specified filetypes (ex: python)
-set foldlevelstart=1          " start with fold everything
+set foldlevelstart=-1          " start with fold everything
 set foldclose=                 " all
+
+set foldtext=erik#settings#foldtext()
+" set foldtext=MyFoldText()
+" function! MyFoldText()
+"   let line = getline(v:foldstart)
+"   let sub = substitute(line, '/\*\|\*/\|{{{\d\=', '', 'g')
+"   return v:folddashes . sub
+" endfunction
+		
 set conceallevel=0
 set shiftwidth=4
 set tabstop=4
@@ -265,7 +279,7 @@ if !isdirectory(expand(&directory))
 endif
 " }}}
 "}}}
-"=============== Source ======================={{{
+" Source {{{
 " Files in ./plugin/ folder are sourced automatically
 
 if exists("g:gui_oni")
