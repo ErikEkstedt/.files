@@ -5,5 +5,5 @@ nnoremap <buffer> Ö A;<esc>
 inoremap <buffer> ;co console.log('')<esc>hi
 
 if exists("g:gui_oni")
-    :call deoplete#disable()
+  call deoplete#disable()
 endif
