@@ -1,15 +1,16 @@
 " vim: fdm=marker
 " PLUGIN SETTINGS
-"============== Deoplete ====================={{{
+" Deoplete {{{
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
-let g:loaded_neopairs = 1
-let g:neopairs#enable = 1
 let g:deoplete#max_abbr_width = 40
 let g:deoplete#max_menu_width = 40
 let g:deoplete#auto_complete_delay = 5
 let g:deoplete#auto_refresh_delay= 5
 let g:deoplete#min_pattern_length = 1
+
+" let g:loaded_neopairs = 1
+" let g:neopairs#enable = 1
 
 " deoplete tab/s-tab/c-j/c-k complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
@@ -33,8 +34,7 @@ call deoplete#custom#source('_', 'sorters', ['sorter_word'])
 call deoplete#custom#source('ultisnips', 'rank', 9999)
 call deoplete#custom#source('_', 'converters', ['converter_auto_paren'])
 "}}}
-
-"============== LanguageClient ====================={{{
+" LanguageClient {{{
 
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
@@ -49,7 +49,7 @@ nnoremap gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <F2> :call LanguageClient#textDocument_rename()<CR>
 
 "}}}
-"============== Neosnippet ====================={{{
+" Neosnippet {{{
 "" Plugin key-mappings.
 "" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
 "imap <leader><leader> <Plug>(neosnippet_expand_or_jump)
@@ -73,7 +73,7 @@ nnoremap <F2> :call LanguageClient#textDocument_rename()<CR>
 "  set conceallevel=2 concealcursor=niv
 "endif
 ""}}}
-"============== UltiSnips ===================={{{
+" UltiSnips {{{
 let g:UltiSnipsSnippetsDir = "~/.files/nvim/mysnippets" 
 let g:UltiSnipsSnippetDirectories = ["UltiSnips", "snips", "~/.vim/bundle/vim-snippets/snippets"]
 
@@ -98,37 +98,58 @@ let g:UltiSnipsUsePythonVersion = 3
 " augroup END
 
 "}}}
-"============== FZF =========================={{{
+" FZF {{{
+" Functions and Autocommands  "{{{
 
-" if g:colors_name =~ 'monokai'
-"     let g:fzf_colors = { 'fg':['fg', 'Normal'],  'bg':['bg', 'Comment'],  'hl':['fg', 'Function'],  'fg+':['fg', 'Normal', 'Function', 'Normal'],  'bg+':['bg', 'Comment', 'Comment'],  'hl+':['fg', 'Special'], 'info': ['fg', 'PreProc'], 'border':  ['fg', 'SpecialComment'], 'prompt':  ['fg', 'SpecialComment'], 'pointer': ['fg', 'Normal'], 'marker':  ['fg', 'Keyword'], 'spinner': ['fg', 'Label'], 'header':  ['fg', 'Comment'] } 
-" else
-"     " Customize fzf colors to match your color scheme
-"     let g:fzf_colors = { 'fg': ['fg', 'Normal'], 
-"                 \ 'bg':      ['bg', 'Normal'],
-"                 \ 'hl':      ['fg', 'Comment'],
-"                 \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-"                 \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-"                 \ 'hl+':     ['fg', 'Statement'],
-"                 \ 'info':    ['fg', 'PreProc'],
-"                 \ 'border':  ['fg', 'Ignore'],
-"                 \ 'prompt':  ['fg', 'Conditional'],
-"                 \ 'pointer': ['fg', 'Exception'],
-"                 \ 'marker':  ['fg', 'Keyword'],
-"                 \ 'spinner': ['fg', 'Label'],
-"                 \ 'header':  ['fg', 'Comment']}
-" endif
+" Ripgrep
+command! -bang -nargs=* Rg
+	\ call fzf#vim#grep(
+	\   'rg --column --line-number --no-heading --hidden --smart-case '.shellescape(<q-args>), 1,
+	\   fzf#vim#with_preview('right:50%'),
+	\   <bang>0)
 
-" Settings
+"}}}
+" settings {{{
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
 
-" Mappings
-" FuzzyFind files in /, $HOME or current folder
+" Default fzf layout
+" - down / up / left / right
+let g:fzf_layout = {'down': '40%'}
+let g:fzf_action = {
+            \ 'ctrl-t': 'tab split',
+            \ 'ctrl-l': 'vsplit',
+            \ 'ctrl-x': 'split',
+            \ 'ctrl-v': 'vsplit',
+            \ 'ctrl-o': 'edit',
+            \ 'Enter': 'edit',
+            \ 'Esc': 'exit', }
+
+" Customize fzf colors to match your color scheme
+let g:fzf_colors = { 
+			\ 'fg':			['fg', 'Normal'],
+			\ 'bg':      ['bg', 'Normal'],
+			\ 'hl':      ['fg', 'Comment'],
+			\ 'fg+':     ['fg', 'CursorLine', 'Normal', 'Normal'],
+			\ 'bg+':     ['bg', 'Normal', 'Normal'],
+			\ 'hl+':     ['fg', 'Statement'],
+			\ 'info':    ['fg', 'PreProc'],
+			\ 'border':  ['fg', 'Question'],
+			\ 'prompt':  ['fg', 'Conditional'],
+			\ 'pointer': ['fg', 'Statement'],
+			\ 'marker':  ['fg', 'Keyword'],
+			\ 'spinner': ['fg', 'Label'],
+			\ 'header':  ['fg', 'Comment'] }
+
+" https://github.com/junegunn/fzf/blob/master/man/man1/fzf.1#L211
+let g:fzf_files_options = '--color "border:#FF02F5,info:#aa00FF" --preview "highlight -O ansi --force {} 2> /dev/null"'
+
+"}}}
+" Mappings {{{
+" FuzzyFind files in root /, $HOME or current folder
 nnoremap <Leader>fr :Files /<CR>
 nnoremap <Leader>fi :Files ~/<CR>
 nnoremap <Leader>fl :Files<CR>
-nnoremap <Leader>ll :Files<CR>
 
 " FuzzyFind files in predefined folders I commonly use
 nnoremap <Leader>fc :Files ~/.files<CR>
@@ -138,17 +159,10 @@ nnoremap <Leader>fp :Files ~/phd<CR>
 " FuzzyFind in files. FzF lines in current buffer
 nnoremap <Leader>ff :Rg<CR>
 nnoremap <Leader>li :Lines<CR>
-
 nnoremap <Leader>bu :Buffers<CR>
-
 nnoremap <Leader>gs :GFiles?<CR>
 nnoremap <Leader>he :Helptags<CR>
 nnoremap <Leader>fs :Snippets<CR>
-
-" Default fzf layout
-" - down / up / left / right
-" let g:fzf_layout = { 'up': '~50%' }
-let g:fzf_layout = { 'down': '~40%' }
 
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
@@ -157,56 +171,13 @@ omap <leader><tab> <plug>(fzf-maps-o)
 
 " Insert mode completion
 imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-w> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
-
-" Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
-command! -bang -nargs=* Rg
-            \ call fzf#vim#grep(
-            \   'rg --column --line-number --no-heading --hidden --color=always '.shellescape(<q-args>), 1,
-            \   <bang>0 ? fzf#vim#with_preview('down:60%')
-            \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-            \   <bang>0)
-
-" Likewise, Files command with preview window
-command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-
-" Search lines in all open vim buffers {{{
-
-function! s:line_handler(l)
-  let keys = split(a:l, ':\t')
-  exec 'buf' keys[0]
-  exec keys[1]
-  normal! ^zz
-endfunction
-
-function! s:buffer_lines()
-  let res = []
-  for b in filter(range(1, bufnr('$')), 'buflisted(v:val)')
-    call extend(res, map(getbufline(b,0,"$"), 'b . ":\t" . (v:key + 1) . ":\t" . v:val '))
-  endfor
-  return res
-endfunction
-
-command! FZFLines call fzf#run({
-			\   'source':  <sid>buffer_lines(),
-			\   'sink':    function('<sid>line_handler'),
-			\   'options': '--extended --nth=3..',
-			\   'down':    '60%'
-			\}) "}}}
-
-" This is the default extra key bindings
-let g:fzf_action = {
-            \ 'ctrl-t': 'tab split',
-            \ 'ctrl-l': 'vsplit',
-            \ 'ctrl-x': 'split',
-            \ 'ctrl-v': 'vsplit',
-            \ 'ctrl-o': 'edit',
-            \ 'Enter': 'edit',
-            \ 'Esc': 'exit', }
+" }}}
 "}}}
-"============== Tmux-navigation =============={{{
+" Tmux-navigation {{{
 let g:tmux_navigator_no_mappings = 1
 
 if !exists('g:gui_oni')
@@ -217,7 +188,7 @@ if !exists('g:gui_oni')
 endif
 
 "}}}
-"============== Slimux ======================={{{
+" Slimux {{{
 let g:slimux_python_use_ipython = 1
 nnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>
 vnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>gv<Esc>zz
@@ -235,12 +206,12 @@ map <space>P <Plug>(IPython-RunCell)
 
 
 " }}}
-"============== Vimpyter ========================{{{
+" Vimpyter {{{
 autocmd Filetype ipynb nnoremap <silent><Leader>bb :VimpyterInsertPythonBlock<CR>
 " autocmd Filetype ipynb nnoremap <silent><localleader>ll :VimpyterStartNteract<CR>
 autocmd Filetype ipynb nnoremap <silent><localleader>ll :VimpyterStartJupyter<CR>
 "}}}
-"============== Python-Mode =================={{{
+" Python-Mode {{{
 " Bindings {{{
 let g:pymode_motion = 1
 " Go to next/previous method or class
@@ -311,7 +282,7 @@ let g:pymode_rope_lookup_project = 0
 imap <F5> <Esc>:w<CR>:!clear;python %<CR>
 
 " }}}
-"============== ALE =========================={{{
+" ALE {{{
 let g:ale_enabled = 0
 
 " Use quickfix list. Open list
@@ -342,7 +313,7 @@ nmap gr <Plug>(ale_previous_wrap)
 nmap <leader>at <Plug>(ale_toggle)
 
 "}}}
-"============== Jedi-vim ====================={{{
+" Jedi-vim {{{
 let g:jedi#completions_command = ""
 " let g:jedi#goto_command = "<leader><leader>d"
 " let g:jedi#goto_assignments_command = "<leader><leader>g"
@@ -352,8 +323,7 @@ let g:jedi#completions_command = ""
 " let g:jedi#rename_command = "<leader><leader>r"
 
 "}}}
-
-"============== Vimtex ======================={{{
+" Vimtex {{{
 let g:vimtex_enabled = 1
 
 let g:latex_view_general_viewer = 'zathura'
@@ -384,7 +354,7 @@ augroup vimtex_event_2
 augroup END
 
 " }}}
-"============== Vim-livedown-markdown ========{{{
+" Vim-livedown-markdown {{{
 " should markdown preview get shown automatically upon opening markdown buffer
 let g:livedown_autorun = 0
 
@@ -403,7 +373,7 @@ let g:livedown_browser = "firefox"
 " nnoremap <localleader>lv  :LivedownPreview<CR>
 
 "}}}
-"============== Vim-markdown-preview ========{{{
+" Vim-markdown-preview {{{
 " let vim_markdown_preview_github=1  " use grip
 " let vim_markdown_preview_hotkey='<localleader>lv'
 " let g:vim_markdown_preview_browser='firefox'
@@ -413,8 +383,7 @@ let g:livedown_browser = "firefox"
 " " 3: To disregard images and still automatically preview on buffer write.
 " let vim_markdown_preview_toggle=2
 "}}}
-
-"============== Vim-netrw ===================={{{
+" Vim-netrw {{{
 let g:netrw_banner = 0 "no banner
 let g:netrw_liststyle = 3
 let g:netrw_sort_sequence = '[\/]$,*' " sort is affecting only: directories on the top, files below
@@ -422,7 +391,7 @@ noremap <leader>ex :Explore<cr>
 nnoremap <leader>vv :Vexplore<cr>
 nnoremap <leader>hh :Hexplore<cr>
 " }}}
-"============== Fugitive ====================={{{
+" Fugitive {{{
 nnoremap <Leader>gst :Gstatus<CR>
 nnoremap <Leader>gwr  :Gwrite<CR>
 nnoremap <Leader>gcm :Gcommit<CR>
@@ -436,31 +405,32 @@ nnoremap <Leader>gpl :Gpull<CR>
 nnoremap <Leader>gdi  /<<<<<<<<CR>n<C-o>zz
 
 " }}}
-"============== GitGutter ===================={{{
+" GitGutter {{{
 let g:gitgutter_sign_removed = '-'
 let g:gitgutter_override_sign_column_highlight = 0
 
 let g:gitgutter_realtime = 1
 let g:gitgutter_eager = 1
 "}}}
-"============== NerdTree ====================={{{
+" NerdTree {{{
 " " open NERDTree on startup
-if !exists("g:gui_oni")
-	autocmd StdinReadPre * let s:std_in=1
-	autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-endif
+" if !exists("g:gui_oni")
+" 	autocmd StdinReadPre * let s:std_in=1
+" 	autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" 	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" endif
+
 map <C-n> :NERDTreeToggle<CR>
 
 let NERDTreeIgnore=['\.pyc$', '\.aux$', '\.out', '\.bbl$', '\.fls$', '\.blg$', '\.log$', '\.fdb_latexmk$','\.gz$']
 let NERDTreeShowBookmarks = 1
 let g:NERDTreeDirArrowExpandable = ''
 let g:NERDTreeDirArrowCollapsible = ''
-"
+
 " Single-click to toggle directory nodes, double-click to open non-directory
 " nodes.
 let g:NERDTreeMouseMode=2
-"PaleTurquoise1
+
 " Put inside autocommand
 
 if !exists("g:gui_oni")
@@ -477,7 +447,7 @@ if !exists("g:gui_oni")
 	augroup END
 endif
 " }}}
-"============== Indentline ==================={{{
+" Indentline {{{
 let g:indentLine_fileTypeExclude=['help']
 let g:indentLine_char = '┊'  
 let g:indentLine_first_char = '┊'  " '│' This is the first indent and the above
@@ -491,17 +461,66 @@ let g:indentLine_first_char = '┊'  " '│' This is the first indent and the ab
 " let g:indentLine_showFirstIndentLevel=1
 
 " }}}
-"============== Lightline ===================={{{
+" Lightline {{{
 let g:lightline = {'colorscheme': 'myonedark'}  " mymolokaicolor, myseoul, mywombat256 
+
+" " A dictionary for statusline/tabline components.
+" " The default value is:
+" let g:lightline.component = {
+"     \ 'mode': '%{lightline#mode()}',
+"     \ 'absolutepath': '%F',
+"     \ 'relativepath': '%f',
+"     \ 'filename': '%t',
+"     \ 'modified': '%M',
+"     \ 'bufnum': '%n',
+"     \ 'paste': '%{&paste?"PASTE":""}',
+"     \ 'readonly': '%R',
+"     \ 'charvalue': '%b',
+"     \ 'charvaluehex': '%B',
+"     \ 'fileencoding': '%{&fenc!=#""?&fenc:&enc}',
+"     \ 'fileformat': '%{&ff}',
+"     \ 'filetype': '%{&ft!=#""?&ft:"no ft"}',
+"     \ 'percent': '%3p%%',
+"     \ 'percentwin': '%P',
+"     \ 'spell': '%{&spell?&spelllang:""}',
+"     \ 'lineinfo': '%3l:%-2v',
+"     \ 'line': '%l',
+"     \ 'column': '%c',
+"     \ 'close': '%999X X ',
+"     \ 'winnr': '%{winnr()}' }
+
+" see :help statusline
+"
+
+let g:lightline = {
+      \ 'component_function': {
+      \   'lineinfo': "MyLineinfo",
+      \   'nlines': "NLines",
+      \ },
+      \ }
+
+function! MyLineinfo() abort
+  return '[' . line('.') . '/' . line('$') . ']'
+endfunction
+
+function! NLines() abort
+  return '[' . line('$') . ']'
+endfunction
+
 let g:lightline.inactive = {
 			\	'left': [['absolutepath']],
 			\ 	'middle': [['']],
-			\ 	'right': [['filetype']] }
-let g:lightline.tab = {'active': ['tabnum', 'filename', 'modified'],
-			\'inactive': [ 'tabnum', 'filename', 'modified' ]}
-" " }}}
+			\ 	'right': [ ['filetype'], ['nlines']] }
 
-"============== GoYo ========================={{{ 
+let g:lightline.active = { 
+			\ 'left': [['mode', 'paste'], ['filename', 'readonly', 'modified', 'fugitive'] ],
+			\ 'right': [['lineinfo', 'filetype' ]]}
+
+let g:lightline.tab = { 
+			\ 'active': ['filename', 'modified'],
+			\ 'inactive': ['filename', 'modified' ]}
+" " }}}
+" GoYo {{{ 
 let g:goyo_width  = 100  " (default: 80)
 let g:goyo_linenr = 0   " (default: 0)
 
@@ -527,11 +546,11 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 nnoremap <silent> <leader>gg :Goyo<CR>
 
 "}}}
-"============== Gundo ========================{{{
+" Gundo {{{
 let g:gundo_prefer_python3 = 1
 nnoremap gu :GundoToggle<CR>
 "}}}
-"============== Scratch ======================{{{
+" Scratch {{{
 let g:scratch_insert_autohide = 0
 let g:scratch_no_mappings = 1
 
@@ -543,8 +562,7 @@ let g:scratch_height = 10
 let g:scratch_filetype = 'markdown'
 " let g:scratch_persistence_file = ".scratch.md"
 "}}}
-
-"============== luochen1990/rainbow =========={{{
+" luochen1990/rainbow {{{
 " let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 " let g:rainbow_conf = {
 " 			\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
@@ -570,11 +588,10 @@ let g:scratch_filetype = 'markdown'
 " 			\}
 " au VimEnter * RainbowToggleOn
 "}}}
-"============== highlight-yank ==============={{{
+" highlight-yank {{{
 let g:highlightedyank_highlight_duration = 1000
 "}}}
-
-"============== Pikachu ==============={{{
+" Pikachu {{{
 let g:pickachu_default_color_format = "hex"
 
 " Mapping the default color, file and date picker to 
@@ -585,12 +602,10 @@ nnoremap <leader>pf :Pickachu file<CR>
 nnoremap <leader>pd :Pickachu date<CR>
 
 "}}}
-
-"============== highlight-yank ==============={{{
+" highlight-yank {{{
 let g:highlightedyank_highlight_duration = 1000
 "}}}
-
-"============== vim-easy-motion =================={{{
+" vim-easy-motion {{{
 let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz'
 
 nmap <space><space> <Plug>(easymotion-bd-w)
@@ -609,7 +624,7 @@ nmap <space>i <Plug>(easymotion-bd-jk)
 let g:EasyMotion_startofline = 1 " Linejumps puts cursor at start of line
 
 "}}}
-"============== vim-surround ================{{{
+" vim-surround {{{
 nnoremap <leader>' :normal ysiW'<CR>
 nnoremap <leader>" :normal ysiW"<CR>
 nnoremap <leader>} :normal ysiW}<CR>
@@ -622,7 +637,7 @@ nnoremap < :normal ysiW><CR>
 " nnoremap <leader>B :normal ysiW}<CR>
 " nnoremap <leader>r :normal ysiW]<CR>
 "}}}
-"============== vim-easy-align ==============={{{
+" vim-easy-align {{{
 
 " Align a markdown table -> hidden in autocommand ?
 autocmd FileType markdown vmap t <Plug>(EasyAlign)*\|
@@ -635,28 +650,27 @@ vmap ea <Plug>(EasyAlign)
 nmap <leader>ea <Plug>(EasyAlign)
 
 "}}}
-"============== vim-after-object ============={{{
+" vim-after-object {{{
 autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ', '+', '*', '{')
 " ca=				change after '='
 "}}}
-"============== vim-peekaboo ============={{{
+" vim-peekaboo {{{
 let g:peekaboo_window="vert bo 50new"
 "}}}
-
-"============== Matlab ========================{{{
+" Matlab {{{
 let g:matlab_auto_mappings = 0 "automatic mappings disabled
 let g:matlab_server_launcher = 'tmux' "launch the server in a tmux split
 let g:matlab_server_split = 'horizontal' "launch the server in a horizontal split
 
 "}}}
-"============== vim-javascript ========================{{{
+" vim-javascript {{{
 augroup javascript
     au!
     au FileType javascript setlocal foldmethod=syntax
 augroup END
 
 "}}}
-"============== vim-polyglot ========================{{{
+" vim-polyglot {{{
 let g:polyglot_disabled = ['latex', 'markdown', 'javascript', 'js']
 let g:jsx_ext_required = 1
 "}}}

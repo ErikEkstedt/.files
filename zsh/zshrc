@@ -222,9 +222,7 @@ if [ -f $HOME/.oh-my-zsh/custom/themes/spaceship.zsh-theme ]; then
 	source "$HOME/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
 fi
 
-###==== TMUXINATOR {{{
 source ~/.files/tmuxinator/tmuxinator.zsh
-###}}}
-#
+
 # }}}
 

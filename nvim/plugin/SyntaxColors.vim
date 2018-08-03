@@ -5,6 +5,7 @@
 " Hackky and bloaty. just adding stuff never clean...
 " TODO: Need to automate this
 
+
 function! SyntaxColors() "{{{
 	function! s:h(group, style) "{{{
 		let s:ctermformat = "NONE"
@@ -60,8 +61,13 @@ function! SyntaxColors() "{{{
 					\ "ctermfg=" . l:ctermfg
 					\ "ctermbg=" . l:ctermbg
 					\ "cterm="   (!empty(s:ctermformat) ? s:ctermformat   : "NONE")
-	endfunction "}}}
+	endfunction 
 
+	let s:comment = { "gui": "#8AA695", "cterm": "252" }
+	" let s:comment = { "gui":  "#613434", "cterm": "252" }
+	call s:h("vimLineComment", { "fg": s:comment })
+
+	
 	" Monokai
 	if g:colors_name =~ 'monokai' "{{{
 		" Colors {{{
