@@ -35,6 +35,22 @@
 							"shell_command": "open '/Applications/iterm.app'"
 						}
 					]
+				},
+				{
+					"type": "basic",
+					"from": {
+						"key_code": "s",
+						"modifiers": {
+							"mandatory": [
+								"left_option"
+							]
+						}
+					},
+					"to": [
+						{
+							"shell_command": "open '/Applications/Spotify.app'"
+						}
+					]
 				}
 			]
 		}

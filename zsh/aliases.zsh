@@ -80,6 +80,7 @@ alias friture="python $HOME/friture/main.py"
 
 # tmuxinator
 alias work="tmuxinator start WORK"
+alias basic="tmuxinator start basic"
 alias drop="tmuxinator start dropdown"
 alias proj="tmuxinator start project"
 # }}}
