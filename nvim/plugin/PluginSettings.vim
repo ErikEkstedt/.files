@@ -131,7 +131,7 @@ let g:fzf_colors = {
 			\ 'bg':      ['bg', 'Normal'],
 			\ 'hl':      ['fg', 'Comment'],
 			\ 'fg+':     ['fg', 'CursorLine', 'Normal', 'Normal'],
-			\ 'bg+':     ['bg', 'CursorLine', 'Normal'],
+			\ 'bg+':     ['bg', 'Normal', 'Normal'],
 			\ 'hl+':     ['fg', 'Statement'],
 			\ 'info':    ['fg', 'PreProc'],
 			\ 'border':  ['fg', 'Question'],
