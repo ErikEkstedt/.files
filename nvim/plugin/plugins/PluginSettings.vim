@@ -17,7 +17,6 @@ autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ', '+', '*', '
 " vim-peekaboo (normalmode: press " and get list of named (clipboard))
 let g:peekaboo_window="vert bo 50new"
 
-
 " Matlab {{{
 let g:matlab_auto_mappings = 0 "automatic mappings disabled
 let g:matlab_server_launcher = 'tmux' "launch the server in a tmux split

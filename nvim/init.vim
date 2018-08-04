@@ -102,12 +102,13 @@ Plug 'othree/xml.vim'                  " xml highlight
 Plug 'klen/python-mode'                " Python mode (docs, refactor, lints...)
 
                                        " Tools
-Plug 'DougBeney/pickachu'              " Pick Color/date/
+" Plug 'DougBeney/pickachu'              " Pick Color/date/
+Plug 'KabbAmine/vCoolor.vim'
+Plug 'Raimondi/delimitMate'            " auto complete parens etc.
 Plug 'Valloric/MatchTagAlways' 
 Plug 'Xuyuanp/nerdtree-git-plugin'     " show git status of files
 Plug 'Yggdroot/indentLine'             " see where there is indent
 Plug 'airblade/vim-gitgutter'          " XXX see git changes in file in the numberline
-Plug 'Raimondi/delimitMate'            " auto complete parens etc.
 Plug 'easymotion/vim-easymotion'       " XXX visualize targets tot move to specific words
 Plug 'ivalkeen/nerdtree-execute'       " open files from nerdtree
 Plug 'junegunn/fzf.vim'                " XXX fuzzy filefinding
@@ -117,7 +118,6 @@ Plug 'junegunn/vim-easy-align'         " XXX better alignment than tabular
 Plug 'junegunn/vim-peekaboo'           " when pressing quotes shows what's stored in the different registers
 Plug 'lilydjwg/colorizer'              " colorize hexcolor in editor
 Plug 'lotabout/slimux'                 " XXX old: 'epeli/slimux' | vim+ipython OUtdated
-Plug 'wmvanvliet/vim-ipython'
 Plug 'machakann/vim-highlightedyank'   " XXX Highlight yanks
 Plug 'mtth/scratch.vim'                " Unobtrusive scratch
 Plug 'nelstrom/vim-markdown-folding'   " help with folding in markdown
@@ -133,6 +133,7 @@ Plug 'tpope/vim-repeat'                " XXX repeat commands not repeatable by '
 Plug 'tpope/vim-surround'              " XXX Surround objects with quotes, brackets ...
 Plug 'w0rp/ale'                        " asynchronous linting
 Plug 'wellle/targets.vim'              " XXX ci' works on (, [, {, <
+Plug 'wmvanvliet/vim-ipython'
 
 	" Plug 'Raimondi/delimitMate'           " autoclosing of brackets, quotes ...
 if !exists("g:gui_oni")
