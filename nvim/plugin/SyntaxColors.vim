@@ -303,6 +303,11 @@ function! SyntaxColors() "{{{
 		let s:special_grey = s:colors.special_grey
 		let s:vertsplit = s:colors.vertsplit
 
+		" Fold color
+		
+		:highlight Folded guifg=#D296D9 guibg=none
+		:highlight link FoldColumn LineNr
+
 		call s:h("jsxRegion", { "fg": s:purple })
 		call s:h("jsClassProperty", { "fg": s:yellow })
 		call s:h("xmlEndTag", { "fg": s:red })

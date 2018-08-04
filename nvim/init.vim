@@ -12,8 +12,8 @@
 " │   └── lightline
 " │       └── colorscheme
 " ├── colors
-" ├── ftplugin
-" ├── mysnippets
+" ├── ftplugin: all my filetype-settings
+" ├── mysnippets: custom snippets
 " ├── oni: settings and mappings for Oni
 " ├── plugin: In here all my settings are stored.
 " │   └── mappings: keymappings
@@ -31,10 +31,6 @@ endif
 
 " fzf path
 set rtp+=~/.fzf
-
-" let $NVIM_TUI_ENABLE_CURSOR_SHAPE=0
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-
 
 "Python & Node
 if has("unix")
@@ -208,9 +204,11 @@ set scrolloff=3                " visual rows above and below cursor
 set sidescroll=3               " visual columns on sides of cursor
 set cursorline                 " highlight line where cursor is
 
+" set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-" set guicursor=
-"
+			\,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+			\,sm:block-blinkwait175-blinkoff150-blinkon175
+
 set hls                        " highlighting!
 set lazyredraw                 " don't redraw screen during macros
 
