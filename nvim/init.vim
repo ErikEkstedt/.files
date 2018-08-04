@@ -3,6 +3,23 @@
 " Erik
 " Kubuntu 18.04 / KDE neon 16.04 / kubuntu 17.10
 " Unicode characters: https://www.w3schools.com/charsets/ref_utf_dingbats.asp
+" This file is in $NVIM_ROOT
+" $NVIM_ROOT
+" ├── after
+" │   └── ftplugin
+" ├── autoload
+" │   ├── erik
+" │   └── lightline
+" │       └── colorscheme
+" ├── colors
+" ├── ftplugin
+" ├── mysnippets
+" ├── oni: settings and mappings for Oni
+" ├── plugin: In here all my settings are stored.
+" │   └── mappings: keymappings
+" │   └── plugins: all plugin settings
+" ├── spell
+" └── wip
 
 " Startup and Installation {{{
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
@@ -15,7 +32,9 @@ endif
 " fzf path
 set rtp+=~/.fzf
 
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=0
+" let $NVIM_TUI_ENABLE_CURSOR_SHAPE=0
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
 
 "Python & Node
 if has("unix")
@@ -74,7 +93,7 @@ Plug 'autozimu/LanguageClient-neovim', {
 " --------------------
 "
 Plug 'SirVer/ultisnips'                " XXX snippet engine
-" Plug 'honza/vim-snippets'              " XXX snippets
+Plug 'honza/vim-snippets'              " XXX snippets
 
 " Syntax
 Plug 'sheerun/vim-polyglot'            " All the syntax messed upp syntax for oni ( turned .js -> javascript.jsx
@@ -173,13 +192,6 @@ set foldlevelstart=-1          " start with fold everything
 set foldclose=                 " all
 
 set foldtext=erik#settings#foldtext()
-" set foldtext=MyFoldText()
-" function! MyFoldText()
-"   let line = getline(v:foldstart)
-"   let sub = substitute(line, '/\*\|\*/\|{{{\d\=', '', 'g')
-"   return v:folddashes . sub
-" endfunction
-		
 set conceallevel=0
 set shiftwidth=4
 set tabstop=4
@@ -187,18 +199,21 @@ set softtabstop=4
 set smarttab
 set noexpandtab
 set autoindent
-set ruler                      " for cursor position in the bottom right corner
+
+" set ruler                      " for cursor position in the bottom right corner
 set number                     " number lines
 set relativenumber
 set scrolloff=3                " visual rows above and below cursor
 set sidescroll=3               " visual columns on sides of cursor
 set cursorline                 " highlight line where cursor is
-" set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-set guicursor=
+
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+" set guicursor=
+"
 set hls                        " highlighting!
 set lazyredraw                 " don't redraw screen during macros
 
-set textwidth=0
+" set textwidth=0
 set linebreak				   " break lines (only visually) if window is too narrow
 set formatoptions+=j           " smart line joining. uncomments comments.
 set wrap
@@ -279,14 +294,13 @@ if !isdirectory(expand(&directory))
 endif
 " }}}
 "}}}
+
 " Source {{{
-" Files in ./plugin/ folder are sourced automatically
 
 if exists("g:gui_oni")
 	source ~/.config/nvim/oni/mappings/oni.vim
-else
-	colorscheme onedark
-	" source ~/.config/nvim/Appearence.vim
 endif
+
+colorscheme onedark
 
 " }}}
