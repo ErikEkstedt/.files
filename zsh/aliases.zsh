@@ -1,7 +1,6 @@
 # =================================================
 # =================   ALIASES  ====================
 # =================================================
-
 # Standard {{{
 alias cd..="cd .."
 alias e="exit"
@@ -13,26 +12,27 @@ alias :wq='exit'
 if [[ $(uname) == 'Darwin' ]]; then
 	alias ll="gls -l --color"
 	alias ld="gls -ld */ --color"
+	alias la="gls -A -1 --group-directories-first --color"
 	alias lrt="gls -lrt --color"
 	alias ltt="gls -ogl *.tex --color"
 	alias ltx="gls *.tex --color"
 	alias lpy="gls *.py --color"
 	alias lpdf="gls -ogl *.pdf --color"
 
-	alias ldt="tree -d -L 2"
-	alias la="gls -A -1 --group-directories-first --color"
 else
 	alias ll="ls -l"
 	alias ld="ls -ld */"
+	alias la="ls -A -1 --group-directories-first"
 	alias lrt="ls -lrt"
 	alias ltt="ls -ogl *.tex"
 	alias ltx="ls *.tex"
 	alias lpy="ls *.py"
 	alias lpdf="ls -ogl *.pdf"
 
-	alias ldt="tree -d -L 2"
-	alias la="ls -A -1 --group-directories-first"
 fi
+
+alias ldt="tree -d -L 2"
+# }}}
 
 # Movement {{{
 alias gfi="cd ~/.files; ls"
@@ -90,6 +90,7 @@ alias patchwork="cd ~/patchwork && npm start"
 # Git {{{
 alias gad="git add"
 alias gco="git commit -m"
+alias gdi="git diff"
 alias gps="git push"
 alias gpl="git pull"
 alias gst="git status"
