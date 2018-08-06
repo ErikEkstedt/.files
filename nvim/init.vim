@@ -37,9 +37,11 @@ if has("unix")
 	" This is probably not necessary and $HOME or similar might work.
 	let s:uname = system("uname")
 	if s:uname == "Darwin\n"
-		let g:python3_host_prog='/Users/erik/miniconda3/bin/python'
-		let g:python_host_prog ='/Users/erik/miniconda3/envs/py27/bin/python'
-		let g:node_host_prog   ='/Users/erik/.node_modules_global/bin/neovim-node-host' 
+		" let g:python3_host_prog='/Users/erik/miniconda3/bin/python'
+		" let g:python_host_prog ='/Users/erik/miniconda3/envs/py27/bin/python'
+		let g:python3_host_prog='/Users/erik/miniconda3/envs/neovim3/bin/python'
+		let g:python_host_prog='/Users/erik/miniconda3/envs/neovim2/bin/python'
+		let g:node_host_prog='/Users/erik/.node_modules_global/bin/neovim-node-host' 
 	else
 		let g:python3_host_prog='/home/erik/miniconda3/bin/python'
 		let g:python_host_prog='/home/erik/miniconda3/envs/py27/bin/python'
@@ -165,6 +167,7 @@ call plug#end()
 filetype plugin indent on
 syntax enable
 syntax on
+colorscheme onedark
 
 let HOSTNAME = substitute(system('hostname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
 let g:BROWSER = "google-chrome"
@@ -295,11 +298,8 @@ endif
 "}}}
 
 " Source {{{
-
 if exists("g:gui_oni")
 	source ~/.config/nvim/oni/mappings/oni.vim
 endif
-
-colorscheme onedark
 
 " }}}
