@@ -1,5 +1,6 @@
-" Deoplete {{{
+" Deoplete
 " Use deoplete.
+
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#max_abbr_width = 40
 let g:deoplete#max_menu_width = 40
@@ -32,4 +33,3 @@ autocmd CompleteDone * pclose!
 call deoplete#custom#source('_', 'sorters', ['sorter_word'])
 call deoplete#custom#source('ultisnips', 'rank', 9999)
 call deoplete#custom#source('_', 'converters', ['converter_auto_paren'])
-"}}}
