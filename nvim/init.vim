@@ -3,7 +3,9 @@
 " Erik
 " Kubuntu 18.04 / KDE neon 16.04 / kubuntu 17.10
 " Unicode characters: https://www.w3schools.com/charsets/ref_utf_dingbats.asp
-" This file is in $NVIM_ROOT
+" This file is in $NVIM_ROOT (which is linked from repo to
+" ~/.config/nvim)
+"
 " $NVIM_ROOT
 " ├── after
 " │   └── ftplugin

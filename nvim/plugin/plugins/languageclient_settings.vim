@@ -19,4 +19,8 @@ nnoremap <F2> :call LanguageClient#textDocument_rename()<CR>
 " npm run test  # runt test
 
 " PYTHON. PYLS
-" 
+"
+" Source nvim-special-python env:
+" (g:python3_host_prog='/Users/erik/miniconda3/envs/neovim3/bin/python') 
+"
+" pip install python-language-server
