@@ -22,10 +22,14 @@ augroup END " }}}
 
 augroup CursorLine
 	au!
+	" Enter
 	au VimEnter * setlocal cursorline
 	au WinEnter * setlocal cursorline
+	au WinEnter * setlocal relativenumber
 	au BufWinEnter * setlocal cursorline
+	" Leave
 	au WinLeave * setlocal nocursorline
+	au WinLeave * setlocal norelativenumber
 augroup END
 
 " LATEX
@@ -35,14 +39,4 @@ augroup Latex
 	autocmd BufNewFile,BufRead *.tex set norelativenumber
 	autocmd BufNewFile,BufRead *.tex setlocal spell! spelllang=en_us
 	autocmd BufNewFile,BufRead *.tex set foldmethod=expr
-augroup END
-
-augroup html
-	autocmd!
-	autocmd BufNewFile,BufRead *.html iabbrev <buffer> p  <p>
-	autocmd BufNewFile,BufRead *.html iabbrev <buffer> h1 <h1>
-	autocmd BufNewFile,BufRead *.html iabbrev <buffer> h2 <h2>
-	autocmd BufNewFile,BufRead *.html iabbrev <buffer> h4 <h3>
-	autocmd BufNewFile,BufRead *.html iabbrev <buffer> h6 <h4>
-	autocmd BufNewFile,BufRead *.html iabbrev <buffer> div <div>
 augroup END
