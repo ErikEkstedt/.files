@@ -1,6 +1,15 @@
 " UltiSnips
-let g:UltiSnipsSnippetsDir = "~/.files/nvim/mysnippets" 
-let g:UltiSnipsSnippetDirectories = ["UltiSnips", "~/.vim/bundle/vim-snippets/UltiSnips"]
+
+" Ultisnips works for vim-snippets but custom snippets does not work.
+" the path i want
+
+if g:uname == "Darwin\n"
+	" let g:UltiSnipsSnippetsDir = "/Users/erik/.files/nvim/mysnips"
+	" let g:UltiSnipsSnippetsDir = ["/Users/erik/.files/nvim/mysnips"]
+	let g:UltiSnipsSnippetDirectories = ["/Users/erik/.files/nvim/mysnips","/Users/erik/.vim/bundle/vim-snippets/UltiSnips", "UltiSnips"]
+else
+	let g:UltiSnipsSnippetDirectories = ["/home/erik/.files/nvim/mysnips","/home/erik/.vim/bundle/vim-snippets/UltiSnips", "UltiSnips"]
+endif
 
 " Trigger configuration.
 let g:UltiSnipsExpandTrigger='<leader><leader>'
