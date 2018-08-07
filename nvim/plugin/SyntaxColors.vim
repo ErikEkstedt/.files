@@ -67,6 +67,10 @@ function! SyntaxColors() "{{{
 	" let s:comment = { "gui":  "#613434", "cterm": "252" }
 	call s:h("vimLineComment", { "fg": s:comment })
 
+	" Global Highlights
+	:highlight MatchParen guifg=#000000 guibg=#FC00D5
+	:highlight Comment guifg=#8AA695
+
 	
 	" Monokai
 	if g:colors_name =~ 'monokai' "{{{
