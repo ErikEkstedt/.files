@@ -18,6 +18,22 @@ case `uname` in
         ;;
 esac
 
+
+echo "Do you wish to install LSP:s? (y/n)"
+read answer
+if [[ $answer == 'y' || $answer == 'Y'   ]]; then
+	# Bash
+	npm i -g bash-language-server 
+
+	# JAVASCRIPT
+	npm i -g javascript-typescript-langserver
+
+	# PYTHON. PYLS
+	# Source nvim-special-python env:
+	# (g:python3_host_prog='/Users/erik/miniconda3/envs/neovim3/bin/python') 
+	# pip install python-language-server
+fi
+
 echo ln -sf ~/.files/nvim ~/.config/
 ln -sf ~/.files/nvim ~/.config/
 ln -sf ~/.files/nvim/init.vim ~/.vimrc

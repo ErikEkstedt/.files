@@ -1,7 +1,11 @@
 " Language Server
-"
+" Automatically start language servers.
+let g:LanguageClient_autoStart = 1
+
 let g:LanguageClient_serverCommands = {
-    \ 'javascript': ['~/javascript-typescript-langserver/lib/language-server-stdio'],
+		\ 'javascript': ['~/.node_modules_global/bin/javascript-typescript-stdio'],
+		\ 'javascript.jsx': ['~/.node_modules_global/bin/javascript-typescript-stdio'],
+    \ 'sh': ['bash-language-server', 'start'],
     \ 'python': ['~/miniconda3/envs/neovim3/bin/pyls']
     \ }
 
@@ -10,16 +14,14 @@ nnoremap K :call LanguageClient#textDocument_hover()<CR>
 nnoremap gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <F2> :call LanguageClient#textDocument_rename()<CR>
 
+
+" Bash
+" npm i -g bash-language-server 
+
 " JAVASCRIPT
-" Clone the javascript-typescript Lang-Server repo
-" git clone https://github.com/sourcegraph/javascript-typescript-langserver
-" cd javascript-typescript-langserver
-" npm install  # install dependencies
-" npm run build  # compile
-" npm run test  # runt test
+" npm i -g javascript-typescript-langserver
 
 " PYTHON. PYLS
-"
 " Source nvim-special-python env:
 " (g:python3_host_prog='/Users/erik/miniconda3/envs/neovim3/bin/python') 
 "
