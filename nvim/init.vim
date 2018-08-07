@@ -34,11 +34,10 @@ endif
 " fzf path
 set rtp+=~/.fzf
 
-"Python & Node
-if has("unix")
+let g:uname = system("uname")
+if has("unix")  "Python & Node
 	" This is probably not necessary and $HOME or similar might work.
-	let s:uname = system("uname")
-	if s:uname == "Darwin\n"
+	if g:uname == "Darwin\n"
 		" let g:python3_host_prog='/Users/erik/miniconda3/bin/python'
 		" let g:python_host_prog ='/Users/erik/miniconda3/envs/py27/bin/python'
 		let g:python3_host_prog='/Users/erik/miniconda3/envs/neovim3/bin/python'

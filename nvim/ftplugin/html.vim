@@ -1,6 +1,17 @@
 setlocal shiftwidth=2
 setlocal fdm=indent
 
+augroup html
+	autocmd!
+	autocmd BufNewFile,BufRead *.html iabbrev <buffer> p  <p>
+	autocmd BufNewFile,BufRead *.html iabbrev <buffer> h1 <h1>
+	autocmd BufNewFile,BufRead *.html iabbrev <buffer> h2 <h2>
+	autocmd BufNewFile,BufRead *.html iabbrev <buffer> h4 <h3>
+	autocmd BufNewFile,BufRead *.html iabbrev <buffer> h6 <h4>
+	autocmd BufNewFile,BufRead *.html iabbrev <buffer> div <div>
+augroup END
+
+
 nnoremap j gj
 nnoremap k gk
 
