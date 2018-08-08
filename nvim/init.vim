@@ -183,16 +183,17 @@ set showcmd                    " Display incomplete commands.
 set noshowmode                 " stops vims own showing below the statusbar.
 set title                      " Change the title of the terminal/tab with the file name.
 set hidden                     " Allow unsaved background buffers.
+
 set shortmess=I                " Don't show Vim's welcome message.
 set shortmess+=a               " Make the save message shorter. Helps avoid the 'Hit ENTER to continue' message.
-set modeline                   " example at top of script:  " vim: ft=tmux
+set shortmess+=c               " see :help deoplete -> Configuration FAQ (ins-completion-menu)
 
-" FOLD
+set modeline                   " example at top of script:  " vim: ft=vim
 set foldmethod=marker          " marker for all but specified filetypes (ex: python)
 set foldlevelstart=-1          " start with fold everything
 set foldclose=                 " all
+set foldtext=erik#settings#foldtext()  " see nvim/autoload/erik/settings.vim
 
-set foldtext=erik#settings#foldtext()
 set conceallevel=0
 set shiftwidth=4
 set tabstop=4
@@ -208,6 +209,11 @@ set scrolloff=3                " visual rows above and below cursor
 set sidescroll=3               " visual columns on sides of cursor
 set cursorline                 " highlight line where cursor is
 
+" set completeopt-=preview
+" set completeopt+=noinsert
+
+" TODO:
+" This does not work on MacOS - iterm2
 " set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 			\,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
