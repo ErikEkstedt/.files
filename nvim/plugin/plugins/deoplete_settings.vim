@@ -18,7 +18,7 @@ endif
 let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
 
 " Selection menu colors
-hi Pmenu gui=italic guifg=#00EEF7 guibg=#000000
+hi Pmenu gui=italic guifg=#00EEF7 guibg=#010101
 hi PmenuSel guifg=#FF00DE guibg=#6B6879 gui=NONE
 hi PmenuSbar guibg=#000000 
 hi PmenuThumb guibg=#FF00DE
