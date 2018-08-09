@@ -308,6 +308,15 @@ function! SyntaxColors()
 		:highlight Folded guifg=#D296D9 guibg=none
 		:highlight link FoldColumn LineNr
 
+		if g:UNAME == 'Linux'
+			" This makes resizing font in konsole work
+			" If set nvim lags/jumps back to the default font size settings
+			:highlight link FoldColumn LineNr
+		else
+			" Darwin
+		endif
+
+
 		call s:h("jsxRegion", { "fg": s:purple })
 		call s:h("jsClassProperty", { "fg": s:yellow })
 		call s:h("xmlEndTag", { "fg": s:red })
