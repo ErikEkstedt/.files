@@ -170,10 +170,15 @@ syntax enable
 syntax on
 colorscheme onedark
 
-let HOSTNAME = substitute(system('hostname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
+" Variables
+let g:HOSTNAME = substitute(system('hostname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
+let g:UNAME = substitute(system('uname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
 let g:BROWSER = "google-chrome"
+
 let mapleader = ','
 let localleader = '\'
+
+" Settings
 set spelllang=sv,en_us         " US English spelling
 set ffs=unix,dos,mac           " File Format (relevant to line ending type)
 set backspace=indent,eol,start " Make backspace work like most other apps.
@@ -215,9 +220,17 @@ set cursorline                 " highlight line where cursor is
 " TODO:
 " This does not work on MacOS - iterm2
 " set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-			\,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
-			\,sm:block-blinkwait175-blinkoff150-blinkon175
+	
+if UNAME == 'Linux'
+	" This 
+	set guicursor=
+else
+	" Darwin
+	set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+				\,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+				\,sm:block-blinkwait175-blinkoff150-blinkon175
+endif
+
 
 set hls                        " highlighting!
 set lazyredraw                 " don't redraw screen during macros
