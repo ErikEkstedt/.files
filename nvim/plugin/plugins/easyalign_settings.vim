@@ -1,7 +1,8 @@
 " vim-easy-align
 
-" Align a markdown table -> hidden in autocommand ?
+" Mappings
 autocmd FileType markdown vmap t <Plug>(EasyAlign)*\|
+autocmd FileType markdown nmap <leader>ta vip<Plug>(EasyAlign)*\|
 autocmd FileType latex vmap t <Plug>(EasyAlign)*\&
 
 " Start interactive EasyAlign in visual mode (e.g. vipea=, vapea", ...)

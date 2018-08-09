@@ -4,6 +4,8 @@
 " It is really hacky as of now....
 " Hackky and bloaty. just adding stuff never clean...
 " TODO: induce from above 
+" Syntaxcolor customizes syntax highlights
+"
 
 function! SyntaxColors()
 	function! s:h(group, style) "{{{
@@ -303,10 +305,10 @@ function! SyntaxColors()
 		let s:special_grey = s:colors.special_grey
 		let s:vertsplit = s:colors.vertsplit
 
-		" Fold color
-		
+		" HIGHLIGHTS
 		:highlight Folded guifg=#D296D9 guibg=none
 		:highlight link FoldColumn LineNr
+		:highlight NonText guifg=#61afef
 
 		if g:UNAME == 'Linux'
 			" This makes resizing font in konsole work
@@ -316,13 +318,20 @@ function! SyntaxColors()
 			" Darwin
 		endif
 
-
+		" JavaScript, JSX {{{
 		call s:h("jsxRegion", { "fg": s:purple })
 		call s:h("jsClassProperty", { "fg": s:yellow })
+		call s:h("jsObject", { "fg": s:red })
+		" }}}
+
+		" XML  {{{
 		call s:h("xmlEndTag", { "fg": s:red })
 		call s:h("xmlTagName", { "fg": s:blue })
 		call s:h("xmlTagN", { "fg": s:blue })
-		call s:h("jsObject", { "fg": s:red })
-
+		" }}}
+		
+		" VIM {{{
+		call s:h("VimFunction", { "fg": s:cyan }) 
+		" }}}
 	endif "}}}"
 endfunction 

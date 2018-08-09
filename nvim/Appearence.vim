@@ -144,7 +144,7 @@ nnoremap <C-t> :call TransparentBackground()<CR>
 
 " Custom Background
 let g:custom_background = 0
-function! toggle_background() "{{{
+function! ToggleBackground() "{{{
 	if g:custom_background = 1
 		let g:custom_background = 0
 		execute 'colorscheme' g:colors_name
