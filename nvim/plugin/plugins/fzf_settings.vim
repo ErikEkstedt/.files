@@ -43,7 +43,6 @@ let g:fzf_colors = {
 
 " https://github.com/junegunn/fzf/blob/master/man/man1/fzf.1#L211
 let g:fzf_files_options = '--color "border:#FF02F5,info:#aa00FF" --preview "highlight -O ansi --force {} 2> /dev/null"'
-
 "}}}
 " Mappings {{{
 " FuzzyFind files in root /, $HOME or current folder
@@ -56,13 +55,14 @@ nnoremap <Leader>fc :Files ~/.files<CR>
 nnoremap <Leader>fb :Files ~/blog<CR>
 nnoremap <Leader>fp :Files ~/phd<CR>
 
-" FuzzyFind in files. FzF lines in current buffer
+" Others
 nnoremap <Leader>ff :Rg<CR>
 nnoremap <Leader>li :Lines<CR>
 nnoremap <Leader>bu :Buffers<CR>
 nnoremap <Leader>gs :GFiles?<CR>
 nnoremap <Leader>he :Helptags<CR>
 nnoremap <Leader>fs :Snippets<CR>
+nnoremap <Leader>ma :Maps<CR>
 
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
