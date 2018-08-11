@@ -1,5 +1,7 @@
 " Settings
-set tw=90
+setlocal tw=90
+
+" Mappings
 
 " Preview
 nnoremap <buffer> <localleader>ll :LivedownToggle<CR>
@@ -9,10 +11,7 @@ nnoremap <buffer> <localleader>lk :LivedownKill<CR>
 " Marker
 nnoremap <buffer> <c-space> <esc>/<++><CR>"_ciw
 
-
 " Text manipulation
-
-
 " tpope/vim-surround
 " 101=e, 102=f, 105=i, 109=m,
 " let b:surround_109 = "\\(\r\\)"
@@ -30,5 +29,5 @@ nnoremap <leader>tm :normal ysiWm<CR>
 " make link of entire row
 nnoremap <leader>tL I[<esc>A]()<esc>h
 
+" Get both markdown and html snippets
 :UltiSnipsAddFiletypes markdown.html
-
