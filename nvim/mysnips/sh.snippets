@@ -1,0 +1,23 @@
+priority 250
+
+snippet ifans "if answer=='y'"
+read answer
+if [[ $answer == 'y' || $answer == 'Y'   ]]; then
+	${0:${VISUAL}}
+fi
+endsnippet
+
+snippet caseUname "OS conditional uname: Linux/Darwin"
+case `uname` in
+	Darwin)
+		# commands for OS X go here
+		$1
+		;;
+	Linux)
+		# commands for Linux go here
+		$2
+		;;
+esac
+$0
+endsnippet
+
