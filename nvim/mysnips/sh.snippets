@@ -1,9 +1,10 @@
 priority 250
 
 snippet ifans "if answer=='y'"
+echo "$1 (y/n)"
 read answer
 if [[ $answer == 'y' || $answer == 'Y'   ]]; then
-	${0:${VISUAL}}
+	$0
 fi
 endsnippet
 
