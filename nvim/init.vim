@@ -217,18 +217,20 @@ set cursorline                 " highlight line where cursor is
 " set completeopt-=preview
 " set completeopt+=noinsert
 
-" TODO:
-" This does not work on MacOS - iterm2
-" set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-	
 if UNAME == 'Linux'
-	" This 
+	" Leave this empty. Otherwise konsole font resize does not work.
+	" If font is resized through hotkey inside nvim. Nvim resets the font to the
+	" default.
 	set guicursor=
+	" It is a shame because 
+	" set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+	" Works in konsole. box in normal-visual-commmand and line in insert
 else
 	" Darwin
-	set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-				\,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
-				\,sm:block-blinkwait175-blinkoff150-blinkon175
+	" This does not work on MacOS - iterm2
+	" set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+	" Can't get the cursor to be line in insert mode and box in normal
+	set guicursor=
 endif
 
 
@@ -316,10 +318,8 @@ if !isdirectory(expand(&directory))
 endif
 " }}}
 "}}}
-
-" Source {{{
+" Oni {{{
 if exists("g:gui_oni")
 	source ~/.config/nvim/oni/mappings/oni.vim
 endif
-
 " }}}
