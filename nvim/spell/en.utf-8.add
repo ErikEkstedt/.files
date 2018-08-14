@@ -59,3 +59,7 @@ Tacotron
 sampleRNN
 repo
 NVIDIA
+Word2Vec
+facebook
+env
+TTS
