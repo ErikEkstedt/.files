@@ -17,7 +17,7 @@ endsnippet
 
 
 # PyTorch
-snippet torchimports "pytorch imports"
+snippet importTorch "pytorch imports"
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -30,14 +30,25 @@ snippet classTorch "class pytorch"
 class ${1:MyClass}(nn.Module):
 
 	def __init__(self$2):
-		super($1, self)__init__()
+		super($1, self).__init__()
 		$0
 
 	def forward(self, input):
 		pass
 endsnippet
 
+snippet datasetTorch "dataset pytorch"
+class ${1:MyDataset}(Dataset):
 
+	def __init__(self):
+		$0
+
+	def __len__(self):
+		pass
+
+	def __getitem__(self, idx):
+		pass
+endsnippet
 
 
 ##########
