@@ -143,7 +143,7 @@ class fzf_cd(Command):
         import subprocess
         import os.path
         cwd = os.path.curdir
-        os.chdir('/home/erik')
+        os.chdir(os.path.expanduser('~'))
         command="fd --type d --hidden --follow --no-ignore --exclude .git | fzf +m -i"
         fzf = self.fm.execute_command(command, stdout=subprocess.PIPE)
         stdout, stderr = fzf.communicate()
@@ -153,6 +153,7 @@ class fzf_cd(Command):
                 self.fm.cd(fzf_file)
             else:
                 self.fm.select_file(fzf_file)
+
 
 class fzf_cd_from_here(Command):
     """
@@ -176,4 +177,3 @@ class fzf_cd_from_here(Command):
                 self.fm.cd(fzf_file)
             else:
                 self.fm.select_file(fzf_file)
-

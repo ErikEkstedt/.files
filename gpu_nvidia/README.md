@@ -46,8 +46,10 @@ sudo apt install nvidia-396
 sudo reboot
 ```
 
-First time with the above settings I now have minimal resolution, and no displays in kde
-display-settings. Same thing second time.
+#### :bulb: Error :bulb:
+First time with the above settings I now have **minimal resolution**, and **no displays** in kde
+display-settings. Same thing second time. The drivers does not work and the OS does not
+recognize any screens. However, I can still see the "computation graphics card".
 
 ## Debug
 
@@ -56,20 +58,19 @@ Help:
 * [Nvidia question](https://devtalk.nvidia.com/default/topic/1003017/how-do-i-set-one-gpu-for-display-and-the-other-two-gpus-for-cuda-computing-/)
 
 
-Trying to change the xorg.conf settings 
-
+Trying to change the xorg.conf settings by:
 ```bash
 sudo nvidia-xconfig  --enable-all-gpus
 ```
 
-This generates a file at `/etc/X11/xorg.conf`
-
-On ubuntu 16.04 create the file at `/usr/share/xorg.conf.d/xorg.conf`
-
+This generates a file at `/etc/X11/xorg.conf` (On ubuntu 16.04 create the file at
+`/usr/share/xorg.conf.d/xorg.conf`).  I tried to modify this and change the screens and
+explicitly change it to what I wanted (help from internet) but all failed.
 
 Progress:
-Read `/var/log/Xorg.0.log` and look for something going wrong.
+**Read `/var/log/Xorg.0.log` and look for something going wrong.**
 
+#### :bulb: The Culprit
 In my case the log explicitly stated that the driver I installed (nvidia-396) does not
 support one of my graphic cards (NVS 315). The log stated that the appropriate driver was
 `nvidia-390.XX`
@@ -78,26 +79,21 @@ Changed installation to
 ```bash
 sudo apt install nvidia-390
 ```
-
 And now the resolution is normal and both cards are working.
-
 
 ## Fixin
 To reverse everything just run 
 ```bash
 sudo apt purge "nvidia-*" 
 ```
-
 and reboot
 ```bash
 sudo reboot
 ```
-
 ## Install Cuda
-
 [Cuda website](https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=1604&target_type=debnetwork)
 
-Trying with 
+Doing what the website tells you to (see image below)
 
 <img width="500px" src="./screen.png" />
 
@@ -112,14 +108,15 @@ After which the screen is black with a prompt stating:
 
 After doing this I got back to kde.
 
-:bulb:
+#### :bulb: Error on restart
 
 After installing newest cuda, running `sudo apt update` and a reboot the resolution is messed up again. The nvidia repo updated to
-396.xx!
+396.xx!!!!
 
 Thus I purged the nvidia installation and installed nvidia-390 again...
 
-### :bulb: [Devtalk nvidia](https://devtalk.nvidia.com/default/topic/1028960/cuda-setup-and-installation/looking-for-cuda-compatibility-chart-for-nvidia-drivers/)
+### :bulb: HOLD package 
+As explained in [Devtalk nvidia:](https://devtalk.nvidia.com/default/topic/1028960/cuda-setup-and-installation/looking-for-cuda-compatibility-chart-for-nvidia-drivers/)
 
 > Your 384.111 driver will work with CUDA 9.
 >
@@ -140,7 +137,6 @@ Make sure that the correct version of nvidia-drivers is not updated by marking i
 sudo apt-mark hold nvidia-390
 ```
 
-#### :bulb: nvidia-390 does not work with cuda-9.2 thus install cuda-9.0
 
 Installation Instructions for cuda-9.2:
 ```bash
@@ -151,7 +147,7 @@ sudo apt-get install cuda-toolkit-9.2
 ```
 
 ## Tested PyTorch
-Installed PyTorch via conda using cuda 9.2
+Installed PyTorch via conda using cuda 9.2 
 
 Then using IPython REPL 
 
@@ -165,25 +161,31 @@ torch.cuda.current_device()
 * torch.cuda.current\_device() returns a statement saying that the nvidia-390 dirver is
   too old.
 
-### :bulb: THUS uninstall cuda-9.2 and install cuda-9.0
+#### :bulb: Turns out: nvidia-390 does not work with cuda-9.2! 
+#### THUS uninstall cuda-9.2 and install cuda-9.0
 
+Uninstall cuda.9.2 and install cuda 9.0
 ```bash
 sudo apt purge cuda-toolkit-9.2
 sudo apt-get install cuda-toolkit-9.0
 ```
 
+Uninstall PyTorch and reinstall with correct cuda version
 ```bash
 conda uninstall pytorch
 conda uninstall cuda92
 ```
 
-## Install cudnn
+### :bulb:  PyTorch now works when explicitly selecting the correct graphics card (the older card is non-functional here)
+
+
+## Install cudnn -> Even faster computations
 [Hackernoon post](https://hackernoon.com/up-and-running-with-ubuntu-nvidia-cuda-cudnn-tensorflow-and-pytorch-a54ec2ec907d)
 
-Install all 3 files and run tests ackording to post
+Install all 3 files and run tests ackording to post. After all else is working this step
+was not that difficult.
 
-## Install gcc-6 g++-6
-[askubuntu](https://askubuntu.com/questions/746369/how-can-i-install-and-use-gcc-6-on-xenial/746480)
+(**Install gcc-6 g++-6** [askubuntu](https://askubuntu.com/questions/746369/how-can-i-install-and-use-gcc-6-on-xenial/746480))
 
 
 ## Set Variable $CUDA_VISIBLE_DEVICES
@@ -200,6 +202,4 @@ run computations on (in my case id=0) and set a variable:
 ```bash
 export CUDA_VISIBLE_DEVICES=0
 ```
-
-
-After this both Tensorflow and PyTorch works great.
+After this both Tensorflow and PyTorch works great! 

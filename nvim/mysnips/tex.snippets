@@ -1,0 +1,32 @@
+# math
+snippet ma "" 
+\\(${1:inside}\) ${0:${VISUAL}}
+endsnippet
+
+snippet integral "integral" 
+\\int^{${1:n}}_{${2:i=1}} ${0}
+endsnippet
+
+snippet ref "reference" 
+\\ref{${1:inside}} ${0:${VISUAL}}
+endsnippet
+
+snippet cite "citation" 
+\\cite{${1:inside}} ${0:${VISUAL}}
+endsnippet
+
+snippet article "article template" 
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+\title{${1:Title}}
+\author{Erik Ekstedt}
+\date{}
+
+\begin{document}
+
+${0}
+\end{document}
+endsnippet

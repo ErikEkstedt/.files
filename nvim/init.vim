@@ -3,6 +3,25 @@
 " Erik
 " Kubuntu 18.04 / KDE neon 16.04 / kubuntu 17.10
 " Unicode characters: https://www.w3schools.com/charsets/ref_utf_dingbats.asp
+" This file is in $NVIM_ROOT (which is linked from repo to
+" ~/.config/nvim)
+"
+" $NVIM_ROOT
+" ├── after
+" │   └── ftplugin
+" ├── autoload
+" │   ├── erik
+" │   └── lightline
+" │       └── colorscheme
+" ├── colors
+" ├── ftplugin: all my filetype-settings
+" ├── mysnippets: custom snippets
+" ├── oni: settings and mappings for Oni
+" ├── plugin: In here all my settings are stored.
+" │   └── mappings: keymappings
+" │   └── plugins: all plugin settings
+" ├── spell
+" └── wip
 
 " Startup and Installation {{{
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
@@ -15,16 +34,15 @@ endif
 " fzf path
 set rtp+=~/.fzf
 
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=0
-
-"Python & Node
-if has("unix")
+let g:uname = system("uname")
+if has("unix")  "Python & Node
 	" This is probably not necessary and $HOME or similar might work.
-	let s:uname = system("uname")
-	if s:uname == "Darwin\n"
-		let g:python3_host_prog='/Users/erik/miniconda3/bin/python'
-		let g:python_host_prog ='/Users/erik/miniconda3/envs/py27/bin/python'
-		let g:node_host_prog   ='/Users/erik/.node_modules_global/bin/neovim-node-host' 
+	if g:uname == "Darwin\n"
+		" let g:python3_host_prog='/Users/erik/miniconda3/bin/python'
+		" let g:python_host_prog ='/Users/erik/miniconda3/envs/py27/bin/python'
+		let g:python3_host_prog='/Users/erik/miniconda3/envs/neovim3/bin/python'
+		let g:python_host_prog='/Users/erik/miniconda3/envs/neovim2/bin/python'
+		let g:node_host_prog='/Users/erik/.node_modules_global/bin/neovim-node-host' 
 	else
 		let g:python3_host_prog='/home/erik/miniconda3/bin/python'
 		let g:python_host_prog='/home/erik/miniconda3/envs/py27/bin/python'
@@ -74,7 +92,7 @@ Plug 'autozimu/LanguageClient-neovim', {
 " --------------------
 "
 Plug 'SirVer/ultisnips'                " XXX snippet engine
-" Plug 'honza/vim-snippets'              " XXX snippets
+Plug 'honza/vim-snippets'              " XXX snippets
 
 " Syntax
 Plug 'sheerun/vim-polyglot'            " All the syntax messed upp syntax for oni ( turned .js -> javascript.jsx
@@ -83,12 +101,13 @@ Plug 'othree/xml.vim'                  " xml highlight
 Plug 'klen/python-mode'                " Python mode (docs, refactor, lints...)
 
                                        " Tools
-Plug 'DougBeney/pickachu'              " Pick Color/date/
+" Plug 'DougBeney/pickachu'              " Pick Color/date/
+Plug 'KabbAmine/vCoolor.vim'
+Plug 'Raimondi/delimitMate'            " auto complete parens etc.
 Plug 'Valloric/MatchTagAlways' 
 Plug 'Xuyuanp/nerdtree-git-plugin'     " show git status of files
 Plug 'Yggdroot/indentLine'             " see where there is indent
 Plug 'airblade/vim-gitgutter'          " XXX see git changes in file in the numberline
-Plug 'Raimondi/delimitMate'            " auto complete parens etc.
 Plug 'easymotion/vim-easymotion'       " XXX visualize targets tot move to specific words
 Plug 'ivalkeen/nerdtree-execute'       " open files from nerdtree
 Plug 'junegunn/fzf.vim'                " XXX fuzzy filefinding
@@ -98,7 +117,6 @@ Plug 'junegunn/vim-easy-align'         " XXX better alignment than tabular
 Plug 'junegunn/vim-peekaboo'           " when pressing quotes shows what's stored in the different registers
 Plug 'lilydjwg/colorizer'              " colorize hexcolor in editor
 Plug 'lotabout/slimux'                 " XXX old: 'epeli/slimux' | vim+ipython OUtdated
-Plug 'wmvanvliet/vim-ipython'
 Plug 'machakann/vim-highlightedyank'   " XXX Highlight yanks
 Plug 'mtth/scratch.vim'                " Unobtrusive scratch
 Plug 'nelstrom/vim-markdown-folding'   " help with folding in markdown
@@ -114,6 +132,7 @@ Plug 'tpope/vim-repeat'                " XXX repeat commands not repeatable by '
 Plug 'tpope/vim-surround'              " XXX Surround objects with quotes, brackets ...
 Plug 'w0rp/ale'                        " asynchronous linting
 Plug 'wellle/targets.vim'              " XXX ci' works on (, [, {, <
+Plug 'wmvanvliet/vim-ipython'
 
 	" Plug 'Raimondi/delimitMate'           " autoclosing of brackets, quotes ...
 if !exists("g:gui_oni")
@@ -149,11 +168,17 @@ call plug#end()
 filetype plugin indent on
 syntax enable
 syntax on
+colorscheme onedark
 
-let HOSTNAME = substitute(system('hostname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
+" Variables
+let g:HOSTNAME = substitute(system('hostname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
+let g:UNAME = substitute(system('uname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
 let g:BROWSER = "google-chrome"
+
 let mapleader = ','
 let localleader = '\'
+
+" Settings
 set spelllang=sv,en_us         " US English spelling
 set ffs=unix,dos,mac           " File Format (relevant to line ending type)
 set backspace=indent,eol,start " Make backspace work like most other apps.
@@ -163,23 +188,17 @@ set showcmd                    " Display incomplete commands.
 set noshowmode                 " stops vims own showing below the statusbar.
 set title                      " Change the title of the terminal/tab with the file name.
 set hidden                     " Allow unsaved background buffers.
+
 set shortmess=I                " Don't show Vim's welcome message.
 set shortmess+=a               " Make the save message shorter. Helps avoid the 'Hit ENTER to continue' message.
-set modeline                   " example at top of script:  " vim: ft=tmux
+set shortmess+=c               " see :help deoplete -> Configuration FAQ (ins-completion-menu)
 
-" FOLD
+set modeline                   " example at top of script:  " vim: ft=vim
 set foldmethod=marker          " marker for all but specified filetypes (ex: python)
 set foldlevelstart=-1          " start with fold everything
 set foldclose=                 " all
+set foldtext=erik#settings#foldtext()  " see nvim/autoload/erik/settings.vim
 
-set foldtext=erik#settings#foldtext()
-" set foldtext=MyFoldText()
-" function! MyFoldText()
-"   let line = getline(v:foldstart)
-"   let sub = substitute(line, '/\*\|\*/\|{{{\d\=', '', 'g')
-"   return v:folddashes . sub
-" endfunction
-		
 set conceallevel=0
 set shiftwidth=4
 set tabstop=4
@@ -187,18 +206,38 @@ set softtabstop=4
 set smarttab
 set noexpandtab
 set autoindent
-set ruler                      " for cursor position in the bottom right corner
+
+" set ruler                      " for cursor position in the bottom right corner
 set number                     " number lines
 set relativenumber
 set scrolloff=3                " visual rows above and below cursor
 set sidescroll=3               " visual columns on sides of cursor
 set cursorline                 " highlight line where cursor is
-" set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-set guicursor=
+
+" set completeopt-=preview
+" set completeopt+=noinsert
+
+if UNAME == 'Linux'
+	" Leave this empty. Otherwise konsole font resize does not work.
+	" If font is resized through hotkey inside nvim. Nvim resets the font to the
+	" default.
+	set guicursor=
+	" It is a shame because 
+	" set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+	" Works in konsole. box in normal-visual-commmand and line in insert
+else
+	" Darwin
+	" This does not work on MacOS - iterm2
+	" set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+	" Can't get the cursor to be line in insert mode and box in normal
+	set guicursor=
+endif
+
+
 set hls                        " highlighting!
 set lazyredraw                 " don't redraw screen during macros
 
-set textwidth=0
+" set textwidth=0
 set linebreak				   " break lines (only visually) if window is too narrow
 set formatoptions+=j           " smart line joining. uncomments comments.
 set wrap
@@ -210,7 +249,7 @@ set breakindentopt+=shift:2    " how far in the showbreak: " ↪ " is
 set breakindentopt+=min:20
 
 set list
-set listchars=tab:\|\ ,trail:·,extends:\#,nbsp:.
+set listchars=tab:\|\ ,trail:·,extends:▶,nbsp:·,conceal:\#
 " set listchars=tab:▶\ ,trail:·,extends:\#,nbsp:.
 
 set numberwidth=4              " width of numberline
@@ -279,14 +318,8 @@ if !isdirectory(expand(&directory))
 endif
 " }}}
 "}}}
-" Source {{{
-" Files in ./plugin/ folder are sourced automatically
-
+" Oni {{{
 if exists("g:gui_oni")
 	source ~/.config/nvim/oni/mappings/oni.vim
-else
-	colorscheme onedark
-	" source ~/.config/nvim/Appearence.vim
 endif
-
 " }}}

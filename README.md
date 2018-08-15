@@ -23,7 +23,7 @@ Workflow relies on zsh+tmux+vim/+ssh+synergy.
   * Want a regular desktop wm with good tiling capabilities and keyboard movement
 * SSH: Reach all files from all machines
   * WakeOnLan: Ability to "wake" desktops.
-* Synergy:_ One keyboard and mouse to control all machines
+* Synergy: One keyboard and mouse to control all machines
 * Nvidia for machine learning
 
 ---------------
@@ -41,3 +41,4 @@ until it has broken out from the terminal. This is an ongoin effort in Oni
 ## Useful tips
 Get unicode to clipboard
 	echo -ne "\uf026" | xclip -selection clipboard
+	echo -ne "\uf026" | pbcopy

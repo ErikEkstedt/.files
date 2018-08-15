@@ -39,13 +39,7 @@ Host *
 	AddKeysToAgent yes
 	IdentityFile ~/.ssh/id_rsa
 
-# Work
-Host Desktop
-	hostname 213.113.208.169
-	port 2002
-	user erik
-
-# Home
+# Home Wifi
 Host PersonalLaptop
 	hostname 192.168.0.102
 	user erik

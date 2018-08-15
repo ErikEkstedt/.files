@@ -1,12 +1,13 @@
 " Stolen from onedark-theme
 " Sets all syntax colors. Plugins overwrites the colorscheme so I overwrite
-" the plugins. THis could become a plugin. Mostly for training plugin in vim.
+" the plugins. This could become a plugin. Mostly for training plugin in vim.
 " It is really hacky as of now....
 " Hackky and bloaty. just adding stuff never clean...
-" TODO: Need to automate this
+" TODO: induce from above 
+" Syntaxcolor customizes syntax highlights
+"
 
-
-function! SyntaxColors() "{{{
+function! SyntaxColors()
 	function! s:h(group, style) "{{{
 		let s:ctermformat = "NONE"
 		let s:guiformat = "NONE"
@@ -28,10 +29,8 @@ function! SyntaxColors() "{{{
 			else
 				let l:ctermfg = (has_key(a:style, "fg") ? a:style.fg.cterm : "NONE")
 				let l:ctermbg = (has_key(a:style, "bg") ? a:style.bg.cterm : "NONE")
-			end
-		endif "}}}
-
-		if g:colors_name =~ 'onedark' "{{{
+			end "}}}
+		elseif g:colors_name =~ 'onedark' "{{{
 			if g:onedark_terminal_italics == 0
 				let s:ctermformat = substitute(s:ctermformat, ",italic", "", "")
 				let s:ctermformat = substitute(s:ctermformat, "italic,", "", "")
@@ -61,14 +60,17 @@ function! SyntaxColors() "{{{
 					\ "ctermfg=" . l:ctermfg
 					\ "ctermbg=" . l:ctermbg
 					\ "cterm="   (!empty(s:ctermformat) ? s:ctermformat   : "NONE")
-	endfunction 
+	endfunction  "}}}
 
 	let s:comment = { "gui": "#8AA695", "cterm": "252" }
 	" let s:comment = { "gui":  "#613434", "cterm": "252" }
 	call s:h("vimLineComment", { "fg": s:comment })
 
+	" Global Highlights
+	:highlight MatchParen guifg=#000000 guibg=#FC00D5
+	:highlight Comment gui=italic guifg=#8AA695 
+
 	
-	" Monokai
 	if g:colors_name =~ 'monokai' "{{{
 		" Colors {{{
 		echo 'Monokai Colors Set'
@@ -303,12 +305,33 @@ function! SyntaxColors() "{{{
 		let s:special_grey = s:colors.special_grey
 		let s:vertsplit = s:colors.vertsplit
 
+		" HIGHLIGHTS
+		:highlight Folded guifg=#D296D9 guibg=none
+		:highlight link FoldColumn LineNr
+		:highlight NonText guifg=#61afef
+
+		if g:UNAME == 'Linux'
+			" This makes resizing font in konsole work
+			" If set nvim lags/jumps back to the default font size settings
+			:highlight link FoldColumn LineNr
+		else
+			" Darwin
+		endif
+
+		" JavaScript, JSX {{{
 		call s:h("jsxRegion", { "fg": s:purple })
 		call s:h("jsClassProperty", { "fg": s:yellow })
+		call s:h("jsObject", { "fg": s:red })
+		" }}}
+
+		" XML  {{{
 		call s:h("xmlEndTag", { "fg": s:red })
 		call s:h("xmlTagName", { "fg": s:blue })
 		call s:h("xmlTagN", { "fg": s:blue })
-		call s:h("jsObject", { "fg": s:red })
-
+		" }}}
+		
+		" VIM {{{
+		call s:h("VimFunction", { "fg": s:cyan }) 
+		" }}}
 	endif "}}}"
-endfunction "}}}
+endfunction 
