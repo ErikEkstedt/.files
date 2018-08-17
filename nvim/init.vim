@@ -238,9 +238,9 @@ set hls                        " highlighting!
 set lazyredraw                 " don't redraw screen during macros
 
 " set textwidth=0
-set linebreak				   " break lines (only visually) if window is too narrow
+set linebreak                  " break lines (only visually) if window is too narrow
 set formatoptions+=j           " smart line joining. uncomments comments.
-set wrap
+set nowrap
 set wrapmargin=5
 let &showbreak="↪"
 set breakindent                " wrapped line s keep indentation (set bri)
@@ -249,7 +249,9 @@ set breakindentopt+=shift:2    " how far in the showbreak: " ↪ " is
 set breakindentopt+=min:20
 
 set list
-set listchars=tab:\|\ ,trail:·,extends:▶,nbsp:·,conceal:\#
+set listchars=tab:\ \ ,trail:·,extends:▶,nbsp:·
+" set listchars=tab:▶\ ,trail:·,extends:\#,nbsp:·
+" set listchars=tab:\|\ ,trail:·,extends:▶,nbsp:·,conceal:\#
 " set listchars=tab:▶\ ,trail:·,extends:\#,nbsp:.
 
 set numberwidth=4              " width of numberline
