@@ -13,6 +13,7 @@ if [[ $(uname) == 'Darwin' ]]; then
 	alias ll="gls -l --color"
 	alias ld="gls -ld */ --color"
 	alias la="gls -A -1 --group-directories-first --color"
+	alias lsf="gls -1 --group-directories-first --color"
 	alias lrt="gls -lrt --color"
 	alias ltt="gls -ogl *.tex --color"
 	alias ltx="gls *.tex --color"
