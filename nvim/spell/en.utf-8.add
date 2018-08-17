@@ -63,3 +63,6 @@ Word2Vec
 facebook
 env
 TTS
+Cuda
+TensorboardX
+Visdom
