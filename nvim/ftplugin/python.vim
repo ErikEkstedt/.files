@@ -26,9 +26,3 @@ nnoremap Ö A:<esc>
 " Note: <CR> is indistinguishable from <C-m>
 nnoremap <buffer> <CR> vip:SlimuxREPLSendLine<CR> 
 vnoremap <buffer> <CR> :SlimuxREPLSendLine<CR>gv<Esc>zz
-
-" " Go to next/previous Python method or class (PyMode)
-" nnoremap gj :call pymode#motion#move('^\s*def\s', '')<CR>zz
-" nnoremap gk :call pymode#motion#move('^\s*def\s', 'b')<CR>zz
-" nnoremap gJ :call pymode#motion#move('^\s*class\s', '')<CR>zz
-" nnoremap gK :call pymode#motion#move('^\s*class\s', 'b')<CR>zz

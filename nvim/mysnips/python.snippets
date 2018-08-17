@@ -1,11 +1,11 @@
 priority 150
 
-
 snippet main "name is main"
 if __name__ == '__main__':
 endsnippet
 
 snippet input "generic user input"
+print('Press Enter to continue')
 input('Press Enter to continue')
 endsnippet
 
@@ -14,7 +14,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 $0
 endsnippet
-
 
 # PyTorch
 snippet importTorch "pytorch imports"
@@ -33,8 +32,9 @@ class ${1:MyClass}(nn.Module):
 		super($1, self).__init__()
 		$0
 
-	def forward(self, input):
-		pass
+	def forward(self, input_):
+		return input_
+
 endsnippet
 
 snippet datasetTorch "dataset pytorch"
@@ -48,8 +48,14 @@ class ${1:MyDataset}(Dataset):
 
 	def __getitem__(self, idx):
 		pass
+
 endsnippet
 
+snippet cuda "use cuda pytorch"
+use_cuda = True
+device = torch.device("cuda" if use_cuda else "cpu")
+$0
+endsnippet
 
 ##########
 # COMMON #

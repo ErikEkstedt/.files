@@ -24,8 +24,10 @@ let g:pymode_motion = 1
 " Go to next/previous method or class
 nnoremap gj :call pymode#motion#move('^\s*def\s', '')<CR>zz
 nnoremap gk :call pymode#motion#move('^\s*def\s', 'b')<CR>zz
-nnoremap gJ :call pymode#motion#move('^\s*class\s', '')<CR>zz
-nnoremap gK :call pymode#motion#move('^\s*class\s', 'b')<CR>zz
+nnoremap md :call pymode#motion#move('^\s*def\s', '')<CR>zz
+nnoremap mD :call pymode#motion#move('^\s*def\s', 'b')<CR>zz
+nnoremap mc :call pymode#motion#move('^\s*class\s', '')<CR>zz
+nnoremap mC :call pymode#motion#move('^\s*class\s', 'b')<CR>zz
 
 imap <F5> <Esc>:w<CR>:!clear;python %<CR>
 
