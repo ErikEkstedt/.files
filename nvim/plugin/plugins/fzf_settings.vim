@@ -53,6 +53,7 @@ nnoremap <Leader>fl :Files<CR>
 " FuzzyFind files in predefined folders I commonly use
 nnoremap <Leader>fc :Files ~/.files<CR>
 nnoremap <Leader>fb :Files ~/blog<CR>
+nnoremap <Leader>fno :Files ~/blog/public/notes<CR>
 nnoremap <Leader>fp :Files ~/phd<CR>
 
 " Others
