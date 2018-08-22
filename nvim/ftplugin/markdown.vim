@@ -8,6 +8,15 @@ nnoremap <buffer> <localleader>ll :LivedownToggle<CR>
 nnoremap <buffer> <localleader>lv :LivedownPreview<CR>
 nnoremap <buffer> <localleader>lk :LivedownKill<CR>
 
+
+" augroup 
+" 	au!
+" 	au BufWrite *.md :!
+" augroup END
+
+nnoremap <buffer> å :! notedown <C-r>% > <C-r>%<bs><bs>ipynb
+
+
 " Marker
 nnoremap <buffer> <c-space> <esc>/<++><CR>"_ciw
 

@@ -318,6 +318,9 @@ function! SyntaxColors()
 		else
 			" Darwin
 		endif
+		" Python {{{
+		call s:h("pythonBoolean", { "fg": s:dark_yellow })
+		" }}}
 
 		" JavaScript, JSX {{{
 		call s:h("jsxRegion", { "fg": s:purple })

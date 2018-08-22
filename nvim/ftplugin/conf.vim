@@ -1,1 +1,1 @@
-setlocal ft=dosini 
+" set commentstring=\%\ %s

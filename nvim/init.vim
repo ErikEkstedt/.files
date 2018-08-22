@@ -228,9 +228,9 @@ if UNAME == 'Linux'
 else
 	" Darwin
 	" This does not work on MacOS - iterm2
-	" set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+	set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 	" Can't get the cursor to be line in insert mode and box in normal
-	set guicursor=
+	" set guicursor=
 endif
 
 
