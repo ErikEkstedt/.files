@@ -4,7 +4,7 @@ Font=DejaVuSansMono Nerd Font Mono,12,-1,5,50,0,0,0,0,0,Regular
 UseFontLineChararacters=true
 
 [Cursor Options]
-CursorShape=1
+CursorShape=0
 UseCustomCursorColor=false
 
 [General]
@@ -16,11 +16,13 @@ Parent=FALLBACK/
 ShowTerminalSizeHint=false
 
 [Interaction Options]
+CtrlRequiredForDrag=false
+MiddleClickPasteMode=1
 OpenLinksByDirectClickEnabled=true
 UnderlineFilesEnabled=true
 
 [Scrolling]
-HistoryMode=1
+HistoryMode=2
 ScrollBarPosition=2
 
 [Terminal Features]
