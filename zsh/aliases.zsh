@@ -119,6 +119,8 @@ alias ezl="vim ~/.files/zsh/zshrc-laptop"
 alias ezd="vim ~/.files/zsh/zshrc-desktop"
 alias et="vim ~/.tmux.conf"
 alias er="vim ~/.config/ranger/rc.conf"
+alias ekitty="vim ~/.files/terminals/kitty/kitty.conf"
+
 
 alias rz="source ~/.zshrc"
 alias ru="xrdb -load ~/.Xresources"
