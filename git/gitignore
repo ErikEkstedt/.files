@@ -50,6 +50,10 @@ __pycache__
 
 *.egg-info/
 
+# Libreoffice #
+###############
+*.ods.cpgz
+
 # Logs and databases #
 ######################
 *.log
