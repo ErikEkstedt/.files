@@ -8,18 +8,18 @@
 "
 " $NVIM_ROOT
 " ├── after
-" │   └── ftplugin
+" │   └── ftplugin
 " ├── autoload
-" │   ├── erik
-" │   └── lightline
-" │       └── colorscheme
+" │   ├── erik
+" │   └── lightline
+" │       └── colorscheme
 " ├── colors
 " ├── ftplugin: all my filetype-settings
 " ├── mysnippets: custom snippets
 " ├── oni: settings and mappings for Oni
 " ├── plugin: In here all my settings are stored.
-" │   └── mappings: keymappings
-" │   └── plugins: all plugin settings
+" │   └── mappings: keymappings
+" │   └── plugins: all plugin settings
 " ├── spell
 " └── wip
 
@@ -98,7 +98,7 @@ Plug 'honza/vim-snippets'              " XXX snippets
 Plug 'sheerun/vim-polyglot'            " All the syntax messed upp syntax for oni ( turned .js -> javascript.jsx
 Plug 'daeyun/vim-matlab'               " MATLAB
 Plug 'othree/xml.vim'                  " xml highlight
-Plug 'klen/python-mode'                " Python mode (docs, refactor, lints...)
+" Plug 'klen/python-mode'                " Python mode (docs, refactor, lints...)
 
                                        " Tools
 " Plug 'DougBeney/pickachu'              " Pick Color/date/
@@ -132,7 +132,9 @@ Plug 'tpope/vim-repeat'                " XXX repeat commands not repeatable by '
 Plug 'tpope/vim-surround'              " XXX Surround objects with quotes, brackets ...
 Plug 'w0rp/ale'                        " asynchronous linting
 Plug 'wellle/targets.vim'              " XXX ci' works on (, [, {, <
-Plug 'wmvanvliet/vim-ipython'
+" Plug 'wmvanvliet/vim-ipython'
+Plug 'szymonmaszke/vimpyter'
+
 
 	" Plug 'Raimondi/delimitMate'           " autoclosing of brackets, quotes ...
 if !exists("g:gui_oni")
