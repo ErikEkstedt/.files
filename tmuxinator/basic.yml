@@ -8,3 +8,7 @@ windows:
         root: ~/blog
     - DOTFILES:
         root: ~/.files
+    - Maptask:
+        root: ~/maptaskdataset
+    - Mocap:
+        root: ~/Locomotion
