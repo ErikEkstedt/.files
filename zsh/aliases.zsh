@@ -71,6 +71,7 @@ alias v="nvim"
 alias ipy="ipython"  #--profile=erik"
 function mkpr() { project_init "$1" }  # I dont use this but good idea. Revisit
 
+alias jno="jupyter notebook"  #jupyter notebook example.ipynb
 alias wnvi="watch nvidia-smi"
 
 alias scroll="xinput set-prop 12 284 -303 303"
