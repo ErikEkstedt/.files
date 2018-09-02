@@ -31,7 +31,8 @@ import os
 import sys
 import subprocess
 
-FOLDERS = ['blog', 'phd','.files', 'voicegen', 'fun', '.personal', 'Documents/latex/Notes']
+FOLDERS = ['blog', 'phd','.files', 'voicegen', 'fun', 
+           '.personal', 'maptaskdataset', 'Documents/latex/Notes']
 
 bcolors = { 'DARKGREEN' : '\033[90m',
            'WARNING' : '\033[91m',
