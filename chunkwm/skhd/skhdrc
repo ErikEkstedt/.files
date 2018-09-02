@@ -120,10 +120,10 @@ ctrl + alt - k : chunkc tiling::window --swap north
 ctrl + alt - l : chunkc tiling::window --swap east
 
 # move window
-shift + cmd - h : chunkc tiling::window --warp west
-shift + cmd - j : chunkc tiling::window --warp south
-shift + cmd - k : chunkc tiling::window --warp north
-shift + cmd - l : chunkc tiling::window --warp east
+shift + ctrl + alt - h : chunkc tiling::window --warp west
+shift + ctrl + alt - j : chunkc tiling::window --warp south
+shift + ctrl + alt - k : chunkc tiling::window --warp north
+shift + ctrl + alt - l : chunkc tiling::window --warp east
 
 # send window to desktop
 ctrl + shift + alt - y : chunkc tiling::window --send-to-desktop prev
@@ -182,14 +182,15 @@ alt - s : chunkc tiling::window --toggle sticky
 alt - p : chunkc tiling::window --toggle sticky;\
           chunkc tiling::window --grid-layout 5:5:4:0:1:1
 
+
 # send window to monitor and follow focus
-ctrl + cmd - z  : chunkc tiling::window --send-to-monitor prev; chunkc tiling::monitor -f prev
-ctrl + cmd - c  : chunkc tiling::window --send-to-monitor next; chunkc tiling::monitor -f next
 ctrl + cmd - 1  : chunkc tiling::window --send-to-monitor 1; chunkc tiling::monitor -f 1
 ctrl + cmd - 2  : chunkc tiling::window --send-to-monitor 2; chunkc tiling::monitor -f 2
 ctrl + cmd - 3  : chunkc tiling::window --send-to-monitor 3; chunkc tiling::monitor -f 3
 
 # MONITOR SETTINGS
+ctrl + shift + cmd - j  : chunkc tiling::window --send-to-monitor prev; chunkc tiling::monitor -f prev
+ctrl + shift + cmd - k  : chunkc tiling::window --send-to-monitor next; chunkc tiling::monitor -f next
 
 # focus monitor
 cmd - k : chunkc tiling::monitor -f prev
