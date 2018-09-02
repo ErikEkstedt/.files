@@ -98,10 +98,9 @@ Plug 'honza/vim-snippets'              " XXX snippets
 Plug 'sheerun/vim-polyglot'            " All the syntax messed upp syntax for oni ( turned .js -> javascript.jsx
 Plug 'daeyun/vim-matlab'               " MATLAB
 Plug 'othree/xml.vim'                  " xml highlight
-" Plug 'klen/python-mode'                " Python mode (docs, refactor, lints...)
+Plug 'klen/python-mode'                " Python mode (docs, refactor, lints...)
 
-                                       " Tools
-" Plug 'DougBeney/pickachu'              " Pick Color/date/
+" Tools
 Plug 'KabbAmine/vCoolor.vim'
 Plug 'Raimondi/delimitMate'            " auto complete parens etc.
 Plug 'Valloric/MatchTagAlways' 
@@ -131,7 +130,7 @@ Plug 'tpope/vim-obsession'             " :mksession | saves a vim instance | use
 Plug 'tpope/vim-repeat'                " XXX repeat commands not repeatable by 'vanilla' vim
 Plug 'tpope/vim-surround'              " XXX Surround objects with quotes, brackets ...
 Plug 'w0rp/ale'                        " asynchronous linting
-Plug 'wellle/targets.vim'              " XXX ci' works on (, [, {, <
+Plug 'wellle/targets.vim'              " XXX ci' works on (, [, {, < on entire line
 " Plug 'wmvanvliet/vim-ipython'
 Plug 'szymonmaszke/vimpyter'
 
