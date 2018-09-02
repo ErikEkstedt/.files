@@ -98,7 +98,7 @@ Plug 'honza/vim-snippets'              " XXX snippets
 Plug 'sheerun/vim-polyglot'            " All the syntax messed upp syntax for oni ( turned .js -> javascript.jsx
 Plug 'daeyun/vim-matlab'               " MATLAB
 Plug 'othree/xml.vim'                  " xml highlight
-Plug 'klen/python-mode'                " Python mode (docs, refactor, lints...)
+" Plug 'klen/python-mode'                " Python mode (docs, refactor, lints...)
 
 " Tools
 Plug 'KabbAmine/vCoolor.vim'
