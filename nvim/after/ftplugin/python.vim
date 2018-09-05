@@ -1,5 +1,4 @@
 "Settings
-
 setlocal tw=80
 setlocal tabstop=4
 setlocal softtabstop=4
@@ -8,7 +7,7 @@ setlocal expandtab
 setlocal autoindent
 setlocal foldmethod=indent
 setlocal nowrap
-
+setlocal iskeyword-=_
 
 " Mappings
 
