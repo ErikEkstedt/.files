@@ -9,17 +9,16 @@
 " $NVIM_ROOT
 " ├── after
 " │   └── ftplugin
+" │		└── plugin: all plugin settings
+" │       └── mappings: keymappings
 " ├── autoload
 " │   ├── erik
 " │   └── lightline
 " │       └── colorscheme
 " ├── colors
-" ├── ftplugin: all my filetype-settings
 " ├── mysnippets: custom snippets
 " ├── oni: settings and mappings for Oni
 " ├── plugin: In here all my settings are stored.
-" │   └── mappings: keymappings
-" │   └── plugins: all plugin settings
 " ├── spell
 " └── wip
 
