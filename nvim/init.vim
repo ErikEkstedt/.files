@@ -138,6 +138,7 @@ Plug 'szymonmaszke/vimpyter'
 	" Plug 'Raimondi/delimitMate'           " autoclosing of brackets, quotes ...
 if !exists("g:gui_oni")
 	Plug 'christoomey/vim-tmux-navigator' " navigate between vim and tmuz seemlessly
+	let g:tmux_navigator_no_mappings = 1
 endif
 
 " Preview Text 
