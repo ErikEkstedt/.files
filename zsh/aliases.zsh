@@ -116,11 +116,11 @@ alias eal="vim ~/.files/zsh/aliases.zsh"
 alias ealiases="vim ~/.files/zsh/aliases.zsh"
 alias ev="vim ~/.files/nvim/init.vim"
 alias ez="vim ~/.zshrc"
-alias ezl="vim ~/.files/zsh/zshrc-laptop"
-alias ezd="vim ~/.files/zsh/zshrc-desktop"
 alias et="vim ~/.tmux.conf"
 alias er="vim ~/.config/ranger/rc.conf"
 alias ekitty="vim ~/.files/terminals/kitty/kitty.conf"
+alias chunk="v ~/.files/chunkwm/chunkwmrc"
+alias skhd="v ~/.files/chunkwm/skhd/skhdrc"
 
 
 alias rz="source ~/.zshrc"
