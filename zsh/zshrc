@@ -29,11 +29,16 @@ setopt interactivecomments
 #==== Export {{{
 
 export KEYTIMEOUT=1
+# export TERM="xterm-256color"  # "xterm-256color"
+# export TERM="xterm-kitty"
+# export TERM="screen.xterm-256color"
 export TERM="screen-256color"  # "xterm-256color"
+export COLORTERM="truecolor"
+
 export EDITOR='nvim'
 export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
-export BROWSER="google-chrome"
+export BROWSER="firefox"   # google-chrome
 export LANG=en_US.UTF-8
 export DOTFILES="$HOME/.files"
 

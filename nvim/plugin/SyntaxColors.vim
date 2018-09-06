@@ -307,9 +307,10 @@ function! SyntaxColors()
 
 		" HIGHLIGHTS
 		:highlight Folded guifg=#D296D9 guibg=none
+		:highlight ColorColumn guibg=#202020
 		:highlight link FoldColumn LineNr
-		:highlight NonText guifg=#61afef
-
+		" :highlight NonText guifg=#61afef
+		:highlight NonText guifg=#ff0099
 		if g:UNAME == 'Linux'
 			" This makes resizing font in konsole work
 			" If set nvim lags/jumps back to the default font size settings
@@ -317,6 +318,9 @@ function! SyntaxColors()
 		else
 			" Darwin
 		endif
+		" Python {{{
+		call s:h("pythonBoolean", { "fg": s:dark_yellow })
+		" }}}
 
 		" JavaScript, JSX {{{
 		call s:h("jsxRegion", { "fg": s:purple })

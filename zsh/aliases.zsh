@@ -13,6 +13,7 @@ if [[ $(uname) == 'Darwin' ]]; then
 	alias ll="gls -l --color"
 	alias ld="gls -ld */ --color"
 	alias la="gls -A -1 --group-directories-first --color"
+	alias lsf="gls -1 --group-directories-first --color"
 	alias lrt="gls -lrt --color"
 	alias ltt="gls -ogl *.tex --color"
 	alias ltx="gls *.tex --color"
@@ -70,6 +71,7 @@ alias v="nvim"
 alias ipy="ipython"  #--profile=erik"
 function mkpr() { project_init "$1" }  # I dont use this but good idea. Revisit
 
+alias jno="jupyter notebook"  #jupyter notebook example.ipynb
 alias wnvi="watch nvidia-smi"
 
 alias scroll="xinput set-prop 12 284 -303 303"
@@ -103,9 +105,9 @@ alias gstatus="python ~/.files/bin/git-script"
 # Tmux {{{
 alias tls="tmux list-sessions"
 alias tkd="tmux-kill-detached-sessions"
-alias tk="tmux kill-session -t ."
-# alias tatt="tmux attach -t"
-alias tkill="tmux kill-session -t"
+alias tks="tmux kill-session -t"
+alias tkp="tmux kill-pane -t"
+alias tkw="tmux kill-window -t"
 alias tst="tmux new-session"
 # }}}
 
@@ -114,10 +116,12 @@ alias eal="vim ~/.files/zsh/aliases.zsh"
 alias ealiases="vim ~/.files/zsh/aliases.zsh"
 alias ev="vim ~/.files/nvim/init.vim"
 alias ez="vim ~/.zshrc"
-alias ezl="vim ~/.files/zsh/zshrc-laptop"
-alias ezd="vim ~/.files/zsh/zshrc-desktop"
 alias et="vim ~/.tmux.conf"
 alias er="vim ~/.config/ranger/rc.conf"
+alias ekitty="vim ~/.files/terminals/kitty/kitty.conf"
+alias chunk="v ~/.files/chunkwm/chunkwmrc"
+alias skhd="v ~/.files/chunkwm/skhd/skhdrc"
+
 
 alias rz="source ~/.zshrc"
 alias ru="xrdb -load ~/.Xresources"

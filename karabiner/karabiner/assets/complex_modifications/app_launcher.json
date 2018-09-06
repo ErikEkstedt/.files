@@ -23,7 +23,7 @@
 				{
 					"type": "basic",
 					"from": {
-						"key_code": "return_or_enter",
+						"key_code": "t",
 						"modifiers": {
 							"mandatory": [
 								"left_option"

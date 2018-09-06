@@ -98,6 +98,20 @@ case `uname` in
   ;;
 esac
 # }}}
+#
+function firefox-window() { # {{{
+/usr/bin/env osascript <<-EOF
+tell application "System Events"
+    if (name of processes) contains "Firefox" then
+        tell application "Firefox" to activate
+        keystroke "n" using command down
+    else
+        tell application "Firefox" to activate
+    end if
+end tell
+EOF
+}  # }}}
+
 function ag() { #{{{
 	git add .
 	git commit -m "$1"

@@ -31,7 +31,15 @@ import os
 import sys
 import subprocess
 
-FOLDERS = ['blog', 'phd','.files', 'voicegen', 'fun', '.personal', 'Documents/latex/Notes']
+FOLDERS = ['.files',
+           'phd',
+           'DialogAgent',
+           'Notes',
+           'Locomotion',
+           'maptaskdataset',
+           'blog',
+           '.personal',
+           'Documents/latex/Notes']
 
 bcolors = { 'DARKGREEN' : '\033[90m',
            'WARNING' : '\033[91m',
@@ -146,7 +154,14 @@ def gitPush(folders):
         printPathLine(path, color='RED')
         printStatusClearly()
         printPathLine('Push', length=25, color='YELLOW')
-        gitAddCommitPush(path)
+        # gitAddCommitPush(path)
+        gitOnlyPush()
+
+def gitOnlyPush():
+    cmd = "git push"
+    ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+    output = ps.communicate()[0]
+    print(output.decode())
 
 
 def gitAddCommitPush(path):
@@ -160,6 +175,7 @@ def gitAddCommitPush(path):
     ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
     output = ps.communicate()[0]
     print(output.decode())
+
 
 
 def gitPull(folders):

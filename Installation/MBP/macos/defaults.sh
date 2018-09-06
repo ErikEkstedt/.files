@@ -20,3 +20,7 @@ echo
 echo "Set default screen shot location to ~/Pictures"
 echo "> defaults write com.apple.screencapture location ~/Pictures"
 defaults write com.apple.screencapture location ~/Pictures
+
+echo
+echo "Set default in finder to show dotfiles"
+defaults write com.apple.finder AppleShowAllFiles YES

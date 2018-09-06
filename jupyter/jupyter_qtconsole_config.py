@@ -78,7 +78,7 @@
 ## Base class for Jupyter applications
 
 ## Answer yes to any prompts.
-#c.JupyterApp.answer_yes = False
+c.JupyterApp.answer_yes = True
 
 ## Full path of a config file.
 #c.JupyterApp.config_file = ''

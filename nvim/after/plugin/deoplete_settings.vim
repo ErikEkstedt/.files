@@ -4,6 +4,7 @@
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#max_abbr_width = 40
 let g:deoplete#max_menu_width = 40
+let g:deoplete#max_list = 40
 let g:deoplete#auto_complete_delay = 5
 let g:deoplete#auto_refresh_delay= 5
 let g:deoplete#min_pattern_length = 2

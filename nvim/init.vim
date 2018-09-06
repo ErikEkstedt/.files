@@ -8,18 +8,17 @@
 "
 " $NVIM_ROOT
 " ├── after
-" │   └── ftplugin
+" │   └── ftplugin
+" │		└── plugin: all plugin settings
+" │       └── mappings: keymappings
 " ├── autoload
-" │   ├── erik
-" │   └── lightline
-" │       └── colorscheme
+" │   ├── erik
+" │   └── lightline
+" │       └── colorscheme
 " ├── colors
-" ├── ftplugin: all my filetype-settings
 " ├── mysnippets: custom snippets
 " ├── oni: settings and mappings for Oni
 " ├── plugin: In here all my settings are stored.
-" │   └── mappings: keymappings
-" │   └── plugins: all plugin settings
 " ├── spell
 " └── wip
 
@@ -98,10 +97,9 @@ Plug 'honza/vim-snippets'              " XXX snippets
 Plug 'sheerun/vim-polyglot'            " All the syntax messed upp syntax for oni ( turned .js -> javascript.jsx
 Plug 'daeyun/vim-matlab'               " MATLAB
 Plug 'othree/xml.vim'                  " xml highlight
-Plug 'klen/python-mode'                " Python mode (docs, refactor, lints...)
+" Plug 'klen/python-mode'                " Python mode (docs, refactor, lints...)
 
-                                       " Tools
-" Plug 'DougBeney/pickachu'              " Pick Color/date/
+" Tools
 Plug 'KabbAmine/vCoolor.vim'
 Plug 'Raimondi/delimitMate'            " auto complete parens etc.
 Plug 'Valloric/MatchTagAlways' 
@@ -131,12 +129,15 @@ Plug 'tpope/vim-obsession'             " :mksession | saves a vim instance | use
 Plug 'tpope/vim-repeat'                " XXX repeat commands not repeatable by 'vanilla' vim
 Plug 'tpope/vim-surround'              " XXX Surround objects with quotes, brackets ...
 Plug 'w0rp/ale'                        " asynchronous linting
-Plug 'wellle/targets.vim'              " XXX ci' works on (, [, {, <
-Plug 'wmvanvliet/vim-ipython'
+Plug 'wellle/targets.vim'              " XXX ci' works on (, [, {, < on entire line
+" Plug 'wmvanvliet/vim-ipython'
+Plug 'szymonmaszke/vimpyter'
+
 
 	" Plug 'Raimondi/delimitMate'           " autoclosing of brackets, quotes ...
 if !exists("g:gui_oni")
 	Plug 'christoomey/vim-tmux-navigator' " navigate between vim and tmuz seemlessly
+	let g:tmux_navigator_no_mappings = 1
 endif
 
 " Preview Text 
@@ -228,9 +229,9 @@ if UNAME == 'Linux'
 else
 	" Darwin
 	" This does not work on MacOS - iterm2
-	" set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+	set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 	" Can't get the cursor to be line in insert mode and box in normal
-	set guicursor=
+	" set guicursor=
 endif
 
 
@@ -238,9 +239,9 @@ set hls                        " highlighting!
 set lazyredraw                 " don't redraw screen during macros
 
 " set textwidth=0
-set linebreak				   " break lines (only visually) if window is too narrow
+set linebreak                  " break lines (only visually) if window is too narrow
 set formatoptions+=j           " smart line joining. uncomments comments.
-set wrap
+set nowrap
 set wrapmargin=5
 let &showbreak="↪"
 set breakindent                " wrapped line s keep indentation (set bri)
@@ -249,7 +250,9 @@ set breakindentopt+=shift:2    " how far in the showbreak: " ↪ " is
 set breakindentopt+=min:20
 
 set list
-set listchars=tab:\|\ ,trail:·,extends:▶,nbsp:·,conceal:\#
+set listchars=tab:\ \ ,trail:·,extends:▶,nbsp:·
+" set listchars=tab:▶\ ,trail:·,extends:\#,nbsp:·
+" set listchars=tab:\|\ ,trail:·,extends:▶,nbsp:·,conceal:\#
 " set listchars=tab:▶\ ,trail:·,extends:\#,nbsp:.
 
 set numberwidth=4              " width of numberline

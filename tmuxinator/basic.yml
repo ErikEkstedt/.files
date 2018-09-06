@@ -1,10 +1,17 @@
-# /home/erik/.config/tmuxinator/WORK.yml
+# /home/erik/.files/tmuxinator/basic.yml
 name: Terminal
-root: ~/
 windows:
-    - PHD:
-        root: ~/phd
-    - BLOG:
-        root: ~/blog
     - DOTFILES:
         root: ~/.files
+    - PHD:
+        root: ~/phd
+    - DialogAgent:
+        root: ~/DialogAgent
+    - Notes:
+        root: ~/Notes
+    - Maptask:
+        root: ~/maptaskdataset
+    - Locomotion:
+        root: ~/Locomotion
+    - BLOG:
+        root: ~/blog
