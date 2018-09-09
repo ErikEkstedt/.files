@@ -110,6 +110,74 @@
                                 "type": "basic"
                             }
                         ]
+                    },
+                    {
+                        "description": "Double tap Space -> Enter",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "space pressed",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "spacebar",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "return_or_enter"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "spacebar",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "set_variable": {
+                                            "name": "space pressed",
+                                            "value": 1
+                                        }
+                                    },
+                                    {
+                                        "key_code": "spacebar"
+                                    }
+                                ],
+                                "to_delayed_action": {
+                                    "to_if_canceled": [
+                                        {
+                                            "set_variable": {
+                                                "name": "space pressed",
+                                                "value": 0
+                                            }
+                                        }
+                                    ],
+                                    "to_if_invoked": [
+                                        {
+                                            "set_variable": {
+                                                "name": "space pressed",
+                                                "value": 0
+                                            }
+                                        }
+                                    ]
+                                },
+                                "type": "basic"
+                            }
+                        ]
                     }
                 ]
             },
@@ -236,7 +304,7 @@
                         "key_code": "left_control"
                     },
                     "to": {
-                        "key_code": "fn"
+                        "key_code": "return_or_enter"
                     }
                 },
                 {
