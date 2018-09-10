@@ -197,7 +197,7 @@ nnoremap <leader>z zMzvzz
 
 " natural end/beginning of line movement
 nnoremap L $
-nnoremap H 0
+nnoremap H ^
 
 " Nerdtree uses 'o' to open "foldlike" dirs.
 " I want to use 'o' to open closed folds but everywhere else it
