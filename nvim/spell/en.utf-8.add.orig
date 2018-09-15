@@ -14,15 +14,17 @@ relu
 PyTorch
 Roboschool
 roboschool
+<<<<<<< HEAD
 hyperparameter
 hyperparameters
 disincentivize
 multimeters
 gauge
 gauges
-
+=======
 disincentivize
 backpropagation
+hyperparameters
 umgängeskrets
 sinnesstämning
 neurala
@@ -31,6 +33,7 @@ learning
 deep
 gauges
 Ekstedt
+>>>>>>> ec437c10cfa2dc70ff1c6475993e5da8ba235620
 Microplastics
 incentivize
 incentivizing
@@ -66,5 +69,9 @@ Visdom
 RNN
 backchannel
 backchannels
+<<<<<<< HEAD
+Unneccesarry
 quaterions
+=======
 MSELoss
+>>>>>>> e132892ad3bbb43703abba9e3b234b9ef4621619
