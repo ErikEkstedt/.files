@@ -181,40 +181,41 @@ let mapleader = ','
 let localleader = '\'
 
 " Settings
-set spelllang=sv,en_us         " US English spelling
-set ffs=unix,dos,mac           " File Format (relevant to line ending type)
-set backspace=indent,eol,start " Make backspace work like most other apps.
-set history=1000               " Keep 1000 lines of command-line history.
-set undolevels=1000            " Keep 1000 lines of undo history.
-set showcmd                    " Display incomplete commands.
-set noshowmode                 " stops vims own showing below the statusbar.
-set title                      " Change the title of the terminal/tab with the file name.
-set hidden                     " Allow unsaved background buffers.
+set spelllang=sv,en_us                " US English spelling
+set ffs=unix,dos,mac                  " File Format (relevant to line ending type)
+set backspace=indent,eol,start        " Make backspace work like most other apps.
+set history=1000                      " Keep 1000 lines of command-line history.
+set undolevels=1000                   " Keep 1000 lines of undo history.
+set showcmd                           " Display incomplete commands.
+set noshowmode                        " stops vims own showing below the statusbar.
+set title                             " Change the title of the terminal/tab with the file name.
+set hidden                            " Allow unsaved background buffers.
 
-set shortmess=I                " Don't show Vim's welcome message.
-set shortmess+=a               " Make the save message shorter. Helps avoid the 'Hit ENTER to continue' message.
-set shortmess+=c               " see :help deoplete -> Configuration FAQ (ins-completion-menu)
+set shortmess=I                       " Don't show Vim's welcome message.
+set shortmess+=a                      " Make the save message shorter. Helps avoid the 'Hit ENTER to continue' message.
+set shortmess+=c                      " see :help deoplete -> Configuration FAQ (ins-completion-menu)
 
-set modeline                   " example at top of script:  " vim: ft=vim
-set foldmethod=marker          " marker for all but specified filetypes (ex: python)
-set foldlevelstart=-1          " start with fold everything
-set foldclose=                 " all
-set foldtext=erik#settings#foldtext()  " see nvim/autoload/erik/settings.vim
+set modeline                          " example at top of script:  " vim: ft=vim
+set foldmethod=marker                 " marker for all but specified filetypes (ex: python)
+set foldlevelstart=-1                 " start with fold everything
+set foldclose=                        " all
+set foldtext=erik#settings#foldtext() " see nvim/autoload/erik/settings.vim
 
 set conceallevel=0
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
-set smarttab
-set noexpandtab
-set autoindent
 
-" set ruler                      " for cursor position in the bottom right corner
-set number                     " number lines
+set bs=indent,eol,start               " allow backspacing over everything
+set autoindent                        " enable auto-indentation
+set tabstop=2                         " no. of spaces for tab in file
+set shiftwidth=2                      " no. of spaces for step in autoindent
+set softtabstop=2                     " no. of spaces for tab when editing
+set expandtab                         " expand tabs into spaces
+set smarttab                          " smart tabulation and backspace
+
+set number                            " number lines
 set relativenumber
-set scrolloff=3                " visual rows above and below cursor
-set sidescroll=3               " visual columns on sides of cursor
-set cursorline                 " highlight line where cursor is
+set scrolloff=3                       " visual rows above and below cursor
+set sidescroll=3                      " visual columns on sides of cursor
+set cursorline                        " highlight line where cursor is
 
 " set completeopt-=preview
 " set completeopt+=noinsert

@@ -24,6 +24,7 @@ let g:LanguageClient_autoStart = 1
 
 let g:LanguageClient_serverCommands = {
 		\ 'javascript': ['~/.node_modules_global/bin/javascript-typescript-stdio'],
+		\ 'markdown': ['~/node_modules/markdown-language-server'],
 		\ 'javascript.jsx': ['~/.node_modules_global/bin/javascript-typescript-stdio'],
     \ 'python': ['~/miniconda3/envs/neovim3/bin/pyls']
     \ }

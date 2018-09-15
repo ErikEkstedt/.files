@@ -9,6 +9,10 @@ vnoremap <c-y> "+y
 vnoremap <s-tab>   <gv
 vnoremap <tab> >gv|
 
+" natural end/beginning of line movement
+vnoremap L $
+vnoremap H ^
+
 " Source lines
 vnoremap <leader>vs y:@"<CR>
 

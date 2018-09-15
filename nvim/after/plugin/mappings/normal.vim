@@ -175,6 +175,9 @@ nnoremap <space>n :bn<CR>
 nnoremap <h :bp<CR>
 nnoremap <l :bn<CR>
 
+nnoremap <space>m <c-w>n
+nnoremap <space>ö <c-w>n<c-w>L
+
 " jump in jump list
 " nnoremap <i <C-I>zz
 " nmap <c-o> <c-o>zz
@@ -195,7 +198,7 @@ nnoremap # #<c-o>
 nnoremap ga zA
 nnoremap <leader>z zMzvzz
 
-" natural end/beginning of line movement
+" natural end/beginning of line movement (also in visual and selection)
 nnoremap L $
 nnoremap H ^
 
