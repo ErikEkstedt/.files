@@ -165,8 +165,8 @@ shift + alt - 0 : chunkc tiling::desktop --equalize
 # ctrl + alt - l : chunkc tiling::window --use-insertion-point east
 
 # toggle window fullscreen, native fullscreen, parent zoom
-alt - f : chunkc tiling::window --toggle fullscreen
-shift + alt - f : chunkc tiling::window --toggle native-fullscreen
+alt - f : chunkc tiling::desktop --toggle offset; chunkc tiling::window --toggle fullscreen
+shift + alt - f : chunkc tiling::desktop --toggle offset; chunkc tiling::window --toggle native-fullscreen
 alt - d : chunkc tiling::window --toggle parent
 
 # toggle window: split type
@@ -181,7 +181,6 @@ alt - s : chunkc tiling::window --toggle sticky
 # toggle sticky, float and resize to picture-in-picture size
 alt - p : chunkc tiling::window --toggle sticky;\
           chunkc tiling::window --grid-layout 5:5:4:0:1:1
-
 
 # send window to monitor and follow focus
 ctrl + cmd - 1  : chunkc tiling::window --send-to-monitor 1; chunkc tiling::monitor -f 1
@@ -230,7 +229,6 @@ alt - y : chunkc tiling::desktop --mirror vertical
 alt - x : chunkc tiling::desktop --mirror horizontal
 
 
-
 # float next window to be tiled
 shift + alt - t : chunkc set window_float_next 1
 
@@ -240,3 +238,7 @@ ctrl + alt - s : chunkc tiling::desktop --layout monocle
 ctrl + alt - d : chunkc tiling::desktop --layout float
 
 ctrl + alt - w : chunkc tiling::desktop --deserialize ~/.chunkwm_layouts/dev_1
+
+# Border
+# cmd - b_: chunkc border::clear
+

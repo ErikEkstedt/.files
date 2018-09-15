@@ -1,13 +1,13 @@
 {
-  "title": "2xSpaceEnter",
+  "title": "2xKeyEnter",
   "rules": [
     {
-      "description": "Double tap Space -> Enter",
+      "description": "Double tap Key -> Enter",
       "manipulators": [
         {
           "type": "basic",
           "from": {
-            "key_code": "spacebar",
+            "key_code": "j",
             "modifiers": {
               "optional": [
                 "any"
@@ -27,7 +27,7 @@
         {
           "type": "basic",
           "from": {
-            "key_code": "spacebar",
+            "key_code": "j",
             "modifiers": {
               "optional": [
                 "any"
@@ -40,9 +40,6 @@
                 "name": "space pressed",
                 "value": 1
               }
-            },
-            {
-              "key_code": "spacebar"
             }
           ],
           "to_delayed_action": {
@@ -52,6 +49,9 @@
                   "name": "space pressed",
                   "value": 0
                 }
+              },
+              {
+                "key_code": "j"
               }
             ],
             "to_if_canceled": [
