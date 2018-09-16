@@ -306,7 +306,7 @@ function! SyntaxColors()
 		let s:vertsplit = s:colors.vertsplit
 
 		" HIGHLIGHTS
-		:highlight Folded guifg=#D296D9 guibg=none
+		:highlight Folded guifg=#D296D9 guibg=#202020
 		:highlight ColorColumn guibg=#202020
 		:highlight link FoldColumn LineNr
 		" :highlight NonText guifg=#61afef
