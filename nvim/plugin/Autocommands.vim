@@ -51,7 +51,7 @@ autocmd WinLeave * if Should_cursorline() | setlocal nocursorline norelativenumb
 if exists('+colorcolumn')
 	" autocmd BufEnter,FocusGained,VimEnter,WinEnter * if Should_colorcolumn() | let &l:colorcolumn='+' . join(range(0, 254), ',+') | endif
 	autocmd BufEnter,FocusGained,VimEnter,WinEnter * if Should_colorcolumn() | let &l:colorcolumn='+0' | endif
-	autocmd FocusLost,WinLeave * if Should_colorcolumn() | let &l:colorcolumn=join(range(1, 255), ',') | endif
+	autocmd FocusLost,BufLeave,WinLeave * if Should_colorcolumn() | let &l:colorcolumn=join(range(1, 255), ',') | endif
 endif
 
 " Help colorcolumn
