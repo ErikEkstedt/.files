@@ -15,6 +15,7 @@ let g:ale_sign_column_always = 1
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%][%severity%] %s'
+let g:ale_lint_on_save = 1
 
 " highlight ALEWarningSign guibg=303030 guifg=
 " highlight ALEErrorSign guibg=303030 guifg=

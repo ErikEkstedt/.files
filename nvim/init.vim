@@ -24,10 +24,10 @@
 
 " Startup and Installation {{{
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
-    echo "No Vim-Plug available... Downloading and running PlugInstall"
-    silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  echo "No Vim-Plug available... Downloading and running PlugInstall"
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+              \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 " fzf path
@@ -37,8 +37,6 @@ let g:uname = system("uname")
 if has("unix")  "Python & Node
 	" This is probably not necessary and $HOME or similar might work.
 	if g:uname == "Darwin\n"
-		" let g:python3_host_prog='/Users/erik/miniconda3/bin/python'
-		" let g:python_host_prog ='/Users/erik/miniconda3/envs/py27/bin/python'
 		let g:python3_host_prog='/Users/erik/miniconda3/envs/neovim3/bin/python'
 		let g:python_host_prog='/Users/erik/miniconda3/envs/neovim2/bin/python'
 		let g:node_host_prog='/Users/erik/.node_modules_global/bin/neovim-node-host' 
@@ -48,8 +46,9 @@ if has("unix")  "Python & Node
 		let g:node_host_prog='/home/erik/.node_modules_global/bin/neovim-node-host' 
 	endif
 endif
+
 " }}}
-" Vim-Plug {{{ 
+" Vim-Plug {{{
 " Plugins marked with XXX I know I use/like a lot.
 " Plugins will be downloaded under the specified directory. 
 call plug#begin('~/.vim/bundle')
@@ -73,21 +72,21 @@ Plug 'Shougo/neopairs.vim'
 " Installed for react play
 " ES2015 code snippets (Optional)
 Plug 'epilande/vim-es2015-snippets'
+
 " React code snippets
 Plug 'epilande/vim-react-snippets'
 " post install (yarn install | npm install) then load plugin only for editing supported files
 
-
+Plug 'mxw/vim-jsx'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
-
-Plug 'mxw/vim-jsx'
 
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
+
 " --------------------
 "
 Plug 'SirVer/ultisnips'                " XXX snippet engine
@@ -130,13 +129,12 @@ Plug 'tpope/vim-repeat'                " XXX repeat commands not repeatable by '
 Plug 'tpope/vim-surround'              " XXX Surround objects with quotes, brackets ...
 Plug 'w0rp/ale'                        " asynchronous linting
 Plug 'wellle/targets.vim'              " XXX ci' works on (, [, {, < on entire line
-" Plug 'wmvanvliet/vim-ipython'
 Plug 'szymonmaszke/vimpyter'
-
 
 	" Plug 'Raimondi/delimitMate'           " autoclosing of brackets, quotes ...
 if !exists("g:gui_oni")
 	Plug 'christoomey/vim-tmux-navigator' " navigate between vim and tmuz seemlessly
+  Plug 'tmux-plugins/vim-tmux-focus-events' "  Focus events correctly triggered. Leaving/Returning to vim inside tmux
 	let g:tmux_navigator_no_mappings = 1
 endif
 
@@ -154,7 +152,7 @@ if !exists("g:gui_oni")
 	Plug 'danilo-augusto/vim-afterglow'
 	Plug 'mhartington/oceanic-next'
 	Plug 'yuttie/hydrangea-vim'
-    Plug 'junegunn/seoul256.vim'          " cool junegunn is coool
+  Plug 'junegunn/seoul256.vim'          " cool junegunn is coool
 	Plug 'joshdick/onedark.vim'           " look like atom?
 	Plug 'crusoexia/vim-monokai'
 	Plug 'itchyny/lightline.vim'
@@ -166,54 +164,56 @@ call plug#end()
 " }}}
 " Basic Settings {{{
 
-filetype plugin indent on
-syntax enable
-syntax on
-colorscheme onedark
-
 " Variables
 let g:HOSTNAME = substitute(system('hostname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
 let g:UNAME = substitute(system('uname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
-let g:BROWSER = "google-chrome"
+let g:BROWSER = "firefox"
 
 let mapleader = ','
 let localleader = '\'
 
+colorscheme onedark
+
+filetype plugin indent on
+syntax enable
+syntax on
+
 " Settings
-set spelllang=sv,en_us         " US English spelling
-set ffs=unix,dos,mac           " File Format (relevant to line ending type)
-set backspace=indent,eol,start " Make backspace work like most other apps.
-set history=1000               " Keep 1000 lines of command-line history.
-set undolevels=1000            " Keep 1000 lines of undo history.
-set showcmd                    " Display incomplete commands.
-set noshowmode                 " stops vims own showing below the statusbar.
-set title                      " Change the title of the terminal/tab with the file name.
-set hidden                     " Allow unsaved background buffers.
+set spelllang=sv,en_us                " US English spelling
+set ffs=unix,dos,mac                  " File Format (relevant to line ending type)
+set backspace=indent,eol,start        " Make backspace work like most other apps.
+set history=1000                      " Keep 1000 lines of command-line history.
+set undolevels=1000                   " Keep 1000 lines of undo history.
+set showcmd                           " Display incomplete commands.
+set noshowmode                        " stops vims own showing below the statusbar.
+set title                             " Change the title of the terminal/tab with the file name.
+set hidden                            " Allow unsaved background buffers.
 
-set shortmess=I                " Don't show Vim's welcome message.
-set shortmess+=a               " Make the save message shorter. Helps avoid the 'Hit ENTER to continue' message.
-set shortmess+=c               " see :help deoplete -> Configuration FAQ (ins-completion-menu)
+set shortmess=I                       " Don't show Vim's welcome message.
+set shortmess+=a                      " Make the save message shorter. Helps avoid the 'Hit ENTER to continue' message.
+set shortmess+=c                      " see :help deoplete -> Configuration FAQ (ins-completion-menu)
 
-set modeline                   " example at top of script:  " vim: ft=vim
-set foldmethod=marker          " marker for all but specified filetypes (ex: python)
-set foldlevelstart=-1          " start with fold everything
-set foldclose=                 " all
-set foldtext=erik#settings#foldtext()  " see nvim/autoload/erik/settings.vim
+set modeline                          " example at top of script:  " vim: ft=vim
+set foldmethod=indent                 " marker for all but specified filetypes (ex: python)
+set foldlevelstart=-1                 " start with fold everything
+set foldclose=                        " all
+set foldtext=erik#settings#foldtext() " see nvim/autoload/erik/settings.vim
 
 set conceallevel=0
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
-set smarttab
-set noexpandtab
-set autoindent
 
-" set ruler                      " for cursor position in the bottom right corner
-set number                     " number lines
+set autoindent                        " enable auto-indentation
+set bs=indent,eol,start               " allow backspacing over everything
+set tabstop=2                         " no. of spaces for tab in file
+set shiftwidth=2                      " no. of spaces for step in autoindent
+set softtabstop=2                     " no. of spaces for tab when editing
+set expandtab                         " expand tabs into spaces
+set smarttab                          " smart tabulation and backspace
+
+set number                            " number lines
 set relativenumber
-set scrolloff=3                " visual rows above and below cursor
-set sidescroll=3               " visual columns on sides of cursor
-set cursorline                 " highlight line where cursor is
+set scrolloff=3                       " visual rows above and below cursor
+set sidescroll=3                      " visual columns on sides of cursor
+set cursorline                        " highlight line where cursor is
 
 " set completeopt-=preview
 " set completeopt+=noinsert
@@ -238,9 +238,9 @@ endif
 set hls                        " highlighting!
 set lazyredraw                 " don't redraw screen during macros
 
-" set textwidth=0
 set linebreak                  " break lines (only visually) if window is too narrow
 set formatoptions+=j           " smart line joining. uncomments comments.
+set formatoptions+=n           " smart autoindenting inside numbered lists 
 set nowrap
 set wrapmargin=5
 let &showbreak="↪"
@@ -255,7 +255,7 @@ set listchars=tab:\ \ ,trail:·,extends:▶,nbsp:·
 " set listchars=tab:\|\ ,trail:·,extends:▶,nbsp:·,conceal:\#
 " set listchars=tab:▶\ ,trail:·,extends:\#,nbsp:.
 
-set numberwidth=4              " width of numberline
+set numberwidth=3              " width of numberline
 set mouse=a                    " mouse functionality
 set timeoutlen=500             " ms to wait for command completion
 set ttimeoutlen=0              " don't wait for <esc>
@@ -278,10 +278,10 @@ if has('windows')
 	set fillchars=vert:\┃  " ┃ line with no breaks between vertical splits
 endif
 
-if !exists("g:gui_oni")
-	set laststatus=2 "always show status bar
-else
+if exists("g:gui_oni")
 	set laststatus=0 "always show status bar
+else
+	set laststatus=2 "always show status bar
 endif
 
 " Wildmenu completion {{{
@@ -301,20 +301,61 @@ set wildignore+=*.orig                           " Merge resolution files
 set wildignore+=*.fasl                           " Lisp FASLs
 
 " }}}
-" Backups {{{
-set backup                        " enable backups
-set noswapfile                    " it's 2013, Vim.
 
-set undodir=~/.vim/tmp/undo//     " undo files
-set backupdir=~/.vim/tmp/backup// " backups
-set directory=~/.vim/tmp/swap//   " swap files
+" Large Files {{{
+
+" file is large from 5mb
+let g:LargeFile = 1024 * 1024 * 5
+augroup LargeFile 
+ autocmd BufReadPre * let f=getfsize(expand("<afile>")) | if f > g:LargeFile || f == -2 | call LargeFile() | endif
+augroup END
+
+function LargeFile()
+ " no syntax highlighting etc
+ set eventignore+=FileType
+ " save memory when other file is viewed
+ setlocal bufhidden=unload
+ " is read-only (write with :w new_filename)
+ setlocal buftype=nowrite
+ " no undo possible
+ setlocal undolevels=-1
+ " display message
+ autocmd VimEnter *  echo "The file is larger than " . (g:LargeFile / 1024 / 1024) . " MB, so some options are changed (see .vimrc for details)."
+endfunction
+
+" }}}
+" Backups {{{
+
+" Backup
+if exists('$SUDO_USER')
+  set nobackup                        " enable backups
+  set nowritebackup                        " enable backups
+else
+  set backupdir=~/.vim/tmp/backup/ " backups
+  " Create folder if it does note exists
+  if !isdirectory(expand(&backupdir))
+    call mkdir(expand(&backupdir), "p")
+  endif
+endif
+
+" Swapfile
+if exists('$SUDO_USER')
+  set noswapfile  enable backups
+else
+  set directory=~/.vim/tmp/swap//   " swap files
+endif
+
+" Undo
+if exists('$SUDO_USER')
+  set noundofile  " don't create root-owned files
+else
+  set undodir=~/.vim/tmp/undo//
+  set undofile  "use undo files
+endif
 
 " Make those folders automatically if they don't already exist.
 if !isdirectory(expand(&undodir))
 	call mkdir(expand(&undodir), "p")
-endif
-if !isdirectory(expand(&backupdir))
-	call mkdir(expand(&backupdir), "p")
 endif
 if !isdirectory(expand(&directory))
 	call mkdir(expand(&directory), "p")

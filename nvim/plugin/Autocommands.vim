@@ -33,8 +33,9 @@ augroup END
 " Greg Hurrell:
 " https://github.com/wincent/wincent/blob/2aa44544fe9e8fc466fea42391e66fff3583054c/roles/dotfiles/files/.vim/plugin/autocmds.vim
 
-let g:ColorColumnBlacklist = ['diff', 'undotree', 'nerdtree', 'qf']
-let g:CursorlineBlacklist = ['fzf', 'nerdtree']
+" let g:ColorColumnBlacklist = ['diff', 'undotree', 'nerdtree', 'qf']
+let g:ColorColumnBlacklist = ['diff', 'undotree', 'help', 'qf']
+let g:CursorlineBlacklist = ['fzf', 'nerdtree', 'help']
 
 function! Should_colorcolumn() abort
   return index(g:ColorColumnBlacklist, &filetype) == -1
@@ -51,7 +52,7 @@ autocmd WinLeave * if Should_cursorline() | setlocal nocursorline norelativenumb
 if exists('+colorcolumn')
 	" autocmd BufEnter,FocusGained,VimEnter,WinEnter * if Should_colorcolumn() | let &l:colorcolumn='+' . join(range(0, 254), ',+') | endif
 	autocmd BufEnter,FocusGained,VimEnter,WinEnter * if Should_colorcolumn() | let &l:colorcolumn='+0' | endif
-	autocmd FocusLost,WinLeave * if Should_colorcolumn() | let &l:colorcolumn=join(range(1, 255), ',') | endif
+	autocmd FocusLost,BufLeave,WinLeave * if Should_colorcolumn() | let &l:colorcolumn=join(range(1, 255), ',') | endif
 endif
 
 " Help colorcolumn

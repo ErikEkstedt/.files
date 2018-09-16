@@ -7,7 +7,7 @@ setlocal expandtab
 setlocal autoindent
 setlocal foldmethod=indent
 setlocal nowrap
-setlocal iskeyword-=_
+" setlocal iskeyword-=_
 
 " Mappings
 
@@ -25,5 +25,5 @@ nnoremap <buffer>,= :s/\s\@<!=\+\s\@!/ = /g<CR>
 nnoremap <buffer>Ö A:<esc>
 
 " Note: <CR> is indistinguishable from <C-m>
-nnoremap <buffer> <CR> vip:SlimuxREPLSendLine<CR> 
+nnoremap <buffer> <CR> vip:SlimuxREPLSendLine<CR>
 vnoremap <buffer> <CR> :SlimuxREPLSendLine<CR>gv<Esc>zz
