@@ -97,8 +97,8 @@ alias gps="git push"
 alias gpl="git pull"
 alias gst="git status"
 
-alias gpush="python ~/.files/bin/git-script push"
-alias gpull="python ~/.files/bin/git-script pull"
+alias gpush="python ~/.files/bin/git-script -c push -d .files phd Notes Audio/maptaskdataset Audio/dialogAgent"
+alias gpull="python ~/.files/bin/git-script -c pull -d .files phd Notes Audio/maptaskdataset Audio/dialogAgent"      
 alias gstatus="python ~/.files/bin/git-script"
 # }}}
 

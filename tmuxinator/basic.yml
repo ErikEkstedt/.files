@@ -5,13 +5,11 @@ windows:
         root: ~/.files
     - PHD:
         root: ~/phd
-    - DialogAgent:
-        root: ~/DialogAgent
-    - Notes:
-        root: ~/Notes
-    - Maptask:
-        root: ~/maptaskdataset
+    - Audio:
+        root: ~/Audio
     - Locomotion:
         root: ~/Locomotion
+    - Notes:
+        root: ~/Notes
     - BLOG:
         root: ~/blog
