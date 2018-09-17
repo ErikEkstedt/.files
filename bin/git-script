@@ -207,6 +207,7 @@ def main():
         FOLDERS.append('.files')
         FOLDERS.append('phd')
 
+
     if args.command:
         if args.command == 'pull':
             gitPull(FOLDERS)
