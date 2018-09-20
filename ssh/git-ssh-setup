@@ -1,8 +1,25 @@
 #!/bin/bash
 # generate ssh key and setup github
-sudo -H -u erik bash -c 'ssh-keygen -t rsa -b 4096 -C "eeckee@gmail.com"'
-sudo -H -u erik bash -c 'eval "$(ssh-agent -s)"'
-sudo -H -u erik bash -c 'ssh-add ~/.ssh/id_rsa'
-xclip -sel clip < ~/.ssh/id_rsa.pub  # copies id to clipboard (sudo apt install xclip)
-echo "Script copied rsa key to system clipboard"
-echo "...paste it on GitHub ssh settings."
+
+answer='y'
+while [[ $answer != 'y' || $answer != 'Y'   ]]; do
+  echo "Input email adress: "
+  read email
+  echo "Is the email below correct? (y/n)"
+  echo " $email"
+  read answer
+  if [[ $answer == 'y' || $answer == 'Y'   ]]; then
+    sudo -H -u erik bash -c "ssh-keygen -t rsa -b 4096 -C $email"
+    sudo -H -u erik bash -c 'eval "$(ssh-agent -s)"'
+    sudo -H -u erik bash -c 'ssh-add ~/.ssh/id_rsa'
+    xclip -sel clip < ~/.ssh/id_rsa.pub  # copies id to clipboard (sudo apt install xclip)
+    echo
+    echo "-------------------------------------"
+    echo "Script copied rsa key to system clipboard"
+    echo "...paste it on GitHub ssh settings."
+    echo "-------------------------------------"
+    break
+  fi
+done
+
+
