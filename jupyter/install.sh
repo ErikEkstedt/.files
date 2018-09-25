@@ -20,3 +20,17 @@ if [[ $answer == 'y' || $answer == 'Y'   ]]; then
 	echo "Linking jupyter qtconfig config -> .jupyter/jupyter_qtconsole_config.py"
 	ln -sf ~/.files/jupyter/jupyter_qtconsole_config.py ~/.jupyter/jupyter_qtconsole_config.py
 fi
+
+echo "Install jjupyter-vim bindings? (y/n)"
+read answer
+if [[ $answer == 'y' || $answer == 'Y'   ]]; then
+  nbext_dirname=$(jupyter --data-dir)/nbextensions
+  echo Create dir $nbext_dirname if it does not exists
+  # Create required directory in case (optional)
+  mkdir -p $nbext_dirname
+  echo "Clone the repository"
+  cd $(jupyter --data-dir)/nbextensions
+  git clone https://github.com/lambdalisue/jupyter-vim-binding vim_binding
+  echo "Activate the extension"
+  jupyter nbextension enable vim_binding/vim_binding
+fi
