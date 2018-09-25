@@ -97,9 +97,9 @@ alias gps="git push"
 alias gpl="git pull"
 alias gst="git status"
 
-alias gpush="python ~/.files/bin/git-script -c push -d .files phd Notes Audio/maptaskdataset Audio/dialogAgent"
-alias gpull="python ~/.files/bin/git-script -c pull -d .files phd Notes Audio/maptaskdataset Audio/dialogAgent"      
-alias gstatus="python ~/.files/bin/git-script"
+alias gpush="python ~/.files/bin/git-script -c push -d .files phd Notes Audio/maptaskdataset Audio/dialogAgent Locomotion"
+alias gpull="python ~/.files/bin/git-script -c pull -d .files phd Notes Audio/maptaskdataset Audio/dialogAgent Locomotion"      
+alias gstatus="python ~/.files/bin/git-script -d .files phd Notes Audio/maptaskdataset Audio/dialogAgent Locomotion"
 # }}}
 
 # Tmux {{{
@@ -114,10 +114,11 @@ alias tst="tmux new-session"
 # Config {{{
 alias eal="vim ~/.files/zsh/aliases.zsh"
 alias ealiases="vim ~/.files/zsh/aliases.zsh"
-alias ev="vim ~/.files/nvim/init.vim"
-alias ez="vim ~/.zshrc"
-alias et="vim ~/.tmux.conf"
-alias er="vim ~/.config/ranger/rc.conf"
+alias ev="nvim ~/.files/nvim/init.vim"
+alias ez="nvim ~/.zshrc"
+alias et="nvim ~/.tmux.conf"
+alias ec="nvim ~/.files/chunkwm/chunkwmrc"
+alias er="nvim ~/.config/ranger/rc.conf"
 alias ekitty="vim ~/.files/terminals/kitty/kitty.conf"
 alias chunk="v ~/.files/chunkwm/chunkwmrc"
 alias skhd="v ~/.files/chunkwm/skhd/skhdrc"
