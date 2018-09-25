@@ -129,7 +129,9 @@ Plug 'tpope/vim-repeat'                " XXX repeat commands not repeatable by '
 Plug 'tpope/vim-surround'              " XXX Surround objects with quotes, brackets ...
 Plug 'w0rp/ale'                        " asynchronous linting
 Plug 'wellle/targets.vim'              " XXX ci' works on (, [, {, < on entire line
-Plug 'szymonmaszke/vimpyter'
+" Plug 'szymonmaszke/vimpyter'
+Plug 'ErikEkstedt/vimpyter'
+
 
 	" Plug 'Raimondi/delimitMate'           " autoclosing of brackets, quotes ...
 if !exists("g:gui_oni")
