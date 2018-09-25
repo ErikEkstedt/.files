@@ -1,6 +1,8 @@
 #!/bin/bash
 # A script that kills all detached tmux sessions
 # Bloated text
+# TODO
+# Make the script not kill any session containg "SSH" or similar
 
 Red='\033[0;31m'
 Cyan='\033[0;36m'

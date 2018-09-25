@@ -30,6 +30,7 @@
 import os
 import sys
 import subprocess
+import argparse
 
 FOLDERS = ['.files',
            'phd',
@@ -191,10 +192,26 @@ def gitPull(folders):
 
 
 def main():
-    if len(sys.argv) > 1:
-        if sys.argv[1] == 'pull':
+    parser = argparse.ArgumentParser(description='Git script')
+    parser.add_argument('-c', '--command', default='')
+    parser.add_argument('-d', '--dirs', nargs='+',
+                        help='<Required> Set flag', required=False)
+    args = parser.parse_args()
+
+    FOLDERS = []
+    if args.dirs:
+        for f in args.dirs:
+            FOLDERS.append(os.path.join(os.path.expanduser('~'), f))
+    else:
+        # Defaults
+        FOLDERS.append('.files')
+        FOLDERS.append('phd')
+
+
+    if args.command:
+        if args.command == 'pull':
             gitPull(FOLDERS)
-        elif sys.argv[1] == 'push':
+        elif args.command == 'push':
             gitPush(FOLDERS)
         else:
             print(bcolors['WARNING'])
@@ -204,9 +221,22 @@ def main():
     else:
         gitStatus(FOLDERS)
 
+
 if __name__ == "__main__":
     main()
 
+# if len(sys.argv) > 1:
+#     if sys.argv[1] == 'pull':
+#         gitPull(FOLDERS)
+#     elif sys.argv[1] == 'push':
+#         gitPush(FOLDERS)
+#     else:
+#         print(bcolors['WARNING'])
+#         print('Unknown input: ', bcolors['ENDC'], sys.argv[1])
+#         print(bcolors['WARNING'] + 'Use "pull", "push" or no input.', bcolors['ENDC'])
+#         sys.exit()
+# else:
+#     gitStatus(FOLDERS)
 # relevant 'man git status' output:
 #
 #   Short Format
