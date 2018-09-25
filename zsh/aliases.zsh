@@ -51,18 +51,6 @@ alias gpi="cd ~/Pictures"
 # }}}
 
 ####################### 
-# OLD {{{
-# LATEX {{{
-alias tlog="sh ~/.files/Scripts/new_log.sh " "$1"
-alias tnew="sh ~/.files/Scripts/new_tex.sh " "$1"
-alias tnote="sh ~/.files/Scripts/new_note.sh " "$1"
-
-alias tma="cd ~/Documents/latex; vim Master.tex"
-alias two="cd ~/Documents/latex; vim Master_todo.tex"
-alias tco="cd ~/Documents/latex; vim Computer_todo.tex"
-# }}}
-# }}}
-
 
 # CUSTOM {{{
 alias vim="nvim"
