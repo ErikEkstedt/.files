@@ -48,8 +48,13 @@ export PATH=$HOME/.node_modules_global/bin:${PATH}
 export PATH=$HOME/.local/bin:${PATH}
 export PATH=$HOME/.files/bin:${PATH}  # For my custom scripts
 
-export PYTHONPATH=$HOME/.files/pythonpath
+# export PYTHONPATH=$HOME/.files/pythonpath
 
+# Geckodriver (selenium, webdriver for firefox)
+export PATH=$HOME/geckodriver:${PATH}  # Download tar file and extract here 
+# Kaggle
+export KAGGLE_USERNAME=erikislearning
+# export KAGGLE_KEY=xxxxxxxxxxxxxx
 ## CUDA
 if [[ $(hostname) == 'erik-Desktop' ]]; then
 	export PATH=/usr/local/cuda-9.0/bin:${PATH}
