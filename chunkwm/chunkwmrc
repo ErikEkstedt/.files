@@ -114,5 +114,7 @@ chunkc tiling::rule --owner Finder --state float &
 chunkc tiling::rule --owner Karabiner-Elements --state float &
 chunkc tiling::rule --owner python --state float &
 chunkc tiling::rule --owner iTerm2 --state float &
+chunkc tiling::rule --owner Firefox --state float &
+chunkc tiling::rule --owner WaveSurfer --state float &
 
 

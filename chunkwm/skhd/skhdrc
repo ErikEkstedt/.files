@@ -76,10 +76,8 @@
 # cmd - m : open -na /Applications/mpv.app $(pbpaste)
 
 # APPLICATION SETTINGS
-alt - return : /Applications/Kitty.app/Contents/MacOS/kitty --single-instance -d ~
-# alt - g : /Applications/Firefox.app/Contents/MacOS/firefox --new-window=www.google.com
-alt - g : firefox-window()
-
+alt - return : osascript /Users/erik/.files/chunkwm/skhd/scripts/new-iterm-window.scpt
+alt - g : osascript /Users/erik/.files/chunkwm/skhd/scripts/firefox-window.scpt
 
 # WINDOW SETTINGS
 # close focused window
@@ -241,4 +239,5 @@ ctrl + alt - w : chunkc tiling::desktop --deserialize ~/.chunkwm_layouts/dev_1
 
 # Border
 # cmd - b_: chunkc border::clear
+
 
