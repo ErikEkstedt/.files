@@ -15,6 +15,10 @@ snippet cite "citation"
 \\cite{${1:inside}} ${0:${VISUAL}}
 endsnippet
 
+snippet noindent "noindent" 
+\\noindent
+endsnippet
+
 snippet article "article template" 
 \documentclass{article}
 \usepackage[utf8]{inputenc}
@@ -26,6 +30,7 @@ snippet article "article template"
 \date{}
 
 \begin{document}
+\maketitle
 
 ${0}
 \end{document}

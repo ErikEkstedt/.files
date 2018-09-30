@@ -141,8 +141,9 @@ if !exists("g:gui_oni")
 endif
 
 " Preview Text 
-Plug 'lervag/vimtex'      " XXX latex compiler and alot more.
-Plug 'shime/vim-livedown' " XXX Preview markdowns with npm/node Livedown
+Plug 'lervag/vimtex'       " XXX latex compiler and alot more.
+Plug 'mhinz/neovim-remote' " Needed for vimtex 'compiler_progranme=nvr' / '--remote'
+Plug 'shime/vim-livedown'  " XXX Preview markdowns with npm/node Livedown
 
 " Colorschemes and Appearence {{{ 
 if !exists("g:gui_oni")
