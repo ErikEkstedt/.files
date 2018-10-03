@@ -7,4 +7,4 @@
 # gitignore file in my dotfiles.
 
 echo "Created .gitignore in $(pwd)"
-ln -s ~/.files/git/gitignore $(pwd)/.gitignore
+cp ~/.files/git/gitignore $(pwd)/.gitignore
