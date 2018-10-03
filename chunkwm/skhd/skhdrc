@@ -75,7 +75,9 @@
 # open mpv
 # cmd - m : open -na /Applications/mpv.app $(pbpaste)
 
-# APPLICATION SETTINGS
+# ------------------------------------------#
+#         APPLICATION SETTINGS              #
+# ------------------------------------------#
 alt - return : osascript /Users/erik/.files/chunkwm/skhd/scripts/new-iterm-window.scpt
 alt - g : osascript /Users/erik/.files/chunkwm/skhd/scripts/firefox-window.scpt
 
@@ -152,7 +154,6 @@ shift + alt - o : chunkc tiling::window --use-temporary-ratio 0.05 --adjust-wind
 
 # equalize size of windows
 shift + alt - 0 : chunkc tiling::desktop --equalize
-
 
 
 # set insertion point for focused container
