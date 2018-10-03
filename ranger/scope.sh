@@ -26,7 +26,7 @@ height="$3"          # Height of the preview pane (number of fitting characters)
 cached="$4"          # Path that should be used to cache image previews
 preview_images="$5"  # "True" if image previews are enabled, "False" otherwise.
 
-maxln=200    # Stop after $maxln lines.  Can be used like ls | head -n $maxln
+maxln=60    # Stop after $maxln lines.  Can be used like ls | head -n $maxln
 
 # Find out something about the file:
 mimetype=$(file --mime-type -Lb "$path")
@@ -36,22 +36,33 @@ extension=$(/bin/echo "${path##*.}" | awk '{print tolower($0)}')
 # runs a command and saves its output into $output.  Useful if you need
 # the return value AND want to use the output in a pipe
 try() { output=$(eval '"$@"'); }
+dump() { /bin/echo "$output"; } # writes the output of the previously used "try" command
+trim() { head -n "$maxln"; } # a common post-processing function used after most commands
+safepipe() { "$@"; test $? = 0 -o $? = 141; } # wraps highlight to treat exit code 141 (killed by SIGPIPE) as success
 
-# writes the output of the previously used "try" command
-dump() { /bin/echo "$output"; }
+# txt preview: https://unix.stackexchange.com/questions/186944/ranger-do-not-try-to-display-large-files-preview
+# themes: https://github.com/tajmone/highlight/tree/master/themes
+hl() { command head -n "$maxln" "$path" | highlight --syntax="$extension" --out-format=xterm256 --style=candy; test $? = 0 -o $? = 141; }
 
-# a common post-processing function used after most commands
-trim() { head -n "$maxln"; }
 
-# wraps highlight to treat exit code 141 (killed by SIGPIPE) as success
-safepipe() { "$@"; test $? = 0 -o $? = 141; }
+case "$mimetype" in
+    # Syntax highlight for text files:
+    text/* | */xml)
+        try hl && { dump | trim; exit 5; } || exit 2;;
+    # Display information about media files:
+    video/* | audio/*)
+        exiftool "$path" && exit 5
+        # Use sed to remove spaces so the output fits into the narrow window
+        try mediainfo "$path" && { dump | trim | sed 's/  \+:/: /;';  exit 5; } || exit 1;;
+esac
+
 
 # Image previews, if enabled in ranger.
 if [ "$preview_images" = "True" ]; then
     case "$mimetype" in
         # Image previews for SVG files, disabled by default.
-        ###image/svg+xml)
-        ###   convert "$path" "$cached" && exit 6 || exit 1;;
+        image/svg+xml)
+           convert "$path" "$cached" && exit 6 || exit 1;;
         # Image previews for image files. w3mimgdisplay will be called for all
         # image files (unless overriden as above), but might fail for
         # unsupported types.
@@ -95,27 +106,5 @@ case "$extension" in
         ;; # fall back to highlight/cat if the text browsers fail
 esac
 
-case "$mimetype" in
-    # Syntax highlight for text files:
-    text/* | */xml)
-        if [ "$(tput colors)" -ge 256 ]; then
-            pygmentize_format=terminal256
-            highlight_format=xterm256
-        else
-            pygmentize_format=terminal
-            highlight_format=ansi
-        fi
-        try safepipe highlight --out-format=${highlight_format} "$path" && { dump | trim; exit 5; }
-        try safepipe pygmentize -f ${pygmentize_format} "$path" && { dump | trim; exit 5; }
-        exit 2;;
-    # Ascii-previews of images:
-    image/*)
-        img2txt --gamma=0.6 --width="$width" "$path" && exit 4 || exit 1;;
-    # Display information about media files:
-    video/* | audio/*)
-        exiftool "$path" && exit 5
-        # Use sed to remove spaces so the output fits into the narrow window
-        try mediainfo "$path" && { dump | trim | sed 's/  \+:/: /;';  exit 5; } || exit 1;;
-esac
 
 exit 1

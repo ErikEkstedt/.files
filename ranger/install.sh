@@ -24,12 +24,17 @@ else
 fi
 
 case `uname` in
-    Darwin)
-		# Switch rc file for macos rc file
-		ln -sf ~/.files/ranger/macrc.conf ~/.config/ranger/rc.conf
-            ;;
-    Linux)
-		ln -sf ~/.files/ranger/rc.conf ~/.config/ranger/rc.conf
-        ;;
+  Darwin)
+    echo "Use Macos conf (macrc.conf)"
+    ln -sf ~/.files/ranger/macrc.conf ~/.config/ranger/rc.conf
+    ;;
+  Linux)
+    echo "-> rc.conf" 
+    ln -sf ~/.files/ranger/rc.conf ~/.config/ranger/rc.conf
+    ;;
 esac
 
+# Replace just the line that differs (mac vs linux). However, I use links so this is not exactly what I want.
+#Create temporary file with new line in place
+# cat ~/.files/ranger/rc.conf | sed -e "s/set preview_images_method w3m/set preview_images_method iterm/" > /tmp/ranger_conf_mac_tmp
+# cp /tmp/ranger_conf_mac_tmp ~/.config/ranger/rc.conf
