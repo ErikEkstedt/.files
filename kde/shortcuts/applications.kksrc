@@ -1,0 +1,16 @@
+[firefox.desktop][Global Shortcuts]
+_launch=Alt+G
+new-private-window=none
+new-window=none
+
+[krunner][Global Shortcuts]
+run command=Alt+Space; Alt+F2; Search
+run command on clipboard contents=Alt+Shift+F2
+
+[org.kde.konsole.desktop][Global Shortcuts]
+NewTab=none
+NewWindow=none
+_launch=Alt+Return
+
+[yakuake][Global Shortcuts]
+toggle-window-state=Alt+R
