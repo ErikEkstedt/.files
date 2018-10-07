@@ -4,7 +4,6 @@ snippet main "name is main"
 if __name__ == '__main__':
 endsnippet
 
-
 snippet input "generic user input"
 input('Press Enter to continue')
 endsnippet
@@ -29,7 +28,7 @@ import torch.nn.functional as F
 $0
 endsnippet
 
-snippet importdataset "pytorch dataset, dataloader"
+snippet importDataset "pytorch dataset, dataloader"
 from torch.utils.data import Dataset, DataLoader
 $0
 endsnippet
@@ -46,7 +45,7 @@ class ${1:MyClass}(nn.Module):
 
 endsnippet
 
-snippet datasetTorch "dataset pytorch"
+snippet Dataset "Pytorch Dataset Class"
 class ${1:MyDataset}(Dataset):
 
 	def __init__(self):
@@ -57,10 +56,14 @@ class ${1:MyDataset}(Dataset):
 
 	def __getitem__(self, idx):
 		pass
-
 endsnippet
 
 snippet cuda "use cuda pytorch"
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+$0
+endsnippet
+
+snippet device "use cuda pytorch"
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 $0
 endsnippet
