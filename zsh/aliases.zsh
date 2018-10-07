@@ -86,7 +86,8 @@ alias gdi="git diff"
 alias gps="git push"
 alias gpl="git pull"
 alias gst="git status"
-alias Gpl='tspc "git push"'
+# For all panes in window (tmux)
+alias Gps='tspc "git push"'
 alias Gpl='tspc "git pull"'
 alias Gst='tspc "git status"'
 
