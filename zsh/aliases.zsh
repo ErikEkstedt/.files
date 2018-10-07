@@ -77,6 +77,8 @@ alias proj="tmuxinator start project"
 
 alias patchwork="cd ~/patchwork && npm start"
 
+alias Clear='tspc "clear"'
+
 # Git {{{
 alias gad="git add"
 alias gco="git commit -m"
@@ -84,6 +86,9 @@ alias gdi="git diff"
 alias gps="git push"
 alias gpl="git pull"
 alias gst="git status"
+alias Gpl='tspc "git push"'
+alias Gpl='tspc "git pull"'
+alias Gst='tspc "git status"'
 
 alias gpush="python ~/.files/bin/git-script -c push -d .files phd Notes Audio/maptaskdataset Audio/dialogAgent Locomotion"
 alias gpull="python ~/.files/bin/git-script -c pull -d .files phd Notes Audio/maptaskdataset Audio/dialogAgent Locomotion"      
@@ -97,6 +102,7 @@ alias tks="tmux kill-session -t"
 alias tkp="tmux kill-pane -t"
 alias tkw="tmux kill-window -t"
 alias tst="tmux new-session"
+alias tspc="_tmux_send_keys_all_panes_"
 # }}}
 
 # Config {{{

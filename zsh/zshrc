@@ -233,6 +233,7 @@ if [ -f $HOME/.oh-my-zsh/custom/themes/spaceship.zsh-theme ]; then
 fi
 
 source ~/.files/tmuxinator/tmuxinator.zsh
+source ~/.files/tmux/tmux_functions.zsh  # For my custom scripts
 
 # }}}
 
