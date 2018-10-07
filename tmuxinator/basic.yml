@@ -1,15 +1,26 @@
 # /home/erik/.files/tmuxinator/basic.yml
 name: Terminal
 windows:
-    - DOTFILES:
-        root: ~/.files
-    - PHD:
-        root: ~/phd
-    - Audio:
-        root: ~/Audio
-    - Locomotion:
-        root: ~/Locomotion
-    - Notes:
-        root: ~/Notes
-    - BLOG:
-        root: ~/blog
+  - GIT:
+      layout: even-horizontal
+      panes:
+        - Coherence:
+          - cd ~/NLP/Coherence
+          - tree
+          - git status
+        - Chatbot:
+          - cd ~/NLP/pytorch_chatbot_tutorial
+          - tree
+          - git status
+        - SpeechPlay:
+          - cd ~/Audio/SpeechPlay
+          - tree -L 2
+          - git status
+        - Notes:
+          - cd ~/Notes
+          - tree -d
+          - git status
+        - DotFiles:
+          - cd ~/.files
+          - tree -d -L 1
+          - git status

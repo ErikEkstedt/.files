@@ -1,0 +1,8 @@
+# /home/erik/.files/tmuxinator/basic.yml
+name: Terminal
+  - monitor:
+      - nwi 
+  - monitor:
+      - htop 
+  - training:
+      - ls 
