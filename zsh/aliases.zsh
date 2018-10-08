@@ -19,19 +19,19 @@ if [[ $(uname) == 'Darwin' ]]; then
 	alias ltx="gls *.tex --color"
 	alias lpy="gls *.py --color"
 	alias lpdf="gls -ogl *.pdf --color"
-
 else
 	alias ll="ls -l"
 	alias ld="ls -ld */"
 	alias la="ls -A -1 --group-directories-first"
+	alias La="tspc 'ls -A -1 --group-directories-first'"
 	alias lrt="ls -lrt"
 	alias ltt="ls -ogl *.tex"
 	alias ltx="ls *.tex"
 	alias lpy="ls *.py"
 	alias lpdf="ls -ogl *.pdf"
-
 fi
 
+alias Ls="tspc ls"
 alias ldt="tree -d -L 2"
 # }}}
 
@@ -56,11 +56,14 @@ alias gpi="cd ~/Pictures"
 alias vim="nvim"
 alias VIM="vim"
 alias v="nvim"
+alias py="python"  #--profile=erik"
 alias ipy="ipython"  #--profile=erik"
-function mkpr() { project_init "$1" }  # I dont use this but good idea. Revisit
-
 alias jno="jupyter notebook"  #jupyter notebook example.ipynb
 alias wnvi="watch -n 1 nvidia-smi"
+
+
+function mkpr() { project_init "$1" }  # I dont use this but good idea. Revisit
+
 
 alias scroll="xinput set-prop 12 284 -303 303"
 alias wif="sudo iwconfig wlp2s0 txpower 10dBm"
