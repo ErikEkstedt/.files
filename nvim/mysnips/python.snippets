@@ -1,25 +1,6 @@
 priority 150
 
-snippet main "name is main"
-if __name__ == '__main__':
-endsnippet
-
-snippet input "generic user input"
-input('Press Enter to continue')
-endsnippet
-
-snippet answer "user input answer"
-ans = input('$0\n> ')
-endsnippet
-
-snippet importDefaults  "numpy, matplotlib"
-import numpy as np
-import matplotlib.pyplot as plt
-from tqdm import tqdm
-$0
-endsnippet
-
-# PyTorch
+# Imports
 snippet importTorch "pytorch imports"
 import torch
 import torch.nn as nn
@@ -33,15 +14,24 @@ from torch.utils.data import Dataset, DataLoader
 $0
 endsnippet
 
+snippet importDefaults  "numpy, matplotlib"
+import numpy as np
+import matplotlib.pyplot as plt
+from tqdm import tqdm
+$0
+endsnippet
+
+
+
+# Pytorch
 snippet classTorch "class pytorch"
 class ${1:MyClass}(nn.Module):
-
 	def __init__(self$2):
 		super($1, self).__init__()
 		$0
 
-	def forward(self, input_):
-		return input_
+	def forward(self, x):
+		return x
 
 endsnippet
 
@@ -66,6 +56,19 @@ endsnippet
 snippet device "use cuda pytorch"
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 $0
+endsnippet
+
+# Python
+snippet main "name is main"
+if __name__ == '__main__':
+endsnippet
+
+snippet input "generic user input"
+input('Press Enter to continue')
+endsnippet
+
+snippet answer "user input answer"
+ans = input('$0\n> ')
 endsnippet
 
 ##########
