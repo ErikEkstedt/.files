@@ -5,9 +5,9 @@ swipe:
         right: 
             shortcut: 'super+h'
         up: 
-            shortcut: 'super+k'
-        down: 
             shortcut: 'super+j'
+        down: 
+            shortcut: 'super+k'
     4:
         left: 
             shortcut: 'alt+Right'
