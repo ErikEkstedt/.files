@@ -1,0 +1,109 @@
+# vim:fdm=marker ft=tmux
+
+# Colors {{{
+
+transparent='#000000'
+
+# Pane borders
+
+# Default
+pane_border_fg_nonactive='#444444'
+pane_border_bg_nonactive='#000000'
+
+# Active
+pane_border_fg_active='#79cec6'
+pane_border_bg_active='#000000'
+
+# Background
+
+# Default
+window_bg_nonactive='#000000'
+window_fg_nonactive='#999999'
+
+# Active
+window_bg_active='#000000'
+window_fg_active='#FFFFFF'
+
+# Window tabs | Statusbar
+
+# Default
+window_status_fg='#79cec6'
+window_status_bg='#004d4d'
+
+# Current
+window_status_current_fg='#010101'
+window_status_current_bg=$window_status_fg
+
+# Left
+window_status_left_fg='#ff00f5'
+window_status_left_bg='#000000'
+
+# Right
+window_status_right_fg='#ff00f5'
+window_status_right_bg='#000000'
+
+# }}}
+
+# Status
+WINDOW=" #I #W #F "
+STATUS_LEFT=" #S "
+STATUS_RIGHT=" %d/%m -  %H:%M:%S "
+
+# set colors to correct settings {{{
+# Window tabs (=status)
+setw -g window-status-current-format $WINDOW
+setw -g window-status-format $WINDOW
+setw -g window-status-attr none
+
+# default statusbar colors
+set -g status-bg "#000000"
+
+# default window title colors
+setw -g window-status-fg $window_status_fg
+setw -g window-status-bg $window_status_bg
+setw -g window-status-attr dim
+
+# active windows status colors
+setw -g window-status-current-fg $window_status_current_fg
+setw -g window-status-current-bg $window_status_current_bg
+setw -g window-status-current-attr bright
+
+# Status LEFT
+set -g status-left-length 40
+set -g status-left-attr bright
+set -g status-left $STATUS_LEFT
+
+# default left status colors
+set -g status-left-bg $window_status_left_bg
+set -g status-left-fg $window_status_left_fg
+set -g status-left-attr bright
+
+# Status RIGHT
+set -g status-right-length 50
+set -g status-right-attr dim
+set -g status-right $STATUS_RIGHT
+
+# default left status colors
+set -g status-right-fg $window_status_right_fg
+set -g status-right-bg $window_status_right_bg
+set -g status-right-attr bright
+
+# set inactive/active window styles
+set window-style "bg=$window_bg_nonactive"
+set window-active-style "bg=$window_bg_active"
+
+# Pane borders
+
+set -g pane-border-style "fg=$pane_border_fg_nonactive,bg=$pane_border_bg_nonactive"
+set -g pane-active-border-style "fg=$pane_border_fg_active,bg=$pane_border_bg_active"
+
+# Messaging
+set -g message-attr bold
+set -g message-fg colour81 #cyan
+set -g message-bg $color_trans
+set -g message-command-fg '#004d4d'
+set -g message-command-bg $color_trans
+# }}}
+
+# Message for user
+display-message "transparent theme ON"

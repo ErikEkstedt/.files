@@ -7,8 +7,6 @@
 PREFIX: C-a
 ```
 
-
-
 Useful
 ```Bash
 bind-key    -T prefix       v          copy-mode
