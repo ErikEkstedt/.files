@@ -8,8 +8,8 @@ windows:
           - cd ~/NLP/Coherence
           - tree
           - git status
-        - Chatbot:
-          - cd ~/NLP/pytorch_chatbot_tutorial
+        - ThoughtVectors:
+          - cd ~/NLP/SkipThought
           - tree
           - git status
         - SpeechPlay:
