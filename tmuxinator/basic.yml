@@ -4,13 +4,9 @@ windows:
   - GIT:
       layout: even-horizontal
       panes:
-        - Coherence:
-          - cd ~/NLP/Coherence
-          - tree
-          - git status
-        - ThoughtVectors:
-          - cd ~/NLP/SkipThought
-          - tree
+        - NlpPlay:
+          - cd ~/NLP/NlpPlay
+          - tree -L 2
           - git status
         - SpeechPlay:
           - cd ~/Audio/SpeechPlay
