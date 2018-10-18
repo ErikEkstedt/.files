@@ -38,12 +38,6 @@ window_status_left_bg=$status_bg
 window_status_right_fg='#ff00f5'
 window_status_right_bg=$status_bg
 
-
-# Status
-WINDOW=" #I #W #F "
-STATUS_LEFT=" #S "
-STATUS_RIGHT=" %d/%m -  %H:%M:%S "
-
 # set colors to correct settings {{{
 # Window tabs (=status)
 setw -g window-status-current-format $WINDOW
