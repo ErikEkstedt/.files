@@ -100,10 +100,8 @@ set -g pane-active-border-style "fg=$pane_border_fg_active,bg=$pane_border_bg_ac
 # Messaging
 set -g message-attr bold
 set -g message-fg colour81 #cyan
-set -g message-bg $color_trans
+set -g message-bg $window_status_bg
 set -g message-command-fg '#004d4d'
-set -g message-command-bg $color_trans
+set -g message-command-bg $window_status_current_bg
 # }}}
 
-# Message for user
-display-message "transparent theme ON"

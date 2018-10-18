@@ -2,16 +2,18 @@
 # (K)Ubuntu 16.04, 17.10, 18.04
 
 case `uname` in
-	Darwin)
-		# commands for OS X go here
-		;;
-	Linux)
-		# commands for Linux go here
-		stty -ixon # C-s, C-q 
-		;;
-	FreeBSD)
-		# commands for FreeBSD go here
-		;;
+  Darwin)
+    # commands for OS X go here
+    export LC_ALL=en_US.UTF-8
+    export LANG=en_US.UTF-8
+    ;;
+  Linux)
+    # commands for Linux go here
+    stty -ixon # C-s, C-q 
+    ;;
+  FreeBSD)
+    # commands for FreeBSD go here
+    ;;
 esac
 
 # Settings {{{

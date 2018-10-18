@@ -21,7 +21,7 @@ let g:ale_lint_on_save = 1
 " highlight ALEErrorSign guibg=303030 guifg=
 
 " pylint
-let g:ale_linters = { 'python': ['pyls', 'yapf', 'isort', 'mccabe'],}
+let g:ale_linters = { 'python': ['pyls', 'pylint', 'yapf', 'isort', 'mccabe'],}
 
 " Mappings
 nmap ge <Plug>(ale_next_wrap)
