@@ -1,6 +1,6 @@
 " ALE
 
-let g:ale_enabled = 0
+let g:ale_enabled = 1
 
 " Use quickfix list. Open list
 let g:ale_set_loclist = 0
@@ -21,7 +21,7 @@ let g:ale_lint_on_save = 1
 " highlight ALEErrorSign guibg=303030 guifg=
 
 " pylint
-let g:ale_linters = { 'python': ['pylint', 'yapf', 'isort', 'mccabe'],}
+let g:ale_linters = { 'python': ['pyls', 'yapf', 'isort', 'mccabe'],}
 
 " Mappings
 nmap ge <Plug>(ale_next_wrap)
