@@ -1,6 +1,6 @@
 " ALE
 
-let g:ale_enabled = 0
+let g:ale_enabled = 1
 
 " Use quickfix list. Open list
 let g:ale_set_loclist = 0

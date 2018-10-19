@@ -46,8 +46,8 @@ if has("unix")  "Python & Node
 		let g:node_host_prog='/home/erik/.node_modules_global/bin/neovim-node-host' 
 	endif
 endif
-
 " }}}
+
 " Vim-Plug {{{
 " Plugins marked with XXX I know I use/like a lot.
 " Plugins will be downloaded under the specified directory. 
@@ -88,7 +88,7 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ }
 
 " --------------------
-"
+" Snippets
 Plug 'SirVer/ultisnips'                " XXX snippet engine
 Plug 'honza/vim-snippets'              " XXX snippets
 
@@ -133,7 +133,7 @@ Plug 'wellle/targets.vim'              " XXX ci' works on (, [, {, < on entire l
 Plug 'ErikEkstedt/vimpyter'
 
 
-	" Plug 'Raimondi/delimitMate'           " autoclosing of brackets, quotes ...
+" Plug 'Raimondi/delimitMate'           " autoclosing of brackets, quotes ...
 if !exists("g:gui_oni")
 	Plug 'christoomey/vim-tmux-navigator' " navigate between vim and tmuz seemlessly
   Plug 'tmux-plugins/vim-tmux-focus-events' "  Focus events correctly triggered. Leaving/Returning to vim inside tmux
@@ -165,6 +165,7 @@ endif
 call plug#end()
 " }}}
 " }}}
+
 " Basic Settings {{{
 
 " Variables
@@ -365,6 +366,7 @@ if !isdirectory(expand(&directory))
 endif
 " }}}
 "}}}
+
 " Oni {{{
 if exists("g:gui_oni")
 	source ~/.config/nvim/oni/mappings/oni.vim

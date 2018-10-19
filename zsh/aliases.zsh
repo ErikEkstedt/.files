@@ -52,10 +52,21 @@ alias gpi="cd ~/Pictures"
 
 ####################### 
 
+_vim_fzf(){
+  if [ $# -eq 0 ]
+  then
+    # echo "No arguments supplied"
+    nvim +FZF
+  else
+    # echo $1
+    nvim "$1"
+  fi
+}
+
 # CUSTOM {{{
 alias vim="nvim"
 alias VIM="vim"
-alias v="nvim"
+alias v="_vim_fzf"
 alias py="python"  #--profile=erik"
 alias ipy="ipython"  #--profile=erik"
 alias jno="jupyter notebook"  #jupyter notebook example.ipynb
