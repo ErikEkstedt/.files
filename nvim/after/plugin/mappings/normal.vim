@@ -1,5 +1,5 @@
 " vim: fdm=marker
-" MAPPINGS 
+" MAPPINGS
 
 
 " Config files {{{
@@ -34,19 +34,19 @@ nnoremap <leader>i gg=G<C-o>
 nnoremap <leader>mm vip=
 nnoremap <leader>cc :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
 
-"" redraw 
+"" redraw
 nnoremap <leader><leader>r :redraw!<CR>
 
 "" Browser Mappings
 "" Open Visdom
-"" mneumonic: 
+"" mneumonic:
 ""   Visualize-Google-VIsdom
 ""   Visualize-Firefox-VIsdom
 nnoremap <leader>vgvi :! google-chrome --new-window 192.168.0.104:8097 &<CR>
 nnoremap <leader>vfvi :! firefox --new-window localhost:8097 &<CR>
 
 " Open Tensorboard
-" mneumonic: 
+" mneumonic:
 "   Visualize-Google-TensorBoard
 "   Visualize-Firefox-TensorBoard
 nnoremap <leader>vgtb :! google-chrome --new-window 192.168.0.104:6006 &<CR>
@@ -79,18 +79,17 @@ endif
 nnoremap <leader>db :%bd<CR><C-O>:bd#<CR>
 
 " }}}
-"indenting/unindenting 
+"indenting/unindenting
 nnoremap <tab> >>
 nnoremap <s-tab> <lt><lt>
 
-" standard saving options 
+" standard saving options
 nnoremap <c-s> :w<cr>
 nnoremap <c-q> :q!<cr>
 
-" copy / paste 
+" copy / paste
 " :set paste/nopaste
 set pastetoggle=<f2> " system clipboard pastes preserves indentation
-
 
 " copy / paste from clipboard
 " yank/put + ctrl -> clipboard
@@ -104,7 +103,7 @@ nnoremap <expr> <CR> empty(&buftype) ? '@@' : '<CR>'
 " fuzzy search nmap and the chosen one is implemented
 nmap <leader><tab> <plug>(fzf-maps-n)
 
-" Windows 
+" Windows
 " Move between windows
 " Tmux now handles movement between windows and resizing
 " Plugin 'edkolev/tmuxline.vim'
@@ -113,7 +112,6 @@ nnoremap <C-h> :vertical resize -3<cr>
 nnoremap <C-l> :vertical resize +3<cr>
 nnoremap <C-k> :resize +3<cr>
 nnoremap <C-j> :resize -3<cr>
-
 
 function! ChangeToLocalDir()
 	lchdir %:p:h
@@ -133,7 +131,7 @@ nnoremap V v$
 nnoremap <leader>a ggvG$
 nnoremap Y y$
 
-" Search   
+" Search
 " Keep search matches in the middle of the window.
 nnoremap n nzzzv
 nnoremap N Nzzzv
@@ -150,19 +148,19 @@ nnoremap <f10> :set relativenumber!<cr>
 " Spell
 map <F6> :setlocal spell! spelllang=en_us<CR>
 nnoremap <leader>ge ]s
-nnoremap <leader>gf z=1<CR>	
-nnoremap <localleader>sv :set spelllang=sv<CR> 
+nnoremap <leader>gf z=1<CR>
+nnoremap <localleader>sv :set spelllang=sv<CR>
 nnoremap <localleader>en :set spelllang=en<CR>
 nnoremap gn *zz
 nnoremap gN #zz
 
 " next paren
 nnoremap gp %
-nnoremap gl f,a<CR><esc> 
-nnoremap gL f;a<CR><esc> 
+nnoremap gl f,a<CR><esc>
+nnoremap gL f;a<CR><esc>
 
 
-" Movement 
+" Movement
 
 " When vim wraps one line over several lines
 " make j/k movie inside the line intuitively
@@ -182,15 +180,18 @@ nnoremap <space>ö <c-w>n<c-w>L
 " nnoremap <i <C-I>zz
 " nmap <c-o> <c-o>zz
 
-" nmap G Gzz
+" Create new file in current buffer path
+nnoremap <C-W>n :vsplit %:h/
 
-" jump paragraph (swedish keyboard)
-" nnoremap ö {
-" nnoremap ä }
+" Change current working directory
+" http://vim.wikia.com/wiki/Set_working_directory_to_the_current_file
+nnoremap ,pw :lcd %:p:h<CR>:pwd<CR>
+
+" jump paragraph (Swedish Keyboard)
 map ö {
 map ä }
 
-" */# now stays on a 
+" */# now stays on current cursor position
 nnoremap * *<c-o>
 nnoremap # #<c-o>
 

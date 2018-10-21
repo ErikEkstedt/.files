@@ -117,7 +117,6 @@ function! SyntaxColors()
 		"" CSS {{{
 		call s:h("cssAttrRegion", { "fg": s:pink })
 		call s:h("cssUnitDecorators", { "fg": s:pink })
-
 		""}}}
 		"" HTML {{{
 		call s:h("htmlTitle", { "fg": s:pink })
@@ -309,17 +308,17 @@ function! SyntaxColors()
 		:highlight Folded guifg=#D296D9 guibg=#202020
 		:highlight ColorColumn guibg=#202020
 		:highlight link FoldColumn LineNr
-		" :highlight NonText guifg=#61afef
+    :highlight Conceal guibg=#282c34
+
+    " ex: symbols indicating line continues out of window
 		:highlight NonText guifg=#ff0099
-		if g:UNAME == 'Linux'
-			" This makes resizing font in konsole work
-			" If set nvim lags/jumps back to the default font size settings
-			:highlight link FoldColumn LineNr
-		else
-			" Darwin
-		endif
+
 		" Python {{{
 		call s:h("pythonBoolean", { "fg": s:dark_yellow })
+		call s:h("pythonStatement", { "fg": s:purple })
+		call s:h("pythonRepeat", { "fg": s:purple })
+		call s:h("pythonOperator", { "fg": s:cyan })
+		call s:h("pythonNone", { "fg": s:red })
 		" }}}
 
 		" JavaScript, JSX {{{

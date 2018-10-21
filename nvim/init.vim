@@ -1,4 +1,4 @@
-" vim: fdm=marker
+" vim: fdm=marker tw=0
 " NeoVim
 " Erik
 " Kubuntu 18.04 / KDE neon 16.04 / kubuntu 17.10
@@ -22,21 +22,30 @@
 " ├── spell
 " └── wip
 
-" Startup and Installation {{{
+" Install Vim-Plug (if not installed) {{{
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
   echo "No Vim-Plug available... Downloading and running PlugInstall"
   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
               \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
+endif "}}}
 
-" fzf path
+" Variables and Paths {{{
+let g:HOSTNAME = substitute(system('hostname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
+let g:UNAME = substitute(system('uname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
+let g:BROWSER = "firefox"
+
+let mapleader = ','
+let localleader = '\'
+let g:tex_flavor = "latex"     " assuem *.tex are all latex files
+
+" RunTimePath. Add fzf
 set rtp+=~/.fzf
 
-let g:uname = system("uname")
+" Set Python/Npm paths {{{
 if has("unix")  "Python & Node
 	" This is probably not necessary and $HOME or similar might work.
-	if g:uname == "Darwin\n"
+  if g:UNAME == "Darwin"
 		let g:python3_host_prog='/Users/erik/miniconda3/envs/neovim3/bin/python'
 		let g:python_host_prog='/Users/erik/miniconda3/envs/neovim2/bin/python'
 		let g:node_host_prog='/Users/erik/.node_modules_global/bin/neovim-node-host' 
@@ -45,81 +54,42 @@ if has("unix")  "Python & Node
 		let g:python_host_prog='/home/erik/miniconda3/envs/py27/bin/python'
 		let g:node_host_prog='/home/erik/.node_modules_global/bin/neovim-node-host' 
 	endif
-endif
+endif "}}}
 " }}}
 
 " Vim-Plug {{{
-" Plugins marked with XXX I know I use/like a lot.
-" Plugins will be downloaded under the specified directory. 
 call plug#begin('~/.vim/bundle')
 
-" Deoplete
-if has('nvim') 
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-endif
+" Testing
+Plug 'dhruvasagar/vim-zoom'
 
-Plug 'zchee/deoplete-jedi'
-Plug 'Shougo/neco-vim'
-Plug 'Shougo/neopairs.vim'
+" Plugins marked with XXX I know I use/like a lot.
+" Uncommented are unused to see if I miss them but keep around if I change my mind
 
-" Snippets
 
-" --------------------
-" Installed for react play
-" ES2015 code snippets (Optional)
-Plug 'epilande/vim-es2015-snippets'
+Plug 'scrooloose/nerdtree'             " XXX Project and file navigation
+Plug 'Xuyuanp/nerdtree-git-plugin'     " show git status of files
+Plug 'ivalkeen/nerdtree-execute'       " open files from nerdtree
 
-" React code snippets
-Plug 'epilande/vim-react-snippets'
-" post install (yarn install | npm install) then load plugin only for editing supported files
-
-Plug 'mxw/vim-jsx'
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
-
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-
-" --------------------
-" Snippets
-Plug 'SirVer/ultisnips'                " XXX snippet engine
-Plug 'honza/vim-snippets'              " XXX snippets
-
-" Syntax
-Plug 'sheerun/vim-polyglot'            " All the syntax messed upp syntax for oni ( turned .js -> javascript.jsx
-Plug 'daeyun/vim-matlab'               " MATLAB
-Plug 'othree/xml.vim'                  " xml highlight
-" Plug 'klen/python-mode'                " Python mode (docs, refactor, lints...)
-
-" Tools
 Plug 'KabbAmine/vCoolor.vim'
+Plug 'lilydjwg/colorizer'              " colorize hexcolor in editor
+
 Plug 'Raimondi/delimitMate'            " auto complete parens etc.
 Plug 'Valloric/MatchTagAlways' 
-Plug 'Xuyuanp/nerdtree-git-plugin'     " show git status of files
 Plug 'Yggdroot/indentLine'             " see where there is indent
 Plug 'airblade/vim-gitgutter'          " XXX see git changes in file in the numberline
 Plug 'easymotion/vim-easymotion'       " XXX visualize targets tot move to specific words
-Plug 'ivalkeen/nerdtree-execute'       " open files from nerdtree
 Plug 'junegunn/fzf.vim'                " XXX fuzzy filefinding
 Plug 'junegunn/goyo.vim'               " Distraction free writing
 Plug 'junegunn/vim-after-object'       " change everything after something
 Plug 'junegunn/vim-easy-align'         " XXX better alignment than tabular
-Plug 'junegunn/vim-peekaboo'           " when pressing quotes shows what's stored in the different registers
-Plug 'lilydjwg/colorizer'              " colorize hexcolor in editor
+Plug 'junegunn/vim-peekaboo'           " XXX when pressing quotes shows what's stored in the different registers
 Plug 'lotabout/slimux'                 " XXX old: 'epeli/slimux' | vim+ipython OUtdated
 Plug 'machakann/vim-highlightedyank'   " XXX Highlight yanks
-Plug 'mtth/scratch.vim'                " Unobtrusive scratch
+" Plug 'mtth/scratch.vim'                " Unobtrusive scratch
 Plug 'nelstrom/vim-markdown-folding'   " help with folding in markdown
 Plug 'nelstrom/vim-visual-star-search' " * on visual select searches for the snippet
 Plug 'pangloss/vim-javascript'
-Plug 'scrooloose/nerdtree'             " XXX Project and file navigation
 Plug 'sjl/gundo.vim'                   " Visualize undo tree
 Plug 'tommcdo/vim-exchange'            " exchange two words. ex: cxw (on first word) . (on second)
 Plug 'tpope/vim-commentary'            " XXX commenting
@@ -132,18 +102,58 @@ Plug 'wellle/targets.vim'              " XXX ci' works on (, [, {, < on entire l
 " Plug 'szymonmaszke/vimpyter'
 Plug 'ErikEkstedt/vimpyter'
 
+" Preview Text 
+Plug 'lervag/vimtex'       " XXX latex compiler, preview latex pdf, highlight and syntax. alot more.
+Plug 'mhinz/neovim-remote' " Needed for vimtex 'compiler_progranme=nvr' / '--remote'
+Plug 'shime/vim-livedown'  " XXX Preview markdowns with npm/node Livedown
 
-" Plug 'Raimondi/delimitMate'           " autoclosing of brackets, quotes ...
+
+" AutoCompletion
+if has('nvim') 
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'zchee/deoplete-jedi'
+Plug 'Shougo/neco-vim'
+Plug 'Shougo/neopairs.vim'
+
+" Snippets and Syntax
+if !exists("g:gui_oni") " {{{
+
+  " Syntax
+  Plug 'sheerun/vim-polyglot'            " All the syntax messed upp syntax for oni ( turned .js -> javascript.jsx
+  Plug 'daeyun/vim-matlab'               " MATLAB
+  Plug 'othree/xml.vim'                  " xml highlight
+
+  " Plug 'klen/python-mode'                " Python mode (docs, refactor, lints...)
+  Plug 'mxw/vim-jsx'
+  Plug 'prettier/vim-prettier', {
+    \ 'do': 'yarn install',
+    \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
+
+  Plug 'autozimu/LanguageClient-neovim', {
+      \ 'branch': 'next',
+      \ 'do': 'bash install.sh',
+      \ }
+
+  " --------------------
+  " Snippets
+  Plug 'SirVer/ultisnips'                " XXX snippet engine
+  Plug 'honza/vim-snippets'              " XXX snippets
+
+  Plug 'epilande/vim-es2015-snippets'  "ES2015 code snippets (Optional). Installed for react play
+  Plug 'epilande/vim-react-snippets'  " React code snippets. post install (yarn install | npm install) then load plugin only for editing supported files
+endif "}}}
+
+
 if !exists("g:gui_oni")
 	Plug 'christoomey/vim-tmux-navigator' " navigate between vim and tmuz seemlessly
   Plug 'tmux-plugins/vim-tmux-focus-events' "  Focus events correctly triggered. Leaving/Returning to vim inside tmux
 	let g:tmux_navigator_no_mappings = 1
 endif
-
-" Preview Text 
-Plug 'lervag/vimtex'       " XXX latex compiler and alot more.
-Plug 'mhinz/neovim-remote' " Needed for vimtex 'compiler_progranme=nvr' / '--remote'
-Plug 'shime/vim-livedown'  " XXX Preview markdowns with npm/node Livedown
 
 " Colorschemes and Appearence {{{ 
 if !exists("g:gui_oni")
@@ -168,13 +178,6 @@ call plug#end()
 
 " Basic Settings {{{
 
-" Variables
-let g:HOSTNAME = substitute(system('hostname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
-let g:UNAME = substitute(system('uname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
-let g:BROWSER = "firefox"
-
-let mapleader = ','
-let localleader = '\'
 
 colorscheme onedark
 
@@ -276,7 +279,6 @@ set gdefault                   " with this:  s/foo/bar --> s/foo/bar/g by defaul
 set inccommand=nosplit
 set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,resize
 
-let g:tex_flavor = "latex"     " assuem *.tex are all latex files
 
 if has('windows')
 	set fillchars=vert:\┃  " ┃ line with no breaks between vertical splits

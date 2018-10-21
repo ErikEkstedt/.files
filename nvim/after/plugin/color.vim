@@ -1,10 +1,9 @@
 " TODO
 " Fix toggle transparancy: hi link EndOfBuffer ColorColumn, gitgutter
+
 if colors_name =~ 'onedark'
   hi ColorColumn guibg=#1e222a
-
   let color_bg='guibg=#202020'
-
   execute 'highlight Linenr ' . color_bg
 
   if g:gitgutter_enabled

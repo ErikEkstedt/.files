@@ -14,9 +14,8 @@ cnoremap <C-L>l <End>
 
 " I've had custom equivalents of the new <C-g> and <C-t> mapped to
 " <Tab> and <S-Tab>. Then rewritten. / Patient vimmer
-
-cnoremap <expr> <Tab>   getcmdtype() =~ '[\/?]' ? "<C-g>" : "<C-z>"
-cnoremap <expr> <S-Tab> getcmdtype() =~ '[\/?]' ? "<C-t>" : "<S-Tab>"
+" cnoremap <expr> <Tab>   getcmdtype() =~ '[\/?]' ? "<C-g>" : "<C-z>"
+" cnoremap <expr> <S-Tab> getcmdtype() =~ '[\/?]' ? "<C-t>" : "<S-Tab>"
 
 " Insert the current line in the command-line:
 cnoremap <C-r><C-l> <C-r>=getline('.')<CR>

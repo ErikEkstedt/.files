@@ -3,7 +3,7 @@
 " Ultisnips works for vim-snippets but custom snippets does not work.
 " the path i want
 
-if g:uname == "Darwin\n"
+if g:UNAME == "Darwin"
 	" let g:UltiSnipsSnippetsDir = "/Users/erik/.files/nvim/mysnips"
 	" let g:UltiSnipsSnippetsDir = ["/Users/erik/.files/nvim/mysnips"]
 	let g:UltiSnipsSnippetDirectories = ["/Users/erik/.files/nvim/mysnips","/Users/erik/.vim/bundle/vim-snippets/UltiSnips", "UltiSnips"]

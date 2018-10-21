@@ -24,6 +24,6 @@ let g:ale_lint_on_save = 1
 let g:ale_linters = { 'python': ['pyls', 'pylint', 'yapf', 'isort', 'mccabe'],}
 
 " Mappings
-nmap ge <Plug>(ale_next_wrap)
-nmap gr <Plug>(ale_previous_wrap)
+nmap <leader>an <Plug>(ale_next_wrap)
+nmap <leader>ap <Plug>(ale_previous_wrap)
 nmap <leader>at <Plug>(ale_toggle)
