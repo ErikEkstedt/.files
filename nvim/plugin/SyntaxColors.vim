@@ -1,3 +1,4 @@
+" vim: fdm=marker
 " Stolen from onedark-theme
 " Sets all syntax colors. Plugins overwrites the colorscheme so I overwrite
 " the plugins. This could become a plugin. Mostly for training plugin in vim.
@@ -11,7 +12,6 @@ function! SyntaxColors()
 	function! s:h(group, style) "{{{
 		let s:ctermformat = "NONE"
 		let s:guiformat = "NONE"
-
 		if g:colors_name =~ 'monokai' "{{{
 			if g:monokai_term_italic == 0
 				let s:ctermformat = substitute(s:ctermformat, ",italic", "", "")
@@ -62,57 +62,63 @@ function! SyntaxColors()
 					\ "cterm="   (!empty(s:ctermformat) ? s:ctermformat   : "NONE")
 	endfunction  "}}}
 
-	let s:comment = { "gui": "#8AA695", "cterm": "252" }
-	" let s:comment = { "gui":  "#613434", "cterm": "252" }
-	call s:h("vimLineComment", { "fg": s:comment })
 
 	" Global Highlights
 	:highlight MatchParen guifg=#000000 guibg=#FC00D5
-	:highlight Comment gui=italic guifg=#8AA695 
+	:highlight Comment gui=italic
 
 	
 	if g:colors_name =~ 'monokai' "{{{
 		" Colors {{{
 		echo 'Monokai Colors Set'
-		let s:white       = { "gui": "E8E8E3", "cterm": "252" }
-		let s:black       = { "gui": "34352d", "cterm": "234" }
-		let s:lightblack  = { "gui": "44453d", "cterm": "235" }
-		let s:lightblack2 = { "gui": "383a3e", "cterm": "236" }
-		let s:darkblack   = { "gui": "211F1C", "cterm": "233" }
-		let s:grey        = { "gui": "8F908A", "cterm": "243" }
-		let s:lightgrey   = { "gui": "575b61", "cterm": "237" }
-		let s:darkgrey    = { "gui": "64645e", "cterm": "239" }
-		let s:warmgrey    = { "gui": "75715E", "cterm": "59" }
+		let s:white       = { "gui": "#e8e8e3", "cterm": "252" }
+		let s:black       = { "gui": "#34352d", "cterm": "234" }
+		let s:lightblack  = { "gui": "#44453d", "cterm": "235" }
+		let s:lightblack2 = { "gui": "#383a3e", "cterm": "236" }
+		let s:darkblack   = { "gui": "#211f1c", "cterm": "233" }
+		let s:grey        = { "gui": "#8f908a", "cterm": "243" }
+		let s:lightgrey   = { "gui": "#575b61", "cterm": "237" }
+		let s:darkgrey    = { "gui": "#64645e", "cterm": "239" }
+		let s:warmgrey    = { "gui": "#75715e", "cterm": "59" }
 
-		let s:pink        = { "gui": "F92772", "cterm": "197" }
-		let s:green       = { "gui": "A6E22D", "cterm": "148" }
-		let s:aqua        = { "gui": "66d9ef", "cterm": "81" }
-		let s:yellow      = { "gui": "E6DB74", "cterm": "186" }
-		let s:dark_yellow = { "gui": "968B24", "cterm": "186" }
-		let s:orange      = { "gui": "FD9720", "cterm": "208" }
-		let s:purple      = { "gui": "ae81ff", "cterm": "141" }
-		let s:red         = { "gui": "e73c50", "cterm": "196" }
-		let s:darkred     = { "gui": "5f0000", "cterm": "52" }
-
-		let s:addfg       = { "gui": "d7ffaf", "cterm": "193" }
-		let s:addbg       = { "gui": "5f875f", "cterm": "65" }
-		let s:delbg       = { "gui": "f75f5f", "cterm": "167" }
-		let s:changefg    = { "gui": "d7d7ff", "cterm": "189" }
-		let s:changebg    = { "gui": "5f5f87", "cterm": "60" }
+		let s:pink        = { "gui": "#f92772", "cterm": "197" }
+		let s:green       = { "gui": "#a6e22d", "cterm": "148" }
+		let s:aqua        = { "gui": "#66d9ef", "cterm": "81" }
+		let s:yellow      = { "gui": "#e6db74", "cterm": "186" }
+		let s:dark_yellow = { "gui": "#968b24", "cterm": "186" }
+		let s:orange      = { "gui": "#fd9720", "cterm": "208" }
+		let s:purple      = { "gui": "#ae81ff", "cterm": "141" }
+		let s:red         = { "gui": "#e73c50", "cterm": "196" }
+		let s:darkred     = { "gui": "#5f0000", "cterm": "52" }
+    
+		let s:addfg       = { "gui": "#d7ffaf", "cterm": "193" }
+		let s:addbg       = { "gui": "#5f875f", "cterm": "65" }
+		let s:delbg       = { "gui": "#f75f5f", "cterm": "167" }
+		let s:changefg    = { "gui": "#d7d7ff", "cterm": "189" }
+		let s:changebg    = { "gui": "#5f5f87", "cterm": "60" }
 		" }}}
 		" NERDTree {{{
 		call s:h("NERDTreeOpenable", { "fg": s:addbg })
 		call s:h("NERDTreeClosable", { "fg": s:addbg })
 		" }}}
-		" Language-Specific Highlighting {{{
-		" PYTHON {{{
-		call s:h("pythonClassParameter", { "fg": s:changebg })
-		" call s:h("pythonAttribute", { "fg": s:orange })
+    :highlight Comment guifg=#787d5f
+    :highlight CursorLine guibg=#3e4036
+    let s:comment = { "gui": "#787d5f", "cterm": "252" }
+    call s:h("vimLineComment", { "fg": s:comment })
+    "
+    " Language-Specific Highlighting {{{
+    " PYTHON {{{
+    call s:h("pythonClassParameter", { "fg": s:changebg })
+    " call s:h("pythonAttribute", { "fg": s:orange })
 
 		call s:h("pythonVars", { "fg": s:orange })
 		call s:h("pythonParameters", { "fg": s:white })
 		call s:h("pythonParam", { "fg": s:orange })
 		call s:h("pythonSelf", { "fg": s:purple })
+		call s:h("pythonStatement", { "fg": s:aqua })
+		call s:h("pythonArgument", { "fg": s:orange })
+		call s:h("pythonBuiltinFunc", { "fg": s:pink })
+
 		" }}}
 		"" CSS {{{
 		call s:h("cssAttrRegion", { "fg": s:pink })
