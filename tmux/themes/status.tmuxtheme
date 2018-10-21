@@ -1,0 +1,73 @@
+# vim:fdm=marker ft=tmux
+
+# Colors
+window_status_fg='#79cec6'
+window_status_bg='#1C5654'
+# status_bg='#2A5D58'
+status_bg='#dadada'
+
+# status_bg='#084954'
+# Current
+window_status_current_fg='#010101'
+window_status_current_bg=$window_status_fg
+
+# Left
+window_status_left_fg='#ff00f5'
+window_status_left_bg=$status_bg
+# window_status_left_bg='#828282'
+window_status_left_bg='#010101'
+
+# Right
+window_status_right_fg='#ff00f5'
+window_status_right_bg=$status_bg
+window_status_right_bg='#010101'
+
+
+# STATUS
+WINDOW="┃ #I #W #F ┃"
+STATUS_LEFT=" #S ┃"
+STATUS_RIGHT="┃ #(date '+%a, %b %d - %H:%M') "
+
+set -g status on
+set -g set-titles on # I don't know the effect of this
+set -g status-position bottom  # top, bottom
+set -g status-justify centre # left, right, centre
+set -g status-interval 1
+set -g status-attr bold
+
+setw -g window-status-current-format $WINDOW
+setw -g window-status-format $WINDOW
+setw -g window-status-attr none
+
+# default statusbar colors
+set -g status-bg $status_bg
+
+# default window title colors
+setw -g window-status-fg $window_status_fg
+setw -g window-status-bg $window_status_bg
+setw -g window-status-attr dim
+
+# active windows status colors
+setw -g window-status-current-fg $window_status_current_fg
+setw -g window-status-current-bg $window_status_current_bg
+setw -g window-status-current-attr bright
+
+# Status LEFT
+set -g status-left-length 40
+set -g status-left-attr bright
+set -g status-left $STATUS_LEFT
+
+# default left status colors
+set -g status-left-bg $window_status_left_bg
+set -g status-left-fg $window_status_left_fg
+set -g status-left-attr bright
+
+# Status RIGHT
+set -g status-right-length 50
+set -g status-right-attr dim
+set -g status-right $STATUS_RIGHT
+
+# default left status colors
+set -g status-right-fg $window_status_right_fg
+set -g status-right-bg $window_status_right_bg
+set -g status-right-attr bright

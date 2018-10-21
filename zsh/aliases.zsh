@@ -82,6 +82,16 @@ alias somy="source $HOME/mycroft-core/.venv/bin/activate"
 
 alias friture="python $HOME/friture/main.py"
 
+# Tmux {{{
+alias tls="tmux list-sessions"
+alias tkd="tmux-kill-detached-sessions"
+alias tks="tmux kill-session -t"
+alias tkp="tmux kill-pane -t"
+alias tkw="tmux kill-window -t"
+alias tst="tmux new-session"
+alias tspc="_tmux_send_keys_all_panes_"
+alias theme="_tmux_theme"
+
 # tmuxinator
 alias work="tmuxinator start WORK"
 alias basic="tmuxinator start basic"
@@ -100,6 +110,7 @@ alias gdi="git diff"
 alias gps="git push"
 alias gpl="git pull"
 alias gst="git status"
+
 # For all panes in window (tmux)
 alias Gps='tspc "git push"'
 alias Gpl='tspc "git pull"'
@@ -110,15 +121,6 @@ alias gpull="python ~/.files/bin/git-script -c pull -d .files phd Notes Audio/ma
 alias gstatus="python ~/.files/bin/git-script -d .files phd Notes Audio/maptaskdataset Audio/dialogAgent Locomotion"
 # }}}
 
-# Tmux {{{
-alias tls="tmux list-sessions"
-alias tkd="tmux-kill-detached-sessions"
-alias tks="tmux kill-session -t"
-alias tkp="tmux kill-pane -t"
-alias tkw="tmux kill-window -t"
-alias tst="tmux new-session"
-alias tspc="_tmux_send_keys_all_panes_"
-# }}}
 
 # Config {{{
 alias eal="vim ~/.files/zsh/aliases.zsh"

@@ -12,3 +12,14 @@ _tmux_send_keys_all_panes_ () {
   done
 }
 
+
+# Tmux theme changer
+# Opens fzf with the theme files listed in $pre then sourcing the chosen file
+function _tmux_theme() { #{{{
+  local pre="$HOME/.files/tmux/themes"
+	local theme=$(ls $pre | fzf)
+	tmux source-file "$pre/$theme"
+  echo "Using $theme"
+}
+zle -N _tmux_theme ttheme
+#}}}
