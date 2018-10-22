@@ -179,7 +179,7 @@ call plug#end()
 " Basic Settings {{{
 
 
-colorscheme onedark
+colorscheme monokai " onedark
 
 filetype plugin indent on
 syntax enable
