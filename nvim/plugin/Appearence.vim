@@ -5,14 +5,13 @@ set termguicolors " Enable true color support.
 " COLORSCHEME 
 let g:seoul256_background = 234
 
-augroup ColorSchemeGroup 
+augroup ColorSchemeGroup
   autocmd!
   autocmd VimEnter,ColorScheme * call ColorPatches()
   autocmd VimEnter,ColorScheme * call SyntaxColors()
-augroup END 
+augroup END
 
 function! ColorPatches() "{{{
-  echo "HELLLLOO"
   if g:colors_name =~ 'seoul256'
     call Seoulpatch()
   elseif g:colors_name =~ 'wombat25mod'
@@ -27,11 +26,23 @@ function! ColorPatches() "{{{
 endfunc  "}}}
 
 function! OnedarkPatch() "{{{
+  let g:onedark_terminal_italics = 1
   hi Comment gui=italic
   hi String gui=italic
   hi Conceal guifg=#404040
   hi Conceal guibg=#282c34
-  let g:onedark_terminal_italics = 1
+
+  " Nerdtree
+  hi Directory guifg=#414a59
+  hi NERDTreeCWD guifg=#55b5be
+  hi NERDTreeDir guifg=#5cade5
+  hi NERDTreeDirSlash guifg=#55b5be
+  hi NERDTreeFlags guifg=#55b5be
+  hi NERDTreeGitStatusDirDirty guifg=#c678dd
+  hi NERDTreeFile guifg=white
+  hi NERDTreeBookmarksHeader guifg=#c678dd
+  hi NERDTreeBookmarkName guifg=#abb2bf
+
   " call s:set_lightline_colorscheme('myonedark')
 endfunc  "}}}
 
@@ -126,11 +137,4 @@ function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg) "{{{
   exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction "}}}
 " nnoremap <LocalLeader>n :call NERDTreeColors()<CR>
-
-" change text font color to white
-inoremap <leader>å <esc>:hi normal ctermfg=255 guifg=white<cr>
-nnoremap <leader>å :hi normal ctermfg=255 guifg=white<cr>
-
-" Toggle conceallevel
-map <LocalLeader>c :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
 

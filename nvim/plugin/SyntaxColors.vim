@@ -1,3 +1,4 @@
+" vim: fdm=marker
 " Stolen from onedark-theme
 " Sets all syntax colors. Plugins overwrites the colorscheme so I overwrite
 " the plugins. This could become a plugin. Mostly for training plugin in vim.
@@ -5,13 +6,12 @@
 " Hackky and bloaty. just adding stuff never clean...
 " TODO: induce from above 
 " Syntaxcolor customizes syntax highlights
-"
+
 
 function! SyntaxColors()
 	function! s:h(group, style) "{{{
 		let s:ctermformat = "NONE"
 		let s:guiformat = "NONE"
-
 		if g:colors_name =~ 'monokai' "{{{
 			if g:monokai_term_italic == 0
 				let s:ctermformat = substitute(s:ctermformat, ",italic", "", "")
@@ -62,71 +62,101 @@ function! SyntaxColors()
 					\ "cterm="   (!empty(s:ctermformat) ? s:ctermformat   : "NONE")
 	endfunction  "}}}
 
-	let s:comment = { "gui": "#8AA695", "cterm": "252" }
-	" let s:comment = { "gui":  "#613434", "cterm": "252" }
-	call s:h("vimLineComment", { "fg": s:comment })
+  " This is probably enough?
+  " function! s:h(group, style) "{{{
+  "   let s:guiformat = "NONE"
+
+  "   if has_key(a:style, "format")
+  "     let s:guiformat = a:style.format
+  "   endif
+
+  "   execute "highlight" a:group
+  "         \ "guifg="   (has_key(a:style, "fg")      ? a:style.fg.gui   : "NONE")
+  "         \ "guibg="   (has_key(a:style, "bg")      ? a:style.bg.gui   : "NONE")
+  "         \ "guisp="   (has_key(a:style, "sp")      ? a:style.sp.gui   : "NONE")
+  "         \ "gui="     (!empty(s:guiformat) ? s:guiformat   : "NONE")
+  " endfunction  "}}}
 
 	" Global Highlights
 	:highlight MatchParen guifg=#000000 guibg=#FC00D5
-	:highlight Comment gui=italic guifg=#8AA695 
+	:highlight Comment gui=italic
 
 	
 	if g:colors_name =~ 'monokai' "{{{
 		" Colors {{{
 		echo 'Monokai Colors Set'
-		let s:white       = { "gui": "E8E8E3", "cterm": "252" }
-		let s:black       = { "gui": "34352d", "cterm": "234" }
-		let s:lightblack  = { "gui": "44453d", "cterm": "235" }
-		let s:lightblack2 = { "gui": "383a3e", "cterm": "236" }
-		let s:darkblack   = { "gui": "211F1C", "cterm": "233" }
-		let s:grey        = { "gui": "8F908A", "cterm": "243" }
-		let s:lightgrey   = { "gui": "575b61", "cterm": "237" }
-		let s:darkgrey    = { "gui": "64645e", "cterm": "239" }
-		let s:warmgrey    = { "gui": "75715E", "cterm": "59" }
+		let s:white       = { "gui": "#e8e8e3", "cterm": "252" }
+		let s:black       = { "gui": "#34352d", "cterm": "234" }
+		let s:lightblack  = { "gui": "#44453d", "cterm": "235" }
+		let s:lightblack2 = { "gui": "#383a3e", "cterm": "236" }
+		let s:darkblack   = { "gui": "#211f1c", "cterm": "233" }
+		let s:grey        = { "gui": "#8f908a", "cterm": "243" }
+		let s:lightgrey   = { "gui": "#575b61", "cterm": "237" }
+		let s:darkgrey    = { "gui": "#64645e", "cterm": "239" }
+		let s:warmgrey    = { "gui": "#75715e", "cterm": "59" }
 
-		let s:pink        = { "gui": "F92772", "cterm": "197" }
-		let s:green       = { "gui": "A6E22D", "cterm": "148" }
-		let s:aqua        = { "gui": "66d9ef", "cterm": "81" }
-		let s:yellow      = { "gui": "E6DB74", "cterm": "186" }
-		let s:dark_yellow = { "gui": "968B24", "cterm": "186" }
-		let s:orange      = { "gui": "FD9720", "cterm": "208" }
-		let s:purple      = { "gui": "ae81ff", "cterm": "141" }
-		let s:red         = { "gui": "e73c50", "cterm": "196" }
-		let s:darkred     = { "gui": "5f0000", "cterm": "52" }
-
-		let s:addfg       = { "gui": "d7ffaf", "cterm": "193" }
-		let s:addbg       = { "gui": "5f875f", "cterm": "65" }
-		let s:delbg       = { "gui": "f75f5f", "cterm": "167" }
-		let s:changefg    = { "gui": "d7d7ff", "cterm": "189" }
-		let s:changebg    = { "gui": "5f5f87", "cterm": "60" }
+		let s:pink        = { "gui": "#f92772", "cterm": "197" }
+		let s:green       = { "gui": "#a6e22d", "cterm": "148" }
+		let s:aqua        = { "gui": "#66d9ef", "cterm": "81" }
+		let s:yellow      = { "gui": "#e6db74", "cterm": "186" }
+		let s:dark_yellow = { "gui": "#968b24", "cterm": "186" }
+		let s:orange      = { "gui": "#fd9720", "cterm": "208" }
+		let s:purple      = { "gui": "#ae81ff", "cterm": "141" }
+		let s:red         = { "gui": "#e73c50", "cterm": "196" }
+		let s:darkred     = { "gui": "#5f0000", "cterm": "52" }
+		let s:bg          = { "gui": "#2d2e27", "cterm": "52" }
+		let s:bg2         = { "gui": "#32332b", "cterm": "52" } " a little brighter than bg
+		let s:bg_dark     = { "gui": "#272822", "cterm": "52" }
+		let s:folded     = { "gui": "#b0a154", "cterm": "52" }
+    let s:comment     = { "gui": "#787d5f", "cterm": "252" }
+    let s:conceal     = { "gui": "#3c3d34", "cterm": "252" }
 		" }}}
-		" NERDTree {{{
-		call s:h("NERDTreeOpenable", { "fg": s:addbg })
-		call s:h("NERDTreeClosable", { "fg": s:addbg })
-		" }}}
-		" Language-Specific Highlighting {{{
-		" PYTHON {{{
-		call s:h("pythonClassParameter", { "fg": s:changebg })
-		" call s:h("pythonAttribute", { "fg": s:orange })
 
+    " Highlights {{{
+    call s:h("Normal", {"bg": s:bg})
+    call s:h("ColorColumn", {"bg": s:bg_dark})
+    call s:h("Comment", {"fg": s:comment})
+    call s:h("Conceal", {"fg": s:conceal, 'bg': s:bg})
+    call s:h("CursorLine", {"bg": s:bg2})
+
+    call s:h("Folded", {"fg": s:folded,  "bg": s:bg})
+    call s:h("FoldedColumn", {"bg": s:bg})
+    " }}}
+
+    " GitGutter {{{
+    call s:h("GitGutterAdd", { "fg": s:green, "bg": s:bg})
+    call s:h("GitGutterChange", { "fg": s:yellow, "bg": s:bg })
+    call s:h("GitGutterChangeDelete", { "fg": s:orange, "bg": s:bg })
+    call s:h("GitGutterDelete", { "fg": s:red,  "bg": s:bg})
+    " }}}
+
+    " VIM {{{
+    call s:h("vimLineComment", { "fg": s:comment })
+    " }}}
+
+    " PYTHON {{{
 		call s:h("pythonVars", { "fg": s:orange })
 		call s:h("pythonParameters", { "fg": s:white })
 		call s:h("pythonParam", { "fg": s:orange })
 		call s:h("pythonSelf", { "fg": s:purple })
+		call s:h("pythonStatement", { "fg": s:aqua })
+		call s:h("pythonArgument", { "fg": s:orange })
+		call s:h("pythonBuiltinFunc", { "fg": s:pink })
+		call s:h("pythonBoolean", { "fg": s:orange })
 		" }}}
-		"" CSS {{{
+		" CSS {{{
 		call s:h("cssAttrRegion", { "fg": s:pink })
 		call s:h("cssUnitDecorators", { "fg": s:pink })
-		""}}}
-		"" HTML {{{
+		"}}}
+		" HTML {{{
 		call s:h("htmlTitle", { "fg": s:pink })
 		call s:h("htmlEndTag", { "fg": s:white })
-		""}}}
-		"" HTML.handlerbars mustache {{{
+		"}}}
+		" HTML.handlerbars mustache {{{
 		call s:h("mustacheInside", { "fg": s:pink })
 		call s:h("mustacheUnescape", { "fg": s:purple })
-		""}}}
-		"" JavaScript {{{
+		"}}}
+		" JavaScript {{{
 		call s:h("javaScriptBraces", { "fg": s:white })
 		call s:h("javaScriptFunction", { "fg": s:green })
 		call s:h("javaScriptIdentifier", { "fg": s:aqua })
@@ -181,9 +211,9 @@ function! SyntaxColors()
 		call s:h("jsRepeatBlock", { "fg": s:orange })
 		call s:h("jsStorageClass", { "fg": s:purple })
 
-		""}}}
 		call s:h("typescriptIdentifier", { "fg": s:aqua })
-		"" JSON {{{
+		"}}}
+		" JSON {{{
 		call s:h("jsonCommentError", { "fg": s:warmgrey })
 		call s:h("jsonKeyword", { "fg": s:yellow })
 		call s:h("jsonBoolean", { "fg": s:pink })
@@ -195,8 +225,8 @@ function! SyntaxColors()
 		call s:h("jsonString", { "fg": s:green })
 		call s:h("jsonStringSQError", { "fg": s:red, "gui": "reverse" })
 		call s:h("jsonSemicolonError", { "fg": s:red, "gui": "reverse" })
-		"" }}}
-		"" Markdown {{{
+		" }}}
+		" Markdown {{{
 		call s:h("markdownCode", { "fg": s:green })
 		call s:h("markdownCodeBlock", { "fg": s:yellow })
 		call s:h("markdownCodeDelimiter", { "fg": s:green })
@@ -212,8 +242,7 @@ function! SyntaxColors()
 		call s:h("markdownBlockquote", { "fg": s:warmgrey })
 		call s:h("markdownItalic", { "fg": s:yellow, "gui": "italic", "cterm": "italic" })
 		call s:h("markdownBold", { "fg": s:yellow, "gui": "bold", "cterm": "bold" })
-		"" }}}
-		"}}}
+		" }}}
 		" }}}
 	elseif g:colors_name =~ 'nord'  "{{{
 		echo 'Nord Color Syntax set!'
@@ -312,7 +341,12 @@ function! SyntaxColors()
 
     " ex: symbols indicating line continues out of window
 		:highlight NonText guifg=#ff0099
+		" VIM {{{
+		call s:h("VimFunction", { "fg": s:dark_yellow })
+		call s:h("vimCommand", { "fg": s:dark_yellow })
+		call s:h("vimLineComment", { "fg": s:dark_yellow })
 
+		" }}}
 		" Python {{{
 		call s:h("pythonBoolean", { "fg": s:dark_yellow })
 		call s:h("pythonStatement", { "fg": s:purple })

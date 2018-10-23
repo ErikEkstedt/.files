@@ -56,9 +56,9 @@ Color=200,204,212
 Color=171,178,191
 
 [ForegroundIntense]
-Color=200,204,212
+Color=230,230,222
 
 [General]
 Description=Base16 OneDark
-Opacity=1
+Opacity=0.9
 Wallpaper=

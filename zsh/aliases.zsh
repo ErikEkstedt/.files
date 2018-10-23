@@ -63,7 +63,7 @@ _vim_fzf(){
   fi
 }
 
-# CUSTOM {{{
+# Programming {{{
 alias vim="nvim"
 alias VIM="vim"
 alias v="_vim_fzf"
@@ -72,15 +72,14 @@ alias ipy="ipython"  #--profile=erik"
 alias jno="jupyter notebook"  #jupyter notebook example.ipynb
 alias wnvi="watch -n 1 nvidia-smi"
 
+# alias scroll="xinput set-prop 12 284 -303 303" Some old laptop setting?
+# alias wif="sudo iwconfig wlp2s0 txpower 10dBm"
+# alias somy="source $HOME/mycroft-core/.venv/bin/activate"
+# alias friture="python $HOME/friture/main.py"
+# }}}
 
-function mkpr() { project_init "$1" }  # I dont use this but good idea. Revisit
-
-
-alias scroll="xinput set-prop 12 284 -303 303"
-alias wif="sudo iwconfig wlp2s0 txpower 10dBm"
-alias somy="source $HOME/mycroft-core/.venv/bin/activate"
-
-alias friture="python $HOME/friture/main.py"
+# Konsole
+alias ktheme="_konsole_theme"
 
 # Tmux {{{
 alias tls="tmux list-sessions"

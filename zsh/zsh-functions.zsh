@@ -1,7 +1,20 @@
 # vim: fdm=marker
 # zsh-functions.zsh
-# sourced from zshrc 
+# sourced from zshrc
 
+# Konsole
+
+# Change colorscheme in Konsole from CLI.
+# Note: this does not change colorscheme in tmux
+# see .files/tmux/tmux_functions.zsh
+function _konsole_theme() { #{{{
+  local pre="$HOME/.files/terminals/konsole"
+	local theme=$(ls $pre | grep .colorscheme | sed 's/\.[^.]*$//' | fzf)
+  echo $theme
+  local prefix='\033Ptmux;\033\033]50;%s\007\033\\'
+  printf $prefix "colors=$theme"
+}
+zle -N _konsole_theme
 
 # FZF
 ################################################################
