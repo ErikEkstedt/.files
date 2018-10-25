@@ -2,20 +2,6 @@
 # zsh-functions.zsh
 # sourced from zshrc
 
-# Konsole
-
-# Change colorscheme in Konsole from CLI.
-# Note: this does not change colorscheme in tmux
-# see .files/tmux/tmux_functions.zsh
-function _konsole_theme() { #{{{
-  local pre="$HOME/.files/terminals/konsole"
-	local theme=$(ls $pre | grep .colorscheme | sed 's/\.[^.]*$//' | fzf)
-  echo $theme
-  local prefix='\033Ptmux;\033\033]50;%s\007\033\\'
-  printf $prefix "colors=$theme"
-}
-zle -N _konsole_theme
-
 # FZF
 ################################################################
 
@@ -125,33 +111,13 @@ function price() { # {{{
   echo "$pair: $price"
 } #}}}
 
-function sms() { #{{{
-	kdeconnect-cli --send-sms "$1" \
-	--destination 0762060648 \
-	-n Samsung\ Galaxy\ Note\ 4
-} #}}}
-
-# Blurred transparency {{{
-# https://www.reddit.com/r/kde/comments/6jzuwu/konsole_and_yakuake_blur/
-
-case `uname` in
-  Linux)
-    # commands for Linux go here
-	if [[ $(ps --no-header -p $PPID -o comm | grep -Ev '^(yakuake|konsole)$' ) ]]; then
-			for wid in $(xdotool search --pid $PPID); do
-				xprop -f _KDE_NET_WM_BLUR_BEHIND_REGION 32c -set _KDE_NET_WM_BLUR_BEHIND_REGION 0 -id $wid; done
-	fi
-  ;;
-esac
-# }}}
 
 function g() {  #{{{
 	la | grep -i $1
 } #}}}
 
 function print_path() {  #{{{
-	for p in $path;
-	do
+	for p in $path; do
 		echo "$p"
 	done
 } #}}}
@@ -175,24 +141,10 @@ alias sod="source deactivate"
 zle -N so
 #}}}
 
+# This is just an alias...
 function junb() { #{{{
 	jupyter notebook "$1"
 } #}}}
-
-# MacOs
-function firefox-window() { # {{{
-/usr/bin/env osascript <<-EOF
-tell application "System Events"
-    if (name of processes) contains "Firefox" then
-        tell application "Firefox" to activate
-        keystroke "n" using command down
-    else
-        tell application "Firefox" to activate
-    end if
-end tell
-EOF
-}  # }}}
-
 
 # BINDINGS
 ################################################################

@@ -220,6 +220,20 @@ else
     echo "404: ~/.files/zsh/zsh-functions.zsh not found."
 fi
 
+case Linux in
+  Darwin)
+    # commands for OS X go here
+    if [ -f ~/.files/zsh/zsh-functions-mac.zsh ]; then
+      source ~/.files/zsh/zsh-functions-mac.zsh
+    else
+      echo "404: ~/.files/zsh/zsh-functions-mac.zsh not found."
+    fi
+    ;;
+  Linux)
+    # commands for Linux go here
+    ;;
+esac
+
 if [ -f ~/.files/zsh/aliases.zsh ]; then
     source ~/.files/zsh/aliases.zsh
 else
