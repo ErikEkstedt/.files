@@ -79,6 +79,7 @@ function! SyntaxColors()
 
 	" Global Highlights
 	:highlight MatchParen guifg=#000000 guibg=#FC00D5
+  " :highlight MatchParen guifg=#000000 guibg=#FC00D5
 	:highlight Comment gui=italic
 
 	
@@ -113,7 +114,8 @@ function! SyntaxColors()
 		" }}}
 
     " Highlights {{{
-    call s:h("Normal", {"bg": s:bg})
+    call s:h("MatchParen ", {"fg":s:black, "bg": s:pink})
+    call s:h("Normal", {"fg":s:white, "bg": s:bg})
     call s:h("ColorColumn", {"bg": s:bg_dark})
     call s:h("Comment", {"fg": s:comment})
     call s:h("Conceal", {"fg": s:conceal, 'bg': s:bg})

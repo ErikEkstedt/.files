@@ -22,14 +22,6 @@
 " ├── spell
 " └── wip
 
-" Install Vim-Plug (if not installed) {{{
-if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  echo "No Vim-Plug available... Downloading and running PlugInstall"
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-              \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif "}}}
-
 " Variables and Paths {{{
 let g:HOSTNAME = substitute(system('hostname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
 let g:UNAME = substitute(system('uname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
@@ -57,6 +49,14 @@ if has("unix")  "Python & Node
 endif "}}}
 " }}}
 
+" Install Vim-Plug (if not installed) {{{
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+  echo "No Vim-Plug available... Downloading and running PlugInstall"
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+              \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif "}}}
+
 " Vim-Plug {{{
 call plug#begin('~/.vim/bundle')
 
@@ -65,7 +65,6 @@ Plug 'dhruvasagar/vim-zoom'
 
 " Plugins marked with XXX I know I use/like a lot.
 " Uncommented are unused to see if I miss them but keep around if I change my mind
-
 
 Plug 'scrooloose/nerdtree'             " XXX Project and file navigation
 Plug 'Xuyuanp/nerdtree-git-plugin'     " show git status of files
@@ -105,7 +104,7 @@ Plug 'ErikEkstedt/vimpyter'
 " Preview Text 
 Plug 'lervag/vimtex'       " XXX latex compiler, preview latex pdf, highlight and syntax. alot more.
 Plug 'mhinz/neovim-remote' " Needed for vimtex 'compiler_progranme=nvr' / '--remote'
-Plug 'shime/vim-livedown'  " XXX Preview markdowns with npm/node Livedown
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 
 
 " AutoCompletion
