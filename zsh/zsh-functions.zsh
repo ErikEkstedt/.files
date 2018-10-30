@@ -146,6 +146,18 @@ function junb() { #{{{
 	jupyter notebook "$1"
 } #}}}
 
+# OS
+case Linux in
+  Darwin)
+    # commands for OS X go here
+    source ~/.files/zsh/zsh-functions-mac.zsh
+    ;;
+  Linux)
+    # commands for Linux go here
+    source ~/.files/zsh/zsh-functions-kde.zsh
+    ;;
+esac
+
 # BINDINGS
 ################################################################
 
