@@ -41,13 +41,13 @@ alias gz="cd ~/.files/zsh; ls"
 alias gbl="cd ~/blog; ls"
 alias gph="cd ~/phd; ls"
 alias gpe="cd ~/.personal; ls"
-
 alias gbu="cd ~/.vim/bundle; ls"
-alias gdw="cd ~/Downloads; la"
+
 alias gho="cd ~/"
-alias gno="cd ~/blog/public/notes; ls" 
+alias gdw="cd ~/Downloads; la"
 alias gpi="cd ~/Pictures"
 
+alias cdallan="~/miniconda3/envs/allennlp/lib/python3.7/site-packages/allennlp; ls"
 # }}}
 
 ####################### 
@@ -91,6 +91,8 @@ alias tst="tmux new-session"
 alias tspc="_tmux_send_keys_all_panes_"
 alias theme="_tmux_theme"
 
+alias Clear='tspc "clear"'
+
 # tmuxinator
 alias work="tmuxinator start WORK"
 alias basic="tmuxinator start basic"
@@ -100,7 +102,6 @@ alias proj="tmuxinator start project"
 
 alias patchwork="cd ~/patchwork && npm start"
 
-alias Clear='tspc "clear"'
 
 # Git {{{
 alias gad="git add"
