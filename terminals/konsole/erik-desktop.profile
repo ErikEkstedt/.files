@@ -1,7 +1,7 @@
 [Appearance]
 BoldIntense=true
 ColorScheme=Monokai-Flat
-Font=MesloLGS Nerd Font Mono,12,-1,5,50,0,0,0,0,0,RegularForPowerline
+Font=FuraMono Nerd Font Mono,12,-1,5,50,0,0,0,0,0,Regular
 UseFontLineChararacters=true
 
 [Cursor Options]

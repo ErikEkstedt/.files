@@ -1,5 +1,5 @@
 [Appearance]
-ColorScheme=base16-pop
+ColorScheme=base16-pico
 Font=DejaVuSansMono Nerd Font Mono,12,-1,5,50,0,0,0,0,0,Regular
 UseFontLineChararacters=true
 
@@ -8,10 +8,10 @@ CursorShape=0
 UseCustomCursorColor=false
 
 [General]
-Command=/bin/zsh
+Command=/bin/zsh -c "tmuxinator start dropdown"
 Environment=COLORTERM=truecolor
 Icon=utilities-terminal
-Name=erik-dropdown
+Name=dropdown
 Parent=FALLBACK/
 ShowTerminalSizeHint=false
 
