@@ -5,7 +5,7 @@
 # Session cant start with ".", I change "." -> "DOT"
 # .files -> DOTfiles
 # and ugly extension for this specifically .files -> DOTfiles -> DOTFiles
-session_name=$(basename "$PWD" | sed -r 's/[.]/DOT/g' | sed -r 's/DOTfiles/DOTFiles/g')
+session_name=$(basename "$PWD" | sed -E 's/[.]/DOT/g' | sed -E 's/DOTfiles/DOTFiles/g')
 
 session_exists() {
   tmux list-sessions | sed -E 's/:.*$//' | grep -q "^$session_name$"
