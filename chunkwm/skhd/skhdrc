@@ -78,8 +78,12 @@
 # ------------------------------------------#
 #         APPLICATION SETTINGS              #
 # ------------------------------------------#
-alt - return : osascript /Users/erik/.files/chunkwm/skhd/scripts/new-iterm-window.scpt
+# alt - return : osascript /Users/erik/.files/chunkwm/skhd/scripts/new-iterm-window.scpt
+alt - return : osascript /Users/erik/.files/chunkwm/skhd/scripts/alacritty-new-window.scpt
 alt - g : osascript /Users/erik/.files/chunkwm/skhd/scripts/firefox-window.scpt
+
+ctrl + alt - n : open "-n /System/Library/CoreServices/Finder.app"
+
 
 # WINDOW SETTINGS
 # close focused window
@@ -235,7 +239,6 @@ shift + alt - t : chunkc set window_float_next 1
 ctrl + alt - a : chunkc tiling::desktop --layout bsp
 ctrl + alt - s : chunkc tiling::desktop --layout monocle
 ctrl + alt - d : chunkc tiling::desktop --layout float
-
 ctrl + alt - w : chunkc tiling::desktop --deserialize ~/.chunkwm_layouts/dev_1
 
 # Border

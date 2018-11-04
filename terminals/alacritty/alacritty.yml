@@ -17,8 +17,8 @@ window:
   # Window dimensions in character columns and lines
   # (changes require restart)
   dimensions:
-    columns: 80
-    lines: 24
+    columns: 160
+    lines: 60
 
   # Adds this many blank pixels of padding around the window
   # Units are physical pixels; this is not DPI aware.
@@ -170,26 +170,6 @@ colors:
     cyan:    '0x56b6c2'
     white:   '0xffffff'
 
-# Visual Bell
-#
-# Any time the BEL code is received, Alacritty "rings" the visual bell. Once
-# rung, the terminal background will be set to white and transition back to the
-# default background color. You can control the rate of this transition by
-# setting the `duration` property (represented in milliseconds). You can also
-# configure the transition function by setting the `animation` property.
-#
-# Possible values for `animation`
-# `Ease`
-# `EaseOut`
-# `EaseOutSine`
-# `EaseOutQuad`
-# `EaseOutCubic`
-# `EaseOutQuart`
-# `EaseOutQuint`
-# `EaseOutExpo`
-# `EaseOutCirc`
-# `Linear`
-#
 # To completely disable the visual bell, set its duration to 0.
 #
 visual_bell:
@@ -300,8 +280,8 @@ shell:
 #     strings. For example:
 #     - { ... , command: { program: "alacritty", args: ["-e", "vttest"] } }
 key_bindings:
-
   - { key: N,        mods: Command, command: { program: "open", args: ["-n", "/Applications/Alacritty.app"] } }
+  - { key: N,        mods: Control|Command, command: { program: "open", args: ["-n", "/System/Library/CoreServices/Finder.app"] } }
   - { key: A,         mods: Alt,       chars: "\x1ba"   }
   - { key: B,         mods: Alt,       chars: "\x1bb"   }
   - { key: C,         mods: Alt,       chars: "\x1bc"   }
