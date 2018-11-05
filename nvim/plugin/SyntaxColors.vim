@@ -78,7 +78,7 @@ function! SyntaxColors()
   " endfunction  "}}}
 
 	" Global Highlights
-	:highlight MatchParen guifg=#000000 guibg=#FC00D5
+	:highlight MatchParen guifg=#FFFFFF guibg=#FC00D5
   " :highlight MatchParen guifg=#000000 guibg=#FC00D5
 	:highlight Comment gui=italic
 

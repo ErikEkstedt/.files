@@ -85,7 +85,6 @@ Plug 'junegunn/vim-easy-align'         " XXX better alignment than tabular
 Plug 'junegunn/vim-peekaboo'           " XXX when pressing quotes shows what's stored in the different registers
 Plug 'lotabout/slimux'                 " XXX old: 'epeli/slimux' | vim+ipython OUtdated
 Plug 'machakann/vim-highlightedyank'   " XXX Highlight yanks
-" Plug 'mtth/scratch.vim'                " Unobtrusive scratch
 Plug 'nelstrom/vim-markdown-folding'   " help with folding in markdown
 Plug 'nelstrom/vim-visual-star-search' " * on visual select searches for the snippet
 Plug 'pangloss/vim-javascript'
@@ -98,6 +97,7 @@ Plug 'tpope/vim-repeat'                " XXX repeat commands not repeatable by '
 Plug 'tpope/vim-surround'              " XXX Surround objects with quotes, brackets ...
 Plug 'w0rp/ale'                        " asynchronous linting
 Plug 'wellle/targets.vim'              " XXX ci' works on (, [, {, < on entire line
+" Plug 'mtth/scratch.vim'                " Unobtrusive scratch
 " Plug 'szymonmaszke/vimpyter'
 Plug 'ErikEkstedt/vimpyter'
 
@@ -105,7 +105,6 @@ Plug 'ErikEkstedt/vimpyter'
 Plug 'lervag/vimtex'       " XXX latex compiler, preview latex pdf, highlight and syntax. alot more.
 Plug 'mhinz/neovim-remote' " Needed for vimtex 'compiler_progranme=nvr' / '--remote'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
-
 
 " AutoCompletion
 if has('nvim') 
@@ -178,7 +177,8 @@ call plug#end()
 " Basic Settings {{{
 
 
-colorscheme monokai " onedark
+" colorscheme monokai " onedark
+colorscheme onedark
 
 filetype plugin indent on
 syntax enable

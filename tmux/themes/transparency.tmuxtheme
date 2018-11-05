@@ -1,7 +1,5 @@
 # vim:fdm=marker ft=tmux
 
-# Colors {{{
-
 # Pane borders
 pane_border_fg='#444444'
 pane_border_bg='#000000'
@@ -10,6 +8,7 @@ pane_border_fg_active='#79cec6'
 pane_border_bg_active='#000000'
 
 # Background
+
 window_bg='#000000'
 window_fg='#999999'
 window_bg_active='#000000'
@@ -20,7 +19,7 @@ set window-style "bg=$window_bg"
 set window-active-style "bg=$window_bg_active"
 
 # Pane borders
-set -g pane-border-style "fg=$pane_border_fg_nonactive,bg=$window_bg"
+set -g pane-border-style "fg=$pane_border_fg,bg=$window_bg"
 set -g pane-active-border-style "fg=$pane_border_fg_active,bg=$window_bg"
 
 # Messaging
