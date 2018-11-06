@@ -62,6 +62,7 @@ call plug#begin('~/.vim/bundle')
 
 " Testing
 Plug 'dhruvasagar/vim-zoom'
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 
 " Plugins marked with XXX I know I use/like a lot.
 " Uncommented are unused to see if I miss them but keep around if I change my mind
@@ -122,11 +123,11 @@ Plug 'Shougo/neopairs.vim'
 if !exists("g:gui_oni") " {{{
 
   " Syntax
-  Plug 'sheerun/vim-polyglot'            " All the syntax messed upp syntax for oni ( turned .js -> javascript.jsx
+  " Plug 'klen/python-mode'                " Python mode (docs, refactor, lints...)
+  " Plug 'sheerun/vim-polyglot'            " All the syntax messed upp syntax for oni ( turned .js -> javascript.jsx
   Plug 'daeyun/vim-matlab'               " MATLAB
   Plug 'othree/xml.vim'                  " xml highlight
 
-  " Plug 'klen/python-mode'                " Python mode (docs, refactor, lints...)
   Plug 'mxw/vim-jsx'
   Plug 'prettier/vim-prettier', {
     \ 'do': 'yarn install',

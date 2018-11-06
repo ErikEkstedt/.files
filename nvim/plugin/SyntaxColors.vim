@@ -79,7 +79,6 @@ function! SyntaxColors()
 
 	" Global Highlights
 	:highlight MatchParen guifg=#FFFFFF guibg=#FC00D5
-  " :highlight MatchParen guifg=#000000 guibg=#FC00D5
 	:highlight Comment gui=italic
 
 	
@@ -134,6 +133,8 @@ function! SyntaxColors()
 
     " VIM {{{
     call s:h("vimLineComment", { "fg": s:comment })
+		call s:h("vimFunction", { "fg": s:pink })
+		call s:h("vimCommand", { "fg": s:pink })
     " }}}
 
     " PYTHON {{{
@@ -285,6 +286,9 @@ function! SyntaxColors()
 		call s:h("cssClassname", { "fg": s:nord13_gui })
 		"}}}"
 	elseif g:colors_name =~ 'onedark'  "{{{
+		" Colors {{{
+		echo 'Onedark Colors Set'
+
 		" +---------------------------------------------+
 		" |  Color Name  |         RGB        |   Hex   |
 		" |--------------+--------------------+---------|
@@ -312,10 +316,8 @@ function! SyntaxColors()
 		" |--------------+--------------------+---------|
 		" | Comment Grey | rgb(92, 99, 112)   | #5c6370 |
 		" +---------------------------------------------+
-		echo 'Onedark Color Syntax set!'
 
 		let s:colors = onedark#GetColors()
-
 		let s:red = s:colors.red
 		let s:dark_red = s:colors.dark_red
 		let s:green = s:colors.green
@@ -326,6 +328,7 @@ function! SyntaxColors()
 		let s:cyan = s:colors.cyan
 		let s:white = s:colors.white
 		let s:black = s:colors.black
+
 		let s:visual_black = s:colors.visual_black " Black out selected text in 16-color visual mode
 		let s:comment_grey = s:colors.comment_grey
 		let s:gutter_fg_grey = s:colors.gutter_fg_grey
@@ -335,6 +338,20 @@ function! SyntaxColors()
 		let s:special_grey = s:colors.special_grey
 		let s:vertsplit = s:colors.vertsplit
 
+		let s:black        = {"gui": "#282c34", "cterm": "252" }
+		let s:white        = {"gui": "#e6d6ed", "cterm": "234" }
+		let s:light_red    = {"gui": "#e06c75", "cterm": "235" }
+		let s:dark_red     = {"gui": "#be5046", "cterm": "236" }
+		let s:green        = {"gui": "#98c379", "cterm": "233" }
+		let s:light_yellow = {"gui": "#e5c07b", "cterm": "243" }
+		let s:dark_yellow  = {"gui": "#d19a66", "cterm": "237" }
+		let s:blue         = {"gui": "#61afef", "cterm": "239" }
+		let s:magenta      = {"gui": "#dd00e1", "cterm": "59"  }
+		let s:cyan         = {"gui": "#00eef0", "cterm": "59"  }
+		let s:gutter_grey  = {"gui": "#4b5263", "cterm": "59"  }
+		let s:comment_grey = {"gui": "#5c6370", "cterm": "59"  }
+		" }}}
+
 		" HIGHLIGHTS
 		:highlight Folded guifg=#D296D9 guibg=#202020
 		:highlight ColorColumn guibg=#202020
@@ -343,15 +360,16 @@ function! SyntaxColors()
 
     " ex: symbols indicating line continues out of window
 		:highlight NonText guifg=#ff0099
+
 		" VIM {{{
 		call s:h("VimFunction", { "fg": s:dark_yellow })
 		call s:h("vimCommand", { "fg": s:dark_yellow })
 		call s:h("vimLineComment", { "fg": s:dark_yellow })
-
 		" }}}
+
 		" Python {{{
 		call s:h("pythonBoolean", { "fg": s:dark_yellow })
-		call s:h("pythonStatement", { "fg": s:purple })
+		call s:h("pythonStatement", { "fg": s:magenta })
 		call s:h("pythonRepeat", { "fg": s:purple })
 		call s:h("pythonOperator", { "fg": s:cyan })
 		call s:h("pythonNone", { "fg": s:red })
