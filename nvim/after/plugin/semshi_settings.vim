@@ -18,10 +18,10 @@
 
 
 " Highlight
-function MyCustomHighlights()
+function! MyCustomHighlights()
   hi semshiLocal           ctermfg=209 guifg=#ff875f
   hi semshiGlobal          ctermfg=214 guifg=#ffaf00
-  hi semshiImported        ctermfg=214 guifg=#44faf6 cterm=bold gui=bold
+  hi semshiImported        ctermfg=214 guifg=#7c6afd gui=bold
   hi semshiParameter       ctermfg=75  guifg=#5fafff
   hi semshiParameterUnused ctermfg=117 guifg=#87d7ff cterm=underline gui=underline
   hi semshiFree            ctermfg=218 guifg=#ffafd7
@@ -35,6 +35,7 @@ function MyCustomHighlights()
   sign define semshiError text=E> texthl=semshiErrorSign
 endfunction
 
+" hi semshiImported        ctermfg=214 guifg=#44faf6 gui=bold
 
 augroup Semshi
 	autocmd!

@@ -27,3 +27,8 @@ nnoremap <buffer>Ö A:<esc>
 " Note: <CR> is indistinguishable from <C-m>
 nnoremap <buffer> <CR> vip:SlimuxREPLSendLine<CR>
 vnoremap <buffer> <CR> :SlimuxREPLSendLine<CR>gv<Esc>zz
+
+
+" Highlights possible here?
+hi pythonConditional guifg=#9f00ff
+hi pythonRepeat guifg=#f600c3
