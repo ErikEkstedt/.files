@@ -1,3 +1,4 @@
+# ZSH info
 # When specifying keys, most represent themselves (for example ‘A’ to ‘Z’). 
 # Ctrl keys may be prefixed with ‘C-’ or ‘^’, and Alt (meta) with ‘M-’.
 # The following special key names are accepted:
@@ -15,11 +16,24 @@ _tmux_send_keys_all_panes_ () {
 
 # Tmux theme changer
 # Opens fzf with the theme files listed in $pre then sourcing the chosen file
-function _tmux_theme() { #{{{
+function _tmux_theme() {
   local pre="$HOME/.files/tmux/themes"
 	local theme=$(ls $pre | fzf)
 	tmux source-file "$pre/$theme"
   echo "Using $theme"
 }
 zle -N _tmux_theme ttheme
-#}}}
+
+
+_tmux_rename_session_curdir () {
+  session_name=$(basename "$PWD" | sed -E 's/[.]/DOT_/g')
+  tmux rename-session $session_name
+}
+
+_tmux_rename_window_curdir () {
+  name=$(basename "$PWD" | sed -E 's/[.]/DOT_/g')
+  tmux rename-window $name
+}
+
+alias tsname=_tmux_rename_session_curdir
+alias twname=_tmux_rename_window_curdir
