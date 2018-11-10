@@ -26,12 +26,20 @@ zle -N _tmux_theme ttheme
 
 
 _tmux_rename_session_curdir () {
-  session_name=$(basename "$PWD" | sed -E 's/[.]/DOT_/g')
+  if [ -z "$1" ]; then
+    session_name=$(basename "$PWD" | sed -E 's/[.]/DOT_/g')
+  else
+    session_name=$1
+  fi
   tmux rename-session $session_name
 }
 
 _tmux_rename_window_curdir () {
-  name=$(basename "$PWD" | sed -E 's/[.]/DOT_/g')
+  if [ -z "$1" ]; then
+    name=$(basename "$PWD" | sed -E 's/[.]/DOT_/g')
+  else
+    name=$1
+  fi
   tmux rename-window $name
 }
 
