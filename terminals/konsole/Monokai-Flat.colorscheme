@@ -92,7 +92,7 @@ Color=248,248,240
 Color=248,248,240
 
 [General]
-Blur=false
+Blur=true
 Description=Monokai-Flat
-Opacity=0.65
+Opacity=0.36
 Wallpaper=
