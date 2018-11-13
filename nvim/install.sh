@@ -27,26 +27,31 @@ echo "Create conda envs? (y/n)"
 read answer
 if [[ $answer == 'y' || $answer == 'Y'   ]]; then
   echo "Creating Conda envs..."
-  conda create -n neovim3 python=3.6 -y
-  echo "Did conda install neovim 3?"
-  read answer
+  conda create -n neovim3 python=3 -y
   conda create -n neovim2 python=2 -y
-  echo "Lets hope it created neovim2" 
 fi
 
 echo "Do you wish to install LSP:s? (y/n)"
 read answer
 if [[ $answer == 'y' || $answer == 'Y'   ]]; then
-	# Bash
-	npm i -g bash-language-server
 
-	# JAVASCRIPT
-	npm i -g javascript-typescript-langserver
+  echo "Install npm LSPs? (y/n)"
+  read answer
+  if [[ $answer == 'y' || $answer == 'Y'   ]]; then
+    # Bash
+    npm i -g bash-language-server
+    # JAVASCRIPT
+    npm i -g javascript-typescript-langserver
+  fi
 
-	# PYTHON. PYLS
-	# Source nvim-special-python env:
-	# (g:python3_host_prog='/Users/erik/miniconda3/envs/neovim3/bin/python') 
-	# pip install python-language-server
+  echo "Install python LSPs? (y/n)"
+  read answer
+  if [[ $answer == 'y' || $answer == 'Y'   ]]; then
+    # PYTHON. PYLS
+    source activate neovim3
+    pip install python-language-server
+    source deactivate
+  fi
 fi
 
 echo ln -sf ~/.files/nvim ~/.config/

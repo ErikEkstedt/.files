@@ -1,6 +1,8 @@
 " vim: fdm=marker
 " MAPPINGS
 
+"  Trying out
+nnoremap <leader>br :! ./current_tabs<CR>
 
 " Config files {{{
 " Edit config files

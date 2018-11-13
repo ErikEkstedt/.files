@@ -7,6 +7,7 @@
 ######################################################################
 
 miscDir=$HOME/.files/Installation/misc
+DOTFiles=$HOME/.files
 
 # Colors
 Red='\033[0;31m'
@@ -65,7 +66,7 @@ case `uname` in
         printSection "TERMINAL MISC"
         sudo apt install -yyqq \
             git tmux xclip xsel zsh feh curl zathura \
-            ranger wget autoconf xdotool gcc
+            ranger wget autoconf xdotool gcc build-essential
         ;;
     FreeBSD)
         # commands for FreeBSD go here
@@ -137,12 +138,10 @@ if [[ $answer == 'y' || $answer == 'Y'   ]]; then
 fi
 
 # Nerdfonts
-prg=NerdFonts
-printSection $prg
-echo "Do you wish to install $prg? (y/n)"
+echo "Do you wish to install Fonts? (y/n)"
 read answer
 if [[ $answer == 'y' || $answer == 'Y'   ]]; then
-	sh $miscDir/nerdfonts.sh
+	sh $DOTFiles/fonts/install.sh
 fi
 
 # Latex
