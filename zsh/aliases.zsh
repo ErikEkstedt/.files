@@ -47,9 +47,9 @@ alias gho="cd ~/"
 alias gdw="cd ~/Downloads; la"
 alias gpi="cd ~/Pictures"
 
-alias cdallen="~/miniconda3/envs/allennlp/lib/python3.7/site-packages/allennlp; ls"
-alias goallen="~/miniconda3/envs/allennlp/lib/python3.7/site-packages/allennlp; ls"
-alias gallen="~/miniconda3/envs/allennlp/lib/python3.7/site-packages/allennlp; ls"
+alias cdallen="~/allennlp; ls"
+alias goallen="~/allennlp; ls"
+alias gallen="~/allennlp; ls"
 # }}}
 
 ####################### 
