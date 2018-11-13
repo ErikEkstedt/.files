@@ -3,10 +3,8 @@
 # Colors
 window_status_fg='#79cec6'
 window_status_bg='#1C5654'
-# status_bg='#2A5D58'
 status_bg='#dadada'
 
-# status_bg='#084954'
 # Current
 window_status_current_fg='#010101'
 window_status_current_bg=$window_status_fg
@@ -24,9 +22,9 @@ window_status_right_bg='#010101'
 
 
 # STATUS
-WINDOW="┃ #I #W #F ┃"
-STATUS_LEFT=" #S ┃"
-STATUS_RIGHT="┃ #(date '+%a, %b %d - %H:%M') "
+WINDOW=" #I #W #F "
+STATUS_LEFT=" #S "
+STATUS_RIGHT=" #(date '+%a, %b %d - %H:%M') "
 
 set -g status on
 set -g set-titles on # I don't know the effect of this

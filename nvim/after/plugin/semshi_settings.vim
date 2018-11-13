@@ -29,7 +29,8 @@ function! MyCustomHighlights()
   hi semshiAttribute       ctermfg=49  guifg=#00ffaf
   hi semshiSelf            ctermfg=249 guifg=#be5898
   hi semshiUnresolved      ctermfg=226 guifg=#ffff00 cterm=underline gui=underline
-  hi semshiSelected        ctermfg=231 guifg=#ffffff guibg=#f600c3
+  hi semshiSelected        ctermfg=231 guibg=#5a6375
+  " hi semshiSelected        ctermfg=231 guifg=#ffffff guibg=#f600c3
   hi semshiErrorSign       ctermfg=231 guifg=#ffffff guibg=#ff0000
   hi semshiErrorChar       ctermfg=231 guifg=#ffffff guibg=#fb6000
   sign define semshiError text=E> texthl=semshiErrorSign
