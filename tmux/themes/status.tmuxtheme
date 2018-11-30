@@ -1,26 +1,5 @@
 # vim:fdm=marker ft=tmux
 
-# Colors
-window_status_fg='#79cec6'
-window_status_bg='#1C5654'
-status_bg='#dadada'
-
-# Current
-window_status_current_fg='#010101'
-window_status_current_bg=$window_status_fg
-
-# Left
-window_status_left_fg='#ff00f5'
-window_status_left_bg=$status_bg
-# window_status_left_bg='#828282'
-window_status_left_bg='#010101'
-
-# Right
-window_status_right_fg='#ff00f5'
-window_status_right_bg=$status_bg
-window_status_right_bg='#010101'
-
-
 # STATUS
 WINDOW=" #I #W #F "
 STATUS_LEFT=" #S "
