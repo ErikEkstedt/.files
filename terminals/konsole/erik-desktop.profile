@@ -1,7 +1,7 @@
 [Appearance]
 BoldIntense=true
 ColorScheme=Monokai-Flat
-Font=FuraMono Nerd Font Mono,12,-1,5,50,0,0,0,0,0,Regular
+Font=mononoki NF,12,-1,5,50,0,0,0,0,0,Regular
 UseFontLineChararacters=true
 
 [Cursor Options]
@@ -17,6 +17,7 @@ Parent=FALLBACK/
 ShowTerminalSizeHint=false
 
 [Interaction Options]
+AutoCopySelectedText=true
 CtrlRequiredForDrag=false
 MiddleClickPasteMode=1
 OpenLinksByDirectClickEnabled=true

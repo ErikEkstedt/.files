@@ -7,10 +7,9 @@ pane_border_bg_nonactive='#181c24'
 
 # Active
 pane_border_fg_active='#00FFFE'
-pane_border_bg_active='#181c24'
+pane_border_bg_active='#282c34'
 
 # Background
-
 # Default
 window_bg_nonactive='#181c24'
 window_fg_nonactive='#282c34'
@@ -33,6 +32,24 @@ set -g message-fg colour81 #cyan
 set -g message-bg $window_status_bg
 set -g message-command-fg '#004d4d'
 set -g message-command-bg $window_status_current_bg
+
+# Statusbar Colors
+# Colors
+status_bg='#282c34'
+window_status_fg='#79cec6'
+window_status_bg='#1C5654'
+
+# Current
+window_status_current_fg='#010101'
+window_status_current_bg=$window_status_fg
+
+# Left
+window_status_left_fg='#ff00ff'
+window_status_left_bg=$status_bg
+
+# Right
+window_status_right_fg='#ff00ff'
+window_status_right_bg=$status_bg
 
 # Source statusline
 source-file ~/.files/tmux/themes/status.tmuxtheme

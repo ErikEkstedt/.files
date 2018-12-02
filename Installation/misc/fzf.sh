@@ -26,9 +26,7 @@ case `uname` in
 esac
 
 
-# TODO 
-# RipGrep installer
-#
+# RIPGREP
 
 echo "Downloading and Installing ripgrep"
 case `uname` in
@@ -36,9 +34,17 @@ case `uname` in
     brew install ripgrep
     ;;
   Linux)
-    cd /tmp
-    curl -LO https://github.com/BurntSushi/ripgrep/releases/download/0.8.1/ripgrep_0.8.1_amd64.deb
-    sudo dpkg -i ripgrep_0.8.1_amd64.deb
+    echo "Install RipGrep? (y/n)"
+    read answer
+    if [[ $answer == 'y' || $answer == 'Y'   ]]; then
+      curpath=$PWD
+      cd /tmp
+      echo "Downloading RipGrep..."
+      curl -LO https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep_0.10.0_amd64.deb
+      sudo dpkg -i ripgrep_0.10.0_amd64.deb
+      cd $curdir
+      echo "Done!"
+    fi
     ;;
 esac
 

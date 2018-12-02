@@ -29,5 +29,23 @@ set -g message-bg $window_status_bg
 set -g message-command-fg '#004d4d'
 set -g message-command-bg $window_status_current_bg
 
+# Statusbar Colors
+# Colors
+status_bg='#000000'
+window_status_fg='#79cec6'
+window_status_bg='#1C5654'
+
+# Current window tab
+window_status_current_fg='#010101'
+window_status_current_bg='#79cec6'
+
+# Left
+window_status_left_fg='#ff00f5'
+window_status_left_bg=$status_bg
+
+# Right
+window_status_right_fg='#ff00f5'
+window_status_right_bg=$status_bg
+
 # Source statusline
 source-file ~/.files/tmux/themes/status.tmuxtheme

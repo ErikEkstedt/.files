@@ -24,6 +24,7 @@
 
 " Variables and Paths {{{
 let g:HOSTNAME = substitute(system('hostname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
+let g:hostpath = '/home/' . g:HOSTNAME . '/'
 let g:UNAME = substitute(system('uname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
 let g:BROWSER = "firefox"
 
@@ -63,9 +64,23 @@ endif "}}}
 " Vim-Plug {{{
 call plug#begin('~/.vim/bundle')
 
+" AutoCompletion
+if has('nvim') 
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'zchee/deoplete-jedi'
+Plug 'Shougo/neco-vim'
+Plug 'Shougo/neopairs.vim'
+
+
 " Testing
 Plug 'dhruvasagar/vim-zoom'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+" Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 
 " Plugins marked with XXX I know I use/like a lot.
 " Uncommented are unused to see if I miss them but keep around if I change my mind
@@ -74,12 +89,12 @@ Plug 'scrooloose/nerdtree'             " XXX Project and file navigation
 Plug 'Xuyuanp/nerdtree-git-plugin'     " show git status of files
 Plug 'ivalkeen/nerdtree-execute'       " open files from nerdtree
 
-Plug 'KabbAmine/vCoolor.vim'
-Plug 'lilydjwg/colorizer'              " colorize hexcolor in editor
+Plug 'KabbAmine/vCoolor.vim'           " XXX pick color from menu
+Plug 'lilydjwg/colorizer'              " XXX colorize hexcolor in editor
 
 Plug 'Raimondi/delimitMate'            " auto complete parens etc.
 Plug 'Valloric/MatchTagAlways' 
-Plug 'Yggdroot/indentLine'             " see where there is indent
+Plug 'Yggdroot/indentLine'             " XXX see where there is indent
 Plug 'airblade/vim-gitgutter'          " XXX see git changes in file in the numberline
 Plug 'easymotion/vim-easymotion'       " XXX visualize targets tot move to specific words
 Plug 'junegunn/fzf.vim'                " XXX fuzzy filefinding
@@ -95,36 +110,31 @@ Plug 'pangloss/vim-javascript'
 Plug 'sjl/gundo.vim'                   " Visualize undo tree
 Plug 'tommcdo/vim-exchange'            " exchange two words. ex: cxw (on first word) . (on second)
 Plug 'tpope/vim-commentary'            " XXX commenting
-Plug 'tpope/vim-fugitive'              " git tools
+Plug 'tpope/vim-fugitive'              " XXX git tools
 Plug 'tpope/vim-obsession'             " :mksession | saves a vim instance | used when saving tmux session
 Plug 'tpope/vim-repeat'                " XXX repeat commands not repeatable by 'vanilla' vim
 Plug 'tpope/vim-surround'              " XXX Surround objects with quotes, brackets ...
 Plug 'w0rp/ale'                        " asynchronous linting
 Plug 'wellle/targets.vim'              " XXX ci' works on (, [, {, < on entire line
+
 " Plug 'mtth/scratch.vim'                " Unobtrusive scratch
 " Plug 'szymonmaszke/vimpyter'
-Plug 'ErikEkstedt/vimpyter'
+" Plug 'ErikEkstedt/vimpyter'
 
 " Preview Text 
 Plug 'lervag/vimtex'       " XXX latex compiler, preview latex pdf, highlight and syntax. alot more.
 Plug 'mhinz/neovim-remote' " Needed for vimtex 'compiler_progranme=nvr' / '--remote'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
+Plug 'shime/vim-livedown'
 
-" AutoCompletion
-if has('nvim') 
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-endif
-Plug 'zchee/deoplete-jedi'
-Plug 'Shougo/neco-vim'
-Plug 'Shougo/neopairs.vim'
+" Plug 'itchyny/lightline.vim'
+" Plug 'edkolev/tmuxline.vim'          " tmux statusline same as vim.	 :Tmuxline lightline
+
+" source ~/.files/nvim/after/plugin/statusline.vim
+
 
 " Snippets and Syntax
 if !exists("g:gui_oni") " {{{
-
   " Syntax
   " Plug 'klen/python-mode'                " Python mode (docs, refactor, lints...)
   " Plug 'sheerun/vim-polyglot'            " All the syntax messed upp syntax for oni ( turned .js -> javascript.jsx
@@ -170,8 +180,6 @@ if !exists("g:gui_oni")
   Plug 'junegunn/seoul256.vim'          " cool junegunn is coool
 	Plug 'joshdick/onedark.vim'           " look like atom?
 	Plug 'crusoexia/vim-monokai'
-	Plug 'itchyny/lightline.vim'
-	" Plug 'edkolev/tmuxline.vim'          " tmux statusline same as vim.	 :Tmuxline lightline
 endif
 
 call plug#end()
@@ -228,13 +236,14 @@ set cursorline                        " highlight line where cursor is
 " set completeopt-=preview
 " set completeopt+=noinsert
 
+
 if UNAME == 'Linux'
 	" Leave this empty. Otherwise konsole font resize does not work.
 	" If font is resized through hotkey inside nvim. Nvim resets the font to the
 	" default.
 	set guicursor=
 	" It is a shame because 
-	" set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+  " set guicursor=n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20
 	" Works in konsole. box in normal-visual-commmand and line in insert
 else
 	" Darwin

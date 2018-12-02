@@ -89,6 +89,7 @@ Color=95,87,79
 Color=255,241,232
 
 [General]
+Blur=true
 Description=Base16 Pico
 Opacity=0.7
 Wallpaper=

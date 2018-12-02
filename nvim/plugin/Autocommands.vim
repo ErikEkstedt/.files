@@ -33,7 +33,6 @@ augroup END
 " Greg Hurrell:
 " https://github.com/wincent/wincent/blob/2aa44544fe9e8fc466fea42391e66fff3583054c/roles/dotfiles/files/.vim/plugin/autocmds.vim
 
-" let g:ColorColumnBlacklist = ['diff', 'undotree', 'nerdtree', 'qf']
 let g:ColorColumnBlacklist = ['diff', 'undotree', 'help', 'qf']
 let g:CursorlineBlacklist = ['fzf', 'nerdtree', 'help']
 

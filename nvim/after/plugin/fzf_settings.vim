@@ -20,7 +20,7 @@ let g:fzf_action = {
             \ 'ctrl-t': 'tab split',
             \ 'ctrl-l': 'vsplit',
             \ 'ctrl-x': 'split',
-            \ 'ctrl-v': 'vsplit',
+            \ 'ctrl-j': 'vsplit',
             \ 'ctrl-o': 'edit',
             \ 'Enter': 'edit',
             \ 'Esc': 'exit', }
@@ -43,6 +43,7 @@ let g:fzf_colors = {
 
 " https://github.com/junegunn/fzf/blob/master/man/man1/fzf.1#L211
 let g:fzf_files_options = '--color "border:#FF02F5,info:#aa00FF" --preview "highlight -O ansi --force {} 2> /dev/null"'
+
 "}}}
 " Mappings {{{
 " FuzzyFind files in root /, $HOME or current folder
@@ -53,7 +54,7 @@ nnoremap <Leader>fl :Files<CR>
 " FuzzyFind files in predefined folders I commonly use
 nnoremap <Leader>fc :Files ~/.files<CR>
 nnoremap <Leader>fb :Files ~/blog<CR>
-nnoremap <Leader>fno :Files ~/blog/public/notes<CR>
+nnoremap <Leader>fno :Files ~/Notes<CR>
 nnoremap <Leader>fp :Files ~/phd<CR>
 
 " Others

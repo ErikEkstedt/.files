@@ -2,12 +2,16 @@
 " Use deoplete.
 
 let g:deoplete#enable_at_startup = 1
+
+" Time
+let g:deoplete#auto_complete_delay = 1
+let g:deoplete#auto_refresh_delay= 1
+let g:deoplete#min_pattern_length = 1
+
+" Size
 let g:deoplete#max_abbr_width = 40
 let g:deoplete#max_menu_width = 40
-let g:deoplete#max_list = 40
-let g:deoplete#auto_complete_delay = 5
-let g:deoplete#auto_refresh_delay= 5
-let g:deoplete#min_pattern_length = 2
+let g:deoplete#max_list = 10
 let g:loaded_neopairs = 1
 let g:neopairs#enable = 1
 
@@ -16,12 +20,13 @@ if !exists('g:deoplete#omni#input_patterns')
     let g:deoplete#omni#input_patterns = {}
 endif
 
+le
 let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
 
 " Selection menu colors
-hi Pmenu gui=italic guifg=#00EEF7 guibg=#010101
-hi PmenuSel guifg=#FF00DE guibg=#6B6879 gui=NONE
-hi PmenuSbar guibg=#000000 
+hi Pmenu guibg=#24282e guifg=#00fbff
+hi PmenuSel guibg=#272a30 gui=NONE guifg=#ff00f3
+hi PmenuSbar guibg=#000000
 hi PmenuThumb guibg=#FF00DE
 
 " Mappings

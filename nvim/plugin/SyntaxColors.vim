@@ -78,8 +78,8 @@ function! SyntaxColors()
   " endfunction  "}}}
 
 	" Global Highlights
-	:highlight MatchParen guifg=#FFFFFF guibg=#FC00D5
-	:highlight Comment gui=italic
+	highlight MatchParen guifg=#FFFFFF guibg=#FC00D5
+	highlight Comment gui=italic
 
 	
 	if g:colors_name =~ 'monokai' "{{{
@@ -122,13 +122,6 @@ function! SyntaxColors()
 
     call s:h("Folded", {"fg": s:folded,  "bg": s:bg})
     call s:h("FoldedColumn", {"bg": s:bg})
-    " }}}
-
-    " GitGutter {{{
-    call s:h("GitGutterAdd", { "fg": s:green, "bg": s:bg})
-    call s:h("GitGutterChange", { "fg": s:yellow, "bg": s:bg })
-    call s:h("GitGutterChangeDelete", { "fg": s:orange, "bg": s:bg })
-    call s:h("GitGutterDelete", { "fg": s:red,  "bg": s:bg})
     " }}}
 
     " VIM {{{
@@ -353,10 +346,10 @@ function! SyntaxColors()
 		" }}}
 
 		" HIGHLIGHTS
-		:highlight Folded guifg=#D296D9 guibg=#202020
-		:highlight ColorColumn guibg=#202020
-		:highlight link FoldColumn LineNr
-    :highlight Conceal guibg=#282c34
+		highlight Folded guifg=#D296D9 guibg=#282C34
+    hi ColorColumn guibg=#24282e
+		highlight link FoldColumn LineNr
+    highlight Conceal guibg=#282c34
 
     " ex: symbols indicating line continues out of window
 		:highlight NonText guifg=#ff0099
