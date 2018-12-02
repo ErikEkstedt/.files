@@ -1,5 +1,5 @@
 " Lightline
-let g:lightline = {'colorscheme': 'myonedark'}  " mymolokaicolor, myseoul, mywombat256 
+" let g:lightline = {'colorscheme': 'myonedark'}  " mymolokaicolor, myseoul, mywombat256 
 
 " symbols: , , , 
 let g:lightline = {
@@ -35,6 +35,7 @@ endfunction
 function! NLines() abort
 	return '[' . line('$') . ']'
 endfunction
+
 
 function! LightlineReadonly()
 	return &readonly ? '' : ''

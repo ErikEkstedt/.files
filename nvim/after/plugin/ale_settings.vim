@@ -23,6 +23,11 @@ let g:ale_lint_on_save = 1
 " pylint
 let g:ale_linters = { 'python': ['pyls', 'pylint', 'yapf', 'isort', 'mccabe'],}
 
+" Highlight
+highlight ALEWarningSign guibg=g:background_one_dark
+highlight ALEErrorSign guibg=g:background_one_dark
+
+
 " Mappings
 nmap <leader>an <Plug>(ale_next_wrap)
 nmap <leader>ap <Plug>(ale_previous_wrap)
