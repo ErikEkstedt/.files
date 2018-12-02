@@ -18,6 +18,12 @@ swipe:
         down: 
             shortcut: 'super+Down'
 pinch:
+  2:
+    in:
+        shortcut: 'ctrl+plus'
+    out:
+        shortcut: 'ctrl+minus'
+  3:
     in:
         shortcut: 'ctrl+plus'
     out:
