@@ -9,10 +9,7 @@ hi FoldColumn guibg=g:background_one_dark
 hi Folded guibg=g:background_one_dark
 hi EndOfBuffer guibg=g:background_one_dark
 
-hi StatusLine guibg=g:background_one_dark
-hi StatusLineNC guibg=g:background_one_dark
-
-hi StatusLine guibg=#010101 guifg=#00deff
+hi StatusLine guibg=#010101 guifg=#00deff gui=bold
 hi StatusLineNC guibg=#010101 guifg=#00a2ba
 
 " :h mode() to see all modes
@@ -42,7 +39,7 @@ let g:currentmode={
 function! ChangeStatuslineColor()
   if (mode() =~# '\v(n|no)')
     " exe 'hi! StatusLine guibg=g:background_one_dark guifg=#00deff'
-    exe 'hi! StatusLine guifg=#00deff'
+    exe 'hi! StatusLine guibg=#010101 guifg=#00deff'
   elseif (mode() =~# '\v(v|V)' || g:currentmode[mode()] ==# 'V·Block' || get(g:currentmode, mode(), '') ==# 't')
     exe 'hi! StatusLine guifg=#ff8700'
   elseif (mode() ==# 'i')
@@ -52,12 +49,12 @@ function! ChangeStatuslineColor()
     exe 'syntax sync fromstart'
   elseif (mode() ==# 'R')
     exe 'hi! StatusLine guifg=#e51400'
-    exe 'syntax sync fromstart'
   else
     exe 'hi! StatusLine guibg=g:background_one_dark guifg=#00deff'
   endif
   return ''
 endfunction
+
 
 set statusline=
 set statusline+=%{ChangeStatuslineColor()}               " Changing the statusline color
