@@ -67,6 +67,7 @@ _fzf_compgen_dir() { #{{{
 # Find Files
 
 home-files() {
+  setopt localoptions pipefail 2> /dev/null
   eval "${FZF_CTRL_T_COMMAND} ~" | fzf | while read item; do
     echo -n "${(q)item} "
   done
@@ -84,8 +85,10 @@ files-from-home() {
 zle -N files-from-home
 
 # WIP
-# python-files() {
-#   eval "${FZF_CTRL_T_COMMAND} --type py ~" | fzf | while read item; do
+# root-files() {
+#   local cmd="rg --files --hidden"
+#   setopt localoptions pipefail 2> /dev/null 
+#   eval "$cmd $1" | fzf "$@"| while read item; do
 #     echo -n "${(q)item} "
 #   done
 #   local ret=$?
@@ -93,13 +96,14 @@ zle -N files-from-home
 #   return $ret
 # }
 
-# python-files-from-home() {
-#   LBUFFER="${LBUFFER}$(python-files)"
+# files-from-root() {
+#   LBUFFER="${LBUFFER}$(root-files /)"
 #   local ret=$?
 #   zle reset-prompt
 #   return $ret
 # }
-# zle -N python-files-from-home
+# zle -N files-from-root
+
 
 # fkill - kill processes - list only the ones you can kill. Modified the earlier script.
 fkill() {
@@ -117,6 +121,7 @@ fkill() {
 }
 
 # Bindings
+# bindkey '^u' files-from-root
 bindkey '^t' files-from-home
 bindkey '^f' fzf-file-widget
 
