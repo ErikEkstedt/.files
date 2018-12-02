@@ -31,9 +31,6 @@ setopt interactivecomments
 #==== Export {{{
 
 export KEYTIMEOUT=1
-# export TERM="xterm-256color"  # "xterm-256color"
-# export TERM="xterm-kitty"
-# export TERM="screen.xterm-256color"
 export TERM="screen-256color"  # "xterm-256color"
 export COLORTERM="truecolor"
 
@@ -63,25 +60,6 @@ if [[ $(hostname) == 'erik-Desktop' ]]; then
 	export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/cuda-9.0/lib64
 fi
 
-## OLD {{{
-## export GIO_EXTRA_MODULES=/usr/lib/x86_64-linux-gnu/gio/modules/
-
-## Matlab
-## export PATH=/usr/local/MATLAB/R2017b/bin:${PATH}
-
-## GO
-## export GOROOT=/home/erik/go
-## export GOPATH=/home/erik/gopath
-## export PATH=$GOROOT/bin:${PATH}
-
-## # QT
-## export QT_VERSION="5.10.1"
-## export QT_DIR=$HOME/Qt
-## export QT_STUB="false"
-## export QT_DEBUG="false"
-## }}}
-## }}}
-
 ###==== TMUX {{{
 if [ "$TMUX" = "" ]; then 
 	tmux new
@@ -89,6 +67,7 @@ fi
 ###}}}
 
 ##==== ZSH Theme {{{
+#
 export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="spaceship"
 plugins=(vi-mode zsh-autosuggestions)
@@ -201,18 +180,12 @@ if [[ -f ~/.fzf.zsh  ]]; then
 	source ~/.fzf.zsh
 fi
 
-export FZF_DEFAULT_OPTS='--height 40% --reverse'
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude ".git"'  
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND='fd --type d --hidden --exclude ".git"'  
-
-export FZF_COMPLETION_OPTS='+c -x'
-export FZF_CTRL_R_OPTS="--reverse"
-export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
-export FZF_ALT_C_OPTS="--preview '(highlight -O ansi -l {} 1> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
+if [ -f ~/.files/fzf/fzf_zsh_settings.zsh ]; then
+	source ~/.files/fzf/fzf_zsh_settings.zsh
+else
+    echo "404: ~/.files/fzf/fzf_zsh_settings.zsh"
+fi
 #}}}
-
-## Alias & functions {{{
 
 if [ -f ~/.files/zsh/zsh-functions.zsh ]; then
     source ~/.files/zsh/zsh-functions.zsh

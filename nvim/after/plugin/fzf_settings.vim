@@ -4,7 +4,7 @@
 " Ripgrep
 command! -bang -nargs=* Rg
 	\ call fzf#vim#grep(
-	\   'rg --column --line-number --no-heading --hidden --smart-case '.shellescape(<q-args>), 1,
+	\   'rg --column --line-number --hidden --smart-case '.shellescape(<q-args>), 1,
 	\   fzf#vim#with_preview('right:50%'),
 	\   <bang>0)
 
@@ -20,14 +20,13 @@ let g:fzf_action = {
             \ 'ctrl-t': 'tab split',
             \ 'ctrl-l': 'vsplit',
             \ 'ctrl-x': 'split',
-            \ 'ctrl-j': 'vsplit',
             \ 'ctrl-o': 'edit',
             \ 'Enter': 'edit',
             \ 'Esc': 'exit', }
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors = { 
-			\ 'fg':			['fg', 'Normal'],
+			\ 'fg':			 ['fg', 'Normal'],
 			\ 'bg':      ['bg', 'Normal'],
 			\ 'hl':      ['fg', 'Comment'],
 			\ 'fg+':     ['fg', 'CursorLine', 'Normal', 'Normal'],
@@ -42,7 +41,10 @@ let g:fzf_colors = {
 			\ 'header':  ['fg', 'Comment'] }
 
 " https://github.com/junegunn/fzf/blob/master/man/man1/fzf.1#L211
-let g:fzf_files_options = '--color "border:#FF02F5,info:#aa00FF" --preview "highlight -O ansi --force {} 2> /dev/null"'
+" Install 'highlight' to preview files with syntax highlight
+" sudo apt install highlight
+" let g:fzf_files_options = '--color "border:#FF02F5,info:#aa00FF" --preview "highlight -O ansi --force {} 2> /dev/null"'
+" let g:fzf_files_options = '--color "border:#FF02F5,info:#aa00FF" --preview "bat --color always {}"'
 
 "}}}
 " Mappings {{{
@@ -78,3 +80,19 @@ imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 " }}}
+
+" Hide status in fzf
+" autocmd! FileType fzf
+" autocmd FileType fzf set laststatus=0 noshowmode noruler
+"       \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+
+function! s:fzf_statusline()
+  " Override statusline as you like
+  highlight fzf1 guibg=#424957 guifg=#39ff00
+  highlight fzf2 guibg=#424957 guifg=#e511dd
+  highlight fzf3 guibg=#424957 guifg=#ff9c00
+  setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
+endfunction
+
+autocmd! User FzfStatusLine call <SID>fzf_statusline()
+
