@@ -29,6 +29,16 @@ esac
 # TODO 
 # RipGrep installer
 #
-# curl -LO https://github.com/BurntSushi/ripgrep/releases/download/0.8.1/ripgrep_0.8.1_amd64.deb
 
-# sudo dpkg -i ripgrep_0.8.1_amd64.deb
+echo "Downloading and Installing ripgrep"
+case `uname` in
+  Darwin)
+    brew install ripgrep
+    ;;
+  Linux)
+    cd /tmp
+    curl -LO https://github.com/BurntSushi/ripgrep/releases/download/0.8.1/ripgrep_0.8.1_amd64.deb
+    sudo dpkg -i ripgrep_0.8.1_amd64.deb
+    ;;
+esac
+
