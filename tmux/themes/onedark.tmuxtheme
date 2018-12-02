@@ -44,11 +44,11 @@ window_status_current_fg='#010101'
 window_status_current_bg=$window_status_fg
 
 # Left
-window_status_left_fg='#a510a8'
+window_status_left_fg='#ff00ff'
 window_status_left_bg=$status_bg
 
 # Right
-window_status_right_fg='#a510a8'
+window_status_right_fg='#ff00ff'
 window_status_right_bg=$status_bg
 
 # Source statusline
