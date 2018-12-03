@@ -1,17 +1,5 @@
 " Statusline
 
-" Colors
-let g:background_one_dark = '#282C34'
-
-hi LineNr guibg=g:background_one_dark guifg=#5C6370
-hi SignColumn guibg=g:background_one_dark
-hi FoldColumn guibg=g:background_one_dark
-hi Folded guibg=g:background_one_dark
-hi EndOfBuffer guibg=g:background_one_dark
-
-hi StatusLine guibg=#010101 guifg=#00deff gui=bold
-hi StatusLineNC guibg=#010101 guifg=#00a2ba
-
 " :h mode() to see all modes
 let g:currentmode={
       \ 'n'      : 'NORMAL ',
@@ -38,8 +26,8 @@ let g:currentmode={
 " Automatically change the statusline color depending on mode
 function! ChangeStatuslineColor()
   if (mode() =~# '\v(n|no)')
-    " exe 'hi! StatusLine guibg=g:background_one_dark guifg=#00deff'
-    exe 'hi! StatusLine guibg=#010101 guifg=#00deff'
+    " exe 'hi! StatusLine guibg=g:background_color guifg=#00deff'
+    exe 'hi! StatusLine guibg=' . g:status_background_color . ' guifg=#00deff'
   elseif (mode() =~# '\v(v|V)' || g:currentmode[mode()] ==# 'V·Block' || get(g:currentmode, mode(), '') ==# 't')
     exe 'hi! StatusLine guifg=#ff8700'
   elseif (mode() ==# 'i')
@@ -50,7 +38,7 @@ function! ChangeStatuslineColor()
   elseif (mode() ==# 'R')
     exe 'hi! StatusLine guifg=#e51400'
   else
-    exe 'hi! StatusLine guibg=g:background_one_dark guifg=#00deff'
+    exe 'hi! StatusLine guibg=g:background_color guifg=#00deff'
   endif
   return ''
 endfunction

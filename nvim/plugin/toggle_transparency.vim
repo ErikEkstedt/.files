@@ -5,8 +5,6 @@ function! TransparentBackground ()  " {{{
     let g:transparent_background = 0
     execute 'colorscheme' g:colors_name
     hi link EndOfBuffer ColorColumn
-    hi StatusLine guibg=#010101
-    hi StatusLineNC guibg=#010101
     set cursorline
   else
     let g:transparent_background = 1
@@ -18,6 +16,8 @@ function! TransparentBackground ()  " {{{
     hi GitGutter guibg=#000000
     hi GitGutterAdd guibg=#000000
     hi GitGutterChange guibg=#000000
+    hi GitGutterChangeDelete guibg=#000000
+    hi GitGutterDelete guibg=#000000
     hi ColorColumn guibg=#000000
     hi EndOfBuffer guibg=#000000
     hi CursorLine guibg=#000000

@@ -13,6 +13,8 @@ if colors_name =~ 'onedark'
 		execute 'hi GitGutterChangeDelete guifg=#983333 ' . color_bg
 		execute 'hi SignColumn ' . color_bg
   endif
+
+
 endif
 
 hi link EndOfBuffer ColorColumn
