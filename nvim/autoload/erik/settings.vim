@@ -5,13 +5,12 @@ let s:raquo='»'
 let s:small_l='ℓ'
 
 " Override default `foldtext()`, which produces something like:
-"
 "   +---  2 lines: source $HOME/.vim/pack/bundle/opt/vim-pathogen/autoload/pathogen.vim--------------------------------
-"
+
 " Instead returning:
-"
 "   »··[2ℓ]··: source $HOME/.vim/pack/bundle/opt/vim-pathogen/autoload/pathogen.vim···································
-"
+
+
 function! erik#settings#foldtext() abort
   let l:line = getline(v:foldstart)
   let subs = substitute(line, '/\*\|\*/\|{{{\d\=', '', 'g')

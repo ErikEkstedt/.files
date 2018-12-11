@@ -15,7 +15,7 @@
 
 " nmap <silent> <leader>ee :Semshi error<CR>
 " nmap <silent> <leader>ge :Semshi goto error<CR>
-
+let g:semshi#error_sign_delay=2
 
 " Highlight
 function! MyCustomHighlights()

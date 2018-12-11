@@ -76,6 +76,15 @@ function! OnedarkPatch() "{{{
   hi zshBrackets guifg=#ff8000
   hi zshTypes guifg=#ff8000
 
+  " Tmux
+  hi TmuxCommands guifg=#ff008d
+  hi tmuxOptions guifg=#ff00f6
+  hi tmuxFlags guifg=#00ff8c
+  hi tmuxKey guifg=#00ceff
+  hi tmuxString guifg=#72c089
+  hi tmuxVariable guifg=#00ff8c
+  hi tmuxFormatString guifg=#dba76f
+
   " GitGutter
   hi GitGutterDelete guibg=#282c34 guifg=#AA0000
   hi GitGutterChangeDelete guibg=#282c34
@@ -87,6 +96,12 @@ function! OnedarkPatch() "{{{
   hi PmenuSel guibg=#272a30 gui=NONE guifg=#ff00f3
   hi PmenuSbar guibg=#000000
   hi PmenuThumb guibg=#FF00DE
+
+  hi DosiniHeader guifg=#FF00DE
+  hi DosiniLabel guifg=#56f482
+  hi DosiniString guifg=#ffff00
+
+  "
 endfunc  "}}}
 
 function! Monokaipatch () "{{{

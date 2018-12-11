@@ -43,9 +43,6 @@ if has("unix")  "Python & Node
 		let g:python_host_prog='/Users/erik/miniconda3/envs/neovim2/bin/python'
 		let g:node_host_prog='/Users/erik/.node_modules_global/bin/neovim-node-host' 
 	else
-		" let g:python3_host_prog='/home/erik/miniconda3/bin/python'
-		" let g:python_host_prog='/home/erik/miniconda3/envs/py27/bin/python'
-		" let g:node_host_prog='/home/erik/.node_modules_global/bin/neovim-node-host' 
 		let g:python3_host_prog='/home/' . g:HOSTNAME . '/miniconda3/envs/neovim3/bin/python'
 		let g:python_host_prog='/home/' . g:HOSTNAME . '/miniconda3/envs/neovim2/bin/python'
 		let g:node_host_prog='/home/' . g:HOSTNAME . '/.node_modules_global/bin/neovim-node-host' 

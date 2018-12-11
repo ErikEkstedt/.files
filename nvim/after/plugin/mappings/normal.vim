@@ -4,25 +4,6 @@
 "  Trying out
 nnoremap <leader>br :! ./current_tabs<CR>
 
-" Config files {{{
-" Edit config files
-nnoremap <leader>ev :tabnew ~/.files/nvim/init.vim<cr>
-nnoremap <leader>ez :tabnew ~/.zshrc<cr>
-nnoremap <leader>eal :tabnew ~/.files/aliases<cr>
-nnoremap <leader>er :tabnew ~/.config/ranger/rc.conf<cr>
-nnoremap <leader>et :tabnew ~/.tmux.conf<cr>
-
-" source config files
-nnoremap <leader>sv :source ~/.files/nvim/init.vim<cr>
-nnoremap <leader>sz :source ~/.zshrc<cr>
-nnoremap <leader>sx :!xrdb ~/.Xresources<cr>
-nnoremap <leader>sot :source ~/.tmux.conf<cr>
-" }}}
-
-
-" BETWEEN here
-" LEADER {{{
-
 " open quickfix window for latest vim search term.
 nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 
@@ -39,48 +20,22 @@ nnoremap <leader>cc :exec &conceallevel ? "set conceallevel=0" : "set conceallev
 "" redraw
 nnoremap <leader><leader>r :redraw!<CR>
 
-"" Browser Mappings
-"" Open Visdom
-"" mneumonic:
-""   Visualize-Google-VIsdom
-""   Visualize-Firefox-VIsdom
-nnoremap <leader>vgvi :! google-chrome --new-window 192.168.0.104:8097 &<CR>
-nnoremap <leader>vfvi :! firefox --new-window localhost:8097 &<CR>
-
 " Open Tensorboard
-" mneumonic:
-"   Visualize-Google-TensorBoard
-"   Visualize-Firefox-TensorBoard
-nnoremap <leader>vgtb :! google-chrome --new-window 192.168.0.104:6006 &<CR>
-nnoremap <leader>vftb :! firefox --new-window localhost:6006 &<CR>
-
-" Open blog
-noremap <leader>ob :! firefox --new-window --url=localhost:3003 &<CR>
+nnoremap <leader>tensb :! firefox --new-window localhost:6006 &<CR>
 
 " Substitute word under cursor in entire file.
 nnoremap <leader>sw :%s/<C-r><C-w>//g<Left><Left>
 
-""" BETWEEN here
 " Substitute word by put
 nnoremap S viw"0p
 
 " Clean trailing whitespace
 nnoremap <leader><backspace> mz:%s/\s\+$//<cr>:let @/=''<cr>`z
 
-" Some vim-diff settings
-if &diff
-	noremap <leader>1 :diffget LOCAL<CR>
-	noremap <leader>2 :diffget BASE<CR>
-	noremap <leader>3 :diffget REMOTE<CR>
-	nnoremap <Leader>n ]c
-	nnoremap <Leader>p [c
-endif
-
 " delete all bufers except current
 " nnoremap <leader>bd :w | %bd | e#
 nnoremap <leader>db :%bd<CR><C-O>:bd#<CR>
 
-" }}}
 "indenting/unindenting
 nnoremap <tab> >>
 nnoremap <s-tab> <lt><lt>
@@ -102,8 +57,6 @@ inoremap <c-p> <esc>"+pi
 " Repeat last macro if in a normal buffer.
 nnoremap <expr> <CR> empty(&buftype) ? '@@' : '<CR>'
 
-" fuzzy search nmap and the chosen one is implemented
-nmap <leader><tab> <plug>(fzf-maps-n)
 
 " Windows
 " Move between windows
@@ -117,15 +70,13 @@ nnoremap <C-j> :resize -3<cr>
 
 function! ChangeToLocalDir()
 	lchdir %:p:h
+  :pwd
 	return ''
 endfunction
-nnoremap <expr> _c ChangeToLocalDir()
+nnoremap ,cd :call ChangeToLocalDir()<CR>
 
 " Neovim: exit terminal
 tnoremap <Esc> <C-\><C-n>
-
-" Conceallevel
-nnoremap <leader>cc :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
 
 " Visual selection
 nnoremap vv V
@@ -137,7 +88,6 @@ nnoremap Y y$
 " Keep search matches in the middle of the window.
 nnoremap n nzzzv
 nnoremap N Nzzzv
-
 
 " when sudo rights are needed but you did not sudo.
 cmap w!! %!sudo tee > /dev/null %
@@ -160,7 +110,7 @@ nnoremap gN #zz
 nnoremap gp %
 nnoremap gl f,a<CR><esc>
 nnoremap gL f;a<CR><esc>
-
+nnoremap gs f<space>a<CR><esc>
 
 " Movement
 
@@ -175,6 +125,7 @@ nnoremap <space>n :bn<CR>
 nnoremap <h :bp<CR>
 nnoremap <l :bn<CR>
 
+" Create new window
 nnoremap <space>m <c-w>n
 nnoremap <space>ö <c-w>n<c-w>L
 
@@ -207,15 +158,7 @@ nnoremap H ^
 
 " Nerdtree uses 'o' to open "foldlike" dirs.
 " I want to use 'o' to open closed folds but everywhere else it
-" should work as regular (I use 'o' alot!)
+" should work as usual 
 " foldclosed('.') returns -1 if not a closed fold or the linenumber
 " where the closed fold is.
 nnoremap <silent> o @=(foldclosed('.')>0?'za':"o")<CR>
-
-
-function SetFold() "{{{
-	:set foldtext=v:folddashes.substitute(getline(v:foldstart),'/\\*\\\|\\*/\\\|{{{\\d\\=','','g')
-endfunction
-nnoremap <leader>fo :call SetFold()
-
-"}}}
