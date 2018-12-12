@@ -27,9 +27,9 @@ let g:currentmode={
 function! ChangeStatuslineColor()
   if (mode() =~# '\v(n|no)')
     " exe 'hi! StatusLine guibg=g:background_color guifg=#00deff'
-    exe 'hi! StatusLine guibg=' . g:status_background_color . ' guifg=#00deff'
+    exe 'hi! StatusLine guibg=#010101 guifg=#00deff'
   elseif (mode() =~# '\v(v|V)' || g:currentmode[mode()] ==# 'V·Block' || get(g:currentmode, mode(), '') ==# 't')
-    exe 'hi! StatusLine guifg=#ff8700'
+    exe 'hi! StatusLine guibg=#010101 guifg=#ff8700'
   elseif (mode() ==# 'i')
     exe 'hi! StatusLine guifg=#3bc367'
   elseif (mode() ==# 'c')
@@ -38,7 +38,7 @@ function! ChangeStatuslineColor()
   elseif (mode() ==# 'R')
     exe 'hi! StatusLine guifg=#e51400'
   else
-    exe 'hi! StatusLine guibg=g:background_color guifg=#00deff'
+    exe 'hi! StatusLine guifg=#00deff'
   endif
   return ''
 endfunction

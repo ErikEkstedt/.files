@@ -3,10 +3,6 @@
 " TabLineSel	tab pages line, active tab page label
 " Title		titles for output from ":set all", ":autocmd" etc.
 
-hi TabLine guibg=#1e2126 guifg=#0fc5cf
-hi TabLineSel guifg=#00f2ff
-hi TabLineFill guibg=#1e2126
-hi Title guibg=#282C34
 
 " Then define the MyTabLine() function to list all the tab pages labels.  A
 " convenient method is to split it in two parts:  First go over all the tab

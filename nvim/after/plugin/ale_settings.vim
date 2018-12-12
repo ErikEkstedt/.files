@@ -1,6 +1,7 @@
 " ALE
 
 let g:ale_enabled = 1
+let g:ale_linters_explicit = 1
 
 " Use quickfix list. Open list
 let g:ale_set_loclist = 0
@@ -21,11 +22,18 @@ let g:ale_lint_on_save = 1
 " highlight ALEErrorSign guibg=303030 guifg=
 
 " pylint
-let g:ale_linters = { 'python': ['pyls', 'pylint', 'yapf', 'isort', 'mccabe'],}
-
-" Highlight
-highlight ALEWarningSign guibg=g:background_color
-highlight ALEErrorSign guibg=g:background_color
+let g:ale_linters = {
+      \   'python': ['pyls', 'pylint', 'yapf', 'isort', 'mccabe'],
+      \   'csh': ['shell'],
+      \   'elixir': ['credo', 'dialyxir', 'dogma', 'elixir-ls'],
+      \   'go': ['gofmt', 'golint', 'go vet'],
+      \   'hack': ['hack'],
+      \   'perl': ['perlcritic'],
+      \   'rust': ['cargo'],
+      \   'vue': ['eslint', 'vls'],
+      \   'javascript': ['eslint'],
+      \   'zsh': ['shell'],
+      \}
 
 " Mappings
 nmap <leader>an <Plug>(ale_next_wrap)

@@ -1,8 +1,8 @@
 " https://github.com/numirias/semshi
 
-
 " Mappings
-" nmap <silent> <leader>rr :Semshi rename<CR>
+nmap <silent> <leader>rr :Semshi rename<CR>
+nmap <silent> <leader>ge :Semshi goto error<CR>
 
 " nmap <silent> <Tab> :Semshi goto name next<CR>
 " nmap <silent> <S-Tab> :Semshi goto name prev<CR>
@@ -14,11 +14,10 @@
 " nmap <silent> <leader>F :Semshi goto function prev<CR>
 
 " nmap <silent> <leader>ee :Semshi error<CR>
-" nmap <silent> <leader>ge :Semshi goto error<CR>
-let g:semshi#error_sign_delay=2
+" let g:semshi#error_sign_delay=2
 
 " Highlight
-function! MyCustomHighlights()
+function! SemshiHighlights()
   hi semshiLocal           ctermfg=209 guifg=#ff875f
   hi semshiGlobal          ctermfg=214 guifg=#ffaf00
   hi semshiImported        ctermfg=214 guifg=#7c6afd gui=bold
@@ -43,6 +42,6 @@ endfunction
 
 augroup Semshi
 	autocmd!
-  autocmd FileType python call MyCustomHighlights()
-  autocmd ColorScheme * call MyCustomHighlights()
+  autocmd FileType python call SemshiHighlights()
+  autocmd ColorScheme * call SemshiHighlights()
 augroup END

@@ -22,13 +22,16 @@ nnoremap <buffer>,= :s/\s\@<!=\+\s\@!/ \0/g<cr>
 nnoremap <buffer>,= :s/\s\@<!=\+\s\@!/ = /g<CR>
 
 " colon at the end of the line
-nnoremap <buffer>Ö A:<esc>
+nnoremap <buffer>,Ö A:<esc>
 
 " Note: <CR> is indistinguishable from <C-m>
 nnoremap <buffer> <CR> vip:SlimuxREPLSendLine<CR>
 vnoremap <buffer> <CR> :SlimuxREPLSendLine<CR>gv<Esc>zz
 
-
-" Highlights possible here?
-hi pythonConditional guifg=#9f00ff
-hi pythonRepeat guifg=#f600c3
+" let python_no_builtin_highlight = 1
+" let python_no_doctest_code_highlight = 1
+" let python_no_doctest_highlight = 1
+" let python_no_exception_highlight = 1
+" let python_no_number_highlight = 1
+" let python_space_error_highlight = 1
+let python_highlight_all = 1
