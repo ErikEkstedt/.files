@@ -76,8 +76,11 @@ alias wnvi="watch -n 1 nvidia-smi"
 
 # alias scroll="xinput set-prop 12 284 -303 303" Some old laptop setting?
 # alias wif="sudo iwconfig wlp2s0 txpower 10dBm"
-# alias somy="source $HOME/mycroft-core/.venv/bin/activate"
 # alias friture="python $HOME/friture/main.py"
+
+# Mycroft
+alias somy="source $HOME/mycroft-core/.venv/bin/activate"
+
 # }}}
 
 # Konsole
