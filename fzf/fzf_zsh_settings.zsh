@@ -1,4 +1,4 @@
-export FZF_DEFAULT_COMMAND='rg --files --hidden'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --no-ignore --iglob !"*.git/"'
 export FZF_DEFAULT_OPTS="--height 80% --reverse --preview 'bat --color always {}'"
 
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
