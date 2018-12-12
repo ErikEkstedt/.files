@@ -3,7 +3,7 @@ let g:transparent_background = 0
 function! TransparentBackground ()  " {{{
   if g:transparent_background 
     let g:transparent_background = 0
-    execute 'colorscheme' g:colors_name
+    execute 'colorscheme ' . g:colors_name
     hi link EndOfBuffer ColorColumn
     set cursorline
   else

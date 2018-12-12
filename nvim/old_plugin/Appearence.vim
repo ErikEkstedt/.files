@@ -1,6 +1,5 @@
 " vim: fdm=marker
 " APPEARENCE
-set termguicolors " Enable true color support.
 
 " COLORSCHEME 
 let g:seoul256_background = 234
@@ -36,7 +35,6 @@ function! OnedarkPatch() "{{{
   hi String gui=italic
 
   hi Conceal guibg=#282c34 guifg=#404040 
-  hi LineNr guibg=g:background_color guifg=#5C6370
   hi SignColumn guibg=g:background_color
   hi FoldColumn guibg=g:background_color
   hi ColorColumn guibg=#24282e
@@ -97,10 +95,10 @@ function! OnedarkPatch() "{{{
   hi PmenuSbar guibg=#000000
   hi PmenuThumb guibg=#FF00DE
 
+
   hi DosiniHeader guifg=#FF00DE
   hi DosiniLabel guifg=#56f482
   hi DosiniString guifg=#ffff00
-
   "
 endfunc  "}}}
 

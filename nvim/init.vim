@@ -165,19 +165,22 @@ if !exists("g:gui_oni")
 endif
 
 " Colorschemes and Appearence {{{ 
-if !exists("g:gui_oni")
-	Plug 'chriskempson/base16-vim'        " many colorschemes
-	Plug 'skielbasa/vim-material-monokai' 
-	Plug 'kiddos/malokai.vim'
-	Plug 'Reewr/vim-monokai-phoenix'
-	Plug 'vim-scripts/wombat256.vim'
-	Plug 'danilo-augusto/vim-afterglow'
-	Plug 'mhartington/oceanic-next'
-	Plug 'yuttie/hydrangea-vim'
-  Plug 'junegunn/seoul256.vim'          " cool junegunn is coool
-	Plug 'joshdick/onedark.vim'           " look like atom?
-	Plug 'crusoexia/vim-monokai'
-endif
+set termguicolors " Enable true color support.
+Plug 'ErikEkstedt/onedark.vim'
+
+" if !exists("g:gui_oni")
+"   Plug 'joshdick/onedark.vim'           " look like atom?
+"   Plug 'crusoexia/vim-monokai'
+" 	Plug 'chriskempson/base16-vim'        " many colorschemes
+" 	Plug 'skielbasa/vim-material-monokai' 
+" 	Plug 'kiddos/malokai.vim'
+" 	Plug 'Reewr/vim-monokai-phoenix'
+" 	Plug 'vim-scripts/wombat256.vim'
+" 	Plug 'danilo-augusto/vim-afterglow'
+" 	Plug 'mhartington/oceanic-next'
+" 	Plug 'yuttie/hydrangea-vim'
+"   Plug 'junegunn/seoul256.vim'          " cool junegunn is coool
+" endif
 
 call plug#end()
 " }}}
