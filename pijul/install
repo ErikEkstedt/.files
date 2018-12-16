@@ -1,0 +1,30 @@
+#!/bin/bash
+
+
+
+echo "Install Rust? (y/n)"
+read answer
+if [[ $answer == 'y' || $answer == 'Y'   ]]; then
+  curl https://sh.rustup.rs -sSf | sh
+fi
+
+echo "Source rust? (y/n)"
+read answer
+if [[ $answer == 'y' || $answer == 'Y'   ]]; then
+  source $HOME/.cargo/env
+fi
+
+
+echo "Install dependencies? (y/n)"
+read answer
+if [[ $answer == 'y' || $answer == 'Y'   ]]; then
+  source $HOME/.cargo/env
+
+
+fi
+
+echo "Install Pijul? (y/n)"
+read answer
+if [[ $answer == 'y' || $answer == 'Y'   ]]; then
+  cargo install pijul --force
+fi

@@ -17,6 +17,11 @@ augroup vimtex_event_1
 	au User VimtexEventQuit     call vimtex#compiler#clean(0)
 augroup END
 
+augroup vimtex_event_2
+	au!
+	au User VimtexEventQuit call CloseViewers()
+augroup END
+
 " Close viewers on quit
 function! CloseViewers()
 	if executable('xdotool') && exists('b:vimtex')
@@ -25,7 +30,3 @@ function! CloseViewers()
 	endif
 endfunction
 
-augroup vimtex_event_2
-	au!
-	au User VimtexEventQuit call CloseViewers()
-augroup END
