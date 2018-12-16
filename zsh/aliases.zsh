@@ -74,6 +74,8 @@ alias ipy="ipython"  #--profile=erik"
 alias jno="jupyter notebook"  #jupyter notebook example.ipynb
 alias wnvi="watch -n 1 nvidia-smi"
 
+# Emacs binding
+alias semacs="bindkey -e"
 # alias scroll="xinput set-prop 12 284 -303 303" Some old laptop setting?
 # alias wif="sudo iwconfig wlp2s0 txpower 10dBm"
 # alias friture="python $HOME/friture/main.py"
