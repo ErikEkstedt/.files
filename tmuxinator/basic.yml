@@ -4,16 +4,20 @@ windows:
   - GIT:
       layout: even-horizontal
       panes:
-        - NlpPlay:
-          - cd ~/NLP/NlpPlay
+        - JobInterviewer:
+          - cd ~/NLP/JobInterviewer
           - tree -L 2
           - git status
-        - SpeechPlay:
-          - cd ~/Audio/SpeechPlay
+        - Text2Face:
+          - cd ~/NLP/Text2Face
           - tree -L 2
           - git status
         - Notes:
           - cd ~/Notes
+          - tree -d
+          - git status
+        - PHD:
+          - cd ~/phd
           - tree -d
           - git status
         - DotFiles:

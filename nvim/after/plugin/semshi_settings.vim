@@ -29,14 +29,14 @@ function! SemshiHighlights()
   hi semshiSelf            ctermfg=249 guifg=#04d377
   hi semshiUnresolved      ctermfg=226 guifg=#ffff00 cterm=underline gui=underline
   hi semshiSelected        ctermfg=231 guibg=#48505c guifg=#1ef944
-  hi semshiErrorSign       ctermfg=231 guifg=#ffffff guibg=#ff0000
+  hi semshiErrorSign       ctermfg=231 guifg=#aa1188 guibg=None
   hi semshiErrorChar       ctermfg=231 guifg=#ffffff guibg=#fb6000
   hi semshiImported        ctermfg=214 guifg=#44faf6 gui=bold
   hi pythonInclude         ctermfg=214 guifg=#ff00e6 gui=bold
   hi pythonFunction        ctermfg=214 guifg=#ad36ff
   hi pythonStatement       ctermfg=214 guifg=#ff00e6 gui=bold
   hi pythonConditional     ctermfg=214 guifg=#941faf
-  sign define semshiError text=E> texthl=semshiErrorSign
+  sign define semshiError text=⚠ texthl=semshiErrorSign
 endfunction
 
 
