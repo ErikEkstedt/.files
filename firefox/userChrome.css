@@ -1,0 +1,53 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+:root {
+	--ui-background: #000000;
+	--ui-background-second: #101314;
+	--ui-accent: #08a2f5;
+	--ui-emphasis: rgba(147, 206, 233, 0.8);
+	
+	--lwt-accent-color: var(--ui-accent) !important;
+	--tab-selection-background-color: var(--ui-background-second) !important;
+	--tab-hover-background-color: #45545E !important;
+	--url-and-searchbar-background-color: var(--ui-background) !important;
+
+	--chrome-background-color: var(--ui-background) !important; /*includes tabstrip background*/
+	--chrome-secondary-background-color: var(--ui-background-second) !important; /*includes toolbar, urlbar*/
+	--chrome-selection-background-color: #e8e8e8 !important;
+	--chrome-nav-bar-controls-border-color: rgba(255, 255, 255, 0.15) !important; /*urlbar border*/
+}
+
+/*toolbar*/
+#urlbar,
+#navigator-toolbox .searchbar-textbox {
+	border-radius: 4px !important;
+	transition: .1s;
+	transition-property: border-color;
+}
+
+#urlbar[focused],
+#navigator-toolbox .searchbar-textbox[focused] {
+	border-color: var(--ui-accent) !important;
+}
+
+#urlbar:not([focused]):hover,
+#navigator-toolbox .searchbar-textbox:not([focused]):hover {
+	border-color: var(--ui-emphasis) !important;
+}
+
+/* TAB */
+
+/* tab top border roundness */
+#TabsToolbar .tabs-newtab-button,
+#TabsToolbar .tabbrowser-tab,
+#TabsToolbar .tabbrowser-tab .tab-stack,
+#TabsToolbar .tabbrowser-tab .tab-background,
+#TabsToolbar .tabbrowser-tab .tab-content {
+  border-top-left-radius: 8px !important;
+  border-top-right-radius: 8px !important;
+}
+
+/* remove colored line above each tab */
+#TabsToolbar .tabbrowser-tab .tab-line {
+  visibility: hidden;
+}
