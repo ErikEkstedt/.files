@@ -1,10 +1,12 @@
 export FZF_DEFAULT_COMMAND='rg --files --hidden --no-ignore --iglob !"*.git/"'
-export FZF_DEFAULT_OPTS="--height 80% --reverse --preview 'bat --color always {}'"
+export FZF_DEFAULT_OPTS="--height 80% --reverse "
 
+# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND $bat_preview"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="--preview 'bat --color always {}'"
 
 export FZF_ALT_C_COMMAND='fd --type d --hidden --exclude ".git"'
-export FZF_ALT_C_OPTS="--preview 'tree -L 1 -C {}' "
+export FZF_ALT_C_OPTS="--preview 'tree -L 1 -C {} | head -200' "
 
 export FZF_CTRL_R_OPTS="--reverse"
 export FZF_COMPLETION_OPTS='+c -x'
@@ -12,45 +14,39 @@ export FZF_COMPLETION_OPTS='+c -x'
 
 # Functions
 cd-from-home() { #{{{
-	local current_dir=$(pwd)
-  cd
+	local current_dir=$(pwd); cd
+  setopt localoptions pipefail 2> /dev/null
+  local dir="$(eval "${FZF_ALT_C_COMMAND}" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" $(__fzfcmd) +m)"
 
-  local dir
-  dir="$(fd --type d --hidden | fzf)"
-
-	if [[ -z "$dir" ]]; then
+  if [[ -z "$dir" ]]; then
 		cd $current_dir
-		zle redisplay
-		return 0
-	fi
+    zle redisplay
+    return 0
+  fi
 
-	cd "$dir"
-	local ret=$?
-	zle fzf-redraw-prompt
-	typeset -f zle-line-init >/dev/null && zle zle-line-init
-	return $ret
+  cd "$dir"
+  local ret=$?
+  zle fzf-redraw-prompt
+  return $ret
 }
 zle -N cd-from-home
 #}}}
 
 cd-from-root() {
-	local current_dir=$(pwd)
-  cd /
+	local current_dir=$(pwd); cd /
+  setopt localoptions pipefail 2> /dev/null
+  local dir="$(eval "${FZF_ALT_C_COMMAND}" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" $(__fzfcmd) +m)"
 
-  local dir
-  dir="$(fd --type d --hidden | fzf)"
-
-	if [[ -z "$dir" ]]; then
+  if [[ -z "$dir" ]]; then
 		cd $current_dir
-		zle redisplay
-		return 0
-	fi
+    zle redisplay
+    return 0
+  fi
 
-	cd "$dir"
-	local ret=$?
-	zle fzf-redraw-prompt
-	typeset -f zle-line-init >/dev/null && zle zle-line-init
-	return $ret
+  cd "$dir"
+  local ret=$?
+  zle fzf-redraw-prompt
+  return $ret
 }
 zle -N cd-from-root
 
