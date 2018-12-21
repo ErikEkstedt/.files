@@ -144,7 +144,9 @@ class fzf_cd(Command):
         import os.path
         cwd = os.path.curdir
         os.chdir(os.path.expanduser('~'))
-        command="fd --type d --hidden --follow --no-ignore --exclude .git | fzf +m -i"
+        # command="fd --type d --hidden --follow --no-ignore --exclude .git | fzf +m -i"
+        command = "fd --type d --hidden --follow --no-ignore --exclude .git "
+        command += "| fzf -i --preview 'tree -L 1 -C {} | head -200' "
         fzf = self.fm.execute_command(command, stdout=subprocess.PIPE)
         stdout, stderr = fzf.communicate()
         if fzf.returncode == 0:
@@ -168,7 +170,8 @@ class fzf_cd_from_here(Command):
         import subprocess
         import os.path
         cwd = os.path.curdir
-        command="fd --type d --hidden --follow --no-ignore --exclude .git | fzf +m -i"
+        command = "fd --type d --hidden --follow --no-ignore --exclude .git "
+        command += "| fzf -i --preview 'tree -L 1 -C {} | head -200' "
         fzf = self.fm.execute_command(command, stdout=subprocess.PIPE)
         stdout, stderr = fzf.communicate()
         if fzf.returncode == 0:

@@ -30,3 +30,5 @@ co = checkout
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[init]
+	templatedir = /home/erik/.git-templates

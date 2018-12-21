@@ -1,8 +1,8 @@
-@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+/* @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); */
 
 :root {
 	--ui-background: #000000;
-	--ui-background-second: #101314;
+	--ui-background-second: #31363b;
 	--ui-accent: #08a2f5;
 	--ui-emphasis: rgba(147, 206, 233, 0.8);
 	

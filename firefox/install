@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import shutil
+import os
 from os.path import join, expanduser
 import glob
 
@@ -10,6 +10,8 @@ src = join(HOME, '.files', 'firefox', 'userChrome.css')
 dst = glob.glob(join(HOME, '.mozilla/firefox/**/chrome'))[0]
 dst = join(dst, 'userChrome.css')
 
-print(f'Copying:\n {src} -> {dst}')
+print(f'Creating link:\n {src} -> {dst}')
 
-shutil.copy(src, dst)
+cmd = ' '.join(['ln -sf', src, dst])
+os.system(cmd)
+

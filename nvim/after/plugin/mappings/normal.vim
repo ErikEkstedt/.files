@@ -124,8 +124,8 @@ nnoremap <space>b :bp<CR>
 nnoremap <space>n :bn<CR>
 
 " Workflow [right] / Todo(work)[left]
-nnoremap <h :leftabove vsplit ~/phd/ToDo.md<CR>:vertical resize 40<CR>
-nnoremap <l :vsplit ~/phd/WorkFlow.md<CR>:vertical resize 40<CR>
+nnoremap <h :leftabove vsplit ~/phd/ToDo.md<CR>:vertical resize 80<CR>
+nnoremap <l :vsplit ~/phd/WorkFlow.md<CR>:vertical resize 80<CR>
 
 " Create new window
 nnoremap <space>m <c-w>n
