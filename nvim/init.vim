@@ -1,26 +1,6 @@
 " vim: fdm=marker tw=0
 " NeoVim
-" Erik
-" Kubuntu 18.04 / KDE neon 16.04 / kubuntu 17.10
 " Unicode characters: https://www.w3schools.com/charsets/ref_utf_dingbats.asp
-" This file is in $NVIM_ROOT (which is linked from repo to
-" ~/.config/nvim)
-"
-" $NVIM_ROOT
-" ├── after
-" │   └── ftplugin
-" │		└── plugin: all plugin settings
-" │       └── mappings: keymappings
-" ├── autoload
-" │   ├── erik
-" │   └── lightline
-" │       └── colorscheme
-" ├── colors
-" ├── mysnippets: custom snippets
-" ├── oni: settings and mappings for Oni
-" ├── plugin: In here all my settings are stored.
-" ├── spell
-" └── wip
 
 " Variables and Paths {{{
 let g:HOSTNAME = substitute(system('hostname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
