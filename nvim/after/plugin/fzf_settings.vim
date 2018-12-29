@@ -8,6 +8,19 @@ command! -bang -nargs=* Rg
 	\   fzf#vim#with_preview('right:50%'),
 	\   <bang>0)
 
+
+" Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+
+" Likewise, Files command with preview window
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
 "}}}
 " settings {{{
 " [Buffers] Jump to the existing window if possible
@@ -44,7 +57,8 @@ let g:fzf_colors = {
 " Install 'highlight' to preview files with syntax highlight
 " sudo apt install highlight
 " let g:fzf_files_options = '--color "border:#FF02F5,info:#aa00FF" --preview "highlight -O ansi --force {} 2> /dev/null"'
-" let g:fzf_files_options = '--color "border:#FF02F5,info:#aa00FF" --preview "bat --color always {}"'
+
+let g:fzf_files_options = '--color "border:#FF02F5,bg:#000000,bg+:#000000,info:#aa00FF" --preview "bat --color always {}"'
 
 "}}}
 " Mappings {{{

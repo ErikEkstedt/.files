@@ -146,6 +146,19 @@ snippet answer "user input answer"
 ans = input('$0\n> ')
 endsnippet
 
+snippet csv "read a csv file"
+with open(path, 'r') as f:
+	reader = csv.reader(f)
+	csv_data = [r for r in reader]
+$0
+endsnippet
+
+snippet json "read a json file"
+with open(path, 'r') as f:
+	json_data = json.loads(f.read())
+$0
+endsnippet
+
 ##########
 # COMMON #
 ##########
