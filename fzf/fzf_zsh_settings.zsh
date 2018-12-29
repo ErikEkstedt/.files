@@ -57,7 +57,7 @@ _fzf_compgen_path() { #{{{
 } # }}}
 
 _fzf_compgen_dir() { #{{{
-	fd --type d -p --hidden --follow --exclude ".git" . "$1" 
+  fd --type d -p --hidden --follow --exclude ".git" . "$1" 
 }# }}}
 
 # Find Files
@@ -80,6 +80,16 @@ files-from-home() {
 }
 zle -N files-from-home
 
+fzf_tmux_kill_sessions() {
+  # TODO
+  # Extend to multiple choices
+  local tsess="$(tmux list-sessions)"
+  echo $tsess | fzf --reverse -m --prompt 'kill session: ' -1 \
+    | cut -d':' -f1 \
+    | xargs tmux kill-session -t
+		
+}
+
 # WIP
 # root-files() {
 #   local cmd="rg --files --hidden"
@@ -101,7 +111,7 @@ zle -N files-from-home
 # zle -N files-from-root
 
 
-# fkill - kill processes - list only the ones you can kill. Modified the earlier script.
+# fkill - kill processes - list only the ones you can kill.
 fkill() {
   local pid
   if [ "$UID" != "0" ]; then
