@@ -1,44 +1,52 @@
-/* @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); */
-
 :root {
-	--ui-background: #000000;
-	--ui-background-second: #31363b;
-	--ui-accent: #08a2f5;
-	--ui-emphasis: rgba(147, 206, 233, 0.8);
-	
-	--lwt-accent-color: var(--ui-accent) !important;
-	--tab-selection-background-color: var(--ui-background-second) !important;
-	--tab-hover-background-color: #45545E !important;
-	--url-and-searchbar-background-color: var(--ui-background) !important;
+  --ui-background: #000000;
+  --ui-background-second: #22252b;
+  --ui-accent: #00a8ff;
+  --ui-accent-second: #1755e2;
+  --ui-emphasis: rgba(147, 206, 233, 0.8);
 
-	--chrome-background-color: var(--ui-background) !important; /*includes tabstrip background*/
-	--chrome-secondary-background-color: var(--ui-background-second) !important; /*includes toolbar, urlbar*/
-	--chrome-selection-background-color: #e8e8e8 !important;
-	--chrome-nav-bar-controls-border-color: rgba(255, 255, 255, 0.15) !important; /*urlbar border*/
+  --lwt-accent-color: var(--ui-background) !important; /* tabbar background */
+  --tab-selection-background-color: var(--ui-background-second) !important;
+  --url-and-searchbar-background-color: var(--ui-background) !important;
+
+  --chrome-background-color: var(
+    --ui-background
+  ) !important; /*includes tabstrip background*/
+  --chrome-secondary-background-color: var(
+    --ui-background-second
+  ) !important; /*includes toolbar, urlbar*/
+}
+
+#nav-bar {
+  border-bottom-left-radius: 4px !important;
+  border-bottom-right-radius: 4px !important;
+  border-top-left-radius: 4px !important;
+  border-top-right-radius: 4px !important;
 }
 
 /*toolbar*/
 #urlbar,
 #navigator-toolbox .searchbar-textbox {
-	border-radius: 4px !important;
-	transition: .1s;
-	transition-property: border-color;
+  border-radius: 4px !important;
+  transition: 0.1s;
+  transition-property: border-color;
+}
+
+.searchbar-textbox {
+  border-color: var(--ui-accent) !important;
 }
 
 #urlbar[focused],
 #navigator-toolbox .searchbar-textbox[focused] {
-	border-color: var(--ui-accent) !important;
+  border-color: var(--ui-accent) !important;
 }
 
 #urlbar:not([focused]):hover,
 #navigator-toolbox .searchbar-textbox:not([focused]):hover {
-	border-color: var(--ui-emphasis) !important;
+  border-color: var(--ui-accent-second) !important;
 }
 
-/* TAB */
-
 /* tab top border roundness */
-#TabsToolbar .tabs-newtab-button,
 #TabsToolbar .tabbrowser-tab,
 #TabsToolbar .tabbrowser-tab .tab-stack,
 #TabsToolbar .tabbrowser-tab .tab-background,
@@ -50,4 +58,37 @@
 /* remove colored line above each tab */
 #TabsToolbar .tabbrowser-tab .tab-line {
   visibility: hidden;
+}
+
+/* Shorten the vertical lines between background tabs */
+.tabbrowser-tab::before,
+.tabbrowser-tab::after {
+  margin-top: 9px;
+}
+
+/* New tab button color */
+#new-tab-button,
+.tabs-newtab-button {
+  fill: #777 !important;
+  /*	background-color: var(--ui-background-second) !important; */
+
+  margin-top: 5px !important;
+  margin-bottom: 5px !important;
+  margin-left: 5px !important;
+  margin-right: 5px !important;
+
+  border-bottom-left-radius: 12px !important;
+  border-bottom-right-radius: 12px !important;
+  border-top-left-radius: 12px !important;
+  border-top-right-radius: 12px !important;
+}
+
+/* URL Bar */
+#pageActionButton,
+#pocket-button-box,
+ar-button,
+.autocomplete-history-dropmarker,
+#identity-icon-labels {
+  display: none !important;
+
 }
