@@ -1,11 +1,10 @@
 # WorkFLow
 
-
-
 ## Vim
 
 * [ ] quickfix list over all "#TODO" in python projects.
   - all commented TODO
+  - First thing to happen if opening vim in a git repo
 
 ### Record all keystrokes
 
@@ -62,6 +61,11 @@ space is spanned byt frequency channels and time (frames).
 * What would that argumentation mean for the analgous case of Spectrogram space?
 
 (see also: http://www.jordipons.me/cnn-filter-shapes-discussion/)
+
+The quick answer is that because both problems operate in 2D-space the only difference is
+the size and complexity of the information they encode. Character level encodings,
+1D-vectors, are probably less information filled than the 1D-vector of frequency-bin
+values for a frame in a spectrogram.
 
 ------------------------------
 
