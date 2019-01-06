@@ -18,8 +18,8 @@ setlocal nowrap
 "   \s\@!  - Not followed by whitespace
 "   / \0   - Add spaces around the match
 "   /g     - Replace globally
-nnoremap <buffer>,= :s/\s\@<!=\+\s\@!/ \0/g<cr>
-nnoremap <buffer>,= :s/\s\@<!=\+\s\@!/ = /g<CR>
+nnoremap <buffer> ,= :s/\s\@<!=\+\s\@!/ \0/g<cr>
+nnoremap <buffer> ,= :s/\s\@<!=\+\s\@!/ = /g<CR>
 
 " colon at the end of the line
 nnoremap <buffer>,Ö A:<esc>

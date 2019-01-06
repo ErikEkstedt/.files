@@ -93,10 +93,13 @@ Plug 'tpope/vim-repeat'                " XXX repeat commands not repeatable by '
 Plug 'tpope/vim-surround'              " XXX Surround objects with quotes, brackets ...
 Plug 'w0rp/ale'                        " asynchronous linting
 Plug 'wellle/targets.vim'              " XXX ci' works on (, [, {, < on entire line
-
+Plug 'romainl/vim-cool'                " unhighlights searches when it is not needed anymor
+	
 " Plug 'mtth/scratch.vim'                " Unobtrusive scratch
 " Plug 'szymonmaszke/vimpyter'
 " Plug 'ErikEkstedt/vimpyter'
+" Plug 'itchyny/lightline.vim'
+" Plug 'edkolev/tmuxline.vim'          " tmux statusline same as vim.	 :Tmuxline lightline
 
 " Preview Text 
 Plug 'lervag/vimtex'       " XXX latex compiler, preview latex pdf, highlight and syntax. alot more.
@@ -104,19 +107,14 @@ Plug 'mhinz/neovim-remote' " Needed for vimtex 'compiler_progranme=nvr' / '--rem
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 Plug 'shime/vim-livedown'
 
-" Plug 'itchyny/lightline.vim'
-" Plug 'edkolev/tmuxline.vim'          " tmux statusline same as vim.	 :Tmuxline lightline
-
-" source ~/.files/nvim/after/plugin/statusline.vim
-
 
 " Snippets and Syntax
 if !exists("g:gui_oni") " {{{
   " Syntax
   " Plug 'klen/python-mode'                " Python mode (docs, refactor, lints...)
   " Plug 'sheerun/vim-polyglot'            " All the syntax messed upp syntax for oni ( turned .js -> javascript.jsx
-  Plug 'daeyun/vim-matlab'               " MATLAB
-  Plug 'othree/xml.vim'                  " xml highlight
+  " Plug 'daeyun/vim-matlab'               " MATLAB
+  " Plug 'othree/xml.vim'                  " xml highlight
 
   Plug 'mxw/vim-jsx'
   Plug 'prettier/vim-prettier', {
@@ -133,8 +131,8 @@ if !exists("g:gui_oni") " {{{
   Plug 'SirVer/ultisnips'                " XXX snippet engine
   Plug 'honza/vim-snippets'              " XXX snippets
 
-  Plug 'epilande/vim-es2015-snippets'  "ES2015 code snippets (Optional). Installed for react play
-  Plug 'epilande/vim-react-snippets'  " React code snippets. post install (yarn install | npm install) then load plugin only for editing supported files
+  " Plug 'epilande/vim-es2015-snippets'  "ES2015 code snippets (Optional). Installed for react play
+  " Plug 'epilande/vim-react-snippets'  " React code snippets. post install (yarn install | npm install) then load plugin only for editing supported files
 endif "}}}
 
 
@@ -167,7 +165,6 @@ call plug#end()
 " }}}
 
 " Basic Settings {{{
-
 
 " colorscheme monokai " onedark
 colorscheme onedark

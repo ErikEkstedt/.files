@@ -37,7 +37,7 @@ nnoremap <leader><backspace> mz:%s/\s\+$//<cr>:let @/=''<cr>`z
 nnoremap <leader>db :%bd<CR><C-O>:bd#<CR>
 
 "indenting/unindenting
-nnoremap <tab> >>
+" nnoremap <tab> >>
 nnoremap <s-tab> <lt><lt>
 
 " standard saving options
@@ -110,7 +110,7 @@ nnoremap gN #zz
 nnoremap gp %
 nnoremap gl f,a<CR><esc>
 nnoremap gL f;a<CR><esc>
-nnoremap gs f<space>a<CR><esc>
+nnoremap g<space> f<space>a<CR><esc>
 
 " Movement
 
@@ -125,7 +125,7 @@ nnoremap <space>n :bn<CR>
 
 " Workflow [right] / Todo(work)[left]
 nnoremap <h :leftabove vsplit ~/phd/ToDo.md<CR>:vertical resize 80<CR>
-nnoremap <l :vsplit ~/phd/WorkFlow.md<CR>:vertical resize 80<CR>
+nnoremap <l :vsplit ~/.files/WorkFlow.md<CR>:vertical resize 80<CR>
 
 " Create new window
 nnoremap <space>m <c-w>n

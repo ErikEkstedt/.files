@@ -6,3 +6,5 @@ inoremap <c-l> <Right>
 inoremap <c-h> <Left>
 inoremap <c-j> <Down>
 inoremap <c-k> <Up>
+
+inoremap <s-tab> <esc><<i

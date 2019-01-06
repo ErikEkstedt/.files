@@ -21,6 +21,15 @@ from tqdm import tqdm
 $0
 endsnippet
 
+# Argparse
+
+snippet argparse "argparse snippet"
+import argparse
+parser = argparse.ArgumentParser(description='$1')
+parser.add_argument('--$2', type='$3', default='$4' 
+args = parser.parse_args()
+$0
+endsnippet
 
 # Pytorch
 snippet classTorch "class pytorch"
