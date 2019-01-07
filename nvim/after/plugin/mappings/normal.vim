@@ -2,7 +2,7 @@
 " MAPPINGS
 
 "  Trying out
-nnoremap <leader>br :! ./current_tabs<CR>
+nnoremap <leader>ct :! ./current_tabs<CR>
 
 " open quickfix window for latest vim search term.
 nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
