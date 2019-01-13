@@ -37,6 +37,7 @@ alias ldt="tree -d -L 2"
 
 # Movement {{{
 alias gfi="cd ~/.files; ls"
+alias gml="cd ~/ml_reusable; ls"
 alias gz="cd ~/.files/zsh; ls"
 alias gbl="cd ~/blog; ls"
 alias gph="cd ~/phd; ls"
@@ -150,5 +151,8 @@ export MOUNTPATH=~/LAN
 alias wake="wakeonlan -i xxx.xxx.xxx.xxx yy:yy:yy:yy:yy:yy" 
 alias mountmachine="sshfs -p 2002 -o ssh_command='ssh -i ~/.ssh//id_rsa' user@xxx.xxx.xxx.xxx:/PATH/ ~/$MOUNTPATH"
 alias umountall="sudo umount ~/Machines/*"
+# }}}
 
+# MacbookPro linux {{{
+alias wake=
 # }}}
