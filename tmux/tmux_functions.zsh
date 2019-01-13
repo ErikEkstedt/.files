@@ -44,4 +44,3 @@ alias tsname=_tmux_rename_session_curdir
 alias tsn=_tmux_rename_session_curdir
 alias twname=_tmux_rename_window_curdir
 alias twn=_tmux_rename_window_curdir
-
