@@ -1,3 +1,13 @@
+/* Open Firefox browser
+1. Open developer tools (Ctrl-Shift-I)
+2. Make sure to "Enable remote debugging"
+	 and "Enable browser chrome and add-on debugging toolboxes"
+3. Press Ctrl-Shift-Alt-I to open remote debugger.
+	- Use inspector
+	- Play around with style editor -> userChrome.css
+*/
+
+
 :root {
   --ui-background: #000000;
   --ui-background-second: #22252b;
@@ -17,16 +27,13 @@
   ) !important; /*includes toolbar, urlbar*/
 }
 
+/* bar where url, extension and settings are */
 #nav-bar {
-  border-bottom-left-radius: 4px !important;
-  border-bottom-right-radius: 4px !important;
-  border-top-left-radius: 4px !important;
   border-top-right-radius: 4px !important;
 }
 
-/*toolbar*/
-#urlbar,
-#navigator-toolbox .searchbar-textbox {
+/* ToolBar */
+#urlbar, #navigator-toolbox .searchbar-textbox {
   border-radius: 4px !important;
   transition: 0.1s;
   transition-property: border-color;
@@ -55,6 +62,12 @@
   border-top-right-radius: 8px !important;
 }
 
+/* Bookmarks toolbar */
+/* #PersonalToolbar { */
+/*   border-top-left-radius: 8px !important; */
+/*   border-top-right-radius: 8px !important; */
+/* } */
+
 /* remove colored line above each tab */
 #TabsToolbar .tabbrowser-tab .tab-line {
   visibility: hidden;
@@ -67,8 +80,7 @@
 }
 
 /* New tab button color */
-#new-tab-button,
-.tabs-newtab-button {
+#new-tab-button .tabs-newtab-button {
   fill: #777 !important;
   /*	background-color: var(--ui-background-second) !important; */
 
