@@ -5,7 +5,6 @@
 " Variables and Paths {{{
 let g:HOSTNAME = substitute(system('hostname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
 let g:HOME = substitute(system('echo $HOME'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
-let g:hostpath = '/home/' . g:HOSTNAME . '/'
 let g:UNAME = substitute(system('uname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
 let g:BROWSER = "firefox"
 
@@ -22,11 +21,11 @@ if has("unix")  "Python & Node
   if g:UNAME == "Darwin"
 		let g:python3_host_prog='/Users/erik/miniconda3/envs/neovim3/bin/python'
 		let g:python_host_prog='/Users/erik/miniconda3/envs/neovim2/bin/python'
-		let g:node_host_prog='/Users/erik/.node_modules_global/bin/neovim-node-host' 
+		let g:node_host_prog='/Users/erik/.node_modules_global/bin/neovim-node-host'
 	else
 		let g:python3_host_prog=g:HOME . '/miniconda3/envs/neovim3/bin/python'
 		let g:python_host_prog=g:HOME . '/miniconda3/envs/neovim2/bin/python'
-		let g:node_host_prog=g:HOME . '/.node_modules_global/bin/neovim-node-host' 
+		let g:node_host_prog=g:HOME . '/.node_modules_global/bin/neovim-node-host'
 	endif
 endif "}}}
 " }}}
@@ -43,7 +42,7 @@ endif "}}}
 call plug#begin('~/.vim/bundle')
 
 " AutoCompletion
-if has('nvim') 
+if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
     Plug 'Shougo/deoplete.nvim'
@@ -71,7 +70,7 @@ Plug 'KabbAmine/vCoolor.vim'           " XXX pick color from menu
 Plug 'lilydjwg/colorizer'              " XXX colorize hexcolor in editor
 
 Plug 'Raimondi/delimitMate'            " auto complete parens etc.
-Plug 'Valloric/MatchTagAlways' 
+Plug 'Valloric/MatchTagAlways'
 Plug 'Yggdroot/indentLine'             " XXX see where there is indent
 Plug 'airblade/vim-gitgutter'          " XXX see git changes in file in the numberline
 Plug 'easymotion/vim-easymotion'       " XXX visualize targets tot move to specific words
@@ -95,14 +94,14 @@ Plug 'tpope/vim-surround'              " XXX Surround objects with quotes, brack
 Plug 'w0rp/ale'                        " asynchronous linting
 Plug 'wellle/targets.vim'              " XXX ci' works on (, [, {, < on entire line
 Plug 'romainl/vim-cool'                " unhighlights searches when it is not needed anymor
-	
+
 " Plug 'mtth/scratch.vim'                " Unobtrusive scratch
 " Plug 'szymonmaszke/vimpyter'
 " Plug 'ErikEkstedt/vimpyter'
 " Plug 'itchyny/lightline.vim'
 " Plug 'edkolev/tmuxline.vim'          " tmux statusline same as vim.	 :Tmuxline lightline
 
-" Preview Text 
+" Preview Text
 Plug 'lervag/vimtex'       " XXX latex compiler, preview latex pdf, highlight and syntax. alot more.
 Plug 'mhinz/neovim-remote' " Needed for vimtex 'compiler_progranme=nvr' / '--remote'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
@@ -143,7 +142,7 @@ if !exists("g:gui_oni")
 	let g:tmux_navigator_no_mappings = 1
 endif
 
-" Colorschemes and Appearence {{{ 
+" Colorschemes and Appearence {{{
 set termguicolors " Enable true color support.
 Plug 'ErikEkstedt/onedark.vim'
 
@@ -151,7 +150,7 @@ Plug 'ErikEkstedt/onedark.vim'
 "   Plug 'joshdick/onedark.vim'           " look like atom?
 "   Plug 'crusoexia/vim-monokai'
 " 	Plug 'chriskempson/base16-vim'        " many colorschemes
-" 	Plug 'skielbasa/vim-material-monokai' 
+" 	Plug 'skielbasa/vim-material-monokai'
 " 	Plug 'kiddos/malokai.vim'
 " 	Plug 'Reewr/vim-monokai-phoenix'
 " 	Plug 'vim-scripts/wombat256.vim'
@@ -220,7 +219,7 @@ if UNAME == 'Linux'
 	" If font is resized through hotkey inside nvim. Nvim resets the font to the
 	" default.
 	set guicursor=
-	" It is a shame because 
+	" It is a shame because
   " set guicursor=n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20
 	" Works in konsole. box in normal-visual-commmand and line in insert
 else
@@ -237,7 +236,7 @@ set lazyredraw                 " don't redraw screen during macros
 
 set linebreak                  " break lines (only visually) if window is too narrow
 set formatoptions+=j           " smart line joining. uncomments comments.
-set formatoptions+=n           " smart autoindenting inside numbered lists 
+set formatoptions+=n           " smart autoindenting inside numbered lists
 set nowrap
 set wrapmargin=5
 let &showbreak="↪"
@@ -302,7 +301,7 @@ set wildignore+=*.fasl                           " Lisp FASLs
 
 " file is large from 5mb
 let g:LargeFile = 1024 * 1024 * 5
-augroup LargeFile 
+augroup LargeFile
  autocmd BufReadPre * let f=getfsize(expand("<afile>")) | if f > g:LargeFile || f == -2 | call LargeFile() | endif
 augroup END
 
