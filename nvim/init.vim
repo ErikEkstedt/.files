@@ -4,6 +4,7 @@
 
 " Variables and Paths {{{
 let g:HOSTNAME = substitute(system('hostname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
+let g:HOME = substitute(system('echo $HOME'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
 let g:hostpath = '/home/' . g:HOSTNAME . '/'
 let g:UNAME = substitute(system('uname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
 let g:BROWSER = "firefox"
@@ -23,9 +24,9 @@ if has("unix")  "Python & Node
 		let g:python_host_prog='/Users/erik/miniconda3/envs/neovim2/bin/python'
 		let g:node_host_prog='/Users/erik/.node_modules_global/bin/neovim-node-host' 
 	else
-		let g:python3_host_prog='/home/' . g:HOSTNAME . '/miniconda3/envs/neovim3/bin/python'
-		let g:python_host_prog='/home/' . g:HOSTNAME . '/miniconda3/envs/neovim2/bin/python'
-		let g:node_host_prog='/home/' . g:HOSTNAME . '/.node_modules_global/bin/neovim-node-host' 
+		let g:python3_host_prog=g:HOME . '/miniconda3/envs/neovim3/bin/python'
+		let g:python_host_prog=g:HOME . '/miniconda3/envs/neovim2/bin/python'
+		let g:node_host_prog=g:HOME . '/.node_modules_global/bin/neovim-node-host' 
 	endif
 endif "}}}
 " }}}
