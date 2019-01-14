@@ -189,8 +189,8 @@ set shortmess+=a                      " Make the save message shorter. Helps avo
 set shortmess+=c                      " see :help deoplete -> Configuration FAQ (ins-completion-menu)
 
 set modeline                          " example at top of script:  " vim: ft=vim
-set foldmethod=indent                 " marker for all but specified filetypes (ex: python)
-set foldlevelstart=-1                 " start with fold everything
+set foldmethod=indent
+set foldlevelstart=1                 " start with fold everything
 set foldclose=                        " all
 set foldtext=erik#settings#foldtext() " see nvim/autoload/erik/settings.vim
 
