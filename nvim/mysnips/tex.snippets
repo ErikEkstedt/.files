@@ -35,3 +35,27 @@ snippet article "article template"
 ${0}
 \end{document}
 endsnippet
+
+# Beamer
+
+snippet beamer "beamer template" 
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+
+\usetheme{Frankfurt}
+
+\title{${1:Title}}
+\author{Erik Ekstedt}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}[t]{$2}
+${0}
+\end{frame}
+
+
+\end{document}
+endsnippet
