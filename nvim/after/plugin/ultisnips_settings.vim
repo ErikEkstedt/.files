@@ -8,7 +8,7 @@ if g:UNAME == "Darwin"
 	" let g:UltiSnipsSnippetsDir = ["/Users/erik/.files/nvim/mysnips"]
 	let g:UltiSnipsSnippetDirectories = [g:HOSTNAME . "/Users/erik/.files/nvim/mysnips","/Users/erik/.vim/bundle/vim-snippets/UltiSnips", "UltiSnips"]
 else
-	let g:UltiSnipsSnippetDirectories = ["/home/" . g:HOSTNAME . "/.files/nvim/mysnips","/home/erik/.vim/bundle/vim-snippets/UltiSnips", "UltiSnips"]
+	let g:UltiSnipsSnippetDirectories = [g:HOME . "/.files/nvim/mysnips", g:HOME . "/.vim/bundle/vim-snippets/UltiSnips", "UltiSnips"]
 endif
 
 " Trigger configuration.

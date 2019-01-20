@@ -1,5 +1,17 @@
 priority 250
 
+snippet arguments "arguments given?"
+if [ $# -eq 0 ]; then
+	echo "No arguments supplied"
+fi
+endsnippet
+
+snippet argcount "argument count?"
+if (( $# != 1 )); then
+	echo "Illegal number of parameters"
+fi
+endsnippet
+
 snippet ifans "if answer=='y'"
 echo "$1 (y/n)"
 read answer

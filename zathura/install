@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# https://pwmt.org/projects/zathura/installation/
+
+
+
+echo "Do you wish to install zathura? (y/n)"
+read answer
+if [[ $answer == 'y' || $answer == 'Y'   ]]; then
+  sudo apt install zathura
+fi
+
+echo "Linking config file"
+mkdir $HOME/.config/zathura
+ln -sf $HOME/.files/zathura/zathurarc $HOME/.config/zathura/zathurarc
