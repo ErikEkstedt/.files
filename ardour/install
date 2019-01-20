@@ -1,0 +1,31 @@
+#!/bin/bash
+# Install
+
+
+
+# python 2 -> ./wav configure
+# boost version too old
+
+# BOost
+sudo add-apt-repository ppa:boost-latest/ppa
+sudo apt-get update
+sudo apt-get install libboost1X.55-all-dev
+
+
+# glib
+sudo apt install libglibmm-2.4                                                       <<<
+
+# sndfile
+sudo apt install libsndfile1-dev
+
+# libcurl
+sudo apt install libcurl4-gnutls-dev                                                 <<<
+
+# libarchive
+sudo apt install libarchive-dev
+
+# liblo
+sudo apt install liblo-dev
+
+# taglib
+
