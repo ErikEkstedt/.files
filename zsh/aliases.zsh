@@ -118,6 +118,7 @@ alias gdi="git diff"
 alias gps="git push"
 alias gpl="git pull"
 alias gst="git status"
+alias gch="git checkout --"
 
 # For all panes in window (tmux)
 alias Gps='tspc "git push"'
