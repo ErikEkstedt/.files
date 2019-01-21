@@ -1,0 +1,20 @@
+#!/bin/bash
+
+
+# Website
+# https://lmms.io/download/#linux
+
+daw=~/DAW
+
+mkdir -p $daw
+url=https://github.com/LMMS/lmms/releases/download/v1.2.0-rc7/
+fname=lmms-1.2.0-rc7-linux-x86_64.AppImage
+url+=$fname
+
+echo "Downloading .AppImage -> ~/DAW"
+echo
+cd $daw
+wget $url
+chmod +x $fname
+echo
+echo "Done!"
