@@ -34,9 +34,14 @@ function cfg() { #{{{
 ################################################################
 
 function so() { #{{{
-	local env=$(ls $HOME/miniconda3/envs | fzf)
-	# source activate "$1"
-	conda activate "$env"
+  local env
+  if [ -z "$1" ]; then
+    env=$(ls $HOME/miniconda3/envs | fzf)
+    # source activate "$1"
+  else
+    env=$1
+  fi
+  conda activate "$env"
 } 
 alias sod="conda deactivate"
 zle -N so
