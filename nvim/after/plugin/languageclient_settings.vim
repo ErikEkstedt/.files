@@ -17,6 +17,11 @@
 
 " pip install python-language-server
 
+" MAPPINGS
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+nnoremap K :call LanguageClient#textDocument_hover()<CR>
+nnoremap gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <F2> :call LanguageClient#textDocument_rename()<CR>
 
 " SETTINGS
 " Automatically start language servers.

@@ -21,11 +21,11 @@
 " SETTINGS
 " Automatically start language servers.
 
-let g:LanguageClient_serverCommands = {
-		\ 'javascript': ['~/.node_modules_global/bin/javascript-typescript-stdio'],
-		\ 'markdown': ['~/node_modules/markdown-language-server'],
-		\ 'javascript.jsx': ['~/.node_modules_global/bin/javascript-typescript-stdio'],
-    \ 'python': ['~/miniconda3/envs/neovim3/bin/pyls']}
+" let g:LanguageClient_serverCommands = {
+" 		\ 'javascript': ['~/.node_modules_global/bin/javascript-typescript-stdio'],
+" 		\ 'markdown': ['~/node_modules/markdown-language-server'],
+" 		\ 'javascript.jsx': ['~/.node_modules_global/bin/javascript-typescript-stdio'],
+"     \ 'python': ['~/miniconda3/envs/neovim3/bin/pyls']}
 
 " Messes with ultisnips. Disable for now and rely on snippets.
 " More suitable for my usecase
@@ -33,8 +33,8 @@ let g:LanguageClient_serverCommands = {
 
 " Mappings
 
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-nnoremap K :call LanguageClient#textDocument_hover()<CR>
-nnoremap gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <F2> :call LanguageClient#textDocument_rename()<CR>
+" nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" nnoremap K :call LanguageClient#textDocument_hover()<CR>
+" nnoremap gd :call LanguageClient#textDocument_definition()<CR>
+" nnoremap <F2> :call LanguageClient#textDocument_rename()<CR>
 

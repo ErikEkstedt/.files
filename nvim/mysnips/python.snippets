@@ -1,9 +1,28 @@
 priority 150
 
+# tensorboardx
+
+snippet tensorboardx "expanduser"
+from tensorboardX import SummaryWriter
+
+writer = SummaryWriter()
+$0
+endsnippet
+
 # os
 
 snippet expanduser "expanduser"
 home = os.path.expanduser('~')
+$0
+endsnippet
+
+# Argparse
+
+snippet argparse "argparse snippet"
+import argparse
+parser = argparse.ArgumentParser(description='$1')
+parser.add_argument('--$2', type='$3', default='$4' 
+args = parser.parse_args()
 $0
 endsnippet
 
@@ -34,7 +53,7 @@ endsnippet
 snippet argparse "argparse snippet"
 import argparse
 parser = argparse.ArgumentParser(description='$1')
-parser.add_argument('--$2', type='$3', default='$4' 
+parser.add_argument('--$2', type=$3, default='$4')
 args = parser.parse_args()
 $0
 endsnippet
@@ -63,6 +82,21 @@ class ${1:MyDataset}(Dataset):
 	def __getitem__(self, idx):
 		pass
 endsnippet
+
+snippet get_dataloader "dataloader with training split"
+def get_data_loader(${1:dataset_path}, train_split=0.9, **kwargs):
+	dset = ${2:Dataset}(dataset_path) 
+
+	train_size = int(len(dset) * train_split)
+	test_size = len(dset) - train_size
+	train_dset, test_dset = torch.utils.data.random_split(dset, [train_size, test_size])
+
+	train_loader = DataLoader(train_dset, **kwargs)
+	test_loader = DataLoader(test_dset, **kwargs)
+
+	return train_loader, test_loader
+endsnippet
+
 
 snippet cuda "use cuda pytorch"
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
