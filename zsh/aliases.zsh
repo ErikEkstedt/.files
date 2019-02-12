@@ -74,6 +74,7 @@ alias py="python"  #--profile=erik"
 alias ipy="ipython"  #--profile=erik"
 alias jno="jupyter notebook"  #jupyter notebook example.ipynb
 alias wnvi="watch -n 1 nvidia-smi"
+alias wnvi2="watch -n 1 nvidia-smi --query-gpu=index,memory.used,memory.total,power.draw --format=csv"
 
 # Emacs binding
 alias semacs="bindkey -e"

@@ -11,3 +11,8 @@ cnoreabbrev Qa! qa!
 cnoreabbrev QA! qa!
 cnoreabbrev <expr> h getcmdtype() == ":" && getcmdline() == 'h' ? 'tab help' : 'h'
 cnoreabbrev <expr> q getcmdtype() == ":" && getcmdline() == 'q' ? 'q' : 'q'
+
+inoreabbrev pritn print
+inoreabbrev imrpot import
+inoreabbrev improt import
+inoreabbrev ipmrot import

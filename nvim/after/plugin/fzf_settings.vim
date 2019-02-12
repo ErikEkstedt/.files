@@ -32,7 +32,7 @@ let g:fzf_layout = {'down': '40%'}
 let g:fzf_action = {
             \ 'ctrl-t': 'tab split',
             \ 'ctrl-l': 'vsplit',
-            \ 'ctrl-x': 'split',
+            \ 'ctrl-j': 'split',
             \ 'ctrl-o': 'edit',
             \ 'Enter': 'edit',
             \ 'Esc': 'exit', }
