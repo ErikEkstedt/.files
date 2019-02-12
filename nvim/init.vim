@@ -53,11 +53,13 @@ Plug 'zchee/deoplete-jedi'
 Plug 'Shougo/neco-vim'
 Plug 'Shougo/neopairs.vim'
 
-
-" Testing
+" ================ Testing ================
+" Want to check out coc
+" https://github.com/neoclide/coc.nvim
 Plug 'dhruvasagar/vim-zoom'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 " Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+" ================ Testing ================
 
 " Plugins marked with XXX I know I use/like a lot.
 " Uncommented are unused to see if I miss them but keep around if I change my mind
@@ -91,22 +93,21 @@ Plug 'tpope/vim-fugitive'              " XXX git tools
 Plug 'tpope/vim-obsession'             " :mksession | saves a vim instance | used when saving tmux session
 Plug 'tpope/vim-repeat'                " XXX repeat commands not repeatable by 'vanilla' vim
 Plug 'tpope/vim-surround'              " XXX Surround objects with quotes, brackets ...
-Plug 'w0rp/ale'                        " asynchronous linting
 Plug 'wellle/targets.vim'              " XXX ci' works on (, [, {, < on entire line
 Plug 'romainl/vim-cool'                " unhighlights searches when it is not needed anymor
+" Plug 'w0rp/ale'                        " asynchronous linting
+
+" Preview Text
+Plug 'lervag/vimtex'       " XXX latex compiler, preview latex pdf, highlight and syntax. alot more.
+Plug 'mhinz/neovim-remote' " Needed for vimtex. Error: 'compiler_progranme=nvr' / '--remote'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
+Plug 'shime/vim-livedown'
 
 " Plug 'mtth/scratch.vim'                " Unobtrusive scratch
 " Plug 'szymonmaszke/vimpyter'
 " Plug 'ErikEkstedt/vimpyter'
 " Plug 'itchyny/lightline.vim'
 " Plug 'edkolev/tmuxline.vim'          " tmux statusline same as vim.	 :Tmuxline lightline
-
-" Preview Text
-Plug 'lervag/vimtex'       " XXX latex compiler, preview latex pdf, highlight and syntax. alot more.
-Plug 'mhinz/neovim-remote' " Needed for vimtex 'compiler_progranme=nvr' / '--remote'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
-Plug 'shime/vim-livedown'
-
 
 " Snippets and Syntax
 if !exists("g:gui_oni") " {{{
