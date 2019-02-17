@@ -40,16 +40,25 @@ endif "}}}
 " Vim-Plug {{{
 call plug#begin('~/.vim/bundle')
 
-" Testing
-" Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }  # Costs money
+" AutoCompletion
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'zchee/deoplete-jedi'
+Plug 'Shougo/neco-vim'
+Plug 'Shougo/neopairs.vim'
 
-" Probably not going to use as much
-" Plug 'mtth/scratch.vim'                " Unobtrusive scratch
-" Plug 'szymonmaszke/vimpyter'
-" Plug 'ErikEkstedt/vimpyter'
-" Plug 'itchyny/lightline.vim'
-" Plug 'edkolev/tmuxline.vim'          " tmux statusline same as vim.	 :Tmuxline lightline
-" Plug 'w0rp/ale'                        " asynchronous linting
+" ================ Testing ================
+" Want to check out coc
+" https://github.com/neoclide/coc.nvim
+Plug 'dhruvasagar/vim-zoom'
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+" Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+" ================ Testing ================
 
 " Plugins marked with XXX I know I use/like a lot.
 " Uncommented are unused to see if I miss them but keep around if I change my mind
@@ -70,6 +79,7 @@ call plug#begin('~/.vim/bundle')
 "     \ 'branch': 'next',
 "     \ 'do': 'bash install.sh',
 "     \ }
+
 Plug 'Shougo/neco-vim'  " vim script completion
 Plug 'neoclide/coc-neco'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
@@ -123,10 +133,15 @@ Plug 'romainl/vim-cool'                " unhighlights searches when it is not ne
 
 " Preview Text
 Plug 'lervag/vimtex'       " XXX latex compiler, preview latex pdf, highlight and syntax. alot more.
-Plug 'mhinz/neovim-remote' " Needed for vimtex 'compiler_progranme=nvr' / '--remote'
+Plug 'mhinz/neovim-remote' " Needed for vimtex. Error: 'compiler_progranme=nvr' / '--remote'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 Plug 'shime/vim-livedown'
 
+" Plug 'mtth/scratch.vim'                " Unobtrusive scratch
+" Plug 'szymonmaszke/vimpyter'
+" Plug 'ErikEkstedt/vimpyter'
+" Plug 'itchyny/lightline.vim'
+" Plug 'edkolev/tmuxline.vim'          " tmux statusline same as vim.	 :Tmuxline lightline
 
 if !exists("g:gui_oni")
 	Plug 'christoomey/vim-tmux-navigator' " navigate between vim and tmuz seemlessly
