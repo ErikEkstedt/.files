@@ -1,5 +1,8 @@
 " AUTOCOMMANDS
 
+" Syntax for json comments (jsonc) (coc-vim)
+autocmd FileType json syntax match Comment +\/\/.\+$+
+
 " Automatically resize when vim changes
 au VimResized * exe "normal! \<c-w>="
 
@@ -28,6 +31,7 @@ augroup Latex
 	autocmd BufNewFile,BufRead *.tex setlocal spell! spelllang=en_us
 	autocmd BufNewFile,BufRead *.tex set foldmethod=expr
 augroup END
+
 
 " FOCUS
 " Greg Hurrell:

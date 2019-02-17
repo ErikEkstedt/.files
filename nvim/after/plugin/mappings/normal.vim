@@ -49,10 +49,11 @@ nnoremap <c-q> :q!<cr>
 set pastetoggle=<f2> " system clipboard pastes preserves indentation
 
 " copy / paste from clipboard
-" yank/put + ctrl -> clipboard
-nnoremap <c-p> "+p
+" yank/put +  -> clipboard
+" nnoremap <c-p> "+p
+" inoremap <c-p> <esc>"+pi
+nnoremap ,pa "+p
 nnoremap <c-y> "+yy
-inoremap <c-p> <esc>"+pi
 
 " Repeat last macro if in a normal buffer.
 nnoremap <expr> <CR> empty(&buftype) ? '@@' : '<CR>'
