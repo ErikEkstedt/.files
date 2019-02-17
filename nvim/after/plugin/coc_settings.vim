@@ -19,7 +19,7 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " Use <c-space> for trigger completion.
-inoremap <silent><expr> <cr> coc#refresh()
+" inoremap <silent><expr> <c-space> coc#refresh()
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
