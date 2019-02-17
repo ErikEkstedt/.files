@@ -40,18 +40,6 @@ endif "}}}
 " Vim-Plug {{{
 call plug#begin('~/.vim/bundle')
 
-" AutoCompletion
-if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-endif
-Plug 'zchee/deoplete-jedi'
-Plug 'Shougo/neco-vim'
-Plug 'Shougo/neopairs.vim'
-
 " ================ Testing ================
 " Want to check out coc
 " https://github.com/neoclide/coc.nvim
@@ -275,6 +263,7 @@ set smartcase
 set switchbuf=usetab
 
 set synmaxcol=170              " Maximum column in which to search for syntax items
+set signcolumn=yes
 set splitbelow
 set splitright
 set gdefault                   " with this:  s/foo/bar --> s/foo/bar/g by default. ´g´ reverses its meaning.
