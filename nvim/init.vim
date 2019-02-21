@@ -272,7 +272,7 @@ set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,resi
 
 
 if has('windows')
-	set fillchars=vert:\┃  " ┃ line with no breaks between vertical splits
+	set fillchars=vert:\│ " ┃ line with no breaks between vertical splits
 endif
 
 if exists("g:gui_oni")
