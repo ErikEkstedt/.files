@@ -14,7 +14,6 @@ let g:tex_flavor = "latex"     " assuem *.tex are all latex files
 
 " RunTimePath. Add fzf
 set rtp+=~/.fzf
-
 " Set Python/Npm paths {{{
 if has("unix")  "Python & Node
 	" This is probably not necessary and $HOME or similar might work.
@@ -41,18 +40,6 @@ endif "}}}
 " Vim-Plug {{{
 call plug#begin('~/.vim/bundle')
 
-" AutoCompletion
-if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-endif
-Plug 'zchee/deoplete-jedi'
-Plug 'Shougo/neco-vim'
-Plug 'Shougo/neopairs.vim'
-
 " ================ Testing ================
 " Want to check out coc
 " https://github.com/neoclide/coc.nvim
@@ -64,6 +51,43 @@ Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 " Plugins marked with XXX I know I use/like a lot.
 " Uncommented are unused to see if I miss them but keep around if I change my mind
 
+" Syntax
+" Plug 'klen/python-mode'                " Python mode (docs, refactor, lints...)
+" Plug 'sheerun/vim-polyglot'            " All the syntax messed upp syntax for oni ( turned .js -> javascript.jsx
+" Plug 'daeyun/vim-matlab'               " MATLAB
+" Plug 'othree/xml.vim'                  " xml highlight
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Autocompletion
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'zchee/deoplete-jedi'
+" Plug 'Shougo/neopairs.vim'
+" Plug 'Raimondi/delimitMate'            " auto complete parens etc.
+" Plug 'autozimu/LanguageClient-neovim', {
+"     \ 'branch': 'next',
+"     \ 'do': 'bash install.sh',
+"     \ }
+
+Plug 'Shougo/neco-vim'  " vim script completion
+Plug 'neoclide/coc-neco'
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+
+Plug 'mxw/vim-jsx'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
+
+" --------------------
+" Snippets
+Plug 'SirVer/ultisnips'                " XXX snippet engine
+Plug 'honza/vim-snippets'              " XXX snippets
+
+" Plug 'epilande/vim-es2015-snippets'  "ES2015 code snippets (Optional). Installed for react play
+" Plug 'epilande/vim-react-snippets'  " React code snippets. post install (yarn install | npm install) then load plugin only for editing supported files
+
+Plug 'dhruvasagar/vim-zoom'
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+
 Plug 'scrooloose/nerdtree'             " XXX Project and file navigation
 Plug 'Xuyuanp/nerdtree-git-plugin'     " show git status of files
 Plug 'ivalkeen/nerdtree-execute'       " open files from nerdtree
@@ -71,7 +95,6 @@ Plug 'ivalkeen/nerdtree-execute'       " open files from nerdtree
 Plug 'KabbAmine/vCoolor.vim'           " XXX pick color from menu
 Plug 'lilydjwg/colorizer'              " XXX colorize hexcolor in editor
 
-Plug 'Raimondi/delimitMate'            " auto complete parens etc.
 Plug 'Valloric/MatchTagAlways'
 Plug 'Yggdroot/indentLine'             " XXX see where there is indent
 Plug 'airblade/vim-gitgutter'          " XXX see git changes in file in the numberline
@@ -95,7 +118,6 @@ Plug 'tpope/vim-repeat'                " XXX repeat commands not repeatable by '
 Plug 'tpope/vim-surround'              " XXX Surround objects with quotes, brackets ...
 Plug 'wellle/targets.vim'              " XXX ci' works on (, [, {, < on entire line
 Plug 'romainl/vim-cool'                " unhighlights searches when it is not needed anymor
-" Plug 'w0rp/ale'                        " asynchronous linting
 
 " Preview Text
 Plug 'lervag/vimtex'       " XXX latex compiler, preview latex pdf, highlight and syntax. alot more.
@@ -108,34 +130,6 @@ Plug 'shime/vim-livedown'
 " Plug 'ErikEkstedt/vimpyter'
 " Plug 'itchyny/lightline.vim'
 " Plug 'edkolev/tmuxline.vim'          " tmux statusline same as vim.	 :Tmuxline lightline
-
-" Snippets and Syntax
-if !exists("g:gui_oni") " {{{
-  " Syntax
-  " Plug 'klen/python-mode'                " Python mode (docs, refactor, lints...)
-  " Plug 'sheerun/vim-polyglot'            " All the syntax messed upp syntax for oni ( turned .js -> javascript.jsx
-  " Plug 'daeyun/vim-matlab'               " MATLAB
-  " Plug 'othree/xml.vim'                  " xml highlight
-
-  Plug 'mxw/vim-jsx'
-  Plug 'prettier/vim-prettier', {
-    \ 'do': 'yarn install',
-    \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
-
-  Plug 'autozimu/LanguageClient-neovim', {
-      \ 'branch': 'next',
-      \ 'do': 'bash install.sh',
-      \ }
-
-  " --------------------
-  " Snippets
-  Plug 'SirVer/ultisnips'                " XXX snippet engine
-  Plug 'honza/vim-snippets'              " XXX snippets
-
-  " Plug 'epilande/vim-es2015-snippets'  "ES2015 code snippets (Optional). Installed for react play
-  " Plug 'epilande/vim-react-snippets'  " React code snippets. post install (yarn install | npm install) then load plugin only for editing supported files
-endif "}}}
-
 
 if !exists("g:gui_oni")
 	Plug 'christoomey/vim-tmux-navigator' " navigate between vim and tmuz seemlessly
@@ -214,15 +208,21 @@ set cursorline                        " highlight line where cursor is
 " set completeopt-=preview
 " set completeopt+=noinsert
 
-
-if UNAME == 'Linux'
+if g:UNAME == 'Linux'
 	" Leave this empty. Otherwise konsole font resize does not work.
 	" If font is resized through hotkey inside nvim. Nvim resets the font to the
 	" default.
-	set guicursor=
+	" set guicursor=
 	" It is a shame because
-  " set guicursor=n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20
+  " set guicursor=n-v-c-sm:block,i-ci-ve:ver15,r-cr-o:hor20
 	" Works in konsole. box in normal-visual-commmand and line in insert
+  " if exists('$TMUX')
+  "   let &t_SI = "\ePtmux;\e\e[5 q\e\\"
+  "   let &t_EI = "\ePtmux;\e\e[2 q\e\\"
+  " else
+  "   let &t_SI = "\e[5 q"
+  "   let &t_EI = "\e[2 q"
+  " endif
 else
 	" Darwin
 	" This does not work on MacOS - iterm2
@@ -263,6 +263,7 @@ set smartcase
 set switchbuf=usetab
 
 set synmaxcol=170              " Maximum column in which to search for syntax items
+set signcolumn=yes
 set splitbelow
 set splitright
 set gdefault                   " with this:  s/foo/bar --> s/foo/bar/g by default. ´g´ reverses its meaning.
@@ -271,10 +272,11 @@ set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,resi
 
 
 if has('windows')
-	set fillchars=vert:\┃  " ┃ line with no breaks between vertical splits
+	set fillchars=vert:\│ " ┃ line with no breaks between vertical splits
 endif
 
 if exists("g:gui_oni")
+	source ~/.config/nvim/oni/mappings/oni.vim
 	set laststatus=0 "always show status bar
 else
 	set laststatus=2 "always show status bar
@@ -297,7 +299,6 @@ set wildignore+=*.orig                           " Merge resolution files
 set wildignore+=*.fasl                           " Lisp FASLs
 
 " }}}
-
 " Large Files {{{
 
 " file is large from 5mb
@@ -359,8 +360,3 @@ endif
 " }}}
 "}}}
 
-" Oni {{{
-if exists("g:gui_oni")
-	source ~/.config/nvim/oni/mappings/oni.vim
-endif
-" }}}

@@ -1,6 +1,10 @@
 " Deoplete
 " Use deoplete.
 
+if !exists("g:deoplete#_initialized")
+  finish
+endif
+
 let g:deoplete#enable_at_startup = 1
 
 " Time

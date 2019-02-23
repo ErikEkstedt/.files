@@ -1,5 +1,9 @@
 " NerdTree
 
+if !exists("loaded_nerd_tree")
+    finish
+endif
+
 let NERDTreeIgnore=['\.pyc$', '\.aux$', '\.out', '\.bbl$', '\.fls$', '\.blg$', '\.log$', '\.fdb_latexmk$','\.gz$']
 let NERDTreeShowBookmarks = 1
 let g:NERDTreeDirArrowExpandable = ''
@@ -13,7 +17,8 @@ let g:NERDTreeMouseMode=2  " Single-click to toggle directory nodes, double-clic
 " 	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " endif
 
-map <C-n> :NERDTreeToggle<CR>
+" map <C-n> :NERDTreeToggle<CR>
+map <leader>ne :NERDTreeToggle<CR>
 
 " TODO
 " should this be here or in appearance.vim

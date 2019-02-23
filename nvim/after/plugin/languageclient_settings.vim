@@ -1,5 +1,9 @@
 " Language Server
 
+if !exists('g:LanguageClient_loaded')
+  finish
+endif
+
 " Installation
 
 " Bash
