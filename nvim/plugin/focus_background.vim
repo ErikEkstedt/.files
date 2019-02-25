@@ -13,6 +13,7 @@ hi HiStatusReplace guibg=#111111 guifg=##19f31e
 augroup WindowManagement
   autocmd!
   autocmd WinEnter * call Handle_Win_Enter()
+  autocmd WinLeave * call Handle_Win_Leave()
   " autocmd InsertEnter * call StatusInsert()
   " autocmd InsertLeave * call StatusNormal()
   " autocmd CmdWinEnter * call StatusCmd()
@@ -23,6 +24,19 @@ augroup END
 " Change highlight group of active/inactive windows
 function! Handle_Win_Enter()
   setlocal winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
+  setlocal cursorline 
+
+  if has("conceal") || exists("g:indentLine_loaded")
+    exe 'IndentLinesToggle'
+  endif
+
+endfunction
+
+function! Handle_Win_Leave()
+  setlocal nocursorline 
+  if has("conceal") || exists("g:indentLine_loaded")
+    exe 'IndentLinesToggle'
+  endif
 endfunction
 
 function! StatusNormal()
