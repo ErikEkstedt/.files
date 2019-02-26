@@ -148,6 +148,9 @@ alias umountusb="udiskie-umount /media/erik/*"
 
 # }}}
 
+# Ranger
+alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+
 # SSH / WOL {{{
 export MOUNTPATH=~/LAN
 alias wake="wakeonlan -i xxx.xxx.xxx.xxx yy:yy:yy:yy:yy:yy" 
