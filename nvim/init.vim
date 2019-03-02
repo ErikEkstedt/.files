@@ -45,6 +45,7 @@ call plug#begin('~/.vim/bundle')
 " https://github.com/neoclide/coc.nvim
 Plug 'dhruvasagar/vim-zoom'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+Plug 'ambv/black'
 " Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 " ================ Testing ================
 
