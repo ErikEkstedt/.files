@@ -1,5 +1,5 @@
 "Settings
-setlocal tw=79
+setlocal tw=88
 setlocal tabstop=4
 setlocal softtabstop=4
 setlocal shiftwidth=4
