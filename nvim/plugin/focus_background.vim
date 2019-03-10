@@ -1,5 +1,5 @@
 " Background colors for active vs inactive windows
-hi ActiveWindow guibg=#141719
+hi ActiveWindow guibg=#141619
 hi InactiveWindow guibg=#101315
 
 hi HiStatus guibg=#111111 guifg=#00ceff

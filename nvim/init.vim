@@ -209,22 +209,7 @@ set cursorline                        " highlight line where cursor is
 " set completeopt-=preview
 " set completeopt+=noinsert
 
-if g:UNAME == 'Linux'
-	" Leave this empty. Otherwise konsole font resize does not work.
-	" If font is resized through hotkey inside nvim. Nvim resets the font to the
-	" default.
-	" set guicursor=
-	" It is a shame because
-  " set guicursor=n-v-c-sm:block,i-ci-ve:ver15,r-cr-o:hor20
-	" Works in konsole. box in normal-visual-commmand and line in insert
-  " if exists('$TMUX')
-  "   let &t_SI = "\ePtmux;\e\e[5 q\e\\"
-  "   let &t_EI = "\ePtmux;\e\e[2 q\e\\"
-  " else
-  "   let &t_SI = "\e[5 q"
-  "   let &t_EI = "\e[2 q"
-  " endif
-else
+if g:UNAME == 'Darwin'
 	" Darwin
 	" This does not work on MacOS - iterm2
 	set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
