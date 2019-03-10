@@ -45,6 +45,7 @@ call plug#begin('~/.vim/bundle')
 " https://github.com/neoclide/coc.nvim
 Plug 'dhruvasagar/vim-zoom'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+Plug 'ambv/black'
 " Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 " ================ Testing ================
 
@@ -272,7 +273,7 @@ set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,resi
 
 
 if has('windows')
-	set fillchars=vert:\┃  " ┃ line with no breaks between vertical splits
+	set fillchars=vert:\│ " ┃ line with no breaks between vertical splits
 endif
 
 if exists("g:gui_oni")
