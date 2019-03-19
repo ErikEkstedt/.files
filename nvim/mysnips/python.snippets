@@ -11,6 +11,12 @@ endsnippet
 
 # os
 
+snippet ifans "input conditional"
+ans = input("\n> $1? (y/n)")
+if ans.lower() == 'y':
+	$0
+endsnippet
+
 snippet expanduser "expanduser"
 home = os.path.expanduser('~')
 $0

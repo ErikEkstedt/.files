@@ -69,7 +69,8 @@ Plug 'ambv/black'
 "     \ 'do': 'bash install.sh',
 "     \ }
 
-Plug 'Shougo/neco-vim'  " vim script completion
+" vim script completion
+Plug 'Shougo/neco-vim'  
 Plug 'neoclide/coc-neco'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 
@@ -240,7 +241,7 @@ set listchars=tab:\ \ ,trail:·,extends:▶,nbsp:·
 
 set numberwidth=3              " width of numberline
 set mouse=a                    " mouse functionality
-set timeoutlen=500             " ms to wait for command completion
+set timeoutlen=200               " ms to wait for command completion
 set ttimeoutlen=0              " don't wait for <esc>
 set incsearch                  " search starts when typing instead of waiting for <enter>
 set virtualedit=block          " onemore 'block' makes it possible to edit empty space in visualblock

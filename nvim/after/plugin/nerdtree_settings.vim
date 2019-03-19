@@ -22,16 +22,16 @@ map <leader>ne :NERDTreeToggle<CR>
 
 " TODO
 " should this be here or in appearance.vim
-if !exists("g:gui_oni")
-	augroup NerdTreeHi
-		autocmd!
-		autocmd VimEnter,ColorScheme * if g:colors_name =~ 'seoul256'
-			hi NERDTreeDir guifg=#90a959
-			hi Directory guifg=#404040
-			hi NERDTreeCWD guifg=gray90
-			hi NERDTreeFile guifg=gray90
-			hi NERDTreeUp guifg=gray90 guibg=gray20
-			hi NERDTreeBookmarksHeader guifg=#90a959
-			hi NERDTreeBookmarkName guifg=gray90 
-	augroup END
-endif
+" if !exists("g:gui_oni")
+" 	augroup NerdTreeHi
+" 		autocmd!
+" 		autocmd VimEnter,ColorScheme * if g:colors_name =~ 'seoul256'
+" 			hi NERDTreeDir guifg=#90a959
+" 			hi Directory guifg=#404040
+" 			hi NERDTreeCWD guifg=gray90
+" 			hi NERDTreeFile guifg=gray90
+" 			hi NERDTreeUp guifg=gray90 guibg=gray20
+" 			hi NERDTreeBookmarksHeader guifg=#90a959
+" 			hi NERDTreeBookmarkName guifg=gray90 
+" 	augroup END
+" endif

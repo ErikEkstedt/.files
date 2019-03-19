@@ -76,8 +76,6 @@ function! ChangeToLocalDir()
 endfunction
 nnoremap ,cd :call ChangeToLocalDir()<CR>
 
-" Neovim: exit terminal
-tnoremap <Esc> <C-\><C-n>
 
 " Visual selection
 nnoremap vv V
