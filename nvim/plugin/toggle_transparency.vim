@@ -8,9 +8,10 @@ function! TransparentBackground ()  " {{{
     set cursorline
   else
     let g:transparent_background = 1
-    hi Normal guibg=#000000
+    hi Normal guibg=#000000 guifg=#EEEEEE
+    hi Comment guifg=#AAAAAA
     hi Folded guibg=#000000
-    hi LineNr guibg=#000000
+    hi LineNr guibg=#000000 guifg=#AAAAAA
     hi Conceal guibg=#000000
     hi SignColumn guibg=#000000
     hi GitGutter guibg=#000000
@@ -21,6 +22,7 @@ function! TransparentBackground ()  " {{{
     hi ColorColumn guibg=#000000
     hi EndOfBuffer guibg=#000000
     hi CursorLine guibg=#000000
+    hi CursorLineNr guibg=#000000 guifg=#00deff
     hi StatusLine guibg=#000000 guifg=#00deff
     hi StatusLineNC guibg=#000000 guifg=#00a2ba
     hi EndOfBuffer guibg=#000000
