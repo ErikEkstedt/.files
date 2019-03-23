@@ -41,37 +41,31 @@ endif "}}}
 call plug#begin('~/.vim/bundle')
 
 " ================ Testing ================
-" Want to check out coc
-" https://github.com/neoclide/coc.nvim
-Plug 'dhruvasagar/vim-zoom'
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-Plug 'ambv/black'
-" Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+
+" Folding for python
+" https://github.com/tmhedberg/SimpylFold
+" Plug "tmhedberg/SimpylFold"
+
+" https://github.com/Konfekt/FastFold
+" Plug "Konfekt/FastFold"
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
 " ================ Testing ================
 
 " Plugins marked with XXX I know I use/like a lot.
 " Uncommented are unused to see if I miss them but keep around if I change my mind
 
 " Syntax
-" Plug 'klen/python-mode'                " Python mode (docs, refactor, lints...)
 " Plug 'sheerun/vim-polyglot'            " All the syntax messed upp syntax for oni ( turned .js -> javascript.jsx
 " Plug 'daeyun/vim-matlab'               " MATLAB
-" Plug 'othree/xml.vim'                  " xml highlight
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Autocompletion
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'zchee/deoplete-jedi'
-" Plug 'Shougo/neopairs.vim'
-" Plug 'Raimondi/delimitMate'            " auto complete parens etc.
-" Plug 'autozimu/LanguageClient-neovim', {
-"     \ 'branch': 'next',
-"     \ 'do': 'bash install.sh',
-"     \ }
 
 " vim script completion
-Plug 'Shougo/neco-vim'  
-Plug 'neoclide/coc-neco'
+Plug 'Shougo/neco-vim'
+Plug 'neoclide/coc-neco'                " XXX autocompletion + lsp
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 
 Plug 'mxw/vim-jsx'
@@ -84,8 +78,8 @@ Plug 'prettier/vim-prettier', {
 Plug 'SirVer/ultisnips'                " XXX snippet engine
 Plug 'honza/vim-snippets'              " XXX snippets
 
-" Plug 'epilande/vim-es2015-snippets'  "ES2015 code snippets (Optional). Installed for react play
-" Plug 'epilande/vim-react-snippets'  " React code snippets. post install (yarn install | npm install) then load plugin only for editing supported files
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " better python syntax highlight 
+Plug 'ambv/black'                         " Linter/formatter
 
 Plug 'dhruvasagar/vim-zoom'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
@@ -142,20 +136,6 @@ endif
 " Colorschemes and Appearence {{{
 set termguicolors " Enable true color support.
 Plug 'ErikEkstedt/onedark.vim'
-
-" if !exists("g:gui_oni")
-"   Plug 'joshdick/onedark.vim'           " look like atom?
-"   Plug 'crusoexia/vim-monokai'
-" 	Plug 'chriskempson/base16-vim'        " many colorschemes
-" 	Plug 'skielbasa/vim-material-monokai'
-" 	Plug 'kiddos/malokai.vim'
-" 	Plug 'Reewr/vim-monokai-phoenix'
-" 	Plug 'vim-scripts/wombat256.vim'
-" 	Plug 'danilo-augusto/vim-afterglow'
-" 	Plug 'mhartington/oceanic-next'
-" 	Plug 'yuttie/hydrangea-vim'
-"   Plug 'junegunn/seoul256.vim'          " cool junegunn is coool
-" endif
 
 call plug#end()
 " }}}
@@ -241,7 +221,7 @@ set listchars=tab:\ \ ,trail:·,extends:▶,nbsp:·
 
 set numberwidth=3              " width of numberline
 set mouse=a                    " mouse functionality
-set timeoutlen=200               " ms to wait for command completion
+set timeoutlen=400               " ms to wait for command completion
 set ttimeoutlen=0              " don't wait for <esc>
 set incsearch                  " search starts when typing instead of waiting for <enter>
 set virtualedit=block          " onemore 'block' makes it possible to edit empty space in visualblock
