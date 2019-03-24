@@ -1,5 +1,9 @@
 " vim: fdm=marker tw=0
 " NeoVim
+" This script contains all my plugins and settings
+" The different settings for all plugins are located in ./after/plugin/
+" Mappings are located in ./after/plugin/mappings/
+"
 " Unicode characters: https://www.w3schools.com/charsets/ref_utf_dingbats.asp
 
 " Variables and Paths {{{
@@ -51,6 +55,7 @@ call plug#begin('~/.vim/bundle')
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'edkolev/tmuxline.vim'          " tmux statusline same as vim.	 :Tmuxline lightline
 
 " ================ Testing ================
 
@@ -125,7 +130,6 @@ Plug 'shime/vim-livedown'
 " Plug 'szymonmaszke/vimpyter'
 " Plug 'ErikEkstedt/vimpyter'
 " Plug 'itchyny/lightline.vim'
-" Plug 'edkolev/tmuxline.vim'          " tmux statusline same as vim.	 :Tmuxline lightline
 
 if !exists("g:gui_oni")
 	Plug 'christoomey/vim-tmux-navigator' " navigate between vim and tmuz seemlessly

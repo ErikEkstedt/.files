@@ -59,7 +59,7 @@ endsnippet
 snippet classTorch "class pytorch"
 class ${1:MyClass}(nn.Module):
 	def __init__(self$2):
-		super($1, self).__init__()
+		super().__init__()
 		$0
 
 	def forward(self, x):
