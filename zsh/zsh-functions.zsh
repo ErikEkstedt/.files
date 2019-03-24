@@ -69,6 +69,6 @@ esac
 
 bindkey -s '^S' '^Asudo ^E'
 # bindkey -s '^Q' "exit\r"
-bindkey -s '^Q' 'tmux switch-client -n \; kill-session -t "$(tmux display-message -p "#S")" || tmux kill-session\r'
+# bindkey -s '^Q' 'tmux switch-client -n \; kill-session -t "$(tmux display-message -p "#S")" || tmux kill-session\r'
 bindkey -M vicmd H beginning-of-line
 bindkey -M vicmd L end-of-line

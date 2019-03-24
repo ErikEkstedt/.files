@@ -10,25 +10,34 @@ alias :wq='exit'
 # alias la="ls -A"
 
 if [[ $(uname) == 'Darwin' ]]; then
-	alias ll="gls -l --color"
-	alias ld="gls -ld */ --color"
-	alias la="gls -A -1 --group-directories-first --color"
-	alias lsf="gls -1 --group-directories-first --color"
-	alias lrt="gls -lrt --color"
-	alias ltt="gls -ogl *.tex --color"
-	alias ltx="gls *.tex --color"
-	alias lpy="gls *.py --color"
-	alias lpdf="gls -ogl *.pdf --color"
+  alias ll="gls -l --color"
+  alias ld="gls -ld */ --color"
+  alias la="gls -A -1 --group-directories-first --color"
+  alias lsf="gls -1 --group-directories-first --color"
+  alias lrt="gls -lrt --color"
+  alias ltt="gls -ogl *.tex --color"
+  alias ltx="gls *.tex --color"
+  alias lpy="gls *.py --color"
+  alias lpdf="gls -ogl *.pdf --color"
 else
-	alias ll="ls -l"
-	alias ld="ls -ld */"
-	alias la="ls -A -1 --group-directories-first"
-	alias La="tspc 'ls -A -1 --group-directories-first'"
-	alias lrt="ls -lrt"
-	alias ltt="ls -ogl *.tex"
-	alias ltx="ls *.tex"
-	alias lpy="ls *.py"
-	alias lpdf="ls -ogl *.pdf"
+  if [ -x "$(command -v lsd)" ]; then # if lsd exists
+    alias ll="lsd -l --group-dirs first"
+    alias ld="lsd -1 --group-dirs first"
+    alias lla="lsd -la --group-dirs first"
+    alias la="lsd -1a --group-dirs first"
+    alias ltr="lsd --tree"
+  else
+    alias ll="ls -l"
+    alias ld="ls -ld */"
+    alias la="ls -A -1 --group-directories-first"
+    alias lla="ls -la --group-directories-first"
+  fi
+  alias La="tspc 'ls -A -1 --group-directories-first'"
+  alias lrt="ls -lrt"
+  alias ltt="ls -ogl *.tex"
+  alias ltx="ls *.tex"
+  alias lpy="ls *.py"
+  alias lpdf="ls -ogl *.pdf"
 fi
 
 alias Ls="tspc ls"
@@ -150,6 +159,7 @@ alias umountusb="udiskie-umount /media/erik/*"
 
 # Ranger
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+alias r='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 
 # SSH / WOL {{{
 export MOUNTPATH=~/LAN
