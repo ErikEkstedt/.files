@@ -10,7 +10,6 @@ cnoremap <c-h> <Left>
 cnoremap <c-l> <Right>
 
 cnoremap <c-b> <Home>
-cnoremap <c-p> <End>
 
 " I've had custom equivalents of the new <C-g> and <C-t> mapped to
 " <Tab> and <S-Tab>. Then rewritten. / Patient vimmer

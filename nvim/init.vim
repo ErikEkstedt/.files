@@ -48,10 +48,9 @@ call plug#begin('~/.vim/bundle')
 
 " Folding for python
 " https://github.com/tmhedberg/SimpylFold
-" Plug "tmhedberg/SimpylFold"
-
+" Plug 'tmhedberg/SimpylFold'
 " https://github.com/Konfekt/FastFold
-" Plug "Konfekt/FastFold"
+" Plug 'Konfekt/FastFold'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -225,6 +224,7 @@ set listchars=tab:\ \ ,trail:·,extends:▶,nbsp:·
 
 set numberwidth=3              " width of numberline
 set mouse=a                    " mouse functionality
+" set mousemodel=popup
 set timeoutlen=400               " ms to wait for command completion
 set ttimeoutlen=0              " don't wait for <esc>
 set incsearch                  " search starts when typing instead of waiting for <enter>
@@ -241,6 +241,8 @@ set gdefault                   " with this:  s/foo/bar --> s/foo/bar/g by defaul
 set inccommand=nosplit
 set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,resize
 
+" PUM
+set pb=40
 
 if has('windows')
 	set fillchars=vert:\│ " ┃ line with no breaks between vertical splits
@@ -254,6 +256,7 @@ else
 endif
 
 " Wildmenu completion {{{
+set wildoptions=pum
 set wildmenu
 set wildmode=full
 set wildignore+=.hg,.git,.svn                    " Version control
