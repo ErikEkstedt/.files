@@ -6,7 +6,8 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " From example at https://github.com/neoclide/coc.nvim
 " Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" autocmd CursorHold * silent call CocActionAsync('highlight')
+autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 
 " Smaller updatetime for CursorHold & CursorHoldI
 set updatetime=300
@@ -40,6 +41,7 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
+
 
 " Fix autofix problem of current line
 nmap <leader>qf  <Plug>(coc-fix-current)

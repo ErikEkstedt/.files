@@ -413,7 +413,7 @@
     "coc.preferences.diagnostic.virtualText": {
       "type": "boolean",
       "description": "Use NeoVim virtual text to display diagnostics",
-      "default": false
+      "default": true
     },
     "coc.preferences.diagnostic.virtualTextPrefix": {
       "type": "string",
