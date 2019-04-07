@@ -186,8 +186,8 @@ set smarttab                          " smart tabulation and backspace
 
 set number                            " number lines
 set relativenumber
-set scrolloff=3                       " visual rows above and below cursor
-set sidescroll=3                      " visual columns on sides of cursor
+set scrolloff=5                       " visual rows above and below cursor
+set sidescrolloff=20                      " visual columns on sides of curso
 set cursorline                        " highlight line where cursor is
 
 " set completeopt-=preview
@@ -205,7 +205,6 @@ endif
 set hls                        " highlighting!
 set lazyredraw                 " don't redraw screen during macros
 
-set linebreak                  " break lines (only visually) if window is too narrow
 set formatoptions+=j           " smart line joining. uncomments comments.
 set formatoptions+=n           " smart autoindenting inside numbered lists
 set nowrap
@@ -233,7 +232,7 @@ set ignorecase                 " (in)case sensitive search
 set smartcase
 set switchbuf=usetab
 
-set synmaxcol=170              " Maximum column in which to search for syntax items
+set synmaxcol=200              " Maximum column in which to search for syntax items
 set signcolumn=yes
 set splitbelow
 set splitright
