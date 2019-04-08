@@ -52,6 +52,9 @@ call plug#begin('~/.vim/bundle')
 " https://github.com/Konfekt/FastFold
 " Plug 'Konfekt/FastFold'
 
+" jupyter qtconsoloe repl
+Plug 'wmvanvliet/jupyter-vim'
+
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'          " tmux statusline same as vim.	 :Tmuxline lightline
@@ -187,7 +190,7 @@ set smarttab                          " smart tabulation and backspace
 set number                            " number lines
 set relativenumber
 set scrolloff=5                       " visual rows above and below cursor
-set sidescrolloff=20                      " visual columns on sides of curso
+set sidescrolloff=20                  " visual columns on sides of cursor
 set cursorline                        " highlight line where cursor is
 
 " set completeopt-=preview
