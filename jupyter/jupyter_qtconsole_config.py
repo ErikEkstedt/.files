@@ -1,8 +1,8 @@
 # Configuration file for jupyter-qtconsole.
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # ConnectionFileMixin(LoggingConfigurable) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 ## Mixin for configurable classes that work with connection files
 
@@ -11,69 +11,69 @@
 #  This file will contain the IP, ports, and authentication key needed to connect
 #  clients to this kernel. By default, this file will be created in the security
 #  dir of the current profile, but can be specified by absolute path.
-#c.ConnectionFileMixin.connection_file = ''
+# c.ConnectionFileMixin.connection_file = ''
 
 ## set the control (ROUTER) port [default: random]
-#c.ConnectionFileMixin.control_port = 0
+# c.ConnectionFileMixin.control_port = 0
 
 ## set the heartbeat port [default: random]
-#c.ConnectionFileMixin.hb_port = 0
+# c.ConnectionFileMixin.hb_port = 0
 
 ## set the iopub (PUB) port [default: random]
-#c.ConnectionFileMixin.iopub_port = 0
+# c.ConnectionFileMixin.iopub_port = 0
 
 ## Set the kernel's IP address [default localhost]. If the IP address is
 #  something other than localhost, then Consoles on other machines will be able
 #  to connect to the Kernel, so be careful!
-#c.ConnectionFileMixin.ip = ''
+# c.ConnectionFileMixin.ip = ''
 
 ## set the shell (ROUTER) port [default: random]
-#c.ConnectionFileMixin.shell_port = 0
+# c.ConnectionFileMixin.shell_port = 0
 
 ## set the stdin (ROUTER) port [default: random]
-#c.ConnectionFileMixin.stdin_port = 0
+# c.ConnectionFileMixin.stdin_port = 0
 
 ##
-#c.ConnectionFileMixin.transport = 'tcp'
+# c.ConnectionFileMixin.transport = 'tcp'
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # JupyterConsoleApp(ConnectionFileMixin) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 ## Set to display confirmation dialog on exit. You can always use 'exit' or
 #  'quit', to force a direct exit without any confirmation.
-#c.JupyterConsoleApp.confirm_exit = True
+# c.JupyterConsoleApp.confirm_exit = True
 
 ## Connect to an already running kernel
-#c.JupyterConsoleApp.existing = ''
+# c.JupyterConsoleApp.existing = ''
 
 ## The name of the default kernel to start.
-#c.JupyterConsoleApp.kernel_name = 'python'
+# c.JupyterConsoleApp.kernel_name = 'python'
 
 ## Path to the ssh key to use for logging in to the ssh server.
-#c.JupyterConsoleApp.sshkey = ''
+# c.JupyterConsoleApp.sshkey = ''
 
 ## The SSH server to use to connect to the kernel.
-#c.JupyterConsoleApp.sshserver = ''
+# c.JupyterConsoleApp.sshserver = ''
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # Application(SingletonConfigurable) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 ## This is an application.
 
 ## The date format used by logging formatters for %(asctime)s
-#c.Application.log_datefmt = '%Y-%m-%d %H:%M:%S'
+# c.Application.log_datefmt = '%Y-%m-%d %H:%M:%S'
 
 ## The Logging format template
-#c.Application.log_format = '[%(name)s]%(highlevel)s %(message)s'
+# c.Application.log_format = '[%(name)s]%(highlevel)s %(message)s'
 
 ## Set the log level by value or name.
-#c.Application.log_level = 30
+# c.Application.log_level = 30
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # JupyterApp(Application) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 ## Base class for Jupyter applications
 
@@ -81,36 +81,36 @@
 c.JupyterApp.answer_yes = True
 
 ## Full path of a config file.
-#c.JupyterApp.config_file = ''
+# c.JupyterApp.config_file = ''
 
 ## Specify a config file to load.
-#c.JupyterApp.config_file_name = ''
+# c.JupyterApp.config_file_name = ''
 
 ## Generate default config file.
-#c.JupyterApp.generate_config = False
+# c.JupyterApp.generate_config = False
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # JupyterQtConsoleApp(JupyterApp,JupyterConsoleApp) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 ## Whether to display a banner upon starting the QtConsole.
-#c.JupyterQtConsoleApp.display_banner = True
+# c.JupyterQtConsoleApp.display_banner = True
 
 ## Start the console window with the menu bar hidden.
-c.JupyterQtConsoleApp.hide_menubar = True
+# c.JupyterQtConsoleApp.hide_menubar = True
 
 ## Start the console window maximized.
-#c.JupyterQtConsoleApp.maximize = False
+# c.JupyterQtConsoleApp.maximize = False
 
 ## Use a plaintext widget instead of rich text (plain can't print/save).
-#c.JupyterQtConsoleApp.plain = False
+# c.JupyterQtConsoleApp.plain = False
 
 ## path to a custom CSS stylesheet
 # c.JupyterQtConsoleApp.stylesheet = ''
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # ConsoleWidget(NewBase) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 ## An abstract base class for console-type widgets. This class has functionality
 #  for:
@@ -125,35 +125,35 @@ c.JupyterQtConsoleApp.hide_menubar = True
 #  convenient to implementors of a console-style widget.
 
 ## Whether to process ANSI escape codes.
-#c.ConsoleWidget.ansi_codes = True
+# c.ConsoleWidget.ansi_codes = True
 
 ## The maximum number of lines of text before truncation. Specifying a non-
 #  positive number disables text truncation (not recommended).
-#c.ConsoleWidget.buffer_size = 500
+# c.ConsoleWidget.buffer_size = 500
 
 ## The height of the console at start time in number of characters (will double
 #  with `vsplit` paging)
-#c.ConsoleWidget.console_height = 25
+# c.ConsoleWidget.console_height = 25
 
 ## The width of the console at start time in number of characters (will double
 #  with `hsplit` paging)
-#c.ConsoleWidget.console_width = 81
+# c.ConsoleWidget.console_width = 81
 
 ## Whether to automatically execute on syntactically complete input.
 #
 #  If False, Shift-Enter is required to submit each execution. Disabling this is
 #  mainly useful for non-Python kernels, where the completion check would be
 #  wrong.
-#c.ConsoleWidget.execute_on_complete_input = True
+# c.ConsoleWidget.execute_on_complete_input = True
 
 ## The font family to use for the console. On OSX this defaults to Monaco, on
 #  Windows the default is Consolas with fallback of Courier, and on other
 #  platforms the default is Monospace.
-#c.ConsoleWidget.font_family = ''
+# c.ConsoleWidget.font_family = ''
 
 ## The font size. If unconfigured, Qt will be entrusted with the size of the
 #  font.
-#c.ConsoleWidget.font_size = 0
+c.ConsoleWidget.font_size = 14
 
 ## The type of completer to use. Valid values are:
 #
@@ -164,7 +164,7 @@ c.JupyterQtConsoleApp.hide_menubar = True
 #              completion by pressing Return.
 #  'ncurses' : Show the completion as a text list which is navigable by
 #              `tab` and arrow keys.
-#c.ConsoleWidget.gui_completion = 'ncurses'
+# c.ConsoleWidget.gui_completion = 'ncurses'
 
 ## Whether to include output from clients other than this one sharing the same
 #  kernel.
@@ -174,7 +174,7 @@ c.ConsoleWidget.include_other_output = True
 
 ## The type of underlying text widget to use. Valid values are 'plain', which
 #  specifies a QPlainTextEdit, and 'rich', which specifies a QTextEdit.
-#c.ConsoleWidget.kind = 'plain'
+# c.ConsoleWidget.kind = 'plain'
 
 ## The type of paging to use. Valid values are:
 #
@@ -190,99 +190,105 @@ c.ConsoleWidget.include_other_output = True
 #     'custom_page_requested(str)' signal.
 #  'none'
 #     The text is written directly to the console.
-#c.ConsoleWidget.paging = 'inside'
+# c.ConsoleWidget.paging = 'inside'
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # HistoryConsoleWidget(ConsoleWidget) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 ## A ConsoleWidget that keeps a history of the commands that have been executed
 #  and provides a readline-esque interface to this history.
 
 ##
-#c.HistoryConsoleWidget.history_lock = False
+# c.HistoryConsoleWidget.history_lock = False
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # FrontendWidget(HistoryConsoleWidget,BaseFrontendMixin) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 ## A Qt frontend for a generic Python kernel.
 
 ##
-#c.FrontendWidget.banner = ''
+# c.FrontendWidget.banner = ''
 
 ## Whether to clear the console when the kernel is restarted
-#c.FrontendWidget.clear_on_kernel_restart = True
+# c.FrontendWidget.clear_on_kernel_restart = True
 
 ## Whether to ask for user confirmation when restarting kernel
-#c.FrontendWidget.confirm_restart = True
+# c.FrontendWidget.confirm_restart = True
 
 ## Whether to draw information calltips on open-parentheses.
-#c.FrontendWidget.enable_calltips = True
+# c.FrontendWidget.enable_calltips = True
 
 ## Seconds to wait for is_complete replies from the kernel.
-#c.FrontendWidget.is_complete_timeout = 0.25
+# c.FrontendWidget.is_complete_timeout = 0.25
 
 ## The pygments lexer class to use.
-#c.FrontendWidget.lexer_class = traitlets.Undefined
+# c.FrontendWidget.lexer_class = traitlets.Undefined
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # IPythonWidget(FrontendWidget) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 ## Dummy class for config inheritance. Destroyed below.
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # JupyterWidget(IPythonWidget) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 ## A FrontendWidget for a Jupyter kernel.
 
 ## A command for invoking a system text editor. If the string contains a
 #  {filename} format specifier, it will be used. Otherwise, the filename will be
 #  appended to the end the command.
-#c.JupyterWidget.editor = ''
+# c.JupyterWidget.editor = ''
 
 ## The editor command to use when a specific line number is requested. The string
 #  should contain two format specifiers: {line} and {filename}. If this parameter
 #  is not specified, the line number option to the %edit magic will be ignored.
-#c.JupyterWidget.editor_line = ''
+# c.JupyterWidget.editor_line = ''
 
 ##
-#c.JupyterWidget.in_prompt = 'In [<span class="in-prompt-number">%i</span>]: '
+# c.JupyterWidget.in_prompt = 'In [<span class="in-prompt-number">%i</span>]: '
 
 ##
-c.JupyterWidget.input_sep = '\n'
+c.JupyterWidget.input_sep = "\n"
 
 ##
-#c.JupyterWidget.out_prompt = 'Out[<span class="out-prompt-number">%i</span>]: '
+# c.JupyterWidget.out_prompt = 'Out[<span class="out-prompt-number">%i</span>]: '
 
 ##
-#c.JupyterWidget.output_sep = ''
+# c.JupyterWidget.output_sep = ''
 
 ##
-#c.JupyterWidget.output_sep2 = ''
+# c.JupyterWidget.output_sep2 = ''
 
 ## A CSS stylesheet. The stylesheet can contain classes for:
 #      1. Qt: QPlainTextEdit, QFrame, QWidget, etc
 #      2. Pygments: .c, .k, .o, etc. (see PygmentsHighlighter)
 #      3. QtConsole: .error, .in-prompt, .out-prompt, etc
-#c.JupyterWidget.style_sheet = ''
+# c.JupyterWidget.style_sheet = ''
 
 ## If not empty, use this Pygments style for syntax highlighting. Otherwise, the
 #  style sheet is queried for Pygments style information.
-#c.JupyterWidget.syntax_style = ''
+# manni, igor, xcode, vim, autumn
+# vs, rrt, native, perldoc, borland
+# tango, emacs, friendly, monokai
+# paraiso-dark, colorful, murphy
+# bw, pastie, paraiso-light, trac
+# default, fruity
+c.JupyterWidget.syntax_style = "monokai"
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # KernelManager(ConnectionFileMixin) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 ## Manages a single kernel in a subprocess on this host.
 #
 #  This version starts kernels with Popen.
 
 ## Should we autorestart the kernel if it dies.
-#c.KernelManager.autorestart = True
+# c.KernelManager.autorestart = True
 
 ## DEPRECATED: Use kernel_name instead.
 #
@@ -292,31 +298,31 @@ c.JupyterWidget.input_sep = '\n'
 #  the arguments that the kernel understands. In particular, this means that the
 #  kernel does not receive the option --debug if it given on the Jupyter command
 #  line.
-#c.KernelManager.kernel_cmd = []
+# c.KernelManager.kernel_cmd = []
 
 ## Time to wait for a kernel to terminate before killing it, in seconds.
-#c.KernelManager.shutdown_wait_time = 5.0
+# c.KernelManager.shutdown_wait_time = 5.0
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # KernelRestarter(LoggingConfigurable) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 ## Monitor and autorestart a kernel.
 
 ## Whether to include every poll event in debugging output.
 #
 #  Has to be set explicitly, because there will be *a lot* of output.
-#c.KernelRestarter.debug = False
+# c.KernelRestarter.debug = False
 
 ## The number of consecutive autorestarts before the kernel is presumed dead.
-#c.KernelRestarter.restart_limit = 5
+# c.KernelRestarter.restart_limit = 5
 
 ## Kernel heartbeat interval in seconds.
-#c.KernelRestarter.time_to_dead = 3.0
+# c.KernelRestarter.time_to_dead = 3.0
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # Session(Configurable) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 ## Object for handling serialization and sending of messages.
 #
@@ -357,52 +363,52 @@ c.JupyterWidget.input_sep = '\n'
 
 ## Threshold (in bytes) beyond which an object's buffer should be extracted to
 #  avoid pickling.
-#c.Session.buffer_threshold = 1024
+# c.Session.buffer_threshold = 1024
 
 ## Whether to check PID to protect against calls after fork.
 #
 #  This check can be disabled if fork-safety is handled elsewhere.
-#c.Session.check_pid = True
+# c.Session.check_pid = True
 
 ## Threshold (in bytes) beyond which a buffer should be sent without copying.
-#c.Session.copy_threshold = 65536
+# c.Session.copy_threshold = 65536
 
 ## Debug output in the Session
-#c.Session.debug = False
+# c.Session.debug = False
 
 ## The maximum number of digests to remember.
 #
 #  The digest history will be culled when it exceeds this value.
-#c.Session.digest_history_size = 65536
+# c.Session.digest_history_size = 65536
 
 ## The maximum number of items for a container to be introspected for custom
 #  serialization. Containers larger than this are pickled outright.
-#c.Session.item_threshold = 64
+# c.Session.item_threshold = 64
 
 ## execution key, for signing messages.
-#c.Session.key = b''
+# c.Session.key = b''
 
 ## path to file containing execution key.
-#c.Session.keyfile = ''
+# c.Session.keyfile = ''
 
 ## Metadata dictionary, which serves as the default top-level metadata dict for
 #  each message.
-#c.Session.metadata = {}
+# c.Session.metadata = {}
 
 ## The name of the packer for serializing messages. Should be one of 'json',
 #  'pickle', or an import name for a custom callable serializer.
-#c.Session.packer = 'json'
+# c.Session.packer = 'json'
 
 ## The UUID identifying this session.
-#c.Session.session = ''
+# c.Session.session = ''
 
 ## The digest scheme used to construct the message signatures. Must have the form
 #  'hmac-HASH'.
-#c.Session.signature_scheme = 'hmac-sha256'
+# c.Session.signature_scheme = 'hmac-sha256'
 
 ## The name of the unpacker for unserializing messages. Only used with custom
 #  functions for `packer`.
-#c.Session.unpacker = 'json'
+# c.Session.unpacker = 'json'
 
 ## Username for the Session. Default is your system username.
-#c.Session.username = 'erik'
+# c.Session.username = 'erik'
