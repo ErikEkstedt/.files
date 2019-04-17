@@ -214,7 +214,7 @@
     },
     "coc.preferences.languageSourcePriority": {
       "type": "number",
-      "default": 99,
+      "default": 9999,
       "description": "Priority of language sources."
     },
     "coc.preferences.numberSelect": {

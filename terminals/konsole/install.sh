@@ -8,6 +8,7 @@ mkdir $konsole_dir
 
 # settings
 cp $files/erik-standard.profile $konsole_dir
+cp $files/dropdown.profile $konsole_dir
 
 # colors
 cp $files/base16-onedark.colorscheme $konsole_dir
