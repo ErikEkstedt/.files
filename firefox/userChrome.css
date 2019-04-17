@@ -1,58 +1,3 @@
-/* Open Firefox browser
-1. Open developer tools (Ctrl-Shift-I)
-2. Make sure to "Enable remote debugging"
-	 and "Enable browser chrome and add-on debugging toolboxes"
-3. Press Ctrl-Shift-Alt-I to open remote debugger.
-	- Use inspector
-	- Play around with style editor -> userChrome.css
-*/
-
-
-:root {
-  --ui-background: #000000;
-  --ui-background-second: #22252b;
-  --ui-accent: #00a8ff;
-  --ui-accent-second: #1755e2;
-  --ui-emphasis: rgba(147, 206, 233, 0.8);
-
-  --lwt-accent-color: var(--ui-background) !important; /* tabbar background */
-  --tab-selection-background-color: var(--ui-background-second) !important;
-  --url-and-searchbar-background-color: var(--ui-background) !important;
-
-  --chrome-background-color: var(
-    --ui-background
-  ) !important; /*includes tabstrip background*/
-  --chrome-secondary-background-color: var(
-    --ui-background-second
-  ) !important; /*includes toolbar, urlbar*/
-}
-
-/* bar where url, extension and settings are */
-#nav-bar {
-  border-top-right-radius: 4px !important;
-}
-
-/* ToolBar */
-#urlbar, #navigator-toolbox .searchbar-textbox {
-  border-radius: 4px !important;
-  transition: 0.1s;
-  transition-property: border-color;
-}
-
-.searchbar-textbox {
-  border-color: var(--ui-accent) !important;
-}
-
-#urlbar[focused],
-#navigator-toolbox .searchbar-textbox[focused] {
-  border-color: var(--ui-accent) !important;
-}
-
-#urlbar:not([focused]):hover,
-#navigator-toolbox .searchbar-textbox:not([focused]):hover {
-  border-color: var(--ui-accent-second) !important;
-}
-
 /* tab top border roundness */
 #TabsToolbar .tabbrowser-tab,
 #TabsToolbar .tabbrowser-tab .tab-stack,
@@ -62,50 +7,7 @@
   border-top-right-radius: 8px !important;
 }
 
-/* Bookmarks toolbar */
-/* #PersonalToolbar { */
-/*   border-top-left-radius: 8px !important; */
-/*   border-top-right-radius: 8px !important; */
-/* } */
-
 /* remove colored line above each tab */
 #TabsToolbar .tabbrowser-tab .tab-line {
   visibility: hidden;
-}
-
-/* Shorten the vertical lines between background tabs */
-.tabbrowser-tab::before,
-.tabbrowser-tab::after {
-  margin-top: 9px;
-}
-
-/* New tab button color */
-#new-tab-button .tabs-newtab-button {
-  fill: #777 !important;
-  /*	background-color: var(--ui-background-second) !important; */
-
-  margin-top: 5px !important;
-  margin-bottom: 5px !important;
-  margin-left: 5px !important;
-  margin-right: 5px !important;
-
-  border-bottom-left-radius: 12px !important;
-  border-bottom-right-radius: 12px !important;
-  border-top-left-radius: 12px !important;
-  border-top-right-radius: 12px !important;
-}
-
-/* URL Bar */
-#pageActionButton,
-#pocket-button-box,
-ar-button,
-.autocomplete-history-dropmarker,
-#identity-icon-labels {
-  display: none !important;
-}
-
-@namespace url('http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul');
-/*Prevents White pre-load flash*/
-tabbrowser tabpanels {
-  background-color: black !important;
 }
