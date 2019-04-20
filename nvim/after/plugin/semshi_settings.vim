@@ -1,5 +1,9 @@
 " https://github.com/numirias/semshi
 
+if g:semshi#active
+  finish
+endif
+
 " Mappings
 nmap <silent> <leader>rr :Semshi rename<CR>
 nmap <silent> <leader>ge :Semshi goto error<CR>

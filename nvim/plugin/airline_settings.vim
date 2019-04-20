@@ -25,7 +25,6 @@ let g:airline_section_y = airline#section#create(['%{fugitive#statusline()}'])
 let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
 let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
 
-
 " " Change error symbol:
 let airline#extensions#coc#error_symbol = 'Error:'
 

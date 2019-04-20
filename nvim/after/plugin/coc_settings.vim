@@ -45,3 +45,30 @@ endfunction
 
 " Fix autofix problem of current line
 nmap <leader>qf  <Plug>(coc-fix-current)
+
+
+" Highlight
+
+" Default: `hi CocErrorSign  ctermfg=Red guifg=#ff0000`
+" The highlight used for error signs.
+" highlight CocErrorHighlight ctermfg=Red  guifg=#ff0000
+" hi CocErrorSign  ctermfg=Red guifg=#ff0000
+" hi CocWarningSign  ctermfg=Brown guifg=#ff922b
+hi CocInfoSign  guifg=#89db41
+" hi CocHintSign  ctermfg=Blue guifg=#15aabf
+
+hi CocErrorHighlight guifg=#e9134e 
+hi CocWarningHighlight guifg=#cf9f28 
+hi CocInfoHighlight guifg=#8f29e6
+" hi CocHintHighlight 
+
+hi CocHighlightText guifg=#11aa33
+hi CocHighlightRead guifg=#98d335 
+hi CocHighlightWrite guifg=#e93491 
+
+" Float
+hi CocFloating guifg=#aa00aa
+hi CocErrorFloat guifg=#ff0000
+hi CocWarningFloat guifg=#ddaa00 
+hi CocInfoFloat guifg=#0055DD 
+hi CocHintFloat guifg=#2ed1cd

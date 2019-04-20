@@ -90,7 +90,7 @@ Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " better python syntax h
 Plug 'ambv/black'                         " Linter/formatter
 
 Plug 'dhruvasagar/vim-zoom'
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+" Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 
 Plug 'scrooloose/nerdtree'             " XXX Project and file navigation
 Plug 'Xuyuanp/nerdtree-git-plugin'     " show git status of files
@@ -132,7 +132,6 @@ Plug 'shime/vim-livedown'
 " Plug 'mtth/scratch.vim'                " Unobtrusive scratch
 " Plug 'szymonmaszke/vimpyter'
 " Plug 'ErikEkstedt/vimpyter'
-" Plug 'itchyny/lightline.vim'
 
 if !exists("g:gui_oni")
 	Plug 'christoomey/vim-tmux-navigator' " navigate between vim and tmuz seemlessly
@@ -142,7 +141,15 @@ endif
 
 " Colorschemes and Appearence {{{
 set termguicolors " Enable true color support.
-Plug 'ErikEkstedt/onedark.vim'
+
+" Plug 'ErikEkstedt/onedark.vim'
+Plug 'benburrill/potato-colors'
+Plug 'crusoexia/vim-monokai'
+Plug 'mhartington/oceanic-next'
+Plug 'joshdick/onedark.vim'
+Plug 'dracula/vim'
+Plug 'tomasr/molokai'
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 " }}}
@@ -150,12 +157,12 @@ call plug#end()
 
 " Basic Settings {{{
 
-" colorscheme monokai " onedark
-colorscheme onedark
-
 filetype plugin indent on
 syntax enable
 syntax on
+
+colorscheme onedark 
+" colorscheme OceanicNext
 
 " Settings
 set spelllang=sv,en_us                " US English spelling
