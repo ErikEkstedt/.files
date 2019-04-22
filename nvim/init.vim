@@ -164,6 +164,8 @@ syntax on
 colorscheme onedark 
 " colorscheme OceanicNext
 
+let g:background_color = synIDattr(hlID("Normal"), "bg")
+
 " Settings
 set spelllang=sv,en_us                " US English spelling
 set ffs=unix,dos,mac                  " File Format (relevant to line ending type)
