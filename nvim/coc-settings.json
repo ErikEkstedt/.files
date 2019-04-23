@@ -5,7 +5,7 @@
   "suggest.echodocSupport": true,
   "suggest.maxCompleteItemCount": 30,
   "suggest.snippetIndicator": " ►",
-  "suggest.noselect": false,
+  "suggest.noselect": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "typescript",
