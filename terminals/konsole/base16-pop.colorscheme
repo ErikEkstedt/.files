@@ -89,6 +89,7 @@ Color=208,208,208
 Color=255,255,255
 
 [General]
+Blur=true
 Description=Base16 Pop
-Opacity=0.87
+Opacity=0.7
 Wallpaper=
