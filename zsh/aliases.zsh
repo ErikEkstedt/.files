@@ -27,7 +27,7 @@ else
     alias la="lsd -1a --group-dirs first"
     alias ltr="lsd --tree"
   else
-    alias ll="ls -l"
+    alias ll="ls -l --group-directories-first"
     alias ld="ls -ld */"
     alias la="ls -A -1 --group-directories-first"
     alias lla="ls -la --group-directories-first"
