@@ -20,18 +20,20 @@ if [[ $(uname) == 'Darwin' ]]; then
   alias lpy="gls *.py --color"
   alias lpdf="gls -ogl *.pdf --color"
 else
-  if [ -x "$(command -v lsd)" ]; then # if lsd exists
-    alias ll="lsd -l --group-dirs first"
-    alias ld="lsd -1 --group-dirs first"
-    alias lla="lsd -la --group-dirs first"
-    alias la="lsd -1a --group-dirs first"
-    alias ltr="lsd --tree"
-  else
     alias ll="ls -l --group-directories-first"
     alias ld="ls -ld */"
     alias la="ls -A -1 --group-directories-first"
     alias lla="ls -la --group-directories-first"
-  fi
+fi
+
+if [ -x "$(command -v lsd)" ]; then # if lsd exists
+  alias ls="lsd --group-dirs first"
+  alias ll="lsd -l --group-dirs first"
+  alias ld="lsd -1 --group-dirs first"
+  alias lla="lsd -la --group-dirs first"
+  alias la="lsd -1a --group-dirs first"
+  alias ltr="lsd --tree"
+else
   alias La="tspc 'ls -A -1 --group-directories-first'"
   alias lrt="ls -lrt"
   alias ltt="ls -ogl *.tex"
@@ -169,5 +171,5 @@ alias umountall="sudo umount ~/Machines/*"
 # }}}
 
 # MacbookPro linux {{{
-alias wake=
+# alias wake=
 # }}}
