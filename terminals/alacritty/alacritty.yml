@@ -29,7 +29,7 @@ window:
 
   # Window decorations
   # Setting this to false will result in window without borders and title bar.
-  decorations: true
+  decorations: "full"
 
 # Display tabs using this many cells (changes require restart)
 tabspaces: 8
@@ -38,26 +38,39 @@ tabspaces: 8
 draw_bold_text_with_bright_colors: true
 
 # Font configuration (changes require restart)
+#  On Macos check Font Book.app to see the names of fonts
 font:
   # The normal (roman) font face to use.
   normal:
-    family: Menlo
-    # family: DejaVu Sans Mono
-    # Style can be specified to pick a specific face.
-    # style: Regular
+    # family: Menlo
+    #
+    # family: DejaVuSansMono Nerd Font
+    # style: Book
+    #
+    family: Hack Nerd Font
+    style: Regular
 
   # The bold font face
   bold:
-    family: Menlo
-    # family: DejaVu Sans Mono
-    # Style can be specified to pick a specific face.
+    # family: Menlo
+    # family: DejaVuSansMono Nerd Font
     # style: Bold
+    # family: Hack Bold Nerd Font Complete
+    # family: Hack
+    # Style can be specified to pick a specific face.
+    family: Hack Nerd Font
+    style: Bold
 
   # The italic font face
   italic:
-    family: Menlo
+    # family: Menlo
     # Style can be specified to pick a specific face.
     # style: Italic
+    #
+    # family: DejaVuSansMono Nerd Font
+    # style: Oblique
+    family: Hack Nerd Font
+    style: Italic
 
   # Point size of the font
   size: 16.0
@@ -80,7 +93,9 @@ font:
 
   # Scale the font size based on the monitor's DPI. This will lead to bigger text on HiDPI
   # screens and make reading text a little easier.
-  scale_with_dpi: true
+  # scale_with_dpi: true  # deprecated
+  # [2019-06-02 15:31] [ERROR] The scale_with_dpi setting has been removed, on X11
+  # the WINIT_HIDPI_FACTOR environment variable can be used instead.
 
   # OS X only: use thin stroke font rendering. Thin strokes are suitable
   # for retina displays, but for non-retina you probably want this set to
@@ -89,10 +104,6 @@ font:
 
 # Should display the render timer
 render_timer: false
-
-# Use custom cursor colors. If true, display the cursor in the cursor.foreground
-# and cursor.background colors, otherwise invert the colors of the cursor.
-custom_cursor_colors: false
 
 # # Colors (Tomorrow Night Bright)
 # colors:
@@ -214,22 +225,26 @@ mouse:
   # scrolling for applications like `man`.
   #
   # To disable this completely, set `faux_scrollback_lines` to 0.
-  faux_scrollback_lines: 1
+  faux_scrolling_lines: 1
+  hide_when_typing: true
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
 
 dynamic_title: true
 
-hide_cursor_when_typing: false
+cursor:
+  # Cursor style
+  #
+  # Values for `style`:
+  #   - ▇ Block
+  #   - _ Underline
+  #   - | Beam
+  style: Block
 
-# Style of the cursor
-#
-# Values for 'cursor_style':
-# - Block
-# - Underline
-# - Beam
-cursor_style: Block
+  # If this is `true`, the cursor will be rendered as a hollow box when the
+  # window is not focused.
+unfocused_hollow: true
 
 # Live config reload (changes require restart)
 live_config_reload: true
