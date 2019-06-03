@@ -13,6 +13,8 @@ tar xzf nvim-macos.tar.gz
 ln -s nvim-osx64/bin/nvim ~/.local/bin/nvim
 ´´´
 
+* fix coc -> hangs
+
 ### Hammerspoon
 
 Hammerspoon is a great tool which I now use as a window manager
@@ -24,6 +26,7 @@ Hammerspoon is a great tool which I now use as a window manager
 - Special keys: 
   * alt + =   -> ~
   * alt shift /  -> \
+  * special keys broken after update
 - Font
   - Check font book.app for names
   - Use correct style (Bold/Oblique etc) from font\ book.app

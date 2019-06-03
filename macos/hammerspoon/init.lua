@@ -16,18 +16,29 @@ ctrlAlt = { "ctrl", "alt" }
 altShift = { "alt", "shift" }
 cmdCtrlShift = { "cmd", "ctrl", "shift" }
 
+-------------------------------------------------------------------
 -- Applications
+-------------------------------------------------------------------
 
 hs.hotkey.bind("alt", "return", function()
-  hs.application.open('Alacritty')
+  hs.application.launchOrFocus("Iterm")
 end)
 
 hs.hotkey.bind(ctrlAlt, "space", function()
-  hs.application.open('Finder')
+  hs.application.launchOrFocus("Finder")
 end)
 
+-- hs.hotkey.bind("alt", "return", function()
+--   hs.application.open('Alacritty')
+-- end)
+-- hs.hotkey.bind(ctrlAlt, "space", function()
+--   hs.application.open('Finder')
+-- end)
+
+-------------------------------------------------------------------
 -- Windows
---
+-------------------------------------------------------------------
+
 -- Grid setup
 hs.grid.MARGINX = 0
 hs.grid.MARGINY = 0
@@ -108,4 +119,5 @@ hs.hotkey.bind(cmdCtrlShift, "L", function()
     hs.grid.resizeWindowWider(hs.window.focusedWindow())
 end)
 
+-------------------------------------------------------------------
 hs.alert.show("Hammerspoon loaded")

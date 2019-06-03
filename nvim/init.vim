@@ -10,7 +10,7 @@
 let g:HOSTNAME = substitute(system('hostname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
 let g:HOME = substitute(system('echo $HOME'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
 let g:UNAME = substitute(system('uname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
-let g:BROWSER = "firefox"
+let g:BROWSER = "brave-browser"
 
 let mapleader = ','
 let localleader = '\'
@@ -73,7 +73,7 @@ Plug 'edkolev/tmuxline.vim'          " tmux statusline same as vim.	 :Tmuxline l
 " vim script completion
 Plug 'Shougo/neco-vim'
 Plug 'neoclide/coc-neco'                " XXX autocompletion + lsp
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 
 Plug 'mxw/vim-jsx'
 Plug 'prettier/vim-prettier', {
@@ -126,7 +126,8 @@ Plug 'romainl/vim-cool'                " unhighlights searches when it is not ne
 " Preview Text
 Plug 'lervag/vimtex'       " XXX latex compiler, preview latex pdf, highlight and syntax. alot more.
 Plug 'mhinz/neovim-remote' " Needed for vimtex. Error: 'compiler_progranme=nvr' / '--remote'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
+" Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install'  }
 Plug 'shime/vim-livedown'
 
 " Plug 'mtth/scratch.vim'                " Unobtrusive scratch
@@ -206,13 +207,13 @@ set cursorline                        " highlight line where cursor is
 " set completeopt-=preview
 " set completeopt+=noinsert
 
-if g:UNAME == 'Darwin'
+" if g:UNAME == 'Darwin'
 	" Darwin
 	" This does not work on MacOS - iterm2
-	set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+	" set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 	" Can't get the cursor to be line in insert mode and box in normal
 	" set guicursor=
-endif
+" endif
 
 
 set hls                        " highlighting!
