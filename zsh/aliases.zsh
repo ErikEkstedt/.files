@@ -102,6 +102,7 @@ alias somy="source $HOME/mycroft-core/.venv/bin/activate"
 alias ktheme="_konsole_theme"
 
 # Tmux {{{
+alias titerm="tmux source ~/.files/tmux/tmux.iterm.conf"
 alias tls="tmux list-sessions"
 alias tkd="tmux-kill-detached-sessions"
 alias tks="tmux kill-session -t"
