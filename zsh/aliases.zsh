@@ -27,11 +27,11 @@ else
 fi
 
 if [ -x "$(command -v lsd)" ]; then # if lsd exists
-  alias ls="lsd --group-dirs first"
-  alias ll="lsd -l --group-dirs first"
-  alias ld="lsd -1 --group-dirs first"
-  alias lla="lsd -la --group-dirs first"
-  alias la="lsd -1a --group-dirs first"
+  alias ls="lsd --group-dirs=first"
+  alias ll="lsd -l --group-dirs=first"
+  alias ld="lsd -1 --group-dirs=first"
+  alias lla="lsd -la --group-dirs=first"
+  alias la="lsd -1a --group-dirs=first"
   alias ltr="lsd --tree"
 else
   alias La="tspc 'ls -A -1 --group-directories-first'"
