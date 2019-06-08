@@ -28,6 +28,10 @@ hs.hotkey.bind(ctrlAlt, "space", function()
   hs.application.launchOrFocus("Finder")
 end)
 
+hs.hotkey.bind('alt', "g", function()
+  hs.application.launchOrFocus("Brave browser")
+end)
+
 -- hs.hotkey.bind("alt", "return", function()
 --   hs.application.open('Alacritty')
 -- end)
