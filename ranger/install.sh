@@ -7,7 +7,7 @@ echo "Creating conf_dir directory and links"
 mkdir -p $conf_dir  # does not delete if already exists
 
 # ln -sf $root/rifle.conf $conf_dir/rifle.conf
-cat $root/rifle.conf > /rifle.conf
+cat $root/rifle.conf > $conf_dir/rifle.conf
 echo "  -created rifle.conf" 
 
 # ln -sf $root/scope.sh $conf_dir/scope.sh
