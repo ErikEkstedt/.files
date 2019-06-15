@@ -1,6 +1,7 @@
+# vim: fdm=marker
 # ==== ZSHRC ====
 # (K)Ubuntu 16.04, 17.10, 18.04
-
+ 
 case `uname` in
   Darwin)
     # commands for OS X go here
@@ -30,16 +31,16 @@ setopt interactivecomments
 
 #==== Export {{{
 
-export KEYTIMEOUT=1
-export TERM="screen-256color"  # "xterm-256color"
+# Term
+export BROWSER="firefox"   # google-chrome
 export COLORTERM="truecolor"
-
+export DOTFILES="$HOME/.files"
 export EDITOR='nvim'
+export KEYTIMEOUT=1
+export LANG=en_US.UTF-8
+export TERM="screen-256color"  # "xterm-256color"
 export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
-export BROWSER="firefox"   # google-chrome
-export LANG=en_US.UTF-8
-export DOTFILES="$HOME/.files"
 
 ## Conda / Python / Node Envs
 export PATH=$HOME/miniconda3/bin:${PATH}
@@ -47,13 +48,22 @@ export PATH=$HOME/.node_modules_global/bin:${PATH}
 export PATH=$HOME/.local/bin:${PATH}
 export PATH=$HOME/.files/bin:${PATH}  # For my custom scripts
 
+# Yarn
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# Ruby (for jekyll)
+# Install Ruby Gems to ~/gems
+export GEM_HOME="$HOME/gems"
+export PATH="$HOME/gems/bin:$PATH"
 # export PYTHONPATH=$HOME/.files/pythonpath
 
 # Geckodriver (selenium, webdriver for firefox)
 export PATH=$HOME/geckodriver:${PATH}  # Download tar file and extract here 
+
 # Kaggle
 export KAGGLE_USERNAME=erikislearning
 # export KAGGLE_KEY=xxxxxxxxxxxxxx
+
 ## CUDA
 if [[ $(hostname) == 'erik-Desktop' ]]; then
 	export PATH=/usr/local/cuda-9.0/bin:${PATH}
@@ -165,11 +175,3 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-# Yarn
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
-# Ruby (for jekyll)
-# Install Ruby Gems to ~/gems
-export GEM_HOME="$HOME/gems"
-export PATH="$HOME/gems/bin:$PATH"
