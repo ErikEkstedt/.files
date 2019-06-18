@@ -237,7 +237,7 @@ set ignorecase                 " (in)case sensitive search
 set smartcase
 set switchbuf=usetab
 
-set synmaxcol=200              " Maximum column in which to search for syntax items
+set synmaxcol=400              " Maximum column in which to search for syntax items
 set signcolumn=yes
 set splitbelow
 set splitright
