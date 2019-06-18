@@ -1,30 +1,32 @@
 # WorkFLow
 
+* [ ] Pretty Nerdtree colors
+* [ ] Shift-Tab
+* [ ] `[oh-my-zsh] plugin 'zsh-autosuggestions' not found`
+* [ ] zsrc
+  - source `tmux_iterm.conf`
+
 ## Vim
 
-* [ ] quickfix list over all "#TODO" in python projects.
-  - good start: [tasklist.vim](https://github.com/vim-scripts/TaskList.vim)
-  - all commented TODO
-  - First thing to happen if opening vim in a git repo
-
-* Colorscheme
-  - [ ] change ugly colors in json
-  - [ ] Toggle transparency messes with python syntax highlight
-* [ ] Change directory fzf 
 * Quicklist vim
-* Diff settings
-  - Help
-  - Find <<<<<<< etc
+  * [ ] quickfix list over all "#TODO" in python projects.
+    - good start: [tasklist.vim](https://github.com/vim-scripts/TaskList.vim)
+    - all commented TODO
+    - First thing to happen if opening vim in a git repo
+* Colorscheme
+  - [ ] Ugly colors in json
+  - [ ] Nerdtree
 
 
-## ML
+## ZSH
 
-* GST
-* FiLM
-* CLEVR QA bot play
-* WaveNet
-* Show, Attend & Tell
-* Luong attention
+* Plugins? 
+  - how download script
+
+
+## Ranger
+
+* Image preview MacOs - Iterm
 
 
 

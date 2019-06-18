@@ -1,6 +1,6 @@
 " Background colors for active vs inactive windows
-hi ActiveWindow guibg=#141619
-hi InactiveWindow guibg=#101315
+hi ActiveWindow guibg=#282C34
+hi InactiveWindow guibg=#242930
 
 hi HiStatus guibg=#111111 guifg=#00ceff
 hi HiStatusInsert guibg=#111111 guifg=#19f31e
@@ -25,12 +25,10 @@ augroup END
 function! Handle_Win_Enter()
   setlocal winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
   setlocal cursorline 
-
   " TODO: Remove Nerdtree from this setting
   if has("conceal") || exists("g:indentLine_loaded")
     exe 'IndentLinesToggle'
   endif
-
 endfunction
 
 function! Handle_Win_Leave()

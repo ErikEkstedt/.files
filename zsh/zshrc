@@ -6,7 +6,6 @@ case `uname` in
     # commands for OS X go here
     export LC_ALL=en_US.UTF-8
     export LANG=en_US.UTF-8
-    iwconfig wtxpower
     ;;
   Linux)
     # commands for Linux go here

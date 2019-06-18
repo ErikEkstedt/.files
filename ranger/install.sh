@@ -1,40 +1,44 @@
 #!/bin/bash
 
-mkdir -p ~/.config/ranger  # does not delete if already exists
+root=~/.files/ranger
+conf_dir=~/.config/ranger
 
-# ln -sf  = symbolic link, forced (removes existing file)
-echo "Creating ~/.config/ranger directory and links"
-echo "-> rifle.conf" 
-ln -sf ~/.files/ranger/rifle.conf ~/.config/ranger/rifle.conf
+echo "Creating conf_dir directory and links"
+mkdir -p $conf_dir  # does not delete if already exists
 
-echo "-> scope.sh" 
-ln -sf ~/.files/ranger/scope.sh ~/.config/ranger/scope.sh
+# ln -sf $root/rifle.conf $conf_dir/rifle.conf
+cat $root/rifle.conf > $conf_dir/rifle.conf
+echo "  -created rifle.conf" 
 
-echo "-> commands.py" 
-ln -sf ~/.files/ranger/commands.py ~/.config/ranger/commands.py
+# ln -sf $root/scope.sh $conf_dir/scope.sh
+cat $root/scope.sh > $conf_dir/scope.sh
+echo "  -created scope.sh" 
 
+# ln -sf $root/commands.py $conf_dir/commands.py
+cat $root/commands.py > $conf_dir/commands.py
+echo "  -created commands.py" 
 
 # Installs Devicons (if directory does not exist)
-if [ -d  ~/.config/ranger/ranger_devicons ]; then
+if [ -d  $conf_dir/ranger_devicons ]; then
 	echo "Ranger devicons already cloned"
 else
 	echo "Downloading and installing RANGER DEVICONS"
-	git clone https://github.com/alexanderjeurissen/ranger_devicons.git ~/.config/ranger/ranger_devicons
-	cd ~/.config/ranger/ranger_devicons && make install
+	git clone https://github.com/alexanderjeurissen/ranger_devicons.git $conf_dir/ranger_devicons
+	cd $conf_dir/ranger_devicons && make install
 fi
 
 case `uname` in
   Darwin)
     echo "Use Macos conf (macrc.conf)"
-    ln -sf ~/.files/ranger/macrc.conf ~/.config/ranger/rc.conf
+    cat $root/rc_super.conf $root/rc_mac.conf > $conf_dir/rc.conf
     ;;
   Linux)
     echo "-> rc.conf" 
-    ln -sf ~/.files/ranger/rc.conf ~/.config/ranger/rc.conf
+    cat $root/rc_super.conf $root/rc_linux.conf > $conf_dir/rc.conf
     ;;
 esac
 
 # Replace just the line that differs (mac vs linux). However, I use links so this is not exactly what I want.
 #Create temporary file with new line in place
-# cat ~/.files/ranger/rc.conf | sed -e "s/set preview_images_method w3m/set preview_images_method iterm/" > /tmp/ranger_conf_mac_tmp
-# cp /tmp/ranger_conf_mac_tmp ~/.config/ranger/rc.conf
+# cat $root/rc.conf | sed -e "s/set preview_images_method w3m/set preview_images_method iterm/" > /tmp/ranger_conf_mac_tmp
+# cp /tmp/ranger_conf_mac_tmp conf_dir/rc.conf
