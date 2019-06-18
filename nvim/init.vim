@@ -10,7 +10,8 @@
 let g:HOSTNAME = substitute(system('hostname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
 let g:HOME = substitute(system('echo $HOME'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
 let g:UNAME = substitute(system('uname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
-let g:BROWSER = "firefox"
+" let g:BROWSER = "firefox"
+let g:BROWSER = "brave-browser"
 
 let mapleader = ','
 let localleader = '\'
@@ -245,7 +246,7 @@ set ignorecase                 " (in)case sensitive search
 set smartcase
 set switchbuf=usetab
 
-set synmaxcol=200              " Maximum column in which to search for syntax items
+set synmaxcol=400              " Maximum column in which to search for syntax items
 set signcolumn=yes
 set splitbelow
 set splitright
