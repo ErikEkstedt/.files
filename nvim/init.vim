@@ -75,6 +75,14 @@ Plug 'Shougo/neco-vim'
 Plug 'neoclide/coc-neco'                " XXX autocompletion + lsp
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 
+if has('nvim')
+  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/defx.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
 Plug 'mxw/vim-jsx'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
