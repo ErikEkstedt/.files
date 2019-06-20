@@ -8,15 +8,31 @@ through the install scripts should provide enough information to get it to work.
 ## Setup
 
 Most things are configured around <strong>vim/nvim</strong> and <strong>vim keybindings</strong>. Minimize mouse use!
-The settings are used on both Linux (KDE neon / ubuntu)
+The settings are used on both Linux (KDE neon / ubuntu) and MacOS
 
 Workflow relies on 
-* [zsh](https://www.zsh.org/)
-  * [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
-* [tmux](https://github.com/tmux/tmux)
-  * [thoughtbot crash course on tmux](https://thoughtbot.com/blog/a-tmux-crash-course)
-* [nvim](https://neovim.io/)
+* [ZSH](https://www.zsh.org/)
+  - Shell (as instead of bash)
+  * Community plugins/themes/settings [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
+* [NVIM](https://neovim.io/)
+  - Editor and a way of life
   * [Greg Hurrel Youtube Channel](https://www.youtube.com/channel/UCXPHFM88IlFn68OmLwtPmZA)
+* [Tmux](https://github.com/tmux/tmux)
+  - Terminal multiplexer
+  - Unix mentality use different tools for different uses 
+  * [thoughtbot crash course on tmux](https://thoughtbot.com/blog/a-tmux-crash-course)
+* [Ranger](https://github.com/ranger/ranger)
+  - Nice way to copy/move/delete multiple files, visualize structure and preview images
+* [FZF](https://github.com/junegunn/fzf)
+  - Fuzzy finding used in terminal, ranger and nvim
+* [LSD](https://github.com/Peltoche/lsd)
+  - "The next gen ls command"
+
+
+
+
+
+#### Misc
 * [Synergy](https://symless.com/synergy)
   - Sometimes use synergy to control multiple computers
 * SSH
