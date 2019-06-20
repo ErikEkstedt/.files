@@ -11,7 +11,7 @@ cat $root/rifle.conf > $conf_dir/rifle.conf
 echo "  -created rifle.conf" 
 
 # ln -sf $root/scope.sh $conf_dir/scope.sh
-cat $root/scope.sh > $conf_dir/scope.sh
+cat $root/scope2.sh > $conf_dir/scope.sh
 echo "  -created scope.sh" 
 
 # ln -sf $root/commands.py $conf_dir/commands.py
