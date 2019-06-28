@@ -207,15 +207,6 @@ set cursorline                        " highlight line where cursor is
 " set completeopt-=preview
 " set completeopt+=noinsert
 
-" if g:UNAME == 'Darwin'
-	" Darwin
-	" This does not work on MacOS - iterm2
-	" set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-	" Can't get the cursor to be line in insert mode and box in normal
-	" set guicursor=
-" endif
-
-
 set hls                        " highlighting!
 set lazyredraw                 " don't redraw screen during macros
 
@@ -246,7 +237,7 @@ set ignorecase                 " (in)case sensitive search
 set smartcase
 set switchbuf=usetab
 
-set synmaxcol=200              " Maximum column in which to search for syntax items
+set synmaxcol=400              " Maximum column in which to search for syntax items
 set signcolumn=yes
 set splitbelow
 set splitright

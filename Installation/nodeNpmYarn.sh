@@ -15,13 +15,13 @@ echo "Install npm? (y/n)"
 read answer
 if [[ $answer == 'y' || $answer == 'Y'   ]]; then
   # change global modules directory and reinstall npm there
+
   echo "Installing npm and setting global prefix"
   cd ~ && mkdir .node_modules_global
-  npm config set prefix=$HOME/.node_modules_global
-  npm install npm --global
 
-  # update npm
-  npm install npm@latest -g
+  npm config set prefix=$HOME/.node_modules_global
+  npm install npm --global  # reinstall
+  npm install npm@latest -g   # update 
 fi
 
 echo "Install Yarn (y/n)"

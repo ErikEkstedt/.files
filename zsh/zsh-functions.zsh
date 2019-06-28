@@ -3,8 +3,8 @@
 # sourced from zshrc
 
 
-# Misc
 ################################################################
+# Misc{{{
 
 function price() { # {{{
   local pair="${1:-etheur}" # default pair
@@ -17,11 +17,16 @@ function g() {  #{{{
 	la | grep -i $1
 } #}}}
 
-function print_path() {  #{{{
+function _print_path() {  #{{{
 	for p in $path; do
 		echo "$p"
-	done
+  done
 } #}}}
+
+function print_path() {  #{{{
+  _print_path | bat
+} #}}}
+
 
 function cfg() { #{{{
   '''Open vim from everywhere at ~/.files directory'''
@@ -29,9 +34,10 @@ function cfg() { #{{{
 	cd ~/.files
 	vim $(fzf)
 } #}}}
+#}}}
 
-# Conda/python/jupyter
 ################################################################
+# Conda{{{
 
 function so() { #{{{
   local env
@@ -52,7 +58,8 @@ function junb() { #{{{
 	jupyter notebook "$1"
 } #}}}
 
-# OS
+################################################################
+# OS {{{
 case Linux in
   Darwin)
     # commands for OS X go here
@@ -62,13 +69,14 @@ case Linux in
     # commands for Linux go here
     source ~/.files/zsh/zsh-functions-kde.zsh
     ;;
-esac
+esac ##}}}
 
-# BINDINGS
 ################################################################
+# BINDINGS {{{
 
 bindkey -s '^S' '^Asudo ^E'
 # bindkey -s '^Q' "exit\r"
 # bindkey -s '^Q' 'tmux switch-client -n \; kill-session -t "$(tmux display-message -p "#S")" || tmux kill-session\r'
 bindkey -M vicmd H beginning-of-line
 bindkey -M vicmd L end-of-line
+# }}}
