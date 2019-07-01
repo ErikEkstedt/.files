@@ -1,9 +1,7 @@
 " Tmux-navigation
 let g:tmux_navigator_no_mappings = 1
 
-if !exists('g:gui_oni')
-	nnoremap <silent><Left> :TmuxNavigateLeft<cr>
-	nnoremap <silent><Down> :TmuxNavigateDown<cr>
-	nnoremap <silent><Up> :TmuxNavigateUp<cr>
-	nnoremap <silent><Right> :TmuxNavigateRight<cr>
-endif
+nnoremap <silent><M-h> :TmuxNavigateLeft<cr>
+nnoremap <silent><M-j> :TmuxNavigateDown<cr>
+nnoremap <silent><M-k> :TmuxNavigateUp<cr>
+nnoremap <silent><M-l> :TmuxNavigateRight<cr>
