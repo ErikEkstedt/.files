@@ -3,7 +3,8 @@ let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz'
 let g:EasyMotion_startofline = 1 " Linejumps puts cursor at start of line
 
 " Mappings
-nmap <space><space> <Plug>(easymotion-bd-w)
+" nmap <space><space> <Plug>(easymotion-bd-w)
+nmap <space>a <Plug>(easymotion-bd-w)
 nmap <space>e <Plug>(easymotion-bd-e)
 
 nmap <space>l <Plug>(easymotion-lineforward)

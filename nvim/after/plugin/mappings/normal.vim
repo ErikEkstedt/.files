@@ -71,6 +71,7 @@ nnoremap <C-j> :resize -3<cr>
 " Buffers previous/next
 nnoremap <space>b :bp<CR>
 nnoremap <space>n :bn<CR>
+nnoremap <space><space> :b#<CR>
 
 " Workflow [right] / Todo(work)[left]
 nnoremap <h :leftabove vsplit ~/phd/ToDo.md<CR>:vertical resize 80<CR>
