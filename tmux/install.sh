@@ -40,17 +40,21 @@ if [[ $answer == 'y' || $answer == 'Y'   ]]; then
   fi
 fi
 
-echo "\nLinking Tmux config file"
-case `uname` in
-  Darwin)
-    echo "ln -sf $HOME/.files/tmux/mac-tmux.conf $HOME/.tmux.conf"
-    ln -sf $HOME/.files/tmux/mac-tmux.conf $HOME/.tmux.conf
-    ;;
-  Linux)
-    echo "ln -sf $HOME/.files/tmux/tmux.conf $HOME/.tmux.conf"
-    ln -sf $HOME/.files/tmux/tmux.conf $HOME/.tmux.conf
-    ;;
-esac
+# echo "\nLinking Tmux config file"
+# case `uname` in
+#   Darwin)
+#     echo "ln -sf $HOME/.files/tmux/mac-tmux.conf $HOME/.tmux.conf"
+#     ln -sf $HOME/.files/tmux/mac-tmux.conf $HOME/.tmux.conf
+#     ;;
+#   Linux)
+#     echo "ln -sf $HOME/.files/tmux/tmux.conf $HOME/.tmux.conf"
+#     ln -sf $HOME/.files/tmux/tmux.conf $HOME/.tmux.conf
+#     ;;
+# esac
+
+
+echo "ln -sf $HOME/.files/tmux/tmux.conf $HOME/.tmux.conf"
+ln -sf $HOME/.files/tmux/tmux.conf $HOME/.tmux.conf
 
 if [ -d ~/.tmux/plugins/tpm ]; then
 	echo "Tmux-plugins already installed"
