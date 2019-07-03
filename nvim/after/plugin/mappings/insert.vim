@@ -7,4 +7,9 @@ inoremap <c-h> <Left>
 inoremap <c-j> <Down>
 inoremap <c-k> <Up>
 
-imap <expr> <s-Tab> pumvisible() ? "\<C-P>" : "\<esc><<i"
+
+" Use <Tab> and <S-Tab> for navigate completion list
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<esc><<i"

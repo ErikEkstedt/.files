@@ -12,15 +12,14 @@ autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 " Smaller updatetime for CursorHold & CursorHoldI
 set updatetime=300
 
-" Use <Tab> and <S-Tab> for navigate completion list
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
 " Close preview window when completion is done
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " Use <c-space> for trigger completion.
 " inoremap <silent><expr> <c-space> coc#refresh()
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)

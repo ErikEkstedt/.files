@@ -7,7 +7,7 @@ vnoremap <leader>in g<C-a>
 " vnoremap <c-p> "+p
 vnoremap ,pa "+p
 vnoremap <c-y> "+y
-vnoremap <s-tab>   <gv
+vnoremap <s-tab> <gv
 vnoremap <tab> >gv|
 
 " natural end/beginning of line movement

@@ -50,4 +50,5 @@ let g:vimtex_motion_matchparen = 1
 let g:tex_fold_enabled=1
 let g:indentLine_enabled = 1 
 
-setlocal tw=80
+setlocal wrap
+setlocal linebreak

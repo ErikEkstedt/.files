@@ -39,7 +39,8 @@ nnoremap <leader>db :%bd<CR><C-O>:bd#<CR>
 
 "indenting/unindenting
 " nnoremap <tab> >>
-nnoremap <s-tab> <lt><lt>
+" nnoremap <s-tab> <lt><lt>
+" nnoremap <s-tab> <<
 
 "--------------------------------------------------------
 "--------------------- Movement -------------------------
