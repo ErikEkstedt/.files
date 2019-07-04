@@ -162,6 +162,7 @@ filetype plugin indent on
 syntax enable
 syntax on
 
+
 colorscheme onedark 
 " colorscheme OceanicNext
 
