@@ -26,7 +26,7 @@ Basics
 * Sudo is required by default
   - Add group docker to user
   - create group `sudo groupadd docker`. Do not overwrite if exists.
-  - add (current) user to group `sudo usermod -aG $USER`
+  - add (current) user to group `sudo usermod -aG docker $USER`
   - **Test** by running `docker run hello-world`
 * Create a **Dockerfile**
 * Build `docker build --tag=name-of-image $PATH_TO_FOLDER`
