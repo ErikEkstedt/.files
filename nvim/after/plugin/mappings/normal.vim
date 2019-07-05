@@ -70,7 +70,9 @@ nnoremap <C-j> :resize -3<cr>
 
 " Buffers previous/next
 nnoremap <space>b :bp<CR>
+nnoremap <space>B :bf<CR>
 nnoremap <space>n :bn<CR>
+nnoremap <space>N :bl<CR>
 nnoremap <space><space> :b#<CR>
 nnoremap <space>d :bd<CR>
 

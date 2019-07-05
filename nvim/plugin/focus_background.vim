@@ -26,16 +26,16 @@ function! Handle_Win_Enter()
   setlocal winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
   setlocal cursorline 
   " TODO: Remove Nerdtree from this setting
-  if has("conceal") || exists("g:indentLine_loaded")
-    exe 'IndentLinesToggle'
-  endif
+  " if has("conceal") || exists("g:indentLine_loaded")
+  "   exe 'IndentLinesToggle'
+  " endif
 endfunction
 
 function! Handle_Win_Leave()
   setlocal nocursorline 
-  if has("conceal") || exists("g:indentLine_loaded")
-    exe 'IndentLinesToggle'
-  endif
+  " if has("conceal") || exists("g:indentLine_loaded")
+  "   exe 'IndentLinesToggle'
+  " endif
 endfunction
 
 function! StatusNormal()
