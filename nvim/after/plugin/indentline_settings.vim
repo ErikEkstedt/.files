@@ -6,9 +6,10 @@
 
 
 " Exclusion
+let g:indentLine_enabled = 0
 let g:indentLine_bufNameExclude = ['NERD_tree.*']
 let g:indentLine_fileTypeExclude = ['help', 'nerdtree']
-" let g:indentLine_bufTypeExclude = ['help', 'nerdtree', 'terminal']
+let g:indentLine_bufTypeExclude = ['help', 'nerdtree', 'terminal']
 
 let g:indentLine_setColors = 0
 let g:indentLine_char = '┊' " '┊'

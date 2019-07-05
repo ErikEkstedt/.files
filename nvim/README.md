@@ -39,3 +39,12 @@ $NVIM_ROOT
   - [codi](https://github.com/metakirby5/codi.vim)
 	* Interactive code scratchpad.
 	* out of shell: python, js
+
+search/replace commands
+- Substitute entire buffer `%s/`
+- Substitute enitre line `s/`
+- Not preceded by whitespace `\s\@<!`
+- One or more equal characters `=\+`
+- Not followed by whitespace `\s\@!`
+- Add spaces around the match `/\0`
+
