@@ -1,4 +1,9 @@
 " GitGutter
+
+if !exists('g:loaded_gitgutter')
+  finish
+endif
+
 " let g:gitgutter_sign_removed = '✖'
 let g:gitgutter_sign_added = '+'
 let g:gitgutter_sign_modified = '~'

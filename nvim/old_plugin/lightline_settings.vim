@@ -1,5 +1,8 @@
 " Lightline
 " let g:lightline = {'colorscheme': 'myonedark'}  " mymolokaicolor, myseoul, mywombat256 
+if !exists('g:loaded_lightline')
+  finish
+endif
 
 " symbols: , , , 
 let g:lightline = {

@@ -52,23 +52,10 @@ call plug#begin('~/.vim/bundle')
 " https://github.com/Konfekt/FastFold
 " Plug 'Konfekt/FastFold'
 
-" jupyter qtconsoloe repl
-Plug 'wmvanvliet/jupyter-vim'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'          " tmux statusline same as vim.	 :Tmuxline lightline
-
-" ================ Testing ================
-
-" Plugins marked with XXX I know I use/like a lot.
-" Uncommented are unused to see if I miss them but keep around if I change my mind
-
-" Syntax
-" Plug 'sheerun/vim-polyglot'            " All the syntax messed upp syntax for oni ( turned .js -> javascript.jsx
-" Plug 'daeyun/vim-matlab'               " MATLAB
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " vim script completion
 Plug 'Shougo/neco-vim'
@@ -81,69 +68,64 @@ Plug 'prettier/vim-prettier', {
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
 Plug 'lepture/vim-jinja'
 
+" Plug 'lilydjwg/colorizer'              " XXX colorize hexcolor in editor
+" Plug 'dhruvasagar/vim-zoom'
+" Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+
+" Plug 'Valloric/MatchTagAlways'
+" Plug 'junegunn/goyo.vim'               " Distraction free writing
+" Plug 'junegunn/vim-after-object'       " change everything after something
+" Plug 'sjl/gundo.vim'                   " Visualize undo tree
+" Plug 'tommcdo/vim-exchange'            " exchange two words. ex: cxw (on first word) . (on second)
+" Plug 'tpope/vim-obsession'             " :mksession | saves a vim instance | used when saving tmux session
+" Plug 'shime/vim-livedown'
+" Plug 'mtth/scratch.vim'                " Unobtrusive scratch
+" Plug 'szymonmaszke/vimpyter'
+" Plug 'ErikEkstedt/vimpyter'
+" Plug 'pangloss/vim-javascript'
+" Plug 'wmvanvliet/jupyter-vim'           " jupyter qtconsoloe repl
+
 " --------------------
 " Snippets
 Plug 'SirVer/ultisnips'                " XXX snippet engine
 Plug 'honza/vim-snippets'              " XXX snippets
 
+" Python
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " better python syntax highlight 
 Plug 'ambv/black'                         " Linter/formatter
 
-Plug 'dhruvasagar/vim-zoom'
-" Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-
 Plug 'scrooloose/nerdtree'             " XXX Project and file navigation
-Plug 'Xuyuanp/nerdtree-git-plugin'     " show git status of files
-Plug 'ivalkeen/nerdtree-execute'       " open files from nerdtree
-
+Plug 'Xuyuanp/nerdtree-git-plugin'     " XXX show git status of files
+Plug 'ivalkeen/nerdtree-execute'       " XXX open files from nerdtree
 Plug 'KabbAmine/vCoolor.vim'           " XXX pick color from menu
-Plug 'lilydjwg/colorizer'              " XXX colorize hexcolor in editor
 
-Plug 'Valloric/MatchTagAlways'
 Plug 'Yggdroot/indentLine'             " XXX see where there is indent
 Plug 'airblade/vim-gitgutter'          " XXX see git changes in file in the numberline
 Plug 'easymotion/vim-easymotion'       " XXX visualize targets tot move to specific words
 Plug 'junegunn/fzf.vim'                " XXX fuzzy filefinding
-Plug 'junegunn/goyo.vim'               " Distraction free writing
-Plug 'junegunn/vim-after-object'       " change everything after something
 Plug 'junegunn/vim-easy-align'         " XXX better alignment than tabular
 Plug 'junegunn/vim-peekaboo'           " XXX when pressing quotes shows what's stored in the different registers
 Plug 'lotabout/slimux'                 " XXX old: 'epeli/slimux' | vim+ipython OUtdated
 Plug 'machakann/vim-highlightedyank'   " XXX Highlight yanks
-Plug 'nelstrom/vim-markdown-folding'   " help with folding in markdown
+Plug 'nelstrom/vim-markdown-folding'   " XXX help with folding in markdown
 Plug 'nelstrom/vim-visual-star-search' " * on visual select searches for the snippet
-Plug 'pangloss/vim-javascript'
-Plug 'sjl/gundo.vim'                   " Visualize undo tree
-Plug 'tommcdo/vim-exchange'            " exchange two words. ex: cxw (on first word) . (on second)
 Plug 'tpope/vim-commentary'            " XXX commenting
 Plug 'tpope/vim-fugitive'              " XXX git tools
-Plug 'tpope/vim-obsession'             " :mksession | saves a vim instance | used when saving tmux session
 Plug 'tpope/vim-repeat'                " XXX repeat commands not repeatable by 'vanilla' vim
 Plug 'tpope/vim-surround'              " XXX Surround objects with quotes, brackets ...
 Plug 'wellle/targets.vim'              " XXX ci' works on (, [, {, < on entire line
 Plug 'romainl/vim-cool'                " unhighlights searches when it is not needed anymor
 
+Plug 'christoomey/vim-tmux-navigator' " navigate between vim and tmuz seemlessly
+Plug 'tmux-plugins/vim-tmux-focus-events' "  Focus events correctly triggered. Leaving/Returning to vim inside tmux
+let g:tmux_navigator_no_mappings = 1
+
 " Preview Text
 Plug 'lervag/vimtex'       " XXX latex compiler, preview latex pdf, highlight and syntax. alot more.
 Plug 'mhinz/neovim-remote' " Needed for vimtex. Error: 'compiler_progranme=nvr' / '--remote'
-" Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install'  }
-Plug 'shime/vim-livedown'
-
-" Plug 'mtth/scratch.vim'                " Unobtrusive scratch
-" Plug 'szymonmaszke/vimpyter'
-" Plug 'ErikEkstedt/vimpyter'
-
-if !exists("g:gui_oni")
-	Plug 'christoomey/vim-tmux-navigator' " navigate between vim and tmuz seemlessly
-  Plug 'tmux-plugins/vim-tmux-focus-events' "  Focus events correctly triggered. Leaving/Returning to vim inside tmux
-	let g:tmux_navigator_no_mappings = 1
-endif
 
 " Colorschemes and Appearence {{{
-set termguicolors " Enable true color support.
-
-" Plug 'ErikEkstedt/onedark.vim'
 Plug 'benburrill/potato-colors'
 Plug 'crusoexia/vim-monokai'
 Plug 'mhartington/oceanic-next'
@@ -158,10 +140,11 @@ call plug#end()
 
 " Basic Settings {{{
 
+set termguicolors " Enable true color support.
 filetype plugin indent on
 syntax enable
 syntax on
-
+set hls                        " highlighting!
 
 colorscheme onedark 
 " colorscheme OceanicNext
@@ -176,7 +159,7 @@ set history=1000                      " Keep 1000 lines of command-line history.
 set undolevels=1000                   " Keep 1000 lines of undo history.
 set showcmd                           " Display incomplete commands.
 set noshowmode                        " stops vims own showing below the statusbar.
-set title                             " Change the title of the terminal/tab with the file name.
+" set title                             " Change the title of the terminal/tab with the file name.
 set hidden                            " Allow unsaved background buffers.
 
 set shortmess=I                       " Don't show Vim's welcome message.
@@ -207,13 +190,12 @@ set cursorline                        " highlight line where cursor is
 
 " set completeopt-=preview
 " set completeopt+=noinsert
-
-set hls                        " highlighting!
-set lazyredraw                 " don't redraw screen during macros
-
+" set lazyredraw                 " don't redraw screen during macros
+"
 set formatoptions+=j           " smart line joining. uncomments comments.
 set formatoptions+=n           " smart autoindenting inside numbered lists
-set nowrap
+
+" set nowrap
 set wrapmargin=5
 let &showbreak="↪"
 set breakindent                " wrapped line s keep indentation (set bri)
@@ -238,7 +220,6 @@ set ignorecase                 " (in)case sensitive search
 set smartcase
 set switchbuf=usetab
 
-set synmaxcol=400              " Maximum column in which to search for syntax items
 set signcolumn=yes
 set splitbelow
 set splitright
@@ -292,7 +273,7 @@ function LargeFile()
  " save memory when other file is viewed
  setlocal bufhidden=unload
  " is read-only (write with :w new_filename)
- setlocal buftype=nowrite
+ " setlocal buftype=nowrite
  " no undo possible
  setlocal undolevels=-1
  " display message

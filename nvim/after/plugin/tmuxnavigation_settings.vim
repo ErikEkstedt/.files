@@ -1,4 +1,10 @@
 " Tmux-navigation
+
+if !exists('g:loaded_tmux_navigator')
+  finish
+endif
+
+
 let g:tmux_navigator_no_mappings = 1
 
 nnoremap <silent><M-h> :TmuxNavigateLeft<cr>

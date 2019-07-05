@@ -15,7 +15,7 @@ vnoremap L $
 vnoremap H ^
 
 " Source lines
-vnoremap <leader>vs y:@"<CR>
+vnoremap <leader>sl y:@"<CR>
 
 " Go to correlating pare
 vnoremap gp %

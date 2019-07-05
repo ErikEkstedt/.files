@@ -17,7 +17,7 @@ if [[ $answer == 'y' || $answer == 'Y'   ]]; then
 fi
 
 echo "Create conda envs? (y/n)"
-read answer
+	read answer
 if [[ $answer == 'y' || $answer == 'Y'   ]]; then
   echo "Creating Conda envs..."
   conda create -n neovim3 python=3 -y
@@ -47,6 +47,10 @@ if [[ $answer == 'y' || $answer == 'Y'   ]]; then
   fi
 fi
 
-echo ln -sf ~/.files/nvim ~/.config/
-ln -sf ~/.files/nvim ~/.config/
-ln -sf ~/.files/nvim/init.vim ~/.vimrc
+echo "Link Config? (y/n)"
+read answer
+if [[ $answer == 'y' || $answer == 'Y'   ]]; then
+  echo "Linking repo"
+  ln -sf ~/.files/nvim ~/.config/
+  ln -sf ~/.files/nvim/init.vim ~/.vimrc
+fi

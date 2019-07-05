@@ -1,5 +1,10 @@
 " Indentline
 
+if !exists('g:IndentLine_loaded')
+  finish
+endif
+
+
 let g:indentLine_setColors = 0
 let g:indentLine_fileTypeExclude=['help']
 let g:indentLine_char = '│' " '┊'

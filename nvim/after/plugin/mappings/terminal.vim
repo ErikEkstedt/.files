@@ -1,2 +1,3 @@
 " Neovim:mexit terminal
-tnoremap <Esc> <C-\><C-n>
+
+" tnoremap <Esc> <C-\><C-n>

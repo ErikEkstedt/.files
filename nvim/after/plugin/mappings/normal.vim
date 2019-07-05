@@ -72,17 +72,18 @@ nnoremap <C-j> :resize -3<cr>
 nnoremap <space>b :bp<CR>
 nnoremap <space>n :bn<CR>
 nnoremap <space><space> :b#<CR>
+nnoremap <space>d :bd<CR>
 
 " Workflow [right] / Todo(work)[left]
 nnoremap <h :leftabove vsplit ~/phd/ToDo.md<CR>:vertical resize 80<CR>
 nnoremap <l :vsplit ~/.files/WorkFlow.md<CR>:vertical resize 80<CR>
 
 " Create new window
-nnoremap <space>m <c-w>n
-nnoremap <space>ö <c-w>n<c-w>L
+nnoremap <space>J <c-w>n 
+nnoremap <space>L <c-w>n<c-w>L
 
 " Create new file in current buffer path
-nnoremap <C-W>n :vsplit %:h/
+" nnoremap <C-W>n :vsplit %:h/
 
 " Change current working directory
 " http://vim.wikia.com/wiki/Set_working_directory_to_the_current_file
@@ -113,8 +114,6 @@ nnoremap <c-y> "+yy
 " Repeat last macro if in a normal buffer.
 nnoremap <expr> <CR> empty(&buftype) ? '@@' : '<CR>'
 
-
-
 "--------------------------------------------------------
 "--------------------- Search   -------------------------
 "--------------------------------------------------------
@@ -122,6 +121,11 @@ nnoremap <expr> <CR> empty(&buftype) ? '@@' : '<CR>'
 " Keep search matches in the middle of the window.
 nnoremap n nzzzv
 nnoremap N Nzzzv
+
+" go to next under cursor
+nnoremap gn *zz
+nnoremap gN #zz
+
 
 " */# now stays on current cursor position
 nnoremap * *<c-o>
@@ -136,12 +140,10 @@ nnoremap <leader>ge ]s
 nnoremap <leader>gf z=1<CR>
 nnoremap <localleader>sv :set spelllang=sv<CR>
 nnoremap <localleader>en :set spelllang=en<CR>
-nnoremap gn *zz
-nnoremap gN #zz
 
 " next paren
 nnoremap gp %
-nnoremap gl f,a<CR><esc>
+nnoremap gl f, a<CR><esc>
 nnoremap gL f;a<CR><esc>
 nnoremap g<space> f<space>a<CR><esc>
 

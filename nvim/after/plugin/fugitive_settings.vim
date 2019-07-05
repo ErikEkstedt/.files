@@ -1,4 +1,8 @@
 " Fugitive
+if !exists('g:loaded_fugitive')
+  finish
+endif
+
 
 " Mappings
 " Same mappings as aliases in zsh

@@ -87,6 +87,7 @@ endfunction
 " autocmd FileType fzf set laststatus=0 noshowmode noruler
 "       \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 
+
 function! s:fzf_statusline()
   " Override statusline as you like
   highlight fzf1 guibg=#424957 guifg=#39ff00
@@ -104,14 +105,14 @@ autocmd! User FzfStatusLine call <SID>fzf_statusline()
 let g:fzf_buffers_jump = 1
 
 " Default fzf layout
+" let g:fzf_layout = { 'down': '~40%' }
 let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 let g:fzf_action = {
             \ 'ctrl-t': 'tab split',
             \ 'ctrl-l': 'vsplit',
             \ 'ctrl-j': 'split',
             \ 'ctrl-o': 'edit',
-            \ 'Enter': 'edit',
-            \ 'Esc': 'exit', }
+            \ 'Enter': 'edit'}
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors = { 
@@ -130,13 +131,13 @@ let g:fzf_colors = {
 			\ 'header':  ['fg', 'Comment'] }
 
 
-" Syntax Highlight in previews
-" https://github.com/junegunn/fzf/blob/master/man/man1/fzf.1#L211
-" Install 'highlight' to preview files with syntax highlight
-" sudo apt install highlight
-" let g:fzf_files_options = '--color "border:#FF02F5,info:#aa00FF" --preview "highlight -O ansi --force {} 2> /dev/null"'
+" Syntax Highlight in Previews
+
+" requires bat
 let g:fzf_files_options = '--color "border:#FF02F5,bg:#000000,bg+:#000000,info:#aa00FF" --preview "bat --color always {}"'
 
+" requires highlight (sudo apt install highlight)
+" let g:fzf_files_options = '--color "border:#FF02F5,info:#aa00FF" --preview "highlight -O ansi --force {} 2> /dev/null"'
 
 "}}}
 
@@ -146,19 +147,19 @@ let g:fzf_files_options = '--color "border:#FF02F5,bg:#000000,bg+:#000000,info:#
 nnoremap <Leader>fr :Files /<CR>
 nnoremap <Leader>fi :Files ~/<CR>
 nnoremap <Leader>fl :Files<CR>
+nnoremap <Leader>gi :GFiles<CR>
+nnoremap <Leader>gs :GFiles?<CR>
+nnoremap <Leader>bu :Buffers<CR>
 
 " FuzzyFind files in predefined folders I commonly use
 nnoremap <Leader>fc :Files ~/.files<CR>
-nnoremap <Leader>fb :Files ~/blog<CR>
 nnoremap <Leader>fno :Files ~/Notes<CR>
-nnoremap <Leader>fml :Files ~/ml_reusable<CR>
 nnoremap <Leader>fp :Files ~/phd<CR>
 
 " Others
 nnoremap <Leader>ff :Rg<CR>
 nnoremap <Leader>li :Lines<CR>
-nnoremap <Leader>bu :Buffers<CR>
-nnoremap <Leader>gs :GFiles?<CR>
+
 nnoremap <Leader>he :Helptags<CR>
 nnoremap <Leader>fs :Snippets<CR>
 nnoremap <Leader>ma :Maps<CR>

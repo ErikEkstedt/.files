@@ -6,6 +6,22 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " From example at https://github.com/neoclide/coc.nvim
 " Highlight symbol under cursor on CursorHold
+
+" PLUGINS
+" coc-highlight ------------------------------------------
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" To disable coc provide color highlight, add:
+"coc.preferences.colorSupport": false, to your settings.json.
+
+" To pick a different color, use command:
+"   :call CocAction('pickColor')
+" Note: only works on Mac or have python gtk module installed.
+
+"To pick a different color presentation, use command:
+"   :call CocAction('colorPresentation')
+" --------------------------------------------------------
+
 " autocmd CursorHold * silent call CocActionAsync('highlight')
 autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 
@@ -62,9 +78,10 @@ hi CocWarningHighlight guifg=#cf9f28
 hi CocInfoHighlight guifg=#8f29e6
 " hi CocHintHighlight 
 
-hi CocHighlightText guifg=#11aa33
+" hi CocHighlightText guifg=#11aa33
+" hi CocHighlightText  guibg=#111111 ctermbg=223
 hi CocHighlightRead guifg=#98d335 
-hi CocHighlightWrite guifg=#e93491 
+hi CocHighlightWrite guibg=#303744 guifg=#e93491 
 
 " Float
 hi CocFloating guifg=#aa00aa
@@ -72,3 +89,4 @@ hi CocErrorFloat guifg=#ff0000
 hi CocWarningFloat guifg=#ddaa00 
 hi CocInfoFloat guifg=#0055DD 
 hi CocHintFloat guifg=#2ed1cd
+
