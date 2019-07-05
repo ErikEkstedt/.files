@@ -39,9 +39,3 @@ $NVIM_ROOT
   - [codi](https://github.com/metakirby5/codi.vim)
 	* Interactive code scratchpad.
 	* out of shell: python, js
-
-<strong>Free mappings</strong> 
-| Leader (,) |  Ctrl |
-| :---:|:---:|
-| n | C-D |
-| å |  |
