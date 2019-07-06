@@ -1,12 +1,16 @@
 # WorkFLow
 
-* [ ] Pretty Nerdtree colors
-* [ ] Shift-Tab
-* [ ] `[oh-my-zsh] plugin 'zsh-autosuggestions' not found`
-* [ ] zsrc
-  - source `tmux_iterm.conf`
+I should record a video when coding and note all the things I want to fix.
+
+1. Fix iterm sending Left/Down/Up/Right
+  - arrow keys are useful in many term applications
+  - map to non used keys
+  - change tmux mappings in tmux.mac.conf / tmux.iterm.conf
 
 ## Vim
+
+* [ ] Pretty Nerdtree colors
+* [ ] Shift-Tab
 
 * Quicklist vim
   * [ ] quickfix list over all "#TODO" in python projects.
@@ -17,18 +21,32 @@
   - [ ] Ugly colors in json
   - [ ] Nerdtree
 
+Plugins to try?
+* [vim-illuminate](https://github.com/RRethy/vim-illuminate)
+  - highlight word under cursor
+* [coc-highlight](https://github.com/neoclide/coc-highlight)
+  - trying now -> disabled 'lilydjwg/colorizer'
+  - CocInstall coc-highlight
+  - Highlight colors and word
+* [Notational-FZF](https://github.com/alok/notational-fzf-vim)
+* jump to next operator
+  - `nnoremap <leader>o :call search('[+\-\^/*=]')<CR>`
+  - `nnoremap <leader>O :call search('[+\-\^/*=]', 'b')<CR>`
+
 
 ## ZSH
 
-* Plugins? 
+* [ ] `[oh-my-zsh] plugin 'zsh-autosuggestions' not found`
+* [ ] zsrc
+  - source `tmux_iterm.conf`
+
+* Plugins?
   - how download script
 
 
 ## Ranger
 
 * Image preview MacOs - Iterm
-
-
 
 ---------------
 
@@ -40,7 +58,7 @@ This is too painstakenly boring to implement buyt would be cool
 
 ML models/Tool:
 - data is the keystrokes
-- labels are the 
+- labels are the
   - files visited during keystrokes
 - save all files to date.keylog
 - save all visited buffers

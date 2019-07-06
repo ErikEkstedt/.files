@@ -64,7 +64,7 @@ end
 
 
 -- Window hints
-hs.hotkey.bind("ctrl", "space", hs.hints.windowHints)
+-- hs.hotkey.bind("ctrl", "space", hs.hints.windowHints)
 
 -- Maximize window
 hs.hotkey.bind("alt", "F", function()

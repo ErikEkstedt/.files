@@ -66,21 +66,21 @@ alias gallen="~/allennlp; ls"
 
 ####################### 
 
-_vim_fzf(){
-  if [ $# -eq 0 ]
-  then
-    # echo "No arguments supplied"
-    nvim +FZF
-  else
+# _vim_fzf(){
+#   if [ $# -eq 0 ]
+#   then
+#     # echo "No arguments supplied"
+#     nvim +FZF
+#   else
     # echo $1
-    nvim "$1"
-  fi
-}
+#     nvim "$1"
+#   fi
+# }
 
 # Programming {{{
 alias vim="nvim"
 alias VIM="vim"
-alias v="_vim_fzf"
+alias v="nvim"
 alias py="python"  #--profile=erik"
 alias ipy="ipython"  #--profile=erik"
 alias jno="jupyter notebook"  #jupyter notebook example.ipynb
