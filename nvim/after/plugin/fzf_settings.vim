@@ -49,7 +49,7 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 let g:fzf_buffers_jump = 1
 
 " Syntax Highlight in Previews (requires bat)
-let g:fzf_files_options = '--color "bg+:#000000" --preview "bat --theme Monokai Extended --color always {} 2> /dev/null"'
+let g:fzf_files_options = '--color "bg+:#000000" --preview "bat --color always {} 2> /dev/null"'
 
 " Default fzf layout
 " let g:fzf_layout = { 'down': '~40%' }
@@ -106,11 +106,17 @@ endfunction
 
 " Files command with preview window
 
-" Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
+" " Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
+" command! -bang -nargs=* Rg
+"   \ call fzf#vim#grep(
+"   \   'rg --column --line-number --no-heading --smart-case --hidden --no-ignore --hidden --follow --glob "!.git/*" --glob "!node_modules/*" --glob "!vendor/*" 2> /dev/null '.shellescape(<q-args>), 1,
+"   \  fzf#vim#with_preview(),
+"   \   <bang>0)
+
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --smart-case --hidden --no-ignore --hidden --follow --glob "!.git/*" --glob "!node_modules/*" --glob "!vendor/*" 2> /dev/null '.shellescape(<q-args>), 1,
-  \  fzf#vim#with_preview(),
+  \   'rg --column --line-number --no-heading --hidden --color=always --smart-case 2> /dev/null '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(),
   \   <bang>0)
 
 " \  fzf#vim#with_preview('right:50%'),
