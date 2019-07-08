@@ -32,7 +32,7 @@ setopt interactivecomments
 #==== Export {{{
 
 # Term
-export BROWSER="firefox"   # google-chrome
+export BROWSER="brave browser"   # google-chrome
 export COLORTERM="truecolor"
 export DOTFILES="$HOME/.files"
 export EDITOR='nvim'

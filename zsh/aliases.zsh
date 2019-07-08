@@ -29,10 +29,10 @@ fi
 if [ -x "$(command -v lsd)" ]; then # if lsd exists
   alias ls="lsd --group-dirs=first"
   alias ll="lsd -l --group-dirs=first"
-  alias ld="lsd -1 --group-dirs=first"
+  alias ld="lsd -1d */"
   alias lla="lsd -la --group-dirs=first"
   alias la="lsd -1a --group-dirs=first"
-  alias ltr="lsd --tree"
+  alias ltr="lsd --tree --depth 2"
 else
   alias La="tspc 'ls -A -1 --group-directories-first'"
   alias lrt="ls -lrt"
@@ -81,6 +81,7 @@ alias gallen="~/allennlp; ls"
 alias vim="nvim"
 alias VIM="vim"
 alias v="nvim"
+alias vf="nvim -c Files"
 alias py="python"  #--profile=erik"
 alias ipy="ipython"  #--profile=erik"
 alias jno="jupyter notebook"  #jupyter notebook example.ipynb
