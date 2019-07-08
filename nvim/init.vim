@@ -47,12 +47,8 @@ call plug#begin('~/.vim/bundle')
 " ================ Deprecated ================
 
 " Plug 'lilydjwg/colorizer'              " XXX colorize hexcolor in editor
-" Plug 'dhruvasagar/vim-zoom'
-" Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 
 " Plug 'Valloric/MatchTagAlways'
-" Plug 'junegunn/goyo.vim'               " Distraction free writing
-" Plug 'junegunn/vim-after-object'       " change everything after something
 " Plug 'sjl/gundo.vim'                   " Visualize undo tree
 " Plug 'tommcdo/vim-exchange'            " exchange two words. ex: cxw (on first word) . (on second)
 " Plug 'tpope/vim-obsession'             " :mksession | saves a vim instance | used when saving tmux session
@@ -63,6 +59,14 @@ call plug#begin('~/.vim/bundle')
 " Plug 'pangloss/vim-javascript'
 " Plug 'wmvanvliet/jupyter-vim'           " jupyter qtconsoloe repl
 
+" Not that useful
+" Plug 'romainl/vim-cool'                " unhighlights searches when it is not needed anymor
+" Plug 'junegunn/goyo.vim'               " Distraction free writing
+" Plug 'junegunn/vim-after-object'       " change everything after something
+" Plug 'dhruvasagar/vim-zoom'
+
+" Plug 'mxw/vim-jsx'
+" Plug 'lepture/vim-jinja'
 
 " ================ Interesting? ================
 " Folding for python
@@ -71,27 +75,21 @@ call plug#begin('~/.vim/bundle')
 " https://github.com/Konfekt/FastFold
 " Plug 'Konfekt/FastFold'
 
-" Python
+" Code Formatting / Syntax
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " better python syntax highlight 
 Plug 'ambv/black'                         " Linter/formatter
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'          " tmux statusline same as vim.	 :Tmuxline lightline
 
-" vim script completion
 Plug 'Shougo/neco-vim'
 Plug 'neoclide/coc-neco'                " XXX autocompletion + lsp
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
-Plug 'mxw/vim-jsx'
-
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-" Plug 'lepture/vim-jinja'
-
-" --------------------
-" Snippets
 Plug 'SirVer/ultisnips'                " XXX snippet engine
 Plug 'honza/vim-snippets'              " XXX snippets
+
 Plug 'scrooloose/nerdtree'             " XXX Project and file navigation
 Plug 'Xuyuanp/nerdtree-git-plugin'     " XXX show git status of files
 Plug 'ivalkeen/nerdtree-execute'       " XXX open files from nerdtree
@@ -111,9 +109,8 @@ Plug 'tpope/vim-fugitive'              " XXX git tools
 Plug 'tpope/vim-repeat'                " XXX repeat commands not repeatable by 'vanilla' vim
 Plug 'tpope/vim-surround'              " XXX Surround objects with quotes, brackets ...
 Plug 'wellle/targets.vim'              " XXX ci' works on (, [, {, < on entire line
-Plug 'romainl/vim-cool'                " unhighlights searches when it is not needed anymor
-Plug 'christoomey/vim-tmux-navigator' " navigate between vim and tmuz seemlessly
-Plug 'tmux-plugins/vim-tmux-focus-events' "  Focus events correctly triggered. Leaving/Returning to vim inside tmux
+Plug 'christoomey/vim-tmux-navigator'  " XXX navigate between vim and tmuz seemlessly
+Plug 'tmux-plugins/vim-tmux-focus-events' " Focus events correctly triggered. Leaving/Returning to vim inside tmux
 let g:tmux_navigator_no_mappings = 1
 
 " Preview Text
@@ -155,7 +152,6 @@ set history=1000                      " Keep 1000 lines of command-line history.
 set undolevels=1000                   " Keep 1000 lines of undo history.
 set showcmd                           " Display incomplete commands.
 set noshowmode                        " stops vims own showing below the statusbar.
-" set title                             " Change the title of the terminal/tab with the file name.
 set hidden                            " Allow unsaved background buffers.
 
 set shortmess=I                       " Don't show Vim's welcome message.
@@ -167,7 +163,6 @@ set foldmethod=indent
 set foldlevelstart=1                 " start with fold everything
 set foldclose=                        " all
 set foldtext=erik#settings#foldtext() " see nvim/autoload/erik/settings.vim
-
 set conceallevel=0
 
 set autoindent                        " enable auto-indentation

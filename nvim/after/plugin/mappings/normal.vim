@@ -68,6 +68,7 @@ nnoremap <C-l> :vertical resize +3<cr>
 nnoremap <C-k> :resize +3<cr>
 nnoremap <C-j> :resize -3<cr>
 
+" Space
 " Buffers previous/next
 nnoremap <space>b :bp<CR>
 nnoremap <space>B :bf<CR>
@@ -79,13 +80,17 @@ nnoremap <space><space> :b#<CR>
 nnoremap <space>d :bd<CR>
 nnoremap <space>D :bd!<CR>
 
+" Create new window
+nnoremap <space>J <c-w>n 
+nnoremap <space>L <c-w>n<c-w>L
+
+" Create new window
+nnoremap <space>s :set hlsearch!<CR>
+
 " Workflow [right] / Todo(work)[left]
 nnoremap <h :leftabove vsplit ~/phd/ToDo.md<CR>:vertical resize 80<CR>
 nnoremap <l :vsplit ~/.files/WorkFlow.md<CR>:vertical resize 80<CR>
 
-" Create new window
-nnoremap <space>J <c-w>n 
-nnoremap <space>L <c-w>n<c-w>L
 
 " Create new file in current buffer path
 " nnoremap <C-W>n :vsplit %:h/
