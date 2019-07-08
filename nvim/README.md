@@ -3,30 +3,24 @@
 ```bash
 $NVIM_ROOT
 ├── after
-│   └── ftplugin
+│   ├── ftplugin
+│   └── plugin
+│       └── mappings
 ├── autoload
-│   ├── erik
-│   └── lightline
-│       └── colorscheme
 ├── colors
-├── ftplugin: all my filetype-settings
-├── mysnippets: custom snippets
-├── oni: settings and mappings for Oni
-├── plugin: In here all my settings are stored.
-│   └── mappings: keymappings
-│   └── plugins: all plugin settings
-├── spell: spellcheck files
+├── mysnips
+├── plugin
+├── spell
+├── syntax
 └── wip: for random scripts. testing, trying etc
 ```
 
 
 * `vim --startuptime vim.log`
-  - See startup
-
+  - See :help --startuptime
 
 
 # Misc
-
 - onoremap
   - [ ] onoremap m i\( " change inner math \( aaaa \) -> normal! cmbb<esc> -> \( bb \)
 - Plugins to check out ?
@@ -35,7 +29,6 @@ $NVIM_ROOT
     _ out of shell: python, js
 
 search/replace commands
-
 - Substitute entire buffer `%s/`
 - Substitute enitre line `s/`
 - Not preceded by whitespace `\s\@<!`
