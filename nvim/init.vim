@@ -44,29 +44,7 @@ endif "}}}
 " Vim-Plug {{{
 call plug#begin('~/.vim/bundle')
 
-" ================ Testing ================
-
-" Folding for python
-" https://github.com/tmhedberg/SimpylFold
-" Plug 'tmhedberg/SimpylFold'
-" https://github.com/Konfekt/FastFold
-" Plug 'Konfekt/FastFold'
-
-
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'edkolev/tmuxline.vim'          " tmux statusline same as vim.	 :Tmuxline lightline
-
-" vim script completion
-Plug 'Shougo/neco-vim'
-Plug 'neoclide/coc-neco'                " XXX autocompletion + lsp
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
-
-Plug 'mxw/vim-jsx'
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
-Plug 'lepture/vim-jinja'
+" ================ Deprecated ================
 
 " Plug 'lilydjwg/colorizer'              " XXX colorize hexcolor in editor
 " Plug 'dhruvasagar/vim-zoom'
@@ -85,20 +63,39 @@ Plug 'lepture/vim-jinja'
 " Plug 'pangloss/vim-javascript'
 " Plug 'wmvanvliet/jupyter-vim'           " jupyter qtconsoloe repl
 
-" --------------------
-" Snippets
-Plug 'SirVer/ultisnips'                " XXX snippet engine
-Plug 'honza/vim-snippets'              " XXX snippets
+
+" ================ Interesting? ================
+" Folding for python
+" https://github.com/tmhedberg/SimpylFold
+" Plug 'tmhedberg/SimpylFold'
+" https://github.com/Konfekt/FastFold
+" Plug 'Konfekt/FastFold'
 
 " Python
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " better python syntax highlight 
 Plug 'ambv/black'                         " Linter/formatter
 
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'edkolev/tmuxline.vim'          " tmux statusline same as vim.	 :Tmuxline lightline
+
+" vim script completion
+Plug 'Shougo/neco-vim'
+Plug 'neoclide/coc-neco'                " XXX autocompletion + lsp
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+Plug 'mxw/vim-jsx'
+
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+" Plug 'lepture/vim-jinja'
+
+" --------------------
+" Snippets
+Plug 'SirVer/ultisnips'                " XXX snippet engine
+Plug 'honza/vim-snippets'              " XXX snippets
 Plug 'scrooloose/nerdtree'             " XXX Project and file navigation
 Plug 'Xuyuanp/nerdtree-git-plugin'     " XXX show git status of files
 Plug 'ivalkeen/nerdtree-execute'       " XXX open files from nerdtree
 Plug 'KabbAmine/vCoolor.vim'           " XXX pick color from menu
-
 Plug 'Yggdroot/indentLine'             " XXX see where there is indent
 Plug 'airblade/vim-gitgutter'          " XXX see git changes in file in the numberline
 Plug 'easymotion/vim-easymotion'       " XXX visualize targets tot move to specific words
@@ -115,7 +112,6 @@ Plug 'tpope/vim-repeat'                " XXX repeat commands not repeatable by '
 Plug 'tpope/vim-surround'              " XXX Surround objects with quotes, brackets ...
 Plug 'wellle/targets.vim'              " XXX ci' works on (, [, {, < on entire line
 Plug 'romainl/vim-cool'                " unhighlights searches when it is not needed anymor
-
 Plug 'christoomey/vim-tmux-navigator' " navigate between vim and tmuz seemlessly
 Plug 'tmux-plugins/vim-tmux-focus-events' "  Focus events correctly triggered. Leaving/Returning to vim inside tmux
 let g:tmux_navigator_no_mappings = 1
@@ -220,9 +216,10 @@ set ignorecase                 " (in)case sensitive search
 set smartcase
 set switchbuf=usetab
 
-set signcolumn=yes
 set splitbelow
 set splitright
+
+set signcolumn=yes
 set gdefault                   " with this:  s/foo/bar --> s/foo/bar/g by default. ´g´ reverses its meaning.
 set inccommand=nosplit
 set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,resize

@@ -19,32 +19,26 @@ $NVIM_ROOT
 └── wip: for random scripts. testing, trying etc
 ```
 
-## Todo
-* searchable mappings, see [Functions.vim](Functions.vim)
-  * Fzf -> Maps
 
----------------
+* `vim --startuptime vim.log`
+  - See startup
+
+
 
 # Misc
 
-* [Work In Progress](./wip)
-  - This is a folder to put scripts I plan to make or in which I just mess around.  This folder is not sourced.
-* [conceal.vim](./wip/conceal.vim): syntax and conceal
-* Forget Not
-  - nnoremap on regular bindings
-  - nmap ... <plug>
-* onoremap
-  - [ ] onoremap m i\(    " change inner math  \( aaaa \) -> normal! cmbb<esc> -> \( bb \)
-* Plugins to check out ?
+- onoremap
+  - [ ] onoremap m i\( " change inner math \( aaaa \) -> normal! cmbb<esc> -> \( bb \)
+- Plugins to check out ?
   - [codi](https://github.com/metakirby5/codi.vim)
-	* Interactive code scratchpad.
-	* out of shell: python, js
+    _ Interactive code scratchpad.
+    _ out of shell: python, js
 
 search/replace commands
+
 - Substitute entire buffer `%s/`
 - Substitute enitre line `s/`
 - Not preceded by whitespace `\s\@<!`
 - One or more equal characters `=\+`
 - Not followed by whitespace `\s\@!`
 - Add spaces around the match `/\0`
-

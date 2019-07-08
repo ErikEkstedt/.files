@@ -106,12 +106,7 @@ endfunction
 
 " Files command with preview window
 
-" " Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
-" command! -bang -nargs=* Rg
-"   \ call fzf#vim#grep(
 "   \   'rg --column --line-number --no-heading --smart-case --hidden --no-ignore --hidden --follow --glob "!.git/*" --glob "!node_modules/*" --glob "!vendor/*" 2> /dev/null '.shellescape(<q-args>), 1,
-"   \  fzf#vim#with_preview(),
-"   \   <bang>0)
 
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
