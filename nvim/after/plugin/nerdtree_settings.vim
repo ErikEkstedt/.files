@@ -17,8 +17,8 @@ let g:NERDTreeMouseMode=2  " Single-click to toggle directory nodes, double-clic
 " 	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " endif
 
-" map <C-n> :NERDTreeToggle<CR>
-map <leader>ne :NERDTreeToggle<CR>
+" Mappings
+nnoremap <leader>ne :NERDTreeToggle<CR>
 
 augroup NerdTreeHi
   autocmd!

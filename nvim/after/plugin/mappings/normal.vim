@@ -87,24 +87,17 @@ nnoremap <space>L <c-w>n<c-w>L
 " Create new window
 nnoremap <space>s :set hlsearch!<CR>
 
+" Open todo
+nnoremap <space>t :e ~/.files/ToDo.md<CR>
+
 " Workflow [right] / Todo(work)[left]
 nnoremap <h :leftabove vsplit ~/phd/ToDo.md<CR>:vertical resize 80<CR>
-nnoremap <l :vsplit ~/.files/WorkFlow.md<CR>:vertical resize 80<CR>
-
-
-" Create new file in current buffer path
-" nnoremap <C-W>n :vsplit %:h/
 
 " Change current working directory
 " http://vim.wikia.com/wiki/Set_working_directory_to_the_current_file
 nnoremap ,pw :lcd %:p:h<CR>:pwd<CR>
+nnoremap ,cd :lcd %:p:h<CR>:pwd<CR>
 
-function! ChangeToLocalDir()
-	lchdir %:p:h
-  :pwd
-	return ''
-endfunction
-nnoremap ,cd :call ChangeToLocalDir()<CR>
 " }}}
 
 "--------------------------------------------------------
@@ -136,7 +129,6 @@ nnoremap N Nzzzv
 nnoremap gn *zz
 nnoremap gN #zz
 
-
 " */# now stays on current cursor position
 nnoremap * *<c-o>
 nnoremap # #<c-o>
@@ -153,6 +145,8 @@ nnoremap <localleader>en :set spelllang=en<CR>
 
 " next paren
 nnoremap gp %
+
+" split lines at ',', ';', ' '
 nnoremap gl f, a<CR><esc>
 nnoremap gL f;a<CR><esc>
 nnoremap g<space> f<space>a<CR><esc>

@@ -47,7 +47,6 @@ call plug#begin('~/.vim/bundle')
 " ================ Deprecated ================
 
 " Plug 'lilydjwg/colorizer'              " XXX colorize hexcolor in editor
-
 " Plug 'Valloric/MatchTagAlways'
 " Plug 'sjl/gundo.vim'                   " Visualize undo tree
 " Plug 'tommcdo/vim-exchange'            " exchange two words. ex: cxw (on first word) . (on second)
@@ -74,6 +73,9 @@ call plug#begin('~/.vim/bundle')
 " Plug 'tmhedberg/SimpylFold'
 " https://github.com/Konfekt/FastFold
 " Plug 'Konfekt/FastFold'
+
+" Testing
+Plug 'terryma/vim-multiple-cursors'
 
 " Code Formatting / Syntax
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " better python syntax highlight 
@@ -130,6 +132,7 @@ Plug 'morhetz/gruvbox'
 call plug#end()
 " }}}
 " }}}
+
 
 " Basic Settings {{{
 
