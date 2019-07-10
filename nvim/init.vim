@@ -222,8 +222,12 @@ set gdefault                   " with this:  s/foo/bar --> s/foo/bar/g by defaul
 set inccommand=nosplit
 set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,resize
 
-" PUM
+" PMenu
 set pb=40
+
+hi Pmenu guifg=#88ff8a
+hi PmenuSel guifg=#98ff9a guibg=#717b8e gui='bold'
+hi PmenuThumb guibg=#ff70d4
 
 if has('windows')
 	set fillchars=vert:\│ " ┃ line with no breaks between vertical splits

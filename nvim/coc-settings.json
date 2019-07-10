@@ -7,6 +7,8 @@
   "suggest.snippetIndicator": " ►",
   "suggest.noselect": true,
   "python.jediEnabled": false,
+  "coc.preferences.colorSupport": true,
+  "highlight.document.enable": false,
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "typescript",

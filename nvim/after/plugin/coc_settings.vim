@@ -9,7 +9,7 @@ endif
 
 " PLUGINS
 " coc-highlight ------------------------------------------
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " To disable coc provide color highlight, add:
 "coc.preferences.colorSupport": false, to your settings.json.

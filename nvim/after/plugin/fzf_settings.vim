@@ -25,7 +25,8 @@ nnoremap <Leader>fp :Files ~/phd<CR>
 " Others
 nnoremap <Leader>ff :Rg<CR>
 nnoremap <Leader>FF :Rg!<CR>
-nnoremap <Leader>Ff :Rg!<CR>
+nnoremap <Leader>FA :RgHome!<CR>
+nnoremap <Leader>fa :RgHome<CR>
 nnoremap <Leader>li :Lines<CR>
 
 nnoremap <Leader>he :Helptags<CR>
@@ -108,10 +109,19 @@ endfunction
 
 "   \   'rg --column --line-number --no-heading --smart-case --hidden --no-ignore --hidden --follow --glob "!.git/*" --glob "!node_modules/*" --glob "!vendor/*" 2> /dev/null '.shellescape(<q-args>), 1,
 
+" TODO: turn these into a general function that takes in one argument dir -
+" the directory to search in.
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --hidden --color=always --smart-case 2> /dev/null '.shellescape(<q-args>), 1,
+  \   'rg --column --line-number --no-heading --no-ignore --hidden --color=always --glob "!.yarn*" --smart-case 2> /dev/null '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview(),
+  \   <bang>0)
+
+command! -bang -nargs=* RgHome
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --no-ignore --hidden --color=always --glob "!.yarn*" --smart-case 2> /dev/null '.shellescape(<q-args>), 
+  \   1,
+  \   fzf#vim#with_preview({'dir': '~'}),
   \   <bang>0)
 
 " \  fzf#vim#with_preview('right:50%'),
