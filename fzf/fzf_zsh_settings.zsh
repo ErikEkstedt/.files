@@ -1,4 +1,9 @@
-# export FZF_DEFAULT_COMMAND='rg --files --hidden --no-ignore --iglob !"*.git/"'
+# FZF Settings 
+#
+# No need to let fzf installer put commands in zshrc file
+# This script is sourced from $HOME/.files/zsh/zshrc -> $HOME/.zshrc
+
+
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*" --glob "!node_modules/*" --glob "!vendor/*" 2> /dev/null'
 export FZF_DEFAULT_OPTS="--height 80% --reverse "
 
@@ -140,5 +145,5 @@ bindkey -M vicmd '^B' cd-from-home
 bindkey '^_' cd-from-root
 bindkey -M vicmd '^_' cd-from-root
 
-bindkey '^N' fzf-cd-widget
-bindkey -M vicmd '^N' fzf-cd-widget
+bindkey '^O' fzf-cd-widget
+bindkey -M vicmd '^O' fzf-cd-widget

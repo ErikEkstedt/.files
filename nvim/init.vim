@@ -177,9 +177,10 @@ set expandtab                         " expand tabs into spaces
 set smarttab                          " smart tabulation and backspace
 
 set number                            " number lines
-set relativenumber
+" Trying out without relative for speed and I dont use it
+" set relativenumber
 set scrolloff=5                       " visual rows above and below cursor
-set sidescrolloff=20                  " visual columns on sides of cursor
+set sidescrolloff=5                  " visual columns on sides of cursor
 set cursorline                        " highlight line where cursor is
 
 " set completeopt-=preview

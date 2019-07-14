@@ -12,18 +12,17 @@ I should record a video when coding and note all the things I want to fix.
 * [ ] Pretty Nerdtree colors
 * [ ] Shift-Tab
 
+* Colorscheme
+  - [ ] Ugly colors in json
+  - [ ] Ugly colors in markdown
+  - [ ] Nerdtree
 * Quicklist vim
   * [ ] quickfix list over all "#TODO" in python projects.
     - good start: [tasklist.vim](https://github.com/vim-scripts/TaskList.vim)
     - all commented TODO
     - First thing to happen if opening vim in a git repo
-* Colorscheme
-  - [ ] Ugly colors in json
-  - [ ] Nerdtree
 
 Plugins to try?
-* [vim-illuminate](https://github.com/RRethy/vim-illuminate)
-  - highlight word under cursor
 * [coc-highlight](https://github.com/neoclide/coc-highlight)
   - trying now -> disabled 'lilydjwg/colorizer'
   - CocInstall coc-highlight
@@ -33,6 +32,10 @@ Plugins to try?
   - `nnoremap <leader>o :call search('[+\-\^/*=]')<CR>`
   - `nnoremap <leader>O :call search('[+\-\^/*=]', 'b')<CR>`
 
+## Tmux
+
+* Make move window work on visual mode
+  - alt-hjkl
 
 ## ZSH
 
