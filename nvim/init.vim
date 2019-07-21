@@ -128,11 +128,11 @@ Plug 'joshdick/onedark.vim'
 Plug 'dracula/vim'
 Plug 'tomasr/molokai'
 Plug 'morhetz/gruvbox'
+Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
 " }}}
 " }}}
-
 
 " Basic Settings {{{
 
@@ -142,10 +142,18 @@ syntax enable
 syntax on
 set hls                        " highlighting!
 
-colorscheme onedark 
+" Colorschemes -----------------------------------
+" colorscheme oneark 
+colorscheme nord 
 " colorscheme OceanicNext
 
+hi Folded guibg=clear
+hi FoldColumn guibg=clear
+
 let g:background_color = synIDattr(hlID("Normal"), "bg")
+
+let g:custom_focus=1  " enables custom focus in ./plugin/focus_background.vim
+
 
 " Settings
 set spelllang=sv,en_us                " US English spelling

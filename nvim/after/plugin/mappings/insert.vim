@@ -4,7 +4,7 @@ inoremap <c-q> <esc>:q!<cr>
 
 inoremap <c-l> <Right>
 inoremap <c-h> <Left>
-inoremap <c-j> <Down>
-inoremap <c-k> <Up>
+" inoremap <c-j> <Down>
+" inoremap <c-k> <Up>
 
 imap <expr> <s-Tab> pumvisible() ? "\<C-P>" : "\<esc><<i"

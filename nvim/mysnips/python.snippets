@@ -6,10 +6,22 @@ snippet printdict "print keys val"
 print(f"{k}: {v}")$0
 endsnippet
 
+# Matplotlib
+
+snippet plt.imshow "imshow"
+plt.imshow($0, aspect='auto', origin='bottom')
+endsnippet
+
+snippet plt.plot "plot"
+plt.plot($1, label=$2)
+plt.xlim([0, len($1)])
+plt.legend()
+$0
+endsnippet
 
 # tensorboardx
 
-snippet tensorboardx "expanduser"
+snippet tensorboardx "tensorboardX"
 from tensorboardX import SummaryWriter
 
 writer = SummaryWriter()
