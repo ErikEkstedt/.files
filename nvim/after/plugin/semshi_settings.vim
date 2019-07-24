@@ -10,10 +10,8 @@ nmap <silent> <leader>ge :Semshi goto error<CR>
 
 " nmap <silent> <Tab> :Semshi goto name next<CR>
 " nmap <silent> <S-Tab> :Semshi goto name prev<CR>
-
 " nmap <silent> <leader>c :Semshi goto class next<CR>
 " nmap <silent> <leader>C :Semshi goto class prev<CR>
-
 " nmap <silent> <leader>f :Semshi goto function next<CR>
 " nmap <silent> <leader>F :Semshi goto function prev<CR>
 
@@ -39,7 +37,6 @@ function! SemshiOnedarkHighlights()
   " hi semshiSelected        ctermfg=231 guibg=#48505c guifg=#1ef944
   hi semshiSelf            ctermfg=249 guifg=#04d377
   hi semshiUnresolved      ctermfg=226 guifg=#ffff00 cterm=underline gui=underline
-  sign define semshiError text=⚠ texthl=semshiErrorSign
 endfunction
 
 function! SemshiHighlightsNord()
@@ -80,7 +77,6 @@ endfunction
 
 function! SemshiColors() "{{{
   sign define semshiError text=⚠ texthl=semshiErrorSign
-
   if g:colors_name =~ 'nord'
     call SemshiHighlightsNord()
   elseif g:colors_name =~ 'onedark'
