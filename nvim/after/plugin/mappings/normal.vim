@@ -32,6 +32,7 @@ nnoremap S viw"0p
 
 " Clean trailing whitespace
 nnoremap <leader><backspace> mz:%s/\s\+$//<cr>:let @/=''<cr>`z
+nnoremap <space>, mz:%s/\s\+$//<cr>:let @/=''<cr>`z
 
 " delete all bufers except current
 " nnoremap <leader>bd :w | %bd | e#

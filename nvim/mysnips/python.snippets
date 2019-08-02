@@ -67,6 +67,18 @@ import torch.nn.functional as F
 $0
 endsnippet
 
+snippet lstm "pytorch LSTM"
+nn.LSTM(
+	input_size=$1,
+	hidden_size=$2,
+	num_layers=$3,
+	batch_first=True,
+	dropout=$4,
+	bidirectional=$5
+)
+$0
+endsnippet
+
 snippet importDataset "pytorch dataset, dataloader"
 from torch.utils.data import Dataset, DataLoader
 $0
