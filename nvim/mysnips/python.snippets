@@ -3,7 +3,8 @@ priority 150
 # misc
 
 snippet printdict "print keys val"
-print(f"{k}: {v}")$0
+for k, v in $1.items():
+	print(f"{k}: {v}")$0
 endsnippet
 
 # Numpy
