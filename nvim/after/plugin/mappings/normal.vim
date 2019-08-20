@@ -46,10 +46,20 @@ nnoremap <s-tab> <lt><lt>
 "--------------------- Movement -------------------------
 "-------------------------------------------------------- {{{
 
+
 " When vim wraps one line over several lines
 " make j/k movie inside the line intuitively
 nnoremap j gj
 nnoremap k gk
+
+" Greg hurell: https://github.com/wincent/wincent/blob/aa3a322e3a911dabe0ef398ebb1fd7c77209b8ac/roles/dotfiles/files/.vim/plugin/mappings/normal.vim
+
+" Like vim-vinegar.
+nnoremap <silent> - :silent edit <C-R>=empty(expand('%')) ? '.' : expand('%:p:h')<CR><CR>
+
+" Store relative line number jumps in the jumplist if they exceed a threshold.
+nnoremap <expr> k (v:count > 5 ? "m'" . v:count : '') . 'k'
+nnoremap <expr> j (v:count > 5 ? "m'" . v:count : '') . 'j'
 
 " natural end/beginning of line movement (also in visual and selection)
 nnoremap L $
@@ -80,6 +90,7 @@ nnoremap <space>N :bl<CR>
 nnoremap <space><space> :b#<CR>
 nnoremap <space>d :bd<CR>
 nnoremap <space>D :bd!<CR>
+nnoremap <space>o :only<CR>
 
 " Create new window
 nnoremap <space>J <c-w>n 
@@ -98,7 +109,8 @@ nnoremap <h :leftabove vsplit ~/phd/ToDo.md<CR>:vertical resize 80<CR>
 " http://vim.wikia.com/wiki/Set_working_directory_to_the_current_file
 nnoremap ,pw :lcd %:p:h<CR>:pwd<CR>
 nnoremap ,cd :lcd %:p:h<CR>:pwd<CR>
-
+nnoremap ,p :echo expand('%')<CR>
+nnoremap ,pp :let @+=expand('%')<CR> :echo expand('%')<CR>
 " }}}
 
 "--------------------------------------------------------
