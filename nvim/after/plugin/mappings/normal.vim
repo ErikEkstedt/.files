@@ -30,6 +30,10 @@ nnoremap <leader>sw :%s/<C-r><C-w>//g<Left><Left>
 " Substitute word by put
 nnoremap S viw"0p
 
+" last edit. previous item in changelist (:help changelist, :changes)
+nnoremap <backspace> g;
+nnoremap + g,
+
 " Clean trailing whitespace
 nnoremap <leader><backspace> mz:%s/\s\+$//<cr>:let @/=''<cr>`z
 nnoremap <space>, mz:%s/\s\+$//<cr>:let @/=''<cr>`z
@@ -52,6 +56,7 @@ nnoremap <s-tab> <lt><lt>
 nnoremap j gj
 nnoremap k gk
 
+
 " Greg hurell: https://github.com/wincent/wincent/blob/aa3a322e3a911dabe0ef398ebb1fd7c77209b8ac/roles/dotfiles/files/.vim/plugin/mappings/normal.vim
 
 " Like vim-vinegar.
@@ -64,6 +69,7 @@ nnoremap <expr> j (v:count > 5 ? "m'" . v:count : '') . 'j'
 " natural end/beginning of line movement (also in visual and selection)
 nnoremap L $
 nnoremap H ^
+nnoremap T H
 
 " jump paragraph (Swedish Keyboard)
 map ö {
