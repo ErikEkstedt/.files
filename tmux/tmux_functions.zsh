@@ -11,6 +11,31 @@ _tmux_send_keys_all_panes_ () {
   done
 }
 
+# FZF ###################################
+# https://github.com/junegunn/fzf/wiki/Examples#tmux<Paste>
+tmuxkillf () {
+    local sessions
+    sessions="$(tmux ls|fzf --exit-0 --multi)"  || return $?
+    local i
+    for i in "${(f@)sessions}"
+    do
+        [[ $i =~ '([^:]*):.*' ]] && {
+            echo "Killing $match[1]"
+            tmux kill-session -t "$match[1]"
+        }
+    done
+}
+
+# fs [FUZZY PATTERN] - Select selected tmux session
+#   - Bypass fuzzy finder if there's only one match (--select-1)
+#   - Exit if there's no match (--exit-0)
+fs() {
+  local session
+  session=$(tmux list-sessions -F "#{session_name}" | \
+    fzf --query="$1" --select-1 --exit-0) &&
+  tmux switch-client -t "$session"
+}
+
 # Tmux theme changer
 # Opens fzf with the theme files listed in $pre then sourcing the chosen file
 function _tmux_theme() {

@@ -104,7 +104,7 @@ alias ktheme="_konsole_theme"
 # Tmux {{{
 alias titerm="tmux source ~/.files/tmux/tmux.iterm.conf"
 alias tls="tmux list-sessions"
-alias tkd="tmux-kill-detached-sessions"
+alias tkd=tmuxkillf
 alias tks="tmux kill-session -t"
 alias tkp="tmux kill-pane -t"
 alias tkw="tmux kill-window -t"
