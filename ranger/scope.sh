@@ -26,7 +26,7 @@ height="$3"          # Height of the preview pane (number of fitting characters)
 cached="$4"          # Path that should be used to cache image previews
 preview_images="$5"  # "True" if image previews are enabled, "False" otherwise.
 
-maxln=60    # Stop after $maxln lines.  Can be used like ls | head -n $maxln
+maxln=40    # Stop after $maxln lines.  Can be used like ls | head -n $maxln
 
 # Find out something about the file:
 mimetype=$(file --mime-type -Lb "$path")
@@ -42,7 +42,8 @@ safepipe() { "$@"; test $? = 0 -o $? = 141; } # wraps highlight to treat exit co
 
 # txt preview: https://unix.stackexchange.com/questions/186944/ranger-do-not-try-to-display-large-files-preview
 # themes: https://github.com/tajmone/highlight/tree/master/themes
-hl() { command head -n "$maxln" "$path" | highlight --syntax="$extension" --out-format=xterm256 --style=candy; test $? = 0 -o $? = 141; }
+# hl() { command head -n "$maxln" "$path" | highlight --syntax="$extension" --out-format=xterm256 --style=candy; test $? = 0 -o $? = 141; }
+hl() { command head -n "$maxln" "$path" | bat --color always; test $? = 0 -o $? = 141; }
 
 
 case "$mimetype" in
