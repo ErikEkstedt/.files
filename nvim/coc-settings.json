@@ -1,22 +1,5 @@
 {
-  "diagnostic.errorSign": "•",
-  "diagnostic.warningSign": "•",
-  "diagnostic.infoSign": "•",
-  "suggest.echodocSupport": true,
-  "suggest.maxCompleteItemCount": 30,
-  "suggest.snippetIndicator": " ►",
-  "suggest.noselect": true,
-  "python.jediEnabled": false,
   "coc.preferences.colorSupport": true,
-  "highlight.document.enable": false,
-  "coc.preferences.formatOnSaveFiletypes": [
-    "javascript",
-    "typescript",
-    "typescriptreact",
-    "json",
-    "javascriptreact",
-    "css"
-  ],
   "languageserver": {
     "bash": {
       "command": "bash-language-server",
@@ -24,5 +7,13 @@
       "filetypes": ["sh", "bash"],
       "ignoredRootPaths": ["~"]
     }
-  }
+  },
+  "coc.source.word.enable": true,
+  "coc.source.file.enable": true,
+  "coc.source.neco.enable": true,
+  "coc.source.around.enable": true,
+  "python.jediEnabled": false,
+  "suggest.echodocSupport": true,
+  "suggest.maxCompleteItemCount": 30,
+  "suggest.noselect": true
 }

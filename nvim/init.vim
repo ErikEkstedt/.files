@@ -124,10 +124,12 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install'  }
 Plug 'benburrill/potato-colors'
 Plug 'crusoexia/vim-monokai'
 Plug 'mhartington/oceanic-next'
+Plug 'morhetz/gruvbox'
+
 Plug 'joshdick/onedark.vim'
+Plug 'jacoborus/tender.vim'
 Plug 'dracula/vim'
 Plug 'tomasr/molokai'
-Plug 'morhetz/gruvbox'
 Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
@@ -143,8 +145,8 @@ syntax on
 set hls                        " highlighting!
 
 " Colorschemes -----------------------------------
-" colorscheme oneark 
-colorscheme nord 
+colorscheme onedark 
+" colorscheme nord 
 " colorscheme OceanicNext
 
 hi Folded guibg=clear
@@ -231,16 +233,16 @@ set gdefault                   " with this:  s/foo/bar --> s/foo/bar/g by defaul
 set inccommand=nosplit
 set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,resize
 
-" PMenu
-set pb=40
-
-hi Pmenu guifg=#88ff8a
-hi PmenuSel guifg=#98ff9a guibg=#717b8e gui='bold'
-hi PmenuThumb guibg=#ff70d4
-
 if has('windows')
 	set fillchars=vert:\│ " ┃ line with no breaks between vertical splits
 endif
+
+" PMenu
+set pb=20
+hi Pmenu guifg=#49b94c guibg=none
+hi PmenuSel guifg=#88ff8a guibg=none gui='bold'
+hi PmenuThumb guibg=##898989
+
 
 if exists("g:gui_oni")
 	source ~/.config/nvim/oni/mappings/oni.vim
