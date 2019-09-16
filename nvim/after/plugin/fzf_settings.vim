@@ -68,23 +68,23 @@ let g:fzf_action = {
             \ 'Enter': 'edit'}
 
 " " Customize fzf colors to match your color scheme
+hi FZFFloat guibg=#202020 guifg=#98d335
+hi FZFPointer guifg=#fecc66
 let g:fzf_colors = { 
 			\ 'fg':			 ['fg', 'Normal'],
-			\ 'bg':      ['bg', 'CocFloating'],
-			\ 'hl':      ['fg', 'CocFloating'],
+			\ 'bg':      ['bg', 'FZFFloat'],
+			\ 'hl':      ['fg', 'FZFFloat'],
 			\ 'fg+':     ['fg', 'CursorLine', 'Normal', 'Normal'],
-			\ 'bg+':     ['bg', 'CocFloating'],
+			\ 'bg+':     ['bg', 'FZFFloat'],
 			\ 'hl+':     ['fg', 'Statement'],
-			\ 'info':    ['fg', 'PreProc'],
+			\ 'info':    ['fg', 'Comment'],
 			\ 'border':  ['fg', 'Directory'],
 			\ 'prompt':  ['fg', 'Directory'],
-			\ 'pointer': ['fg', 'Statement'],
-			\ 'marker':  ['fg', 'Keyword'],
+			\ 'pointer': ['fg', 'Directory'],
+			\ 'marker':  ['fg', 'FZFPointer'],
 			\ 'spinner': ['fg', 'Label'],
 			\ 'header':  ['fg', 'Comment'] }
 "}}}
-
-			" \ 'bg+':     ['bg', '#000000', '#000000'],
 
 function! FloatingFZF()
   let buf = nvim_create_buf(v:false, v:true)
