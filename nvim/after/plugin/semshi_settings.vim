@@ -20,23 +20,24 @@ nmap <silent> <leader>ge :Semshi goto error<CR>
 
 " Highlight
 function! SemshiOnedarkHighlights()
+  " hi semshiSelected        ctermfg=231 guibg=#48505c guifg=#1ef944
   hi pythonConditional     ctermfg=214 guifg=#941faf
-  hi pythonFunction        ctermfg=214 guifg=#ad36ff
-  hi pythonInclude         ctermfg=214 guifg=#ff00e6 gui=bold
-  hi pythonStatement       ctermfg=214 guifg=#ff00e6 gui=bold
+  hi pythonFunction        ctermfg=214 guifg=#5491c4
+  hi pythonInclude         ctermfg=214 guifg=#ba72d0 gui=bold
+  hi pythonStatement       ctermfg=214 guifg=#ba72d0 gui=bold
+  hi pythonString          ctermfg=214 guifg=#98c379
   hi semshiAttribute       ctermfg=49  guifg=#cd1a79
-  hi semshiBuiltin         ctermfg=207 guifg=#ff8a00
+  hi semshiBuiltin         ctermfg=207 guifg=#e5c07b
   hi semshiErrorChar       ctermfg=231 guifg=#ffffff guibg=#fb6000
-  hi semshiErrorSign       ctermfg=231 guifg=#aa1188 guibg=None
+  hi semshiErrorSign       ctermfg=231 guifg=#ff4e00 guibg=None
   hi semshiFree            ctermfg=218 guifg=#ffafd7
   hi semshiGlobal          ctermfg=214 guifg=#ffaf00
-  hi semshiImported        ctermfg=214 guifg= #6bef0c gui=bold
+  hi semshiImported        ctermfg=214 guifg=#5ec673 gui=bold
   hi semshiLocal           ctermfg=209 guifg=#ff875f
   hi semshiParameter       ctermfg=75  guifg=#ff0087
   hi semshiParameterUnused ctermfg=117 guifg=#87d7ff cterm=underline gui=underline
-  " hi semshiSelected        ctermfg=231 guibg=#48505c guifg=#1ef944
   hi semshiSelf            ctermfg=249 guifg=#04d377
-  hi semshiUnresolved      ctermfg=226 guifg=#ffff00 cterm=underline gui=underline
+  hi semshiUnresolved      ctermfg=226 guifg=#ff3c2c cterm=underline gui=underline
 endfunction
 
 function! SemshiHighlightsNord()
