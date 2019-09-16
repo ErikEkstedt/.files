@@ -50,7 +50,12 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 let g:fzf_buffers_jump = 1
 
 " Syntax Highlight in Previews (requires bat)
-let g:fzf_files_options = '--color "bg+:#000000" --preview "bat --color always {} 2> /dev/null"'
+" let g:fzf_files_options = '--preview "bat --color always {} 2> /dev/null"'
+let g:fzf_files_options = '--preview "bat --theme zenburn  --color always {} 2> /dev/null"'
+" let g:fzf_files_options = '--preview "bat --theme OneDarkHalf --color always {} 2> /dev/null"'
+" let g:fzf_files_options = '--preview "bat --theme Monokai\ Extended\ Origin --color always {} 2> /dev/null"'
+" let g:fzf_files_options = '--preview "bat --theme Sublime\ Snazzy --color always {} 2> /dev/null"'
+" let g:fzf_files_options = '--preview "bat --theme 1337 --color always {} 2> /dev/null"'
 
 " Default fzf layout
 " let g:fzf_layout = { 'down': '~40%' }
@@ -62,18 +67,17 @@ let g:fzf_action = {
             \ 'ctrl-o': 'edit',
             \ 'Enter': 'edit'}
 
-" let g:fzf_colors = { 'bg+': ['bg', '#000000', '#000000'] }
 " " Customize fzf colors to match your color scheme
 let g:fzf_colors = { 
 			\ 'fg':			 ['fg', 'Normal'],
-			\ 'bg':      ['bg', 'NormalFloat'],
-			\ 'hl':      ['fg', 'Comment'],
+			\ 'bg':      ['bg', 'CocFloating'],
+			\ 'hl':      ['fg', 'CocFloating'],
 			\ 'fg+':     ['fg', 'CursorLine', 'Normal', 'Normal'],
-			\ 'bg+':     ['bg', 'NormalFloat'],
+			\ 'bg+':     ['bg', 'CocFloating'],
 			\ 'hl+':     ['fg', 'Statement'],
 			\ 'info':    ['fg', 'PreProc'],
-			\ 'border':  ['fg', 'Comment'],
-			\ 'prompt':  ['fg', '#52ff00'],
+			\ 'border':  ['fg', 'Directory'],
+			\ 'prompt':  ['fg', 'Directory'],
 			\ 'pointer': ['fg', 'Statement'],
 			\ 'marker':  ['fg', 'Keyword'],
 			\ 'spinner': ['fg', 'Label'],
@@ -87,7 +91,7 @@ function! FloatingFZF()
   call setbufvar(buf, 'number', 'no')
 
   let height = float2nr(&lines/2)
-  let width = float2nr(&columns - (&columns * 2 / 10))
+  let width = float2nr(&columns - (&columns * 2 / 100))
   "let width = &columns
   let row = float2nr(&lines / 3)
   let col = float2nr((&columns - width) / 3)
@@ -105,9 +109,6 @@ function! FloatingFZF()
 endfunction
 
 
-" Files command with preview window
-
-"   \   'rg --column --line-number --no-heading --smart-case --hidden --no-ignore --hidden --follow --glob "!.git/*" --glob "!node_modules/*" --glob "!vendor/*" 2> /dev/null '.shellescape(<q-args>), 1,
 
 " ripgrep freezez if adding --no-ignore flag 
 " TODO: turn these into a general function that takes in one argument dir -
@@ -124,15 +125,6 @@ command! -bang -nargs=* RgHome
   \   1,
   \   fzf#vim#with_preview({'dir': '~'}),
   \   <bang>0)
-
-" \  fzf#vim#with_preview('right:50%'),
-
-" Global line completion (not just open buffers. ripgrep required.)
-" inoremap <expr> <c-x><c-l> fzf#vim#complete(fzf#wrap({
-"   \ 'prefix': '^.*$',
-"   \ 'source': 'rg -n ^ --color always 2> /dev/null ',
-"   \ 'options': '--ansi --delimiter : --nth 3..',
-"   \ 'reducer': { lines -> join(split(lines[0], ':\zs')[2:], '') }}))
 
 " Hide status in fzf
 autocmd! FileType fzf

@@ -87,8 +87,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'          " tmux statusline same as vim.	 :Tmuxline lightline
 
 Plug 'Shougo/neco-vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-neco'                " XXX autocompletion + lsp
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 Plug 'SirVer/ultisnips'                " XXX snippet engine
 Plug 'honza/vim-snippets'              " XXX snippets
 
