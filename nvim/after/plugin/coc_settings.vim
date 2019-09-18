@@ -33,6 +33,9 @@ set updatetime=300
 
 "MAPPINGS ---------------------------------------------------------
 "
+" Use enter to complete completion
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
@@ -76,10 +79,7 @@ function! SetCocHighlights()
   hi CocHintFloat guifg=#108080
   hi CocErrorFloat guifg=#ff0000 guibg=none
   hi CocWarningFloat guifg=##d49b05
-  " hi CocWarningFloat guifg=#ddaa00 
 endfunc
-
-
 
 " hi CocErrorHighlight guifg=#e9134e 
 " hi CocWarningHighlight guifg=#cf9f28 

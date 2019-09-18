@@ -123,6 +123,9 @@ alias proj="tmuxinator start project"
 
 alias patchwork="cd ~/patchwork && npm start"
 
+# tensorboard
+alias tens="tensorboard --logdir "
+
 
 # Git {{{
 alias gad="git add"
