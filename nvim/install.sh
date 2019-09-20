@@ -16,41 +16,45 @@ if [[ $answer == 'y' || $answer == 'Y'   ]]; then
   esac
 fi
 
-echo "Create conda envs? (y/n)"
-	read answer
-if [[ $answer == 'y' || $answer == 'Y'   ]]; then
-  echo "Creating Conda envs..."
-  conda create -n neovim3 python=3 -y
-  conda create -n neovim2 python=2 -y
-fi
-
-echo "Do you wish to install LSP:s? (y/n)"
+echo "do other stuff? (y/n)"
 read answer
 if [[ $answer == 'y' || $answer == 'Y'   ]]; then
-
-  echo "Install npm LSPs? (y/n)"
+  echo "Create conda envs? (y/n)"
   read answer
   if [[ $answer == 'y' || $answer == 'Y'   ]]; then
-    # Bash
-    npm i -g bash-language-server
-    # JAVASCRIPT
-    npm i -g javascript-typescript-langserver
+    echo "Creating Conda envs..."
+    conda create -n neovim3 python=3 -y
+    conda create -n neovim2 python=2 -y
   fi
 
-  echo "Install python LSPs? (y/n)"
+  echo "Do you wish to install LSP:s? (y/n)"
   read answer
   if [[ $answer == 'y' || $answer == 'Y'   ]]; then
-    # PYTHON. PYLS
-    source activate neovim3
-    pip install python-language-server
-    source deactivate
-  fi
-fi
 
-echo "Link Config? (y/n)"
-read answer
-if [[ $answer == 'y' || $answer == 'Y'   ]]; then
-  echo "Linking repo"
-  ln -sf ~/.files/nvim ~/.config/
-  ln -sf ~/.files/nvim/init.vim ~/.vimrc
+    echo "Install npm LSPs? (y/n)"
+    read answer
+    if [[ $answer == 'y' || $answer == 'Y'   ]]; then
+      # Bash
+      npm i -g bash-language-server
+      # JAVASCRIPT
+      npm i -g javascript-typescript-langserver
+    fi
+
+    echo "Install python LSPs? (y/n)"
+    read answer
+    if [[ $answer == 'y' || $answer == 'Y'   ]]; then
+      # PYTHON. PYLS
+      source activate neovim3
+      pip install python-language-server
+      source deactivate
+    fi
+  fi
+
+  echo "Link Config? (y/n)"
+  read answer
+  if [[ $answer == 'y' || $answer == 'Y'   ]]; then
+    echo "Linking repo"
+    ln -sf ~/.files/nvim ~/.config/
+    ln -sf ~/.files/nvim/init.vim ~/.vimrc
+  fi
 fi

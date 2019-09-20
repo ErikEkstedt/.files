@@ -19,3 +19,6 @@ vnoremap <leader>sl y:@"<CR>
 
 " Go to correlating pare
 vnoremap gp %
+
+" remove empty lines in selection
+vnoremap <space>el :g/^$/d<cr>

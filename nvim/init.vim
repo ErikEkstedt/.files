@@ -237,11 +237,16 @@ if has('windows')
 	set fillchars=vert:\│ " ┃ line with no breaks between vertical splits
 endif
 
+" Transparancy
+
 " PMenu
 set pb=20
 hi Pmenu guifg=#49b94c guibg=none
 hi PmenuSel guifg=#88ff8a guibg=none gui='bold'
 hi PmenuThumb guibg=##898989
+
+" Floating windows
+set winblend=20
 
 
 if exists("g:gui_oni")
