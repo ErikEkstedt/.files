@@ -15,7 +15,7 @@ vnoremap L $
 vnoremap H ^
 
 " Source lines
-vnoremap <leader>sl y:@"<CR>
+vnoremap <leader>sl y:@"<CR>:set hlsearch!<cr>
 
 " Go to correlating pare
 vnoremap gp %
