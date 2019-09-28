@@ -28,6 +28,7 @@ nnoremap <buffer>,Ö A:<esc>
 nnoremap <buffer> <CR> vip:SlimuxREPLSendLine<CR>
 vnoremap <buffer> <CR> :SlimuxREPLSendLine<CR>gv<Esc>zz
 
+nnoremap <space>al ggv/if __name__<cr>k
 " let python_no_builtin_highlight = 1
 " let python_no_doctest_code_highlight = 1
 " let python_no_doctest_highlight = 1
