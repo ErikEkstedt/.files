@@ -80,61 +80,29 @@ class git_add_commit_push(Command):
 class fzf_select(Command):
     """
     :fzf_select
-    Find a file using fzf and fd.
+
+    Find a file using fzf.
+
     With a prefix argument select only directories.
-    See:
-        https://github.com/junegunn/fzf
-        https://github.com/sharkdp/fd.git
+
+    See: https://github.com/junegunn/fzf
     """
 
     def execute(self):
         import subprocess
         import os.path
 
-        if self.quantifier:
-            # match only directories
-            command = "fd --type d --hidden --no-ignore | fzf +m -i"
-        else:
-            # match files and directories
-            command = "fd --hidden --follow --no-ignore --exclude .git | fzf +m -i"
-        fzf = self.fm.execute_command(command, stdout=subprocess.PIPE)
+        command = "eval ${FZF_DEFAULT_COMMAND} | fzf +m"
+        fzf = self.fm.execute_command(
+            command, universal_newlines=True, stdout=subprocess.PIPE
+        )
         stdout, stderr = fzf.communicate()
         if fzf.returncode == 0:
-            fzf_file = os.path.abspath(stdout.decode("utf-8").rstrip("\n"))
+            fzf_file = os.path.abspath(stdout.rstrip("\n"))
             if os.path.isdir(fzf_file):
                 self.fm.cd(fzf_file)
             else:
                 self.fm.select_file(fzf_file)
-
-
-class fzf_cd_or_vim(Command):
-    """
-    :fzf_select
-    Find a file using fzf and fd.
-    With a prefix argument select only directories.
-    See:
-        https://github.com/junegunn/fzf
-        https://github.com/sharkdp/fd.git
-    """
-
-    def execute(self):
-        import subprocess
-        import os.path
-
-        if self.quantifier:
-            # match only directories
-            command = "fd --type d --hidden --no-ignore | fzf-tmux -d 50% +m -i"
-        else:
-            # match files and directories
-            command = "fd --hidden --follow --no-ignore --exclude .git | fzf-tmux -d 50% +m -i"
-        fzf = self.fm.execute_command(command, stdout=subprocess.PIPE)
-        stdout, stderr = fzf.communicate()
-        if fzf.returncode == 0:
-            fzf_file = os.path.abspath(stdout.decode("utf-8").rstrip("\n"))
-            if os.path.isdir(fzf_file):
-                self.fm.cd(fzf_file)
-            else:
-                subprocess.call(["vim", fzf_file])
 
 
 class fzf_cd(Command):
@@ -153,10 +121,10 @@ class fzf_cd(Command):
 
         cwd = os.path.curdir
         os.chdir(os.path.expanduser("~"))
-        command = '$(eval "${FZF_ALT_C_COMMAND}" | FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" fzf +m)'
-        # command = "${FZF_ALT_C_COMMAND} | fzf +m -i"
+        command = 'eval ${FZF_ALT_C_COMMAND} > /dev/null | FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" fzf +m'
         fzf = self.fm.execute_command(command, stdout=subprocess.PIPE)
         stdout, stderr = fzf.communicate()
+        stdout = os.path.join(os.path.expanduser("~"), stdout)
         if fzf.returncode == 0:
             fzf_file = os.path.abspath(stdout.decode("utf-8").rstrip("\n"))
             if os.path.isdir(fzf_file):
@@ -180,7 +148,7 @@ class fzf_cd_from_here(Command):
         import os.path
 
         cwd = os.path.curdir
-        command = '$(eval "${FZF_ALT_C_COMMAND}" | FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" fzf +m)'
+        command = 'eval ${FZF_ALT_C_COMMAND} > /dev/null | FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" fzf +m'
         fzf = self.fm.execute_command(command, stdout=subprocess.PIPE)
         stdout, stderr = fzf.communicate()
         if fzf.returncode == 0:
