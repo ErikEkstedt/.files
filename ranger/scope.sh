@@ -252,8 +252,8 @@ handle_mime() {
             env HIGHLIGHT_OPTIONS="${HIGHLIGHT_OPTIONS}" highlight \
                 --out-format="${highlight_format}" \
                 --force -- "${FILE_PATH}" && exit 5
-            pygmentize -f "${pygmentize_format}" -O "style=${PYGMENTIZE_STYLE}"\
-                -- "${FILE_PATH}" && exit 5
+            # pygmentize -f "${pygmentize_format}" -O "style=${PYGMENTIZE_STYLE}"\
+            #     -- "${FILE_PATH}" && exit 5
             exit 2;;
 
         ## DjVu
@@ -265,10 +265,17 @@ handle_mime() {
 
         ## Image
         image/*)
+            echo "$(basename $FILE_PATH)" && exit 5
+            exit 2;;
             ## Preview as text conversion
             # img2txt --gamma=0.6 --width="${PV_WIDTH}" -- "${FILE_PATH}" && exit 4
-            exiftool "${FILE_PATH}" && exit 5
-            exit 1;;
+            # case $FILE_PATH in
+            #   *.png)
+            #     echo "PNG"
+            #     echo "$(basename $FILE_PATH)"
+            #     exit 5;;
+            # esac
+            # exiftool "${FILE_PATH}" && exit 5
 
         ## Video and audio
         video/* | audio/*)
