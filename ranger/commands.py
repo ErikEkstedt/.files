@@ -11,7 +11,10 @@ from ranger.api.commands import *
 # ------------------------------------------------------------------------------
 
 # You can import any python module as needed.
-import os
+from os import chdir
+from os.path import join, expanduser, isdir, abspath, curdir
+from subprocess import PIPE
+
 
 # Any class that is a subclass of "Command" will be integrated into ranger as a
 # command.  Try typing ":my_edit<ENTER>" in ranger!
@@ -89,17 +92,12 @@ class fzf_select(Command):
     """
 
     def execute(self):
-        import subprocess
-        import os.path
-
         command = "eval ${FZF_DEFAULT_COMMAND} | fzf +m"
-        fzf = self.fm.execute_command(
-            command, universal_newlines=True, stdout=subprocess.PIPE
-        )
+        fzf = self.fm.execute_command(command, universal_newlines=True, stdout=PIPE)
         stdout, stderr = fzf.communicate()
         if fzf.returncode == 0:
-            fzf_file = os.path.abspath(stdout.rstrip("\n"))
-            if os.path.isdir(fzf_file):
+            fzf_file = abspath(stdout.rstrip("\n"))
+            if isdir(fzf_file):
                 self.fm.cd(fzf_file)
             else:
                 self.fm.select_file(fzf_file)
@@ -116,18 +114,15 @@ class fzf_cd(Command):
     """
 
     def execute(self):
-        import subprocess
-        import os.path
-
-        cwd = os.path.curdir
-        os.chdir(os.path.expanduser("~"))
-        command = 'eval ${FZF_ALT_C_COMMAND} > /dev/null | FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" fzf +m'
-        fzf = self.fm.execute_command(command, stdout=subprocess.PIPE)
+        cwd = curdir
+        chdir(expanduser("~"))
+        command = 'eval ${FZF_ALT_C_COMMAND} 2> /dev/null | FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" fzf +m'
+        fzf = self.fm.execute_command(command, stdout=PIPE)
         stdout, stderr = fzf.communicate()
-        stdout = os.path.join(os.path.expanduser("~"), stdout)
+        stdout = join(expanduser("~"), stdout)
         if fzf.returncode == 0:
-            fzf_file = os.path.abspath(stdout.decode("utf-8").rstrip("\n"))
-            if os.path.isdir(fzf_file):
+            fzf_file = abspath(stdout.decode("utf-8").rstrip("\n"))
+            if isdir(fzf_file):
                 self.fm.cd(fzf_file)
             else:
                 self.fm.select_file(fzf_file)
@@ -144,16 +139,13 @@ class fzf_cd_from_here(Command):
     """
 
     def execute(self):
-        import subprocess
-        import os.path
-
-        cwd = os.path.curdir
-        command = 'eval ${FZF_ALT_C_COMMAND} > /dev/null | FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" fzf +m'
-        fzf = self.fm.execute_command(command, stdout=subprocess.PIPE)
+        cwd = curdir
+        command = 'eval ${FZF_ALT_C_COMMAND} 2> /dev/null | FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" fzf +m'
+        fzf = self.fm.execute_command(command, stdout=PIPE)
         stdout, stderr = fzf.communicate()
         if fzf.returncode == 0:
-            fzf_file = os.path.abspath(stdout.decode("utf-8").rstrip("\n"))
-            if os.path.isdir(fzf_file):
+            fzf_file = abspath(stdout.decode("utf-8").rstrip("\n"))
+            if isdir(fzf_file):
                 self.fm.cd(fzf_file)
             else:
                 self.fm.select_file(fzf_file)

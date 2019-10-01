@@ -223,7 +223,21 @@ handle_mime() {
     local mimetype="${1}"
     case "${mimetype}" in
         ## Text
+
+        application/octet-stream)
+          echo "data"
+          echo "$(basename $FILE_PATH)"
+          exit 5;;
+
         text/* | */xml)
+            case $FILE_PATH in
+              *.ipynb)
+                echo "Jupyter Notebook"
+                echo "$(basename $FILE_PATH)"
+                exit 5;;
+            esac
+
+
             ## Syntax highlight
             if [[ "$( stat --printf='%s' -- "${FILE_PATH}" )" -gt "${HIGHLIGHT_SIZE_MAX}" ]]; then
                 exit 2
