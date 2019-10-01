@@ -10,12 +10,12 @@ mkdir -p $conf_dir  # does not delete if already exists
 cat $root/rifle.conf > $conf_dir/rifle.conf
 echo "  -created rifle.conf" 
 
-# ln -sf $root/scope.sh $conf_dir/scope.sh
-cat $root/scope2.sh > $conf_dir/scope.sh
+ln -sf $root/scope.sh $conf_dir/scope.sh
+# cat $root/scope2.sh > $conf_dir/scope.sh
 echo "  -created scope.sh" 
 
 # ln -sf $root/commands.py $conf_dir/commands.py
-cat $root/commands.py > $conf_dir/commands.py
+ln -sf $root/commands.py $conf_dir/commands.py
 echo "  -created commands.py" 
 
 # Installs Devicons (if directory does not exist)

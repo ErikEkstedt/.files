@@ -8,7 +8,7 @@
 from ranger.api.commands import *
 
 # A simple command for demonstration purposes follows.
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 # You can import any python module as needed.
 import os
@@ -55,18 +55,21 @@ class my_edit(Command):
         # content of the current directory.
         return self._tab_directory_content()
 
+
 class git_add_commit_push(Command):
     """
     :mkcd <dirname>
     Creates a directory with the name <dirname> and enters it.
     """
+
     def execute(self):
         from os.path import join, expanduser, lexists
         from os import makedirs
         import re
+
         commit_msg = expanduser(self.rest(1))
         if commit_msg is not None:
-            command = "git add . ; git commit -m \"" + commit_msg + "\"; git push"
+            command = 'git add . ; git commit -m "' + commit_msg + '"; git push'
             self.fm.execute_command("git add .")
             self.fm.execute_command("git commit -m" + command)
             self.fm.execute_command("git push")
@@ -83,19 +86,21 @@ class fzf_select(Command):
         https://github.com/junegunn/fzf
         https://github.com/sharkdp/fd.git
     """
+
     def execute(self):
         import subprocess
         import os.path
+
         if self.quantifier:
             # match only directories
-            command="fd --type d --hidden --no-ignore | fzf +m -i"
+            command = "fd --type d --hidden --no-ignore | fzf +m -i"
         else:
             # match files and directories
-            command="fd --hidden --follow --no-ignore --exclude .git | fzf +m -i"
+            command = "fd --hidden --follow --no-ignore --exclude .git | fzf +m -i"
         fzf = self.fm.execute_command(command, stdout=subprocess.PIPE)
         stdout, stderr = fzf.communicate()
         if fzf.returncode == 0:
-            fzf_file = os.path.abspath(stdout.decode('utf-8').rstrip('\n'))
+            fzf_file = os.path.abspath(stdout.decode("utf-8").rstrip("\n"))
             if os.path.isdir(fzf_file):
                 self.fm.cd(fzf_file)
             else:
@@ -111,19 +116,21 @@ class fzf_cd_or_vim(Command):
         https://github.com/junegunn/fzf
         https://github.com/sharkdp/fd.git
     """
+
     def execute(self):
         import subprocess
         import os.path
+
         if self.quantifier:
             # match only directories
-            command="fd --type d --hidden --no-ignore | fzf-tmux -d 50% +m -i"
+            command = "fd --type d --hidden --no-ignore | fzf-tmux -d 50% +m -i"
         else:
             # match files and directories
-            command="fd --hidden --follow --no-ignore --exclude .git | fzf-tmux -d 50% +m -i"
+            command = "fd --hidden --follow --no-ignore --exclude .git | fzf-tmux -d 50% +m -i"
         fzf = self.fm.execute_command(command, stdout=subprocess.PIPE)
         stdout, stderr = fzf.communicate()
         if fzf.returncode == 0:
-            fzf_file = os.path.abspath(stdout.decode('utf-8').rstrip('\n'))
+            fzf_file = os.path.abspath(stdout.decode("utf-8").rstrip("\n"))
             if os.path.isdir(fzf_file):
                 self.fm.cd(fzf_file)
             else:
@@ -139,16 +146,19 @@ class fzf_cd(Command):
         https://github.com/junegunn/fzf
         https://github.com/sharkdp/fd.git
     """
+
     def execute(self):
         import subprocess
         import os.path
+
         cwd = os.path.curdir
-        os.chdir(os.path.expanduser('~'))
-        command="fd --type d --hidden --follow --no-ignore --exclude .git | fzf +m -i"
+        os.chdir(os.path.expanduser("~"))
+        command = '$(eval "${FZF_ALT_C_COMMAND}" | FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" fzf +m)'
+        # command = "${FZF_ALT_C_COMMAND} | fzf +m -i"
         fzf = self.fm.execute_command(command, stdout=subprocess.PIPE)
         stdout, stderr = fzf.communicate()
         if fzf.returncode == 0:
-            fzf_file = os.path.abspath(stdout.decode('utf-8').rstrip('\n'))
+            fzf_file = os.path.abspath(stdout.decode("utf-8").rstrip("\n"))
             if os.path.isdir(fzf_file):
                 self.fm.cd(fzf_file)
             else:
@@ -164,15 +174,17 @@ class fzf_cd_from_here(Command):
         https://github.com/junegunn/fzf
         https://github.com/sharkdp/fd.git
     """
+
     def execute(self):
         import subprocess
         import os.path
+
         cwd = os.path.curdir
-        command="fd --type d --hidden --follow --no-ignore --exclude .git | fzf +m -i"
+        command = '$(eval "${FZF_ALT_C_COMMAND}" | FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" fzf +m)'
         fzf = self.fm.execute_command(command, stdout=subprocess.PIPE)
         stdout, stderr = fzf.communicate()
         if fzf.returncode == 0:
-            fzf_file = os.path.abspath(stdout.decode('utf-8').rstrip('\n'))
+            fzf_file = os.path.abspath(stdout.decode("utf-8").rstrip("\n"))
             if os.path.isdir(fzf_file):
                 self.fm.cd(fzf_file)
             else:
