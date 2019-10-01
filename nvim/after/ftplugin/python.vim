@@ -21,14 +21,14 @@ setlocal nowrap
 nnoremap <buffer> ,= :s/\s\@<!=\+\s\@!/ \0/g<cr>
 nnoremap <buffer> ,= :s/\s\@<!=\+\s\@!/ = /g<CR>
 
-" colon at the end of the line
-nnoremap <buffer>,Ö A:<esc>
-
 " Note: <CR> is indistinguishable from <C-m>
 nnoremap <buffer> <CR> vip:SlimuxREPLSendLine<CR>
 vnoremap <buffer> <CR> :SlimuxREPLSendLine<CR>gv<Esc>zz
 
+
 nnoremap <space>al ggv/if __name__<cr>k
+nnoremap gm /if __name__<cr>j
+
 " let python_no_builtin_highlight = 1
 " let python_no_doctest_code_highlight = 1
 " let python_no_doctest_highlight = 1

@@ -12,8 +12,6 @@ nmap <space>h <Plug>(easymotion-linebackward)
 nmap <space>j <Plug>(easymotion-j)
 nmap <space>k <Plug>(easymotion-k)
 
-nmap <space>f <Plug>(easymotion-overwin-f)
-
-nmap <space>w <Plug>(easymotion-bd-wl)
-nmap <space>i <Plug>(easymotion-bd-jk)
-
+" nmap <space>f <Plug>(easymotion-overwin-f)
+" nmap <space>w <Plug>(easymotion-bd-wl)
+" nmap <space>i <Plug>(easymotion-bd-jk)

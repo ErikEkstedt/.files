@@ -13,6 +13,9 @@
   "coc.source.neco.enable": true,
   "coc.source.around.enable": true,
   "python.jediEnabled": false,
+  "python.linting.enabled": true,
+  "python.linting.pylintPath": "~/miniconda3/envs/neovim3/bin/pylint",
+  "python.condaPath": "~/miniconda3/bin/conda",
   "suggest.echodocSupport": true,
   "suggest.maxCompleteItemCount": 30,
   "suggest.noselect": true

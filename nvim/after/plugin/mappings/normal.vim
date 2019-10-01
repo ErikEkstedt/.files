@@ -5,8 +5,10 @@
 nnoremap vv V
 nnoremap V v$
 nnoremap Y y$
-" select everything (like ctrl-a, remember?)
+
+" select everything
 nnoremap <leader>a ggvG$
+nnoremap va ggvG$
 
 " standard saving options
 nnoremap <c-s> :w<cr>
@@ -73,8 +75,8 @@ nnoremap H ^
 nnoremap T H
 
 " jump paragraph (Swedish Keyboard)
-map ö {
-map ä }
+map ö }
+map ä {
 
 " Windows
 " Move between windows
@@ -177,7 +179,8 @@ nnoremap g<space> f<space>a<CR><esc>
 "--------------------------------------------------------
 " Toggle fold
 nnoremap ga zA
-nnoremap <leader>z zMzvzz
+nnoremap <space>f zA
+nnoremap <space>z zMzvzz
 
 " Nerdtree uses 'o' to open "foldlike" dirs.
 " I want to use 'o' to open closed folds but everywhere else it
