@@ -144,3 +144,12 @@ Test!
 docker run --runtime=nvidia --rm nvidia/cuda:9.0-base nvidia-smi
 ```
 
+## Pytorch
+
+* Go to [Docker hub](https://hub.docker.com)
+* Pytorch [https://hub.docker.com/r/pytorch/pytorch]
+  * Select appropriate [tags](https://hub.docker.com/r/pytorch/pytorch/tags)
+  * paste into docker base image 
+    - e.g `FROM pytorch/pytorch:1.2-cuda10.0-cudnn7-runtime`
+
+
