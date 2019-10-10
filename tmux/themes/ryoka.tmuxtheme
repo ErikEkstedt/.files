@@ -1,20 +1,10 @@
 # vim:fdm=marker ft=tmux
 
-pane_border_fg='#444444'
-# Pane borders
-# Default
-# pane_border_fg_nonactive='#444444'
-# pane_border_bg_nonactive='#181c24'
+# onedark
+window_bg='#4d4c4d'
+window_status_bg='#282C34'
+window_status_bg2='#3E4452'
+side_color='#e1cf9f'
+separator_color='#ABB2BF'
 
-# Active
-pane_border_fg_active='#00FFFE'
-pane_border_bg_active='#282c34'
-
-# Background
-# Default
-window_bg_nonactive='#181c24'
-window_fg_nonactive='#282c34'
-
-# Active
-window_bg_active='#282c34'
-window_fg_active='#FFFFFF'
+source-file ~/.files/tmux/themes/default.theme
