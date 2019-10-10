@@ -14,11 +14,11 @@ function _konsole_theme() { #{{{
 zle -N _konsole_theme
 
 # KDECONNECT
-function sms() { #{{{
-	kdeconnect-cli --send-sms "$1" \
-	--destination 0762060648 \
-	-n Samsung\ Galaxy\ Note\ 4
-} #}}}
+# function sms() { #{{{
+# 	kdeconnect-cli --send-sms "$1" \
+# 	--destination 0762060648 \
+# 	-n Samsung\ Galaxy\ Note\ 4
+# } #}}}
 
 ## Blurred transparency {{{
 ## https://www.reddit.com/r/kde/comments/6jzuwu/konsole_and_yakuake_blur/
