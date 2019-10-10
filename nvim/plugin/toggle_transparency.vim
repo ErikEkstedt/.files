@@ -29,4 +29,4 @@ function! TransparentBackground ()  " {{{
     set nocursorline
   endif
 endfunc "}}}
-nnoremap <C-t> :call TransparentBackground()<CR>
+" nnoremap <C-t> :call TransparentBackground()<CR>

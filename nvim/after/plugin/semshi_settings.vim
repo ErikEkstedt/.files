@@ -19,28 +19,43 @@ nmap <silent> <leader>ge :Semshi goto error<CR>
 " let g:semshi#error_sign_delay=2
 
 " Highlight
-function! SemshiOnedarkHighlights()
-  " hi semshiSelected        ctermfg=231 guibg=#48505c guifg=#1ef944
-  hi pythonConditional     ctermfg=214 guifg=#941faf
-  hi pythonFunction        ctermfg=214 guifg=#5491c4
-  hi pythonInclude         ctermfg=214 guifg=#ba72d0 gui=bold
-  hi pythonStatement       ctermfg=214 guifg=#ba72d0 gui=bold
-  hi pythonString          ctermfg=214 guifg=#98c379
-  hi semshiAttribute       ctermfg=49  guifg=#cd1a79
-  hi semshiBuiltin         ctermfg=207 guifg=#e5c07b
-  hi semshiErrorChar       ctermfg=231 guifg=#ffffff guibg=#fb6000
-  hi semshiErrorSign       ctermfg=231 guifg=#ff4e00 guibg=None
-  hi semshiFree            ctermfg=218 guifg=#ffafd7
-  hi semshiGlobal          ctermfg=214 guifg=#ffaf00
-  hi semshiImported        ctermfg=214 guifg=#5ec673 gui=bold
-  hi semshiLocal           ctermfg=209 guifg=#ff875f
-  hi semshiParameter       ctermfg=75  guifg=#ff0087
-  hi semshiParameterUnused ctermfg=117 guifg=#87d7ff cterm=underline gui=underline
-  hi semshiSelf            ctermfg=249 guifg=#04d377
-  hi semshiUnresolved      ctermfg=226 guifg=#ff3c2c cterm=underline gui=underline
+function! SemshiOnedark()
+  " |  Color Name  |   Hex   |
+  " |--------------+---------|
+  " | Black        | #282c34 |
+  " | White        | #abb2bf |
+  " | Light Red    | #e06c75 |
+  " | Dark Red     | #be5046 |
+  " | Green        | #98c379 |
+  " | Light Yellow | #e5c07b |
+  " | Dark Yellow  | #d19a66 |
+  " | Blue         | #61afef |
+  " | Magenta      | #c678dd |
+  " | Cyan         | #56b6c2 |
+  " | Gutter Grey  | #4b5263 |
+  " | Comment Grey | #5c6370 |
+  hi semshiSelected        guibg=#4b5263 guifg=#abb2bf gui=bold
+  hi pythonConditional     guifg=#941faf
+  hi pythonFunction        guifg=#5491c4
+  hi pythonInclude         guifg=#ba72d0 gui=bold
+  hi pythonStatement       guifg=#ba72d0 gui=bold
+  hi pythonString          guifg=#98c379
+  hi semshiAttribute       guifg=#cd1a79
+  hi semshiBuiltin         guifg=#e5c07b
+  hi semshiErrorChar       guifg=#ffffff guibg=#fb6000
+  hi semshiErrorSign       guifg=#ff4e00 guibg=None
+  hi semshiFree            guifg=#ffafd7
+  hi semshiGlobal          guifg=#ffaf00
+  hi semshiImported        guifg=#5ec673 gui=bold
+  hi semshiLocal           guifg=#ff875f
+  hi semshiParameter       guifg=#ff0087
+  hi semshiParameterUnused guifg=#87d7ff cterm=underline gui=underline
+  hi semshiSelf            guifg=#04d377
+  hi semshiUnresolved      guifg=#ff3c2c cterm=underline gui=underline
 endfunction
 
-function! SemshiHighlightsNord()
+
+function! SemshiNord()
   " let s:nord0_gui = "#2E3440"
   " let s:nord1_gui = "#3B4252"
   " let s:nord2_gui = "#434C5E"
@@ -58,6 +73,7 @@ function! SemshiHighlightsNord()
   " let s:nord13_gui = "#EBCB8B"
   " let s:nord14_gui = "#A3BE8C"
   " let s:nord15_gui = "#B48EAD"
+  hi semshiSelected         guibg=#3B4252 guifg=#8FBCBB gui=bold
   hi pythonConditional      guifg=#B48EAD
   hi pythonFunction         guifg=#81A1C1
   hi pythonInclude          guifg=#5E81AC gui=bold
@@ -76,12 +92,60 @@ function! SemshiHighlightsNord()
   hi semshiUnresolved       guifg=#ffff00 cterm=underline gui=underline
 endfunction
 
+
+function! SemshiSubstrata()
+  " Color: base0        #191c25 ~ # Background
+  " Color: base1        #20222d ~ # Slightly lighter
+  " Color: base2        #272935 ~ # Much lighter
+  " Color: base3        #2e313d ~ # Lightest
+  " Color: base4        #3c3f4e ~ # Almost invisible
+  " Color: base5        #5b5f71 ~ # Much darker
+  " Color: base6        #6c6f82 ~ # Slightly darker
+  " Color: base7        #b5b4c9 ~ # Foreground
+  " Color: base8        #f0ecfe ~ # Lighter
+  " Color: red          #cf8164 ~
+  " Color: green        #76a065 ~
+  " Color: yellow       #ab924c ~
+  " Color: blue         #8296b0 ~
+  " Color: pink         #a18daf ~
+  " Color: cyan         #659ea2 ~
+  " Color: light_red    #fe9f7c ~
+  " Color: light_green  #92c47e ~
+  " Color: light_yellow #d2b45f ~
+  " Color: light_blue   #a0b9d8 ~
+  " Color: light_pink   #c6aed7 ~
+  " Color: light_cyan   #7dc2c7 ~
+  " Color: red_wash     #2d1d16 ~
+  " Color: green_wash   #1c2316 ~
+  " Color: yellow_wash  #262011 ~
+  hi semshiSelected         guibg=#48505c guifg=#a0b9d8 gui=bold
+  hi pythonConditional      guifg=#B48EAD
+  hi pythonFunction         guifg=#81A1C1
+  hi pythonInclude          guifg=#5E81AC gui=bold
+  hi pythonStatement        guifg=#5E81AC gui=bold
+  hi semshiAttribute        guifg=#8FBCBB
+  hi semshiBuiltin          guifg=#e8b5e1
+  hi semshiErrorChar        guifg=#ffffff guibg=#fb6000
+  hi semshiErrorSign        guifg=#aa1188 guibg=None
+  hi semshiFree             guifg=#ffafd7
+  hi semshiGlobal           guifg=#88C0D0
+  hi semshiImported         guifg=#81A1C1 gui=bold
+  hi semshiLocal            guifg=#ff875f
+  hi semshiParameter        guifg=#88C0D0
+  hi semshiParameterUnused  guifg=#87d7ff cterm=underline gui=underline
+  hi semshiSelf             guifg=#EBCB8B
+  hi semshiUnresolved       guifg=#ffff00 cterm=underline gui=underline
+endfunction
+
+
 function! SemshiColors() "{{{
   sign define semshiError text=⚠ texthl=semshiErrorSign
   if g:colors_name =~ 'nord'
-    call SemshiHighlightsNord()
+    call SemshiNord()
   elseif g:colors_name =~ 'onedark'
-    call SemshiOnedarkHighlights()
+    call SemshiOnedark()
+  elseif g:colors_name =~ 'substrata'
+    call SemshiSubstrata()
   endif
 endfunc  "}}}
 
