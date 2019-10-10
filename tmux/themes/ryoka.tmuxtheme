@@ -1,0 +1,20 @@
+# vim:fdm=marker ft=tmux
+
+pane_border_fg='#444444'
+# Pane borders
+# Default
+# pane_border_fg_nonactive='#444444'
+# pane_border_bg_nonactive='#181c24'
+
+# Active
+pane_border_fg_active='#00FFFE'
+pane_border_bg_active='#282c34'
+
+# Background
+# Default
+window_bg_nonactive='#181c24'
+window_fg_nonactive='#282c34'
+
+# Active
+window_bg_active='#282c34'
+window_fg_active='#FFFFFF'
