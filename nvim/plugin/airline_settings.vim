@@ -5,6 +5,7 @@ if !exists('g:airline_symbols')
 endif
 
 let g:airline_theme='onedark'
+" let g:airline_theme='nord'
 
 " powerline symbols
 let g:airline_left_sep = ''

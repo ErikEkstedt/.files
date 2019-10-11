@@ -75,7 +75,7 @@ call plug#begin('~/.vim/bundle')
 " Plug 'Konfekt/FastFold'
 
 " Testing
-Plug 'terryma/vim-multiple-cursors'
+Plug 'alok/notational-fzf-vim'
 
 " Code Formatting / Syntax
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " better python syntax highlight 
@@ -84,7 +84,7 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'edkolev/tmuxline.vim'          " tmux statusline same as vim.	 :Tmuxline lightline
+" Plug 'edkolev/tmuxline.vim'          " tmux statusline same as vim.	 :Tmuxline lightline
 
 Plug 'Shougo/neco-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -92,6 +92,7 @@ Plug 'neoclide/coc-neco'                " XXX autocompletion + lsp
 Plug 'SirVer/ultisnips'                " XXX snippet engine
 Plug 'honza/vim-snippets'              " XXX snippets
 
+Plug 'terryma/vim-multiple-cursors'    " XXX Really great but could try with coc
 Plug 'scrooloose/nerdtree'             " XXX Project and file navigation
 Plug 'Xuyuanp/nerdtree-git-plugin'     " XXX show git status of files
 Plug 'ivalkeen/nerdtree-execute'       " XXX open files from nerdtree
