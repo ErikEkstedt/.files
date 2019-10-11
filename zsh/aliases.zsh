@@ -126,6 +126,14 @@ alias patchwork="cd ~/patchwork && npm start"
 # tensorboard
 alias tens="tensorboard --logdir "
 
+if [[ $(hostname) == 'erik-Desktop' ]]; then
+  # Nvim
+  alias v="~/Applications/nvim_e37d26c48d775fa70fe172344338cfe4"
+  alias nvim="~/Applications/nvim_e37d26c48d775fa70fe172344338cfe4"
+  # Ranger
+  alias ran='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+  alias r='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+fi
 
 # Git {{{
 alias gad="git add"
@@ -163,9 +171,6 @@ alias umountusb="udiskie-umount /media/erik/*"
 
 # }}}
 
-# Ranger
-alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
-alias r='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 
 # SSH / WOL {{{
 export MOUNTPATH=~/LAN
