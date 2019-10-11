@@ -17,23 +17,16 @@ function g() {  #{{{
 	la | grep -i $1
 } #}}}
 
-function _print_path() {  #{{{
-	for p in $path; do
-		echo "$p"
-  done
-} #}}}
 
 function print_path() {  #{{{
+  function _print_path() {  #{{{
+    for p in $path; do
+      echo "$p"
+    done
+  } #}}}
   _print_path | bat
 } #}}}
 
-
-function cfg() { #{{{
-  '''Open vim from everywhere at ~/.files directory'''
-	current_dir=$(pwd)
-	cd ~/.files
-	vim $(fzf)
-} #}}}
 #}}}
 
 ################################################################
@@ -53,23 +46,7 @@ alias sod="conda deactivate"
 zle -N so
 #}}}
 
-# This is just an alias...
-function junb() { #{{{
-	jupyter notebook "$1"
-} #}}}
-
 ################################################################
-# OS {{{
-case Linux in
-  Darwin)
-    # commands for OS X go here
-    source ~/.files/zsh/zsh-functions-mac.zsh
-    ;;
-  Linux)
-    # commands for Linux go here
-    source ~/.files/zsh/zsh-functions-kde.zsh
-    ;;
-esac ##}}}
 
 ################################################################
 # BINDINGS {{{

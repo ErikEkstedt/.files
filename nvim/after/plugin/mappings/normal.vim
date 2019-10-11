@@ -52,7 +52,7 @@ nnoremap <s-tab> <lt><lt>
 "--------------------- Movement -------------------------
 "-------------------------------------------------------- {{{
 
-nnoremap <C-w> <C-y>
+nnoremap <C-t> <C-y>
 
 " When vim wraps one line over several lines
 " make j/k movie inside the line intuitively

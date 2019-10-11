@@ -121,6 +121,7 @@ Plug 'mhinz/neovim-remote' " Needed for vimtex. Error: 'compiler_progranme=nvr' 
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install'  }
 
 " Colorschemes and Appearence {{{
+Plug 'arzg/vim-substrata'
 Plug 'benburrill/potato-colors'
 Plug 'crusoexia/vim-monokai'
 Plug 'mhartington/oceanic-next'
@@ -145,7 +146,8 @@ syntax on
 set hls                        " highlighting!
 
 " Colorschemes -----------------------------------
-colorscheme onedark 
+colorscheme substrata 
+" colorscheme onedark 
 " colorscheme nord 
 " colorscheme OceanicNext
 

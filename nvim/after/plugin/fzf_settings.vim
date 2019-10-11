@@ -9,9 +9,9 @@ nnoremap <Leader>fi :Files ~/<CR>
 nnoremap <Leader>Fi :Files! ~/<CR>
 nnoremap <Leader>FI :Files! ~/<CR>
 
-nnoremap <Leader>fl :Files<CR>
-nnoremap <Leader>Fl :Files!<CR>
-nnoremap <Leader>FL :Files!<CR>
+nnoremap <Leader>ff :Files<CR>
+nnoremap <Leader>Ff :Files!<CR>
+nnoremap <Leader>FF :Files!<CR>
 
 nnoremap <Leader>fg :GFiles<CR>
 nnoremap <Leader>gs :GFiles?<CR>
@@ -23,11 +23,11 @@ nnoremap <Leader>fno :Files ~/Notes<CR>
 nnoremap <Leader>fp :Files ~/phd<CR>
 
 " Others
-nnoremap <Leader>ff :Rg<CR>
-nnoremap <Leader>FF :Rg!<CR>
+nnoremap <Leader>fl :Lines<CR>
+nnoremap <Leader>fw :Rg<CR>
+nnoremap <Leader>FW :Rg!<CR>
 nnoremap <Leader>FA :RgHome!<CR>
 nnoremap <Leader>fa :RgHome<CR>
-nnoremap <Leader>li :Lines<CR>
 
 nnoremap <Leader>he :Helptags<CR>
 nnoremap <Leader>fs :Snippets<CR>

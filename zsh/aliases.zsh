@@ -112,6 +112,8 @@ alias tst="tmux new-session"
 alias tspc="_tmux_send_keys_all_panes_"
 alias theme="_tmux_theme"
 
+alias tat=$DOTFILES/bin/tat
+
 alias Clear='tspc "clear"'
 
 # tmuxinator
