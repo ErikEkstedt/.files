@@ -4,7 +4,11 @@
 window_bg='#303032'
 window_status_bg='#282C34'
 window_status_bg2='#3E4452'
+window_status_bg_curr='#4d5569'
 side_color='#98C379'
 separator_color='#ABB2BF'
+other_text='#ABB2BF'
+current_text='#ffffff'
+
 
 source-file ~/.files/tmux/themes/default.theme

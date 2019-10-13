@@ -1,5 +1,14 @@
 ## Default
 
+%if #{==:#{host},Eriks-MBP}
+# hej
+%elif #{==:#{host},erik-Desktop}
+%elif #{==:#{host},erik-KTH-Desktop}
+side_color='#576e47'
+%else
+side_color='#cd5971'
+%endif
+
 set -g status-justify "left"
 set -g status "on"
 set -g status-left-style "none"
@@ -14,8 +23,31 @@ set -g status-left-length "100"
 setw -g window-status-activity-style "none"
 setw -g window-status-separator ""
 setw -g window-status-style "none,fg=$side_color,bg=$separator_color"
-# set -g status-left "#[fg=$window_status_bg,bg=$side_color] #S #[fg=$side_color,bg=$side_color,nobold,nounderscore,noitalics]" 
-set -g status-left "#[fg=$window_status_bg,bg=$side_color,bold] #S #[fg=$side_color,bg=$side_color,nobold,nounderscore,noitalics]" 
+
+
+
+set -g status-left "#[fg=$window_status_bg,bg=$side_color,bold] #S #[fg=$side_color,bg=$window_bg,nobold,nounderscore,noitalics]" 
+
+other_start="#[fg=$window_bg,bg=$window_status_bg2,nobold,nounderscore,noitalics]"
+other_text="#[fg=$other_text,bg=$window_status_bg2] #I: #W " 
+other_end="#[fg=$window_status_bg2,bg=$window_bg,nobold,nounderscore,noitalics]"
+setw -g window-status-format "$other_start $other $other_end"
+
+cur="#[fg=$window_bg,bg=$window_status_bg_curr,nobold,nounderscore,noitalics]"
+cur2="#[fg=$current_text,bg=$window_status_bg_curr,bold] #I: #W"
+cur3="#[fg=$window_status_bg_curr,bg=$window_bg,nobold,nounderscore,noitalics]"
+setw -g window-status-current-format "$cur $cur2 $cur3"
+
 set -g status-right "#[fg=$window_status_bg2,bg=$window_bg,nobold,nounderscore,noitalics]#[fg=$separator_color,bg=$window_status_bg2] %Y-%m-%d  %H:%M #[fg=$side_color,bg=$window_status_bg2,nobold,nounderscore,noitalics]#[fg=$window_status_bg,bg=$side_color,bold] #h "
-setw -g window-status-format "#[fg=$side_color,bg=$side_color] #I #[fg=$side_color,bg=$window_status_bg] #W "
-setw -g window-status-current-format "#[fg=$side_color,bg=$window_status_bg2,nobold,nounderscore,noitalics]#[fg=$separator_color,bg=$window_status_bg2] #I #[fg=$separator_color,bg=$window_status_bg2] #W #[fg=$window_status_bg2,bg=$window_bg,nobold,nounderscore,noitalics]"
+
+#D   Unique pane ID
+#F   Window flags
+#H   Hostname of local host
+#I   Index of window
+#P   Index of pane
+#S   Name of session
+#T   Title of pane
+#W   Name of window
+#W   window name
+#h   Hostname of local host (no domain name)
+
