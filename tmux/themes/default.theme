@@ -4,9 +4,11 @@
 # hej
 %elif #{==:#{host},erik-Desktop}
 %elif #{==:#{host},erik-KTH-Desktop}
-side_color='#576e47'
-%else
-side_color='#cd5971'
+side_color='#285398'
+%elif #{==:#{host},tmh-deepspeech}
+side_color='#e75746'
+%elif #{==:#{host},deepvoice}
+side_color='#e2b957'
 %endif
 
 set -g status-justify "left"
