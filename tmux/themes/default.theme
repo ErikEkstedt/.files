@@ -1,9 +1,6 @@
 ## Default
 
-%if #{==:#{host},Eriks-MBP}
-# hej
-%elif #{==:#{host},erik-Desktop}
-%elif #{==:#{host},erik-KTH-Desktop}
+%if #{==:#{host},erik-KTH-Desktop}
 side_color='#285398'
 %elif #{==:#{host},tmh-deepspeech}
 side_color='#e75746'
