@@ -46,17 +46,11 @@ call plug#begin('~/.vim/bundle')
 
 " ================ Deprecated ================
 
-" Plug 'lilydjwg/colorizer'              " XXX colorize hexcolor in editor
 " Plug 'Valloric/MatchTagAlways'
 " Plug 'sjl/gundo.vim'                   " Visualize undo tree
 " Plug 'tommcdo/vim-exchange'            " exchange two words. ex: cxw (on first word) . (on second)
 " Plug 'tpope/vim-obsession'             " :mksession | saves a vim instance | used when saving tmux session
 " Plug 'shime/vim-livedown'
-" Plug 'mtth/scratch.vim'                " Unobtrusive scratch
-" Plug 'szymonmaszke/vimpyter'
-" Plug 'ErikEkstedt/vimpyter'
-" Plug 'pangloss/vim-javascript'
-" Plug 'wmvanvliet/jupyter-vim'           " jupyter qtconsoloe repl
 
 " Not that useful
 " Plug 'romainl/vim-cool'                " unhighlights searches when it is not needed anymor
@@ -73,6 +67,7 @@ call plug#begin('~/.vim/bundle')
 " Plug 'tmhedberg/SimpylFold'
 " https://github.com/Konfekt/FastFold
 " Plug 'Konfekt/FastFold'
+Plug 'norcalli/nvim-colorizer.lua'  " faster color disable coc-highlight
 
 " Testing
 Plug 'alok/notational-fzf-vim'
@@ -84,7 +79,6 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" Plug 'edkolev/tmuxline.vim'          " tmux statusline same as vim.	 :Tmuxline lightline
 
 Plug 'Shougo/neco-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -116,6 +110,7 @@ Plug 'christoomey/vim-tmux-navigator'  " XXX navigate between vim and tmuz seeml
 Plug 'tmux-plugins/vim-tmux-focus-events' " Focus events correctly triggered. Leaving/Returning to vim inside tmux
 let g:tmux_navigator_no_mappings = 1
 
+
 " Preview Text
 Plug 'lervag/vimtex'       " XXX latex compiler, preview latex pdf, highlight and syntax. alot more.
 Plug 'mhinz/neovim-remote' " Needed for vimtex. Error: 'compiler_progranme=nvr' / '--remote'
@@ -137,6 +132,10 @@ Plug 'arcticicestudio/nord-vim'
 call plug#end()
 " }}}
 " }}}
+"
+"
+"
+
 
 " Basic Settings {{{
 
@@ -147,18 +146,19 @@ syntax on
 set hls                        " highlighting!
 
 " Colorschemes -----------------------------------
-colorscheme substrata 
+" colorscheme substrata 
 " colorscheme onedark 
-" colorscheme nord 
+colorscheme nord 
 " colorscheme OceanicNext
 
 hi Folded guibg=clear
 hi FoldColumn guibg=clear
 
 let g:background_color = synIDattr(hlID("Normal"), "bg")
-
 let g:custom_focus=1  " enables custom focus in ./plugin/focus_background.vim
 
+" COLORIZER TEST
+lua require'colorizer'.setup()
 
 " Settings
 set spelllang=sv,en_us                " US English spelling
