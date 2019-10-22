@@ -1,51 +1,27 @@
 # vim:fdm=marker ft=tmux
 
-# Pane borders
-pane_border_fg='#444444'
-pane_border_bg='#000000'
+window_bg='defaulr'
+# window_status_bg='default'
+# window_status_bg2='default'
+window_status_bg_curr='default'
+# separator_color='#ABB2BF'
+# other_text='#ABB2BF'
+# current_text='#ffffff'
 
-pane_border_fg_active='#79cec6'
-pane_border_bg_active='#000000'
+source-file ~/.files/tmux/themes/default.theme
 
-# Background
+set -g status-left "#[fg=$window_status_bg,bg=$side_color,bold] #S #[fg=$side_color,bg=$window_bg,nobold,nounderscore,noitalics]" 
 
-window_bg='#000000'
-window_fg='#999999'
-window_bg_active='#000000'
-window_fg_active='#ffffff'
+other_start="#[fg=$window_bg,bg=$window_status_bg2,nobold,nounderscore,noitalics]"
+other_text="#[fg=$other_text,bg=$window_status_bg2]#I:#W" 
+other_end="#[fg=$window_status_bg2,bg=$window_bg,nobold,nounderscore,noitalics]"
+setw -g window-status-format "$other_start $other_text $other_end"
 
-# set inactive/active window styles
-set window-style "bg=$window_bg"
-set window-active-style "bg=$window_bg_active"
+cur="#[fg=$window_bg,bg=$window_status_bg_curr,nobold,nounderscore,noitalics]"
+cur2="#[fg=$current_text,bg=$window_status_bg_curr,bold]#I:#W"
+cur3="#[fg=$window_status_bg_curr,bg=$window_bg,nobold,nounderscore,noitalics]"
+setw -g window-status-current-format "$cur $cur2 $cur3"
 
-# Pane borders
-set -g pane-border-style "fg=$pane_border_fg,bg=$window_bg"
-set -g pane-active-border-style "fg=$pane_border_fg_active,bg=$window_bg"
+set -g status-right "#[fg=$window_status_bg2,bg=$window_bg,nobold,nounderscore,noitalics]#[fg=$separator_color,bg=$window_status_bg2] %Y-%m-%d  %H:%M #[fg=$side_color,bg=$window_status_bg2,nobold,nounderscore,noitalics]#[fg=$window_status_bg,bg=$side_color,bold] #h "
 
-# Messaging
-set -g message-attr bold
-set -g message-fg colour81 #cyan
-set -g message-bg $window_status_bg
-set -g message-command-fg '#004d4d'
-set -g message-command-bg $window_status_current_bg
-
-# Statusbar Colors
-# Colors
-status_bg='#000000'
-window_status_fg='#79cec6'
-window_status_bg='#1C5654'
-
-# Current window tab
-window_status_current_fg='#010101'
-window_status_current_bg='#79cec6'
-
-# Left
-window_status_left_fg='#ff00f5'
-window_status_left_bg=$status_bg
-
-# Right
-window_status_right_fg='#ff00f5'
-window_status_right_bg=$status_bg
-
-# Source statusline
-source-file ~/.files/tmux/themes/status.tmuxtheme
+set -g status-bg default

@@ -7,9 +7,14 @@ I should record a video when coding and note all the things I want to fix.
   - map to non used keys
   - change tmux mappings in tmux.mac.conf / tmux.iterm.conf
 
+# Color
+  - Transparency
+    - vim: nvim/colors/transparency.vim
+    - tmux: tmux/themes/transparency.tmuxtheme
+
+
 ## Vim
 
-* [ ] Pretty Nerdtree colors
 * [ ] Shift-Tab
 
 * Colorscheme
@@ -17,17 +22,14 @@ I should record a video when coding and note all the things I want to fix.
   - [ ] Ugly colors in markdown
   - [ ] Nerdtree
 * Quicklist vim
+  * how to populate a quicklist
+  * what keybindings to use for fast navigation?
   * [ ] quickfix list over all "#TODO" in python projects.
     - good start: [tasklist.vim](https://github.com/vim-scripts/TaskList.vim)
     - all commented TODO
     - First thing to happen if opening vim in a git repo
 
 Plugins to try?
-* [coc-highlight](https://github.com/neoclide/coc-highlight)
-  - trying now -> disabled 'lilydjwg/colorizer'
-  - CocInstall coc-highlight
-  - Highlight colors and word
-* [Notational-FZF](https://github.com/alok/notational-fzf-vim)
 * jump to next operator
   - `nnoremap <leader>o :call search('[+\-\^/*=]')<CR>`
   - `nnoremap <leader>O :call search('[+\-\^/*=]', 'b')<CR>`
