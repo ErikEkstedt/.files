@@ -26,10 +26,13 @@ setw -g window-status-separator ""
 setw -g window-status-style "none,fg=$side_color,bg=$separator_color"
 
 
-set -g status-left "#[fg=$window_status_bg,bg=$side_color,bold] #S #[fg=$side_color,bg=$window_bg,nobold,nounderscore,noitalics]" 
+left1="#[fg=$side_text,bg=$side_color,bold] #S"
+left2="#[fg=$side_color,bg=$window_bg,nobold,nounderscore,noitalics]" 
+set -g status-left "$left1 $left2"
+
 
 other_start="#[fg=$window_bg,bg=$window_status_bg2,nobold,nounderscore,noitalics]"
-other_text="#[fg=$other_text,bg=$window_status_bg2]#I:#W" 
+other_text="#[fg=$other_text,bg=$window_status_bg2]#I:#W " 
 other_end="#[fg=$window_status_bg2,bg=$window_bg,nobold,nounderscore,noitalics]"
 setw -g window-status-format "$other_start $other_text $other_end"
 
@@ -38,7 +41,14 @@ cur2="#[fg=$current_text,bg=$window_status_bg_curr,bold]#I:#W"
 cur3="#[fg=$window_status_bg_curr,bg=$window_bg,nobold,nounderscore,noitalics]"
 setw -g window-status-current-format "$cur $cur2 $cur3"
 
-set -g status-right "#[fg=$window_status_bg2,bg=$window_bg,nobold,nounderscore,noitalics]#[fg=$separator_color,bg=$window_status_bg2] %Y-%m-%d  %H:%M #[fg=$side_color,bg=$window_status_bg2,nobold,nounderscore,noitalics]#[fg=$window_status_bg,bg=$side_color,bold] #h "
+# set -g status-right "#[fg=$window_status_bg2,bg=$window_bg,nobold,nounderscore,noitalics]#[fg=$separator_color,bg=$window_status_bg2] %Y-%m-%d  %H:%M #[fg=$side_color,bg=$window_status_bg2,nobold,nounderscore,noitalics]#[fg=$window_status_bg,bg=$side_color,bold] #h "
+
+right1="#[fg=$window_status_bg2,bg=$window_bg,nobold,nounderscore,noitalics]"
+right2="#[fg=$separator_color,bg=$window_status_bg2] %Y-%m-%d  %H:%M "
+right3="#[fg=$side_color,bg=$window_status_bg2,nobold,nounderscore,noitalics]"
+right4="#[fg=$side_text,bg=$side_color,bold] #h "
+set -g status-right "$right1$right2$right3$right4"
+
 
 #D   Unique pane ID
 #F   Window flags
