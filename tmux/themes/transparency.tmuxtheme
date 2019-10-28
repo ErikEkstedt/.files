@@ -18,7 +18,7 @@ left2="#[fg=$side_color,bg=$window_bg,nobold,nounderscore,noitalics]"
 set -g status-left "$left1 $left2"
 
 cur="#[fg=$current_text,bg=$window_bg,bold] "
-cur1="#[fg=$current_text,bg=$tab_current_bg,bold] #I:#W"
+cur1="#[fg=$current_text,bg=$tab_current_bg,bold] #I:#W "
 cur2="#[fg=$tab_current_bg,bg=$window_bg,nobold,nounderscore,noitalics]"
 setw -g window-status-current-format "$cur$cur1$cur2"
 
@@ -27,11 +27,11 @@ other1="#[fg=$other_text,bg=$tab_bg] #I:#W "
 other2="#[fg=$tab_bg,bg=$window_bg,nobold,nounderscore,noitalics]"
 setw -g window-status-format "$other$other1$other2"
 
-# right1="#[fg=$window_status_bg2,bg=$window_bg,nobold,nounderscore,noitalics]"
-# right2="#[fg=$separator_color,bg=$window_status_bg2] %Y-%m-%d  %H:%M "
-# right3="#[fg=$side_color,bg=$window_status_bg2,nobold,nounderscore,noitalics]
-# right4="#[fg=$side_text,bg=$side_color,bold] #h "
-# set -g status-right "$right1 $right2 $right3 $right4"
+right1="#[fg=$window_status_bg2,bg=$window_bg,nobold,nounderscore,noitalics]"
+right2="#[fg=$separator_color,bg=$window_status_bg2] %Y-%m-%d  %H:%M "
+right3="#[fg=$side_color,bg=$window_status_bg2,nobold,nounderscore,noitalics]
+right4="#[fg=$side_text,bg=$side_color,bold] #h "
+set -g status-right "$right1$right2$right3$right4"
 
 # source-file ~/.files/tmux/themes/default.theme
 set -g status-bg default
