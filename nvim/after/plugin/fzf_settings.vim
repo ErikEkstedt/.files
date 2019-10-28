@@ -1,5 +1,8 @@
 " FZF
 
+" let $FZF_DEFAULT_OPTS=' --layout=reverse --margin=1,4'
+
+" Mapping
 " FuzzyFind files in root /, $HOME or current folder
 nnoremap <Leader>fr :Files /<CR>
 nnoremap <Leader>Fr :Files! /<CR>
@@ -13,9 +16,10 @@ nnoremap <Leader>ff :Files<CR>
 nnoremap <Leader>Ff :Files!<CR>
 nnoremap <Leader>FF :Files!<CR>
 
+nnoremap <Leader>fb :Buffers<CR>
+
 nnoremap <Leader>fg :GFiles<CR>
 nnoremap <Leader>gs :GFiles?<CR>
-nnoremap <Leader>bu :Buffers<CR>
 
 " FuzzyFind files in predefined folders I commonly use
 nnoremap <Leader>fc :Files ~/.files<CR>
@@ -23,7 +27,8 @@ nnoremap <Leader>fno :Files ~/Notes<CR>
 nnoremap <Leader>fp :Files ~/phd<CR>
 
 " Others
-nnoremap <Leader>fl :Lines<CR>
+" nnoremap <Leader>fl :Lines<CR>
+nnoremap <Leader>fl :LinesWithPreview<CR>
 nnoremap <Leader>fw :Rg<CR>
 nnoremap <Leader>FW :Rg!<CR>
 nnoremap <Leader>FA :RgHome!<CR>
@@ -50,15 +55,9 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 let g:fzf_buffers_jump = 1
 
 " Syntax Highlight in Previews (requires bat)
-" let g:fzf_files_options = '--preview "bat --color always {} 2> /dev/null"'
 let g:fzf_files_options = '--preview "bat --theme zenburn  --color always {} 2> /dev/null"'
-" let g:fzf_files_options = '--preview "bat --theme OneDarkHalf --color always {} 2> /dev/null"'
-" let g:fzf_files_options = '--preview "bat --theme Monokai\ Extended\ Origin --color always {} 2> /dev/null"'
-" let g:fzf_files_options = '--preview "bat --theme Sublime\ Snazzy --color always {} 2> /dev/null"'
-" let g:fzf_files_options = '--preview "bat --theme 1337 --color always {} 2> /dev/null"'
 
 " Default fzf layout
-" let g:fzf_layout = { 'down': '~40%' }
 let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 let g:fzf_action = {
             \ 'ctrl-t': 'tab split',
@@ -68,9 +67,10 @@ let g:fzf_action = {
             \ 'Enter': 'edit'}
 
 " " Customize fzf colors to match your color scheme
-hi FZFFloat guibg=#202020 guifg=#98d335
+hi FZFFloat guibg=#222432 guifg=#98d335
+hi FZFBorder guifg=#00b3fb
 hi FZFPointer guifg=#fecc66
-let g:fzf_colors = { 
+let g:fzf_colors = {
 			\ 'fg':			 ['fg', 'Normal'],
 			\ 'bg':      ['bg', 'FZFFloat'],
 			\ 'hl':      ['fg', 'FZFFloat'],
@@ -78,9 +78,9 @@ let g:fzf_colors = {
 			\ 'bg+':     ['bg', 'FZFFloat'],
 			\ 'hl+':     ['fg', 'Statement'],
 			\ 'info':    ['fg', 'Comment'],
-			\ 'border':  ['fg', 'Directory'],
-			\ 'prompt':  ['fg', 'Directory'],
-			\ 'pointer': ['fg', 'Directory'],
+			\ 'border':  ['fg', 'FZFBorder'],
+			\ 'prompt':  ['fg', 'Statement'],
+			\ 'pointer': ['fg', 'Statement'],
 			\ 'marker':  ['fg', 'FZFPointer'],
 			\ 'spinner': ['fg', 'Label'],
 			\ 'header':  ['fg', 'Comment'] }
@@ -91,7 +91,7 @@ function! FloatingFZF()
   call setbufvar(buf, 'number', 'no')
 
   let height = float2nr(&lines/2)
-  let width = float2nr(&columns - (&columns * 2 / 100))
+  let width = float2nr(&columns - (&columns * 8 / 100))
   "let width = &columns
   let row = float2nr(&lines / 3)
   let col = float2nr((&columns - width) / 3)
@@ -109,6 +109,11 @@ function! FloatingFZF()
 endfunction
 
 
+command! -bang -nargs=* LinesWithPreview
+    \ call fzf#vim#grep(
+    \   'rg --with-filename --column --line-number --no-heading --color=always --smart-case . '.fnameescape(expand('%')), 1,
+    \   fzf#vim#with_preview({'options': '--delimiter : --nth 4.. --no-sort'}),
+    \   <bang>0)
 
 " ripgrep freezez if adding --no-ignore flag 
 " TODO: turn these into a general function that takes in one argument dir -

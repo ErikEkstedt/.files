@@ -21,15 +21,19 @@ set rtp+=~/.fzf
 " Set Python/Npm paths {{{
 if has("unix")  "Python & Node
 	" This is probably not necessary and $HOME or similar might work.
-  if g:UNAME == "Darwin"
-		let g:python3_host_prog='/Users/erik/miniconda3/envs/neovim3/bin/python'
-		let g:python_host_prog='/Users/erik/miniconda3/envs/neovim2/bin/python'
-		let g:node_host_prog='/Users/erik/.node_modules_global/bin/neovim-node-host'
-	else
+    let g:loaded_python_provider = 0
 		let g:python3_host_prog=g:HOME . '/miniconda3/envs/neovim3/bin/python'
 		let g:python_host_prog=g:HOME . '/miniconda3/envs/neovim2/bin/python'
 		let g:node_host_prog=g:HOME . '/.node_modules_global/bin/neovim-node-host'
-	endif
+  " if g:UNAME == "Darwin"
+		" let g:python3_host_prog='/Users/erik/miniconda3/envs/neovim3/bin/python'
+		" let g:python_host_prog='/Users/erik/miniconda3/envs/neovim2/bin/python'
+		" let g:node_host_prog='/Users/erik/.node_modules_global/bin/neovim-node-host'
+	" else
+		" let g:python3_host_prog=g:HOME . '/miniconda3/envs/neovim3/bin/python'
+		" let g:python_host_prog=g:HOME . '/miniconda3/envs/neovim2/bin/python'
+		" let g:node_host_prog=g:HOME . '/.node_modules_global/bin/neovim-node-host'
+	" endif
 endif "}}}
 " }}}
 
@@ -82,7 +86,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'Shougo/neco-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc-neco'                " XXX autocompletion + lsp
+" Plug 'neoclide/coc-neco'                " XXX autocompletion + lsp
 Plug 'SirVer/ultisnips'                " XXX snippet engine
 Plug 'honza/vim-snippets'              " XXX snippets
 
@@ -133,8 +137,6 @@ call plug#end()
 " }}}
 " }}}
 "
-"
-"
 
 
 " Basic Settings {{{
@@ -146,13 +148,14 @@ syntax on
 set hls                        " highlighting!
 
 " Colorschemes -----------------------------------
-" colorscheme substrata 
+colorscheme substrata 
 " colorscheme onedark 
-colorscheme nord 
+" colorscheme nord 
 " colorscheme OceanicNext
 
 hi Folded guibg=clear
 hi FoldColumn guibg=clear
+hi MatchParen guifg=#ff008b
 
 let g:background_color = synIDattr(hlID("Normal"), "bg")
 let g:custom_focus=1  " enables custom focus in ./plugin/focus_background.vim
@@ -189,7 +192,7 @@ set softtabstop=2                     " no. of spaces for tab when editing
 set expandtab                         " expand tabs into spaces
 set smarttab                          " smart tabulation and backspace
 
-set number                            " number lines
+set nonumber                            " number lines
 " Trying out without relative for speed and I dont use it
 " set relativenumber
 set scrolloff=3                       " visual rows above and below cursor
@@ -198,7 +201,7 @@ set cursorline                        " highlight line where cursor is
 
 " set completeopt-=preview
 " set completeopt+=noinsert
-" set lazyredraw                 " don't redraw screen during macros
+set lazyredraw                 " don't redraw screen during macros
 "
 set formatoptions+=j           " smart line joining. uncomments comments.
 set formatoptions+=n           " smart autoindenting inside numbered lists
@@ -249,7 +252,7 @@ hi PmenuSel guifg=#88ff8a guibg=none gui='bold'
 hi PmenuThumb guibg=##898989
 
 " Floating windows
-set winblend=20
+" set winblend=20
 
 
 if exists("g:gui_oni")
