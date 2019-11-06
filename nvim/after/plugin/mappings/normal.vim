@@ -36,9 +36,6 @@ nnoremap S viw"0p
 nnoremap <backspace> g;
 nnoremap + g,
 
-" Clean trailing whitespace
-nnoremap <leader><backspace> mz:%s/\s\+$//<cr>:let @/=''<cr>`z
-nnoremap <space>, mz:%s/\s\+$//<cr>:let @/=''<cr>`z
 
 " delete all bufers except current
 " nnoremap <leader>bd :w | %bd | e#
@@ -89,6 +86,15 @@ nnoremap <C-k> :resize +3<cr>
 nnoremap <C-j> :resize -3<cr>
 
 " Space
+
+" Clean trailing whitespace
+nnoremap <space>, mz:%s/\s\+$//<cr>:let @/=''<cr>`z
+
+" Toggle number/wrap/hlsearch
+nnoremap <silent><space>sn :set number!<CR>
+nnoremap <silent><space>ss :set hlsearch!<CR>
+nnoremap <silent><space>wr :set wrap!<CR>
+
 " Buffers previous/next
 nnoremap <space>b :bp<CR>
 nnoremap <space>B :bf<CR>
@@ -105,8 +111,6 @@ nnoremap <space>o :only<CR>
 nnoremap <space>J <c-w>n 
 nnoremap <space>L <c-w>n<c-w>L
 
-" Create new window
-nnoremap <space>s :set hlsearch!<CR>
 
 " Open todo
 nnoremap <space>t :e ~/.files/ToDo.md<CR>

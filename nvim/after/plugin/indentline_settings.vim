@@ -20,3 +20,4 @@ let g:indentLine_first_char = '│'  " '│' This is the first indent and the ab
 
 " Mapping
 nnoremap <leader>in :IndentLinesToggle<CR>
+nnoremap <space>in :IndentLinesToggle<CR>
