@@ -1,5 +1,5 @@
 " Settings
-setlocal tw=90
+setlocal tw=150
 setlocal linebreak
 
 " Mappings

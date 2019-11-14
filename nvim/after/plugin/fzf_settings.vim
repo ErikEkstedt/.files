@@ -121,7 +121,7 @@ command! -bang -nargs=* LinesWithPreview
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --hidden --color=always --smart-case 2> /dev/null '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview(),
+  \   fzf#vim#with_preview({'options': '--delimiter : --nth 4.. --no-sort'}),
   \   <bang>0)
 
 command! -bang -nargs=* RgHome
