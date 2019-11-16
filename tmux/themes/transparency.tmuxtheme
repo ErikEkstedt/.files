@@ -29,7 +29,7 @@ setw -g window-status-format "$other$other1$other2"
 
 right1="#[fg=$window_status_bg2,bg=$window_bg,nobold,nounderscore,noitalics]"
 right2="#[fg=$separator_color,bg=$window_status_bg2] %Y-%m-%d  %H:%M "
-right3="#[fg=$side_color,bg=$window_status_bg2,nobold,nounderscore,noitalics]
+right3="#[fg=$side_color,bg=$window_bg,nobold,nounderscore,noitalics]
 right4="#[fg=$side_text,bg=$side_color,bold] #h "
 set -g status-right "$right1$right2$right3$right4"
 
