@@ -24,16 +24,7 @@ if has("unix")  "Python & Node
     let g:loaded_python_provider = 0
 		let g:python3_host_prog=g:HOME . '/miniconda3/envs/neovim3/bin/python'
 		let g:python_host_prog=g:HOME . '/miniconda3/envs/neovim2/bin/python'
-		let g:node_host_prog=g:HOME . '/.node_modules_global/bin/neovim-node-host'
-  " if g:UNAME == "Darwin"
-		" let g:python3_host_prog='/Users/erik/miniconda3/envs/neovim3/bin/python'
-		" let g:python_host_prog='/Users/erik/miniconda3/envs/neovim2/bin/python'
-		" let g:node_host_prog='/Users/erik/.node_modules_global/bin/neovim-node-host'
-	" else
-		" let g:python3_host_prog=g:HOME . '/miniconda3/envs/neovim3/bin/python'
-		" let g:python_host_prog=g:HOME . '/miniconda3/envs/neovim2/bin/python'
-		" let g:node_host_prog=g:HOME . '/.node_modules_global/bin/neovim-node-host'
-	" endif
+		let g:node_host_prog=g:HOME . '/.nvm/versions/node/v13.1.0/bin/neovim-node-host'
 endif "}}}
 " }}}
 
@@ -50,7 +41,7 @@ call plug#begin('~/.vim/bundle')
 
 " ================ Deprecated ================
 
-" Plug 'Valloric/MatchTagAlways'
+Plug 'Valloric/MatchTagAlways'
 " Plug 'sjl/gundo.vim'                   " Visualize undo tree
 " Plug 'tommcdo/vim-exchange'            " exchange two words. ex: cxw (on first word) . (on second)
 " Plug 'tpope/vim-obsession'             " :mksession | saves a vim instance | used when saving tmux session
@@ -59,7 +50,7 @@ call plug#begin('~/.vim/bundle')
 " Not that useful
 " Plug 'romainl/vim-cool'                " unhighlights searches when it is not needed anymor
 " Plug 'junegunn/goyo.vim'               " Distraction free writing
-" Plug 'junegunn/vim-after-object'       " change everything after something
+Plug 'junegunn/vim-after-object'       " change everything after something
 " Plug 'dhruvasagar/vim-zoom'
 
 " Plug 'mxw/vim-jsx'
@@ -118,8 +109,7 @@ let g:tmux_navigator_no_mappings = 1
 " Preview Text
 Plug 'lervag/vimtex'       " XXX latex compiler, preview latex pdf, highlight and syntax. alot more.
 Plug 'mhinz/neovim-remote' " Needed for vimtex. Error: 'compiler_progranme=nvr' / '--remote'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install'  }
-
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 " Colorschemes and Appearence {{{
 Plug 'arzg/vim-substrata'
 Plug 'benburrill/potato-colors'
@@ -136,8 +126,6 @@ Plug 'arcticicestudio/nord-vim'
 call plug#end()
 " }}}
 " }}}
-"
-
 
 " Basic Settings {{{
 
@@ -148,8 +136,8 @@ syntax on
 set hls                        " highlighting!
 
 " Colorschemes -----------------------------------
-colorscheme substrata 
-" colorscheme onedark 
+" colorscheme substrata 
+colorscheme onedark 
 " colorscheme nord 
 " colorscheme OceanicNext
 
@@ -179,7 +167,7 @@ set shortmess+=c                      " see :help deoplete -> Configuration FAQ 
 
 set modeline                          " example at top of script:  " vim: ft=vim
 set foldmethod=indent
-set foldlevelstart=1                 " start with fold everything
+set foldlevelstart=0                 " start with fold everything
 set foldclose=                        " all
 set foldtext=erik#settings#foldtext() " see nvim/autoload/erik/settings.vim
 set conceallevel=0

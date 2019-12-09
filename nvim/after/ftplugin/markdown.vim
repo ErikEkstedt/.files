@@ -1,5 +1,5 @@
 " Settings
-setlocal tw=150
+setlocal tw=100
 setlocal linebreak
 
 " Mappings
@@ -16,4 +16,5 @@ nnoremap <buffer> <F12> :<c-u>silent call jobstart('zathura '.expand('%:p:r:S').
 nnoremap <leader>tL I[<esc>A]()<esc>h
 
 " Get both markdown and html snippets
-:UltiSnipsAddFiletypes markdown.html
+set filetype=markdown.html
+:UltiSnipsAddFiletypes markdown.latex.html

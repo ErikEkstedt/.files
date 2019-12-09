@@ -20,21 +20,21 @@ let g:NERDTreeMouseMode=2  " Single-click to toggle directory nodes, double-clic
 " Mappings
 nnoremap <leader>ne :NERDTreeToggle<CR>
 
-augroup NerdTreeHi
-  autocmd!
-  autocmd VimEnter,ColorScheme * if g:colors_name =~ 'seoul256'
-    hi NERDTreeDir guifg=#90a959
-    hi Directory guifg=#404040
-    hi NERDTreeCWD guifg=gray90
-    hi NERDTreeFile guifg=gray90
-    hi NERDTreeUp guifg=gray90 guibg=gray20
-    hi NERDTreeBookmarksHeader guifg=#90a959
-    hi NERDTreeBookmarkName guifg=gray90 
-  autocmd VimEnter,ColorScheme * if g:colors_name =~ 'onedark'
-    hi NERDTreeDir guifg=#ff32cd
-    hi Directory guifg=#ff32cd
-    hi NERDTreeCWD guifg=gray90
-    hi NERDTreeFile guifg=#dedfde
-    hi NERDTreeBookmarksHeader guifg=#90a959
-    hi NERDTreeBookmarkName guifg=#7d00ad
-augroup END
+" augroup NerdTreeHi
+"   autocmd!
+"   autocmd VimEnter,ColorScheme * if g:colors_name =~ 'seoul256'
+"     hi NERDTreeDir guifg=#90a959
+"     hi Directory guifg=#404040
+"     hi NERDTreeCWD guifg=gray90
+"     hi NERDTreeFile guifg=gray90
+"     hi NERDTreeUp guifg=gray90 guibg=gray20
+"     hi NERDTreeBookmarksHeader guifg=#90a959
+"     hi NERDTreeBookmarkName guifg=gray90 
+"   autocmd VimEnter,ColorScheme * if g:colors_name =~ 'onedark'
+"     hi NERDTreeDir guifg=#ff32cd
+"     hi Directory guifg=#ff32cd
+"     hi NERDTreeCWD guifg=gray90
+"     hi NERDTreeFile guifg=#dedfde
+"     hi NERDTreeBookmarksHeader guifg=#90a959
+"     hi NERDTreeBookmarkName guifg=#7d00ad
+" augroup END

@@ -1,6 +1,6 @@
 " https://github.com/numirias/semshi
 
-if !g:semshi#active
+if !exists('g:semshi#filetypes')
   finish
 endif
 
@@ -35,17 +35,18 @@ function! SemshiOnedark()
   " | Gutter Grey  | #4b5263 |
   " | Comment Grey | #5c6370 |
   hi semshiSelected        guibg=#4b5263 guifg=#abb2bf gui=bold
-  hi pythonConditional     guifg=#941faf
-  hi pythonFunction        guifg=#5491c4
-  hi pythonInclude         guifg=#ba72d0 gui=bold
-  hi pythonStatement       guifg=#ba72d0 gui=bold
-  hi pythonString          guifg=#98c379
+  " hi pythonRepeat          guifg=#61afef
+  " hi pythonConditional     guifg=#941faf
+  " hi pythonFunction        guifg=#5491c4
+  " hi pythonInclude         guifg=#ba72d0 gui=bold
+  " hi pythonStatement       guifg=#ba72d0 gui=bold
+  " hi pythonString          guifg=#98c379
   hi semshiAttribute       guifg=#cd1a79
   hi semshiBuiltin         guifg=#e5c07b
   hi semshiErrorChar       guifg=#ffffff guibg=#fb6000
   hi semshiErrorSign       guifg=#ff4e00 guibg=None
   hi semshiFree            guifg=#ffafd7
-  hi semshiGlobal          guifg=#ffaf00
+  hi semshiGlobal          guifg=#61afef
   hi semshiImported        guifg=#5ec673 gui=bold
   hi semshiLocal           guifg=#ff875f
   hi semshiParameter       guifg=#ff0087
