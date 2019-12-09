@@ -18,6 +18,7 @@ let g:tex_flavor = "latex"     " assuem *.tex are all latex files
 
 " RunTimePath. Add fzf
 set rtp+=~/.fzf
+
 " Set Python/Npm paths {{{
 if has("unix")  "Python & Node
 	" This is probably not necessary and $HOME or similar might work.
@@ -96,6 +97,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'     " XXX show git status of files
 Plug 'ivalkeen/nerdtree-execute'       " XXX open files from nerdtree
 Plug 'KabbAmine/vCoolor.vim'           " XXX pick color from menu
 Plug 'Yggdroot/indentLine'             " XXX see where there is indent
+" Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'airblade/vim-gitgutter'          " XXX see git changes in file in the numberline
 Plug 'easymotion/vim-easymotion'       " XXX visualize targets tot move to specific words
 Plug 'junegunn/fzf.vim'                " XXX fuzzy filefinding

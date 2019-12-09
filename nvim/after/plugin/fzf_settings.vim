@@ -1,5 +1,8 @@
 " FZF
 
+if !exists('g:loaded_fzf')
+  finish
+endif
 " let $FZF_DEFAULT_OPTS=' --layout=reverse --margin=1,4'
 
 " Mapping

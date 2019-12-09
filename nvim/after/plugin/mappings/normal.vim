@@ -105,7 +105,11 @@ nnoremap <space>N :bl<CR>
 nnoremap <space><space> :b#<CR>
 nnoremap <space>d :bd<CR>
 nnoremap <space>D :bd!<CR>
-nnoremap <space>o :only<CR>
+" nnoremap <space>o :only<CR>
+
+" Go to next operator: +, -, ^, ="
+nnoremap <leader>o :call search('[+\-\^/*=]')<CR>
+nnoremap <leader>O :call search('[+\-\^/*=]', 'b')<CR>
 
 " Create new window
 nnoremap <space>J <c-w>n 
