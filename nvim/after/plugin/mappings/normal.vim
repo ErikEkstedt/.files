@@ -93,6 +93,7 @@ nnoremap <space>, mz:%s/\s\+$//<cr>:let @/=''<cr>`z
 " Toggle number/wrap/hlsearch
 nnoremap <silent><space>sn :set number!<CR>
 nnoremap <silent><space>ss :set hlsearch!<CR>
+nnoremap <silent><space>s :set hlsearch!<CR>
 nnoremap <silent><space>wr :set wrap!<CR>
 
 " Buffers previous/next

@@ -1,4 +1,7 @@
 " vim-after-object
 
-autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ', '+', '*', '{')
-" ca=				change after '='
+if !exists('g:loaded_after_object')
+  finish
+endif
+
+autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ', '+', '*', '{', ']', '}')
