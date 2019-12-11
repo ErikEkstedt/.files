@@ -94,7 +94,9 @@ Plug 'junegunn/vim-easy-align'         " XXX better alignment than tabular
 Plug 'junegunn/vim-peekaboo'           " XXX when pressing quotes shows what's stored in the different registers
 Plug 'lotabout/slimux'                 " XXX old: 'epeli/slimux' | vim+ipython OUtdated
 Plug 'machakann/vim-highlightedyank'   " XXX Highlight yanks
-Plug 'nelstrom/vim-markdown-folding'   " XXX help with folding in markdown
+" Plug 'nelstrom/vim-markdown-folding'   " XXX help with folding in markdown
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 Plug 'nelstrom/vim-visual-star-search' " * on visual select searches for the snippet
 Plug 'tpope/vim-commentary'            " XXX commenting
 Plug 'tpope/vim-fugitive'              " XXX git tools
@@ -110,6 +112,7 @@ let g:tmux_navigator_no_mappings = 1
 Plug 'lervag/vimtex'       " XXX latex compiler, preview latex pdf, highlight and syntax. alot more.
 Plug 'mhinz/neovim-remote' " Needed for vimtex. Error: 'compiler_progranme=nvr' / '--remote'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+
 " Colorschemes and Appearence {{{
 Plug 'arzg/vim-substrata'
 Plug 'benburrill/potato-colors'
