@@ -15,6 +15,8 @@ $NVIM_ROOT
 └── wip: for random scripts. testing, trying etc
 ```
 
+![nvim](/images/nvim.png)
+
 
 * `vim --startuptime vim.log`
   - See :help --startuptime
