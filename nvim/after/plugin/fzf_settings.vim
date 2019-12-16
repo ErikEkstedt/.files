@@ -3,7 +3,8 @@
 if !exists('g:loaded_fzf')
   finish
 endif
-" let $FZF_DEFAULT_OPTS=' --layout=reverse --margin=1,4'
+
+let $FZF_DEFAULT_OPTS .= ' --border --margin=1,1'
 
 " Mapping
 " FuzzyFind files in root /, $HOME or current folder
@@ -70,47 +71,41 @@ let g:fzf_action = {
             \ 'Enter': 'edit'}
 
 " " Customize fzf colors to match your color scheme
-hi FZFFloat guibg=#222432 guifg=#98d335
-hi FZFBorder guifg=#00b3fb
-hi FZFPointer guifg=#fecc66
+hi FZFFloat guibg=#222432 guifg=#646e87
+hi FZFSelector guibg=#222432 guifg=#b9ceff
+hi FZFPointer guifg=#60f1ff
+hi FZFHead guibg=#222432 guifg=#519dec
+hi FZFBorder guifg=#5d6677
 let g:fzf_colors = {
 			\ 'fg':			 ['fg', 'Normal'],
 			\ 'bg':      ['bg', 'FZFFloat'],
 			\ 'hl':      ['fg', 'FZFFloat'],
-			\ 'fg+':     ['fg', 'CursorLine', 'Normal', 'Normal'],
+      \ 'fg+':     ['fg', 'FZFSelector', 'FZFSelector', 'FZFSelector'],
 			\ 'bg+':     ['bg', 'FZFFloat'],
 			\ 'hl+':     ['fg', 'Statement'],
-			\ 'info':    ['fg', 'Comment'],
+			\ 'info':    ['fg', 'Normal'],
 			\ 'border':  ['fg', 'FZFBorder'],
-			\ 'prompt':  ['fg', 'Statement'],
-			\ 'pointer': ['fg', 'Statement'],
+			\ 'prompt':  ['fg', 'FZFHead'],
+			\ 'pointer': ['fg', 'FZFPointer'],
 			\ 'marker':  ['fg', 'FZFPointer'],
 			\ 'spinner': ['fg', 'Label'],
-			\ 'header':  ['fg', 'Comment'] }
+			\ 'header':  ['fg', 'FZFHead'] }
+
 "}}}
 
+
 function! FloatingFZF()
-  let buf = nvim_create_buf(v:false, v:true)
-  call setbufvar(buf, 'number', 'no')
+  let width = float2nr(&columns * 0.9)
+  let height = float2nr(&lines * 0.6)
+  let opts = { 'relative': 'editor',
+             \ 'row': (&lines - height) / 2,
+             \ 'col': (&columns - width) / 2,
+             \ 'width': width,
+             \ 'height': height }
 
-  let height = float2nr(&lines/2)
-  let width = float2nr(&columns - (&columns * 8 / 100))
-  "let width = &columns
-  let row = float2nr(&lines / 3)
-  let col = float2nr((&columns - width) / 3)
-
-  let opts = {
-        \ 'relative': 'editor',
-        \ 'row': row,
-        \ 'col': col,
-        \ 'width': width,
-        \ 'height':height,
-        \ }
-  let win =  nvim_open_win(buf, v:true, opts)
-  call setwinvar(win, '&number', 0)
-  call setwinvar(win, '&relativenumber', 0)
+  let win = nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
+  call setwinvar(win, '&winhighlight', 'NormalFloat:FZFFloat')
 endfunction
-
 
 command! -bang -nargs=* LinesWithPreview
     \ call fzf#vim#grep(
