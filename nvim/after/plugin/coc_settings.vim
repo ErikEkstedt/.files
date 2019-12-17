@@ -72,14 +72,14 @@ endfunction
 " Highlight ----------------------------------------------------------
 
 " Float
-autocmd! VimEnter,ColorScheme * call SetCocHighlights()
-function! SetCocHighlights()
-  hi CocFloating guifg=#98d335 guibg=#191919
-  hi CocInfoFloat guifg=#66ffff 
-  hi CocHintFloat guifg=#108080
-  hi CocErrorFloat guifg=#ff0000 guibg=none
-  hi CocWarningFloat guifg=##d49b05
-endfunc
+" autocmd! VimEnter,ColorScheme * call SetCocHighlights()
+" function! SetCocHighlights()
+"   hi CocFloating guifg=#98d335 guibg=#191919
+"   hi CocInfoFloat guifg=#66ffff 
+"   hi CocHintFloat guifg=#108080
+"   hi CocErrorFloat guifg=#ff0000 guibg=none
+"   hi CocWarningFloat guifg=##d49b05
+" endfunc
 
 " hi CocErrorHighlight guifg=#e9134e 
 " hi CocWarningHighlight guifg=#cf9f28 

@@ -42,7 +42,6 @@ call plug#begin('~/.vim/bundle')
 
 " ================ Deprecated ================
 
-Plug 'Valloric/MatchTagAlways'
 " Plug 'sjl/gundo.vim'                   " Visualize undo tree
 " Plug 'tommcdo/vim-exchange'            " exchange two words. ex: cxw (on first word) . (on second)
 " Plug 'tpope/vim-obsession'             " :mksession | saves a vim instance | used when saving tmux session
@@ -240,9 +239,7 @@ endif
 
 " PMenu
 set pb=20
-hi Pmenu guifg=#49b94c guibg=none
-hi PmenuSel guifg=#88ff8a guibg=none gui='bold'
-hi PmenuThumb guibg=##898989
+hi PmenuSel gui='bold'
 
 " Floating windows
 " set winblend=20
