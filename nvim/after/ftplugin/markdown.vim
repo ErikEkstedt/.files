@@ -15,6 +15,8 @@ nnoremap <buffer> <F12> :<c-u>silent call jobstart('zathura '.expand('%:p:r:S').
 " make link of entire row
 nnoremap <leader>tL I[<esc>A]()<esc>h
 
+inoremap <leader>ma $$$$<left><left>
+
 " Get both markdown and html snippets
 set filetype=markdown.html
 :UltiSnipsAddFiletypes markdown.latex.html

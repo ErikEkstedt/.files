@@ -72,18 +72,18 @@ let g:fzf_action = {
 
 " " Customize fzf colors to match your color scheme
 hi FZFFloat guibg=#222432 guifg=#646e87
-hi FZFSelector guibg=#222432 guifg=#b9ceff
-hi FZFPointer guifg=#60f1ff
+hi FZFSelector guibg=#222432
+hi FZFPointer guifg=#60f1ff gui=bold
 hi FZFHead guibg=#222432 guifg=#519dec
 hi FZFBorder guifg=#5d6677
 let g:fzf_colors = {
 			\ 'fg':			 ['fg', 'Normal'],
 			\ 'bg':      ['bg', 'FZFFloat'],
 			\ 'hl':      ['fg', 'FZFFloat'],
-      \ 'fg+':     ['fg', 'FZFSelector', 'FZFSelector', 'FZFSelector'],
+      \ 'fg+':     ['fg', 'FZFPointer', 'FZFPointer', 'FZFPointer'],
 			\ 'bg+':     ['bg', 'FZFFloat'],
 			\ 'hl+':     ['fg', 'Statement'],
-			\ 'info':    ['fg', 'Normal'],
+			\ 'info':    ['fg', 'Statement'],
 			\ 'border':  ['fg', 'FZFBorder'],
 			\ 'prompt':  ['fg', 'FZFHead'],
 			\ 'pointer': ['fg', 'FZFPointer'],
