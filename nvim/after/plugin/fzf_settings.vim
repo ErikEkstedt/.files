@@ -80,7 +80,7 @@ let g:fzf_colors = {
 			\ 'fg':			 ['fg', 'Normal'],
 			\ 'bg':      ['bg', 'FZFFloat'],
 			\ 'hl':      ['fg', 'FZFFloat'],
-      \ 'fg+':     ['fg', 'FZFSelector', 'FZFSelector', 'FZFSelector'],
+      \ 'fg+':     ['fg', 'FZFPointer', 'FZFPointer', 'FZFPointer'],
 			\ 'bg+':     ['bg', 'FZFFloat'],
 			\ 'hl+':     ['fg', 'Statement'],
 			\ 'info':    ['fg', 'Normal'],

@@ -7,7 +7,7 @@ setlocal expandtab
 setlocal autoindent
 setlocal foldmethod=indent
 setlocal nowrap
-" setlocal iskeyword-=_
+setlocal iskeyword-=_ " makes vim words not include '_'. (dw on start of word) foo_bar -> _bar
 
 " Mappings
 
@@ -29,10 +29,4 @@ vnoremap <buffer> <CR> :SlimuxREPLSendLine<CR>gv<Esc>zz
 nnoremap <space>al ggv/if __name__<cr>k
 nnoremap gm /if __name__<cr>j
 
-" let python_no_builtin_highlight = 1
-" let python_no_doctest_code_highlight = 1
-" let python_no_doctest_highlight = 1
-" let python_no_exception_highlight = 1
-" let python_no_number_highlight = 1
-" let python_space_error_highlight = 1
 let python_highlight_all = 1
