@@ -239,7 +239,7 @@ endif
 
 " PMenu
 set pb=20
-hi PmenuSel gui='bold'
+" hi PmenuSel gui='bold'
 
 " Floating windows
 " set winblend=20
