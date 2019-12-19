@@ -77,6 +77,7 @@ alias gallen="~/allennlp; ls"
 # }
 
 # Programming {{{
+alias nvim="~/Applications/nvim"
 alias vim="nvim"
 alias VIM="vim"
 alias v="nvim"
@@ -111,11 +112,8 @@ alias tkw="tmux kill-window -t"
 alias tst="tmux new-session"
 alias tspc="_tmux_send_keys_all_panes_"
 alias theme="_tmux_theme"
-
 alias tat=$DOTFILES/bin/tat
-
 alias Clear='tspc "clear"'
-
 # tmuxinator
 alias work="tmuxinator start WORK"
 alias basic="tmuxinator start basic"
@@ -128,14 +126,18 @@ alias patchwork="cd ~/patchwork && npm start"
 # tensorboard
 alias tens="tensorboard --logdir "
 
-if [[ $(hostname) == 'erik-Desktop' ]]; then
-  # Nvim
-  alias v="~/Applications/nvim_e37d26c48d775fa70fe172344338cfe4"
-  alias nvim="~/Applications/nvim_e37d26c48d775fa70fe172344338cfe4"
-  # Ranger
-  alias ran='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
-  alias r='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
-fi
+# File Manager {{{
+alias ranger=lf
+alias fm=lf
+
+# }}}
+
+# if [[ $(hostname) == 'erik-Desktop' ]]; then
+#   # Ranger
+#   alias ran='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+#   alias r='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+# fi
+
 
 # Git {{{
 alias gad="git add"

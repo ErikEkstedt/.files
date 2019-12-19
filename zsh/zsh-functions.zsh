@@ -49,29 +49,69 @@ zle -N so
 
 # Ranger {{{
 
-function ranger {
-    # Quitting ranger with "q" puts you in the directory where you quit
-    local IFS=$'\t\n'
-    local tempfile="$(mktemp -t tmp.XXXXXX)"
-    local ranger_cmd=(
-        command
-        ranger
-        --cmd="map q chain shell echo %d > "$tempfile"; quitall"
-    )
+# function ranger {
+#     # Quitting ranger with "q" puts you in the directory where you quit
+#     local IFS=$'\t\n'
+#     local tempfile="$(mktemp -t tmp.XXXXXX)"
+#     local ranger_cmd=(
+#         command
+#         ranger
+#         --cmd="map q chain shell echo %d > "$tempfile"; quitall"
+#     )
 
-    ${ranger_cmd[@]} "$@"
-    if [[ -f "$tempfile" ]] && [[ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]]; then
-        cd -- "$(cat "$tempfile")" && clear || return
-    fi
-    command rm -f -- "$tempfile" 2>/dev/null
-}
+#     ${ranger_cmd[@]} "$@"
+#     if [[ -f "$tempfile" ]] && [[ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]]; then
+#         cd -- "$(cat "$tempfile")" && clear || return
+#     fi
+#     command rm -f -- "$tempfile" 2>/dev/null
+# }
 
 # }}}
 
+vi-cmd-up-line-history() { 
+  zle vi-cmd-mode
+  zle up-line-or-history 
+} 
+zle -N vi-cmd-up-line-history 
 
-################################################################
+vi-cmd-down-line-history() { 
+  zle vi-cmd-mode
+  zle down-line-or-history 
+} 
+zle -N vi-cmd-down-line-history 
 
-################################################################
+
+
+lfcd () {
+    tmp="$(mktemp)"
+    lf -last-dir-path="$tmp" "$@"
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        rm -f "$tmp"
+        if [ -d "$dir" ]; then
+            if [ "$dir" != "$(pwd)" ]; then
+                cd "$dir"
+            fi
+        fi
+    fi
+}
+
+lfcd_zsh () {
+    tmp="$(mktemp)"
+    lf -last-dir-path="$tmp" "$@"
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        rm -f "$tmp"
+        if [ -d "$dir" ]; then
+            if [ "$dir" != "$(pwd)" ]; then
+                cd "$dir"
+            fi
+        fi
+    fi
+}
+zle -N lfcd_zsh
+
+
 # BINDINGS {{{
 
 bindkey -s '^S' '^Asudo ^E'
@@ -79,4 +119,10 @@ bindkey -s '^S' '^Asudo ^E'
 # bindkey -s '^Q' 'tmux switch-client -n \; kill-session -t "$(tmux display-message -p "#S")" || tmux kill-session\r'
 bindkey -M vicmd H beginning-of-line
 bindkey -M vicmd L end-of-line
-# }}}
+bindkey -M vicmd J vi-cmd-down-line-history
+bindkey -M vicmd K vi-cmd-up-line-history
+
+bindkey -s '^f' 'lfcd\C-M'
+# bindkey '^f' lfcd_zsh
+# bindkey -s vicmd '^f' 'ilfcd\C-M'
+bindkey -M vicmd '^F' lfcd_zsh
