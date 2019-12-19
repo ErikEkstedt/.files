@@ -5,11 +5,12 @@
 ## SETTINGS
 # set borders  # no borders :(
 set scrolloff 10 # leave some space at the top and the bottom of the screen
-set preview true
-# set previewer ~/.files/lf/preview_bat.sh
-set previewer ~/.files/lf/preview.sh
-# set previewer bat
 set drawbox
+set incsearch
+set preview true
+set previewer ~/.files/lf/preview.sh
+# set previewer ~/.files/lf/preview_bat.sh
+# set previewer bat
 
 
 # move current file or selected files to trash folder
@@ -108,10 +109,12 @@ map D delete
 # map o open  # todo
 
 
-map <c-f> fzf_jump
+map <c-t> fzf_jump
 map <c-b> fzf_cd_from_home
 map <c-n> fzf_cd_from_here
-
+map <c-f> quit
+map <esc> quit
+ 
 # execute current file (must be executable)
 map x $$f
 map X !$f
