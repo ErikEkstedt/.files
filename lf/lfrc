@@ -6,6 +6,9 @@
 # set borders  # no borders :(
 set scrolloff 10 # leave some space at the top and the bottom of the screen
 set preview true
+# set previewer ~/.files/lf/preview_bat.sh
+set previewer ~/.files/lf/preview.sh
+# set previewer bat
 set drawbox
 
 

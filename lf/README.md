@@ -11,7 +11,11 @@ in go instead of python, relies on more on shell commands. LF is faster(?) and m
 * brew install lf
 
 **Linux**
-* TODO
+* [Releases](https://github.com/gokcehan/lf/releases)
+    * download, extract and run
+* Source
+  * install go `sudo apt-get install golang`
+  *  `go get -u github.com/gokcehan/lf`
 
 Run `link_configs.sh` to create folder `$HOME/.config/lf` and link `lfrc` -> `$HOME/.config/lf/lfrc`
 
