@@ -68,11 +68,8 @@ ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
 ZSH_HIGHLIGHT_STYLES[commands]='fg=cyan,bold' # To have paths colored instead of underlined
 ZSH_HIGHLIGHT_STYLES[globbing]='none'         # To disable highlighting of globbing expressions
 
-
 source $ZSH/oh-my-zsh.sh
 source $HOME/.files/zsh/space_ship_ohmyzsh.zsh
-
-# Work or not?
 source ~/.files/zsh/less_colors.zsh
 source ~/.files/zsh/aliases.zsh
 #}}}
@@ -89,7 +86,7 @@ if type "tmuxinator" > /dev/null; then
 fi
 
 
-case Linux in
+case `uname` in
   Darwin)
     # commands for OS X go here
     if [ -f ~/.files/zsh/zsh-functions-mac.zsh ]; then
@@ -101,16 +98,22 @@ case Linux in
   Linux)
     # commands for Linux go here
     source ~/.files/zsh/zsh-functions-kde.zsh
+    source "/home/erik/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
     ;;
 esac
 # }}}
-#
+
 # NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-source "/home/erik/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
+
+# Tmux {{{
+if [ "$TMUX" = "" ]; then 
+  tmux new
+fi
+source ~/.files/tmux/tmux_functions.zsh  # For my custom scripts
 
 # Conda addition {{{
 # >>> conda initialize >>>
@@ -127,11 +130,4 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-# }}}
-
-# Tmux {{{
-if [ "$TMUX" = "" ]; then 
-	tmux new
-fi
-source ~/.files/tmux/tmux_functions.zsh  # For my custom scripts
 # }}}

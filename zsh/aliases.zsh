@@ -77,9 +77,14 @@ alias gallen="~/allennlp; ls"
 # }
 
 # Programming {{{
-alias nvim="~/Applications/nvim"
-alias vim="nvim"
-alias VIM="vim"
+case `uname` in
+  Darwin)
+    ;;
+  Linux)
+    alias nvim="~/Applications/nvim"
+    ;;
+esac
+
 alias v="nvim"
 alias vf="nvim -c Files"
 alias py="python"  #--profile=erik"
