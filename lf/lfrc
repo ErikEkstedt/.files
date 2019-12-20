@@ -15,6 +15,7 @@ set scrolloff 10  # leave some space at the top and the bottom of the screen
 set drawbox       # borders
 set incsearch     #  boolean  (default off)
 set preview true
+set dircounts   # what does this do?
 set previewer ~/.files/lf/preview.sh
 # set icons           #  boolean  (default off)
 
@@ -100,10 +101,20 @@ cmd fzf_cd_from_here ${{
 }}
 
 # MAPPINGS
+
+# Prefix
+# :  read (default)  builtin/custom command
+# $  shell           shell command
+# %  shell-pipe      shell command running with the ui
+# !  shell-wait      shell command waiting for key press
+# &  shell-async     shell command running asynchronously
+
+map D
 map c
 map d
 map gh
 map i
+map m
 map p
 map w
 map y
@@ -112,11 +123,14 @@ map o open
 map <enter> open 
 map D delete
 map dd cut
+map dD delete
 map yy copy
 map pp paste
 map cw push r<c-w>
 map I push r<home>
 map A rename
+map mkd push %mkdir<space>
+map cc clear
 
 # execute current file (must be executable)
 map x $$f
@@ -134,7 +148,6 @@ map <c-b> fzf_cd_from_home
 map <c-n> fzf_cd_from_here
 map <c-f> quit
 map <esc> quit
-
 
 # Git
 map gpl %git pull

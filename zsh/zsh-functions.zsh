@@ -126,3 +126,9 @@ bindkey -s '^f' 'lfcd\C-M'
 # bindkey '^f' lfcd_zsh
 # bindkey -s vicmd '^f' 'ilfcd\C-M'
 bindkey -M vicmd '^F' lfcd_zsh
+
+
+# tree
+bindkey -s '^d' 'tree -d\C-M'
+
+

@@ -165,8 +165,8 @@ alias gstatus="python ~/.files/bin/git-script -d .files phd Notes Audio/maptaskd
 
 
 # Config {{{
-alias eal="vim ~/.files/zsh/aliases.zsh"
-alias ealiases="vim ~/.files/zsh/aliases.zsh"
+alias eal="nvim ~/.files/zsh/aliases.zsh"
+alias ealiases="nvim ~/.files/zsh/aliases.zsh"
 alias ev="nvim ~/.files/nvim/init.vim"
 alias ez="nvim ~/.zshrc"
 alias et="nvim ~/.tmux.conf"
