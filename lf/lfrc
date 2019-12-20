@@ -1,23 +1,33 @@
+# lf
+
+# https://godoc.org/github.com/gokcehan/lf
+
 # make sure trash folder exists
 %mkdir -p ~/.trash
 
 
 ## SETTINGS
-# set borders  # no borders :(
-set scrolloff 10 # leave some space at the top and the bottom of the screen
-set drawbox
-set incsearch
+set shell zsh
+set shellopts '-eu:--shwordsplit'
+set ifs "\n"
+set filesep "\n"  # default already
+set scrolloff 10  # leave some space at the top and the bottom of the screen
+set drawbox       # borders
+set incsearch     #  boolean  (default off)
 set preview true
 set previewer ~/.files/lf/preview.sh
-# set previewer ~/.files/lf/preview_bat.sh
-# set previewer bat
+# set icons           #  boolean  (default off)
 
 
-# move current file or selected files to trash folder
-# (also see 'man mv' for backup/overwrite options)
+# COMANDS ----------------------------------------------------------
+# $f   current file
+# $fs  selected file(s) separated with 'filesep'
+# $fx  current file or selected file(s) if any
+# $id  id number of the client
+
+# move current file or selected files to trash folder (also see 'man mv' for backup/overwrite options)
 cmd trash %set -f; mv $fx ~/.trash
 
-# define a custom 'delete' command
 cmd delete ${{
     set -f
     printf "$fx\n"
@@ -25,18 +35,16 @@ cmd delete ${{
     read ans
     [ $ans = "y" ] && rm -rf $fx
 }}
-
-
 cmd open ${{
     case $(file --mime-type $f -b) in
         text/*) $EDITOR $fx;;
         video/*) vlc $fx;;
+        image/*) $OPENER $fx;;
         *) for f in $fx; do setsid $OPENER $f > /dev/null 2> /dev/null & done;;
     esac
 }}
 
-# extract the current file with the right command
-# (xkcd link: https://xkcd.com/1168/)
+# extract the current file with the right command (xkcd link: https://xkcd.com/1168/ )
 cmd extract ${{
     set -f
     case $f in
@@ -48,7 +56,6 @@ cmd extract ${{
         *.7z) 7z x $f;;
     esac
 }}
-
 # compress current file or selected files with tar and gunzip
 cmd tar ${{
     set -f
@@ -84,42 +91,54 @@ cmd fzf_cd_from_home ${{
   cd ~
   res="$(fd --type d --hidden --no-ignore --exclude .git | fzf --preview 'tree -L 1 -C {} | head -200'  --header='Jump to directory')"
   res=~/$res
-  cmd="cd"                                                       
-  lf -remote "send $id $cmd \"$res\""
+  lf -remote "send $id cd \"$res\""
 }}
 
 cmd fzf_cd_from_here ${{
   res="$(fd --type d --hidden --no-ignore --exclude .git | fzf --preview 'tree -L 1 -C {} | head -200'  --header='Jump to directory')"
-  cmd="cd"                                                       
-  lf -remote "send $id $cmd \"$res\""
+  lf -remote "send $id cd \"$res\""
 }}
 
 # MAPPINGS
+map c
+map d
+map gh
+map i
+map p
+map w
+map y
 
-map gfi cd ~/.files
-map gtu cd ~/TurnTaking/turntaking
+map o open
+map <enter> open 
+map D delete
+map dd cut
+map yy copy
+map pp paste
+map cw push r<c-w>
+map I push r<home>
+map A rename
+
+# execute current file (must be executable)
+map x $$f
+map X !$f
+
+# Movement
 map gho cd ~
 map gro cd /
-
-map - $~/.files/lf/draw_img.sh $f
-map d
-map dd cut
-map D delete
-# map <enter> shell  # use enter for shell commands
-# map o open  # todo
-
+map gfi cd ~/.files
+map gtu cd ~/TurnTaking/turntaking
+map gbl cd ~/ErikEkstedt.github.io
 
 map <c-t> fzf_jump
 map <c-b> fzf_cd_from_home
 map <c-n> fzf_cd_from_here
 map <c-f> quit
 map <esc> quit
- 
-# execute current file (must be executable)
-map x $$f
-map X !$f
 
-# dedicated keys for file opener actions
-map o &mimeopen $f
-map O $mimeopen --ask $f
 
+# Git
+map gpl %git pull
+map glo !git log
+map ghi !git hist
+
+# map - $~/.files/lf/draw_img.sh $f
