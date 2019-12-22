@@ -142,12 +142,15 @@ map gro cd /
 map gfi cd ~/.files
 map gtu cd ~/TurnTaking/turntaking
 map gbl cd ~/ErikEkstedt.github.io
+map gpi cd ~/Pictures
+map gdw cd ~/Downloads
+map gdo cd ~/Documents
 
 map <c-t> fzf_jump
 map <c-b> fzf_cd_from_home
 map <c-n> fzf_cd_from_here
 map <c-f> quit
-map <esc> quit
+# map <esc> quit  # quit all too often
 
 # Git
 map gpl %git pull
