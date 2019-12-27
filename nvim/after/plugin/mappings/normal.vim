@@ -51,10 +51,16 @@ nnoremap <s-tab> <lt><lt>
 
 nnoremap <C-t> <C-y>
 
+" Store relative line number jumps in the jumplist if they exceed a threshold.
+nnoremap <expr> k (v:count > 5 ? "m'" . v:count : '') . 'k'
+nnoremap <expr> j (v:count > 5 ? "m'" . v:count : '') . 'j'
+
 " When vim wraps one line over several lines
 " make j/k movie inside the line intuitively
 nnoremap j gj
 nnoremap k gk
+" nmap j gj
+" nmap k gk
 
 
 " Greg hurell: https://github.com/wincent/wincent/blob/aa3a322e3a911dabe0ef398ebb1fd7c77209b8ac/roles/dotfiles/files/.vim/plugin/mappings/normal.vim
@@ -62,9 +68,6 @@ nnoremap k gk
 " Like vim-vinegar.
 nnoremap <silent> - :silent edit <C-R>=empty(expand('%')) ? '.' : expand('%:p:h')<CR><CR>
 
-" Store relative line number jumps in the jumplist if they exceed a threshold.
-nnoremap <expr> k (v:count > 5 ? "m'" . v:count : '') . 'k'
-nnoremap <expr> j (v:count > 5 ? "m'" . v:count : '') . 'j'
 
 " natural end/beginning of line movement (also in visual and selection)
 nnoremap L $
@@ -187,7 +190,7 @@ nnoremap g<space> f<space>a<CR><esc>
 "--------------------- Folds    -------------------------
 "--------------------------------------------------------
 " Toggle fold
-nnoremap ga zA
+" nnoremap ga zA
 nnoremap <space>f zA
 nnoremap <space>z zMzvzz
 

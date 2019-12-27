@@ -4,21 +4,15 @@ if !exists('g:loaded_fzf')
   finish
 endif
 
-let $FZF_DEFAULT_OPTS .= ' --border --margin=1,1'
+let $FZF_DEFAULT_COMMAND = 'fd --type file --follow --hidden --color=always'
+let $FZF_DEFAULT_COMMAND .= ' -E .git -E "*.png" -E "*.gif"'
+let $FZF_DEFAULT_OPTS .= ' --ansi --border --margin=1,1'
 
 " Mapping
 " FuzzyFind files in root /, $HOME or current folder
 nnoremap <Leader>fr :Files /<CR>
-nnoremap <Leader>Fr :Files! /<CR>
-nnoremap <Leader>FR :Files! /<CR>
-
-nnoremap <Leader>fi :Files ~/<CR>
-nnoremap <Leader>Fi :Files! ~/<CR>
-nnoremap <Leader>FI :Files! ~/<CR>
-
+nnoremap <Leader>fi :Files ~<CR>
 nnoremap <Leader>ff :Files<CR>
-nnoremap <Leader>Ff :Files!<CR>
-nnoremap <Leader>FF :Files!<CR>
 
 nnoremap <Leader>fb :Buffers<CR>
 
@@ -34,8 +28,6 @@ nnoremap <Leader>fp :Files ~/phd<CR>
 " nnoremap <Leader>fl :Lines<CR>
 nnoremap <Leader>fl :LinesWithPreview<CR>
 nnoremap <Leader>fw :Rg<CR>
-nnoremap <Leader>FW :Rg!<CR>
-nnoremap <Leader>FA :RgHome!<CR>
 nnoremap <Leader>fa :RgHome<CR>
 
 nnoremap <Leader>he :Helptags<CR>
@@ -107,20 +99,26 @@ function! FloatingFZF()
   call setwinvar(win, '&winhighlight', 'NormalFloat:FZFFloat')
 endfunction
 
+" " \   'rg  --column --line-number --no-heading --color=always --smart-case . '.fnameescape(expand('%')), 1,
 command! -bang -nargs=* LinesWithPreview
     \ call fzf#vim#grep(
-    \   'rg --with-filename --column --line-number --no-heading --color=always --smart-case . '.fnameescape(expand('%')), 1,
-    \   fzf#vim#with_preview({'options': '--delimiter : --nth 4.. --no-sort'}),
+    \   'rg --column --line-number --no-heading --color=always --smart-case . '.fnameescape(expand('%')), 1,
     \   <bang>0)
 
+" command! -bang -nargs=* LinesWithPreview
+"     \ call fzf#vim#grep(
+"     \   'rg --column --line-number --no-heading --color=always --smart-case . '.fnameescape(expand('%')), 1,
+"     \   fzf#vim#with_preview({'options': '--no-sort'}),
+"     \   <bang>0)
 " ripgrep freezez if adding --no-ignore flag 
 " TODO: turn these into a general function that takes in one argument dir -
 " the directory to search in.
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --hidden --color=always --smart-case 2> /dev/null '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview({'options': '--delimiter : --nth 4.. --no-sort'}),
+  \   fzf#vim#wrap({'options': '--delimiter : --nth 4.. --no-sort'}),
   \   <bang>0)
+
 
 command! -bang -nargs=* RgHome
   \ call fzf#vim#grep(
@@ -128,6 +126,7 @@ command! -bang -nargs=* RgHome
   \   1,
   \   fzf#vim#with_preview({'dir': '~'}),
   \   <bang>0)
+
 
 " Hide status in fzf
 autocmd! FileType fzf
