@@ -7,7 +7,7 @@ setlocal expandtab
 setlocal autoindent
 setlocal foldmethod=indent
 setlocal nowrap
-setlocal iskeyword-=_ " makes vim words not include '_'. (dw on start of word) foo_bar -> _bar
+" setlocal iskeyword-=_ " makes vim words not include '_'. (dw on start of word) foo_bar -> _bar
 
 " Mappings
 

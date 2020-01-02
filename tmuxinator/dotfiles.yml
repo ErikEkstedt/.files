@@ -1,0 +1,5 @@
+name: DotFiles
+root: ~/.files
+windows:
+    - DotFiles:
+        root: ~/.files
