@@ -50,7 +50,7 @@ alias ldt="tree -d -L 2"
 alias gfi="cd ~/.files; clear; ls"
 alias gtu="cd ~/TurnTaking/turntaking; clear; ls"
 alias gz="cd ~/.files/zsh; clear; ls"
-alias gbl="cd ~/blog; ls"
+alias gbl="cd ~/ErikEkstedt.github.io; ls"
 alias gph="cd ~/phd; ls"
 alias gpe="cd ~/.personal; ls"
 

@@ -190,7 +190,7 @@ nnoremap g<space> f<space>a<CR><esc>
 "--------------------- Folds    -------------------------
 "--------------------------------------------------------
 " Toggle fold
-" nnoremap ga zA
+nnoremap ga zA
 nnoremap <space>f zA
 nnoremap <space>z zMzvzz
 

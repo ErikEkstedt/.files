@@ -1,0 +1,11 @@
+name: TurnTaking
+root: ~/TurnTaking/turntaking
+windows:
+    - TurnTaking:
+        layout: main-vertical
+        panes:
+          - Editor:
+            - vf
+          - Repl:
+            - so conversation
+            - ipy
