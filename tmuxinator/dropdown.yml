@@ -1,13 +1,7 @@
 # /home/erik/.config/tmuxinator/dropdown.yml
 
-name: dropdown
+name: DropDown
 root: ~/
 windows:
-  - Terminal:
   - Ranger: 
-      - ranger
-  - Server: 
-      layout: even-horizontal
-      panes:
-        - cd ~/blog && nodemon app.js
-        - cd mycroft 
+      - lf

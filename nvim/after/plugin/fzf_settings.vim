@@ -26,7 +26,8 @@ nnoremap <Leader>fp :Files ~/phd<CR>
 
 " Others
 " nnoremap <Leader>fl :Lines<CR>
-nnoremap <Leader>fl :LinesWithPreview<CR>
+nnoremap <C-f> :Rg<CR>
+nnoremap <Leader>fl :LinesNoPreview<CR>
 nnoremap <Leader>fw :Rg<CR>
 nnoremap <Leader>fa :RgHome<CR>
 
@@ -51,7 +52,7 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 let g:fzf_buffers_jump = 1
 
 " Syntax Highlight in Previews (requires bat)
-let g:fzf_files_options = '--preview "bat --theme zenburn  --color always {} 2> /dev/null"'
+let g:fzf_files_options = '--preview "bat --theme base16 --style numbers,grid --color always {} 2> /dev/null"'
 
 " Default fzf layout
 let g:fzf_layout = { 'window': 'call FloatingFZF()' }
@@ -100,7 +101,7 @@ function! FloatingFZF()
 endfunction
 
 " " \   'rg  --column --line-number --no-heading --color=always --smart-case . '.fnameescape(expand('%')), 1,
-command! -bang -nargs=* LinesWithPreview
+command! -bang -nargs=* LinesNoPreview
     \ call fzf#vim#grep(
     \   'rg --column --line-number --no-heading --color=always --smart-case . '.fnameescape(expand('%')), 1,
     \   <bang>0)
@@ -115,10 +116,8 @@ command! -bang -nargs=* LinesWithPreview
 " the directory to search in.
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --hidden --color=always --smart-case 2> /dev/null '.shellescape(<q-args>), 1,
-  \   fzf#vim#wrap({'options': '--delimiter : --nth 4.. --no-sort'}),
-  \   <bang>0)
-
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
 
 command! -bang -nargs=* RgHome
   \ call fzf#vim#grep(

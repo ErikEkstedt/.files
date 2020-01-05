@@ -136,7 +136,7 @@ fkill() {
 # bindkey '^u' files-from-root
 bindkey '^t' fzf-file-widget
 # bindkey '^t' files-from-home
-# bindkey '^f' fzf-file-widget
+bindkey '^f' fzf-file-widget
 
 bindkey -M vicmd '^R' fzf-history-widget
 

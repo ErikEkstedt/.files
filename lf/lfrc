@@ -7,10 +7,14 @@
 
 
 ## SETTINGS
+# zsh does not split words by default as described **here7**, 
+# which makes it difficult to work with $fs and $fx variables, 
+# but a compatibility option named shwordsplit is provided for this purpose.
 set shell zsh
 set shellopts '-eu:--shwordsplit'
 set ifs "\n"
 set filesep "\n"  # default already
+
 set scrolloff 10  # leave some space at the top and the bottom of the screen
 set drawbox       # borders
 set incsearch     #  boolean  (default off)
@@ -25,6 +29,25 @@ set previewer ~/.files/lf/preview.sh
 # $fs  selected file(s) separated with 'filesep'
 # $fx  current file or selected file(s) if any
 # $id  id number of the client
+
+cmd bulk-rename ${{
+    old=$(mktemp)
+    new=$(mktemp)
+    [ -n $fs ] && fs=$(ls)
+    printf "$fs\n" > $old
+    printf "$fs\n" > $new
+    $EDITOR $new
+    [ $(cat $new | wc -l) -ne $(cat $old | wc -l) ] && exit
+    paste $old $new | while read names; do
+        src=$(printf $names | cut -f1)
+        dst=$(printf $names | cut -f2)
+        [ $src = $dst ] && continue
+        [ -e $dst ] && continue
+        mv $src $dst
+    done
+    rm $old $new
+    lf -remote "send $id unselect"
+}}
 
 # move current file or selected files to trash folder (also see 'man mv' for backup/overwrite options)
 cmd trash %set -f; mv $fx ~/.trash
@@ -43,7 +66,7 @@ cmd open ${{
         image/*) $OPENER $fx;;
         *) for f in $fx; do setsid $OPENER $f > /dev/null 2> /dev/null & done;;
     esac
-}}
+}
 
 # extract the current file with the right command (xkcd link: https://xkcd.com/1168/ )
 cmd extract ${{
@@ -75,7 +98,9 @@ cmd zip ${{
     rm -rf $1
 }}
 
-# FZF
+########################################################################################
+# FZF 
+########################################################################################
 
 cmd fzf_jump ${{
    res="$(fd -a | fzf --reverse --header='Jump to location')"
@@ -100,6 +125,7 @@ cmd fzf_cd_from_here ${{
   lf -remote "send $id cd \"$res\""
 }}
 
+
 # MAPPINGS
 
 # Prefix
@@ -108,6 +134,10 @@ cmd fzf_cd_from_here ${{
 # %  shell-pipe      shell command running with the ui
 # !  shell-wait      shell command waiting for key press
 # &  shell-async     shell command running asynchronously
+# $f   current file
+# $fs  selected file(s) separated with 'filesep'
+# $fx  current file or selected file(s) if any
+# $id  id number of the client
 
 map D
 map c
@@ -131,6 +161,11 @@ map I push r<home>
 map A rename
 map mkd push %mkdir<space>
 map cc clear
+map bulk bulk-rename 
+
+ map yd % echo -n $PWD | xsel -i -b 
+ map yp % echo -n $f | xsel -i -b
+ map yn % basename $f | xsel -i -b
 
 # execute current file (must be executable)
 map x $$f
@@ -149,7 +184,7 @@ map gdo cd ~/Documents
 map <c-t> fzf_jump
 map <c-b> fzf_cd_from_home
 map <c-n> fzf_cd_from_here
-map <c-f> quit
+map <c-f> fzf_jump
 # map <esc> quit  # quit all too often
 
 # Git

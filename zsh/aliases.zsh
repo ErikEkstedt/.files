@@ -110,20 +110,19 @@ alias ktheme="_konsole_theme"
 # Tmux {{{
 alias titerm="tmux source ~/.files/tmux/tmux.iterm.conf"
 alias tls="tmux list-sessions"
+
 alias tkd=tmuxkillf
 alias tks="tmux kill-session -t"
 alias tkp="tmux kill-pane -t"
 alias tkw="tmux kill-window -t"
-alias tst="tmux new-session"
+
+alias tmux_sessions=$DOTFILES/tmuxinator/start_sessions.bash
+alias tns=$DOTFILES/tmuxinator/tmuxinator-fzf-start.sh
 alias tspc="_tmux_send_keys_all_panes_"
 alias theme="_tmux_theme"
-alias tat=$DOTFILES/bin/tat
+alias tat=$DOTFILES/bin/tat  # Current path as new tmux session
+
 alias Clear='tspc "clear"'
-# tmuxinator
-alias work="tmuxinator start WORK"
-alias basic="tmuxinator start basic"
-alias drop="tmuxinator start dropdown"
-alias proj="tmuxinator start project"
 # }}}
 
 alias patchwork="cd ~/patchwork && npm start"
