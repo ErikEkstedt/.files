@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # SOURCE: 
 # https://github.com/camspiers/tmuxinator-fzf-start/blob/master/tmuxinator-fzf-start.sh
