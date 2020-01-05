@@ -17,7 +17,6 @@ function g() {  #{{{
 	la | grep -i $1
 } #}}}
 
-
 function print_path() {  #{{{
   function _print_path() {  #{{{
     for p in $path; do
@@ -30,9 +29,11 @@ function print_path() {  #{{{
 #}}}
 
 ################################################################
+
+
 # Conda{{{
 
-function so() { #{{{
+function so() {
   local env
   if [ -z "$1" ]; then
     env=$(ls $HOME/miniconda3/envs | fzf)
@@ -44,8 +45,8 @@ function so() { #{{{
 } 
 alias sod="conda deactivate"
 zle -N so
-#}}}
 
+#}}}
 
 # Ranger {{{
 
@@ -67,6 +68,9 @@ zle -N so
 # }
 
 # }}}
+
+# LF {{{
+
 
 vi-cmd-up-line-history() { 
   zle vi-cmd-mode
@@ -111,6 +115,7 @@ lfcd_zsh () {
 }
 zle -N lfcd_zsh
 
+# }}}
 
 # BINDINGS {{{
 
@@ -122,10 +127,10 @@ bindkey -M vicmd L end-of-line
 bindkey -M vicmd J vi-cmd-down-line-history
 bindkey -M vicmd K vi-cmd-up-line-history
 
-bindkey -s '^f' 'lfcd\C-M'
+# bindkey -s '^f' 'lfcd\C-M'
 # bindkey '^f' lfcd_zsh
 # bindkey -s vicmd '^f' 'ilfcd\C-M'
-bindkey -M vicmd '^F' lfcd_zsh
+# bindkey -M vicmd '^F' lfcd_zsh
 
 
 # tree
