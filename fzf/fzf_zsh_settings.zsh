@@ -3,12 +3,12 @@
 # No need to let fzf installer put commands in zshrc file
 # This script is sourced from $HOME/.files/zsh/zshrc -> $HOME/.zshrc
 
-
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*" --glob "!node_modules/*" --glob "!vendor/*" 2> /dev/null'
+# export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*" --glob "!node_modules/*" --glob "!vendor/*" 2> /dev/null'
+export FZF_DEFAULT_COMMAND='fd'
 export FZF_DEFAULT_OPTS="--height 80% --reverse "
 
-# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND $bat_preview"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*" --glob "!node_modules/*" --glob "!vendor/*" 2> /dev/null'
 export FZF_CTRL_T_OPTS="--preview 'bat --color always {}'"
 
 export FZF_ALT_C_COMMAND='fd --type d --hidden --no-ignore --exclude .git'

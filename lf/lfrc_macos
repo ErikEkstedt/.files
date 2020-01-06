@@ -163,9 +163,9 @@ map mkd push %mkdir<space>
 map cc clear
 map bulk bulk-rename 
 
-map yd % echo -n $PWD | xsel -i -b 
-map yp % echo -n $f | xsel -i -b
-map yn % basename $f | xsel -i -b
+map yd % echo -n $PWD | pbcopy
+map yp % echo -n $f | pbcopy
+map yn % basename $f | pbcopy
 
 # execute current file (must be executable)
 map x $$f
