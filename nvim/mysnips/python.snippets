@@ -65,6 +65,50 @@ snippet joinexpand "join expanduser"
 join(expanduser('~'), "$0")
 endsnippet
 
+# TurnTaking
+snippet trainer "Trainer template"
+class HypoTrainer(SuperTrainer):
+	def train_step(self, batch, epoch):
+		raise NotImplementedError
+
+	def val_step(self, batch, epoch):
+		raise NotImplementedError
+
+	def test_step(self, batch, epoch):
+		raise NotImplementedError
+
+	def train_end(self, epoch_data, epoch):
+		raise NotImplementedError
+
+	def val_end(self, epoch_data, epoch):
+		raise NotImplementedError
+
+	def test_end(self, epoch_data, epoch):
+		raise NotImplementedError
+
+	def tensorboard(self, train_end, val_end, test_end, epoch):
+		raise NotImplementedError
+
+	def tensorboard_initial(self, inputs=None):
+		raise NotImplementedError
+
+	def tqdm_bar_format(self):
+		raise NotImplementedError
+
+	def tqdm_update_postfix(self, train_end, val_end, test_end=None):
+		raise NotImplementedError
+
+	def checkpoint_check(self, train_end, val_end, epoch):
+		raise NotImplementedError
+
+	def early_stopping(self):
+		raise NotImplementedError
+
+	def finish_training(self, stop_reason):
+		raise NotImplementedError
+$0
+endsnippet
+
 # Argparse
 
 snippet argparse "argparse snippet"

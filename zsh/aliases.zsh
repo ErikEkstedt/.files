@@ -131,7 +131,6 @@ alias patchwork="cd ~/patchwork && npm start"
 alias tens="tensorboard --logdir "
 
 # File Manager {{{
-alias ranger=lf
 alias fm=lf
 
 # }}}
