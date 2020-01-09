@@ -46,8 +46,8 @@ end)
 -- Grid setup
 hs.grid.MARGINX = 0
 hs.grid.MARGINY = 0
-hs.grid.GRIDWIDTH = 10
-hs.grid.GRIDHEIGHT = 10
+hs.grid.GRIDWIDTH = 100
+hs.grid.GRIDHEIGHT = 100
 
 -- a helper function that returns another function that resizes the current window
 -- to a certain grid size.
@@ -79,10 +79,10 @@ hs.hotkey.bind('alt', 'c', function()
 end)
 
 -- Left/Right/Bottom/Top 1/2 of the screen
-hs.hotkey.bind(cmdAlt, "h", gridset(0, 0, 5, 10))
-hs.hotkey.bind(cmdAlt, "l", gridset(5, 0, 5, 10))
-hs.hotkey.bind(cmdAlt, "j", gridset(0, 5, 10, 5))
-hs.hotkey.bind(cmdAlt, "k", gridset(0, 0, 10, 5))
+hs.hotkey.bind(cmdAlt, "h", gridset(0, 0, hs.grid.GRIDWIDTH/2, hs.grid.GRIDHEIGHT))
+hs.hotkey.bind(cmdAlt, "l", gridset(hs.grid.GRIDWIDTH/2, 0, hs.grid.GRIDWIDTH/2, hs.grid.GRIDHEIGHT))
+hs.hotkey.bind(cmdAlt, "j", gridset(0, hs.grid.GRIDHEIGHT/2, hs.grid.GRIDWIDTH, hs.grid.GRIDHEIGHT/2))
+hs.hotkey.bind(cmdAlt, "k", gridset(0, 0, hs.grid.GRIDWIDTH, hs.grid.GRIDHEIGHT/2))
 
 hs.hotkey.bind(cmdAlt, "p", gridset(5, 0, 5, 5))
 hs.hotkey.bind(cmdAlt, "y", gridset(0, 0, 5, 5))
