@@ -5,7 +5,7 @@ if !exists('g:loaded_fzf')
 endif
 
 let $FZF_DEFAULT_COMMAND = 'fd --type file --follow --hidden --color=always'
-let $FZF_DEFAULT_COMMAND .= ' -E .git -E "*.png" -E "*.gif"'
+let $FZF_DEFAULT_COMMAND .= ' -E .git -E "*.png" -E "*.gif" -E "*.jpg" -E ".jpeg" -E ".mp4"'
 let $FZF_DEFAULT_OPTS .= ' --ansi --border --margin=1,1'
 
 " Mapping
