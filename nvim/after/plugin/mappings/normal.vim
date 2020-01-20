@@ -167,6 +167,8 @@ nnoremap gN #zz
 nnoremap * *<c-o>
 nnoremap # #<c-o>
 
+nnoremap <C-O> <C-O>zz
+
 " when sudo rights are needed but you did not sudo.
 cmap w!! %!sudo tee > /dev/null %
 

@@ -49,6 +49,7 @@ call plug#begin('~/.vim/bundle')
 
 " Not that useful
 " Plug 'romainl/vim-cool'                " unhighlights searches when it is not needed anymor
+" Plug 'romainl/vim-qf'                " unhighlights searches when it is not needed anymor
 " Plug 'junegunn/goyo.vim'               " Distraction free writing
 Plug 'junegunn/vim-after-object'       " change everything after something
 " Plug 'dhruvasagar/vim-zoom'

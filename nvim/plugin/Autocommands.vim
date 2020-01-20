@@ -16,13 +16,18 @@ au VimResized * exe "normal! \<c-w>="
 " 	au winenter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
 " aug end "}}}
 
-"----------------------------
-" Return to line {{{
-" Make sure Vim returns to the same line when you reopen a file.
-augroup line_return
-	au!
-	au BufReadPost *
-				\ if line("'\"") > 0 && line("'\"") <= line("$") |
-				\     execute 'normal! g`"zvzz' |
-				\ endif
-augroup END " }}}
+
+augroup vimStartup
+    au!
+
+    " https://github.com/vim/vim/blob/eaf35241197fc6b9ee9af993095bf5e6f35c8f1a/runtime/defaults.vim#L108-L117
+    " When editing a file, always jump to the last known cursor position.
+    " Don't do it when the position is invalid, when inside an event handler
+    " (happens when dropping a file on gvim) and for a commit message (it's
+    " likely a different one than last time).
+    autocmd BufReadPost *
+      \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+      \ |   exe "normal! g`\""
+      \ | endif
+
+  augroup END

@@ -25,9 +25,10 @@ nnoremap <Leader>fno :Files ~/Notes<CR>
 nnoremap <Leader>fp :Files ~/phd<CR>
 
 " Others
-" nnoremap <Leader>fl :Lines<CR>
+nnoremap <Leader>fl :Lines<CR>
 nnoremap <C-f> :Rg<CR>
-nnoremap <Leader>fl :LinesNoPreview<CR>
+" nnoremap <Leader>fl :LinesNoPreview<CR>
+" nnoremap <Leader>fl :LinesWithPreview<CR>
 nnoremap <Leader>fw :Rg<CR>
 nnoremap <Leader>fa :RgHome<CR>
 
@@ -101,10 +102,10 @@ function! FloatingFZF()
 endfunction
 
 " " \   'rg  --column --line-number --no-heading --color=always --smart-case . '.fnameescape(expand('%')), 1,
-command! -bang -nargs=* LinesNoPreview
-    \ call fzf#vim#grep(
-    \   'rg --column --line-number --no-heading --color=always --smart-case . '.fnameescape(expand('%')), 1,
-    \   <bang>0)
+" command! -bang -nargs=* LinesNoPreview
+"     \ call fzf#vim#grep(
+"     \   'rg --column --line-number --no-heading --color=always --smart-case . '.fnameescape(expand('%')), 1,
+"     \   <bang>0)
 
 " command! -bang -nargs=* LinesWithPreview
 "     \ call fzf#vim#grep(
