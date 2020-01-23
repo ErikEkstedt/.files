@@ -24,6 +24,10 @@ hs.hotkey.bind("alt", "return", function()
   hs.application.launchOrFocus("Iterm")
 end)
 
+hs.hotkey.bind("cmd", "space", function()
+  hs.application.launchOrFocus("Mission Control")
+end)
+
 hs.hotkey.bind(ctrlAlt, "space", function()
   hs.application.launchOrFocus("Finder")
 end)
@@ -84,10 +88,10 @@ hs.hotkey.bind(cmdAlt, "l", gridset(hs.grid.GRIDWIDTH/2, 0, hs.grid.GRIDWIDTH/2,
 hs.hotkey.bind(cmdAlt, "j", gridset(0, hs.grid.GRIDHEIGHT/2, hs.grid.GRIDWIDTH, hs.grid.GRIDHEIGHT/2))
 hs.hotkey.bind(cmdAlt, "k", gridset(0, 0, hs.grid.GRIDWIDTH, hs.grid.GRIDHEIGHT/2))
 
-hs.hotkey.bind(cmdAlt, "p", gridset(5, 0, 5, 5))
-hs.hotkey.bind(cmdAlt, "y", gridset(0, 0, 5, 5))
-hs.hotkey.bind(cmdAlt, ".", gridset(5, 5, 5, 5))
-hs.hotkey.bind(cmdAlt, "n", gridset(0, 5, 5, 5))
+hs.hotkey.bind(cmdAlt, "p", gridset(hs.grid.GRIDWIDTH/2, 0, hs.grid.GRIDWIDTH/2, hs.grid.GRIDHEIGHT/2))
+hs.hotkey.bind(cmdAlt, "y", gridset(0, 0, hs.grid.GRIDWIDTH/2, hs.grid.GRIDHEIGHT/2))
+hs.hotkey.bind(cmdAlt, ".", gridset(hs.grid.GRIDWIDTH/2, hs.grid.GRIDWIDTH/2, hs.grid.GRIDWIDTH/2, hs.grid.GRIDHEIGHT/2))
+hs.hotkey.bind(cmdAlt, "n", gridset(0, hs.grid.GRIDWIDTH/2, hs.grid.GRIDWIDTH/2, hs.grid.GRIDHEIGHT/2))
 
 -- change focus
 hs.hotkey.bind(altShift, 'h', function() hs.window.focusedWindow():focusWindowWest() end)
