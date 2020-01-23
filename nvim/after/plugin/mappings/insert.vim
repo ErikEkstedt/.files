@@ -8,8 +8,7 @@ inoremap <c-h> <Left>
 " inoremap <c-k> <Up>
 
 
-imap <expr> <s-Tab> pumvisible() ? "\<C-P>" : "\<esc><<i"
-
+imap <expr> <s-Tab> pumvisible() ? "\<C-P>" : "\<esc><<<left>i"
 
 " input [] from macos+synergy 
 inoremap ,bb []<Left>
