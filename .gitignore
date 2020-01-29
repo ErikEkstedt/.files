@@ -1,4 +1,5 @@
 .DS_Store
 *.deb
+*.log
 nvim_slim/
 
