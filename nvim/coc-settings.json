@@ -15,6 +15,7 @@
   "python.linting.enabled": true,
   "python.linting.pylintPath": "~/miniconda3/envs/neovim3/bin/pylint",
   "python.condaPath": "~/miniconda3/bin/conda",
+  "python.venvPath": "~/miniconda3/envs",
   "suggest.echodocSupport": true,
   "suggest.maxCompleteItemCount": 30,
   "suggest.noselect": true,

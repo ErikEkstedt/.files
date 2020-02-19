@@ -39,15 +39,14 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
-" Use <Tab> and <S-Tab> for navigate completion list
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gr <Plug>(coc-references)
 " nmap <silent> gy <Plug>(coc-type-definition)
 " nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent>gw <Plug>(coc-diagnostic-next)
+nmap <silent>gW <Plug>(coc-diagnostic-prev)
 
 nmap <silent> ,nn <Plug>(coc-diagnostic-next-error)
 nmap <silent> ,np <Plug>(coc-diagnostic-prev-error)

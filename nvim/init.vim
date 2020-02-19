@@ -73,6 +73,7 @@ Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " better python syntax h
 Plug 'ambv/black'                         " Linter/formatter
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
+" Statusline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -233,7 +234,8 @@ set inccommand=nosplit
 set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,resize
 
 if has('windows')
-	set fillchars=vert:\│ " ┃ line with no breaks between vertical splits
+  " ┃ line with no breaks between vertical splits
+  set fillchars=vert:\│ 
 endif
 
 " Transparancy

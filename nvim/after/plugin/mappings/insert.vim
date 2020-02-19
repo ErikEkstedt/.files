@@ -7,7 +7,9 @@ inoremap <c-h> <Left>
 " inoremap <c-j> <Down>
 " inoremap <c-k> <Up>
 
-
+" Use <Tab> and <S-Tab> for navigate completion list
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 imap <expr> <s-Tab> pumvisible() ? "\<C-P>" : "\<esc><<<left>i"
 
 " input [] from macos+synergy 
