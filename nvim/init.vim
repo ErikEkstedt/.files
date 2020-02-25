@@ -46,12 +46,12 @@ call plug#begin('~/.vim/bundle')
 " Plug 'tommcdo/vim-exchange'            " exchange two words. ex: cxw (on first word) . (on second)
 " Plug 'tpope/vim-obsession'             " :mksession | saves a vim instance | used when saving tmux session
 " Plug 'shime/vim-livedown'
-
+"
 " Not that useful
 " Plug 'romainl/vim-cool'                " unhighlights searches when it is not needed anymor
 " Plug 'romainl/vim-qf'                " unhighlights searches when it is not needed anymor
 " Plug 'junegunn/goyo.vim'               " Distraction free writing
-Plug 'junegunn/vim-after-object'       " change everything after something
+" Plug 'junegunn/vim-after-object'       " change everything after something
 " Plug 'dhruvasagar/vim-zoom'
 
 " Plug 'mxw/vim-jsx'
@@ -63,19 +63,7 @@ Plug 'junegunn/vim-after-object'       " change everything after something
 " Plug 'tmhedberg/SimpylFold'
 " https://github.com/Konfekt/FastFold
 " Plug 'Konfekt/FastFold'
-Plug 'norcalli/nvim-colorizer.lua'  " faster color disable coc-highlight
 
-" Testing
-Plug 'alok/notational-fzf-vim'
-
-" Code Formatting / Syntax
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " better python syntax highlight 
-Plug 'ambv/black'                         " Linter/formatter
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-
-" Statusline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 
 Plug 'Shougo/neco-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -83,54 +71,63 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'SirVer/ultisnips'                " XXX snippet engine
 Plug 'honza/vim-snippets'              " XXX snippets
 
-Plug 'terryma/vim-multiple-cursors'    " XXX Really great but could try with coc
+
+" Filemanager
 Plug 'scrooloose/nerdtree'             " XXX Project and file navigation
 Plug 'Xuyuanp/nerdtree-git-plugin'     " XXX show git status of files
 Plug 'ivalkeen/nerdtree-execute'       " XXX open files from nerdtree
+Plug 'tpope/vim-fugitive'              " XXX git tools
+
+" Tools
+Plug 'terryma/vim-multiple-cursors'    " XXX Really great but could try with coc
 Plug 'KabbAmine/vCoolor.vim'           " XXX pick color from menu
 Plug 'Yggdroot/indentLine'             " XXX see where there is indent
-" Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
-Plug 'airblade/vim-gitgutter'          " XXX see git changes in file in the numberline
-Plug 'easymotion/vim-easymotion'       " XXX visualize targets tot move to specific words
-Plug 'junegunn/fzf.vim'                " XXX fuzzy filefinding
-Plug 'junegunn/vim-easy-align'         " XXX better alignment than tabular
-Plug 'junegunn/vim-peekaboo'           " XXX when pressing quotes shows what's stored in the different registers
-Plug 'lotabout/slimux'                 " XXX old: 'epeli/slimux' | vim+ipython OUtdated
-Plug 'machakann/vim-highlightedyank'   " XXX Highlight yanks
-" Plug 'nelstrom/vim-markdown-folding'   " XXX help with folding in markdown
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-Plug 'nelstrom/vim-visual-star-search' " * on visual select searches for the snippet
 Plug 'tpope/vim-commentary'            " XXX commenting
-Plug 'tpope/vim-fugitive'              " XXX git tools
 Plug 'tpope/vim-repeat'                " XXX repeat commands not repeatable by 'vanilla' vim
 Plug 'tpope/vim-surround'              " XXX Surround objects with quotes, brackets ...
 Plug 'wellle/targets.vim'              " XXX ci' works on (, [, {, < on entire line
+Plug 'easymotion/vim-easymotion'       " XXX visualize targets tot move to specific words
+Plug 'godlygeek/tabular'
+Plug 'junegunn/fzf.vim'                " XXX fuzzy filefinding
+Plug 'alok/notational-fzf-vim'
+Plug 'junegunn/vim-easy-align'         " XXX better alignment than tabular
+Plug 'junegunn/vim-peekaboo'           " XXX when pressing quotes shows what's stored in the different registers
+Plug 'machakann/vim-highlightedyank'   " XXX Highlight yanks
+Plug 'nelstrom/vim-visual-star-search' " * on visual select searches for the snippet
+Plug 'lotabout/slimux'                 " XXX
+
 Plug 'christoomey/vim-tmux-navigator'  " XXX navigate between vim and tmuz seemlessly
 Plug 'tmux-plugins/vim-tmux-focus-events' " Focus events correctly triggered. Leaving/Returning to vim inside tmux
 let g:tmux_navigator_no_mappings = 1
 
-
-" Preview Text
+" Code Formatting / Syntax / Preview
+Plug 'norcalli/nvim-colorizer.lua'  " faster color disable coc-highlight
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " better python syntax highlight 
+Plug 'ambv/black'                         " Linter/formatter
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'plasticboy/vim-markdown'
 Plug 'lervag/vimtex'       " XXX latex compiler, preview latex pdf, highlight and syntax. alot more.
 Plug 'mhinz/neovim-remote' " Needed for vimtex. Error: 'compiler_progranme=nvr' / '--remote'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
-" Colorschemes and Appearence {{{
+" Statusline
+Plug 'airblade/vim-gitgutter'          " XXX see git changes in file in the numberline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
 Plug 'arzg/vim-substrata'
 Plug 'benburrill/potato-colors'
 Plug 'crusoexia/vim-monokai'
 Plug 'mhartington/oceanic-next'
 Plug 'morhetz/gruvbox'
-
 Plug 'joshdick/onedark.vim'
 Plug 'jacoborus/tender.vim'
 Plug 'dracula/vim'
 Plug 'tomasr/molokai'
 Plug 'arcticicestudio/nord-vim'
 
+
 call plug#end()
-" }}}
 " }}}
 
 " Basic Settings {{{
