@@ -34,30 +34,30 @@ function! ShowGlobalVariables()
 endfunction
 
 " Moving visual lines vertically (greg hurrell){{{
-function! s:Visual()
-    return visualmode() == 'V'
-endfunction
+" function! s:Visual()
+"     return visualmode() == 'V'
+" endfunction
 
-function! Move_up() abort range
-    let l:at_top=a:firstline == 1
-    if s:Visual() && !l:at_top
-        '<,'>move '<-2
-        call feedkeys('gv=','n')
-    endif
-    call feedkeys('gv','n')
-endfunction
+" function! Move_up() abort range
+"     let l:at_top=a:firstline == 1
+"     if s:Visual() && !l:at_top
+"         '<,'>move '<-2
+"         call feedkeys('gv=','n')
+"     endif
+"     call feedkeys('gv','n')
+" endfunction
 
-function! Move_down() abort range
-    let l:at_bottom=a:lastline == line('$')
-    if s:Visual() && !l:at_bottom
-        '<,'>move '>+1
-        call feedkeys('gv=','n')
-    endif
-    call feedkeys('gv','n')
-endfunction
+" function! Move_down() abort range
+"     let l:at_bottom=a:lastline == line('$')
+"     if s:Visual() && !l:at_bottom
+"         '<,'>move '>+1
+"         call feedkeys('gv=','n')
+"     endif
+"     call feedkeys('gv','n')
+" endfunction
 
-xnoremap K :call Move_up()<CR>
-xnoremap J :call Move_down()<CR>
+" xnoremap K :call Move_up()<CR>
+" xnoremap J :call Move_down()<CR>
 "}}}
 
 function! ShowMaps() "{{{

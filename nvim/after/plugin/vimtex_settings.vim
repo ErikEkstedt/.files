@@ -3,15 +3,16 @@
 
 "" TODO: mac pdf-viewer ?
 
-"if g:UNAME == 'Darwin'
-"  let g:latex_view_general_viewer = 'skim'
-"  let g:vimtex_view_method = 'skim'
-"else
-"  let g:latex_view_general_viewer = 'zathura'
-"  let g:vimtex_view_method = 'zathura'
-"endif
+if g:UNAME == 'Darwin'
+  let g:latex_view_general_viewer = 'skim'
+  let g:vimtex_view_method = 'skim'
+else
+  let g:latex_view_general_viewer = 'zathura'
+  let g:vimtex_view_method = 'zathura'
+endif
 
-"let g:vimtex_compiler_progname = 'nvr'
+" let g:vimtex_compiler_progname = 'nvr'
+let g:vimtex_compiler_progname = $HOME.'/miniconda3/envs/neovim3/bin/nvr'
 "let g:vimtex_complete_recursive_bib = 2
 "let g:vimtex_complete_enabled = 1
 "let g:vimtex_complete_close_braces = 1
