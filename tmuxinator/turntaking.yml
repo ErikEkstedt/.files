@@ -5,7 +5,7 @@ windows:
         layout: main-vertical
         panes:
           - Editor:
-            - tree -L 2
+            - tree -L 1
           - Repl:
-            - so conversation
+            - so tt
             - ipy
