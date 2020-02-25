@@ -28,6 +28,8 @@ export FILEMANAGER="lf"
 export DOTFILES="$HOME/.files"
 export EDITOR='nvim'
 
+export BAT_THEME='OneHalfDark'
+
 export KEYTIMEOUT=1
 export LANG=en_US.UTF-8
 export TERM="screen-256color"  # "xterm-256color"

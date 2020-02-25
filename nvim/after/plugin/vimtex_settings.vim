@@ -29,22 +29,22 @@ let g:vimtex_compiler_progname = $HOME.'/miniconda3/envs/neovim3/bin/nvr'
 
 "" Functions
 
-"augroup vimtex_event_1
-"	au!
-"	au User VimtexEventQuit     call vimtex#compiler#clean(0)
-"augroup END
+augroup vimtex_event_1
+	au!
+	au User VimtexEventQuit     call vimtex#compiler#clean(0)
+augroup END
 
-"augroup vimtex_event_2
-"	au!
-"	au User VimtexEventQuit call CloseViewers()
-"augroup END
+augroup vimtex_event_2
+	au!
+	au User VimtexEventQuit call CloseViewers()
+augroup END
 
-"" Close viewers on quit
-"function! CloseViewers()
-"	if executable('xdotool') && exists('b:vimtex')
-"			\ && exists('b:vimtex.viewer') && b:vimtex.viewer.xwin_id > 0
-"		call system('xdotool windowclose '. b:vimtex.viewer.xwin_id)
-"	endif
-"endfunction
+" Close viewers on quit
+function! CloseViewers()
+	if executable('xdotool') && exists('b:vimtex')
+			\ && exists('b:vimtex.viewer') && b:vimtex.viewer.xwin_id > 0
+		call system('xdotool windowclose '. b:vimtex.viewer.xwin_id)
+	endif
+endfunction
 
 

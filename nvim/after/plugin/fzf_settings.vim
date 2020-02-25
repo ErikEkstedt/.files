@@ -9,7 +9,6 @@ let $FZF_DEFAULT_COMMAND .= ' -E .git -E "*.png" -E "*.gif" -E "*.jpg" -E ".jpeg
 let $FZF_DEFAULT_OPTS .= ' --ansi --margin=1,1'
 let g:fzf_buffers_jump = 1 " [Buffers] Jump to the existing window if possible
 " Syntax Highlight in Previews (requires bat)
-" let g:fzf_files_options = '--preview "bat --theme base16 --style numbers,grid --color always {} 2> /dev/null"'
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7, 'highlight': 'Comment' }}
 let g:fzf_action = {
             \ 'ctrl-t': 'tab split',
@@ -19,36 +18,10 @@ let g:fzf_action = {
             \ 'Enter': 'edit'}
 
 """""""""""""""""""""""""""""""""""""""""""""""""
-" Colors
-"""""""""""""""""""""""""""""""""""""""""""""""""
-" fg:       text (not directories)
-" fg+:      the text of filename of the currently chosen entry
-" bg:       background (guibg in highlight group used)
-" bg+:      background of pointer area to the left and background for cursor row
-" hl:       the matching letters in files 
-" hl+:      the matching letter on the currently chosen entry
-" info:     color on the number of entries
-" border:   the border (not the window border)
-" prompt:   text before search keys
-" pointer:  '>' the little pointer
-" marker:   selected files marker
-" spinner:  the moving spinner indicating searching
-" header:   dont know now
-" hi FZFBGOneDark guibg='#3b404c'
-
-let g:fzf_colors = {
-      \ 'bg+': ['bg', 'Normal'], 
-      \ 'hl': ['fg', 'String'], 
-      \ 'hl+': ['fg', 'String'], 
-      \ 'pointer': ['fg', 'Statement'], 
-      \ 'prompt': ['fg', 'Statement']}
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""
 " Functions
 """""""""""""""""""""""""""""""""""""""""""""""""
-
-command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline', '--preview', '~/.vim/bundle/fzf.vim/bin/preview.sh {}']}, <bang>0)
+" let g:fzf_files_options = '--preview "bat --theme base16 --style numbers,grid --color always {} 2> /dev/null"'
+command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 command! -bang -nargs=* Lines call fzf#vim#lines(<q-args>, {'options': ['--layout=reverse']}, <bang>0)
 command! -bang -nargs=* BLines call fzf#vim#buffer_lines(<q-args>, {'options': ['--layout=reverse']}, <bang>0)
 command! -bang -nargs=* Rg
@@ -104,3 +77,30 @@ imap <c-x><c-w> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Colors
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" fg:       text (not directories)
+" fg+:      the text of filename of the currently chosen entry
+" bg:       background (guibg in highlight group used)
+" bg+:      background of pointer area to the left and background for cursor row
+" hl:       the matching letters in files 
+" hl+:      the matching letter on the currently chosen entry
+" info:     color on the number of entries
+" border:   the border (not the window border)
+" prompt:   text before search keys
+" pointer:  '>' the little pointer
+" marker:   selected files marker
+" spinner:  the moving spinner indicating searching
+" header:   dont know now
+" hi FZFBGOneDark guibg='#3b404c'
+
+let g:fzf_colors = {
+      \ 'bg+': ['bg', 'Normal'], 
+      \ 'hl': ['fg', 'String'], 
+      \ 'hl+': ['fg', 'String'], 
+      \ 'pointer': ['fg', 'Statement'], 
+      \ 'prompt': ['fg', 'Statement']}
+

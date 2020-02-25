@@ -26,6 +26,8 @@ else
     alias lla="ls -la --group-directories-first"
 fi
 
+alias _diskspace="du -sk * | sort -nr | head -10"
+
 if [ -x "$(command -v lsd)" ]; then # if lsd exists
   alias ls="lsd --group-dirs=first"
   alias ll="lsd -l --group-dirs=first"
@@ -63,7 +65,7 @@ alias goallen="~/allennlp; ls"
 alias gallen="~/allennlp; ls"
 # }}}
 
-####################### 
+#######################
 
 # _vim_fzf(){
 #   if [ $# -eq 0 ]
@@ -89,6 +91,8 @@ alias v="nvim"
 alias vf="nvim -c Files"
 alias py="python"  #--profile=erik"
 alias ipy="ipython"  #--profile=erik"
+alias ipdb="python -m ipdb"
+alias pdb="python -m pdb"
 alias jno="jupyter notebook"  #jupyter notebook example.ipynb
 alias wnvi="watch -n 1 nvidia-smi"
 alias wnvi2="watch -n 1 nvidia-smi --query-gpu=index,memory.used,memory.total,power.draw --format=csv"
@@ -125,6 +129,8 @@ alias tat=$DOTFILES/bin/tat  # Current path as new tmux session
 alias Clear='tspc "clear"'
 # }}}
 
+
+
 alias patchwork="cd ~/patchwork && npm start"
 
 # tensorboard
@@ -157,10 +163,13 @@ alias Gpl='tspc "git pull"'
 alias Gst='tspc "git status"'
 
 alias gpush="python ~/.files/bin/git-script -c push -d .files phd Notes Audio/maptaskdataset Audio/dialogAgent Locomotion"
-alias gpull="python ~/.files/bin/git-script -c pull -d .files phd Notes Audio/maptaskdataset Audio/dialogAgent Locomotion"      
+alias gpull="python ~/.files/bin/git-script -c pull -d .files phd Notes Audio/maptaskdataset Audio/dialogAgent Locomotion"
 alias gstatus="python ~/.files/bin/git-script -d .files phd Notes Audio/maptaskdataset Audio/dialogAgent Locomotion"
 # }}}
 
+
+alias z='zathura'
+alias ts='/home/erik/TeamSpeak3-Client-linux_amd64/ts3client_runscript.sh'
 
 # Config {{{
 alias eal="nvim ~/.files/zsh/aliases.zsh"
@@ -181,7 +190,7 @@ alias umountusb="udiskie-umount /media/erik/*"
 
 # SSH / WOL {{{
 export MOUNTPATH=~/LAN
-alias wake="wakeonlan -i xxx.xxx.xxx.xxx yy:yy:yy:yy:yy:yy" 
+alias wake="wakeonlan -i xxx.xxx.xxx.xxx yy:yy:yy:yy:yy:yy"
 alias mountmachine="sshfs -p 2002 -o ssh_command='ssh -i ~/.ssh//id_rsa' user@xxx.xxx.xxx.xxx:/PATH/ ~/$MOUNTPATH"
 alias umountall="sudo umount ~/Machines/*"
 # }}}
