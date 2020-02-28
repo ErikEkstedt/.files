@@ -148,6 +148,9 @@ hi Folded guibg=clear
 hi FoldColumn guibg=clear
 hi MatchParen guifg=#ff008b
 
+hi Search guibg=None guifg=#d400aa gui=underline,bold
+hi IncSearch guibg=#cbcbcb guifg=#d400aa gui=underline,bold
+
 let g:background_color = synIDattr(hlID("Normal"), "bg")
 let g:custom_focus=1  " enables custom focus in ./plugin/focus_background.vim
 
