@@ -51,13 +51,11 @@ call plug#begin('~/.vim/bundle')
 " Plug 'junegunn/goyo.vim'               " Distraction free writing
 " Plug 'junegunn/vim-after-object'       " change everything after something
 " Plug 'dhruvasagar/vim-zoom'
-
+"
 " Plug 'mxw/vim-jsx'
 " Plug 'lepture/vim-jinja'
 
 
-Plug 'yuezk/vim-js'
-Plug 'maxmellon/vim-jsx-pretty'
 
 " ================ Interesting? ================
 " Folding for python
@@ -67,6 +65,13 @@ Plug 'maxmellon/vim-jsx-pretty'
 " Plug 'Konfekt/FastFold'
 
 
+" testing
+Plug 'haorenW1025/floatLf-nvim'
+Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
+
+
+" completion / LSP
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Shougo/neco-vim'
 Plug 'SirVer/ultisnips'                " XXX snippet engine
