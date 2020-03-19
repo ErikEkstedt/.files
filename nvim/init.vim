@@ -43,19 +43,21 @@ call plug#begin('~/.vim/bundle')
 " ================ Deprecated ================
 
 " Plug 'sjl/gundo.vim'                   " Visualize undo tree
-" Plug 'tommcdo/vim-exchange'            " exchange two words. ex: cxw (on first word) . (on second)
 " Plug 'tpope/vim-obsession'             " :mksession | saves a vim instance | used when saving tmux session
-" Plug 'shime/vim-livedown'
 "
 " Not that useful
 " Plug 'romainl/vim-cool'                " unhighlights searches when it is not needed anymor
-" Plug 'romainl/vim-qf'                " unhighlights searches when it is not needed anymor
+" Plug 'romainl/vim-qf'
 " Plug 'junegunn/goyo.vim'               " Distraction free writing
 " Plug 'junegunn/vim-after-object'       " change everything after something
 " Plug 'dhruvasagar/vim-zoom'
 
 " Plug 'mxw/vim-jsx'
 " Plug 'lepture/vim-jinja'
+
+
+Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
 
 " ================ Interesting? ================
 " Folding for python
@@ -65,9 +67,8 @@ call plug#begin('~/.vim/bundle')
 " Plug 'Konfekt/FastFold'
 
 
-Plug 'Shougo/neco-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'neoclide/coc-neco'                " XXX autocompletion + lsp
+Plug 'Shougo/neco-vim'
 Plug 'SirVer/ultisnips'                " XXX snippet engine
 Plug 'honza/vim-snippets'              " XXX snippets
 
@@ -115,6 +116,7 @@ Plug 'airblade/vim-gitgutter'          " XXX see git changes in file in the numb
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" Colorschemes
 Plug 'arzg/vim-substrata'
 Plug 'benburrill/potato-colors'
 Plug 'crusoexia/vim-monokai'
@@ -139,8 +141,8 @@ syntax on
 set hls                        " highlighting!
 
 " Colorschemes -----------------------------------
-" colorscheme substrata 
 colorscheme onedark 
+" colorscheme substrata 
 " colorscheme nord 
 " colorscheme OceanicNext
 
@@ -166,18 +168,15 @@ set undolevels=1000                   " Keep 1000 lines of undo history.
 set showcmd                           " Display incomplete commands.
 set noshowmode                        " stops vims own showing below the statusbar.
 set hidden                            " Allow unsaved background buffers.
-
 set shortmess=I                       " Don't show Vim's welcome message.
 set shortmess+=a                      " Make the save message shorter. Helps avoid the 'Hit ENTER to continue' message.
 set shortmess+=c                      " see :help deoplete -> Configuration FAQ (ins-completion-menu)
-
 set modeline                          " example at top of script:  " vim: ft=vim
 set foldmethod=indent
 set foldlevelstart=0                 " start with fold everything
 set foldclose=                        " all
 set foldtext=erik#settings#foldtext() " see nvim/autoload/erik/settings.vim
 set conceallevel=0
-
 set autoindent                        " enable auto-indentation
 set bs=indent,eol,start               " allow backspacing over everything
 set tabstop=2                         " no. of spaces for tab in file
@@ -185,21 +184,16 @@ set shiftwidth=2                      " no. of spaces for step in autoindent
 set softtabstop=2                     " no. of spaces for tab when editing
 set expandtab                         " expand tabs into spaces
 set smarttab                          " smart tabulation and backspace
-
 set nonumber                            " number lines
+
 " Trying out without relative for speed and I dont use it
 " set relativenumber
 set scrolloff=3                       " visual rows above and below cursor
 set sidescrolloff=3                  " visual columns on sides of cursor
 set cursorline                        " highlight line where cursor is
-
-" set completeopt-=preview
-" set completeopt+=noinsert
 set lazyredraw                 " don't redraw screen during macros
-"
 set formatoptions+=j           " smart line joining. uncomments comments.
 set formatoptions+=n           " smart autoindenting inside numbered lists
-
 " set nowrap
 set wrapmargin=5
 let &showbreak="↪"
@@ -207,13 +201,11 @@ set breakindent                " wrapped line s keep indentation (set bri)
 set cpo+=n
 set breakindentopt+=shift:2    " how far in the showbreak: " ↪ " is
 set breakindentopt+=min:20
-
 set list
 set listchars=tab:\ \ ,trail:·,extends:▶,nbsp:·
 " set listchars=tab:▶\ ,trail:·,extends:\#,nbsp:·
 " set listchars=tab:\|\ ,trail:·,extends:▶,nbsp:·,conceal:\#
 " set listchars=tab:▶\ ,trail:·,extends:\#,nbsp:.
-
 set numberwidth=3              " width of numberline
 set mouse=a                    " mouse functionality
 " set mousemodel=popup
@@ -224,10 +216,8 @@ set virtualedit=block          " onemore 'block' makes it possible to edit empty
 set ignorecase                 " (in)case sensitive search
 set smartcase
 set switchbuf=usetab
-
 set splitbelow
 set splitright
-
 set signcolumn=yes
 set gdefault                   " with this:  s/foo/bar --> s/foo/bar/g by default. ´g´ reverses its meaning.
 set inccommand=nosplit
