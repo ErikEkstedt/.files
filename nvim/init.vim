@@ -53,7 +53,7 @@ call plug#begin('~/.vim/bundle')
 " Plug 'junegunn/goyo.vim'               " Distraction free writing
 " Plug 'junegunn/vim-after-object'       " change everything after something
 " Plug 'dhruvasagar/vim-zoom'
-
+"
 " Plug 'mxw/vim-jsx'
 " Plug 'lepture/vim-jinja'
 
@@ -64,6 +64,9 @@ call plug#begin('~/.vim/bundle')
 " https://github.com/Konfekt/FastFold
 " Plug 'Konfekt/FastFold'
 
+
+" testing
+Plug 'haorenW1025/floatLf-nvim'
 
 Plug 'Shougo/neco-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
