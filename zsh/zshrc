@@ -19,10 +19,8 @@ setopt interactivecomments #allows to type Bash style comments in the command li
 # zmodload zsh/zprof # see time and processes
 # }}}
 
-# Export {{{
-
 # Term
-export BROWSER="brave browser"   # google-chrome
+export BROWSER="brave-browser"   # google-chrome
 export COLORTERM="truecolor"
 export FILEMANAGER="lf"
 export DOTFILES="$HOME/.files"
@@ -39,10 +37,23 @@ export KAGGLE_USERNAME=erikislearning
 # export KAGGLE_KEY=xxxxxxxxxxxxxx
 #
 export PATH="$HOME/Applications:$PATH"
-export PATH=$HOME/.node_modules_global/bin:${PATH}
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export GEM_HOME="$HOME/gems"  # Ruby (for jekyll)
+
+# Node, npm, nvm, yarn
+# export PATH=$HOME/.node_modules_global/bin:${PATH}
+# export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export PATH="$HOME/.nvm/versions/node/v13.11.0/bin/npm:$PATH"
+export PATH="$HOME/.nvm/versions/node/v13.11.0/bin/npx:$PATH"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
 export PATH="/usr/local/opt/ruby/bin:$PATH"
+export GEM_HOME="$HOME/gems"  # Ruby (for jekyll)
 export PATH="$HOME/gems/bin:$PATH"  # Install Ruby Gems to ~/gems
 export PATH="$HOME/go/bin:$PATH"  # Install Ruby Gems to ~/gems
 
@@ -105,17 +116,13 @@ case `uname` in
 esac
 # }}}
 
-# NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 
 # Tmux {{{
 if [ "$TMUX" = "" ]; then 
   tmux new
 fi
 source ~/.files/tmux/tmux_functions.zsh  # For my custom scripts
+# }}}
 
 # Conda addition {{{
 # >>> conda initialize >>>

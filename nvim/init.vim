@@ -69,6 +69,12 @@ call plug#begin('~/.vim/bundle')
 Plug 'haorenW1025/floatLf-nvim'
 Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
+" ES2015 code snippets (Optional)
+Plug 'epilande/vim-es2015-snippets'
+" React code snippets
+Plug 'epilande/vim-react-snippets'
+
+Plug 'jiangmiao/auto-pairs'
 
 
 " completion / LSP
@@ -184,9 +190,9 @@ set foldtext=erik#settings#foldtext() " see nvim/autoload/erik/settings.vim
 set conceallevel=0
 set autoindent                        " enable auto-indentation
 set bs=indent,eol,start               " allow backspacing over everything
-set tabstop=2                         " no. of spaces for tab in file
-set shiftwidth=2                      " no. of spaces for step in autoindent
-set softtabstop=2                     " no. of spaces for tab when editing
+set tabstop=4                         " no. of spaces for tab in file
+set shiftwidth=4                      " no. of spaces for step in autoindent
+set softtabstop=4                     " no. of spaces for tab when editing
 set expandtab                         " expand tabs into spaces
 set smarttab                          " smart tabulation and backspace
 set nonumber                            " number lines
