@@ -115,7 +115,8 @@ let g:tmux_navigator_no_mappings = 1
 " Code Formatting / Syntax / Preview
 Plug 'norcalli/nvim-colorizer.lua'  " faster color disable coc-highlight
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " better python syntax highlight 
-Plug 'ambv/black'                         " Linter/formatter
+" Plug 'ambv/black'                         " Linter/formatter
+Plug 'psf/black', { 'tag': '19.10b0' }
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'plasticboy/vim-markdown'
 Plug 'lervag/vimtex'       " XXX latex compiler, preview latex pdf, highlight and syntax. alot more.
