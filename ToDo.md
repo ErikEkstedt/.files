@@ -12,9 +12,10 @@ I should record a video when coding and note all the things I want to fix.
     - vim: nvim/colors/transparency.vim
     - tmux: tmux/themes/transparency.tmuxtheme
 
-
 ## Vim
 
+* New vim-lsp
+* Coc errors disrupt airline
 * [ ] Shift-Tab
 
 * Colorscheme
@@ -30,14 +31,16 @@ I should record a video when coding and note all the things I want to fix.
     - First thing to happen if opening vim in a git repo
 
 Plugins to try?
-* jump to next operator
+* jump to next operator (trying now)
   - `nnoremap <leader>o :call search('[+\-\^/*=]')<CR>`
   - `nnoremap <leader>O :call search('[+\-\^/*=]', 'b')<CR>`
+
 
 ## Tmux
 
 * Make move window work on visual mode
-  - alt-hjkl
+  - [x] tmux: alt-hjkl
+  - [ ] vim: alt-hjkl
 
 ## ZSH
 
