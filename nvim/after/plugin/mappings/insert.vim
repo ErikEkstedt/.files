@@ -7,6 +7,9 @@ inoremap <c-h> <Left>
 " inoremap <c-j> <Down>
 " inoremap <c-k> <Up>
 
+inoremap <M-n> <BS>
+inoremap <M-m> <CR>
+
 " Use <Tab> and <S-Tab> for navigate completion list
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"

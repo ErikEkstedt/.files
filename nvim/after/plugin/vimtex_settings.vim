@@ -16,7 +16,7 @@ let g:vimtex_compiler_progname = $HOME.'/miniconda3/envs/neovim3/bin/nvr'
 "let g:vimtex_complete_recursive_bib = 2
 "let g:vimtex_complete_enabled = 1
 "let g:vimtex_complete_close_braces = 1
-"let g:vimtex_fold_enabled = 1
+let g:vimtex_fold_enabled = 1
 "" fix slowness - disable these
 ""normal :NoMatchParen
 "let g:vimtex_motion_matchparen = 1

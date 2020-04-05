@@ -27,6 +27,7 @@ else
 fi
 
 alias _diskspace="du -sk * | sort -nr | head -10"
+alias ducks='du -cks -- * | sort -rn | head'
 
 if [ -x "$(command -v lsd)" ]; then # if lsd exists
   alias ls="lsd --group-dirs=first"

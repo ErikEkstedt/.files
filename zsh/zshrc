@@ -61,7 +61,7 @@ setopt interactivecomments #allows to type Bash style comments in the command li
 
 # Export {{{
 # Term
-export BROWSER="brave browser"   # google-chrome
+export BROWSER="brave-browser"   # google-chrome
 export COLORTERM="truecolor"
 export FILEMANAGER="lf"
 export DOTFILES="$HOME/.files"
@@ -77,10 +77,18 @@ export VISUAL=$EDITOR
 export KAGGLE_USERNAME=erikislearning
 # export KAGGLE_KEY=xxxxxxxxxxxxxx
 export PATH="$HOME/Applications:$PATH"
-export PATH=$HOME/.node_modules_global/bin:${PATH}
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export GEM_HOME="$HOME/gems"  # Ruby (for jekyll)
+
+# Node, npm, nvm, yarn
+# export PATH=$HOME/.node_modules_global/bin:${PATH}
+# export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+
 export PATH="/usr/local/opt/ruby/bin:$PATH"
+export GEM_HOME="$HOME/gems"  # Ruby (for jekyll)
 export PATH="$HOME/gems/bin:$PATH"  # Install Ruby Gems to ~/gems
 export PATH="$HOME/go/bin:$PATH"  # Install Ruby Gems to ~/gems
 
@@ -88,6 +96,13 @@ export PATH="$HOME/go/bin:$PATH"  # Install Ruby Gems to ~/gems
 # export PATH=$HOME/.files/bin:${PATH}  # For my custom scripts
 # Geckodriver (selenium, webdriver for firefox)
 # export PATH=$HOME/geckodriver:${PATH}  # Download tar file and extract here 
+
+# NVM
+# export PATH="$HOME/.nvm/versions/node/v13.11.0/bin/npm:$PATH"
+# export PATH="$HOME/.nvm/versions/node/v13.11.0/bin/npx:$PATH"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 # }}}
 
 
@@ -106,11 +121,6 @@ fi
 
 # }}}
 
-# NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 # Kitty
 autoload -Uz compinit
 compinit
@@ -123,6 +133,7 @@ if [ "$TMUX" = "" ]; then
   tmux new
 fi
 source ~/.files/tmux/tmux_functions.zsh  # For my custom scripts
+# }}}
 
 alias nvr="$HOME/miniconda3/envs/neovim3/bin/nvr"
 

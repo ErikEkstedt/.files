@@ -1,0 +1,12 @@
+name: dialogWeb
+root: ~/dialogWeb
+
+windows:
+    - Code: vf
+    - Server:
+        layout: main-vertical
+        panes:
+            - yarn start
+            - Flask:
+                - conda activate tt 
+                - yarn start-api
