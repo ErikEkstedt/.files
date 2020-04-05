@@ -12,6 +12,13 @@ case `uname` in
     ;;
 esac
 
+case `hostname` in
+    erik-desktop)
+        export PATH="/usr/local/cuda-10.2/bin:$PATH"
+        export PATH="/usr/local/cuda-10.2/lib64:$PATH"
+        ;;
+esac
+
 # Settings {{{
 DISABLE_AUTO_TITLE="true" # Uncomment the following line to disable auto-setting terminal title.
 setopt RM_STAR_WAIT  # if you do a 'rm *', Zsh will give you a sanity check!
@@ -37,6 +44,8 @@ export KAGGLE_USERNAME=erikislearning
 # export KAGGLE_KEY=xxxxxxxxxxxxxx
 #
 export PATH="$HOME/Applications:$PATH"
+
+
 
 # Node, npm, nvm, yarn
 # export PATH=$HOME/.node_modules_global/bin:${PATH}
@@ -123,6 +132,8 @@ if [ "$TMUX" = "" ]; then
 fi
 source ~/.files/tmux/tmux_functions.zsh  # For my custom scripts
 # }}}
+
+
 
 # Conda addition {{{
 # >>> conda initialize >>>
