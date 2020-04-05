@@ -1,77 +1,5 @@
 # vim: fdm=marker nowrap
 # ZSHRC
- 
-case `uname` in
-  Darwin)
-    # commands for OS X go here
-    export LC_ALL=en_US.UTF-8
-    ;;
-  Linux)
-    # commands for Linux go here
-    stty -ixon # C-s, C-q 
-    ;;
-esac
-
-case `hostname` in
-    erik-desktop)
-        export PATH="/usr/local/cuda-10.2/bin:$PATH"
-        export PATH="/usr/local/cuda-10.2/lib64:$PATH"
-        ;;
-esac
-
-# Settings {{{
-DISABLE_AUTO_TITLE="true" # Uncomment the following line to disable auto-setting terminal title.
-setopt RM_STAR_WAIT  # if you do a 'rm *', Zsh will give you a sanity check!
-setopt interactivecomments #allows to type Bash style comments in the command line
-# zmodload zsh/zprof # see time and processes
-# }}}
-
-# Term
-export BROWSER="brave-browser"   # google-chrome
-export COLORTERM="truecolor"
-export FILEMANAGER="lf"
-export DOTFILES="$HOME/.files"
-export EDITOR='nvim'
-
-export BAT_THEME='OneHalfDark'
-
-export KEYTIMEOUT=1
-export LANG=en_US.UTF-8
-export TERM="screen-256color"  # "xterm-256color"
-export USE_EDITOR=$EDITOR
-export VISUAL=$EDITOR
-export KAGGLE_USERNAME=erikislearning
-# export KAGGLE_KEY=xxxxxxxxxxxxxx
-#
-export PATH="$HOME/Applications:$PATH"
-
-
-
-# Node, npm, nvm, yarn
-# export PATH=$HOME/.node_modules_global/bin:${PATH}
-# export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-export PATH="$HOME/.nvm/versions/node/v13.11.0/bin/npm:$PATH"
-export PATH="$HOME/.nvm/versions/node/v13.11.0/bin/npx:$PATH"
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-export GEM_HOME="$HOME/gems"  # Ruby (for jekyll)
-export PATH="$HOME/gems/bin:$PATH"  # Install Ruby Gems to ~/gems
-export PATH="$HOME/go/bin:$PATH"  # Install Ruby Gems to ~/gems
-
-# export PATH=$HOME/.local/bin:${PATH}
-# export PATH=$HOME/.files/bin:${PATH}  # For my custom scripts
-# Geckodriver (selenium, webdriver for firefox)
-# export PATH=$HOME/geckodriver:${PATH}  # Download tar file and extract here 
-# }}}
-
 
 ## ZSH Theme {{{
 export ZSH=$HOME/.oh-my-zsh
@@ -95,6 +23,90 @@ source $HOME/.files/zsh/space_ship_ohmyzsh.zsh
 source ~/.files/zsh/less_colors.zsh
 source ~/.files/zsh/aliases.zsh
 #}}}
+ 
+case `uname` in
+  Darwin)
+    # commands for OS X go here
+    export LC_ALL=en_US.UTF-8
+    if [ -f ~/.files/zsh/zsh-functions-mac.zsh ]; then
+      source ~/.files/zsh/zsh-functions-mac.zsh
+    else
+      echo "404: ~/.files/zsh/zsh-functions-mac.zsh not found."
+    fi
+    ;;
+  Linux)
+    # commands for Linux go here
+    stty -ixon # C-s, C-q 
+    # commands for Linux go here
+    source ~/.files/zsh/zsh-functions-kde.zsh
+    source "/home/erik/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
+    ;;
+esac
+
+case `hostname` in
+    erik-desktop)
+        export PATH="/usr/local/cuda-10.2/bin:$PATH"
+        export PATH="/usr/local/cuda-10.2/lib64:$PATH"
+        ;;
+esac
+
+
+# Settings {{{
+DISABLE_AUTO_TITLE="true" # Uncomment the following line to disable auto-setting terminal title.
+setopt RM_STAR_WAIT  # if you do a 'rm *', Zsh will give you a sanity check!
+setopt interactivecomments #allows to type Bash style comments in the command line
+# zmodload zsh/zprof # see time and processes
+# }}}
+
+# Export {{{
+# Term
+export BROWSER="brave-browser"   # google-chrome
+export COLORTERM="truecolor"
+export FILEMANAGER="lf"
+export DOTFILES="$HOME/.files"
+export EDITOR='nvim'
+
+export BAT_THEME='OneHalfDark'
+
+export KEYTIMEOUT=1
+export LANG=en_US.UTF-8
+export TERM="screen-256color"  # "xterm-256color"
+export USE_EDITOR=$EDITOR
+export VISUAL=$EDITOR
+export KAGGLE_USERNAME=erikislearning
+# export KAGGLE_KEY=xxxxxxxxxxxxxx
+export PATH="$HOME/Applications:$PATH"
+
+
+
+# Node, npm, nvm, yarn
+# export PATH=$HOME/.node_modules_global/bin:${PATH}
+# export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export GEM_HOME="$HOME/gems"  # Ruby (for jekyll)
+export PATH="$HOME/gems/bin:$PATH"  # Install Ruby Gems to ~/gems
+export PATH="$HOME/go/bin:$PATH"  # Install Ruby Gems to ~/gems
+
+# export PATH=$HOME/.local/bin:${PATH}
+# export PATH=$HOME/.files/bin:${PATH}  # For my custom scripts
+# Geckodriver (selenium, webdriver for firefox)
+# export PATH=$HOME/geckodriver:${PATH}  # Download tar file and extract here 
+
+# NVM
+# export PATH="$HOME/.nvm/versions/node/v13.11.0/bin/npm:$PATH"
+# export PATH="$HOME/.nvm/versions/node/v13.11.0/bin/npx:$PATH"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# }}}
+
+
 
 ## FZF {{{
 if [[ -f ~/.fzf.zsh  ]]; then
@@ -108,32 +120,23 @@ if type "tmuxinator" > /dev/null; then
 fi
 
 
-case `uname` in
-  Darwin)
-    # commands for OS X go here
-    if [ -f ~/.files/zsh/zsh-functions-mac.zsh ]; then
-      source ~/.files/zsh/zsh-functions-mac.zsh
-    else
-      echo "404: ~/.files/zsh/zsh-functions-mac.zsh not found."
-    fi
-    ;;
-  Linux)
-    # commands for Linux go here
-    source ~/.files/zsh/zsh-functions-kde.zsh
-    source "/home/erik/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
-    ;;
-esac
 # }}}
 
+# Kitty
+autoload -Uz compinit
+compinit
+# Completion for kitty
+kitty + complete setup zsh | source /dev/stdin
 
-# Tmux {{{
+
+# Tmux
 if [ "$TMUX" = "" ]; then 
   tmux new
 fi
 source ~/.files/tmux/tmux_functions.zsh  # For my custom scripts
 # }}}
 
-
+alias nvr="$HOME/miniconda3/envs/neovim3/bin/nvr"
 
 # Conda addition {{{
 # >>> conda initialize >>>
