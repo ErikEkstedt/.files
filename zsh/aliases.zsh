@@ -58,6 +58,7 @@ alias gph="cd ~/phd; ls"
 alias gpe="cd ~/.personal; ls"
 
 alias gho="cd ~; clear; ls"
+alias gro="cd /; clear; ls"
 alias gdw="cd ~/Downloads; clear; la"
 alias gpi="cd ~/Pictures"
 
