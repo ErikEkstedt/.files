@@ -66,6 +66,7 @@ call plug#begin('~/.vim/bundle')
 
 
 " testing
+Plug 'vimwiki/vimwiki'
 Plug 'haorenW1025/floatLf-nvim'
 Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'

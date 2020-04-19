@@ -1,0 +1,256 @@
+# You can edit this file by hand, but it's recommended not to do that.
+
+# Marks:
+'H
+	/home/erik/
+	..
+1587286148
+'b
+	/home/erik/bin/
+	..
+1587286148
+'h
+	/home/erik/
+	..
+1587286148
+
+# Bookmarks:
+
+# TUI:
+al
+q1
+v2
+ov
+m-1
+l14,2
+r2
+
+# Left window history (oldest to newest):
+d/home/erik/.files/lf
+	link_configs.sh
+5
+d/home/erik/.files/vifm/colors
+	Default.vifm
+1
+d/home/erik/.files/lf
+	link_configs.sh
+5
+d/home/erik/.config
+	vifm
+43
+d/home/erik/.config/vifm
+	vifmrc
+5
+d/home/erik/.files
+	Install.sh
+38
+d/home/erik/.files/Wallpapers
+	..
+0
+d/home/erik/.files
+	ipython
+17
+d/home/erik/.files/ipython
+	..
+0
+d/home/erik/.files
+	ipython
+17
+d/home/erik/.files/ipython
+	..
+0
+d/home/erik/.files
+	tmuxinator
+5
+d/home/erik
+	Dialog
+4
+d/home/erik/Dialog
+	Dockerfile
+3
+d/home/erik
+	ErikEkstedt.github.io
+5
+d/home/erik/ErikEkstedt.github.io
+	images
+5
+d/home/erik
+	Gemaps
+4
+d/home/erik/Disk
+	Gemaps
+1
+d/home/erik/Disk/Gemaps
+	..
+0
+d/home/erik/Disk
+	Gemaps
+1
+d/home/erik
+	.pki
+5
+d/home/erik/.pki
+	..
+0
+d/home/erik
+	.files
+4
+d/home/erik/.files
+	fusuma
+9
+d/home/erik
+	Gemaps
+10
+d/home/erik/Gemaps
+	q1nc8_gemaps_0.05.npy
+16
+d/home/erik
+	Gemaps
+10
+d/home/erik/Gemaps
+	q1nc7_gemaps_0.05.npy
+15
+d/home/erik
+	.files
+4
+d/home/erik/.files
+	ToDo.md
+36
+d/home/erik
+	Pictures
+39
+d/home/erik/Pictures
+	landscape_lake_mountains_140360_3840x2400.jpg
+12
+d/home/erik/Disk/SteamLibrary/steamapps/common/Dungeon Defenders 2/DunDef2/UDKGame/CookedPCConsole
+	Squire_UI.Portraits.CharInv_PicSquire.tfc
+38
+d/home/erik/Disk/SteamLibrary/steamapps/common/Dungeon Defenders 2/DunDef2/UDKGame
+	CookedPCConsole
+2
+d/home/erik
+	Pictures
+39
+d/home/erik/Pictures
+	earth_black.jpg
+6
+d/home/erik
+	Pictures
+33
+d/home/erik/Pictures
+	forest_trees_colorful_122230_3840x2160.jpg
+8
+d/home/erik
+	spotify-tui
+20
+d/home/erik/spotify-tui
+	..
+0
+d/home/erik
+	.bashrc
+31
+d/home/erik/.files
+	Install.sh
+44
+d/home/erik
+	.config
+4
+d/home/erik/.config
+	vifm
+43
+d/home/erik/.config/vifm
+	vifminfo
+4
+d/home/erik/.files
+	vifm
+39
+d/home/erik/.files/vifm
+	vifmrc
+7
+d
+
+# Right window history (oldest to newest):
+D/home/erik
+	
+0
+D/home/erik/.files
+	ipython
+17
+D/home/erik/.files/ipython
+	install.sh
+1
+D/home/erik/.files
+	fzf
+14
+D/home/erik
+	..
+0
+D/home
+	erik
+1
+D/home/erik
+	..
+0
+D
+
+# Command line history (oldest to newest):
+:restart
+:echo %c
+:q
+:set hidden
+:colorscheme semidarkdesert
+:sdfads
+:colorscheme iceberg
+:colorscheme molokai
+:colorscheme zenburn
+:colorscheme dracula
+:df
+:mkcd
+:colorscheme desert
+:!ls
+:.,.+1!j
+:vifm
+:safdsafsdf
+:endif
+:colorscheme Default
+:colo onedark_custom
+:colorscheme onedark
+:colorscheme onedark_custom
+:help
+:ds
+:winrun
+:elseif
+:FZFlocate
+:empty
+:!bat Install.sh
+
+# Search history (oldest to newest):
+/.vifm
+/.files
+/.iles
+
+# Prompt history (oldest to newest):
+pbashrc
+
+# Local filter history (oldest to newest):
+
+# Registers:
+""/home/erik/.config/vifm/scripts
+""/home/erik/.config/vifm/vifm-help.txt
+""/home/erik/.config/vifm/vifminfo
+""/home/erik/.config/vifm/vifmrc
+
+# Directory stack (oldest to newest):
+
+# Trash content:
+
+# State:
+f
+i1
+[.0
+[F
+F
+I1
+].1
+]F
+s0
