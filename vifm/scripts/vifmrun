@@ -11,5 +11,12 @@ mkfifo "$FIFO_UEBERZUG"
 trap cleanup EXIT
 tail --follow "$FIFO_UEBERZUG" | ueberzug layer --silent --parser bash &
 
-vifm
+if [[ $# -eq 0 ]] ; then
+    dirName=$PWD
+else
+    dirName=$1
+fi
+echo $dirName
+
+vifm $dirName
 cleanup

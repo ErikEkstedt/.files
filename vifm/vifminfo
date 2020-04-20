@@ -12,7 +12,7 @@
 'h
 	/home/erik/
 	..
-1587286148
+1587326142
 
 # Bookmarks:
 
@@ -26,6 +26,12 @@ l14,2
 r2
 
 # Left window history (oldest to newest):
+d/home/erik/.files
+	VSCode
+6
+d/home/erik/.files/vifm
+	vifmrc
+7
 d/home/erik/.files/lf
 	link_configs.sh
 5
@@ -165,13 +171,118 @@ d/home/erik/.files
 	vifm
 39
 d/home/erik/.files/vifm
-	vifmrc
+	scripts
+2
+d/home/erik/.files
+	VSCode
+6
+d/home/erik
+	Downloads
+11
+d/home/erik/.files/vifm/scripts
+	vifmrun
+3
+d/home/erik
+	Gemaps
+13
+d/home/erik/.files/vifm/scripts
+	vifmrun
+3
+d/home/erik
+	Videos
+25
+d/home/erik/.files
+	fusuma
+14
+d/home/erik
+	TurnGPT
+24
+d/home/erik/TurnGPT
+	..
+0
+d/home/erik
+	TurnGPT
+24
+d/home/erik/TurnGPT
+	..
+0
+d/home/erik
+	TurnGPT
+24
+d/home/erik/jobwiki2
+	index.md
+2
+d/home/erik
+	jobwiki
+36
+d/home/erik/jobwiki
+	Sacks.md
+2
+d/home/erik
+	jobwiki
+36
+d/home/erik/TurnGPT
+	Dockerfile
 7
+d/home/erik/Dialog/turntaking/IpuBased
+	datasets
+3
+d/home/erik/Dialog/turntaking/IpuBased/datasets
+	callhome.py
+2
+d/home/erik/Dialog/turntaking/IpuBased
+	data
+2
+d/home/erik/Dialog/turntaking/IpuBased/data
+	semantic_data
+3
+d/home/erik/Dialog/turntaking/IpuBased/data/semantic_data
+	test_turns.pt
+5
+d/home/erik/Dialog/turntaking/IpuBased/data
+	semantic_data
+3
+d/home/erik/Dialog/turntaking/IpuBased
+	datasets.md
+15
+d/home/erik/TurnGPT/data
+	downloads
+2
+d/home/erik/TurnGPT/data/downloads
+	self-dialogs.json
+1
+d/home/erik/TurnGPT/data
+	downloads
+2
+d/home/erik/TurnGPT/data/downloads
+	woz-dialogs.json
+2
+d/home/erik/TurnGPT/data
+	downloads
+2
+d/home/erik/TurnGPT/data/downloads
+	..
+0
+d/home/erik/TurnGPT/data
+	downloads
+2
+d/home/erik/TurnGPT/data/downloads
+	..
+0
+d/home/erik/TurnGPT/data
+	taskmaster.json
+6
 d
 
 # Right window history (oldest to newest):
 D/home/erik
-	
+	..
+0
+D/
+	home
+5
+D/home/erik
+	..
 0
 D/home/erik/.files
 	ipython
@@ -188,6 +299,12 @@ D/home/erik
 D/home
 	erik
 1
+D/home/erik
+	AudioVisualizer
+2
+D/
+	home
+5
 D/home/erik
 	..
 0
@@ -223,6 +340,8 @@ D
 :FZFlocate
 :empty
 :!bat Install.sh
+:nmap <space>
+:view
 
 # Search history (oldest to newest):
 /.vifm
@@ -235,14 +354,13 @@ pbashrc
 # Local filter history (oldest to newest):
 
 # Registers:
-""/home/erik/.config/vifm/scripts
-""/home/erik/.config/vifm/vifm-help.txt
-""/home/erik/.config/vifm/vifminfo
-""/home/erik/.config/vifm/vifmrc
+""/home/erik/.local/share/vifm/Trash/000_jobwiki2
 
 # Directory stack (oldest to newest):
 
 # Trash content:
+t/home/erik/.local/share/vifm/Trash/000_jobwiki2
+	/home/erik/jobwiki2
 
 # State:
 f
