@@ -26,6 +26,9 @@ l14,2
 r2
 
 # Left window history (oldest to newest):
+d/home/erik/Pictures/olle
+	olle.jpg
+7
 d/home/erik/.files
 	VSCode
 6
@@ -272,6 +275,51 @@ d/home/erik/TurnGPT/data/downloads
 d/home/erik/TurnGPT/data
 	taskmaster.json
 6
+d/home/erik/TurnGPT
+	build_dataset.py
+10
+d/home/erik/Downloads
+	Ama_on_Mechanical_Cheaters(1).pdf
+4
+d/home/erik/TurnGPT
+	build_dataset.py
+10
+d/home/erik
+	.local
+5
+d/home/erik/Downloads
+	Intonation and meaning by Büring, Daniel (z-lib.org).pdf
+5
+d/home/erik/.files
+	Xresources
+35
+d/home/erik/TurnGPT
+	build_dataset.py
+10
+d/home/erik/Pictures
+	starry_sky_galaxy_glitter_night_118638_3840x2160.jpg
+20
+d/home/erik/TurnGPT
+	dataset.py
+11
+d/home/erik/Pictures
+	Screenshot_20200421_172059.png
+4
+d/home/erik/TurnGPT
+	data
+4
+d/home/erik/TurnGPT/data
+	dataset
+1
+d/home/erik/TurnGPT/data/dataset
+	parlai_val.json
+2
+d/home/erik/TA_DD2418
+	ass1
+2
+d/home/erik/TA_DD2418/DD2418/a02
+	skeleton
+1
 d
 
 # Right window history (oldest to newest):
@@ -311,6 +359,8 @@ D/home/erik
 D
 
 # Command line history (oldest to newest):
+:execute
+:set columns
 :restart
 :echo %c
 :q
@@ -361,6 +411,10 @@ pbashrc
 # Trash content:
 t/home/erik/.local/share/vifm/Trash/000_jobwiki2
 	/home/erik/jobwiki2
+t/home/erik/.local/share/vifm/Trash/000_jonas_to_tuna.png
+	/home/erik/Pictures/jonas_to_tuna.png
+t/home/erik/.local/share/vifm/Trash/000_nvim.png
+	/home/erik/Pictures/nvim.png
 
 # State:
 f

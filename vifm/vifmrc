@@ -25,6 +25,13 @@ set suggestoptions=normal,visual,view,otherpane,keys,marks,registers
 set ignorecase
 set smartcase
 
+set quickview
+set millerview
+set milleroptions=lsize:1,csize:2
+" set viewcolumns=-20%{name},50%{ext},30%{mtime}
+set viewcolumns=-{name}..,6{}.
+set fillchars='vborder:│'
+
 " colorscheme dracula
 colorscheme custom
 
@@ -71,10 +78,10 @@ command! reload :write | restart
 " FZF
 
 " command! FZFDir :set noquickview | :execute 'goto ' fnameescape(term("fd --type d --hidden --no-ignore --exclude .git | FZF_DEFAULT_OPTS=--preview 'tree -L 1 -C {} | head -200' fzf "))
-command! FZFDirHome :set noquickview | :execute 'cd ' fnameescape(term("fd --type d --hidden --no-ignore --exclude .git --search-path $HOME | fzf 2>/dev/tty"))
-command! FZFFileHome :set noquickview | :execute 'goto ' fnameescape(term("fd --type f --hidden --no-ignore --exclude .git --search-path $HOME | fzf 2>/dev/tty"))
-command! FZFDir :set noquickview | :execute 'cd ' fnameescape(term("fd --type d --hidden --no-ignore --exclude .git | fzf 2>/dev/tty"))
-command! FZFFile :set noquickview | :execute 'goto ' fnameescape(term("fd --type f --hidden --no-ignore --exclude .git | fzf 2>/dev/tty"))
+command! FZFDirHome :set noquickview | :execute 'cd ' fnameescape(term("fd --type d --hidden --no-ignore --exclude .git --search-path $HOME | fzf 2>/dev/tty")) | :set quickview
+command! FZFFileHome :set noquickview | :execute 'goto ' fnameescape(term("fd --type f --hidden --no-ignore --exclude .git --search-path $HOME | fzf 2>/dev/tty")) | :set quickview
+command! FZFDir :set noquickview | :execute 'cd ' fnameescape(term("fd --type d --hidden --no-ignore --exclude .git | fzf 2>/dev/tty")) | :set quickview
+command! FZFFile :set noquickview | :execute 'goto ' fnameescape(term("fd --type f --hidden --no-ignore --exclude .git | fzf 2>/dev/tty")) | :set quickview
 
 
 "===============================================================================
@@ -405,20 +412,6 @@ set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
 
 " ------------------------------------------------------------------------------
 
-" Examples of configuring both panels
-
-" Customize view columns a bit (enable ellipsis for truncated file names)
-"
-set viewcolumns=-{name}..,6{}.
-set fillchars='vborder:│'
-" set fillchars='vborder:|'
-"
-" Filter-out build and temporary files
-"
-" filter! /^.*\.(lo|o|d|class|py[co])$|.*~$/
-
-" ------------------------------------------------------------------------------
-
 " Various customization examples
 
 " Use ag (the silver searcher) instead of grep
@@ -430,7 +423,8 @@ set fillchars='vborder:│'
 " let $PATH=$HOME.'/bin/fuse:'.$PATH
 
 " Block particular shortcut
-"
 " nnoremap <left> <nop>
+
+" ------------------------------------------------------------------------------
 source $HOME/.config/vifm/Devicon_SETUP
 

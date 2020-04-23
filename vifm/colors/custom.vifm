@@ -49,15 +49,17 @@ highlight clear
 
 " Regular text (files) and background
 highlight Win cterm=none ctermfg=white ctermbg=default
-highlight OtherWin cterm=none ctermfg=242 ctermbg=default
+highlight OtherWin cterm=none ctermfg=white ctermbg=default
+" highlight AuxWin cterm=bold,underline,reverse,standout,italic ctermfg=default ctermbg=default
+highlight AuxWin cterm=none ctermfg=white ctermbg=default
 
 highlight Directory cterm=bold ctermfg=blue ctermbg=default
 highlight CurrLine cterm=bold ctermfg=232 ctermbg=blue
 
 " Left column
-highlight TopLineSel cterm=bold ctermfg=magenta ctermbg=232
+highlight TopLineSel cterm=bold ctermfg=green ctermbg=232
 " Right column
-highlight TopLine cterm=bold ctermfg=green ctermbg=232
+highlight TopLine cterm=bold ctermfg=darkgreen ctermbg=232
 
 " Column borders (left/center/right)
 highlight Border cterm=none ctermfg=232 ctermbg=default
@@ -65,7 +67,7 @@ highlight Border cterm=none ctermfg=232 ctermbg=default
 highlight StatusLine cterm=bold ctermfg=blue ctermbg=232
 highlight CmdLine cterm=none ctermfg=white ctermbg=232
 
-highlight WildMenu cterm=underline,reverse ctermfg=white ctermbg=black
+highlight WildMenu cterm=underline,reverse ctermfg=white ctermbg=default
 highlight ErrorMsg cterm=none ctermfg=red ctermbg=black
 
 highlight Link cterm=bold ctermfg=yellow ctermbg=default
@@ -78,7 +80,6 @@ highlight Selected cterm=bold ctermfg=black ctermbg=magenta
 highlight JobLine cterm=bold,reverse ctermfg=black ctermbg=white
 highlight SuggestBox cterm=bold ctermfg=default ctermbg=default
 highlight CmpMismatch cterm=bold ctermfg=white ctermbg=red
-highlight AuxWin cterm=bold,underline,reverse,standout,italic ctermfg=default ctermbg=default
 highlight TabLine cterm=none ctermfg=white ctermbg=black
 highlight TabLineSel cterm=bold,reverse ctermfg=default ctermbg=default
 " highlight User1 cterm=bold,underline,reverse,standout,italic ctermfg=default ctermbg=default
