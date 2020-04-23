@@ -12,4 +12,5 @@ let g:vimwiki_list = [
 
 let g:vimwiki_table_mappings=0
 
+nmap <Leader>ww <plug>VimwikiIndex
 nmap <Leader>wj 2<plug>VimwikiIndex

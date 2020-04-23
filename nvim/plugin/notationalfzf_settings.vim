@@ -1,6 +1,6 @@
 " String. Set to '' (the empty string) if you don't want an extension appended by default.
 " Don't forget the dot, unless you don't want one.
-let g:nv_search_paths = ['~/wiki']
+let g:nv_search_paths = ['~/wiki', '~/vimwiki', '~/jobwiki']
 let g:nv_default_extension = '.md'
 
 nnoremap <silent> ,fn :NV<CR>
