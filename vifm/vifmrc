@@ -27,7 +27,7 @@ set smartcase
 
 set quickview
 set millerview
-set milleroptions=lsize:1,csize:2
+set milleroptions=lsize:2,csize:3
 " set viewcolumns=-20%{name},50%{ext},30%{mtime}
 set viewcolumns=-{name}..,6{}.
 set fillchars='vborder:│'
