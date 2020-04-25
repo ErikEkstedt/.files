@@ -92,7 +92,9 @@ Plug 'ivalkeen/nerdtree-execute'       " XXX open files from nerdtree
 Plug 'tpope/vim-fugitive'              " XXX git tools
 
 " Tools
-Plug 'terryma/vim-multiple-cursors'    " XXX Really great but could try with coc
+" Plug 'terryma/vim-multiple-cursors'    " XXX Really great but could try with coc
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+
 Plug 'KabbAmine/vCoolor.vim'           " XXX pick color from menu
 Plug 'Yggdroot/indentLine'             " XXX see where there is indent
 Plug 'tpope/vim-commentary'            " XXX commenting
@@ -115,7 +117,7 @@ let g:tmux_navigator_no_mappings = 1
 
 " Code Formatting / Syntax / Preview
 Plug 'norcalli/nvim-colorizer.lua'  " faster color disable coc-highlight
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " better python syntax highlight 
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " better python syntax highlight
 " Plug 'ambv/black'                         " Linter/formatter
 Plug 'psf/black', { 'tag': '19.10b0' }
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
@@ -140,7 +142,8 @@ Plug 'jacoborus/tender.vim'
 Plug 'dracula/vim'
 Plug 'tomasr/molokai'
 Plug 'arcticicestudio/nord-vim'
-
+Plug 'sheerun/vim-wombat-scheme'
+Plug 'w0ng/vim-hybrid'
 
 call plug#end()
 " }}}
@@ -152,11 +155,15 @@ filetype plugin indent on
 syntax enable
 syntax on
 set hls                        " highlighting!
+set background=dark
 
 " Colorschemes -----------------------------------
-colorscheme onedark 
-" colorscheme substrata 
-" colorscheme nord 
+colorscheme onedark
+" colorscheme Tomorrow-Night 
+" colorscheme hybrid
+" colorscheme wombat
+" colorscheme substrata
+" colorscheme nord
 " colorscheme OceanicNext
 
 hi Folded guibg=clear
@@ -238,7 +245,7 @@ set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,resi
 
 if has('windows')
   " ┃ line with no breaks between vertical splits
-  set fillchars=vert:\│ 
+  set fillchars=vert:\│
 endif
 
 " Transparancy
