@@ -56,10 +56,10 @@ highlight AuxWin cterm=none ctermfg=white ctermbg=default
 highlight Directory cterm=bold ctermfg=blue ctermbg=default
 highlight CurrLine cterm=bold ctermfg=232 ctermbg=blue
 
-" Left column
+" Current column Text
 highlight TopLineSel cterm=bold ctermfg=green ctermbg=232
-" Right column
-highlight TopLine cterm=bold ctermfg=darkgreen ctermbg=232
+" Other column Text
+highlight TopLine cterm=bold ctermfg=magenta ctermbg=232
 
 " Column borders (left/center/right)
 highlight Border cterm=none ctermfg=232 ctermbg=default

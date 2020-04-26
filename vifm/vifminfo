@@ -21,74 +21,11 @@ al
 q1
 v2
 ov
-m-1
+m90
 l14,2
 r2
 
 # Left window history (oldest to newest):
-d/home/erik/Pictures/olle
-	olle.jpg
-7
-d/home/erik/.files
-	VSCode
-6
-d/home/erik/.files/vifm
-	vifmrc
-7
-d/home/erik/.files/lf
-	link_configs.sh
-5
-d/home/erik/.files/vifm/colors
-	Default.vifm
-1
-d/home/erik/.files/lf
-	link_configs.sh
-5
-d/home/erik/.config
-	vifm
-43
-d/home/erik/.config/vifm
-	vifmrc
-5
-d/home/erik/.files
-	Install.sh
-38
-d/home/erik/.files/Wallpapers
-	..
-0
-d/home/erik/.files
-	ipython
-17
-d/home/erik/.files/ipython
-	..
-0
-d/home/erik/.files
-	ipython
-17
-d/home/erik/.files/ipython
-	..
-0
-d/home/erik/.files
-	tmuxinator
-5
-d/home/erik
-	Dialog
-4
-d/home/erik/Dialog
-	Dockerfile
-3
-d/home/erik
-	ErikEkstedt.github.io
-5
-d/home/erik/ErikEkstedt.github.io
-	images
-5
-d/home/erik
-	Gemaps
-4
-d/home/erik/Disk
-	Gemaps
-1
 d/home/erik/Disk/Gemaps
 	..
 0
@@ -174,8 +111,8 @@ d/home/erik/.files
 	vifm
 39
 d/home/erik/.files/vifm
-	scripts
-2
+	colors
+1
 d/home/erik/.files
 	VSCode
 6
@@ -285,14 +222,14 @@ d/home/erik/TurnGPT
 	build_dataset.py
 10
 d/home/erik
-	.local
-5
+	DD2418
+4
 d/home/erik/Downloads
 	Intonation and meaning by Büring, Daniel (z-lib.org).pdf
 5
 d/home/erik/.files
-	Xresources
-35
+	vifm
+43
 d/home/erik/TurnGPT
 	build_dataset.py
 10
@@ -320,6 +257,75 @@ d/home/erik/TA_DD2418
 d/home/erik/TA_DD2418/DD2418/a02
 	skeleton
 1
+d/home/erik/TurnGPT
+	runs
+5
+d/home/erik/TurnGPT/runs
+	Apr23_14-32-00_erik-desktop_gpt2
+4
+d/home/erik/TurnGPT/runs/Apr23_14-32-00_erik-desktop_gpt2
+	val
+2
+d/home/erik/TurnGPT/runs
+	Apr23_15-03-27_erik-desktop_gpt2
+5
+d/home/erik/TurnGPT/runs/Apr23_15-03-27_erik-desktop_gpt2
+	val
+2
+d/home/erik/TurnGPT/runs
+	Apr23_15-39-34_erik-desktop_gpt2
+2
+d/home/erik/TurnGPT
+	__pycache__
+3
+d/home/erik/TurnGPT/runs
+	Apr23_15-39-34_erik-desktop_gpt2
+2
+d/home/erik/DD2418
+	a02
+3
+d/home/erik/DD2418/a02
+	solution
+2
+d/home/erik/DD2418
+	a02
+3
+d/home/erik
+	TurnGPT
+37
+d/home/erik/TA_DD2418
+	ass2
+3
+d/home/erik/TA_DD2418/ass2
+	questions.md
+3
+d/home/erik/TA_DD2418
+	ass2
+3
+d/home/erik/TA_DD2418/ass2
+	questions.md
+3
+d/home/erik/TA_DD2418
+	ass2
+3
+d/home/erik/.files/vifm/colors
+	Default.vifm
+1
+d/home/erik/.files/vifm
+	vifmrc
+7
+d/home/erik/.files
+	inputrc
+54
+d/home/erik/TurnGPT/__pycache__
+	..
+0
+d/home/erik/TurnGPT
+	data
+4
+d/home/erik/TurnGPT/data
+	multiwoz_dialogs.json
+5
 d
 
 # Right window history (oldest to newest):
@@ -404,7 +410,7 @@ pbashrc
 # Local filter history (oldest to newest):
 
 # Registers:
-""/home/erik/.local/share/vifm/Trash/000_jobwiki2
+""/home/erik/.local/share/vifm/Trash/000_dev_dataset.pt
 
 # Directory stack (oldest to newest):
 
@@ -415,6 +421,18 @@ t/home/erik/.local/share/vifm/Trash/000_jonas_to_tuna.png
 	/home/erik/Pictures/jonas_to_tuna.png
 t/home/erik/.local/share/vifm/Trash/000_nvim.png
 	/home/erik/Pictures/nvim.png
+t/home/erik/.local/share/vifm/Trash/000_Apr23_14-28-59_erik-desktop_gpt2
+	/home/erik/TurnGPT/runs/Apr23_14-28-59_erik-desktop_gpt2
+t/home/erik/.local/share/vifm/Trash/000_Apr23_14-31-08_erik-desktop_gpt2
+	/home/erik/TurnGPT/runs/Apr23_14-31-08_erik-desktop_gpt2
+t/home/erik/.local/share/vifm/Trash/000_Apr23_14-32-00_erik-desktop_gpt2
+	/home/erik/TurnGPT/runs/Apr23_14-32-00_erik-desktop_gpt2
+t/home/erik/.local/share/vifm/Trash/000_Apr23_15-03-27_erik-desktop_gpt2
+	/home/erik/TurnGPT/runs/Apr23_15-03-27_erik-desktop_gpt2
+t/home/erik/.local/share/vifm/Trash/000_Apr23_15-15-24_erik-desktop_gpt2
+	/home/erik/TurnGPT/runs/Apr23_15-15-24_erik-desktop_gpt2
+t/home/erik/.local/share/vifm/Trash/000_dev_dataset.pt
+	/home/erik/TurnGPT/dev_dataset.pt
 
 # State:
 f

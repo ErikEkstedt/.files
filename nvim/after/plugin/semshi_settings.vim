@@ -224,6 +224,7 @@ function! SemshiColors() "{{{
   endif
 endfunc  "}}}
 
+
 augroup Semshi
 	autocmd!
   autocmd FileType python call SemshiColors()
