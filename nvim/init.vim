@@ -140,6 +140,7 @@ Plug 'jacoborus/tender.vim'
 Plug 'dracula/vim'
 Plug 'tomasr/molokai'
 Plug 'arcticicestudio/nord-vim'
+Plug 'kaicataldo/material.vim'
 
 
 call plug#end()
@@ -154,7 +155,12 @@ syntax on
 set hls                        " highlighting!
 
 " Colorschemes -----------------------------------
-colorscheme onedark 
+" let g:material_terminal_italics = 1
+" let g:material_theme_style = 'darker'
+" colorscheme material
+colorscheme molokai
+" colorscheme monokai
+" colorscheme onedark 
 " colorscheme substrata 
 " colorscheme nord 
 " colorscheme OceanicNext

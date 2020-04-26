@@ -56,6 +56,76 @@ function! SemshiOnedark()
 endfunction
 
 
+function! SemshiMaterial()
+  " let s:red = '#ff5370'
+  " let s:orange = '#f78c6c'
+  " let s:yellow = '#ffcb6b'
+  " let s:green = '#c3e88d'
+  " let s:green2 = '#7f995f'
+  " let s:cyan = '#89ddff'
+  " let s:blue = '#82aaff'
+  " let s:paleblue = '#b2ccd6'
+  " let s:purple = '#c792ea'
+  " let s:brown = '#c17e70'
+  " let s:pink = '#f07178'
+  " let s:violet = '#bb80b3'
+  " #ffb3ba
+  " #ffdfba
+  " #ffffba
+  " #baffc9
+  " #bae1ff
+  " #f92672
+  " #a6e22e
+  " #66d9ef
+  " #fd971f
+  " #ae81ff
+  " hi semshiSelected        guibg=#4b5263 guifg=#abb2bf gui=bold
+  " hi semshiAttribute       guifg=s:cyan
+  hi semshiImported        gui=bold guifg=#a6e22e
+  hi semshiAttribute       guifg=#a6e22e
+  hi semshiSelf            guifg=#baffc9
+  hi semshiBuiltin         guifg=#ffcb6b
+  hi pythonString          guifg=#c3e88d
+  hi pythonFunction        guifg=#66d9ef
+  hi pythonStatement       guifg=#bae1ff
+  hi pythonKeyword         guifg=#f92672
+  hi pythonOperator        guifg=#ffcb6b
+  hi pythonInclude         guifg=#f92672
+  " hi semshiErrorChar       guifg=#ffffff guibg=#fb6000
+  " hi semshiErrorSign       guifg=#ff4e00 guibg=None
+  " hi semshiFree            guifg=#ffafd7
+  " hi semshiGlobal          guifg=#61afef
+  " hi semshiLocal           guifg=#ff875f
+  " hi semshiParameter       guifg=#ff0087
+  " hi semshiParameterUnused guifg=#87d7ff cterm=underline gui=underline
+  " hi semshiUnresolved      guifg=#ff3c2c cterm=underline gui=underline
+endfunction
+
+
+function! SemshiMonokai()
+  " hi semshiSelected        guibg=#4b5263 guifg=#abb2bf gui=bold
+  " hi semshiAttribute       guifg=s:cyan
+  hi pythonString          guifg=#E6DB74
+  hi pythonInclude         guifg=#F92772
+  hi pythonStatement       guifg=#ae81ff
+  hi semshiImported        gui=bold guifg=#a6e22e
+  hi semshiAttribute       guifg=#A1EFE4
+  hi semshiSelf            guifg=#FD9720
+  hi semshiParameter       guifg=#FD9720
+  hi semshiBuiltin         guifg=#e73c50
+  " hi pythonFunction        guifg=#66d9ef
+  " hi pythonKeyword         guifg=#f92672
+  " hi pythonOperator        guifg=#ffcb6b
+  " hi semshiErrorChar       guifg=#ffffff guibg=#fb6000
+  " hi semshiErrorSign       guifg=#ff4e00 guibg=None
+  " hi semshiFree            guifg=#ffafd7
+  " hi semshiGlobal          guifg=#61afef
+  " hi semshiLocal           guifg=#ff875f
+  " hi semshiParameterUnused guifg=#87d7ff cterm=underline gui=underline
+  " hi semshiUnresolved      guifg=#ff3c2c cterm=underline gui=underline
+endfunction
+
+
 function! SemshiNord()
   " let s:nord0_gui = "#2E3440"
   " let s:nord1_gui = "#3B4252"
@@ -147,6 +217,10 @@ function! SemshiColors() "{{{
     call SemshiOnedark()
   elseif g:colors_name =~ 'substrata'
     call SemshiSubstrata()
+  elseif g:colors_name =~ 'material'
+    call SemshiMaterial()
+  elseif g:colors_name =~ 'monokai'
+    call SemshiMonokai()
   endif
 endfunc  "}}}
 
