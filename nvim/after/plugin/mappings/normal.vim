@@ -193,7 +193,7 @@ nnoremap g<space> f<space>a<CR><esc>
 "--------------------------------------------------------
 " Toggle fold
 nnoremap ga zA
-nnoremap <space>f zA
+" nnoremap <space>f zA
 nnoremap <space>z zMzvzz
 
 " Nerdtree uses 'o' to open "foldlike" dirs.

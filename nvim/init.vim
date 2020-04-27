@@ -66,8 +66,8 @@ call plug#begin('~/.vim/bundle')
 
 
 " testing
-Plug 'vimwiki/vimwiki'
 Plug 'haorenW1025/floatLf-nvim'
+
 Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
 " ES2015 code snippets (Optional)
@@ -93,6 +93,7 @@ Plug 'tpope/vim-fugitive'              " XXX git tools
 
 " Tools
 " Plug 'terryma/vim-multiple-cursors'    " XXX Really great but could try with coc
+Plug 'vimwiki/vimwiki'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 Plug 'KabbAmine/vCoolor.vim'           " XXX pick color from menu
@@ -104,6 +105,7 @@ Plug 'wellle/targets.vim'              " XXX ci' works on (, [, {, < on entire l
 Plug 'easymotion/vim-easymotion'       " XXX visualize targets tot move to specific words
 Plug 'godlygeek/tabular'
 Plug 'junegunn/fzf.vim'                " XXX fuzzy filefinding
+
 Plug 'alok/notational-fzf-vim'
 Plug 'junegunn/vim-easy-align'         " XXX better alignment than tabular
 Plug 'junegunn/vim-peekaboo'           " XXX when pressing quotes shows what's stored in the different registers
@@ -146,7 +148,11 @@ Plug 'kaicataldo/material.vim'
 Plug 'sheerun/vim-wombat-scheme'
 Plug 'w0ng/vim-hybrid'
 
+Plug 'chengzeyi/fzf-preview.vim'
+
 call plug#end()
+
+
 " }}}
 
 " Basic Settings {{{

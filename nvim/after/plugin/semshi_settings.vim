@@ -55,6 +55,38 @@ function! SemshiOnedark()
   hi semshiUnresolved      guifg=#ff3c2c cterm=underline gui=underline
 endfunction
 
+function! SemshiTomorrowNight()
+  " '#c5c8c6'
+  " '#1d1f21'
+  " '#373b41'
+  " '#282a2e'
+  " '#969896'
+  " '#cc6666'
+  " '#de935f'
+  " '#f0c674'
+  " '#b5bd68'
+  " '#8abeb7'
+  " '#81a2be'
+  " '#5b7286'
+  " '#b294bb'
+  " '#4d5057'
+  " hi semshiSelected        guibg=#4b5263 guifg=#abb2bf gui=bold
+  hi pythonFunction        guifg=#a2cdf3
+  hi pythonAttribute       guifg=#81a2be
+  hi semshiImported        gui=bold guifg=#8abeb7
+  hi semshiAttribute       guifg=#81a2be
+  hi semshiParameter       guifg=#81a2be
+  hi semshiBuiltin         guifg=#e5c07b
+  hi semshiErrorChar       guifg=#ffffff guibg=#cc6666
+  hi semshiErrorSign       guifg=#cc6666 guibg=None
+  hi semshiGlobal          guifg=#de935f
+  hi semshiFree            guifg=#b294bb
+  hi semshiLocal           guifg=#b294bb
+  hi semshiSelf            guifg=#de935f
+  hi semshiParameterUnused guifg=#f0c674 gui=underline
+  hi semshiUnresolved      guifg=#cc6666 gui=underline
+  echo 'Tomorrow-Night Semshi'
+endfunction
 
 function! SemshiMaterial()
   " let s:red = '#ff5370'
@@ -221,6 +253,8 @@ function! SemshiColors() "{{{
     call SemshiMaterial()
   elseif g:colors_name =~ 'monokai'
     call SemshiMonokai()
+  elseif g:colors_name =~ 'Tomorrow-Night'
+    call SemshiTomorrowNight()
   endif
 endfunc  "}}}
 
