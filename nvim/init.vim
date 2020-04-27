@@ -142,6 +142,7 @@ Plug 'jacoborus/tender.vim'
 Plug 'dracula/vim'
 Plug 'tomasr/molokai'
 Plug 'arcticicestudio/nord-vim'
+Plug 'kaicataldo/material.vim'
 Plug 'sheerun/vim-wombat-scheme'
 Plug 'w0ng/vim-hybrid'
 
@@ -158,6 +159,11 @@ set hls                        " highlighting!
 set background=dark
 
 " Colorschemes -----------------------------------
+" let g:material_terminal_italics = 1
+" let g:material_theme_style = 'darker'
+" colorscheme material
+" colorscheme molokai
+" colorscheme monokai
 colorscheme onedark
 " colorscheme Tomorrow-Night 
 " colorscheme hybrid
