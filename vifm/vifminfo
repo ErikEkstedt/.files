@@ -26,12 +26,6 @@ l14,2
 r2
 
 # Left window history (oldest to newest):
-d/home/erik/Disk/Gemaps
-	..
-0
-d/home/erik/Disk
-	Gemaps
-1
 d/home/erik
 	.pki
 5
@@ -315,8 +309,8 @@ d/home/erik/.files/vifm
 	vifmrc
 7
 d/home/erik/.files
-	inputrc
-54
+	vifm
+40
 d/home/erik/TurnGPT/__pycache__
 	..
 0
@@ -326,6 +320,12 @@ d/home/erik/TurnGPT
 d/home/erik/TurnGPT/data
 	multiwoz_dialogs.json
 5
+d/home/erik/.files/vifm
+	install.bash
+4
+d/home/erik/TurnGPT
+	runs
+4
 d
 
 # Right window history (oldest to newest):
@@ -398,6 +398,7 @@ D
 :!bat Install.sh
 :nmap <space>
 :view
+:redraw
 
 # Search history (oldest to newest):
 /.vifm
@@ -410,7 +411,7 @@ pbashrc
 # Local filter history (oldest to newest):
 
 # Registers:
-""/home/erik/.local/share/vifm/Trash/000_dev_dataset.pt
+""/home/erik/.local/share/vifm/Trash/001_test.txt
 
 # Directory stack (oldest to newest):
 
@@ -433,6 +434,8 @@ t/home/erik/.local/share/vifm/Trash/000_Apr23_15-15-24_erik-desktop_gpt2
 	/home/erik/TurnGPT/runs/Apr23_15-15-24_erik-desktop_gpt2
 t/home/erik/.local/share/vifm/Trash/000_dev_dataset.pt
 	/home/erik/TurnGPT/dev_dataset.pt
+t/home/erik/.local/share/vifm/Trash/000_test.txt
+	/home/erik/.files/vifm/test.txt
 
 # State:
 f

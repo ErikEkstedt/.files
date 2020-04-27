@@ -101,6 +101,10 @@ nnoremap <c-n> :FZFDir<cr>
 nnoremap <c-f> :FZFFile<cr>
 nnoremap <c-t> :FZFFileHome<cr>
 
+nmap p <nop>
+nnoremap dD :delete<cr>
+nnoremap dd :copy<cr>:delete<cr>
+nnoremap pp :put<cr>
 
 " Start shell in current directory
 nnoremap s :shell<cr>
