@@ -2,14 +2,29 @@
 
 # https://godoc.org/github.com/gokcehan/lf
 
-# make sure trash folder exists
-%mkdir -p ~/.trash
+########################################################################################
+# Information
+########################################################################################
+# Prefix
+# :  read (default)  builtin/custom command
+# $  shell           shell command
+# %  shell-pipe      shell command running with the ui
+# !  shell-wait      shell command waiting for key press
+# &  shell-async     shell command running asynchronously
+# $f   current file
+# $fs  selected file(s) separated with 'filesep'
+# $fx  current file or selected file(s) if any
+# $id  id number of the client
 
 
+########################################################################################
 ## SETTINGS
+########################################################################################
 # zsh does not split words by default as described **here7**, 
 # which makes it difficult to work with $fs and $fx variables, 
 # but a compatibility option named shwordsplit is provided for this purpose.
+
+$EDITOR nvim
 set shell zsh
 set shellopts '-eu:--shwordsplit'
 set ifs "\n"
@@ -23,8 +38,77 @@ set dircounts   # what does this do?
 set previewer ~/.files/lf/preview.sh
 # set icons           #  boolean  (default off)
 
+# make sure trash folder exists
+%mkdir -p ~/.trash
 
-# COMANDS ----------------------------------------------------------
+
+########################################################################################
+# MAPPINGS
+########################################################################################
+
+map D
+map c
+map d
+map gh
+map i
+map m
+map n
+map v
+map p
+map w
+map y
+
+# map - ~/.config/lf/draw_img.sh $f
+map n !nvim -c NV 
+map v !nvim -c Files
+map o open
+map <enter> open 
+map D delete
+map dd cut
+map dD delete
+map yy copy
+map pp paste
+map cw push r<c-w>
+map I push r<home>
+map A rename
+map mkdir push %mkdir<space>
+map cc clear
+map bulk bulk-rename 
+
+map yd % echo -n $PWD | pbcopy
+map yp % echo -n $f | pbcopy
+map yn % basename $f | pbcopy
+
+# execute current file (must be executable)
+map x $$f
+map X !$f
+
+# Movement
+map gho cd ~
+map gro cd /
+map gfi cd ~/.files
+map gtu cd ~/TurnGPT
+map gbl cd ~/ErikEkstedt.github.io
+map gpi cd ~/Pictures
+map gdw cd ~/Downloads
+map gdo cd ~/Documents
+
+map <c-t> fzf_jump
+map <c-b> fzf_cd_from_home
+map <c-n> fzf_cd_from_here
+map <c-f> fzf_jump
+# map <esc> quit  # quit all too often
+
+# Git
+map gpl %git pull
+map glo !git log
+map ghi !git hist
+
+# map - $~/.files/lf/draw_img.sh $f
+
+########################################################################################
+# Commands
+########################################################################################
 # $f   current file
 # $fs  selected file(s) separated with 'filesep'
 # $fx  current file or selected file(s) if any
@@ -126,70 +210,3 @@ cmd fzf_cd_from_here ${{
 }}
 
 
-# MAPPINGS
-
-# Prefix
-# :  read (default)  builtin/custom command
-# $  shell           shell command
-# %  shell-pipe      shell command running with the ui
-# !  shell-wait      shell command waiting for key press
-# &  shell-async     shell command running asynchronously
-# $f   current file
-# $fs  selected file(s) separated with 'filesep'
-# $fx  current file or selected file(s) if any
-# $id  id number of the client
-
-map D
-map c
-map d
-map gh
-map i
-map m
-map p
-map w
-map y
-
-map o open
-map <enter> open 
-map D delete
-map dd cut
-map dD delete
-map yy copy
-map pp paste
-map cw push r<c-w>
-map I push r<home>
-map A rename
-map mkd push %mkdir<space>
-map cc clear
-map bulk bulk-rename 
-
-map yd % echo -n $PWD | xsel -i -b 
-map yp % echo -n $f | xsel -i -b
-map yn % basename $f | xsel -i -b
-
-# execute current file (must be executable)
-map x $$f
-map X !$f
-
-# Movement
-map gho cd ~
-map gro cd /
-map gfi cd ~/.files
-map gtu cd ~/TurnTaking/turntaking
-map gbl cd ~/ErikEkstedt.github.io
-map gpi cd ~/Pictures
-map gdw cd ~/Downloads
-map gdo cd ~/Documents
-
-map <c-t> fzf_jump
-map <c-b> fzf_cd_from_home
-map <c-n> fzf_cd_from_here
-map <c-f> fzf_jump
-# map <esc> quit  # quit all too often
-
-# Git
-map gpl %git pull
-map glo !git log
-map ghi !git hist
-
-# map - $~/.files/lf/draw_img.sh $f
