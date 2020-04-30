@@ -6,7 +6,7 @@ clear_screen() {
 }
 
 # Get a file's mime_type.
-mime_type=$(file -bi "$1")
+mime_type=$(file -bI "$1")
 
 # File isn't an image file, give warning.
 if [[ $mime_type != image/* ]]; then
@@ -14,7 +14,8 @@ if [[ $mime_type != image/* ]]; then
     exit
 fi
 
-w3m_paths=(/usr/{local/,}{lib,libexec,lib64,libexec64}/w3m/w3mi*)
+# w3m_paths=(/usr/{local/,}{lib,libexec,lib64,libexec64}/w3m/w3mi*)
+w3m_paths=(/usr/local/opt/w3m/bin/w3m)
 read -r w3m _ < <(type -p w3mimgdisplay "${w3m_paths[@]}")
 read -r LINES COLUMNS < <(stty size)
 
