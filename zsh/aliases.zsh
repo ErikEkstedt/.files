@@ -51,7 +51,8 @@ alias ldt="tree -d -L 2"
 
 # Movement {{{
 alias gfi="cd ~/.files; clear; ls"
-alias gtu="cd ~/TurnTaking/turntaking; clear; ls"
+# alias gtu="cd ~/TurnTaking/turntaking; clear; ls"
+alias gtu="cd ~/TurnGPT; clear; ls"
 alias gz="cd ~/.files/zsh; clear; ls"
 alias gbl="cd ~/ErikEkstedt.github.io; ls"
 alias gph="cd ~/phd; ls"
@@ -140,6 +141,7 @@ alias tens="tensorboard --logdir "
 
 # File Manager {{{
 alias fm=lf
+alias vif=$HOME/.config/vifm/scripts/vifmrun
 
 # }}}
 
