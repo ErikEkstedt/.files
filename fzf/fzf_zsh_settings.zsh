@@ -165,7 +165,8 @@ fkill() {
 bindkey '^t' files-from-home
 bindkey '^f' fzf-file-widget
 
-bindkey -M vicmd f cd-from-home
+bindkey -M vicmd f files-from-home
+bindkey -M vicmd g cd-from-home
 
 bindkey '^B' cd-from-home
 bindkey -M vicmd '^B' cd-from-home
