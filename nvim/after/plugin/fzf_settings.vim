@@ -4,10 +4,19 @@ if !exists('g:loaded_fzf')
   finish
 endif
 
+let $FZF_DEFAULT_COMMAND = 'fd --type file --follow --hidden'
+let $FZF_DEFAULT_COMMAND .= ' -E .git -E "*.png" -E "*.gif" -E "*.jpg" -E ".jpeg" -E ".mp4"'
+
 " Minimu trying fzf-preview
 let g:fzf_preview_window = 'right:60%'
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7, 'highlight': 'Comment' }}
 let g:fzf_command_prefix = 'FZF'
+let g:fzf_action = {
+            \ 'ctrl-t': 'tab split',
+            \ 'ctrl-l': 'vsplit',
+            \ 'ctrl-j': 'split',
+            \ 'ctrl-o': 'edit',
+            \ 'Enter': 'edit'}
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Colors
@@ -95,6 +104,7 @@ nnoremap <Leader>fg :GFiles?<CR>
 " nnoremap <Leader>fw :Rg<CR>
 " nnoremap <Leader>fa :RgHome<CR>
 
+" Help can not open in split?
 nnoremap <Leader>he :Helptags<CR>
 nnoremap <Leader>fs :Snippets<CR>
 nnoremap <Leader>ma :Maps<CR>
@@ -112,8 +122,9 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 
 
 " Old used before fzfpreview
-"let $FZF_DEFAULT_COMMAND = 'fd --type file --follow --hidden --color=always'
-"let $FZF_DEFAULT_COMMAND .= ' -E .git -E "*.png" -E "*.gif" -E "*.jpg" -E ".jpeg" -E ".mp4"'
+" let $FZF_DEFAULT_COMMAND = 'fd --type file --follow --hidden --color=always'
+" let $FZF_DEFAULT_COMMAND = 'fd --type file --follow --hidden'
+" let $FZF_DEFAULT_COMMAND .= ' -E .git -E "*.png" -E "*.gif" -E "*.jpg" -E ".jpeg" -E ".mp4"'
 "let $FZF_DEFAULT_OPTS .= ' --ansi --margin=1,1'
 "let g:fzf_buffers_jump = 1 " [Buffers] Jump to the existing window if possible
 "" Syntax Highlight in Previews (requires bat)
