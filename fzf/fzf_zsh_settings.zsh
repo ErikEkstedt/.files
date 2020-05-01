@@ -17,80 +17,105 @@ export FZF_ALT_C_OPTS="--preview 'tree -L 1 -C {} | head -200' "
 export FZF_CTRL_R_OPTS="--reverse"
 export FZF_COMPLETION_OPTS='+c -x'
 
+# ALT-C - cd into the selected directory
+fzf-cd-custom-widget() {
+    if [[ -z "$0" ]]; then
+        echo "startPath '.'"
+        startPath=.
+    else;
+        echo "startPath $1 "
+        startPath=$1
+    fi
+    local cmd="${FZF_ALT_C_COMMAND:-"command find -L $startPath -mindepth 1 \\( -path '*/\\.*' -o -fstype 'sysfs' -o -fstype 'devfs' -o -fstype 'devtmpfs' -o -fstype 'proc' \\) -prune \
+    -o -type d -print 2> /dev/null | cut -b3-"}"
+    setopt localoptions pipefail no_aliases 2> /dev/null
+    local dir="$(eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" $(__fzfcmd) +m)"
+    if [[ -z "$dir" ]]; then
+    zle redisplay
+    return 0
+    fi
+    cd "$dir"
+    unset dir # ensure this doesn't end up appearing in prompt expansion
+    local ret=$?
+    zle fzf-redraw-prompt
+    return $ret
+}
+zle -N fzf-cd-custom-widget
+
 
 # Functions
 cd-from-home() { #{{{
-	local current_dir=$(pwd); cd
-  setopt localoptions pipefail 2> /dev/null
-  local dir="$(eval "${FZF_ALT_C_COMMAND}" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" $(__fzfcmd) +m)"
+    local current_dir=$(pwd); cd
+    setopt localoptions pipefail 2> /dev/null
+    local dir="$(eval "${FZF_ALT_C_COMMAND}" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" $(__fzfcmd) +m)"
 
-  if [[ -z "$dir" ]]; then
-		cd $current_dir
+    if [[ -z "$dir" ]]; then
+        cd $current_dir
     zle redisplay
     return 0
-  fi
+    fi
 
-  cd "$dir"
-  local ret=$?
-  zle fzf-redraw-prompt
-  return $ret
+    cd "$dir"
+    local ret=$?
+    zle fzf-redraw-prompt
+    return $ret
 }
 zle -N cd-from-home
 #}}}
 
 cd-from-root() {
-	local current_dir=$(pwd); cd /
-  setopt localoptions pipefail 2> /dev/null
-  local dir="$(eval "${FZF_ALT_C_COMMAND}" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" $(__fzfcmd) +m)"
+    local current_dir=$(pwd); cd /
+    setopt localoptions pipefail 2> /dev/null
+    local dir="$(eval "${FZF_ALT_C_COMMAND}" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" $(__fzfcmd) +m)"
 
-  if [[ -z "$dir" ]]; then
-		cd $current_dir
+    if [[ -z "$dir" ]]; then
+        cd $current_dir
     zle redisplay
     return 0
-  fi
+    fi
 
-  cd "$dir"
-  local ret=$?
-  zle fzf-redraw-prompt
-  return $ret
+    cd "$dir"
+    local ret=$?
+    zle fzf-redraw-prompt
+    return $ret
 }
 zle -N cd-from-root
 
 _fzf_compgen_path() { #{{{
-	# - The first argument to the function ($1) is the base path to start traversal 
-	# - See the source code (completion.{bash,zsh}) for the details. 
-	fd --hidden --follow --exclude ".git" . "$1" 
+    fd --hidden --follow --exclude ".git" . "$1" 
+    # - The first argument to the function ($1) is the base path to start traversal 
+    # - See the source code (completion.{bash,zsh}) for the details. 
 } # }}}
 
 _fzf_compgen_dir() { #{{{
-  fd --type d -p --hidden --follow --exclude ".git" . "$1" 
+    fd --type d -p --hidden --follow --exclude ".git" . "$1" 
 }# }}}
 
 # Find Files
 
 home-files() {
-  setopt localoptions pipefail 2> /dev/null
-  eval "${FZF_CTRL_T_COMMAND} ~" | fzf | while read item; do
+    setopt localoptions pipefail 2> /dev/null
+    eval "${FZF_CTRL_T_COMMAND} ~" | fzf | while read item; do
     echo -n "${(q)item} "
-  done
-  local ret=$?
-  echo
-  return $ret
+    done
+    local ret=$?
+    echo
+    return $ret
 }
 
 files-from-home() {
-  LBUFFER="${LBUFFER}$(home-files)"
-  local ret=$?
-  zle reset-prompt
-  return $ret
+    LBUFFER="${LBUFFER}$(home-files)"
+    local ret=$?
+    zle reset-prompt
+    return $ret
 }
 zle -N files-from-home
 
 fzf_tmux_kill_sessions() {
-  # TODO
-  # Extend to multiple choices
-  local tsess="$(tmux list-sessions)"
-  echo $tsess | fzf --reverse -m --prompt 'kill session: ' -1 \
+    # TODO
+    # Extend to multiple choices
+    local tsess="$(tmux list-sessions)"
+    echo $tsess | fzf --reverse -m --prompt 'kill session: ' -1 \
     | cut -d':' -f1 \
     | xargs tmux kill-session -t
 		
@@ -119,32 +144,34 @@ fzf_tmux_kill_sessions() {
 
 # fkill - kill processes - list only the ones you can kill.
 fkill() {
-  local pid
-  if [ "$UID" != "0" ]; then
+    local pid
+    if [ "$UID" != "0" ]; then
     pid=$(ps -f -u $UID | sed 1d | fzf -m | awk '{print $2}')
-  else
+    else
     pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
-  fi
+    fi
 
-  if [ "x$pid" != "x" ]
-  then
+    if [ "x$pid" != "x" ]
+    then
     echo $pid | xargs kill -${1:-9}
-  fi
+    fi
 }
 
 # Bindings
+
 # bindkey '^u' files-from-root
-bindkey '^t' fzf-file-widget
-# bindkey '^t' files-from-home
+# bindkey '^t' fzf-file-widget
+
+bindkey '^t' files-from-home
 bindkey '^f' fzf-file-widget
 
-bindkey -M vicmd '^R' fzf-history-widget
+bindkey -M vicmd f cd-from-home
 
 bindkey '^B' cd-from-home
 bindkey -M vicmd '^B' cd-from-home
-
-bindkey '^_' cd-from-root
-bindkey -M vicmd '^_' cd-from-root
-
 bindkey '^O' fzf-cd-widget
 bindkey -M vicmd '^O' fzf-cd-widget
+
+# key: CTRL - / 
+bindkey '^_' cd-from-root
+bindkey -M vicmd '^_' cd-from-root
