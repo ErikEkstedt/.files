@@ -134,6 +134,6 @@ bindkey -M vicmd K vi-cmd-up-line-history
 
 
 # tree
-bindkey -s '^d' 'tree -d\C-M'
+# bindkey -s '^d' 'tree -d\C-M'
 
 
