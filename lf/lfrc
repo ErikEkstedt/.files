@@ -75,9 +75,16 @@ map mkdir push %mkdir<space>
 map cc clear
 map bulk bulk-rename 
 
-map yd % echo -n $PWD | pbcopy
-map yp % echo -n $f | pbcopy
-map yn % basename $f | pbcopy
+# map yd % echo -n $PWD | pbcopy
+# map yp % echo -n $f | pbcopy
+# map yn % basename $f | pbcopy
+# map yd % echo -n $PWD | xclip -in -selection clipboard
+# map yp % echo -n $f | xclip -in -selection clipboard
+# map yn % basename $f | xclip -in -selection clipboard
+
+map yp yank-path
+map yd yank-dir
+map yn yank-name
 
 # execute current file (must be executable)
 map x $$f
@@ -113,6 +120,40 @@ map ghi !git hist
 # $fs  selected file(s) separated with 'filesep'
 # $fx  current file or selected file(s) if any
 # $id  id number of the client
+
+cmd yank-path ${{
+    case `uname` in
+        Darwin)
+            echo -n $f | pbcopy
+            ;;
+        Linux)
+            echo -n $f | xclip -in -selection clipboard
+            ;;
+    esac
+}}
+
+cmd yank-name ${{
+    case `uname` in
+        Darwin)
+            echo -n $(basename $f) | pbcopy
+            ;;
+        Linux)
+            echo -n $(basename $f) | xclip -in -selection clipboard
+            ;;
+    esac
+}}
+
+cmd yank-dir ${{
+    case `uname` in
+        Darwin)
+            echo -n $PWD | pbcopy
+            ;;
+        Linux)
+            echo -n $PWD | xclip -in -selection clipboard
+            ;;
+    esac
+}}
+
 
 cmd bulk-rename ${{
     old=$(mktemp)

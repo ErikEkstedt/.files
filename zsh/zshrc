@@ -16,9 +16,6 @@ compinit
 # Completion for kitty
 kitty + complete setup zsh | source /dev/stdin
 
-source ~/.files/zsh/less_colors.zsh
-source ~/.files/zsh/aliases.zsh
-alias nvr="$HOME/miniconda3/envs/neovim3/bin/nvr"
 
 
 ##############################################################
@@ -58,7 +55,6 @@ if type "tmuxinator" > /dev/null; then
     source ~/.files/tmuxinator/tmuxinator.zsh
 fi
 
-
  
 case `uname` in
     Darwin)
@@ -71,8 +67,7 @@ case `uname` in
         ;;
     Linux)
         # commands for Linux go here
-        export LC_ALL=en_US.UTF-8
-        stty -ixon # C-s, C-q 
+        # stty -ixon # C-s, C-q   # unnecessary?
         # commands for Linux go here
         source ~/.files/zsh/zsh-functions-kde.zsh
         ;;
@@ -138,6 +133,10 @@ export NVM_DIR="$HOME/.nvm"
 # Geckodriver (selenium, webdriver for firefox)
 # export PATH=$HOME/geckodriver:${PATH}  # Download tar file and extract here 
 
+
+source ~/.files/zsh/less_colors.zsh
+source ~/.files/zsh/aliases.zsh
+alias nvr="$HOME/miniconda3/envs/neovim3/bin/nvr"
 ##############################################################
 # Conda addition
 ##############################################################
