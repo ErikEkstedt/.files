@@ -37,11 +37,10 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif "}}}
 
-" Vim-Plug {{{
+" Plugins {{{
 call plug#begin('~/.vim/bundle')
 
-" ================ Deprecated ================
-
+" ================ Not used anymore ================
 " Plug 'sjl/gundo.vim'                   " Visualize undo tree
 " Plug 'tpope/vim-obsession'             " :mksession | saves a vim instance | used when saving tmux session
 "
@@ -54,8 +53,6 @@ call plug#begin('~/.vim/bundle')
 "
 " Plug 'mxw/vim-jsx'
 " Plug 'lepture/vim-jinja'
-
-
 
 " ================ Interesting? ================
 " Folding for python
@@ -79,6 +76,8 @@ Plug 'jiangmiao/auto-pairs'
 
 
 " completion / LSP
+" Plug 'neovim/nvim-lsp'
+" Plug 'haorenW1025/completion-nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Shougo/neco-vim'
 Plug 'SirVer/ultisnips'                " XXX snippet engine
@@ -86,7 +85,8 @@ Plug 'honza/vim-snippets'              " XXX snippets
 
 
 " Filemanager
-Plug 'scrooloose/nerdtree'             " XXX Project and file navigation
+Plug 'kyazdani42/nvim-tree.lua'
+" Plug 'scrooloose/nerdtree'             " XXX Project and file navigation
 Plug 'Xuyuanp/nerdtree-git-plugin'     " XXX show git status of files
 Plug 'ivalkeen/nerdtree-execute'       " XXX open files from nerdtree
 Plug 'tpope/vim-fugitive'              " XXX git tools
@@ -104,12 +104,14 @@ Plug 'tpope/vim-surround'              " XXX Surround objects with quotes, brack
 Plug 'wellle/targets.vim'              " XXX ci' works on (, [, {, < on entire line
 Plug 'easymotion/vim-easymotion'       " XXX visualize targets tot move to specific words
 Plug 'godlygeek/tabular'
-Plug 'junegunn/fzf.vim'                " XXX fuzzy filefinding
 
+Plug 'junegunn/fzf.vim'                " XXX fuzzy filefinding
 Plug 'alok/notational-fzf-vim'
+Plug 'chengzeyi/fzf-preview.vim'
+
 Plug 'junegunn/vim-easy-align'         " XXX better alignment than tabular
 Plug 'junegunn/vim-peekaboo'           " XXX when pressing quotes shows what's stored in the different registers
-Plug 'machakann/vim-highlightedyank'   " XXX Highlight yanks
+" Plug 'machakann/vim-highlightedyank'   " XXX Highlight yanks
 Plug 'nelstrom/vim-visual-star-search' " * on visual select searches for the snippet
 Plug 'lotabout/slimux'                 " XXX
 
@@ -148,10 +150,161 @@ Plug 'kaicataldo/material.vim'
 Plug 'sheerun/vim-wombat-scheme'
 Plug 'w0ng/vim-hybrid'
 
-Plug 'chengzeyi/fzf-preview.vim'
 
 call plug#end()
 
+" Nvim-lsp
+" lua << EOF
+" require'nvim_lsp'.bashls.setup{}
+" require'nvim_lsp'.vimls.setup{}
+" require'nvim_lsp'.pyls_ms.setup{
+"   filetypes = { "python" };
+"   settings = {
+"     python = {
+"       condaPath = { "miniconda3/bin/conda" };
+"       venvPath = { "miniconda3/envs" };
+"       analysis = {
+"         disabled = {};
+"         errors = {};
+"         information = { "unresolved-import" };
+"       },
+"     };
+"   };
+"   init_options = {
+"     analysisUpdates = true;
+"     asyncStartup = true;
+"     interpreter = {
+"       properties = {
+"       InterpreterPath = "/home/erik/miniconda3/envs/neovim3/bin/python",
+"       Version = "3.8",
+"       };
+"     };
+"     displayOptions = {};
+"   };
+" }
+" EOF
+
+" " require'nvim_lsp'.vimls.setup{on_attach=require'completion'.on_attach}
+" " require'nvim_lsp'.pyls_ms.setup{on_attach=require'completion'.on_attach}
+
+" " greg hurell
+" sign define LspDiagnosticsErrorSign text=✖
+" sign define LspDiagnosticsWarningSign text=⚠
+" sign define LspDiagnosticsInforgmationSign text=ℹ
+" sign define LspDiagnosticsHintSign text=➤
+
+" function! s:SetUpLspHighlights()
+"   execute 'highlight LspDiagnosticsError guifg=#e43a21'
+"   execute 'highlight LspDiagnosticsWarning guifg=#db8d23'
+"   execute 'highlight LspDiagnosticsInformation guifg=#d4d51b'
+"   execute 'highlight LspDiagnosticsHint gui=bold,italic,underline guifg=#22d85e'
+" endfunction
+
+" augroup ErikLanguageClientAutocmds
+"   autocmd!
+"   " autocmd WinEnter * call s:Bind()
+"   " autocmd FileType javascript,typescript,vim  call s:ConfigureBuffer()
+"   autocmd ColorScheme * call s:SetUpLspHighlights()
+" augroup END
+
+" nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+" nnoremap <silent> gh <cmd>lua vim.lsp.buf.definition()<CR>
+" nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+" nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+" " nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+" nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+" nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+" nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+" nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+
+" " Completion
+" " Use completion-nvim in every buffer
+" set completeopt=menuone,noinsert,noselect
+
+" autocmd BufEnter * lua require'completion'.on_attach()
+" let g:completion_enable_snippet = 'UltiSnips'
+" let g:completion_enable_auto_paren = 1
+" " Set completeopt to have a better completion experience
+" let g:completion_customize_lsp_label = {
+"       \ 'Function': "\uf794",
+"       \ 'Method': "\uf6a6",
+"       \ 'Variable': "\uf71b",
+"       \ 'Constant': "\uf8ff",
+"       \ 'Struct': "\ufb44",
+"       \ 'Class': "\uf0e8",
+"       \ 'Interface': "\ufa52",
+"       \ 'Text': "\ue612",
+"       \ 'Enum': "\uf435",
+"       \ 'EnumMember': "\uf02b",
+"       \ 'Module': "\uf668",
+"       \ 'Color': "\ue22b",
+"       \ 'Property': "\ufab6",
+"       \ 'Field': "\uf93d",
+"       \ 'Unit': "\uf475",
+"       \ 'File': "\uf471",
+"       \ 'Value': "\uf8a3",
+"       \ 'Event': "\ufacd",
+"       \ 'Folder': "\uf115",
+"       \ 'Keyword': "\uf893",
+"       \ 'Operator': "\uf915",
+"       \ 'Reference': "\uf87a",
+"       \ 'Snippet': "\uf64d",
+"       \ 'TypeParameter': "\uf278",
+"       \ 'Default': "\uf29c"
+"       \}
+
+
+" nvim-tree.lua
+let g:lua_tree_ignore = [ '.git', 'node_modules', '.cache' ] "empty by default, not working on mac atm
+let g:lua_tree_auto_open = 1 "0 by default, opens the tree when typing `vim $DIR` or `vim`
+let g:lua_tree_auto_close = 1 "0 by default, closes the tree when it's the last window
+" let g:lua_tree_follow = 1 "0 by default, this option will bind BufEnter to the LuaTreeFindFile command
+" You can edit keybindings be defining this variable
+" You don't have to define all keys.
+" NOTE: the 'edit' key will wrap/unwrap a folder and open a file
+let g:lua_tree_bindings = {
+    \ 'edit':        'o',
+    \ 'edit_vsplit': '<C-v>',
+    \ 'edit_split':  '<C-x>',
+    \ 'edit_tab':    '<C-t>',
+    \ 'cd':          '.',
+    \ 'create':      'a',
+    \ 'remove':      'd',
+    \ 'rename':      'r'
+    \ }
+
+nnoremap <leader>ne :LuaTreeToggle<CR>
+nnoremap <leader>r :LuaTreeRefresh<CR>
+nnoremap <leader>n :LuaTreeFindFile<CR>
+
+set termguicolors " this variable must be enabled for colors to be applied properly
+
+" a list of groups can be found at `:help lua_tree_highlight`
+highlight LuaTreeFolderName guibg=cyan gui=bold,underline
+highlight LuaTreeFolderIcon guibg=blue
+" filetypes = { "python" }
+" init_options = {
+"   analysisUpdates = true,
+"   asyncStartup = true,
+"   displayOptions = {},
+"   interpreter = {
+"     properties = {
+"       InterpreterPath = "/usr/bin/python",
+"       Version = "2.7"
+"     }
+"   }
+" }
+" on_new_config = <function 1>
+" root_dir = vim's starting directory
+" settings = {
+"   python = {
+"     analysis = {
+"       disabled = {},
+"       errors = {},
+"       info = {}
+"     }
+"   }
+" }
 
 " }}}
 

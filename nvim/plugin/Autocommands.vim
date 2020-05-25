@@ -16,6 +16,10 @@ au VimResized * exe "normal! \<c-w>="
 " 	au winenter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
 " aug end "}}}
 
+if exists('##TextYankPost')
+  autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank('DiffText', 500)
+endif
+
 
 augroup vimStartup
     au!
