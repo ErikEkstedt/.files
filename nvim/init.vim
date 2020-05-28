@@ -43,6 +43,7 @@ call plug#begin('~/.vim/bundle')
 " ================ Not used anymore ================
 " Plug 'sjl/gundo.vim'                   " Visualize undo tree
 " Plug 'tpope/vim-obsession'             " :mksession | saves a vim instance | used when saving tmux session
+" Plug 'machakann/vim-highlightedyank'   " Highlight yanks[DEPRECATED] Built-in now
 "
 " Not that useful
 " Plug 'romainl/vim-cool'                " unhighlights searches when it is not needed anymor
@@ -76,9 +77,9 @@ Plug 'jiangmiao/auto-pairs'
 
 
 " completion / LSP
-" Plug 'neovim/nvim-lsp'
-" Plug 'haorenW1025/completion-nvim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neovim/nvim-lsp'
+Plug 'haorenW1025/completion-nvim'
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Shougo/neco-vim'
 Plug 'SirVer/ultisnips'                " XXX snippet engine
 Plug 'honza/vim-snippets'              " XXX snippets
@@ -111,7 +112,6 @@ Plug 'chengzeyi/fzf-preview.vim'
 
 Plug 'junegunn/vim-easy-align'         " XXX better alignment than tabular
 Plug 'junegunn/vim-peekaboo'           " XXX when pressing quotes shows what's stored in the different registers
-" Plug 'machakann/vim-highlightedyank'   " XXX Highlight yanks
 Plug 'nelstrom/vim-visual-star-search' " * on visual select searches for the snippet
 Plug 'lotabout/slimux'                 " XXX
 
