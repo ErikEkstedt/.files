@@ -324,6 +324,7 @@ set background=dark
 " colorscheme molokai
 " colorscheme monokai
 colorscheme onedark
+" colorscheme gruvbox
 " colorscheme Tomorrow-Night 
 " colorscheme hybrid
 " colorscheme wombat
@@ -335,7 +336,8 @@ hi Folded guibg=clear
 hi FoldColumn guibg=clear
 hi MatchParen guifg=#ff008b
 
-hi Search guibg=None guifg=#d400aa gui=underline,bold
+" hi Search guibg=None guifg=#d400aa gui=underline,bold
+hi Search gui=underline,bold
 hi IncSearch guibg=#cbcbcb guifg=#d400aa gui=underline,bold
 
 let g:background_color = synIDattr(hlID("Normal"), "bg")

@@ -4,11 +4,8 @@ if !exists('UltiSnipsEditSplit')
   finish
 endif
 
-if g:UNAME == "Darwin"
-	let g:UltiSnipsSnippetDirectories = [g:HOME . "/.config/nvim/mysnips", g:HOME . "/.vim/bundle/vim-snippets/UltiSnips", "UltiSnips"]
-else
-	let g:UltiSnipsSnippetDirectories = [g:HOME . "/.files/nvim/mysnips", g:HOME . "/.vim/bundle/vim-snippets/UltiSnips", "UltiSnips"]
-endif
+
+let g:UltiSnipsSnippetDirectories = ["mysnips", "bundle/vim-snippets/UltiSnips", "UltiSnips"]
 
 " Trigger configuration.
 let g:UltiSnipsExpandTrigger='<leader><leader>'
