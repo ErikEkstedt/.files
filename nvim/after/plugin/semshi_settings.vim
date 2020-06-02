@@ -1,8 +1,15 @@
 " https://github.com/numirias/semshi
 
 if !exists('g:semshi#filetypes')
+  echo "semshi does not exists"
   finish
 endif
+
+augroup Semshi
+  autocmd!
+  autocmd FileType python call s:SemshiColors()
+  autocmd ColorScheme * call s:SemshiColors()
+augroup END
 
 " Mappings
 nmap <silent> <leader>rr :Semshi rename<CR>
@@ -19,7 +26,8 @@ nmap <silent> <leader>ge :Semshi goto error<CR>
 " let g:semshi#error_sign_delay=2
 
 " Highlight
-function! SemshiOnedark()
+
+function! s:OneDark()
   " |  Color Name  |   Hex   |
   " |--------------+---------|
   " | Black        | #282c34 |
@@ -55,7 +63,15 @@ function! SemshiOnedark()
   hi semshiUnresolved      guifg=#ff3c2c cterm=underline gui=underline
 endfunction
 
-function! SemshiTomorrowNight()
+function! s:Grubox()
+  hi! semshiBuiltin guifg=#f098b0
+  hi! semshiImported guifg=#fabd2f
+  hi! semshiAttribute guifg=#fb4934
+  hi! link semshiSelf semshiImported
+  hi! link semshiSelected Visual
+endfunction
+
+function! s:TomorrowNight()
   " '#c5c8c6'
   " '#1d1f21'
   " '#373b41'
@@ -88,7 +104,7 @@ function! SemshiTomorrowNight()
   echo 'Tomorrow-Night Semshi'
 endfunction
 
-function! SemshiMaterial()
+function! s:Material()
   " let s:red = '#ff5370'
   " let s:orange = '#f78c6c'
   " let s:yellow = '#ffcb6b'
@@ -133,8 +149,7 @@ function! SemshiMaterial()
   " hi semshiUnresolved      guifg=#ff3c2c cterm=underline gui=underline
 endfunction
 
-
-function! SemshiMonokai()
+function! s:Monokai()
   " hi semshiSelected        guibg=#4b5263 guifg=#abb2bf gui=bold
   " hi semshiAttribute       guifg=s:cyan
   hi pythonString          guifg=#E6DB74
@@ -158,7 +173,7 @@ function! SemshiMonokai()
 endfunction
 
 
-function! SemshiNord()
+function! s:Nord()
   " let s:nord0_gui = "#2E3440"
   " let s:nord1_gui = "#3B4252"
   " let s:nord2_gui = "#434C5E"
@@ -196,7 +211,7 @@ function! SemshiNord()
 endfunction
 
 
-function! SemshiSubstrata()
+function! s:Substrata()
   " Color: base0        #191c25 ~ # Background
   " Color: base1        #20222d ~ # Slightly lighter
   " Color: base2        #272935 ~ # Much lighter
@@ -241,26 +256,24 @@ function! SemshiSubstrata()
 endfunction
 
 
-function! SemshiColors() "{{{
+function! s:SemshiColors()
   sign define semshiError text=⚠ texthl=semshiErrorSign
   if g:colors_name =~ 'nord'
-    call SemshiNord()
+    call s:Nord()
   elseif g:colors_name =~ 'onedark'
-    call SemshiOnedark()
+    call s:OneDark()
+  elseif g:colors_name =~ 'gruvbox'
+    call s:Grubox()
   elseif g:colors_name =~ 'substrata'
-    call SemshiSubstrata()
+    call s:Substrata()
   elseif g:colors_name =~ 'material'
-    call SemshiMaterial()
+    call s:Material()
   elseif g:colors_name =~ 'monokai'
-    call SemshiMonokai()
+    call s:Monokai()
   elseif g:colors_name =~ 'Tomorrow-Night'
-    call SemshiTomorrowNight()
+    call s:TomorrowNight()
   endif
-endfunc  "}}}
+endfunc
 
 
-augroup Semshi
-	autocmd!
-  autocmd FileType python call SemshiColors()
-  autocmd ColorScheme * call SemshiColors()
-augroup END
+call s:SemshiColors()
