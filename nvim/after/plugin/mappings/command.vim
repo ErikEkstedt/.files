@@ -9,7 +9,10 @@ cnoremap <c-k> <Left>
 cnoremap <c-h> <Left>
 cnoremap <c-l> <Right>
 
-cnoremap <c-b> <Home>
+cnoremap <c-a> <Home>
+" map <c-e>  end of line (default)
+" map <c-u> delete line (default)
+" map <c-w>  delete last word (default)
 
 " I've had custom equivalents of the new <C-g> and <C-t> mapped to
 " <Tab> and <S-Tab>. Then rewritten. / Patient vimmer
