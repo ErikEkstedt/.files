@@ -7,10 +7,10 @@
 # Misc{{{
 
 function price() { # {{{
-  local pair="${1:-etheur}" # default pair
-  local exchange="${2:-kraken}" # default exchange
-  price=$(curl -s "https://api.cryptowat.ch/markets/$exchange/$pair/price" | jq ".result.price")
-  echo "$pair: $price"
+    local pair="${1:-etheur}" # default pair
+    local exchange="${2:-kraken}" # default exchange
+    price=$(curl -s "https://api.cryptowat.ch/markets/$exchange/$pair/price" | jq ".result.price")
+    echo "$pair: $price"
 } #}}}
 
 function g() {  #{{{
@@ -18,12 +18,12 @@ function g() {  #{{{
 } #}}}
 
 function print_path() {  #{{{
-  function _print_path() {  #{{{
-    for p in $path; do
-      echo "$p"
-    done
-  } #}}}
-  _print_path | bat
+    function _print_path() {  #{{{
+        for p in $path; do
+            echo "$p"
+        done
+    } #}}}
+_print_path | bat
 } #}}}
 
 #}}}
@@ -34,15 +34,15 @@ function print_path() {  #{{{
 # Conda{{{
 
 function so() {
-  local env
-  if [ -z "$1" ]; then
-    env=$(ls $HOME/miniconda3/envs | fzf)
-    # source activate "$1"
-  else
-    env=$1
-  fi
-  conda activate "$env"
-} 
+    local env
+    if [ -z "$1" ]; then
+        env=$(ls $HOME/miniconda3/envs | fzf)
+        # source activate "$1"
+    else
+        env=$1
+    fi
+    conda activate "$env"
+}
 alias sod="conda deactivate"
 zle -N so
 
@@ -72,17 +72,17 @@ zle -N so
 # LF {{{
 
 
-vi-cmd-up-line-history() { 
-  zle vi-cmd-mode
-  zle up-line-or-history 
-} 
-zle -N vi-cmd-up-line-history 
+vi-cmd-up-line-history() {
+    zle vi-cmd-mode
+    zle up-line-or-history
+}
+zle -N vi-cmd-up-line-history
 
-vi-cmd-down-line-history() { 
-  zle vi-cmd-mode
-  zle down-line-or-history 
-} 
-zle -N vi-cmd-down-line-history 
+vi-cmd-down-line-history() {
+    zle vi-cmd-mode
+    zle down-line-or-history
+}
+zle -N vi-cmd-down-line-history
 
 
 
@@ -126,6 +126,7 @@ bindkey -M vicmd H beginning-of-line
 bindkey -M vicmd L end-of-line
 bindkey -M vicmd J vi-cmd-down-line-history
 bindkey -M vicmd K vi-cmd-up-line-history
+bindkey -M vicmd '^?' clear-screen  # I would like to bind C-Backspace to clear in insert mode
 
 # bindkey -s '^f' 'lfcd\C-M'
 # bindkey '^f' lfcd_zsh
@@ -135,5 +136,3 @@ bindkey -M vicmd K vi-cmd-up-line-history
 
 # tree
 # bindkey -s '^d' 'tree -d\C-M'
-
-

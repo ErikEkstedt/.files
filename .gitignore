@@ -2,4 +2,4 @@
 *.deb
 *.log
 nvim_slim/
-
+Session.vim

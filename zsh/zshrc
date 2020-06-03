@@ -75,8 +75,11 @@ esac
 
 case `hostname` in
     erik-desktop)
+        # Please make sure that
+        #  -   PATH includes /usr/local/cuda-10.2/bin
+        #  -   LD_LIBRARY_PATH includes /usr/local/cuda-10.2/lib64, or, add /usr/local/cuda-10.2/lib64 to /etc/ld.so.conf and run ldconfig as root
         export PATH="/usr/local/cuda-10.2/bin:$PATH"
-        export PATH="/usr/local/cuda-10.2/lib64:$PATH"
+        export LD_LIBRARY_PATH="/usr/local/cuda-10.2/lib64:$LD_LIBRARY_PATH"
         ;;
 esac
 
@@ -124,6 +127,9 @@ export GEM_HOME="$HOME/gems"  # Ruby (for jekyll)
 export PATH="$HOME/gems/bin:$PATH"  # Install Ruby Gems to ~/gems
 export PATH="$HOME/go/bin:$PATH"  # Install Ruby Gems to ~/gems
 
+export PATH="$HOME/.dotnet:$PATH"  # Install Ruby Gems to ~/gems
+# source $HOME/.dotnet
+
 # NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -136,6 +142,8 @@ export NVM_DIR="$HOME/.nvm"
 
 source ~/.files/zsh/less_colors.zsh
 source ~/.files/zsh/aliases.zsh
+
+
 alias nvr="$HOME/miniconda3/envs/neovim3/bin/nvr"
 ##############################################################
 # Conda addition
@@ -155,9 +163,15 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# Dotnet for pyls_ms nvim-lsp
+
 # Tmux
 if [ "$TMUX" = "" ]; then 
-  tmux new
+    if tmux has-session -t=Terminal 2> /dev/null; then
+        tmux attach -t Terminal
+    else
+        tmux new-session -s Terminal
+    fi
+    exit
 fi
 source ~/.files/tmux/tmux_functions.zsh  # For my custom scripts
-

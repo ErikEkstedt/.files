@@ -25,10 +25,14 @@ function! s:Gruvbox ()
   hi! Folded guibg=NONE
   hi! SignColumn guibg=NONE
   hi! NormalNC guifg=#ab9f81 guibg=#262626
+
   hi! GitGutterAdd guifg=#b8bb26 guibg=NONE
   hi! GitGutterChange guifg=#fabd2f guibg=NONE
   hi! GitGutterDelete guifg=#fb4934 guibg=NONE
   hi! GitGutterChangeDelete guifg=#fa842f guibg=NONE
+
+  hi! CocErrorSign guifg=#fb4934 guibg=None
+  hi! CocWarningSign guifg=#fabd2f guibg=None
 endfunc
 
 function! s:Wombat()

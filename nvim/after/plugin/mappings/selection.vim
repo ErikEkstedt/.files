@@ -1,4 +1,4 @@
-xnoremap gs :sort<CR>
+" xnoremap gs :sort<CR>
 
 " natural end/beginning of line movement
 xnoremap L $

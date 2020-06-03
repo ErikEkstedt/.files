@@ -87,7 +87,8 @@ case `uname` in
   Darwin)
     ;;
   Linux)
-    alias nvim="~/Applications/nvim"
+    # alias nvim="~/Applications/nvim"
+    alias nvim="~/Applications/nvim.appimage"
     ;;
 esac
 
