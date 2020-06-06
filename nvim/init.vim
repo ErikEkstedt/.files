@@ -84,13 +84,11 @@ if &loadplugins " {{{
 
   " Filemanager
   Plug 'kyazdani42/nvim-tree.lua'
-  " Plug 'scrooloose/nerdtree'             " XXX Project and file navigation
   Plug 'Xuyuanp/nerdtree-git-plugin'     " XXX show git status of files
   Plug 'ivalkeen/nerdtree-execute'       " XXX open files from nerdtree
   Plug 'tpope/vim-fugitive'              " XXX git tools
 
   " Tools
-  " Plug 'jiangmiao/auto-pairs'
   Plug 'Raimondi/delimitMate'
   Plug 'vimwiki/vimwiki'
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
@@ -112,6 +110,7 @@ if &loadplugins " {{{
   Plug 'junegunn/vim-peekaboo'           " XXX when pressing quotes shows what's stored in the different registers
   Plug 'nelstrom/vim-visual-star-search' " * on visual select searches for the snippet
   Plug 'lotabout/slimux'                 " XXX
+  " Plug 'jpalardy/vim-slime'
 
   Plug 'christoomey/vim-tmux-navigator'  " XXX navigate between vim and tmuz seemlessly
   Plug 'tmux-plugins/vim-tmux-focus-events' " Focus events correctly triggered. Leaving/Returning to vim inside tmux
@@ -120,8 +119,11 @@ if &loadplugins " {{{
   " Code Formatting / Syntax / Preview
   Plug 'norcalli/nvim-colorizer.lua'  " faster color disable coc-highlight
 
+  " Python
   Plug 'psf/black', { 'tag': '19.10b0' } " Plug 'psf/black'
   Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " better python syntax highlight
+  Plug 'jupyter-vim/jupyter-vim'        " interact with qtconsole
+
   Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
   Plug 'plasticboy/vim-markdown'
   Plug 'lervag/vimtex'       " XXX latex compiler, preview latex pdf, highlight and syntax. alot more.
