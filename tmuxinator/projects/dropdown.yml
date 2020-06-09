@@ -3,5 +3,4 @@
 name: DropDown
 root: ~/
 windows:
-  - Ranger: 
-      - lf
+    - Term:

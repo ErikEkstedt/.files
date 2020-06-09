@@ -132,16 +132,16 @@ Add repositories
 
 Install
 ```bash
-# Install nvidia-docker2 and reload the Docker daemon configuration
-sudo apt-get install -y nvidia-docker2
-sudo pkill -SIGHUP dockerd
+sudo apt-get update && sudo apt-get install -y nvidia-container-toolkit
+sudo systemctl restart docker
 ```
 
 Test!
 
 ```bash
 # Test nvidia-smi with the latest official CUDA image
-docker run --runtime=nvidia --rm nvidia/cuda:9.0-base nvidia-smi
+docker run --gpus all nvidia/cuda:10.0-base nvidia-smi
+
 ```
 
 ## Pytorch

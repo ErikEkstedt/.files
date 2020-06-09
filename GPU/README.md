@@ -50,6 +50,10 @@ sudo apt purge cuda\*
     3. run: `sudo sh cuda_10.2.89_440.33.01_linux.run`
     4. Restart
 
+> Please make sure that
+>  -   PATH includes /usr/local/cuda-10.2/bin
+>  -   LD_LIBRARY_PATH includes /usr/local/cuda-10.2/lib64, or, add /usr/local/cuda-10.2/lib64 to /etc/ld.so.conf and run ldconfig as root
+
 TESTS
 * run `python pytorch_test.py` from this folder
 * run `nvidia-smi`

@@ -153,7 +153,7 @@ c.JupyterApp.answer_yes = True
 
 ## The font size. If unconfigured, Qt will be entrusted with the size of the
 #  font.
-c.ConsoleWidget.font_size = 14
+c.ConsoleWidget.font_size = 10
 
 ## The type of completer to use. Valid values are:
 #

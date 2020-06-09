@@ -172,6 +172,5 @@ if [ "$TMUX" = "" ]; then
     else
         tmux new-session -s Terminal
     fi
-    exit
 fi
 source ~/.files/tmux/tmux_functions.zsh  # For my custom scripts
