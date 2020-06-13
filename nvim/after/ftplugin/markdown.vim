@@ -1,9 +1,9 @@
 " Settings
-setlocal tw=100
-setlocal linebreak
-setlocal tabstop=4                         " no. of spaces for tab in file
-setlocal shiftwidth=4                      " no. of spaces for step in autoindent
-setlocal softtabstop=4                     " no. of spaces for tab when editing
+" setlocal tw=100
+" setlocal linebreak
+" setlocal tabstop=4                         " no. of spaces for tab in file
+" setlocal shiftwidth=4                      " no. of spaces for step in autoindent
+" setlocal softtabstop=4                     " no. of spaces for tab when editing
 
 " Mappings
 

@@ -23,9 +23,6 @@ let g:HOME = substitute(system('echo $HOME'), '\n', '', '') " Home directory
 let g:UNAME = substitute(system('uname'), '\n', '', '') " Linux/Darwin
 let g:BROWSER = "brave-browser"
 
-" RunTimePath. Add fzf
-set rtp+=~/.fzf
-
 " Set Python/Npm paths {{{
 if has("unix")  "Python & Node
   " This is probably not necessary and $HOME or similar might work.
@@ -67,7 +64,7 @@ if &loadplugins " {{{
 
   " testing
   Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
-  Plug 'haorenW1025/floatLf-nvim'
+  " Plug 'haorenW1025/floatLf-nvim'
   Plug 'yuezk/vim-js'
   Plug 'maxmellon/vim-jsx-pretty'
   Plug 'epilande/vim-es2015-snippets'
@@ -84,8 +81,10 @@ if &loadplugins " {{{
 
   " Filemanager
   Plug 'kyazdani42/nvim-tree.lua'
-  Plug 'Xuyuanp/nerdtree-git-plugin'     " XXX show git status of files
-  Plug 'ivalkeen/nerdtree-execute'       " XXX open files from nerdtree
+  Plug 'kyazdani42/nvim-web-devicons'
+
+  " Plug 'Xuyuanp/nerdtree-git-plugin'     " XXX show git status of files
+  " Plug 'ivalkeen/nerdtree-execute'       " XXX open files from nerdtree
   Plug 'tpope/vim-fugitive'              " XXX git tools
 
   " Tools
@@ -102,6 +101,7 @@ if &loadplugins " {{{
   Plug 'easymotion/vim-easymotion'       " XXX visualize targets tot move to specific words
   Plug 'godlygeek/tabular'
 
+  Plug '~/.fzf'
   Plug 'junegunn/fzf.vim'                " XXX fuzzy filefinding
   Plug 'alok/notational-fzf-vim'
   Plug 'chengzeyi/fzf-preview.vim'

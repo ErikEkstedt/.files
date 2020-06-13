@@ -1,5 +1,4 @@
 setlocal fdm=indent
-setlocal tw=80
 
 
 " Note: <CR> is indistinguishable from <C-m>

@@ -23,6 +23,19 @@ snippet noindent "noindent"
 \\noindent
 endsnippet
 
+snippet subfigs "subfigures" 
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}[h]{$1\textwidth}
+		\includegraphics[width=$2\textwidth]{$3}
+		\caption{$4}%
+		\label{$5}
+	\end{subfigure}
+	\caption{$6}
+	\label{$7}
+\end{figure}
+endsnippet
+
 snippet article "article template" 
 \documentclass{article}
 \usepackage[utf8]{inputenc}

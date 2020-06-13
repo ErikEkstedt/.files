@@ -20,8 +20,8 @@ cnoremap <c-a> <Home>
 " cnoremap <expr> <S-Tab> getcmdtype() =~ '[\/?]' ? "<C-t>" : "<S-Tab>"
 
 " Insert the current line/word in the command-line:
-cnoremap <C-r><C-l> <C-r>=getline('.')<CR>
-cnoremap <C-r><C-w> <C-r>=expand("<cword>")<CR>
+" cnoremap <C-r><C-l> <C-r>=getline('.')<CR>
+" cnoremap <C-r><C-w> <C-r>=expand("<cword>")<CR>
 
 " Remove any argument from the command-line, leaving only the command and a trailing space:
 " cnoremap <C-k> <C-\>esplit(getcmdline(), " ")[0]<CR><Space>

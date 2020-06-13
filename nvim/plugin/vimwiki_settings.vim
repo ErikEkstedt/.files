@@ -3,8 +3,8 @@
 
 
 let g:vimwiki_list = [
-            \{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'},
-            \{'path': '~/jobwiki', 'syntax': 'markdown', 'ext':'.md'}]
+      \{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'},
+      \{'path': '~/jobwiki', 'syntax': 'markdown', 'ext':'.md'}]
 
 " Mappings
 

@@ -1,6 +1,6 @@
 " TransparentBackground
 let g:transparent_background = 0
-function! TransparentBackground ()  " {{{
+function! TransparentBackground ()
   if g:transparent_background 
     let g:transparent_background = 0
     execute 'colorscheme ' . g:colors_name
@@ -28,5 +28,5 @@ function! TransparentBackground ()  " {{{
     hi EndOfBuffer guibg=#000000
     set nocursorline
   endif
-endfunc "}}}
+endfunc
 " nnoremap <C-t> :call TransparentBackground()<CR>

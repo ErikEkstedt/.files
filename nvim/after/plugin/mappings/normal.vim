@@ -42,12 +42,11 @@ nnoremap + g,
 nnoremap <leader>db :%bd<CR><C-O>:bd#<CR>
 
 "indenting/unindenting
-" nnoremap <tab> >>
+" nnoremap <tab> >>  " Overwrites <C-I>
 nnoremap <s-tab> <lt><lt>
 
 "--------------------------------------------------------
-"--------------------- Movement -------------------------
-"-------------------------------------------------------- {{{
+" Movement {{{
 
 nnoremap <C-t> <C-y>
 
@@ -94,10 +93,10 @@ nnoremap <C-j> :resize -3<cr>
 nnoremap <space>, mz:%s/\s\+$//<cr>:let @/=''<cr>`z
 
 " Toggle number/wrap/hlsearch
-nnoremap <silent><space>sn :set number!<CR>
+" nnoremap <silent><space>sn :set number!<CR>
 nnoremap <silent><space>ss :set hlsearch!<CR>
-nnoremap <silent><space>s :set hlsearch!<CR>
-nnoremap <silent><space>wr :set wrap!<CR>
+" nnoremap <silent><space>s :set hlsearch!<CR>
+" nnoremap <silent><space>wr :set wrap!<CR>
 
 " Buffers previous/next
 nnoremap <space>b :bp<CR>
@@ -139,7 +138,7 @@ nnoremap ,pp :let @+=expand('%')<CR> :echo expand('%')<CR>
 "--------------------------------------------------------
 
 " :set paste/nopaste
-set pastetoggle=<f2> " system clipboard pastes preserves indentation
+" set pastetoggle=<f2> " system clipboard pastes preserves indentation
 
 " copy / paste from clipboard
 " yank/put +  -> clipboard
@@ -196,7 +195,7 @@ nnoremap ga zA
 " nnoremap <space>f zA
 nnoremap <space>z zMzvzz
 
-" Nerdtree uses 'o' to open "foldlike" dirs.
+" Nerdtree/LuaTree uses 'o' to open "foldlike" dirs.
 " I want to use 'o' to open closed folds but everywhere else it
 " should work as usual 
 " foldclosed('.') returns -1 if not a closed fold or the linenumber
