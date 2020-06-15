@@ -51,6 +51,8 @@ nmap <silent>gW <Plug>(coc-diagnostic-prev)
 nmap <silent> ,nn <Plug>(coc-diagnostic-next-error)
 nmap <silent> ,np <Plug>(coc-diagnostic-prev-error)
 
+imap <leader><leader> <Plug>(coc-snippets-expand)
+
 " Remap for rename current word
 " nmap <leader>rn <Plug>(coc-rename)
 

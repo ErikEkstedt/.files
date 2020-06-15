@@ -3,26 +3,26 @@
 " This script contains all my plugins and settings
 " The different settings for all plugins are located in ./after/plugin/
 " Mappings are located in ./after/plugin/mappings/
-"
 " Unicode characters: https://www.w3schools.com/charsets/ref_utf_dingbats.asp
 
 set number
 set signcolumn=yes
 set laststatus=2 "always show status bar
-
 set termguicolors " Enable true color support.
 set background=dark
 set hls                        " highlighting!
+filetype plugin indent on
+syntax on
 
 let mapleader = ','
 let localleader = '\'
-let g:tex_flavor = "latex"     " assuem *.tex are all latex files
 
-" let g:HOSTNAME = substitute(system('hostname'), '\n', '', '') " What the hostname of the computer is /desktop/laptop
+" global variables {{{
+let g:tex_flavor = "latex"     " assuem *.tex are all latex files
 let g:HOME = substitute(system('echo $HOME'), '\n', '', '') " Home directory
 let g:UNAME = substitute(system('uname'), '\n', '', '') " Linux/Darwin
 let g:BROWSER = "brave-browser"
-
+" }}}
 " Set Python/Npm paths {{{
 if has("unix")  "Python & Node
   " This is probably not necessary and $HOME or similar might work.
@@ -32,7 +32,6 @@ if has("unix")  "Python & Node
   let g:python_host_prog=g:HOME . '/miniconda3/envs/neovim2/bin/python'
   " let g:node_host_prog=g:HOME . '/.nvm/versions/node/v13.1.0/bin/neovim-node-host'
 endif "}}}
-
 if &loadplugins " {{{
   if empty(glob('~/.config/nvim/autoload/plug.vim'))
     echo "No Vim-Plug available... Downloading and running PlugInstall"
@@ -168,13 +167,10 @@ if &loadplugins " {{{
 endif
 "}}}
 
-filetype plugin indent on
-syntax on
-
 let g:background_color = synIDattr(hlID("Normal"), "bg")
 let g:custom_focus=1  " enables custom focus in ./plugin/focus_background.vim
 
-" Settings
+" Settings {{{
 set hidden
 set noshowmode                        " no extra --Insert--, --Replace-- etc
 set pb=20           " transparency for popup, (default: 0)
@@ -192,22 +188,17 @@ set shortmess+=I           " Don't show Vim's welcome message.
 set expandtab              " expand tabs into spaces (default: off)
 set tabstop=4              " no. of spaces for tab in file (default: 8)
 set shiftwidth=4           " no. of spaces for step in autoindent (default: 8)
-
 set list                   " show spaces and tabs
 set listchars=tab:▶-\ ,trail:·,extends:▶,nbsp:·
-
 set tw=120
 set nowrap                 " No linewrap by default
 set wrapmargin=5
 let &showbreak="↪"
 set linebreak              " If on, Vim will wrap long lines at a character in 'breakat' rather than at the last character that fits on the screen.
 set breakindent            " wrapped line s keep indentation (set bri)
-
 set scrolloff=3            " visual rows above and below cursor
 set sidescrolloff=5        " visual columns on sides of cursor
-
 set formatoptions+=n       " smart autoindenting inside numbered lists (I get defaut: jcroql)
-
 set mouse=a                " mouse functionality (default: empty)
 set virtualedit=block      " onemore 'block' makes it possible to edit empty space in visualblock
 set timeoutlen=400         " ms to wait for command completion (default: 1000)
@@ -238,10 +229,10 @@ endif
 
 
 if exists("g:gui_oni")
-    source ~/.config/nvim/oni/mappings/oni.vim
-    set laststatus=0 "always show status bar  (default: 2)
+  source ~/.config/nvim/oni/mappings/oni.vim
+  set laststatus=0 "always show status bar  (default: 2)
 endif
-
+" }}}
 " Large Files {{{
 
 " file is large from 5mb
@@ -264,7 +255,6 @@ function LargeFile()
 endfunction
 
 " }}}
-
 " Backups {{{
 
 " Backup
@@ -302,7 +292,6 @@ if !isdirectory(expand(&directory))
   call mkdir(expand(&directory), "p")
 endif
 " }}}
-
 " Wildmenu completion {{{
 " set wildoptions=pum        " default: pum,tagfile
 " set wildignore  default: empty
