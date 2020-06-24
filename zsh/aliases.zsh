@@ -1,14 +1,22 @@
-# =================================================
-# =================   ALIASES  ====================
-# =================================================
+# ================================================ #
+# =================  ALIASES  ==================== #
+# ================================================ #
 # Standard {{{
 alias cd..="cd .."
 alias e="exit"
 alias :q='exit'
 alias :wq='exit'
-# pneumonic: (l)ist(.)...
-# alias la="ls -A"
+alias rz="source ~/.zshrc"
 
+alias _diskspace="du -sk * | sort -nr | head -10"
+alias ducks='du -cks -- * | sort -rn | head'
+
+# Source Emac binding
+alias semacs="bindkey -e"
+
+# LS
+alias Ls="tspc ls"
+alias ldt="tree -d -L 2"
 if [[ $(uname) == 'Darwin' ]]; then
     alias ll="gls -l --color"
     alias ld="gls -ld */ --color"
@@ -26,9 +34,7 @@ else
     alias lla="ls -la --group-directories-first"
 fi
 
-alias _diskspace="du -sk * | sort -nr | head -10"
-alias ducks='du -cks -- * | sort -rn | head'
-
+# LSD
 if [ -x "$(command -v lsd)" ]; then # if lsd exists
     alias ls="lsd --group-dirs=first"
     alias ll="lsd -l --group-dirs=first"
@@ -44,45 +50,41 @@ else
     alias lpy="ls *.py"
     alias lpdf="ls -ogl *.pdf"
 fi
-
-alias Ls="tspc ls"
-alias ldt="tree -d -L 2"
 # }}}
-
 # Movement {{{
 alias gfi="cd ~/.files; clear; ls"
-# alias gtu="cd ~/TurnTaking/turntaking; clear; ls"
 alias gtu="cd ~/TurnGPT; clear; ls"
 alias gz="cd ~/.files/zsh; clear; ls"
 alias gbl="cd ~/ErikEkstedt.github.io; ls"
 alias gph="cd ~/phd; ls"
 alias gpe="cd ~/.personal; ls"
+alias gdw="cd ~/Downloads; clear; la"
+alias gpi="cd ~/Pictures"
 
 alias gho="cd ~; clear; ls"
 alias gpr="cd $(git rev-parse --show-toplevel); clear; ls"
 alias gro="cd /; clear; ls"
-alias gdw="cd ~/Downloads; clear; la"
-alias gpi="cd ~/Pictures"
-
-alias cdallen="~/allennlp; ls"
-alias goallen="~/allennlp; ls"
-alias gallen="~/allennlp; ls"
 # }}}
+# Edit configs {{{
+alias eal="nvim ~/.files/zsh/aliases.zsh"
+alias ealiases="nvim ~/.files/zsh/aliases.zsh"
+alias ev="nvim ~/.files/nvim/init.vim"
+alias ez="nvim ~/.zshrc"
+alias et="nvim ~/.tmux.conf"
+alias er="nvim ~/.config/ranger/rc.conf"
+# alias ru="xrdb -load ~/.Xresources"
+# Mount Usb Stick
+alias umountusb="udiskie-umount /media/erik/*"
+# }}}
+# Programs {{{
+alias tens="tensorboard --logdir "
+alias patchwork="cd ~/patchwork && npm start"
+alias rack='~/Rack/Rack'
+alias z='zathura'
+alias ts='/home/erik/TeamSpeak3-Client-linux_amd64/ts3client_runscript.sh'
+alias somy="source $HOME/mycroft-core/.venv/bin/activate"
+alias nvr="$HOME/miniconda3/envs/neovim3/bin/nvr"
 
-#######################
-
-# _vim_fzf(){
-#   if [ $# -eq 0 ]
-#   then
-#     # echo "No arguments supplied"
-#     nvim +FZF
-#   else
-    # echo $1
-#     nvim "$1"
-#   fi
-# }
-
-# Programming {{{
 case `uname` in
   Darwin)
     ;;
@@ -102,59 +104,13 @@ alias pdb="python -m pdb"
 alias jno="jupyter notebook"  #jupyter notebook example.ipynb
 alias wnvi="watch -n 1 nvidia-smi"
 alias wnvi2="watch -n 1 nvidia-smi --query-gpu=index,memory.used,memory.total,power.draw --format=csv"
-
-# Emacs binding
-alias semacs="bindkey -e"
-# alias scroll="xinput set-prop 12 284 -303 303" Some old laptop setting?
-# alias wif="sudo iwconfig wlp2s0 txpower 10dBm"
-# alias friture="python $HOME/friture/main.py"
-
-# Mycroft
-alias somy="source $HOME/mycroft-core/.venv/bin/activate"
-
-# }}}
-
-# Konsole
 alias ktheme="_konsole_theme"
-
-# Tmux {{{
-alias titerm="tmux source ~/.files/tmux/tmux.iterm.conf"
-alias tls="tmux list-sessions"
-
-alias tkd=tmuxkillf
-alias tks="tmux kill-session -t"
-alias tkp="tmux kill-pane -t"
-alias tkw="tmux kill-window -t"
-
-alias tmux_sessions=$DOTFILES/tmuxinator/start_sessions.bash
-alias tns=$DOTFILES/tmuxinator/tmuxinator-fzf-start.sh
-alias tspc="_tmux_send_keys_all_panes_"
-alias theme="_tmux_theme"
-alias tat=$DOTFILES/bin/tat  # Current path as new tmux session
-
-alias Clear='tspc "clear"'
+alias weather="curl wttr.in"
+# TODO: make a function to start browser as separate process if session does not already exists
+alias calendar="_browser_tab --app=https://calendar.google.com"
+alias github="_browser_tab --new-tab https://github.com"
+alias messenger="_browser_tab --new-tab https://messenger.com"
 # }}}
-
-
-
-alias patchwork="cd ~/patchwork && npm start"
-
-# tensorboard
-alias tens="tensorboard --logdir "
-
-# File Manager {{{
-alias fm=lf
-alias vif=$HOME/.config/vifm/scripts/vifmrun
-
-# }}}
-
-# if [[ $(hostname) == 'erik-Desktop' ]]; then
-#   # Ranger
-#   alias ran='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
-#   alias r='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
-# fi
-
-
 # Git {{{
 alias gad="git add"
 alias gco="git commit -m"
@@ -168,40 +124,30 @@ alias gch="git checkout --"
 alias Gps='tspc "git push"'
 alias Gpl='tspc "git pull"'
 alias Gst='tspc "git status"'
-
-alias gpush="python ~/.files/bin/git-script -c push -d .files phd Notes Audio/maptaskdataset Audio/dialogAgent Locomotion"
-alias gpull="python ~/.files/bin/git-script -c pull -d .files phd Notes Audio/maptaskdataset Audio/dialogAgent Locomotion"
-alias gstatus="python ~/.files/bin/git-script -d .files phd Notes Audio/maptaskdataset Audio/dialogAgent Locomotion"
 # }}}
-
-
-alias z='zathura'
-alias ts='/home/erik/TeamSpeak3-Client-linux_amd64/ts3client_runscript.sh'
-
-# Config {{{
-alias eal="nvim ~/.files/zsh/aliases.zsh"
-alias ealiases="nvim ~/.files/zsh/aliases.zsh"
-alias ev="nvim ~/.files/nvim/init.vim"
-alias ez="nvim ~/.zshrc"
-alias et="nvim ~/.tmux.conf"
-alias er="nvim ~/.config/ranger/rc.conf"
-
-alias rz="source ~/.zshrc"
-alias ru="xrdb -load ~/.Xresources"
-
-# Mount Usb Stick
-alias umountusb="udiskie-umount /media/erik/*"
-
+# Tmux {{{
+alias titerm="tmux source ~/.files/tmux/tmux.iterm.conf"
+alias tkd=tmuxkillf
+alias tls="tmux list-sessions"
+alias tks="tmux kill-session -t"
+alias tkp="tmux kill-pane -t"
+alias tkw="tmux kill-window -t"
+alias tmux_sessions=$DOTFILES/tmuxinator/start_sessions.bash
+alias tns=$DOTFILES/tmuxinator/tmuxinator-fzf-start.sh
+alias tspc="_tmux_send_keys_all_panes_"
+alias theme="_tmux_theme"
+alias tat=$DOTFILES/bin/tat  # Current path as new tmux session
+alias Clear='tspc "clear"'
 # }}}
-
-
+# File Manager {{{
+alias lf=lfcd   # function in zshrc 
+alias fm=lf
+alias vif=$HOME/.config/vifm/scripts/vifmrun
+# }}}
 # SSH / WOL {{{
 export MOUNTPATH=~/LAN
 alias wake="wakeonlan -i xxx.xxx.xxx.xxx yy:yy:yy:yy:yy:yy"
 alias mountmachine="sshfs -p 2002 -o ssh_command='ssh -i ~/.ssh//id_rsa' user@xxx.xxx.xxx.xxx:/PATH/ ~/$MOUNTPATH"
 alias umountall="sudo umount ~/Machines/*"
 # }}}
-
-# MacbookPro linux {{{
-# alias wake=
-# }}}
+# vim: fdm=marker

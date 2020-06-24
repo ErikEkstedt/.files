@@ -7,127 +7,126 @@
 
 ############### Helper functions ################
 hr() {
-	echo " "
+    echo " "
 }
 
 ############### Child functions ################
 # Show calendar from `git-stats`
 calendar() {
-	if type git-stats >/dev/null 2>&1; then
-		git-stats -g
-	fi
+    if type git-stats >/dev/null 2>&1; then
+        git-stats -g
+    fi
 }
 
 # Show author summary from `git-extras`
 repo-summary() {
-	if [ -z $1 ]; then
-		count=17 # The default is to retrieve only the top ten contributors
-	else
-		count=$(($1 + 7))
-	fi
-
-	if type git-summary >/dev/null 2>&1; then
-		git summary | head -n $count
-	fi
+if [ -z $1 ]; then
+    count=17 # The default is to retrieve only the top ten contributors
+else
+    count=$(($1 + 7))
+fi
+if type git-summary >/dev/null 2>&1; then
+    git summary | head -n $count
+fi
 }
 
 # Show info from built-in `git-info`
 info() {
-	git info --no-config
+    git info --no-config
 }
 
 # Show `git-recent` (ref: https://github.com/paulirish/git-recent)
 # Show `git show-tree` from `git-extras`
 show-tree() {
-	echo "## Branch tip:"
-	hr
+echo "## Branch tip:"
+hr
 
-	if type git-recent >/dev/null 2>&1; then
-		git recent | head -n $count
-	fi
+if type git-recent >/dev/null 2>&1; then
+    git recent | head -n $count
+fi
 
-	echo "## Branch tree:"
-	hr
+echo "## Branch tree:"
+hr
 
-	git log --color --all --graph --decorate --oneline --simplify-by-decoration
+git log --color --all --graph --decorate --oneline --simplify-by-decoration
 
-	hr
-	hr
-	hr
+hr
+hr
+hr
 }
 
 # Show effort from `git-extras`
 effort() {
-	if [[ -x "$1" ]]; then
-		commit=5
-	else
-		commit="$1"
-	fi
+    if [[ -x "$1" ]]; then
+        commit=5
+    else
+        commit="$1"
+    fi
 
-	echo "Effort"
-	if type git-effort >/dev/null 2>&1; then
-		git effort --above "$commit"
-	fi
+    echo "Effort"
+    if type git-effort >/dev/null 2>&1; then
+        git effort --above "$commit"
+    fi
 }
 
 ############### Main ################
 summary() {
-	count=$(git rev-list HEAD --count)
+    count=$(git rev-list HEAD --count)
 
-	if (($count <= 300)); then
-		calendar
+    if (($count <= 300)); then
+        calendar
 
-		repo-summary
+        repo-summary
 
-		info
+        info
 
-		show-tree
+        show-tree
 
-		effort 1
+        effort 1
 
-	elif (($count <= 1200)); then
-		calendar
+    elif (($count <= 1200)); then
+        calendar
 
-		repo-summary
+        repo-summary
 
-		info
+        info
 
-		show-tree
+        show-tree
 
-		effort 5
+        effort 5
 
-	elif (($count <= 10000)); then
-		calendar
+    elif (($count <= 10000)); then
+        calendar
 
-		repo-summary 20
+        repo-summary 20
 
-		info
+        info
 
-		show-tree
+        show-tree
 
-		effort 20
+        effort 20
 
-	else
-		calendar
+    else
+        calendar
 
-		repo-summary 20
+        repo-summary 20
 
-		info
+        info
 
-		show-tree
+        show-tree
 
-		echo 'This repo has more than 10000 commits. Rendering `Effort` has bad performance.'
-	fi
+        echo 'This repo has more than 10000 commits. Rendering `Effort` has bad performance.'
+    fi
 }
 
 main() {
-	# Check if it's a git repo
-	[[ $(git root 2>&1) == 'Not a git repo!' ]] && echo "Not a git repo!" && exit 1
+    # Check if it's a git repo
+    [[ $(git root 2>&1) == 'Not a git repo!' ]] && echo "Not a git repo!" && exit 1
 
-	summary |
-		GREP_COLOR='00;38;5;226' grep --color=always '.*\#\#.*\|$' | # highlight category titles
-		less -R
-}
+    summary |
+        GREP_COLOR='00;38;5;226' grep --color=always '.*\#\#.*\|$' | # highlight category titles
+        less -R
+    }
 
 ################ Help ################
 usage="usage: $(basename "$0") [<options>]
@@ -135,25 +134,25 @@ usage="usage: $(basename "$0") [<options>]
 A quick git repository insight at terminal
 
 where:
-	-h  show this help text"
+-h  show this help text"
 
 ############# Parse options ##############
 while getopts ':h' option; do
-	case "$option" in
-	h)
-		echo "$usage"
-		exit 0
-		;;
-	:)
-		main
-		exit
-		;;
-	\?)
-		printf "illegal option: -%s\n" "$OPTARG" >&2
-		echo -e "$usage" >&2
-		exit 1
-		;;
-	esac
+    case "$option" in
+        h)
+            echo "$usage"
+            exit 0
+            ;;
+        :)
+            main
+            exit
+            ;;
+        \?)
+            printf "illegal option: -%s\n" "$OPTARG" >&2
+            echo -e "$usage" >&2
+            exit 1
+            ;;
+    esac
 done
 shift $((OPTIND - 1))
 

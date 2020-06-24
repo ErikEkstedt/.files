@@ -2,21 +2,15 @@
 # zsh-functions.zsh
 # sourced from zshrc
 
-
-################################################################
-# Misc{{{
-
 function price() { # {{{
     local pair="${1:-etheur}" # default pair
     local exchange="${2:-kraken}" # default exchange
     price=$(curl -s "https://api.cryptowat.ch/markets/$exchange/$pair/price" | jq ".result.price")
     echo "$pair: $price"
 } #}}}
-
 function g() {  #{{{
-	la | grep -i $1
+    la | grep -i $1
 } #}}}
-
 function print_path() {  #{{{
     function _print_path() {  #{{{
         for p in $path; do
@@ -25,31 +19,7 @@ function print_path() {  #{{{
     } #}}}
 _print_path | bat
 } #}}}
-
-#}}}
-
-################################################################
-
-
-# Conda{{{
-
-function so() {
-    local env
-    if [ -z "$1" ]; then
-        env=$(ls $HOME/miniconda3/envs | fzf)
-        # source activate "$1"
-    else
-        env=$1
-    fi
-    conda activate "$env"
-}
-alias sod="conda deactivate"
-zle -N so
-
-#}}}
-
 # Ranger {{{
-
 # function ranger {
 #     # Quitting ranger with "q" puts you in the directory where you quit
 #     local IFS=$'\t\n'
@@ -59,64 +29,82 @@ zle -N so
 #         ranger
 #         --cmd="map q chain shell echo %d > "$tempfile"; quitall"
 #     )
-
 #     ${ranger_cmd[@]} "$@"
 #     if [[ -f "$tempfile" ]] && [[ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]]; then
 #         cd -- "$(cat "$tempfile")" && clear || return
 #     fi
 #     command rm -f -- "$tempfile" 2>/dev/null
 # }
-
 # }}}
-
 # LF {{{
-
-
-vi-cmd-up-line-history() {
-    zle vi-cmd-mode
-    zle up-line-or-history
-}
-zle -N vi-cmd-up-line-history
-
-vi-cmd-down-line-history() {
-    zle vi-cmd-mode
-    zle down-line-or-history
-}
-zle -N vi-cmd-down-line-history
-
-
-
 lfcd () {
-    tmp="$(mktemp)"
-    lf -last-dir-path="$tmp" "$@"
-    if [ -f "$tmp" ]; then
-        dir="$(cat "$tmp")"
-        rm -f "$tmp"
-        if [ -d "$dir" ]; then
-            if [ "$dir" != "$(pwd)" ]; then
-                cd "$dir"
-            fi
-        fi
+  tmp="$(mktemp)"
+  lf -last-dir-path="$tmp" "$@"
+  if [ -f "$tmp" ]; then
+    dir="$(cat "$tmp")"
+    rm -f "$tmp"
+    if [ -d "$dir" ]; then
+      if [ "$dir" != "$(pwd)" ]; then
+        cd "$dir"
+      fi
     fi
+  fi
 }
 
 lfcd_zsh () {
-    tmp="$(mktemp)"
-    lf -last-dir-path="$tmp" "$@"
-    if [ -f "$tmp" ]; then
-        dir="$(cat "$tmp")"
-        rm -f "$tmp"
-        if [ -d "$dir" ]; then
-            if [ "$dir" != "$(pwd)" ]; then
-                cd "$dir"
-            fi
-        fi
+  tmp="$(mktemp)"
+  lf -last-dir-path="$tmp" "$@"
+  if [ -f "$tmp" ]; then
+    dir="$(cat "$tmp")"
+    rm -f "$tmp"
+    if [ -d "$dir" ]; then
+      if [ "$dir" != "$(pwd)" ]; then
+        cd "$dir"
+      fi
     fi
+  fi
 }
 zle -N lfcd_zsh
 
 # }}}
+# Browser{{{
+function _browser_tab() {
+  if [ -z $(pgrep -i $BROWSER) ]; then
+    echo $process "is NOT running."
+    $BROWSER --new-tab $@ &!
+  else
+    echo $process "is running."
+    $BROWSER --new-tab $@
+  fi
+}
+#}}}
+# Conda{{{
+function so() {
+  local env
+  if [ -z "$1" ]; then
+    env=$(ls $HOME/miniconda3/envs | fzf)
+    # source activate "$1"
+  else
+    env=$1
+  fi
+  conda activate "$env"
+}
+alias sod="conda deactivate"
+zle -N so
+#}}}
+# Movement {{{
+vi-cmd-up-line-history() {
+zle vi-cmd-mode
+zle up-line-or-history
+}
+zle -N vi-cmd-up-line-history
 
+vi-cmd-down-line-history() {
+zle vi-cmd-mode
+zle down-line-or-history
+}
+zle -N vi-cmd-down-line-history
+# }}}
 # BINDINGS {{{
 
 bindkey -s '^S' '^Asudo ^E'

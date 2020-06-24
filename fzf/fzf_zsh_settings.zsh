@@ -3,17 +3,15 @@
 # No need to let fzf installer put commands in zshrc file
 # This script is sourced from $HOME/.files/zsh/zshrc -> $HOME/.zshrc
 
+# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*" --glob "!node_modules/*" --glob "!vendor/*" 2> /dev/null'
+
 export FZF_DEFAULT_COMMAND='fd'
 export FZF_DEFAULT_OPTS="--height 80% --reverse "
-
-# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*" --glob "!node_modules/*" --glob "!vendor/*" 2> /dev/null'
 export FZF_CTRL_T_OPTS="--preview 'bat --color always {}'"
-
 export FZF_ALT_C_COMMAND='fd --type d --hidden --no-ignore --exclude .git'
 export FZF_ALT_C_OPTS="--preview 'tree -L 1 -C {} | head -200' "
-
 export FZF_CTRL_R_OPTS="--reverse"
 export FZF_COMPLETION_OPTS='+c -x'
 
@@ -116,9 +114,8 @@ fzf_tmux_kill_sessions() {
     # Extend to multiple choices
     local tsess="$(tmux list-sessions)"
     echo $tsess | fzf --reverse -m --prompt 'kill session: ' -1 \
-    | cut -d':' -f1 \
-    | xargs tmux kill-session -t
-		
+        | cut -d':' -f1 \
+        | xargs tmux kill-session -t
 }
 
 # WIP
@@ -146,33 +143,27 @@ fzf_tmux_kill_sessions() {
 fkill() {
     local pid
     if [ "$UID" != "0" ]; then
-    pid=$(ps -f -u $UID | sed 1d | fzf -m | awk '{print $2}')
+        pid=$(ps -f -u $UID | sed 1d | fzf -m | awk '{print $2}')
     else
-    pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
+        pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
     fi
-
     if [ "x$pid" != "x" ]
     then
-    echo $pid | xargs kill -${1:-9}
+        echo $pid | xargs kill -${1:-9}
     fi
 }
 
 # Bindings
-
 # bindkey '^u' files-from-root
 # bindkey '^t' fzf-file-widget
 
 bindkey '^t' files-from-home
 bindkey '^f' fzf-file-widget
-
+bindkey '^B' cd-from-home
+bindkey '^O' fzf-cd-widget
+bindkey '^_' cd-from-root               # key: CTRL - / 
 bindkey -M vicmd f files-from-home
 bindkey -M vicmd g cd-from-home
-
-bindkey '^B' cd-from-home
 bindkey -M vicmd '^B' cd-from-home
-bindkey '^O' fzf-cd-widget
 bindkey -M vicmd '^O' fzf-cd-widget
-
-# key: CTRL - / 
-bindkey '^_' cd-from-root
 bindkey -M vicmd '^_' cd-from-root

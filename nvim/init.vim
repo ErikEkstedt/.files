@@ -7,10 +7,10 @@
 
 set number
 set signcolumn=yes
-set laststatus=2 "always show status bar
+set laststatus=2  " always show status bar
 set termguicolors " Enable true color support.
 set background=dark
-set hls                        " highlighting!
+set hls           " highlighting!
 filetype plugin indent on
 syntax on
 
@@ -62,28 +62,25 @@ if &loadplugins " {{{
   " Plug 'Konfekt/FastFold'
 
   " testing
-  Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
   " Plug 'haorenW1025/floatLf-nvim'
+  Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
   Plug 'yuezk/vim-js'
   Plug 'maxmellon/vim-jsx-pretty'
   Plug 'epilande/vim-es2015-snippets'
   Plug 'epilande/vim-react-snippets'
 
   " completion / LSP
-  " Plug 'neovim/nvim-lsp'
-  " Plug 'haorenW1025/completion-nvim'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  " Plug 'Shougo/neco-vim'
   Plug 'SirVer/ultisnips'                " XXX snippet engine
   Plug 'honza/vim-snippets'              " XXX snippets
+  " Plug 'neovim/nvim-lsp'
+  " Plug 'haorenW1025/completion-nvim'
+  " Plug 'Shougo/neco-vim'
 
 
   " Filemanager
   Plug 'kyazdani42/nvim-tree.lua'
   Plug 'kyazdani42/nvim-web-devicons'
-
-  " Plug 'Xuyuanp/nerdtree-git-plugin'     " XXX show git status of files
-  " Plug 'ivalkeen/nerdtree-execute'       " XXX open files from nerdtree
   Plug 'tpope/vim-fugitive'              " XXX git tools
 
   " Tools
@@ -115,9 +112,6 @@ if &loadplugins " {{{
   Plug 'tmux-plugins/vim-tmux-focus-events' " Focus events correctly triggered. Leaving/Returning to vim inside tmux
   let g:tmux_navigator_no_mappings = 1
 
-  " Code Formatting / Syntax / Preview
-  Plug 'norcalli/nvim-colorizer.lua'  " faster color disable coc-highlight
-
   " Python
   Plug 'psf/black', { 'tag': '19.10b0' } " Plug 'psf/black'
   Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " better python syntax highlight
@@ -133,6 +127,9 @@ if &loadplugins " {{{
   Plug 'airblade/vim-gitgutter'          " XXX see git changes in file in the numberline
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
+
+  " Code Formatting / Syntax / Preview
+  Plug 'norcalli/nvim-colorizer.lua'  " faster color disable coc-highlight
 
   " Colorschemes
   Plug 'gruvbox-community/gruvbox'        " maintained fork of 'morhetz/gruvbox'
@@ -154,18 +151,9 @@ if &loadplugins " {{{
   " Colorschemes are plugins so they must be in here
   " let g:material_terminal_italics = 1
   " let g:material_theme_style = 'darker'
-  " colorscheme material
-  " colorscheme molokai
-  " colorscheme monokai
-  " colorscheme onedark
+  " material molokai monokai onedark Tomorrow-Night hybrid substrata nord wombat
   colorscheme gruvbox
-  " colorscheme Tomorrow-Night
-  " colorscheme hybrid
-  " colorscheme substrata
-  " colorscheme nord
-  " colorscheme wombat
-endif
-"}}}
+endif "}}}
 
 let g:background_color = synIDattr(hlID("Normal"), "bg")
 let g:custom_focus=1  " enables custom focus in ./plugin/focus_background.vim
