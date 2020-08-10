@@ -44,6 +44,94 @@ fig, ax = plt.subplots($1, $2, figsize=($3))
 $0
 endsnippet
 
+# Pytorch-lightning
+snippet lightning "LightningModule"
+class Experiment(pl.LightningModule):
+	def __init__(self, hparams):
+		super().__init__()
+		self.hparams = hparams
+		$0
+
+	def forward(self, x):
+		pass
+
+	def train_dataloader(self):
+		pass
+
+	def val_dataloader(self):
+		pass
+
+	def training_step(self, batch, batch_idx):
+		pass
+
+	def validation_step(self, batch, batch_idx):
+		pass
+
+	def validation_epoch_end(self, outputs):
+		tensorboard_logs = {"avg_val_loss": avg_loss}
+		return {"val_loss": avg_loss, "log": tensorboard_logs}
+
+	def configure_optimizers(self):
+		return torch.optim.Adam(self.parameters(), lr=self.hparams.learning_rate)
+
+	@staticmethod
+	def add_model_specific_args(parent_parser):
+		""" Specify the hyperparams for this LightningModule """
+		parser = ArgumentParser(parents=[parent_parser], add_help=False)
+
+		# Model
+		parser.add_argument("--model_arg", type=str, default="LSTM")
+
+		# Training and Data
+		parser.add_argument("--num_workers", default=4, type=int)
+		parser.add_argument("--learning_rate", default=0.02, type=float)
+		parser.add_argument("--batch_size", default=32, type=int)
+		parser.add_argument("--binary", type=int, default=256)
+		parser.add_argument("--datapath", type=str, default="data")
+		parser.add_argument("--max_nb_epochs", default=10, type=int)
+		parser.add_argument("--n_samples", default=16, type=int)
+		return parser
+endsnippet
+
+
+snippet importlightning "pytorch imports"
+from argparse import ArgumentParser
+import pytorch_lightning as pl
+from pytorch_lightning.loggers import TestTubeLogger
+from pytorch_lightning.callbacks import ModelCheckpoint, EarlyStopping
+$0
+endsnippet
+
+snippet pytorch_lightning "pytorch imports"
+if __name__ == "__main__":
+	parser = ArgumentParser()
+	parser.add_argument("--RESEARCH", type=str, default=1)
+	parser = pl.Trainer.add_argparse_args(parser)
+	parser = Experiment.add_model_specific_args(parser)
+	args = parser.parse_args()
+
+	desc = Experiment.get_description(args)
+	logger = TestTubeLogger(save_dir="runs", name="SWB_BASIC_RNN", description=desc)
+	checkpoint_callback = CustomModelCheckpoint(logger, save_top_k=1, mode="min")
+
+	# early_stop_callback = EarlyStopping(
+	#     monitor="val_loss",
+	#     patience=10,
+	#     strict=True,  # crash if "monitor" is not found in val metrics
+	#     verbose=True,
+	#     mode="auto",
+	# )
+
+	trainer = pl.Trainer.from_argparse_args(
+		args,
+		logger=logger,
+		checkpoint_callback=checkpoint_callback,
+		# early_stop_callback=early_stop_callback,
+	)
+	model = Experiment(args)
+	trainer.fit(model)
+endsnippet
+
 # tensorboardx
 
 snippet tensorboardx "tensorboardX"

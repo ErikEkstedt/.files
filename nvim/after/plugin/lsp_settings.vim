@@ -5,11 +5,12 @@ if !exists('g:nvim_lsp')
 endif
 
 " Use completion-nvim in every buffer
-set completeopt=menuone,noinsert,noselect
-autocmd BufEnter * lua require'completion'.on_attach()
+set completeopt=menuone,noinsert,noselect  " noi
+
+" autocmd BufEnter * lua require'completion'.on_attach()
 let g:completion_enable_snippet = 'UltiSnips'
+let g:completion_confirm_key = "\<leader>\<leader>"
 let g:completion_enable_auto_paren = 1
-" Set completeopt to have a better completion experience
 let g:completion_customize_lsp_label = {
       \ 'Function': "\uf794",
       \ 'Method': "\uf6a6",
@@ -38,31 +39,72 @@ let g:completion_customize_lsp_label = {
       \ 'Default': "\uf29c",
       \}
 
-" greg hurell
+" " greg hurell
 sign define LspDiagnosticsErrorSign text=✖
 sign define LspDiagnosticsWarningSign text=⚠
 sign define LspDiagnosticsInforgmationSign text=ℹ
 sign define LspDiagnosticsHintSign text=➤
 
-function! s:SetUpLspHighlights()
-  execute 'highlight LspDiagnosticsError guifg=#e43a21'
-  execute 'highlight LspDiagnosticsWarning guifg=#db8d23'
-  execute 'highlight LspDiagnosticsInformation guifg=#d4d51b'
-  execute 'highlight LspDiagnosticsHint gui=bold,italic,underline guifg=#22d85e'
-endfunction
 
-augroup ErikLanguageClientAutocmds
-  autocmd!
-  " autocmd WinEnter * call s:Bind()
-  " autocmd FileType javascript,typescript,vim  call s:ConfigureBuffer()
-  autocmd ColorScheme * call s:SetUpLspHighlights()
-augroup END
+highlight LspDiagnosticsError guifg=#e43a21
+highlight LspDiagnosticsWarning guifg=#db8d23
+hi! LspDiagnosticsInformationSign guifg=LightBlue
+hi! link LspDiagnosticsInformation Comment
+highlight LspDiagnosticsHint gui=bold,italic,underline guifg=#22d85e
 
+
+" function! s:SetUpLspHighlights()
+"   execute 'highlight LspDiagnosticsError guifg=#e43a21'
+"   execute 'highlight LspDiagnosticsWarning guifg=#db8d23'
+"   execute 'highlight LspDiagnosticsInformation guifg=#d4d51b'
+"   execute 'highlight LspDiagnosticsHint gui=bold,italic,underline guifg=#22d85e'
+" endfunction
+
+" augroup ErikLanguageClientAutocmds
+"   autocmd!
+"   " autocmd WinEnter * call s:Bind()
+"   " autocmd FileType javascript,typescript,vim  call s:ConfigureBuffer()
+"   autocmd ColorScheme * call s:SetUpLspHighlights()
+" augroup END
+
+" nnoremap <silent> gh <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
-nnoremap <silent> gh <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
 nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
 nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+
+
+
+" nvim_lsp.pyls_ms.setup{
+lua << END
+  require'nvim_lsp'.pyls_ms.setup{
+        filetypes = { "python" },
+        settings = {
+          python = {
+            condaPath = { "miniconda3/bin/conda" };
+            venvPath = { "miniconda3/envs" };
+            analysis = {
+              errors = {"undefined-variable"};
+              information = {"unresolved-import"};
+              disabled = {"too-many-function-arguments"};
+            },
+          };
+        },
+        init_options = {
+          analysisUpdates = true;
+          asyncStartup = true;
+          interpreter = {
+            properties = {
+              InterpreterPath = "/home/erik/miniconda3/envs/neovim3/bin/python",
+              Version = "3.8",
+              };
+            };
+          displayOptions = {};
+          asyncStartup=true,
+        },
+        on_attach=require'completion'.on_attach,
+        }
+END

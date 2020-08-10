@@ -7,7 +7,7 @@ vnoremap <leader>in g<C-a>
 
 " vnoremap <c-p> "+p
 vnoremap ,pa "+p
-noremap <c-y> "+y
+vnoremap <c-y> "+y
 vnoremap <s-tab> <gv
 vnoremap <tab> >gv|
 

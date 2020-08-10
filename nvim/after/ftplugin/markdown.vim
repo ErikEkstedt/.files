@@ -1,5 +1,6 @@
 " Settings
-" setlocal tw=100
+setlocal tw=100
+setlocal wrap
 " setlocal linebreak
 " setlocal tabstop=4                         " no. of spaces for tab in file
 " setlocal shiftwidth=4                      " no. of spaces for step in autoindent
@@ -21,5 +22,5 @@
 " inoremap <leader>ma $$$$<left><left>
 
 " Get both markdown and html snippets
-" set filetype=markdown.html
+set filetype=markdown.html
 " :UltiSnipsAddFiletypes markdown.latex.html

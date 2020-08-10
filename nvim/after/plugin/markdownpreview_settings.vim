@@ -9,7 +9,7 @@ endif
   
 
 " example
-nmap <space>c <Plug>MarkdownPreviewToggle
+nmap <space><S-c> <Plug>MarkdownPreviewToggle
 
 " set to 1, the nvim will auto close current preview window when change
 " from markdown buffer to another buffer

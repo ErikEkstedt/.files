@@ -6,9 +6,15 @@ nnoremap vv V
 nnoremap V v$
 nnoremap Y y$
 
+" copy / paste from clipboard
+" yank/put +  -> clipboard
+" nnoremap <c-p> "+p
+" inoremap <c-p> <esc>"+pi
+nnoremap ,pa "+p
+nnoremap <c-y> "+yy
+
 " select everything
 nnoremap <leader>a ggvG$
-nnoremap va ggvG$
 
 " standard saving options
 nnoremap <c-s> :w<cr>
@@ -19,9 +25,6 @@ nnoremap <leader>mm vip=
 
 " Toggle conceallevel
 nnoremap <leader>cc :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
-
-"" redraw
-nnoremap <leader><leader>r :redraw!<CR>
 
 " open quickfix window for latest vim search term.
 nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
@@ -140,12 +143,6 @@ nnoremap ,pp :let @+=expand('%')<CR> :echo expand('%')<CR>
 " :set paste/nopaste
 " set pastetoggle=<f2> " system clipboard pastes preserves indentation
 
-" copy / paste from clipboard
-" yank/put +  -> clipboard
-" nnoremap <c-p> "+p
-" inoremap <c-p> <esc>"+pi
-nnoremap ,pa "+p
-nnoremap <c-y> "+yy
 
 " Repeat last macro if in a normal buffer.
 nnoremap <expr> <CR> empty(&buftype) ? '@@' : '<CR>'

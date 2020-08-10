@@ -5,7 +5,10 @@ if !exists('g:loaded_fzf')
 endif
 
 let $FZF_DEFAULT_COMMAND = 'fd --type file --follow --hidden'
-let $FZF_DEFAULT_COMMAND .= ' -E .git -E "*.png" -E "*.gif" -E "*.jpg" -E ".jpeg" -E ".mp4"'
+let $FZF_DEFAULT_COMMAND .= ' -E .git'
+let $FZF_DEFAULT_COMMAND .= ' -E "*.png" -E "*.gif" -E "*.jpg" -E ".jpeg" -E ".mp4"'
+let $FZF_DEFAULT_COMMAND .= ' -E "*.pt" -E "*.npy"'
+let $FZF_DEFAULT_COMMAND .= ' -E "*.spl" -E "*.sug"'
 
 " Minimu trying fzf-preview
 let g:fzf_preview_window = 'right:60%'

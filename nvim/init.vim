@@ -64,6 +64,8 @@ if &loadplugins " {{{
   " testing
   " Plug 'haorenW1025/floatLf-nvim'
   Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
+  let g:pydocstring_enable_mapping=0
+
   Plug 'yuezk/vim-js'
   Plug 'maxmellon/vim-jsx-pretty'
   Plug 'epilande/vim-es2015-snippets'
@@ -73,10 +75,22 @@ if &loadplugins " {{{
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'SirVer/ultisnips'                " XXX snippet engine
   Plug 'honza/vim-snippets'              " XXX snippets
+
+  " Plug 'Shougo/neco-vim'
   " Plug 'neovim/nvim-lsp'
   " Plug 'haorenW1025/completion-nvim'
-  " Plug 'Shougo/neco-vim'
+  " Plug 'nvim-treesitter/nvim-treesitter'
 
+  " Python
+  Plug 'psf/black', { 'tag': '19.10b0' } " Plug 'psf/black'
+  Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " better python syntax highlight
+  Plug 'jupyter-vim/jupyter-vim'        " interact with qtconsole
+
+  Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+  Plug 'plasticboy/vim-markdown'
+  Plug 'lervag/vimtex'       " XXX latex compiler, preview latex pdf, highlight and syntax. alot more.
+  Plug 'mhinz/neovim-remote' " Needed for vimtex. Error: 'compiler_progranme=nvr' / '--remote'
+  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
   " Filemanager
   Plug 'kyazdani42/nvim-tree.lua'
@@ -109,19 +123,9 @@ if &loadplugins " {{{
   " Plug 'jpalardy/vim-slime'
 
   Plug 'christoomey/vim-tmux-navigator'  " XXX navigate between vim and tmuz seemlessly
-  Plug 'tmux-plugins/vim-tmux-focus-events' " Focus events correctly triggered. Leaving/Returning to vim inside tmux
+  " Plug 'tmux-plugins/vim-tmux-focus-events' " Focus events correctly triggered. Leaving/Returning to vim inside tmux
   let g:tmux_navigator_no_mappings = 1
 
-  " Python
-  Plug 'psf/black', { 'tag': '19.10b0' } " Plug 'psf/black'
-  Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " better python syntax highlight
-  Plug 'jupyter-vim/jupyter-vim'        " interact with qtconsole
-
-  Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-  Plug 'plasticboy/vim-markdown'
-  Plug 'lervag/vimtex'       " XXX latex compiler, preview latex pdf, highlight and syntax. alot more.
-  Plug 'mhinz/neovim-remote' " Needed for vimtex. Error: 'compiler_progranme=nvr' / '--remote'
-  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
   " Statusline
   Plug 'airblade/vim-gitgutter'          " XXX see git changes in file in the numberline
@@ -153,6 +157,7 @@ if &loadplugins " {{{
   " let g:material_theme_style = 'darker'
   " material molokai monokai onedark Tomorrow-Night hybrid substrata nord wombat
   colorscheme gruvbox
+
 endif "}}}
 
 let g:background_color = synIDattr(hlID("Normal"), "bg")
@@ -215,11 +220,6 @@ if has('windows')
   set fillchars=vert:\│
 endif
 
-
-if exists("g:gui_oni")
-  source ~/.config/nvim/oni/mappings/oni.vim
-  set laststatus=0 "always show status bar  (default: 2)
-endif
 " }}}
 " Large Files {{{
 
@@ -268,7 +268,7 @@ endif
 if exists('$SUDO_USER')
   set noundofile  " don't create root-owned files
 else
-  set undodir=~/.vim/tmp/undo//
+  set undodir=~/.vim/tmp/undo
   set undofile  "use undo files
 endif
 
