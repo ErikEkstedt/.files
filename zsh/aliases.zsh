@@ -2,6 +2,7 @@
 # =================  ALIASES  ==================== #
 # ================================================ #
 # Standard {{{
+DOTFILES=$HOME/.files
 alias cd..="cd .."
 alias e="exit"
 alias :q='exit'
@@ -42,6 +43,9 @@ if [ -x "$(command -v lsd)" ]; then # if lsd exists
     alias lla="lsd -la --group-dirs=first"
     alias la="lsd -1a --group-dirs=first"
     alias ltr="lsd --tree --depth 2"
+    alias t1="clear; lsd --tree --depth 1 --group-dirs first"
+    alias t2="clear; lsd --tree --depth 2 --group-dirs first"
+    alias t3="clear; lsd --tree --depth 3 --group-dirs first"
 else
     alias La="tspc 'ls -A -1 --group-directories-first'"
     alias lrt="ls -lrt"
@@ -49,6 +53,9 @@ else
     alias ltx="ls *.tex"
     alias lpy="ls *.py"
     alias lpdf="ls -ogl *.pdf"
+    alias t1="clear; tree -L 1 --dirsfirst"
+    alias t2="clear; tree -L 2 --dirsfirst"
+    alias t3="clear; tree -L 3 --dirsfirst"
 fi
 # }}}
 # Movement {{{

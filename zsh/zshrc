@@ -130,7 +130,7 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<  }}}
-# TMUX  {{{
+TMUX  {{{
 if [ "$TMUX" = "" ]; then
   if tmux has-session -t=Terminal 2> /dev/null; then
     tmux attach -t Terminal
@@ -138,4 +138,15 @@ if [ "$TMUX" = "" ]; then
     tmux new-session -s Terminal
   fi
 fi
+# tmux_start() {
+#   if [ "$TMUX" = "" ]; then
+#     if tmux has-session -t=Terminal 2> /dev/null; then
+#       tmux attach -t Terminal
+#     else
+#       tmux new-session -s Terminal
+#     fi
+#   fi
+# }
+# tmux_start
+
 source ~/.files/tmux/tmux_functions.zsh  # For my custom scripts }}}
