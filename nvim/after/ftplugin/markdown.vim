@@ -2,9 +2,9 @@
 setlocal tw=100
 setlocal wrap
 " setlocal linebreak
-" setlocal tabstop=4                         " no. of spaces for tab in file
-" setlocal shiftwidth=4                      " no. of spaces for step in autoindent
-" setlocal softtabstop=4                     " no. of spaces for tab when editing
+" setlocal tabstop=2                         " no. of spaces for tab in file
+" setlocal shiftwidth=2                      " no. of spaces for step in autoindent
+" setlocal softtabstop=2                     " no. of spaces for tab when editing
 
 " Mappings
 
