@@ -5,7 +5,8 @@ if !exists('UltiSnipsEditSplit')
 endif
 
 
-let g:UltiSnipsSnippetDirectories = ["mysnips", "bundle/vim-snippets/UltiSnips", "UltiSnips"]
+" let g:UltiSnipsSnippetDirectories = ["mysnips", "bundle/vim-snippets/UltiSnips", "UltiSnips"]
+let g:UltiSnipsSnippetDirectories = ["mysnips", "UltiSnips"]
 
 " Trigger configuration.
 let g:UltiSnipsExpandTrigger='<leader><leader>'

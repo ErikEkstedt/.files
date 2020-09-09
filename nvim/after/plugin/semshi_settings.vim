@@ -14,6 +14,7 @@ augroup END
 " Mappings
 nmap <silent> <leader>rr :Semshi rename<CR>
 nmap <silent> <leader>ge :Semshi goto error<CR>
+let g:semshi#error_sign = 0
 
 " nmap <silent> <Tab> :Semshi goto name next<CR>
 " nmap <silent> <S-Tab> :Semshi goto name prev<CR>

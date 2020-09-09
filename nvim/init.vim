@@ -47,18 +47,23 @@ if &loadplugins " {{{
   Plug 'epilande/vim-react-snippets'
 
   " Telescope:  https://github.com/nvim-lua/telescope.nvim
-  Plug 'nvim-lua/popup.nvim'
-  Plug 'nvim-lua/plenary.nvim'
-  Plug 'nvim-lua/telescope.nvim'
+  " Plug 'nvim-lua/popup.nvim'
+  " Plug 'nvim-lua/plenary.nvim'
+  " Plug 'nvim-lua/telescope.nvim'
+
+  " Builtin LSP
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'nvim-lua/diagnostic-nvim'
+  Plug 'nvim-lua/completion-nvim'
 
   " completion / LSP
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  " Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'SirVer/ultisnips'                " XXX snippet engine
   Plug 'honza/vim-snippets'              " XXX snippets
 
+
+
   " Plug 'Shougo/neco-vim'
-  " Plug 'neovim/nvim-lsp'
-  " Plug 'haorenW1025/completion-nvim'
   " Plug 'nvim-treesitter/nvim-treesitter'
 
   " Python
@@ -132,7 +137,7 @@ if &loadplugins " {{{
   Plug 'w0ng/vim-hybrid'
   call plug#end()
   " }}}
-  lua require'colorizer'.setup()
+  lua require('colorizer').setup()
   " Colorschemes are plugins so they must be in here
   " let g:material_terminal_italics = 1
   " let g:material_theme_style = 'darker'
@@ -148,3 +153,4 @@ source $HOME/.files/nvim/settings.vim
 source $HOME/.files/nvim/large_files.vim
 source $HOME/.files/nvim/backups.vim
 " source $HOME/.files/nvim/wildmenu.vim
+lua require('my_lsp_settings')
