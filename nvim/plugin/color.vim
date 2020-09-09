@@ -24,7 +24,7 @@ function! s:Gruvbox ()
   " echo "Gruvbox"
   hi! Folded guibg=NONE
   hi! SignColumn guibg=NONE
-  hi! NormalNC guifg=#ab9f81 guibg=#262626
+  hi! NormalNC guifg=#ab9f81 guibg=#202020
 
   hi! GitGutterAdd guifg=#b8bb26 guibg=NONE
   hi! GitGutterChange guifg=#fabd2f guibg=NONE

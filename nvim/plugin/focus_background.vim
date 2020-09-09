@@ -1,8 +1,8 @@
 " Background colors for active vs inactive windows
-
 if !g:custom_focus
   finish
 endif
+let g:custom_focus = 1
 
 " hi link Normal ActiveWindow
 " hi InactiveWindow guibg=#242930
