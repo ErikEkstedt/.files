@@ -24,13 +24,13 @@ nnoremap <c-q> :q!<cr>
 nnoremap <leader>mm vip=
 
 " Toggle conceallevel
-nnoremap <leader>cc :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
+" nnoremap <leader>cc :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
 
 " open quickfix window for latest vim search term.
 nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 
 " Substitute word under cursor in entire file.
-nnoremap <leader>sw :%s/<C-r><C-w>//g<Left><Left>
+" nnoremap <leader>sw :%s/<C-r><C-w>//g<Left><Left>
 
 " Substitute word by put
 nnoremap S viw"0p
@@ -38,11 +38,6 @@ nnoremap S viw"0p
 " last edit. previous item in changelist (:help changelist, :changes)
 nnoremap <backspace> g;
 nnoremap + g,
-
-
-" delete all bufers except current
-" nnoremap <leader>bd :w | %bd | e#
-nnoremap <leader>db :%bd<CR><C-O>:bd#<CR>
 
 "indenting/unindenting
 " nnoremap <tab> >>  " Overwrites <C-I>
@@ -111,6 +106,8 @@ nnoremap <space>N :bl<CR>
 nnoremap <space><space> :b#<CR>
 nnoremap <space>d :bd<CR>
 nnoremap <space>D :bd!<CR>
+" delete all bufers except current
+nnoremap <leader>db :%bd<CR><C-O>:bd#<CR>
 " nnoremap <space>o :only<CR>
 
 " Go to next operator: +, -, ^, ="
@@ -163,7 +160,9 @@ nnoremap gN #zz
 nnoremap * *<c-o>
 nnoremap # #<c-o>
 
+" jump forward/back in jumplist but also center
 nnoremap <C-O> <C-O>zz
+nnoremap <C-i> <C-i>zz
 
 " when sudo rights are needed but you did not sudo.
 cmap w!! %!sudo tee > /dev/null %
