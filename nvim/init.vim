@@ -99,7 +99,7 @@ if &loadplugins " {{{
   Plug 'godlygeek/tabular'
 
   Plug '~/.fzf'
-  Plug 'junegunn/fzf.vim'                " XXX fuzzy filefinding
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " XXX fuzzy filefinding
   Plug 'alok/notational-fzf-vim'
   Plug 'chengzeyi/fzf-preview.vim'
 

@@ -8,8 +8,13 @@ set completeopt=menuone,noinsert,noselect
 " Avoid showing message extra message when using completion
 set shortmess+=c
 
+
+" Use completion-nvim in every buffer
+autocmd BufEnter * lua require'completion'.on_attach()
+
 " autocmd BufEnter * lua require'completion'.on_attach()
 let g:completion_trigger_on_delete = 1
+let g:completion_auto_paren = 1
 let g:completion_enable_snippet = 'UltiSnips'
 let g:completion_confirm_key = "\<leader>\<leader>"
 let g:completion_enable_auto_paren = 1

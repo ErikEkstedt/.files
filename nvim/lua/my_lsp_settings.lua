@@ -20,27 +20,20 @@ nvim_lsp.vimls.setup{on_attach=custom_attach}
 -- nvim_lsp.sumneko_lua.setup{on_attach=custom_attach}
 -- nvim_lsp.sumneko_lua.setup{on_attach=diagnostic.on_attach}
 
-nvim_lsp.sumneko_lua.setup{
-  on_attach=diagnostic.on_attach,
-  capabilities = {
-    textDocument = {
-      completion = {
-        completionItem = {
-          snippetSupport = true,
-        }
-      }
-    }
-  }
-}
+nvim_lsp.sumneko_lua.setup{on_attach=diagnostic.on_attach}
 
--- nvim_lsp.bashls.setup{}
--- nvim_lsp.vimls.setup{}
--- nvim_lsp.sumneko_lua.setup{}
-
--- nvim_lsp.lua.setup{}
--- nvim_lsp.bashls.setup{on_attach=completion.on_attach}
--- nvim_lsp.vimls.setup{on_attach=completion.on_attach}
--- nvim_lsp.lua.setup{on_attach=completion.on_attach}
+-- nvim_lsp.sumneko_lua.setup{
+--   on_attach=diagnostic.on_attach,
+--   capabilities = {
+--     textDocument = {
+--       completion = {
+--         completionItem = {
+--           snippetSupport = true,
+--         }
+--       }
+--     }
+--   }
+-- }
 
 nvim_lsp.pyls_ms.setup{
   filetypes = { "python" },
