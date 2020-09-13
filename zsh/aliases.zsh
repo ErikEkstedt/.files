@@ -92,14 +92,14 @@ alias ts='/home/erik/TeamSpeak3-Client-linux_amd64/ts3client_runscript.sh'
 alias somy="source $HOME/mycroft-core/.venv/bin/activate"
 alias nvr="$HOME/miniconda3/envs/neovim3/bin/nvr"
 
-case `uname` in
-  Darwin)
-    ;;
-  Linux)
-    # alias nvim="~/Applications/nvim"
-    alias nvim="~/Applications/nvim.appimage"
-    ;;
-esac
+# case `uname` in
+#   Darwin)
+#     ;;
+#   Linux)
+#     # alias nvim="~/Applications/nvim"
+#     # alias nvim="~/Applications/nvim.appimage"
+#     ;;
+# esac
 
 alias v="nvim"
 alias vn="nvim -c VimwikiIndex"
