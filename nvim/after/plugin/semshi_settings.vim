@@ -5,6 +5,8 @@ if !exists('g:semshi#filetypes')
   finish
 endif
 
+let g:semshi = v:false
+
 augroup Semshi
   autocmd!
   autocmd FileType python call s:SemshiColors()
