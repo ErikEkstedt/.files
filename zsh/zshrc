@@ -32,8 +32,8 @@ ZSH_HIGHLIGHT_STYLES[commands]='fg=cyan,bold' # To have paths colored instead of
 ZSH_HIGHLIGHT_STYLES[globbing]='none'         # To disable highlighting of globbing expressions
 # }}}
 # LFcd {{{
+# https://github.com/gokcehan/lf/blob/master/etc/lfcd.sh
 lfcd () {
-  # https://github.com/gokcehan/lf/blob/master/etc/lfcd.sh
   tmp="$(mktemp)"
   lf -last-dir-path="$tmp" "$@"
   if [ -f "$tmp" ]; then
@@ -130,7 +130,7 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<  }}}
-TMUX  {{{
+# TMUX  {{{
 if [ "$TMUX" = "" ]; then
   if tmux has-session -t=Terminal 2> /dev/null; then
     tmux attach -t Terminal
