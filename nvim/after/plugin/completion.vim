@@ -3,7 +3,12 @@ if !exists('g:nvim_lsp')
   finish
 endif
 
-let g:completion_trigger_on_delete = 1
+
+" Files that have associated lsp-settings should be omitted
+" they are attached with completion and diagnostics
+let ftToIgnore = ['python', 'lua', 'vim', 'javascript', 'typescript', 'bash']
+autocmd BufEnter * if index(ftToIgnore, &ft) < 0 | lua require'completion'.on_attach()
+
 
 " nnoremap <silent> gh <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
@@ -17,7 +22,7 @@ nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 " Use completion-nvim in every buffer
 set completeopt=menuone,noinsert,noselect  " noi
 
-" autocmd BufEnter * lua require'completion'.on_attach()
+let g:completion_trigger_on_delete = 1
 let g:completion_enable_snippet = 'UltiSnips'
 let g:completion_confirm_key = "\<leader>\<leader>"
 let g:completion_enable_auto_paren = 1

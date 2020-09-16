@@ -24,14 +24,14 @@ let g:HOME = substitute(system('echo $HOME'), '\n', '', '') " Home directory
 let g:UNAME = substitute(system('uname'), '\n', '', '') " Linux/Darwin
 let g:BROWSER = "brave-browser"
 " }}}
-" Set Python/Npm paths {{{
 
+" Set Python/Npm paths {{{
 if has("unix")  "Python & Node
   let g:loaded_python_provider = 0
   let g:python3_host_prog=g:HOME . '/miniconda3/envs/neovim3/bin/python'
   let g:python_host_bin=g:HOME . '/miniconda3/envs/neovim3/bin'
   let g:python_host_prog=g:HOME . '/miniconda3/envs/neovim2/bin/python'
-  " let g:node_host_prog=g:HOME . '/.nvm/versions/node/v13.1.0/bin/neovim-node-host'
+  " let g:node_host_prog=g:HOME . '/.nvm/versions/node/v13.11.0/bin/neovim-node-host'
 endif "}}}
 
 if &loadplugins " {{{
