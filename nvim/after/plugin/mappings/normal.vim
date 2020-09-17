@@ -80,10 +80,10 @@ map ä {
 " Tmux now handles movement between windows and resizing
 " Plugin 'edkolev/tmuxline.vim'
 " Window Resizing
-nnoremap <C-h> :vertical resize -3<cr>
-nnoremap <C-l> :vertical resize +3<cr>
-nnoremap <C-k> :resize +3<cr>
-nnoremap <C-j> :resize -3<cr>
+nnoremap <C-Left> :vertical resize -3<cr>
+nnoremap <C-Right> :vertical resize +3<cr>
+nnoremap <C-Down> :resize +3<cr>
+nnoremap <C-Up> :resize -3<cr>
 
 " Space
 

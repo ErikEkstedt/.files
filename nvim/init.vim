@@ -24,14 +24,16 @@ let g:HOME = substitute(system('echo $HOME'), '\n', '', '') " Home directory
 let g:UNAME = substitute(system('uname'), '\n', '', '') " Linux/Darwin
 let g:BROWSER = "brave-browser"
 " }}}
+
 " Set Python/Npm paths {{{
 if has("unix")  "Python & Node
   let g:loaded_python_provider = 0
   let g:python3_host_prog=g:HOME . '/miniconda3/envs/neovim3/bin/python'
   let g:python_host_bin=g:HOME . '/miniconda3/envs/neovim3/bin'
   let g:python_host_prog=g:HOME . '/miniconda3/envs/neovim2/bin/python'
-  " let g:node_host_prog=g:HOME . '/.nvm/versions/node/v13.1.0/bin/neovim-node-host'
+  " let g:node_host_prog=g:HOME . '/.nvm/versions/node/v13.11.0/bin/neovim-node-host'
 endif "}}}
+
 if &loadplugins " {{{
   if empty(glob('~/.config/nvim/autoload/plug.vim'))
     echo "No Vim-Plug available... Downloading and running PlugInstall"
@@ -41,25 +43,29 @@ if &loadplugins " {{{
   endif
   call plug#begin('~/.vim/bundle') "{{{
   " Plug '/mytest-nvim'
-  Plug 'yuezk/vim-js'
-  Plug 'maxmellon/vim-jsx-pretty'
-  Plug 'epilande/vim-es2015-snippets'
-  Plug 'epilande/vim-react-snippets'
-
-  " Telescope:  https://github.com/nvim-lua/telescope.nvim
-  Plug 'nvim-lua/popup.nvim'
-  Plug 'nvim-lua/plenary.nvim'
-  Plug 'nvim-lua/telescope.nvim'
+  " Plug 'yuezk/vim-js'
+  " Plug 'maxmellon/vim-jsx-pretty'
+  " Plug 'epilande/vim-es2015-snippets'
+  " Plug 'epilande/vim-react-snippets'
 
   " completion / LSP
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  " Telescope:  https://github.com/nvim-lua/telescope.nvim
+  " Plug 'nvim-lua/popup.nvim'
+  " Plug 'nvim-lua/plenary.nvim'
+  " Plug 'nvim-lua/telescope.nvim'
+  Plug 'tjdevries/nlua.nvim'
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'nvim-lua/completion-nvim'
+  Plug 'nvim-lua/diagnostic-nvim'
+  " Plug 'Shougo/neco-vim'
+  " Plug 'neovim/nvim-lsp'
+  " Plug 'nvim-treesitter/nvim-treesitter'
+
+  " completion / LSP
+  " Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'SirVer/ultisnips'                " XXX snippet engine
   Plug 'honza/vim-snippets'              " XXX snippets
 
-  " Plug 'Shougo/neco-vim'
-  " Plug 'neovim/nvim-lsp'
-  " Plug 'haorenW1025/completion-nvim'
-  " Plug 'nvim-treesitter/nvim-treesitter'
 
   " Python
   Plug 'psf/black', { 'tag': '19.10b0' } " Plug 'psf/black'
@@ -148,3 +154,4 @@ source $HOME/.files/nvim/settings.vim
 source $HOME/.files/nvim/large_files.vim
 source $HOME/.files/nvim/backups.vim
 " source $HOME/.files/nvim/wildmenu.vim
+lua require('lsp_settings')

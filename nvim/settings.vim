@@ -1,8 +1,8 @@
 " Highlight text when yank. Built in lua.
-if exists('##TextYankPost')
-  autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank('DiffText', 500)
-endif
 
+if exists('##TextYankPost')
+  au! TextYankPost * silent! lua vim.highlight.on_yank {higroup="DiffAdd", timeout=500}
+endif
 
 " Keep cursor position in files
 " -----------------------------
