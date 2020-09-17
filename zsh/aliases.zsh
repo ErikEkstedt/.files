@@ -102,7 +102,8 @@ case `uname` in
 esac
 
 alias v="nvim"
-alias vn="nvim -c VimwikiIndex"
+alias vn="nvim -c VimwikiUISelect"
+alias vno="nvim -c VimwikiUISelect"
 alias vf="nvim -c Files"
 alias py="python"  #--profile=erik"
 alias ipy="ipython"  #--profile=erik"
