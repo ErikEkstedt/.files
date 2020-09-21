@@ -11,6 +11,7 @@ alias rz="source ~/.zshrc"
 
 alias _diskspace="du -sk * | sort -nr | head -10"
 alias ducks='du -cks -- * | sort -rn | head'
+alias fd='fdfind'
 
 # Source Emac binding
 alias semacs="bindkey -e"
