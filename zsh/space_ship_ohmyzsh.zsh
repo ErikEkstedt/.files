@@ -94,7 +94,7 @@ else
 	venv          # virtualenv section
 	conda         # conda virtualenv section
 	pyenv         # Pyenv section
-	kubecontext   # Kubectl context section
+	# kubecontext   # Kubectl context section
 	exec_time     # Execution time
 	line_sep      # Line break
 	battery       # Battery level and status
