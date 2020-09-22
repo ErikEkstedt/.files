@@ -2,6 +2,7 @@
 # zsh-functions.zsh
 # sourced from zshrc
 
+
 function price() { # {{{
     local pair="${1:-etheur}" # default pair
     local exchange="${2:-kraken}" # default exchange
@@ -19,6 +20,20 @@ function print_path() {  #{{{
     } #}}}
 _print_path | bat
 } #}}}
+# lf: lfcd() {{{
+lfcd () {
+  tmp="$(mktemp)"
+  lf -last-dir-path="$tmp" "$@"
+  if [ -f "$tmp" ]; then
+    dir="$(cat "$tmp")"
+    rm -f "$tmp"
+    if [ -d "$dir" ]; then
+      if [ "$dir" != "$(pwd)" ]; then
+        cd "$dir"
+      fi
+    fi
+  fi
+}  #}}}
 # Ranger {{{
 # function ranger {
 #     # Quitting ranger with "q" puts you in the directory where you quit
@@ -35,37 +50,6 @@ _print_path | bat
 #     fi
 #     command rm -f -- "$tempfile" 2>/dev/null
 # }
-# }}}
-# LF {{{
-lfcd () {
-  tmp="$(mktemp)"
-  lf -last-dir-path="$tmp" "$@"
-  if [ -f "$tmp" ]; then
-    dir="$(cat "$tmp")"
-    rm -f "$tmp"
-    if [ -d "$dir" ]; then
-      if [ "$dir" != "$(pwd)" ]; then
-        cd "$dir"
-      fi
-    fi
-  fi
-}
-
-lfcd_zsh () {
-  tmp="$(mktemp)"
-  lf -last-dir-path="$tmp" "$@"
-  if [ -f "$tmp" ]; then
-    dir="$(cat "$tmp")"
-    rm -f "$tmp"
-    if [ -d "$dir" ]; then
-      if [ "$dir" != "$(pwd)" ]; then
-        cd "$dir"
-      fi
-    fi
-  fi
-}
-zle -N lfcd_zsh
-
 # }}}
 # Browser{{{
 function _browser_tab() {

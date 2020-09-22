@@ -11,7 +11,7 @@ alias rz="source ~/.zshrc"
 
 alias _diskspace="du -sk * | sort -nr | head -10"
 alias ducks='du -cks -- * | sort -rn | head'
-alias fd='fdfind'
+# alias fd='fdfind'
 
 # Source Emac binding
 alias semacs="bindkey -e"
@@ -70,7 +70,7 @@ alias gdw="cd ~/Downloads; clear; la"
 alias gpi="cd ~/Pictures"
 
 alias gho="cd ~; clear; ls"
-alias gpr="cd $(git rev-parse --show-toplevel); clear; ls"
+alias gpr='cd "$(git rev-parse --show-toplevel)"; clear; ls'
 alias gro="cd /; clear; ls"
 # }}}
 # Edit configs {{{
@@ -129,9 +129,9 @@ alias gst="git status"
 alias gch="git checkout --"
 
 # For all panes in window (tmux)
-alias Gps='tspc "git push"'
-alias Gpl='tspc "git pull"'
-alias Gst='tspc "git status"'
+# alias Gps='tspc "git push"'
+# alias Gpl='tspc "git pull"'
+# alias Gst='tspc "git status"'
 # }}}
 # Tmux {{{
 alias titerm="tmux source ~/.files/tmux/tmux.iterm.conf"
@@ -153,9 +153,9 @@ alias fm=lf
 alias vif=$HOME/.config/vifm/scripts/vifmrun
 # }}}
 # SSH / WOL {{{
-export MOUNTPATH=~/LAN
-alias wake="wakeonlan -i xxx.xxx.xxx.xxx yy:yy:yy:yy:yy:yy"
-alias mountmachine="sshfs -p 2002 -o ssh_command='ssh -i ~/.ssh//id_rsa' user@xxx.xxx.xxx.xxx:/PATH/ ~/$MOUNTPATH"
-alias umountall="sudo umount ~/Machines/*"
+# export MOUNTPATH=~/LAN
+# alias wake="wakeonlan -i xxx.xxx.xxx.xxx yy:yy:yy:yy:yy:yy"
+# alias mountmachine="sshfs -p 2002 -o ssh_command='ssh -i ~/.ssh//id_rsa' user@xxx.xxx.xxx.xxx:/PATH/ ~/$MOUNTPATH"
+# alias umountall="sudo umount ~/Machines/*"
 # }}}
 # vim: fdm=marker

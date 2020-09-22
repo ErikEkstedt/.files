@@ -12,4 +12,5 @@ sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/to
 
 sudo -u erik chsh -s $(which zsh)
 
-npm install -g spaceship-zsh-theme
+# dont need npm for this
+# npm install -g spaceship-zsh-theme
