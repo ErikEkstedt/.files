@@ -3,3 +3,4 @@
 *.log
 nvim_slim/
 Session.vim
+.nvimlog
