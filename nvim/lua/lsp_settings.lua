@@ -2,16 +2,17 @@
 -- local util = require 'nvim_lsp/util'
 -- local configs = require'nvim_lsp/configs'
 
--- checkout: https://github.com/tjdevries/config_manager/blob/master/xdg_config/nvim/lua/lsp_config.lua
 local nvim_lsp = require('nvim_lsp')
 local completion = require('completion')
 local diagnostic = require('diagnostic')
 
+-- checkout: https://github.com/tjdevries/config_manager/blob/master/xdg_config/nvim/lua/lsp_config.lua
 local custom_attach = function()
   completion.on_attach()
   diagnostic.on_attach()
-  -- vim.cmd("setlocal omnifunc=v:lua.vim.lsp.omnifunc")
+  vim.cmd("setlocal omnifunc=v:lua.vim.lsp.omnifunc")
 end
+
 nvim_lsp.bashls.setup{on_attach=custom_attach}
 nvim_lsp.vimls.setup{on_attach=custom_attach}
 
@@ -59,5 +60,3 @@ nvim_lsp.pyls_ms.setup{
   },
   on_attach=custom_attach
 }
-
--- print('lsp_settings loaded!')

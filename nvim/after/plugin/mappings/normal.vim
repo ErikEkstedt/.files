@@ -118,6 +118,8 @@ nnoremap <leader>O :call search('[+\-\^/*=]', 'b')<CR>
 nnoremap <space>J <c-w>n 
 nnoremap <space>L <c-w>n<c-w>L
 
+nnoremap <space>q :q<CR>
+
 
 " Open todo
 nnoremap <space>t :e ~/.files/ToDo.md<CR>
