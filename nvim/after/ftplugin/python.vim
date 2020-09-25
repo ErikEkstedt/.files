@@ -21,9 +21,15 @@ setlocal nowrap
 nnoremap <buffer> ,= :s/\s\@<!=\+\s\@!/ \0/g<cr>
 nnoremap <buffer> ,= :s/\s\@<!=\+\s\@!/ = /g<CR>
 
-" Note: <CR> is indistinguishable from <C-m>
-nnoremap <buffer> <CR> vip:SlimuxREPLSendLine<CR>
-vnoremap <buffer> <CR> :SlimuxREPLSendLine<CR>gv<Esc>zz
+if exists("g:loaded_slime")
+  nnoremap <buffer> <silent> <cr> vap:<c-u>call slime#send_op(visualmode(), 1)<cr>
+endif
+
+if exists('g:slimux_tmux_path')
+  " Note: <CR> is indistinguishable from <C-m>
+  nnoremap <buffer> <CR> vip:SlimuxREPLSendLine<CR>
+  vnoremap <buffer> <CR> :SlimuxREPLSendLine<CR>gv<Esc>zz
+endif
 
 
 nnoremap <space>al ggv/if __name__<cr>k

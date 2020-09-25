@@ -107,8 +107,9 @@ if &loadplugins " {{{
   Plug 'junegunn/vim-easy-align'         " XXX better alignment than tabular
   Plug 'junegunn/vim-peekaboo'           " XXX when pressing quotes shows what's stored in the different registers
   Plug 'nelstrom/vim-visual-star-search' " * on visual select searches for the snippet
-  Plug 'lotabout/slimux'                 " XXX
-  " Plug 'jpalardy/vim-slime'
+  " Plug 'lotabout/slimux'                 " XXX
+  Plug 'jpalardy/vim-slime'
+  let g:slime_no_mappings=1  " don't set mappings
 
   Plug 'christoomey/vim-tmux-navigator'  " XXX navigate between vim and tmuz seemlessly
   " Plug 'tmux-plugins/vim-tmux-focus-events' " Focus events correctly triggered. Leaving/Returning to vim inside tmux
@@ -133,7 +134,6 @@ if &loadplugins " {{{
   Plug 'dracula/vim'
   Plug 'tomasr/molokai'
   Plug 'arcticicestudio/nord-vim'
-  Plug 'kaicataldo/material.vim'
   Plug 'sheerun/vim-wombat-scheme'
   Plug 'w0ng/vim-hybrid'
   call plug#end()

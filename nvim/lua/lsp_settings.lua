@@ -34,6 +34,12 @@ require('nlua.lsp.nvim').setup(require('nvim_lsp'), {
   }
 })
 
+-- Requires dotnet
+-- Ubuntu 20.04 lts:
+-- https://docs.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#2004-
+-- sudo apt-get update; \
+--  sudo apt-get install -y apt-transport-https && \
+--  sudo apt-get update && sudo apt-get install -y dotnet-runtime-3.1
 nvim_lsp.pyls_ms.setup{
   init_options = {
     analysisUpdates = true,
