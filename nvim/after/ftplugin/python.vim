@@ -32,7 +32,7 @@ if exists('g:slimux_tmux_path')
 endif
 
 
-nnoremap <space>al ggv/if __name__<cr>k
+nnoremap <space>al gg0v/if __name__<cr>k
 nnoremap gm /if __name__<cr>j
 
 let python_highlight_all = 1

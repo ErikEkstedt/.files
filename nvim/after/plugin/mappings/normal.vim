@@ -14,7 +14,7 @@ nnoremap ,pa "+p
 nnoremap <c-y> "+yy
 
 " select everything
-nnoremap <leader>a ggvG$
+nnoremap <leader>a gg0vG$
 
 " standard saving options
 nnoremap <c-s> :w<cr>
