@@ -26,6 +26,32 @@ let g:completion_trigger_on_delete = 1
 let g:completion_enable_snippet = 'UltiSnips'
 let g:completion_confirm_key = "\<leader>\<leader>"
 let g:completion_enable_auto_paren = 1
+" let g:completion_chain_complete_list = {
+"       \'default' : [
+"       \    {'complete_items': ['lsp', 'snippet', 'buffers']},
+"       \    {'mode': '<c-p>'},
+"       \    {'mode': '<c-n>'}
+"       \],
+"       \'python' : [
+"       \	{'complete_items': ['ts']}
+"       \	],
+"       \}
+
+" Configure the completion chains
+let g:completion_chain_complete_list = {
+      \'default' : {
+      \	'default' : [
+      \		{'complete_items' : ['lsp', 'snippet', 'buffers']},
+      \		{'mode' : 'file'}
+      \	],
+      \	'comment' : [],
+      \	'string' : []
+      \	},
+      \'python' : [
+      \	{'complete_items': ['lsp', 'snippet', 'ts', 'buffers']},
+      \	],
+      \}
+
 " let g:completion_customize_lsp_label = {
 "       \ 'Function': "\uf794",
 "       \ 'Method': "\uf6a6",

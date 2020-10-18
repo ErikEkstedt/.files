@@ -57,6 +57,10 @@ if &loadplugins " {{{
   Plug 'neovim/nvim-lspconfig'
   Plug 'nvim-lua/completion-nvim'
   Plug 'nvim-lua/diagnostic-nvim'
+  Plug 'steelsojka/completion-buffers'
+  " Plug 'nvim-treesitter/nvim-treesitter'
+  " Plug 'nvim-treesitter/completion-treesitter'
+
   " Plug 'Shougo/neco-vim'
   " Plug 'neovim/nvim-lsp'
   " Plug 'nvim-treesitter/nvim-treesitter'
@@ -66,11 +70,10 @@ if &loadplugins " {{{
   Plug 'SirVer/ultisnips'                " XXX snippet engine
   Plug 'honza/vim-snippets'              " XXX snippets
 
-
-  " Python
+  " Languages
   Plug 'psf/black', { 'tag': '19.10b0' } " Plug 'psf/black'
   Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " better python syntax highlight
-  Plug 'jupyter-vim/jupyter-vim'        " interact with qtconsole
+  " Plug 'jupyter-vim/jupyter-vim'        " interact with qtconsole
   Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }  " easily create docstrings
   let g:pydocstring_enable_mapping=0
 
@@ -155,3 +158,4 @@ source $HOME/.files/nvim/large_files.vim
 source $HOME/.files/nvim/backups.vim
 " source $HOME/.files/nvim/wildmenu.vim
 lua require('lsp_settings')
+" lua require('treesitter_settings')
