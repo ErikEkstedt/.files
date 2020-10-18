@@ -15,14 +15,20 @@ end
 
 nvim_lsp.bashls.setup{on_attach=custom_attach}
 nvim_lsp.vimls.setup{on_attach=custom_attach}
+nvim_lsp.yamlls.setup{on_attach=custom_attach}
 
+-- WEB --------------------------------------------------------------------------------
 -- Install lsp with builtin installer or `npm install -g typescript-language-server`
 -- along with `npm install -g typescript`
 nvim_lsp.tsserver.setup{
   init_options = { bin_dir='$NVM_BIN'},
   on_attach=custom_attach
 }
+nvim_lsp.html.setup{on_attach=custom_attach}
+nvim_lsp.cssls.setup{on_attach=custom_attach}
 
+
+-- LUA --------------------------------------------------------------------------------
 -- nvim_lsp.sumneko_lua.setup{on_attach=diagnostic.on_attach}
 require('nlua.lsp.nvim').setup(require('nvim_lsp'), {
   on_attach = custom_attach,
@@ -34,6 +40,7 @@ require('nlua.lsp.nvim').setup(require('nvim_lsp'), {
   }
 })
 
+-- PYLS -------------------------------------------------------------------------------
 -- Requires dotnet
 -- Ubuntu 20.04 lts:
 -- https://docs.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#2004-
