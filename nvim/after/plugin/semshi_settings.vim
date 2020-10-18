@@ -1,7 +1,7 @@
 " https://github.com/numirias/semshi
 
 if !exists('g:semshi#filetypes')
-  echo "semshi does not exists"
+  " echo "semshi does not exists"
   finish
 endif
 
