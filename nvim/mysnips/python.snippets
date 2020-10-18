@@ -29,7 +29,15 @@ endsnippet
 # Matplotlib
 
 snippet plt.imshow "imshow"
-plt.imshow($0, aspect='auto', origin='bottom')
+plt.imshow($0, aspect='auto', origin='lower')
+endsnippet
+
+snippet ax.imshow "imshow"
+ax.imshow($0, aspect='auto', origin='lower')
+endsnippet
+
+snippet imshow "imshow"
+$1.imshow($0, aspect='auto', origin='lower')
 endsnippet
 
 snippet plt.plot "plot"
@@ -100,6 +108,10 @@ import pytorch_lightning as pl
 from pytorch_lightning.loggers import TestTubeLogger
 from pytorch_lightning.callbacks import ModelCheckpoint, EarlyStopping
 $0
+endsnippet
+
+snippet importmatplot "pyplot imports"
+import matplotlib.pyplot as plt$0
 endsnippet
 
 snippet pytorch_lightning "pytorch imports"

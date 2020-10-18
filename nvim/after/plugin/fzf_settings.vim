@@ -4,9 +4,13 @@ if !exists('g:loaded_fzf')
   finish
 endif
 
-let $FZF_DEFAULT_COMMAND = 'fd --type file --follow --hidden'
+let $FZF_DEFAULT_COMMAND = 'fd --type file --follow --hidden --no-ignore'
 let $FZF_DEFAULT_COMMAND .= ' -E .git'
-let $FZF_DEFAULT_COMMAND .= ' -E "*.png" -E "*.gif" -E "*.jpg" -E ".jpeg" -E ".mp4"'
+let $FZF_DEFAULT_COMMAND .= ' -E node_modules'
+let $FZF_DEFAULT_COMMAND .= ' -E "data/**/*.json"'
+let $FZF_DEFAULT_COMMAND .= ' -E "__pycache*"'
+let $FZF_DEFAULT_COMMAND .= ' -E "*.png" -E "*.gif" -E "*.jpg" -E ".jpeg" -E "*.svg"'
+let $FZF_DEFAULT_COMMAND .= ' -E "*.wav" -E "*.sph" -E "*.mp3" -E ".mp4"'
 let $FZF_DEFAULT_COMMAND .= ' -E "*.pt" -E "*.npy"'
 let $FZF_DEFAULT_COMMAND .= ' -E "*.spl" -E "*.sug"'
 
@@ -90,7 +94,8 @@ nnoremap <C-f> :FZFRg<CR>
 nnoremap <Leader>fw :FZFRg<CR>
 
 nnoremap <Leader>gi :FZFGGrep<CR>
-nnoremap <Leader>fg :GFiles?<CR>
+nnoremap <Leader>fg :GFiles<CR>
+nnoremap <Leader>fG :GFiles<CR>
 
 " nnoremap <Leader>fr :Files /<CR>
 " nnoremap <Leader>fi :Files ~<CR>

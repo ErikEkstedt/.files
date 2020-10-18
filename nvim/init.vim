@@ -75,7 +75,7 @@ if &loadplugins " {{{
   let g:pydocstring_enable_mapping=0
 
   Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-  Plug 'plasticboy/vim-markdown'
+  " Plug 'plasticboy/vim-markdown'
   Plug 'lervag/vimtex'       " XXX latex compiler, preview latex pdf, highlight and syntax. alot more.
   Plug 'mhinz/neovim-remote' " Needed for vimtex. Error: 'compiler_progranme=nvr' / '--remote'
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }

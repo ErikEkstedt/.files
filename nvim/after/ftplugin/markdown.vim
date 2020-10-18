@@ -22,5 +22,5 @@ setlocal wrap
 " inoremap <leader>ma $$$$<left><left>
 
 " Get both markdown and html snippets
-set filetype=markdown.html
+" set filetype=markdown.html
 " :UltiSnipsAddFiletypes markdown.latex.html
