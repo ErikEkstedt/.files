@@ -101,6 +101,7 @@ case `hostname` in
     export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
     ;;
 esac
+# source ~/.files/tmuxinator/tmuxinator.zsh
 source ~/.files/zsh/zsh-functions.zsh  # comes before alias
 source ~/.files/zsh/aliases.zsh
 source ~/.files/zsh/less_colors.zsh

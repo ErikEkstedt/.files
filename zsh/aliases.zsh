@@ -103,6 +103,7 @@ alias nvr="$HOME/miniconda3/envs/neovim3/bin/nvr"
 # esac
 
 alias v="nvim"
+alias vr="cd ~/research/research; vf"
 alias vn="nvim -c VimwikiUISelect"
 alias vno="nvim -c VimwikiUISelect"
 alias vf="nvim -c Files"
@@ -136,6 +137,7 @@ alias gch="git checkout --"
 # }}}
 # Tmux {{{
 alias titerm="tmux source ~/.files/tmux/tmux.iterm.conf"
+alias ta="tmux attach -t"
 alias tkd=tmuxkillf
 alias tls="tmux list-sessions"
 alias tks="tmux kill-session -t"
