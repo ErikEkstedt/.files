@@ -26,56 +26,53 @@ let g:completion_trigger_on_delete = 1
 let g:completion_enable_snippet = 'UltiSnips'
 let g:completion_confirm_key = "\<leader>\<leader>"
 let g:completion_enable_auto_paren = 1
-" let g:completion_chain_complete_list = {
-"       \'default' : [
-"       \    {'complete_items': ['lsp', 'snippet', 'buffers']},
-"       \    {'mode': '<c-p>'},
-"       \    {'mode': '<c-n>'}
-"       \],
-"       \'python' : [
-"       \	{'complete_items': ['ts']}
-"       \	],
-"       \}
 
 " Configure the completion chains
 let g:completion_chain_complete_list = {
       \'default' : {
       \	'default' : [
-      \		{'complete_items' : ['lsp', 'snippet', 'buffers']},
+      \		{'complete_items' : ['snippet', 'lsp', 'buffers']},
       \		{'mode' : 'file'}
       \	],
       \	'comment' : [],
       \	'string' : []
       \	},
-      \'python' : [
-      \	{'complete_items': ['lsp', 'snippet', 'ts', 'buffers']},
-      \	],
       \}
 
-" let g:completion_customize_lsp_label = {
-"       \ 'Function': "\uf794",
-"       \ 'Method': "\uf6a6",
-"       \ 'Variable': "\uf71b",
-"       \ 'Constant': "\uf8ff",
-"       \ 'Struct': "\ufb44",
-"       \ 'Class': "\uf0e8",
-"       \ 'Interface': "\ufa52",
-"       \ 'Text': "\ue612",
-"       \ 'Enum': "\uf435",
-"       \ 'EnumMember': "\uf02b",
-"       \ 'Module': "\uf668",
-"       \ 'Color': "\ue22b",
-"       \ 'Property': "\ufab6",
-"       \ 'Field': "\uf93d",
-"       \ 'Unit': "\uf475",
-"       \ 'File': "\uf471",
-"       \ 'Value': "\uf8a3",
-"       \ 'Event': "\ufacd",
-"       \ 'Folder': "\uf115",
-"       \ 'Keyword': "\uf893",
-"       \ 'Operator': "\uf915",
-"       \ 'Reference': "\uf87a",
-"       \ 'Snippet': "\uf64d",
-"       \ 'TypeParameter': "\uf278",
-"       \ 'Default': "\uf29c",
-"       \}
+
+" set by steelsojka/completion-buffers
+let g:completion_customize_lsp_label = {
+      \ 'Buffers': "[Bu]",
+      \ 'Operator': "[Op]",
+      \ 'Variable': "[Var]",
+      \ 'Keyword': " \xf0\x9f\x94\x91",
+      \ 'Snippet': "[Snip]",
+      \ 'UltiSnips': "[US]",
+      \}
+
+      " \ 'Function': "\uf794",  
+      " \ 'Method': "\uf6a6",
+      " \ 'Variable': "\uf71b",
+      " \ 'Constant': "\uf8ff",
+      " \ 'Struct': "\ufb44",
+      " \ 'Class': "\uf0e8",
+      " \ 'Interface': "\ufa52",
+      " \ 'Text': "\ue612",
+      " \ 'Enum': "\uf435",
+      " \ 'EnumMember': "\uf02b",
+      " \ 'Module': "\uf668",
+      " \ 'Color': "\ue22b",
+      " \ 'Property': "\ufab6",
+      " \ 'Field': "\uf93d",
+      " \ 'Unit': "\uf475",
+      " \ 'File': "\uf471",
+      " \ 'Value': "\uf8a3",
+      " \ 'Event': "\ufacd",
+      " \ 'Folder': "\uf115",
+      " \ 'Keyword': "\uf893",
+      " \ 'Operator': "\uf915",
+      " \ 'Reference': "\uf87a",
+      " \ 'Snippet': "\uf64d",
+      " \ 'TypeParameter': "\uf278",
+      " \ 'Default': "\uf29c",
+      " \}

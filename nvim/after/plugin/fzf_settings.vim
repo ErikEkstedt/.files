@@ -4,7 +4,8 @@ if !exists('g:loaded_fzf')
   finish
 endif
 
-let $FZF_DEFAULT_COMMAND = 'fd --type file --follow --hidden --no-ignore'
+" let $FZF_DEFAULT_COMMAND = 'fd --type file --follow --hidden --no-ignore'
+let $FZF_DEFAULT_COMMAND = 'fd --type file --follow --no-ignore'
 let $FZF_DEFAULT_COMMAND .= ' -E .git'
 let $FZF_DEFAULT_COMMAND .= ' -E node_modules'
 let $FZF_DEFAULT_COMMAND .= ' -E "data/**/*.json"'
@@ -50,7 +51,13 @@ let g:fzf_colors = {
       \ 'pointer': ['fg', 'Statement'], 
       \ 'prompt': ['fg', 'Statement']}
 
-
+" when searching for text in files omit json, txt, csv files
+command! -bang -nargs=* FZFMyRg
+      \ call fzf#vim#grep(
+      \    'rg --iglob "!*.txt" --iglob "!*.json" --glob "!*.csv" --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+      \     fzf_preview#p(<bang>0, {'options': '--delimiter : --nth 3..'}),
+      \     <bang>0
+      \)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mappings
@@ -77,11 +84,10 @@ let g:fzf_colors = {
 " - FZFQuickFix/FZFLocList: The original fzf.vim does not provide these commands.
 " - FuzzyFind files in root /, $HOME or current folder
 
-nnoremap <Leader>fr :FZFFiles /<CR>
+nnoremap <Leader>fp :FZFFiles ~/projects<CR>
 nnoremap <Leader>fi :FZFFiles ~<CR>
 nnoremap <Leader>ff :FZFFiles<CR>
 nnoremap <Leader>fc :FZFFiles ~/.files<CR>
-nnoremap <Leader>fp :FZFFiles ~/phd<CR>
 
 " Search lines in current buffer
 nnoremap <Leader>ll :FZFBLines<CR>
@@ -90,8 +96,8 @@ nnoremap <Leader>fl :Lines<CR>
 nnoremap <Leader>wo :Lines<CR>
 nnoremap <Leader>bu :Buffers<CR>
 
-nnoremap <C-f> :FZFRg<CR>
-nnoremap <Leader>fw :FZFRg<CR>
+nnoremap <C-f> :FZFMyRg<CR>
+nnoremap <Leader>fw :FZFMyRg<CR>
 
 nnoremap <Leader>gi :FZFGGrep<CR>
 nnoremap <Leader>fg :GFiles<CR>

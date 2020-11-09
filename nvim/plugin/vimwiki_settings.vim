@@ -12,7 +12,8 @@ let g:vimwiki_table_mappings=0
 let g:vimwiki_conceallevel=0
 
 " Open index
-nmap <Leader>ww <plug>VimwikiIndex
+nmap <Leader>ww <plug>VimwikiUISelect
+nmap <Leader>wi <plug>VimwikiUISelect
 
 " Open second entri in vimwiki_list
 nmap <Leader>wj 2<plug>VimwikiIndex
