@@ -29,12 +29,13 @@ autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 " autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " Smaller updatetime for CursorHold & CursorHoldI
-set updatetime=300
+set updatetime=200
 
 "MAPPINGS ---------------------------------------------------------
 "
 " Use enter to complete completion
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <leader><leader> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -73,23 +74,26 @@ endfunction
 " Highlight ----------------------------------------------------------
 
 " Float
-" autocmd! VimEnter,ColorScheme * call SetCocHighlights()
-" function! SetCocHighlights()
-"   hi CocFloating guifg=#98d335 guibg=#191919
-"   hi CocInfoFloat guifg=#66ffff 
-"   hi CocHintFloat guifg=#108080
-"   hi CocErrorFloat guifg=#ff0000 guibg=none
-"   hi CocWarningFloat guifg=##d49b05
-" endfunc
-
-" hi CocErrorHighlight guifg=#e9134e 
-" hi CocWarningHighlight guifg=#cf9f28 
-" hi CocInfoHighlight guifg=#aaaaaa
-" hi CocHintHighlight 
-
-" hi CocHighlightText guifg=#11aa33
-" hi CocHighlightText  guibg=#111111 ctermbg=223
-" hi CocHighlightRead guifg=#98d335 
-" hi CocHighlightWrite guibg=#303744 guifg=#e93491 
-
-
+autocmd! VimEnter,ColorScheme * call SetCocHighlights()
+function! SetCocHighlights()
+  hi CocErrorSign guifg=#990000
+  hi CocErrorFloat guifg=#ff910c
+  hi CocWarningSign guifg=#ff910c
+  hi CocWarningFloat guifg=#990000
+  hi CocHintSign guifg=#8ec07c
+  hi CocHintFloat guifg=#8ec07c
+  " CocWarningSign xxx guifg=#fabd2f euibg=None
+  " CocInfoSign    xxx links to GruvboxBlueSign
+  " CocWarningFloat xxx links to GruvboxOrange
+  " CocHintFloat   xxx links to GruvboxAqua
+  " CocDiagnosticsError xxx links to GruvboxRed
+  " CocDiagnosticsWarning xxx links to GruvboxOrange
+  " CocDiagnosticsInfo xxx links to GruvboxBlue
+  " CocDiagnosticsHint xxx links to GruvboxAqua
+  " CocSelectedText xxx links to GruvboxRed
+  " CocCodeLens    xxx links to GruvboxGray
+  " CocErrorHighlight xxx links to GruvboxRedUnderline
+  " CocWarningHighlight xxx links to GruvboxOrangeUnderline
+  " CocInfoHighlight xxx links to GruvboxBlueUnderline
+  " CocHintHighlight xxx links to GruvboxAquaUnderline
+endfunc

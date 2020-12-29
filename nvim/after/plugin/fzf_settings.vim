@@ -5,14 +5,15 @@ if !exists('g:loaded_fzf')
 endif
 
 " let $FZF_DEFAULT_COMMAND = 'fd --type file --follow --hidden --no-ignore'
-let $FZF_DEFAULT_COMMAND = 'fd --type file --follow --no-ignore'
+let $FZF_DEFAULT_COMMAND = 'fd --type file --follow --no-ignore --hidden'
 let $FZF_DEFAULT_COMMAND .= ' -E .git'
 let $FZF_DEFAULT_COMMAND .= ' -E node_modules'
 let $FZF_DEFAULT_COMMAND .= ' -E "data/**/*.json"'
 let $FZF_DEFAULT_COMMAND .= ' -E "__pycache*"'
+let $FZF_DEFAULT_COMMAND .= ' -E "*.text" -E "*.txt" -E "*.xml" -E "*.csv" -E "*.json"'
 let $FZF_DEFAULT_COMMAND .= ' -E "*.png" -E "*.gif" -E "*.jpg" -E ".jpeg" -E "*.svg"'
-let $FZF_DEFAULT_COMMAND .= ' -E "*.wav" -E "*.sph" -E "*.mp3" -E ".mp4"'
-let $FZF_DEFAULT_COMMAND .= ' -E "*.pt" -E "*.npy"'
+let $FZF_DEFAULT_COMMAND .= ' -E "*.wav" -E "*.sph" -E "*.mp3" -E "*.mp4" -E "*.flac"'
+let $FZF_DEFAULT_COMMAND .= ' -E "*.pt" -E "*.npy" -E "*.zip"'
 let $FZF_DEFAULT_COMMAND .= ' -E "*.spl" -E "*.sug"'
 
 " Minimu trying fzf-preview
@@ -54,7 +55,7 @@ let g:fzf_colors = {
 " when searching for text in files omit json, txt, csv files
 command! -bang -nargs=* FZFMyRg
       \ call fzf#vim#grep(
-      \    'rg --iglob "!*.txt" --iglob "!*.json" --glob "!*.csv" --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+      \    'rg --iglob "!*.txt" --iglob "!*.json" --iglob "!*.vocab" --iglob "!*.csv" --iglob "!*.xml" --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
       \     fzf_preview#p(<bang>0, {'options': '--delimiter : --nth 3..'}),
       \     <bang>0
       \)

@@ -1,5 +1,5 @@
 " Prettier
-if !eval('g:loaded_prettier')
+if !exists('g:loaded_prettier')
   finish
 endif
 

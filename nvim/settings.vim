@@ -1,9 +1,3 @@
-" Highlight text when yank. Built in lua.
-
-if exists('##TextYankPost')
-  au! TextYankPost * silent! lua vim.highlight.on_yank {higroup="DiffAdd", timeout=500}
-endif
-
 " Keep cursor position in files
 " -----------------------------
 " https://github.com/vim/vim/blob/eaf35241197fc6b9ee9af993095bf5e6f35c8f1a/runtime/defaults.vim#L108-L117
@@ -53,6 +47,7 @@ set shortmess+=r           " use "[RO]" instead of "[readonly]"
 set shortmess+=w           " use "[w]" instead of "written" for file write message
 set shortmess+=x           " use "[dos]" instead of "[dos format]", "[unix]" instead of
 set shortmess+=I           " Don't show Vim's welcome message.
+set shortmess+=c
 
 
 " Tabs
