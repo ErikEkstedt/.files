@@ -14,8 +14,10 @@
     "diagnostic.hintSign": "?",
     "diagnostic.errorSign": "✖",
     // "suggest.snippetIndicator": " ✂",
-    "suggest.enablePreview": false,
+    "suggest.enablePreview": true,
     "snippets.priority": 200,
+    "list.maxPreviewHeight": 50, // preview size e.g. coc-references
+    "list.height": 20,      // entry size
     // PYTHON
     "python.venvPath": "/home/erik/miniconda3/envs",
     "python.pythonPath": "/home/erik/miniconda3/envs/ttd/bin/python"

@@ -85,7 +85,7 @@ set gdefault               " e.g. :%s/foo/bar -> :%s/foo/bar/g by default. ´g´
 
 " Folds
 set foldmethod=indent
-" set foldlevelstart=0                 " start with fold everything
+set foldlevelstart=99                 " start with fold everything
 " set foldclosed=                        " all
 " set foldtext=erik#settings#foldtext() " see nvim/autoload/erik/settings.vim
 

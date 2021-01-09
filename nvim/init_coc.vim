@@ -74,7 +74,7 @@ if &loadplugins " {{{
   Plug 'vimwiki/vimwiki'
 
   " Tools
-  " Plug 'Raimondi/delimitMate'
+  Plug 'Raimondi/delimitMate'
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
   Plug 'KabbAmine/vCoolor.vim'           " XXX pick color from menu
   Plug 'Yggdroot/indentLine'             " XXX see where there is indent

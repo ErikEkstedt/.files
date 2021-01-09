@@ -44,7 +44,7 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gr <Plug>(coc-references)
-" nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
 " nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent>gw <Plug>(coc-diagnostic-next)
 nmap <silent>gW <Plug>(coc-diagnostic-prev)
@@ -80,8 +80,12 @@ function! SetCocHighlights()
   hi CocErrorFloat guifg=#ff910c
   hi CocWarningSign guifg=#ff910c
   hi CocWarningFloat guifg=#990000
-  hi CocHintSign guifg=#8ec07c
-  hi CocHintFloat guifg=#8ec07c
+  " hi CocHintSign guifg=#8ec07c
+  " hi CocHintFloat guifg=#8ec07c
+  hi! link CocHintSign Comment
+  hi! link CocHintFloat Comment
+  hi! link CocInfoSign Comment
+  hi! link CocInfoFloat Comment
   " CocWarningSign xxx guifg=#fabd2f euibg=None
   " CocInfoSign    xxx links to GruvboxBlueSign
   " CocWarningFloat xxx links to GruvboxOrange
