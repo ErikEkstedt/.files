@@ -4,31 +4,46 @@
 Follow instructions for [hid-apple-patched](https://github.com/free5lot/hid-apple-patched)
 
 
-## Works when keyboard is connected through usb
+## Required on KDE-NEON 20.04
+
+* create the file `/etc/depmod.d/hid-apple.conf` with the content
+  *  `override hid-apple * extra`
+
+
+-------------------
+
+
+From the README in [hid-apple-patched](https://github.com/free5lot/hid-apple-patched)
+
+
+Note about installation on Mint and some others distros DKMS config of this repo has option
+DEST_MODULE_LOCATION set to /extra. That's the place compiled patched module will be placed.
+Distributions like Ubuntu, Fedora, Suse and some others ignore this parameter and use the proper
+distribution-specific directory instead. There will be no issues with these distributions. Other
+distributions like Mint can use DEST_MODULE_LOCATION and may require an extra configuration file to
+be created by the user to force the use of patched version of hid-apple from /extra instead of
+original one. In this case a new file /etc/depmod.d/hid-apple.conf should be created which tells
+depmod to prefer the module in /extra (see man 5 depmod.d):
+
+```
+override hid-apple * extra
+```
+
+
+# Debug
+
+- `lsusb` to display ID on usb devices (when plugged in keyboard is visible)
+- `dmesg` shows that the bluetooth keyboard uses hid-generic
+
 
 ## Bluetooth Reads hid-generic instead of hid-apple
 * Using the bluetooth version it uses the wrong settings [issue](https://github.com/free5lot/hid-apple-patched/issues/48)
   - [comments on AUR](https://aur.archlinux.org/packages/hid-apple-patched-git-dkms/#comment-702311)
   - "I noticed that the hid-ids.h specifies an ID for the keyboard (0x0267)"
-  - `lsusb` to display ID on usb devices (when plugged in keyboard is visible)
   - When using bluetooth the keyboard is not listed (unde usb devices)
-  - `dmesg` shows that the bluetooth keyboard uses hid-generic
-
-  example on usb connect
-```bash
-[  146.306088] input: Apple Inc. Magic Keyboard as /devices/pci0000:00/0000:00:14.0/usb1/1-1/1-1:1.1/0003:05AC:0267.000A/input/input29
-[  146.366836] apple 0003:05AC:0267.000A: input,hiddev5,hidraw8: USB HID v1.10 Keyboard [Apple Inc. Magic Keyboard] on usb-0000:00:14.0-1/input1
-[  146.367270] apple 0003:05AC:0267.000B: hiddev6,hidraw9: USB HID v1.10 Device [Apple Inc. Magic Keyboard] on usb-0000:00:14.0-1/input2
-```
-
-example on BT connect
-TODO
-```bash
-TODO: put dmesg output when bluetooth here
-```
 
 
-
+# Not longer relevant
 The "><|" does not display correct characters by default (swedish keyboard) 
 - Fix: `setxkbmap -option apple:badmap`
 

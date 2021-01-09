@@ -1,5 +1,6 @@
 # FZF Settings 
 #
+#
 # No need to let fzf installer put commands in zshrc file
 # This script is sourced from $HOME/.files/zsh/zshrc -> $HOME/.zshrc
 
@@ -7,11 +8,14 @@
 # export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*" --glob "!node_modules/*" --glob "!vendor/*" 2> /dev/null'
 
 export FZF_DEFAULT_COMMAND='fd'
-export FZF_DEFAULT_OPTS="--height 80% --reverse "
+export FZF_DEFAULT_OPTS="--height 100% --reverse "
+
 export FZF_CTRL_T_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*" --glob "!node_modules/*" --glob "!vendor/*" 2> /dev/null'
 export FZF_CTRL_T_OPTS="--preview 'bat --color always {}'"
-export FZF_ALT_C_COMMAND='fd --type d --hidden --no-ignore --exclude .git'
-export FZF_ALT_C_OPTS="--preview 'tree -L 1 -C {} | head -200' "
+
+export FZF_ALT_C_COMMAND='fd --type d --no-ignore --exclude .git'
+export FZF_ALT_C_OPTS="--preview 'tree -L 1 -C {} | head -300' "
+
 export FZF_CTRL_R_OPTS="--reverse"
 export FZF_COMPLETION_OPTS='+c -x'
 
@@ -47,10 +51,11 @@ cd-from-home() { #{{{
     setopt localoptions pipefail 2> /dev/null
     local dir="$(eval "${FZF_ALT_C_COMMAND}" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" $(__fzfcmd) +m)"
 
+    # If not a directory then go back to the current dir
     if [[ -z "$dir" ]]; then
-        cd $current_dir
-    zle redisplay
-    return 0
+      cd $current_dir
+      zle redisplay
+      return 0
     fi
 
     cd "$dir"
@@ -90,7 +95,6 @@ _fzf_compgen_dir() { #{{{
 }# }}}
 
 # Find Files
-
 home-files() {
     setopt localoptions pipefail 2> /dev/null
     eval "${FZF_CTRL_T_COMMAND} ~" | fzf | while read item; do

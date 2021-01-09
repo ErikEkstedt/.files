@@ -70,7 +70,8 @@ alias gdw="cd ~/Downloads; clear; la"
 alias gpi="cd ~/Pictures"
 
 alias gho="cd ~; clear; ls"
-alias gpr='cd "$(git rev-parse --show-toplevel)"; clear; ls'
+alias gpr="cd ~/projects; clear; ls"
+alias ggr='cd "$(git rev-parse --show-toplevel)"; clear; ls'
 alias gro="cd /; clear; ls"
 # }}}
 # Edit configs {{{
@@ -103,6 +104,7 @@ alias nvr="$HOME/miniconda3/envs/neovim3/bin/nvr"
 # esac
 
 alias v="nvim"
+alias vcoc="nvim -u ~/.files/nvim/init_coc.vim"
 alias vr="cd ~/research/research; vf"
 alias vn="nvim -c VimwikiUISelect"
 alias vno="nvim -c VimwikiUISelect"

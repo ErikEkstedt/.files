@@ -65,7 +65,7 @@ _tmux_rename_window_curdir () {
   tmux rename-window $name
 }
 
-alias tsname=_tmux_rename_session_curdir
+# alias tsname=_tmux_rename_session_curdir
+# alias twname=_tmux_rename_window_curdir
 alias tsn=_tmux_rename_session_curdir
-alias twname=_tmux_rename_window_curdir
 alias twn=_tmux_rename_window_curdir
