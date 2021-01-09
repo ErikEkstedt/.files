@@ -85,10 +85,15 @@ if &loadplugins " {{{
   Plug 'easymotion/vim-easymotion'       " XXX visualize targets tot move to specific words
   Plug 'norcalli/nvim-colorizer.lua'     " faster color disable coc-highlight
 
-  Plug '~/.fzf'
-  Plug 'junegunn/fzf.vim'                " XXX fuzzy filefinding
-  Plug 'alok/notational-fzf-vim'
-  Plug 'chengzeyi/fzf-preview.vim'
+  " Fuzzy Finding
+  Plug 'nvim-lua/popup.nvim'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
+
+  " Plug '~/.fzf'
+  " Plug 'junegunn/fzf.vim'                " XXX fuzzy filefinding
+  " Plug 'alok/notational-fzf-vim'
+  " Plug 'chengzeyi/fzf-preview.vim'
 
   Plug 'junegunn/vim-easy-align'         " XXX better alignment than tabular
   Plug 'junegunn/vim-peekaboo'           " XXX when pressing quotes shows what's stored in the different registers
@@ -129,3 +134,5 @@ endif
 
 let g:background_color = synIDattr(hlID("Normal"), "bg")
 let g:custom_focus=1  " enables custom focus in ./plugin/focus_background.vim
+
+lua require('telescope_settings')
