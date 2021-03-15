@@ -56,6 +56,13 @@ nnoremap <expr> j (v:count > 5 ? "m'" . v:count : '') . 'j'
 " make j/k movie inside the line intuitively
 nnoremap j gj
 nnoremap k gk
+
+" jump paragraph (Swedish Keyboard)
+map ö }
+map ä {
+nnoremap <C-j> }
+nnoremap <C-k> {
+
 " nmap j gj
 " nmap k gk
 
@@ -63,7 +70,7 @@ nnoremap k gk
 " Greg hurell: https://github.com/wincent/wincent/blob/aa3a322e3a911dabe0ef398ebb1fd7c77209b8ac/roles/dotfiles/files/.vim/plugin/mappings/normal.vim
 
 " Like vim-vinegar.
-nnoremap <silent> - :silent edit <C-R>=empty(expand('%')) ? '.' : expand('%:p:h')<CR><CR>
+" nnoremap <silent> - :silent edit <C-R>=empty(expand('%')) ? '.' : expand('%:p:h')<CR><CR>
 
 
 " natural end/beginning of line movement (also in visual and selection)
@@ -71,9 +78,7 @@ nnoremap L $
 nnoremap H ^
 nnoremap T H
 
-" jump paragraph (Swedish Keyboard)
-map ö }
-map ä {
+
 
 " Windows
 " Move between windows
@@ -91,12 +96,11 @@ nnoremap <C-Up> :resize -3<cr>
 nnoremap <space>, mz:%s/\s\+$//<cr>:let @/=''<cr>`z
 
 " Toggle number/wrap/hlsearch
-" nnoremap <silent><space>sn :set number!<CR>
 nnoremap <silent><space>ss :set hlsearch!<CR>
-" nnoremap <silent><space>s :set hlsearch!<CR>
-" nnoremap <silent><space>wr :set wrap!<CR>
 
 " Buffers previous/next
+" nnoremap <space>l :bn<CR>
+" nnoremap <space>h :bp<CR>
 nnoremap <space>b :bp<CR>
 nnoremap <space>B :bf<CR>
 nnoremap <space>p :bp<CR>

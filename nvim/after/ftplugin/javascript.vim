@@ -12,4 +12,6 @@ nnoremap <buffer> Ö A;<esc>
 inoremap <buffer> ;co console.log('')<esc>hi
 
 
-:UltiSnipsAddFiletypes javascript.html
+set ft=javascript.jsx.html
+" Not working!?
+" call UltiSnips#AddFiletypes('html')

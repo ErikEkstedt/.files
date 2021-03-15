@@ -42,7 +42,7 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 
 " Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gd <Plug>(coc-definition)zz
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gy <Plug>(coc-type-definition)
 " nmap <silent> gi <Plug>(coc-implementation)
@@ -70,6 +70,8 @@ function! s:show_documentation()
   endif
 endfunction
 
+" Coc-prettier
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " Highlight ----------------------------------------------------------
 
@@ -77,15 +79,19 @@ endfunction
 autocmd! VimEnter,ColorScheme * call SetCocHighlights()
 function! SetCocHighlights()
   hi CocErrorSign guifg=#990000
-  hi CocErrorFloat guifg=#ff910c
+  hi CocErrorFloat guifg=#990000
   hi CocWarningSign guifg=#ff910c
-  hi CocWarningFloat guifg=#990000
+  hi CocWarningFloat guifg=#ff910c
   " hi CocHintSign guifg=#8ec07c
   " hi CocHintFloat guifg=#8ec07c
-  hi! link CocHintSign Comment
-  hi! link CocHintFloat Comment
-  hi! link CocInfoSign Comment
-  hi! link CocInfoFloat Comment
+  " hi! link CocHintSign Comment
+  " hi! link CocHintFloat Comment
+  " hi! link CocInfoSign Comment
+  " hi! link CocInfoFloat Comment
+  hi! link CocHintSign Conceal
+  hi! link CocHintFloat Conceal
+  hi! link CocInfoSign Conceal
+  hi! link CocInfoFloat Conceal
   " CocWarningSign xxx guifg=#fabd2f euibg=None
   " CocInfoSign    xxx links to GruvboxBlueSign
   " CocWarningFloat xxx links to GruvboxOrange

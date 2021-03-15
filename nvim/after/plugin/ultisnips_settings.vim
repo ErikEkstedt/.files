@@ -9,8 +9,8 @@ let g:UltiSnipsSnippetDirectories = ["mysnips", "bundle/vim-snippets/UltiSnips",
 
 " Trigger configuration.
 let g:UltiSnipsExpandTrigger='<leader><leader>'
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsJumpForwardTrigger="<c-l>"
+let g:UltiSnipsJumpBackwardTrigger="<c-h>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit='vertical'

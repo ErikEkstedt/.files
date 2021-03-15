@@ -13,6 +13,17 @@ augroup vimStartup
         \ | endif
 augroup END
 
+" fast escape in insert-mode
+set timeoutlen=400         " ms to wait for command completion (default: 1000)
+if ! has('gui_running')
+    set ttimeoutlen=0
+    augroup FastEscape
+        autocmd!
+        au InsertEnter * set timeoutlen=200
+        au InsertLeave * set timeoutlen=400
+    augroup END
+endif
+
 
 " Syntax for json comments (jsonc) (coc-vim)
 autocmd FileType json syntax match Comment +\/\/.\+$+
@@ -24,7 +35,6 @@ au VimResized * exe "normal! \<c-w>="
 
 " Settings
 " --------
-set hidden
 set noshowmode                        " no extra --Insert--, --Replace-- etc
 set pb=20           " transparency for popup, (default: 0)
 set splitbelow
@@ -70,7 +80,6 @@ set breakindent            " wrapped line s keep indentation (set bri)
 set formatoptions+=n       " smart autoindenting inside numbered lists (I get defaut: jcroql)
 set mouse=a                " mouse functionality (default: empty)
 set virtualedit=block      " onemore 'block' makes it possible to edit empty space in visualblock
-set timeoutlen=400         " ms to wait for command completion (default: 1000)
 set smartcase
 set ignorecase
 set switchbuf=usetab       " look for open files

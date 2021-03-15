@@ -49,24 +49,18 @@ if &loadplugins " {{{
   " Plug 'epilande/vim-react-snippets'
 
   " completion / LSP
-  " Telescope:  https://github.com/nvim-lua/telescope.nvim
-  " Plug 'nvim-lua/popup.nvim'
-  " Plug 'nvim-lua/plenary.nvim'
-  " Plug 'nvim-lua/telescope.nvim'
+  " Check out: https://github.com/mattn/vim-lsp-settings/tree/master/installer
+  " for installation tips
   Plug 'tjdevries/nlua.nvim'
   Plug 'neovim/nvim-lspconfig'
   Plug 'nvim-lua/completion-nvim'
-  Plug 'nvim-lua/diagnostic-nvim'
+  Plug 'kosayoda/nvim-lightbulb'  " lightbulb for codefix
+  Plug 'nvim-lua/diagnostic-nvim'  " deprecated -> fix needed https://github.com/nvim-lua/diagnostic-nvim/issues/73
   Plug 'steelsojka/completion-buffers'
   " Plug 'nvim-treesitter/nvim-treesitter'
   " Plug 'nvim-treesitter/completion-treesitter'
-
   " Plug 'Shougo/neco-vim'
-  " Plug 'neovim/nvim-lsp'
-  " Plug 'nvim-treesitter/nvim-treesitter'
 
-  " completion / LSP
-  " Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'SirVer/ultisnips'                " XXX snippet engine
   Plug 'honza/vim-snippets'              " XXX snippets
 

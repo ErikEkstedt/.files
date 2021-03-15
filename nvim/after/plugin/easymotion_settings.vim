@@ -1,4 +1,7 @@
 " vim-easy-motion
+if !exists('g:EasyMotion_loaded')
+  finish
+endif
 let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz'
 let g:EasyMotion_startofline = 1 " Linejumps puts cursor at start of line
 

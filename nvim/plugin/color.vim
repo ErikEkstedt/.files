@@ -5,9 +5,7 @@ augroup END
 
 function! s:ColorFix() abort
   " call s:GitGutterPatch()
-  if g:colors_name =~ 'wombat'
-    call s:Wombat()
-  elseif g:colors_name =~ 'monokai'
+  if g:colors_name =~ 'monokai'
     call s:Monokai()
   elseif g:colors_name =~ 'gruvbox'
     call s:Gruvbox()
@@ -35,16 +33,16 @@ function! s:Gruvbox ()
   hi! CocWarningSign guifg=#fabd2f guibg=None
 endfunc
 
-function! s:Wombat()
-  " echo "WOMBATFIX"
-  hi! Folded guibg=NONE
-  hi! SignColumn guibg=NONE
-  hi! LineNr guibg=NONE
-  hi! NormalNC guifg=#b5b3ac guibg=#222222
-  hi! GitGutterAdd guifg=#95e454
-  hi! GitGutterChange guifg=#b6b60c
-  hi! GitGutterDelete guifg=#ff5f55
-endfunc
+" function! s:Wombat()
+"   " echo "WOMBATFIX"
+"   hi! Folded guibg=NONE
+"   hi! SignColumn guibg=NONE
+"   hi! LineNr guibg=NONE
+"   hi! NormalNC guifg=#b5b3ac guibg=#222222
+"   hi! GitGutterAdd guifg=#95e454
+"   hi! GitGutterChange guifg=#b6b60c
+"   hi! GitGutterDelete guifg=#ff5f55
+" endfunc
 
 function! s:Monokai()
   hi! Folded guibg=NONE

@@ -11,6 +11,7 @@ let $FZF_DEFAULT_COMMAND .= ' -E node_modules'
 let $FZF_DEFAULT_COMMAND .= ' -E "data/**/*.json"'
 let $FZF_DEFAULT_COMMAND .= ' -E "__pycache*"'
 let $FZF_DEFAULT_COMMAND .= ' -E "*.text" -E "*.txt" -E "*.xml" -E "*.csv" -E "*.json"'
+let $FZF_DEFAULT_COMMAND .= ' -E "*.out.tfevents*" -E "*.chkpt" -E "*.ckpt" -E "*.so"'
 let $FZF_DEFAULT_COMMAND .= ' -E "*.png" -E "*.gif" -E "*.jpg" -E ".jpeg" -E "*.svg"'
 let $FZF_DEFAULT_COMMAND .= ' -E "*.wav" -E "*.sph" -E "*.mp3" -E "*.mp4" -E "*.flac"'
 let $FZF_DEFAULT_COMMAND .= ' -E "*.pt" -E "*.npy" -E "*.zip"'
@@ -85,24 +86,25 @@ command! -bang -nargs=* FZFMyRg
 " - FZFQuickFix/FZFLocList: The original fzf.vim does not provide these commands.
 " - FuzzyFind files in root /, $HOME or current folder
 
+" Ony using these because moving to telescope.nvim but it is slow for large directories
 nnoremap <Leader>fp :FZFFiles ~/projects<CR>
 nnoremap <Leader>fi :FZFFiles ~<CR>
-nnoremap <Leader>ff :FZFFiles<CR>
-nnoremap <Leader>fc :FZFFiles ~/.files<CR>
+" nnoremap <Leader>ff :FZFFiles<CR>
+" nnoremap <Leader>fc :FZFFiles ~/.files<CR>
 
 " Search lines in current buffer
-nnoremap <Leader>ll :FZFBLines<CR>
-" Search lines in all buffers
-nnoremap <Leader>fl :Lines<CR>
-nnoremap <Leader>wo :Lines<CR>
-nnoremap <Leader>bu :Buffers<CR>
+" nnoremap <Leader>ll :FZFBLines<CR>
+" " Search lines in all buffers
+" nnoremap <Leader>fl :Lines<CR>
+" nnoremap <Leader>wo :Lines<CR>
+" nnoremap <Leader>bu :Buffers<CR>
 
-nnoremap <C-f> :FZFMyRg<CR>
-nnoremap <Leader>fw :FZFMyRg<CR>
+" nnoremap <C-f> :FZFMyRg<CR>
+" nnoremap <Leader>fw :FZFMyRg<CR>
 
-nnoremap <Leader>gi :FZFGGrep<CR>
-nnoremap <Leader>fg :GFiles<CR>
-nnoremap <Leader>fG :GFiles<CR>
+" nnoremap <Leader>gi :FZFGGrep<CR>
+" nnoremap <Leader>fg :GFiles<CR>
+" nnoremap <Leader>fG :GFiles<CR>
 
 " nnoremap <Leader>fr :Files /<CR>
 " nnoremap <Leader>fi :Files ~<CR>
@@ -120,9 +122,9 @@ nnoremap <Leader>fG :GFiles<CR>
 " nnoremap <Leader>fa :RgHome<CR>
 
 " Help can not open in split?
-nnoremap <Leader>he :Helptags<CR>
-nnoremap <Leader>fs :Snippets<CR>
-nnoremap <Leader>ma :Maps<CR>
+" nnoremap <Leader>he :Helptags<CR>
+" nnoremap <Leader>fs :Snippets<CR>
+" nnoremap <Leader>ma :Maps<CR>
 
 " Insert mode completion
 imap <c-k> <plug>(fzf-complete-word)
