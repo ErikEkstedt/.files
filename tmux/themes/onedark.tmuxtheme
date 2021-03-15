@@ -11,5 +11,4 @@ separator_color='#ABB2BF'
 other_text='#ABB2BF'
 current_text='#ffffff'
 
-
-source-file ~/.files/tmux/themes/default.theme
+source-file ~/.files/tmux/statusline.theme
