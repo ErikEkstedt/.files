@@ -24,14 +24,14 @@ require('telescope').setup{
         -- So, to not map "<C-n>", just put
         ["<c-x>"] = false,
         ["<c-v>"] = false,
-        ["<c-l>"] = actions.goto_file_selection_vsplit,
-        ["<c-j>"] = actions.goto_file_selection_split,
+        ["<c-l>"] = actions.select_vertical,
+        ["<c-j>"] = actions.select_horizontal,
       },
       n = {
         ["<c-x>"] = false,
         ["<c-v>"] = false,
-        ["<c-l>"] = actions.goto_file_selection_vsplit,
-        ["<c-j>"] = actions.goto_file_selection_split,
+        ["<c-l>"] = actions.select_vertical,
+        ["<c-j>"] = actions.select_horizontal,
       }
     },
     layout_defaults = {
