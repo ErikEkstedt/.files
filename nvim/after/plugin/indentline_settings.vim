@@ -1,8 +1,8 @@
 " Indentline
 
-" if !exists('g:indentLine_loaded')
-"   finish
-" endif
+if !exists('g:indentLine_loaded')
+  finish
+endif
 
 " Not working
 " function! ReturnHighlightTerm(group, term)

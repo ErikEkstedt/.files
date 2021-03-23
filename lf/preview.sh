@@ -6,5 +6,6 @@ case "$1" in
     *.rar) unrar l "$1";;
     *.7z) 7z l "$1";;
     *.pdf) pdftotext "$1" -;;
+    *.wav) sox --i "$1";;
     *) ~/.files/lf/bat_preview.sh "$1";;
 esac

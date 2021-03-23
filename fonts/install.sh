@@ -2,10 +2,15 @@
 
 # Downloads fonts from nerfont and extracts them to $FontRoot
 
+
 FontRoot=~/.local/share/fonts
 
 echo "Creating directory $FontRoot"
 mkdir -p $FontRoot
+
+# JetBrains NerdFont
+# curl -fsSL https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/install_manual.sh
+
 
 cd $FontRoot
 fonts=(Meslo DejaVuSansMono FiraCode Mononoki SourceCodePro)

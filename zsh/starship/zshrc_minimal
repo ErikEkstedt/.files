@@ -1,0 +1,50 @@
+# vim: fdm=marker
+
+# Source {{{
+if [[ -f ~/.fzf.zsh  ]]; then
+    source ~/.fzf.zsh
+    source ~/.files/fzf/fzf_zsh_settings.zsh
+fi
+
+if type "tmuxinator" > /dev/null; then
+    source ~/.files/tmuxinator/tmuxinator.zsh
+fi
+
+case `hostname` in
+  erik-desktop)
+    # CUDA install...
+    #  -   PATH includes /usr/local/cuda-10.2/bin
+    #  -   LD_LIBRARY_PATH includes /usr/local/cuda-10.2/lib64, or, add /usr/local/cuda-10.2/lib64 to /etc/ld.so.conf and run ldconfig as root
+    export PATH="/usr/local/cuda/bin:$PATH"
+    export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
+    ;;
+esac
+# source ~/.files/tmuxinator/tmuxinator.zsh
+source ~/.files/zsh/zsh-functions.zsh  # comes before alias
+source ~/.files/zsh/aliases.zsh
+source ~/.files/zsh/less_colors.zsh
+source ~/.files/tmux/tmux_functions.zsh  # For my custom scripts }}}
+
+# >>> conda initialize >>> {{{
+# Conda produces its own prompt prefix to show the current active environment
+# remove by running:
+# conda config --set changeps1 False
+__conda_setup="$( $HOME'/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    # if [ -f "/home/erik/miniconda3/etc/profile.d/conda.sh" ]; then
+    if [ -f $HOME"/miniconda3/etc/profile.d/conda.sh" ]; then
+# . "/home/erik/miniconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
+    else
+# export PATH="/home/erik/miniconda3/bin:$PATH"  # commented out by conda initialize
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<< }}}
+bindkey -v
+
+autoload -Uz promptinit
+promptinit
+eval $(starship init zsh)
+eval "$(starship init zsh)"

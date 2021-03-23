@@ -17,22 +17,22 @@ window:
   # Window dimensions in character columns and lines
   # (changes require restart)
   dimensions:
-    columns: 160
-    lines: 60
+    columns: 768
+    lines: 2048
 
   # Adds this many blank pixels of padding around the window
   # Units are physical pixels; this is not DPI aware.
   # (change requires restart)
   padding:
-    x: 2
-    y: 2
+    x: 500
+    y: 0
 
   # Window decorations
   # Setting this to false will result in window without borders and title bar.
   decorations: "full"
 
 # Display tabs using this many cells (changes require restart)
-tabspaces: 8
+tabspaces: 4
 
 # When true, bold text is drawn using the bright variant of colors.
 draw_bold_text_with_bright_colors: true
@@ -47,7 +47,9 @@ font:
     # family: DejaVuSansMono Nerd Font
     # style: Book
     #
-    family: Hack Nerd Font
+    # family: Hack Nerd Font
+    # style: Regular
+    family: JetBrains Mono Medium
     style: Regular
 
   # The bold font face
@@ -58,8 +60,10 @@ font:
     # family: Hack Bold Nerd Font Complete
     # family: Hack
     # Style can be specified to pick a specific face.
-    family: Hack Nerd Font
-    style: Bold
+    # family: Hack Nerd Font
+    # style: Bold
+    family: JetBrains Mono ExtraBold
+    style: Regular
 
   # The italic font face
   italic:
@@ -69,7 +73,9 @@ font:
     #
     # family: DejaVuSansMono Nerd Font
     # style: Oblique
-    family: Hack Nerd Font
+    # family: Hack Nerd Font
+    # style: Italic
+    family: JetBrains Mono Medium
     style: Italic
 
   # Point size of the font

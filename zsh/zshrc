@@ -21,9 +21,9 @@ export FILEMANAGER="lf"
 export DOTFILES="$HOME/.files"
 export BAT_THEME='OneHalfDark'
 export KAGGLE_USERNAME=erikislearning
+export GEM_HOME="$HOME/gems"                                       # Ruby (for jekyll)
 export PATH="$HOME/Applications:$PATH"
 export PATH="/usr/local/opt/ruby/bin:$PATH"                        # Ruby
-export GEM_HOME="$HOME/gems"                                       # Ruby (for jekyll)
 export PATH="$HOME/gems/bin:$PATH"                                 # Install Ruby Gems to ~/gems
 export PATH="$HOME/go/bin:$PATH"                                   # Install Ruby Gems to ~/gems
 export PATH="$HOME/.dotnet:$PATH"                                  # microsoft dotnet for pyls_ms nvim-lsp
@@ -40,7 +40,7 @@ export NVM_DIR="$HOME/.nvm"                                        # NVM
 
 
 # Oh-my-zsh {{{
-plugins=(vi-mode  zsh-syntax-highlighting) # zsh-autosuggestions
+plugins=(vi-mode zsh-syntax-highlighting) # zsh-autosuggestions
 ZSH_THEME="spaceship"
 # ZSH_THEME="robbyrussell"
 
@@ -133,3 +133,8 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<< }}}
+fpath=($fpath "/home/erik/.zfunctions")
+
+  # Set Spaceship ZSH as a prompt
+  autoload -U promptinit; promptinit
+  prompt spaceship

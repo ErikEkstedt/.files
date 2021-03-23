@@ -85,7 +85,8 @@ if &loadplugins " {{{
   " Plug 'windwp/nvim-autopairs'
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
   Plug 'KabbAmine/vCoolor.vim'           " XXX pick color from menu
-  Plug 'Yggdroot/indentLine'             " XXX see where there is indent
+  " Plug 'Yggdroot/indentLine'             " XXX see where there is indent
+  Plug 'lukas-reineke/indent-blankline.nvim', { 'branch': 'lua' }
   Plug 'tpope/vim-commentary'            " XXX commenting
   Plug 'tpope/vim-repeat'                " XXX repeat commands not repeatable by 'vanilla' vim
   Plug 'tpope/vim-surround'              " XXX Surround objects with quotes, brackets ...

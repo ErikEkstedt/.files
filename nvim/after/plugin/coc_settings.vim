@@ -82,16 +82,19 @@ function! SetCocHighlights()
   hi CocErrorFloat guifg=#990000
   hi CocWarningSign guifg=#ff910c
   hi CocWarningFloat guifg=#ff910c
-  " hi CocHintSign guifg=#8ec07c
   " hi CocHintFloat guifg=#8ec07c
   " hi! link CocHintSign Comment
   " hi! link CocHintFloat Comment
   " hi! link CocInfoSign Comment
   " hi! link CocInfoFloat Comment
-  hi! link CocHintSign Conceal
-  hi! link CocHintFloat Conceal
-  hi! link CocInfoSign Conceal
-  hi! link CocInfoFloat Conceal
+  " hi! link CocHintSign Comment
+  " hi! link CocHintFloat Comment
+  " hi! link CocInfoSign Comment
+  " hi! link CocInfoFloat Comment
+  hi! CocHintSign guifg=#4a4844
+  hi! CocHintFloat guifg=#4a4844
+  hi! CocInfoSign guifg=#4a4844
+  hi! CocInfoFloat guifg=#4a4844
   " CocWarningSign xxx guifg=#fabd2f euibg=None
   " CocInfoSign    xxx links to GruvboxBlueSign
   " CocWarningFloat xxx links to GruvboxOrange

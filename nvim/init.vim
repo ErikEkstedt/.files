@@ -1,1 +1,1 @@
-/home/erik/.files/nvim/init_coc.vim
+/home/erik/.files/nvim/init_fast.vim

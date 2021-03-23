@@ -202,7 +202,7 @@ nnoremap <space>z zMzvzz
 " should work as usual 
 " foldclosed('.') returns -1 if not a closed fold or the linenumber
 " where the closed fold is.
-nnoremap <silent> o @=(foldclosed('.')>0?'za':"o")<CR>
+" nnoremap <silent> o @=(foldclosed('.')>0?'za':"o")<CR>
 
 " ----------- Seldom Use ---------------
 
