@@ -47,6 +47,7 @@ call plug#begin('~/.vim/bundle')
 	let g:UltiSnipsExpandTrigger='<leader><leader>'
 	let g:UltiSnipsJumpForwardTrigger="<c-l>"
 	let g:UltiSnipsJumpBackwardTrigger="<c-h>"
+	Plug 'prettier/vim-prettier', {'do': 'yarn install'}
 
 	" Snippets
   Plug 'epilande/vim-es2015-snippets' " ES2015 code snippets
