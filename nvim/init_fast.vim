@@ -4,7 +4,7 @@
 " I link this directory to ~/.vim and as such all files in plugin/, after/, etc are loaded.
 " This is not ideal for trying out faster setups.
 
-" Plug {{{
+"	Plug {{{
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
   echo "No Vim-Plug available... Downloading and running PlugInstall"
   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
@@ -13,32 +13,58 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/bundle')
+
 	" Standard
+  Plug 'nvim-lua/plenary.nvim'
   Plug 'tpope/vim-commentary'            " XXX commenting
   Plug 'tpope/vim-repeat'                " XXX repeat commands not repeatable by 'vanilla' vim
   Plug 'tpope/vim-surround'              " XXX Surround objects with quotes, brackets ...
   Plug 'wellle/targets.vim'              " XXX ci' works on (, [, {, < on entire line
   Plug 'christoomey/vim-tmux-navigator'  " XXX navigate between vim and tmuz seemlessly
+  let g:tmux_navigator_no_mappings = 1
   Plug 'norcalli/nvim-colorizer.lua'     " faster color (disable coc-highlight)
+  Plug 'Raimondi/delimitMate'
+  Plug 'KabbAmine/vCoolor.vim'           " XXX pick color from menu
+  Plug 'nelstrom/vim-visual-star-search' " * on visual select searches for the snippet
+	Plug 'wincent/loupe'
+	let g:LoupeHighlightGroup='LoupeCurrentSearch'
+
+  Plug 'jpalardy/vim-slime'
+  let g:slime_no_mappings=1  " don't set mappings
 
   " completion / LSP
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	Plug 'neovim/nvim-lspconfig'
+	Plug 'hrsh7th/nvim-compe'
+	set completeopt=menuone,noselect
+	inoremap <silent><expr> <CR>  compe#confirm({ 'keys': "\<Plug>delimitMateCR", 'mode': '' })
+	inoremap <silent><expr> <C-e> compe#close('<C-e>')
+	inoremap <silent><expr> <C-f> compe#scroll({ 'delta': +4 })
+	inoremap <silent><expr> <C-d> compe#scroll({ 'delta': -4 })
+
   Plug 'SirVer/ultisnips'                " XXX snippet engine
+	" set here to not overwrite <Tab> mappings below
+	let g:UltiSnipsExpandTrigger='<leader><leader>'
+	let g:UltiSnipsJumpForwardTrigger="<c-l>"
+	let g:UltiSnipsJumpBackwardTrigger="<c-h>"
+
+	" Snippets
   Plug 'epilande/vim-es2015-snippets' " ES2015 code snippets
   Plug 'epilande/vim-react-snippets' " React code snippets
   Plug 'honza/vim-snippets'              " XXX snippets
 
+
 	" Code Format
-  Plug 'psf/black'  " Plug 'psf/black'
-  Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " better python syntax highlight
-  Plug 'yuezk/vim-js'
-  Plug 'maxmellon/vim-jsx-pretty'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+	Plug 'psf/black'  " Plug 'psf/black'
+	" Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " better python syntax highlight
+	Plug 'yuezk/vim-js'
+	Plug 'maxmellon/vim-jsx-pretty'
 
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
   " Fuzzy Finding
   Plug 'nvim-lua/popup.nvim'
-  Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'nvim-telescope/telescope-fzf-writer.nvim'
   Plug 'nvim-telescope/telescope-fzy-native.nvim'
@@ -48,7 +74,8 @@ call plug#begin('~/.vim/bundle')
   Plug 'chengzeyi/fzf-preview.vim'
 
   " Statusline
-  Plug 'airblade/vim-gitgutter'          " XXX see git changes in file in the numberline
+  " Plug 'airblade/vim-gitgutter'          " XXX see git changes in file in the numberline
+	Plug 'lewis6991/gitsigns.nvim'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
 
@@ -57,6 +84,7 @@ call plug#begin('~/.vim/bundle')
   Plug 'tjdevries/colorbuddy.vim'
   Plug 'tjdevries/gruvbuddy.nvim'
 call plug#end() " }}}
+
 " Variables {{{
 let mapleader = ','
 let localleader = '\'
@@ -72,6 +100,7 @@ if has("unix")  "Python & Node
   let g:python_host_bin=g:HOME . '/miniconda3/envs/neovim3/bin'
   let g:python_host_prog=g:HOME . '/miniconda3/envs/neovim2/bin/python'
 endif " }}}
+
 " Settings {{{
 set number
 set hidden
@@ -79,7 +108,29 @@ set termguicolors " Enable true color support.
 set mouse=a       " mouse functionality (default: empty)
 set splitbelow
 set splitright
+set scrolloff=3            " visual rows above and below cursor
+set sidescrolloff=5        " visual columns on sides of cursor
 set foldlevelstart=99 " start with fold everything
+set nowrap
+set noshowmode                        " no extra --Insert--, --Replace-- etc
+set pb=20           " transparency for popup, (default: 0)
+set ignorecase
+set smartcase
+set signcolumn=yes
+
+source $HOME/.files/nvim/backups.vim
+" }}}
+
+" AU {{{
+" Keep cursor position in files
+" https://github.com/vim/vim/blob/eaf35241197fc6b9ee9af993095bf5e6f35c8f1a/runtime/defaults.vim#L108-L117
+augroup vimStartup
+  au!
+  autocmd BufReadPost *
+        \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+        \ |   exe "normal! g`\""
+        \ | endif
+augroup END
 
 " Automatically resize when vim changes
 au VimResized * exe "normal! \<c-w>="
@@ -88,13 +139,25 @@ au VimResized * exe "normal! \<c-w>="
 if exists('##TextYankPost')
   au! TextYankPost * silent! lua vim.highlight.on_yank {higroup="DiffAdd", timeout=500}
 endif
+" }}}
+
+" LuaPlugins {{{
+lua require('colorizer').setup()
+lua require('gitsigns').setup()
+lua require('telescope_settings')
+lua require('treesitter_settings')
+lua require('compe_settings')
+lua require('lsp_settings')
+
+" sign define LspDiagnosticsSignError text=! texthl=LspDiagnosticsSignError linehl= numhl=LspDiagnosticsSignError
+" sign define LspDiagnosticsSignWarning text=? texthl=LspDiagnosticsSignWarning linehl= numhl=LspDiagnosticsSignWarning
+" sign define LspDiagnosticsSignInformation text=I texthl=LspDiagnosticsSignInformation linehl= numhl=
+" sign define LspDiagnosticsSignHint text= texthl=LspDiagnosticsSignHint linehl= numhl=
+
 
 " Colorscheme
-lua require'colorizer'.setup()
 lua require('colorbuddy').colorscheme('wombatbuddy')
-
-" LuaPlugins
-lua require('telescope_settings')
+nnoremap <leader>cc <cmd>vsp ~/.files/nvim/lua/wombatbuddy.lua<CR>
 " }}}
 " Mappings Normal {{{
 " Visual selection
@@ -155,6 +218,9 @@ nnoremap gN #zvzz
 nnoremap * *<c-o>
 nnoremap # #<c-o>
 
+" Toggle hlsearch
+nnoremap <silent><space>ss :set hlsearch!<CR>
+
 " jump forward/back in jumplist but also center
 nnoremap <C-O> <C-O>zz
 nnoremap <C-i> <C-i>zz
@@ -162,6 +228,7 @@ nnoremap <C-i> <C-i>zz
 " Folds
 nnoremap <space>f za
 nnoremap <space>a zA
+nnoremap ga zA
 
 " }}}
 " Mappings Visual {{{
@@ -176,8 +243,11 @@ vnoremap ,pa "+p
 vnoremap <c-y> "+y
 
 " indent/unindent with tab
-vnoremap <s-tab> <gv
-vnoremap <tab> >gv|
+vnoremap <S-Tab> <gv
+vnoremap <Tab> >gv
+
+" indent paragraphs
+nnoremap <leader>mm vip=
 
 " natural end/beginning of line movement
 vnoremap L $
@@ -185,8 +255,11 @@ vnoremap H ^
 " }}}
 " Mappings Insert {{{
 " Use <Tab> and <S-Tab> for navigate completion list
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <Tab> pumvisible() ? "\<C-N>" : "\<Tab>"
 imap <expr> <s-Tab> pumvisible() ? "\<C-P>" : "\<esc><<<left>i"
+" }}}
+" Mappings Command {{{
+cnoremap <c-a> <Home>
 " }}}
 " Mappings Selection {{{
 " natural end/beginning of line movement

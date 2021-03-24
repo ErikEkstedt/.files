@@ -1,140 +1,88 @@
--- https://github.com/neovim/nvim-lspconfig
--- local util = require 'nvim_lsp/util'
--- local configs = require'nvim_lsp/configs'
+local conf = require('lspconfig')
 
-local nvim_lsp = require('nvim_lsp')
-local completion = require('completion')
-local diagnostic = require('diagnostic')
-
--- checkout: https://github.com/tjdevries/config_manager/blob/master/xdg_config/nvim/lua/lsp_config.lua
-local custom_attach = function()
-  completion.on_attach()
-  diagnostic.on_attach()
-  vim.cmd("setlocal omnifunc=v:lua.vim.lsp.omnifunc")
+local map = function(type, key, value)
+	vim.api.nvim_buf_set_keymap(0,type,key,value,{noremap = true, silent = true});
 end
 
-nvim_lsp.bashls.setup{on_attach=custom_attach}
-nvim_lsp.vimls.setup{on_attach=custom_attach} nvim_lsp.yamlls.setup{on_attach=custom_attach} -- WEB --------------------------------------------------------------------------------
--- Install lsp with builtin installer or `npm install -g typescript-language-server`
--- along with `npm install -g typescript`
-nvim_lsp.tsserver.setup{
-  init_options = { bin_dir='$NVM_BIN'},
-  on_attach=custom_attach
-}
-nvim_lsp.html.setup{on_attach=custom_attach}
-nvim_lsp.cssls.setup{on_attach=custom_attach}
+
+local custom_attach = function(client)
+	print("LSP started.");
+	map('n','gD','<cmd>lua vim.lsp.buf.declaration()<CR>')
+	map('n','gd','<cmd>lua vim.lsp.buf.definition()<CR>')
+	map('n','K','<cmd>lua vim.lsp.buf.hover()<CR>')
+	map('n','gr','<cmd>lua vim.lsp.buf.references()<CR>')
+	map('n','gs','<cmd>lua vim.lsp.buf.signature_help()<CR>')
+	map('n','gi','<cmd>lua vim.lsp.buf.implementation()<CR>')
+	map('n','gt','<cmd>lua vim.lsp.buf.type_definition()<CR>')
+	map('n','<leader>gw','<cmd>lua vim.lsp.buf.document_symbol()<CR>')
+	map('n','<leader>gW','<cmd>lua vim.lsp.buf.workspace_symbol()<CR>')
+	map('n','<leader>ah','<cmd>lua vim.lsp.buf.hover()<CR>')
+	map('n','<leader>af','<cmd>lua vim.lsp.buf.code_action()<CR>')
+	map('n','<leader>ee','<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>')
+	map('n','<leader>ar','<cmd>lua vim.lsp.buf.rename()<CR>')
+	map('n','<leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+	map('n','<leader>ai','<cmd>lua vim.lsp.buf.incoming_calls()<CR>')
+	map('n','<leader>ao','<cmd>lua vim.lsp.buf.outgoing_calls()<CR>')
+end
+
+-- Signs
+vim.fn.sign_define("LspDiagnosticsSignError", {text="!", texthl="LspDiagnosticsSignError", numhl="LspDiagnosticsSignError"})
+vim.fn.sign_define("LspDiagnosticsSignWarning", {text="?", texthl="LspDiagnosticsSignWarning", numhl="LspDiagnosticsSignWarning"})
+vim.fn.sign_define("LspDiagnosticsSignInformation", {text="I", texthl="LspDiagnosticsSignInformation"})
+vim.fn.sign_define("LspDiagnosticsSignHint", {text="", texthl="LspDiagnosticsSignHint"})
+
+-- Setup
+conf.pyright.setup{on_attach=custom_attach}
+conf.tsserver.setup{on_attach=custom_attach}
+conf.vimls.setup{on_attach=custom_attach}
+conf.sumneko_lua.setup{on_attach=custom_attach}
 
 
--- LUA --------------------------------------------------------------------------------
--- nvim_lsp.sumneko_lua.setup{on_attach=diagnostic.on_attach}
-require('nlua.lsp.nvim').setup(require('nvim_lsp'), {
-  on_attach = custom_attach,
+-- LUA sumneko 
+-- https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#sumneko_lua
+local system_name
+if vim.fn.has("mac") == 1 then
+  system_name = "macOS"
+elseif vim.fn.has("unix") == 1 then
+  system_name = "Linux"
+elseif vim.fn.has('win32') == 1 then
+  system_name = "Windows"
+else
+  print("Unsupported system for sumneko")
+end
 
-  -- Include globals you want to tell the LSP are real :)
-  globals = {
-    -- Colorbuddy
-    "Color", "c", "Group", "g", "s",
-  }
-})
-
--- PYLS -------------------------------------------------------------------------------
--- Requires dotnet
--- Ubuntu 20.04 lts:
--- https://docs.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#2004-
--- sudo apt-get update; \
---  sudo apt-get install -y apt-transport-https && \
---  sudo apt-get update && sudo apt-get install -y dotnet-runtime-3.1
-nvim_lsp.pyls_ms.setup{
-  init_options = {
-    analysisUpdates = true,
-    asyncStartup = true,
-    displayOptions = {},
-    interpreter = {
-      properties = {
-        InterpreterPath = vim.loop.os_homedir() .. "/miniconda3/envs/research/bin/python",
-        Version = "3.8",
-      }
-    }
-  },
+-- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
+local sumneko_root_path = vim.fn.stdpath('cache')..'/lspconfig/sumneko_lua/lua-language-server'
+local sumneko_binary = sumneko_root_path.."/bin/"..system_name.."/lua-language-server"
+require'lspconfig'.sumneko_lua.setup {
+  cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
   settings = {
-    python = {
-      analysis = {
-        disabled = {},
-        errors = {},
-        info = {},
-        information = { "unresolved-import" },
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+        -- Setup your lua path
+        path = vim.split(package.path, ';'),
       },
-      condaPath = { vim.loop.os_homedir() .. "/miniconda3/bin/conda" },
-      venvPath = { vim.loop.os_homedir() .. "/miniconda3/envs" },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = {
+          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+          [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+        },
+      },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = {
+        enable = false,
+      },
     },
   },
-  on_attach=custom_attach
 }
 
--- Icons
--- Source: https://github.com/onsails/lspkind-nvim/blob/master/lua/lspkind/init.lua
-local lspkind = {}
-function lspkind.init(opts)
-    with_text = opts['with_text']
 
-    -- deliberate code repeat to avoid if cond
-    -- or string concat on each symbol
-
-    if with_text == true or with_text == nil then
-        require('vim.lsp.protocol').CompletionItemKind = {
-            ' Text';        -- = 1
-            'ƒ Method';      -- = 2;
-            ' Function';    -- = 3;
-            ' Constructor'; -- = 4;
-            'Field';         -- = 5;
-            ' Variable';    -- = 6;
-            ' Class';       -- = 7;
-            'ﰮ Interface';   -- = 8;
-            ' Module';      -- = 9;
-            ' Property';    -- = 10;
-            ' Unit';        -- = 11;
-            ' Value';       -- = 12;
-            '了Enum';        -- = 13;
-            ' Keyword';     -- = 14;
-            '﬌ Snippet';     -- = 15;
-            ' Color';       -- = 16;
-            ' File';        -- = 17;
-            'Reference';     -- = 18;
-            ' Folder';      -- = 19;
-            ' EnumMember';  -- = 20;
-            ' Constant';    -- = 21;
-            ' Struct';      -- = 22;
-            'Event';         -- = 23;
-            'Operator';      -- = 24;
-            'TypeParameter'; -- = 25;
-        }
-    else
-        require('vim.lsp.protocol').CompletionItemKind = {
-            '';             -- Text          = 1;
-            'ƒ';             -- Method        = 2;
-            '';             -- Function      = 3;
-            '';             -- Constructor   = 4;
-            'Field';         -- Field         = 5;
-            '';             -- Variable      = 6;
-            '';             -- Class         = 7;
-            'ﰮ';             -- Interface     = 8;
-            '';             -- Module        = 9;
-            '';             -- Property      = 10;
-            '';             -- Unit          = 11;
-            '';             -- Value         = 12;
-            '了';            -- Enum          = 13;
-            '';             -- Keyword       = 14;
-            '﬌';             -- Snippet       = 15;
-            '';             -- Color         = 16;
-            '';             -- File          = 17;
-            'Reference';     -- Reference     = 18;
-            '';             -- Folder        = 19;
-            '';             -- EnumMember    = 20;
-            '';             -- Constant      = 21;
-            '';             -- Struct        = 22;
-            'Event';         -- Event         = 23;
-            'Operator';      -- Operator      = 24;
-            'TypeParameter'; -- TypeParameter = 25;
-        }
-    end
-end
+-- extend
+-- https://rishabhrd.github.io/jekyll/update/2020/09/19/nvim_lsp_config.html

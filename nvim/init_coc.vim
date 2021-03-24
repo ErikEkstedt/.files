@@ -159,3 +159,9 @@ let g:custom_focus=1  " enables custom focus in ./plugin/focus_background.vim
 
 lua require('telescope_settings')
 " lua require('galaxyline_settings')
+source $HOME/.files/nvim/mappings/normal.vim
+source $HOME/.files/nvim/mappings/insert.vim
+source $HOME/.files/nvim/mappings/visual.vim
+source $HOME/.files/nvim/mappings/selection.vim
+source $HOME/.files/nvim/mappings/command.vim
+source $HOME/.files/nvim/mappings/mouse.vim
