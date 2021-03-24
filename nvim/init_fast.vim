@@ -28,6 +28,12 @@ call plug#begin('~/.vim/bundle')
   Plug 'nelstrom/vim-visual-star-search' " * on visual select searches for the snippet
 	Plug 'wincent/loupe'
 	let g:LoupeHighlightGroup='LoupeCurrentSearch'
+  Plug 'lukas-reineke/indent-blankline.nvim', { 'branch': 'lua' }  " indentlines on blank rows
+  Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+  Plug 'phaazon/hop.nvim'
+
+  Plug 'junegunn/vim-easy-align'         " XXX better alignment than tabular
+  Plug 'junegunn/vim-peekaboo'           " XXX when pressing quotes shows what's stored in the different registers
 
   Plug 'jpalardy/vim-slime'
   let g:slime_no_mappings=1  " don't set mappings
@@ -105,19 +111,19 @@ endif " }}}
 " Settings {{{
 set number
 set hidden
-set termguicolors " Enable true color support.
-set mouse=a       " mouse functionality (default: empty)
 set splitbelow
 set splitright
-set scrolloff=3            " visual rows above and below cursor
-set sidescrolloff=5        " visual columns on sides of cursor
-set foldlevelstart=99 " start with fold everything
 set nowrap
-set noshowmode                        " no extra --Insert--, --Replace-- etc
-set pb=20           " transparency for popup, (default: 0)
+set termguicolors     " Enable true color support.
+set mouse=a           " mouse functionality (default: empty)
+set scrolloff=3       " visual rows above and below cursor
+set sidescrolloff=5   " visual columns on sides of cursor
+set foldlevelstart=99 " start with fold everything
+set noshowmode        " no extra --Insert--, --Replace-- etc
+set pb=20             " transparency for popup, (default: 0)
 set ignorecase
 set smartcase
-set signcolumn=yes
+set signcolumn=yes    " always add extra space for signcolumn
 
 source $HOME/.files/nvim/backups.vim
 " }}}
@@ -149,13 +155,6 @@ lua require('telescope_settings')
 lua require('treesitter_settings')
 lua require('compe_settings')
 lua require('lsp_settings')
-
-" sign define LspDiagnosticsSignError text=! texthl=LspDiagnosticsSignError linehl= numhl=LspDiagnosticsSignError
-" sign define LspDiagnosticsSignWarning text=? texthl=LspDiagnosticsSignWarning linehl= numhl=LspDiagnosticsSignWarning
-" sign define LspDiagnosticsSignInformation text=I texthl=LspDiagnosticsSignInformation linehl= numhl=
-" sign define LspDiagnosticsSignHint text= texthl=LspDiagnosticsSignHint linehl= numhl=
-
-
 " Colorscheme
 lua require('colorbuddy').colorscheme('wombatbuddy')
 nnoremap <leader>cc <cmd>vsp ~/.files/nvim/lua/wombatbuddy.lua<CR>
