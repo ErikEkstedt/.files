@@ -31,6 +31,8 @@ call plug#begin('~/.vim/bundle')
   Plug 'lukas-reineke/indent-blankline.nvim', { 'branch': 'lua' }  " indentlines on blank rows
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
   Plug 'phaazon/hop.nvim'
+  Plug 'kyazdani42/nvim-web-devicons'
+	" Plug 'yamatsum/nvim-web-nonicons'    " not showing good icons for the moment. requires special fallback font.
 
   Plug 'junegunn/vim-easy-align'         " XXX better alignment than tabular
   Plug 'junegunn/vim-peekaboo'           " XXX when pressing quotes shows what's stored in the different registers
@@ -155,6 +157,13 @@ lua require('telescope_settings')
 lua require('treesitter_settings')
 lua require('compe_settings')
 lua require('lsp_settings')
+
+" use 'yamatsum/nvim-web-nonicons'
+" -- if use nvim-web-devicons
+" use {
+"   'yamatsum/nvim-web-nonicons',
+"   requires = {'kyazdani42/nvim-web-devicons'}
+" }
 " Colorscheme
 lua require('colorbuddy').colorscheme('wombatbuddy')
 nnoremap <leader>cc <cmd>vsp ~/.files/nvim/lua/wombatbuddy.lua<CR>

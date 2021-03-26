@@ -4,6 +4,8 @@ local map = function(type, key, value)
 	vim.api.nvim_buf_set_keymap(0,type,key,value,{noremap = true, silent = true});
 end
 
+-- when you have time
+-- https://github.com/neovim/nvim-lspconfig#Keybindings-and-completion
 
 local custom_attach = function(client)
 	print("LSP started.");
@@ -32,10 +34,21 @@ vim.fn.sign_define("LspDiagnosticsSignInformation", {text="I", texthl="LspDiagno
 vim.fn.sign_define("LspDiagnosticsSignHint", {text="", texthl="LspDiagnosticsSignHint"})
 
 -- Setup
-conf.pyright.setup{on_attach=custom_attach}
 conf.tsserver.setup{on_attach=custom_attach}
 conf.vimls.setup{on_attach=custom_attach}
 conf.sumneko_lua.setup{on_attach=custom_attach}
+conf.pyright.setup{
+	on_attach=custom_attach,
+	settings = {
+      python = {
+        analysis = {
+          autoSearchPaths = true,
+          useLibraryCodeForTypes = true,
+					typeCheckingMode="off"
+        }
+      }
+	}
+}
 
 
 -- LUA sumneko 
@@ -82,7 +95,3 @@ require'lspconfig'.sumneko_lua.setup {
     },
   },
 }
-
-
--- extend
--- https://rishabhrd.github.io/jekyll/update/2020/09/19/nvim_lsp_config.html
