@@ -86,9 +86,7 @@ call plug#begin('~/.vim/bundle')
   " Plug 'airblade/vim-gitgutter'          " XXX see git changes in file in the numberline
 	Plug 'lewis6991/gitsigns.nvim'
   Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
-
-  " Colorschemes
+  Plug 'vim-airline/vim-airline-themes' " Colorschemes
   Plug 'gruvbox-community/gruvbox'        " maintained fork of 'morhetz/gruvbox'
   Plug 'tjdevries/colorbuddy.vim'
   Plug 'tjdevries/gruvbuddy.nvim'
@@ -128,6 +126,7 @@ set smartcase
 set signcolumn=yes    " always add extra space for signcolumn
 
 source $HOME/.files/nvim/backups.vim
+source $HOME/.files/nvim/mappings/text_objects.vim
 " }}}
 
 " AU {{{
@@ -238,6 +237,11 @@ nnoremap <C-i> <C-i>zz
 nnoremap <space>f za
 nnoremap <space>a zA
 nnoremap ga zA
+
+" split lines at ',', ';', ' '
+nnoremap gl f, a<CR><esc>
+nnoremap gL f;a<CR><esc>
+nnoremap g<space> f<space>a<CR><esc>
 
 " }}}
 " Mappings Visual {{{

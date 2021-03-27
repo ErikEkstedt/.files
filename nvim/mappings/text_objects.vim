@@ -215,12 +215,12 @@ endfunction
 " Mappings
 
 " "around number" (next number on line and possible surrounding white-space)
-xnoremap <silent> an :<c-u>call <sid>aroundNumber()<cr>
-onoremap <silent> an :<c-u>call <sid>aroundNumber()<cr>
+" xnoremap <silent> an :<c-u>call <sid>aroundNumber()<cr>
+" onoremap <silent> an :<c-u>call <sid>aroundNumber()<cr>
 
 " "in number" (next number after cursor on current line)
-xnoremap <silent> in :<c-u>call <sid>inNumber()<cr>
-onoremap <silent> in :<c-u>call <sid>inNumber()<cr>
+" xnoremap <silent> in :<c-u>call <sid>inNumber()<cr>
+" onoremap <silent> in :<c-u>call <sid>inNumber()<cr>
 
 " "in indentation" (indentation level sans any surrounding empty lines)
 xnoremap <silent> ii :<c-u>call <sid>inIndentation()<cr>
