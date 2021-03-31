@@ -1,4 +1,4 @@
-" vim: fdm=marker tw=0
+" vim: fdm=marker
 
 " Problem
 " I link this directory to ~/.vim and as such all files in plugin/, after/, etc are loaded.
@@ -33,16 +33,16 @@ call plug#begin('~/.vim/bundle')
   Plug 'phaazon/hop.nvim'
   Plug 'kyazdani42/nvim-web-devicons'
 	" Plug 'yamatsum/nvim-web-nonicons'    " not showing good icons for the moment. requires special fallback font.
-
   Plug 'junegunn/vim-easy-align'         " XXX better alignment than tabular
   Plug 'junegunn/vim-peekaboo'           " XXX when pressing quotes shows what's stored in the different registers
-
   Plug 'jpalardy/vim-slime'
   let g:slime_no_mappings=1  " don't set mappings
+	Plug 'oberblastmeister/neuron.nvim', {'branch': 'unstable'}
 
   " completion / LSP
   " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'neovim/nvim-lspconfig'
+	Plug 'glepnir/lspsaga.nvim'
 	Plug 'hrsh7th/nvim-compe'
 	set completeopt=menuone,noselect
 	inoremap <silent><expr> <CR>  compe#confirm({ 'keys': "\<Plug>delimitMateCR", 'mode': '' })
@@ -62,9 +62,10 @@ call plug#begin('~/.vim/bundle')
   Plug 'epilande/vim-react-snippets' " React code snippets
   Plug 'honza/vim-snippets'              " XXX snippets
 
-
 	" Code Format
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+	Plug 'nvim-treesitter/playground'  " live insight into TS on script
+
 	Plug 'psf/black'  " Plug 'psf/black'
 	" Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " better python syntax highlight
 	Plug 'yuezk/vim-js'
@@ -82,11 +83,14 @@ call plug#begin('~/.vim/bundle')
   Plug 'junegunn/fzf.vim'                " XXX fuzzy filefinding
   Plug 'chengzeyi/fzf-preview.vim'
 
-  " Statusline
-  " Plug 'airblade/vim-gitgutter'          " XXX see git changes in file in the numberline
 	Plug 'lewis6991/gitsigns.nvim'
+
+  " Statusline
+	Plug 'akinsho/nvim-bufferline.lua'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes' " Colorschemes
+
+	" Colors
   Plug 'gruvbox-community/gruvbox'        " maintained fork of 'morhetz/gruvbox'
   Plug 'tjdevries/colorbuddy.vim'
   Plug 'tjdevries/gruvbuddy.nvim'
@@ -110,7 +114,6 @@ endif " }}}
 
 " Settings {{{
 set number
-set hidden
 set splitbelow
 set splitright
 set nowrap
@@ -118,12 +121,17 @@ set termguicolors     " Enable true color support.
 set mouse=a           " mouse functionality (default: empty)
 set scrolloff=3       " visual rows above and below cursor
 set sidescrolloff=5   " visual columns on sides of cursor
-set foldlevelstart=99 " start with fold everything
+set foldlevelstart=0  " start with fold everything
+set foldmethod=indent
 set noshowmode        " no extra --Insert--, --Replace-- etc
 set pb=20             " transparency for popup, (default: 0)
 set ignorecase
 set smartcase
 set signcolumn=yes    " always add extra space for signcolumn
+set virtualedit=block      " onemore 'block' makes it possible to edit empty space in visualblock
+set cursorline
+set inccommand=nosplit     " show incremental changes for |:substitute|, |:smagic|, |:snomagic|. |hl-Substitute|
+set hidden
 
 source $HOME/.files/nvim/backups.vim
 source $HOME/.files/nvim/mappings/text_objects.vim
@@ -156,15 +164,12 @@ lua require('telescope_settings')
 lua require('treesitter_settings')
 lua require('compe_settings')
 lua require('lsp_settings')
+lua require('bufferline_settings')
+lua require('lspsaga_settings')
+lua require('neuron_settings')
 
-" use 'yamatsum/nvim-web-nonicons'
-" -- if use nvim-web-devicons
-" use {
-"   'yamatsum/nvim-web-nonicons',
-"   requires = {'kyazdani42/nvim-web-devicons'}
-" }
-" Colorscheme
-lua require('colorbuddy').colorscheme('wombatbuddy')
+colorscheme gruvbox
+" lua require('colorbuddy').colorscheme('wombatbuddy')
 nnoremap <leader>cc <cmd>vsp ~/.files/nvim/lua/wombatbuddy.lua<CR>
 " }}}
 " Mappings Normal {{{

@@ -26,7 +26,7 @@ let g:airline_symbols.readonly = ''
 
 
 " Use tabline for opened buffers
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
 " let g:airline#extensions#disable_rtp_load = 1
 
 
