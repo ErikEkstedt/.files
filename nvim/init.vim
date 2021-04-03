@@ -1,1 +1,0 @@
-/home/erik/.files/nvim/init_fast.vim
