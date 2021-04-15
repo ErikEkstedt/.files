@@ -2,42 +2,36 @@
 
 # Prompt
 ## autoload vcs and colors
+autoload -U colors
+colors
+
+# http://zsh.sourceforge.net/Doc/Release/User-Contributions.html
 autoload -Uz vcs_info
-autoload -U colors && colors
-
-# enable only git 
 zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' stagedstr "%F{green}●%f" # default 'S'
+zstyle ':vcs_info:*' unstagedstr "%F{red}●%f" # default 'U'
+zstyle ':vcs_info:*' use-simple true
+zstyle ':vcs_info:git+set-message:*' hooks git-untracked
+zstyle ':vcs_info:git*:*' formats " %{$fg[yellow]%}%{$fg[magenta]%} %b%{$reset_color%}[%m%c%u] " # default ' (%s)-[%b]%c%u-'
+zstyle ':vcs_info:git*:*' actionformats " %{$fg[yellow]%}%{$fg[magenta]%} %b%{$reset_color%}|%a%m%c%u " # default ' (%s)-[%b|%a]%c%u-'
 
-# setup a hook that runs before every ptompt. 
-precmd_vcs_info() { vcs_info }
-precmd_functions+=( precmd_vcs_info )
-setopt prompt_subst
-
-# add a function to check for untracked files in the directory.
-# from https://github.com/zsh-users/zsh/blob/master/Misc/vcs_info-examples
-zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
-+vi-git-untracked(){
-    if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
-        git status --porcelain | grep '??' &> /dev/null ; then
-        # This will show the marker if there are any untracked files in repo.
-        # If instead you want to show the marker only if there are untracked
-        # files in $PWD, use:
-        #[[ -n $(git ls-files --others --exclude-standard) ]] ; then
-        hook_com[staged]+='!' # signify new files with a bang
-    fi
+function +vi-git-untracked() {
+  emulate -L zsh
+  if [[ -n $(git ls-files --exclude-standard --others 2> /dev/null) ]]; then
+    hook_com[unstaged]+="%F{blue}●%f"
+  fi
 }
 
-# TODO
-# Style Conda env
-# look at examples from vcs -> https://github.com/zsh-users/zsh/blob/master/Misc/vcs_info-examples
+precmd_vcs_info() { vcs_info }
+precmd_functions+=( precmd_vcs_info )
+setopt PROMPT_SUBST
 
-zstyle ':vcs_info:*' check-for-changes true
-# zstyle ':vcs_info:git:*' formats " %{$fg[blue]%}(%{$fg[red]%}%m%u%c%{$fg[yellow]%}%{$fg[magenta]%} %b%{$fg[blue]%})"
-zstyle ':vcs_info:git:*' formats " %{$fg[yellow]%}%{$fg[magenta]%} %b% %{$fg[blue]%} [%{$fg[red]%}%m%{$fg[yellow]%}%u%{$fg[red]%}%c%%{$fg[blue]%}]"
+## TODO
+## Style Conda env
+## look at examples from vcs -> https://github.com/zsh-users/zsh/blob/master/Misc/vcs_info-examples
 
 NEWLINE=$'\n'
-# format our main prompt for hostname current folder, and permissions.
-# PROMPT="%{$fg[green]%}%n@%m %~ %{$reset_color%}%#> "
 PROMPT="%{$fg[cyan]%}%3~%{$reset_color%}"
 PROMPT+="\$vcs_info_msg_0_ "
 PROMPT+="${NEWLINE}%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )%{$reset_color%}"

@@ -1,12 +1,22 @@
 # vim: ft=zsh
 # some useful options (man zshoptions)
+# https://github.com/wincent/wincent/blob/fe798113ffb7c616cb7c332c91eaffd62e781048/roles/dotfiles/files/.zshrc#L43-L123
 
 # Options
-setopt autocd extendedglob
-setopt interactive_comments
-setopt RM_STAR_WAIT  # if you do a 'rm *', Zsh will give you a sanity check!
 unsetopt BEEP
-stty stop undef		# Disable ctrl-s to freeze terminal.
+setopt autocd               # .. is shortcut for cd .. (etc)
+setopt autoparamslash       # tab completing directory appends a slash
+setopt autopushd            # cd automatically pushes old dir onto dir stack
+setopt correct              # command auto-correction
+setopt correctall           # argument auto-correction
+setopt noflowcontrol        # disable start (C-s) and stop (C-q) characters
+setopt nonomatch            # unmatched patterns are left unchanged
+setopt ignoreeof            # prevent accidental C-d from exiting shell
+setopt interactivecomments  # allow comments, even in interactive shells
+setopt pushdignoredups      # don't push multiple copies of same dir onto stack
+setopt pushdsilent          # don't print dir stack after pushing/popping
+setopt extendedglob
+setopt RM_STAR_WAIT  # if you do a 'rm *', Zsh will give you a sanity check!
 
 # Completions
 autoload -Uz compinit
