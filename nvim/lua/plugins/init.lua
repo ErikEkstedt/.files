@@ -22,12 +22,12 @@ return require('packer').startup(function(use)
 
   -- Standard in many lua plugins. Contains functions you don't want to implement again...
   use 'nvim-lua/plenary.nvim'
-  use 'nvim-lua/popup.nvim'
+  use {'nvim-lua/popup.nvim', requires = 'nvim-lua/plenary.nvim'}
 
 	-- Devicons/color
   use 'kyazdani42/nvim-web-devicons'
 	use 'norcalli/nvim-colorizer.lua'
-	use 'KabbAmine/vCoolor.vim'
+	use {'KabbAmine/vCoolor.vim', config=function() vim.g.vcoolor_map = ',co' end }
 
 	-- Tools
   use {'mg979/vim-visual-multi', branch='master' }
@@ -38,6 +38,7 @@ return require('packer').startup(function(use)
   -- LSP
   use {'neovim/nvim-lspconfig', config = function() require('plugins.lsp') end }
   use {'hrsh7th/nvim-compe', config = function() require('plugins.nvim-compe') end }
+  use {'glepnir/lspsaga.nvim', config = function() require('plugins.lspsaga') end }
   use {'nvim-treesitter/nvim-treesitter', config=function() require('plugins.treesitter') end, run = ':TSUpdate'}
   use 'nvim-treesitter/playground'
 	use 'SirVer/ultisnips'
@@ -53,8 +54,8 @@ return require('packer').startup(function(use)
 		},
 		config = function() require('plugins.telescope') end
 	}
-	use '~/.fzf'
 	use 'junegunn/fzf.vim'
+	use {'junegunn/fzf', run=function() vim.fn['fzf#install']() end }
 
 	-- Notetaking
 	use {
@@ -62,7 +63,7 @@ return require('packer').startup(function(use)
 		branch='unstable',
 		config= function() require('plugins.neuron') end
 	}
-  use {'iamcco/markdown-preview.nvim', run='cd app && yarn install', cmd='MarkdownPreview'}
+  use {'iamcco/markdown-preview.nvim', run='cd app && yarn install', ft='markdown', config=function() require('plugins.markdown-preview') end}
 
 	-- Code format
 	use 'psf/black'

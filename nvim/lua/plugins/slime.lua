@@ -6,9 +6,10 @@ vim.g.slime_default_config={socket_name='default', target_pane='{right-of}'}
 vim.g.slime_target='tmux'
 vim.g.slime_python_ipython=1
 
-vim.api.nvim_set_keymap('x', '<C-c><C-c>', ':SlimeRegionSend<CR>', {})
-vim.api.nvim_set_keymap('n', '<C-c><C-c>', ':SlimeLineSend<CR>', {})
-vim.api.nvim_set_keymap('n', '<C-c><C-x>', ':SlimeConfig<CR>', {})
+vim.api.nvim_set_keymap('x', '<C-C><C-C', ':SlimeSend1<CR>', {})
+vim.api.nvim_set_keymap('x', '<CR>', ':SlimeSend<CR>', {})
+vim.api.nvim_set_keymap('n', '<C-C><C-C>', ':SlimeSend1<CR>', {})
+vim.api.nvim_set_keymap('n', '<C-C><C-x>', ':SlimeConfig<CR>', {})
 
 -- xmap <cr> <Plug>SlimeRegionSend
 -- xmap <c-c><c-c> <Plug>SlimeRegionSend

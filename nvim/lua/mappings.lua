@@ -20,6 +20,7 @@ vim.api.nvim_set_keymap('n', 'V', 'v$', {noremap=true, silent=true})
 vim.api.nvim_set_keymap('n', 'Y', 'y$', {noremap=true, silent=true})
 vim.api.nvim_set_keymap('n', '<localleader>pa', '"+p', {noremap=true, silent=true})
 vim.api.nvim_set_keymap('n', '<C-y>', '"+yy', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('x', '<C-y>', '"+yy', {noremap=true, silent=true})
 
 -- Sane wrap movement
 vim.api.nvim_set_keymap('n', 'j', 'gj', {noremap=true, silent=true})
@@ -46,7 +47,7 @@ vim.api.nvim_set_keymap('n', '<Leader>n', ':bn<CR>', {noremap=true, silent=true}
 vim.api.nvim_set_keymap('n', '<Leader>B', ':bf<CR>', {noremap=true, silent=true})
 vim.api.nvim_set_keymap('n', '<Leader>N', ':bl<CR>', {noremap=true, silent=true})
 vim.api.nvim_set_keymap('n', '<Leader><Leader>', ':b#<CR>', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('n', '<Leader>d', ':bd<CR>', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', '<Leader>D', ':bd<CR>', {noremap=true, silent=true})
 
 -- Resize
 vim.api.nvim_set_keymap('n', '<C-Left>', ':vertical resize -3<CR>', {noremap=true, silent=true})
@@ -87,6 +88,10 @@ vim.api.nvim_set_keymap('i', '<S-Tab>', 'v:lua.smart_tab2()', {expr = true, nore
 -- Visual
 vim.api.nvim_set_keymap('v', '<Leader>sl', 'y:@"<CR>', {noremap=true})
 vim.api.nvim_set_keymap('v', '<LocalLeader>sl', 'y:@"<CR>', {noremap=true})
+vim.api.nvim_set_keymap('v', '<Tab>', '>gv', {noremap = true})
+vim.api.nvim_set_keymap('v', '<S-Tab>', '<gv', {noremap = true})
+vim.api.nvim_set_keymap('v', 'J', '}', {noremap = true})
+vim.api.nvim_set_keymap('v', 'K', '{', {noremap = true})
 
 -- Selection
 vim.api.nvim_set_keymap('x', 'L', '$', {noremap=true})

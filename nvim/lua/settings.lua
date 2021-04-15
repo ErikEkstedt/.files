@@ -18,6 +18,7 @@ vim.o.virtualedit='block'      -- onemore 'block' makes it possible to edit empt
 vim.o.wrap=false
 vim.wo.number=true -- set numbered lines
 vim.wo.relativenumber=false -- set relative number
+vim.o.gdefault=true
 
 -- Can't set directly ? list over possible values?
 vim.cmd('set undofile')       -- Undo: keep undo persistent over buffer quits
@@ -26,3 +27,4 @@ vim.cmd('set foldmethod=indent')
 vim.cmd('set tabstop=2')
 vim.cmd('set expandtab')
 vim.cmd('set shiftwidth=2')
+vim.cmd('set nowrap')
