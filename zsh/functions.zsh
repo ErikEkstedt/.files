@@ -36,20 +36,6 @@ function _browser_tab() {
   fi
 }
 
-# Conda
-function so() {
-  local env
-  if [ -z "$1" ]; then
-    env=$(ls $HOME/miniconda3/envs | fzf)
-    # source activate "$1"
-  else
-    env=$1
-  fi
-  conda activate "$env"
-}
-alias sod="conda deactivate"
-zle -N so
-
 # Movement
 vi-cmd-up-line-history() {
   zle vi-cmd-mode

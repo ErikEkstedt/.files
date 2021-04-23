@@ -1,3 +1,6 @@
+# Editing
+alias ez="v ~/.files/zsh/zshrc"
+
 # Git
 alias gad="git add"
 alias gco="git commit -m"
@@ -40,6 +43,7 @@ alias messenger="_browser_tab --new-tab https://messenger.com"
 # Tmux
 alias tls="tmux list-sessions"
 alias tks="tmux kill-session -t"
+alias tns="tmux rename -t . " 
 alias tkp="tmux kill-pane -t"
 alias tat=$DOTFILES/bin/tat  # Current path as new tmux session
 # alias tspc="_tmux_send_keys_all_panes_"

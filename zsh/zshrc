@@ -21,6 +21,7 @@ setopt RM_STAR_WAIT  # if you do a 'rm *', Zsh will give you a sanity check!
 # Completions
 autoload -Uz compinit
 zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zmodload zsh/complist
 compinit
 _comp_options+=(globdots)		# Include hidden files.
@@ -33,6 +34,7 @@ source ~/.files/zsh/less-colors.zsh   # coloring for less pager
 source ~/.files/zsh/ls-commands.zsh  # use ls or lcd + their aliases
 source ~/.files/zsh/functions.zsh  # random functions
 source ~/.files/zsh/vim-mode.zsh  # vim-mode, keytimeout & cursor styles
+source ~/.files/zsh/conda.zsh  # conda source
 
 if [[ -f ~/.fzf.zsh  ]]; then
     source ~/.fzf.zsh
@@ -53,6 +55,9 @@ export ZDOTDIR=$HOME/.config/zsh
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 
+alias lf=lfcd
+alias rack='~/Rack/Rack'
+
 # History
 HISTFILE=$ZDOTDIR/.zsh_history
 HISTSIZE=1000000
@@ -67,21 +72,14 @@ export BROWSER="brave-browser"
 export MANPAGER='nvim +Man!'
 export PATH="$HOME/gems/bin:$PATH"  # Install Ruby Gems to ~/gems
 export PATH="$HOME/go/bin:$PATH"                                   
+export PATH="$HOME/Applications:$PATH"                                   
 
-# Slow startup time... do I need this?
-# export NVM_DIR="$HOME/.nvm"                                        # NVM
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+# Slow startup time
+function source_nvm() {
+  export NVM_DIR="$HOME/.nvm"                                        # NVM
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+}
 if [ -e /home/erik/.nix-profile/etc/profile.d/nix.sh ]; then . /home/erik/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-
-# Slow LOADING TIME :( but I do require conda
-# >>> conda initialize >>> {{{
-# Conda produces its own prompt prefix to show the current active environment
-# remove by running:
-# conda config --set changeps1 False
-__conda_setup="$( $HOME'/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-fi
-unset __conda_setup
-# <<< conda initialize <<< }}}
+# source_nvm
+# source_conda
