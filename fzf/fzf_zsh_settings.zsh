@@ -69,6 +69,7 @@ bindkey '^P' fzf-dir-change-projects
 bindkey '^B' fzf-dir-change-home
 bindkey '^Y' fzf-dir-change-dot
 bindkey '^O' fzf-dir-change-cwd
+bindkey '^F' fzf-file-widget
 bindkey -M vicmd '^P' fzf-dir-change-projects
 bindkey -M vicmd '^B' fzf-dir-change-home
 bindkey -M vicmd '^Y' fzf-dir-change-dot
