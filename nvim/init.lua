@@ -21,11 +21,13 @@ vim.g.BROWSER	= 'brave-browser'
 -- Mappings Normal etc
 require('mappings')
 
--- Automatically resize when vim changes
-vim.cmd([[au VimResized * exe "normal! \<c-w>="]])
-
--- Highlight text when yank. Built in lua.
-vim.cmd([[au! TextYankPost * silent! lua vim.highlight.on_yank {higroup="DiffAdd", timeout=500}]])
-
 -- Set Colorscheme
 vim.cmd('colorscheme onebuddy')
+-- vim.g.gruvbox_flat_style = "dark"
+-- vim.g.gruvbox_sidebars = { "qf", "vista_kind", "terminal", "packer" }
+-- vim.cmd('colorscheme gruvbox-flat')
+-- -- does not work but is what i want Init
+-- vim.cmd([[
+-- hi Folded guibg=NONE'
+-- hi PmenuSel guibg=cyan guifg=black
+-- ]])

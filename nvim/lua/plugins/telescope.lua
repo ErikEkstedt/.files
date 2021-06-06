@@ -94,7 +94,8 @@ vim.api.nvim_set_keymap('n', '<LocalLeader>ff', bi .. ".find_files()<cr>", km)
 vim.api.nvim_set_keymap('n', '<LocalLeader>fg', bi .. ".git_files()<cr>", km)
 vim.api.nvim_set_keymap('n', '<LocalLeader>fb', bi .. ".buffers()<cr>", km)
 vim.api.nvim_set_keymap('n', '<LocalLeader>fc', bi .. ".find_files{cwd='~/.files'}<cr>", km)
-vim.api.nvim_set_keymap('n', '<LocalLeader>ll', bi .. ".current_buffer_fuzzy_find()<cr>", km)
+vim.api.nvim_set_keymap('n', '<LocalLeader>fp', bi .. ".find_files{cwd='~/projects'}<cr>", km)
+vim.api.nvim_set_keymap('n', '<LocalLeader>fl', bi .. ".current_buffer_fuzzy_find()<cr>", km)
 
 -- Too slow. Handled by FZF
 -- vim.api.nvim_set_keymap('n', '<LocalLeader>fw', t .. ".extensions.fzf_writer.grep()<cr>", km)

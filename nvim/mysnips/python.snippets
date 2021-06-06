@@ -51,3 +51,12 @@ snippet importDataset "pytorch dataset, dataloader"
 from torch.utils.data import Dataset, DataLoader
 $0
 endsnippet
+
+snippet classModule "pytorch class, dataloader"
+class $1(nn.Module):
+	def __init__(self):
+		super().__init__()
+
+	def forward(self, x):
+		return x
+endsnippet

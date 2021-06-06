@@ -1,30 +1,47 @@
 -- Settings
 
-vim.o.foldlevelstart=99  -- 0: all fold, 99: no fold
-vim.o.hidden=true
-vim.o.ignorecase=true
-vim.o.inccommand='nosplit'     -- show incremental changes for |:substitute|, |:smagic|, |:snomagic|. |hl-Substitute|
-vim.o.mouse='a'           -- mouse functionality (default: empty)
-vim.o.pb=20             -- transparency for popup, (default: 0)
-vim.o.scrolloff=3       -- visual rows above and below cursor
-vim.o.showmode=false        -- no extra --Insert--, --Replace-- etc
-vim.o.sidescrolloff=5   -- visual columns on sides of cursor
-vim.o.smartcase=true
-vim.o.splitbelow=true
-vim.o.splitright=true
-vim.o.t_Co="256"     -- support 256 color
-vim.o.termguicolors=true     -- Enable true color support.
-vim.o.virtualedit='block'      -- onemore 'block' makes it possible to edit empty space in visualblock set cursorline
-vim.o.wrap=false
-vim.wo.number=true -- set numbered lines
-vim.wo.relativenumber=false -- set relative number
-vim.o.gdefault=true
+-- new option settings: https://github.com/neovim/neovim/pull/13479
+vim.opt.expandtab=true
+vim.opt.fileignorecase=true
+vim.opt.foldlevelstart=99  -- 0: all fold, 99: no fold
+vim.opt.foldmethod='indent'
+vim.opt.gdefault=true
+vim.opt.hidden=true
+vim.opt.ignorecase=true
+vim.opt.inccommand='nosplit'     -- show incremental changes for |:substitute|, |:smagic|, |:snomagic|. |hl-Substitute|
+vim.opt.mouse='a'           -- mouse functionality (default: empty)
+vim.opt.pb=20             -- transparency for popup, (default: 0)
+vim.opt.scrolloff=3       -- visual rows above and below cursor
+vim.opt.shiftwidth=2
+vim.opt.showmode=false        -- no extra --Insert--, --Replace-- etc
+vim.opt.sidescrolloff=5   -- visual columns on sides of cursor
+vim.opt.signcolumn='yes'
+vim.opt.smartcase=true
+vim.opt.splitbelow=true
+vim.opt.splitright=true
+vim.opt.tabstop=2
+vim.opt.termguicolors=true     -- Enable true color support.
+vim.opt.timeoutlen=300
+vim.opt.undofile=true       -- Undo: keep undo persistent over buffer quits
+vim.opt.virtualedit='block'      -- onemore 'block' makes it possible to edit empty space in visualblock set cursorline
+vim.opt.wrap=false
+vim.opt.wrap=false
+vim.opt.number=true -- set numbered lines
+vim.opt.relativenumber=false -- set relative number
+vim.opt.shortmess:append('m') -- Shortmess: help 'shortmess'. Vim default "filnxtToOF"
+vim.opt.shortmess:append('x')
+vim.go.t_Co="256"     -- support 256 color
 
--- Can't set directly ? list over possible values?
-vim.cmd('set undofile')       -- Undo: keep undo persistent over buffer quits
-vim.cmd('set signcolumn=yes')
-vim.cmd('set foldmethod=indent')
-vim.cmd('set tabstop=2')
-vim.cmd('set expandtab')
-vim.cmd('set shiftwidth=2')
-vim.cmd('set nowrap')
+-- 'Sync' files between instances and ignore swap
+-- https://youtu.be/fm33-Pas7vI?t=193
+-- autocmd on focus, checktime, autoread
+-- vim.cmd('set shortmess+=A')   -- ignoire annoying swapfile messages.
+vim.opt.shortmess:append('A')
+vim.o.autoread=true
+vim.cmd([[au FocusGained * silent! checktime]])
+
+-- Automatically resize when vim changes
+vim.cmd([[au VimResized * exe "normal! \<c-w>="]])
+
+-- Highlight text when yank. Built in lua.
+vim.cmd([[au! TextYankPost * silent! lua vim.highlight.on_yank {higroup="DiffAdd", timeout=500}]])
