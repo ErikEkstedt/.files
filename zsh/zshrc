@@ -75,11 +75,11 @@ export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/Applications:$PATH"                                   
 
 # Slow startup time
+export NVM_DIR="$HOME/.nvm"                                        # NVM
 function source_nvm() {
-  export NVM_DIR="$HOME/.nvm"                                        # NVM
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 }
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-# source_nvm
-# source_conda
+source_nvm
+source_conda
