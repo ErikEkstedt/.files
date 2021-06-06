@@ -42,7 +42,9 @@ return require('packer').startup(function(use)
   use {'glepnir/lspsaga.nvim', config = function() require('plugins.lspsaga') end }
   use {'nvim-treesitter/nvim-treesitter', config=function() require('plugins.treesitter') end, run = ':TSUpdate'}
   use {"ray-x/lsp_signature.nvim"}
+
   use 'nvim-treesitter/playground'
+
   -- TODO
   -- use "rafamadriz/friendly-snippets"
   -- use "hrsh7th/vim-vsnip"

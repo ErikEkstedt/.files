@@ -1,6 +1,10 @@
+local compe = require('compe')
+local protocol = require('vim.lsp.protocol')
+
 vim.o.completeopt='menuone,noselect'
 
-require'compe'.setup {
+
+compe.setup {
   enabled = true;
   autocomplete = true;
   debug = false;
@@ -16,12 +20,40 @@ require'compe'.setup {
 
   source = {
     path = true;
-    buffer = true;
+    buffer = {menu='[B]'};
     calc = true;
     nvim_lsp = true;
     nvim_lua = true;
-    ultisnips = true;
+    ultisnips = {menu='[US]', kind='﬌ Snippet'}; -- overwrites 'kind' automatically: https://github.com/hrsh7th/nvim-compe/blob/888d9eccfe7b9092dcbfcdfabfad601ce63f3eb5/lua/compe_ultisnips/init.lua
   };
+}
+
+
+-- https://github.com/neovim/neovim/blob/ca802046bf0667b211f72330619a18fec3fea5f0/runtime/lua/vim/lsp/protocol.lua#L66
+protocol.CompletionItemKind = {
+  ' Text';        -- = 1
+  'ƒ Method';      -- = 2;
+  'ƒ Function';    -- = 3; or 
+  ' Constructor'; -- = 4;
+  'ƒ Field';         -- = 5;
+  ' Variable';    -- = 6
+  ' Module';      -- = 9;
+  ' Property';    -- = 10;
+  ' Unit';        -- = 11;
+  ' Value';       -- = 12;
+  '了Enum';        -- = 13;
+  ' Keyword';     -- = 14;
+  '﬌ Snippet';     -- = 15;
+  ' Color';       -- = 16;
+  ' File';        -- = 17;
+  ' Reference';     -- = 18;
+  ' Folder';      -- = 19;
+  ' EnumMember';  -- = 20;
+  ' Constant';    -- = 21;
+  ' Struct';      -- = 22;
+  'ﯓ Event';         -- = 23;
+  ' Operator';      -- = 24;
+  ' TypeParameter'; -- = 25;
 }
 
 vim.cmd([[
