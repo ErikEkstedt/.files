@@ -1,15 +1,45 @@
 -- MAPPINGS
--- mapleader/localleader is set in init.lua
-local function t(str)
-    return vim.api.nvim_replace_termcodes(str, true, true, true)
+-- -- mapleader/localleader is set in init.lua
+
+-- Smart tab: https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
+local t = function(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
-function _G.smart_tab()
-    return vim.fn.pumvisible() == 1 and t'<C-n>' or t'<Tab>'
+local check_back_space = function()
+    local col = vim.fn.col('.') - 1
+    if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+        return true
+    else
+        return false
+    end
 end
-function _G.smart_tab2()
-    return vim.fn.pumvisible() == 1 and t'<C-p>' or t'<S-Tab>'
+
+-- Use (s-)tab to:
+--- move to prev/next item in completion menuone
+--- jump to prev/next snippet's placeholder
+_G.tab_complete = function()
+  if vim.fn.pumvisible() == 1 then
+    return t "<C-n>"
+  elseif check_back_space() then
+    return t "<Tab>"
+  else
+    return vim.fn['compe#complete']()
+  end
 end
+_G.s_tab_complete = function()
+  if vim.fn.pumvisible() == 1 then
+    return t "<C-p>"
+  else
+    return t "<S-Tab>"
+  end
+end
+
+vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+
 
 -- test leader mapping
 vim.api.nvim_set_keymap('n', '<Leader>t', ':echo "testMapping"<CR>', {noremap=true})
@@ -83,10 +113,6 @@ vim.api.nvim_set_keymap('n', 'ga', 'zA', {noremap=true, silent=true})
 vim.api.nvim_set_keymap('n', '<Leader>f', 'zazz', {noremap=true, silent=true})
 
 -- INSERT
--- TODO: fix these
--- vim.cmd([[inoremap <expr><Tab> pumvisible() ? "\<C-N>" : "\<Tab>"]])
-vim.api.nvim_set_keymap('i', '<Tab>', 'v:lua.smart_tab()', {expr = true, noremap = true})
-vim.api.nvim_set_keymap('i', '<S-Tab>', 'v:lua.smart_tab2()', {expr = true, noremap = true})
 
 -- Visual
 vim.api.nvim_set_keymap('v', '<Leader>sl', 'y:@"<CR>', {noremap=true})

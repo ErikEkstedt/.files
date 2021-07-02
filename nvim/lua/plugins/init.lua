@@ -35,6 +35,27 @@ return require('packer').startup(function(use)
 	use {'jpalardy/vim-slime', config=function() require('plugins.slime') end}  -- NON-LUA
   use {'mg979/vim-visual-multi', branch='master' }  -- NON-LUA
 	use 'Raimondi/delimitMate'  -- NON-LUA
+  use {
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("todo-comments").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
+  use {
+    "folke/zen-mode.nvim",
+    config = function()
+      require("zen-mode").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
 
   -- LSP
   use {'neovim/nvim-lspconfig', config = function() require('plugins.lsp') end }
@@ -52,6 +73,7 @@ return require('packer').startup(function(use)
 	use 'honza/vim-snippets'  -- NON-LUA
 
 	-- Fuzzy Finding
+  -- use { 'camspiers/snap', rocks = {'fzy'}, config = function() require('plugins.snap') end }
   use {
 		'nvim-telescope/telescope.nvim',
 		requires = {

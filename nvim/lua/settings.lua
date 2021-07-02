@@ -26,10 +26,11 @@ vim.opt.undofile=true       -- Undo: keep undo persistent over buffer quits
 vim.opt.virtualedit='block'      -- onemore 'block' makes it possible to edit empty space in visualblock set cursorline
 vim.opt.wrap=false
 vim.opt.wrap=false
-vim.opt.number=true -- set numbered lines
+vim.opt.number=false -- set numbered lines
 vim.opt.relativenumber=false -- set relative number
 vim.opt.shortmess:append('m') -- Shortmess: help 'shortmess'. Vim default "filnxtToOF"
 vim.opt.shortmess:append('x')
+vim.opt.shortmess:append('c')
 vim.go.t_Co="256"     -- support 256 color
 
 -- 'Sync' files between instances and ignore swap

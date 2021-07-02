@@ -1,7 +1,7 @@
 local saga = require 'lspsaga'
 
 saga.init_lsp_saga({
-	border_style = 2,
+	border_style = "round",
 	use_saga_diagnostic_sign = false,
 	max_preview_lines = 100,
 	finder_action_keys = {
@@ -13,6 +13,7 @@ saga.init_lsp_saga({
 
 --- mappings
 vim.api.nvim_set_keymap('n', 'ge', ":Lspsaga lsp_finder<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', 'gr', "<cmd>lua require('lspsaga.rename').rename()<CR>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', 'K', ":Lspsaga hover_doc<CR>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>ca', ":Lspsaga code_action<CR>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>dl', ":Lspsaga show_line_diagnostics<CR>", {noremap = true, silent = true})
