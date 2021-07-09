@@ -1,0 +1,47 @@
+# vim:fdm=marker ft=tmux
+
+# Pane borders
+pane_border_fg='#444444'
+pane_border_fg_active='#00FFFE'
+
+# Background
+window_bg='#1d1e17'
+window_fg='#aaaaaa'
+window_bg_active='#2d2e27'
+# window_fg_active='#FFFFFF'
+
+# set inactive/active window styles
+set window-style "bg=$window_bg"
+set window-active-style "bg=$window_bg_active"
+
+# Pane borders
+set -g pane-border-style "fg=$pane_border_fg,bg=$window_bg"
+set -g pane-active-border-style "fg=$pane_border_fg_active,bg=$window_bg"
+# Messaging
+set -g message-attr bold
+set -g message-fg colour81 #cyan
+set -g message-bg $window_status_bg
+set -g message-command-fg '#004d4d'
+set -g message-command-bg $window_status_current_bg
+
+# Statusbar Colors
+# Colors
+status_bg='#1d1e17'
+window_status_left_bg=$status_bg
+window_status_right_bg=$status_bg
+
+window_status_fg='#8bae72'
+window_status_bg='#556848'
+
+# Current
+window_status_current_fg='#010101'
+window_status_current_bg='#8bae72'
+
+# Left
+window_status_left_fg='#5592c2'
+
+# Right
+window_status_right_fg='#5592c2'
+
+# Source statusline
+source-file $TMUXDOTDIR/statusline.theme

@@ -1,0 +1,8 @@
+# bat settings
+--color=always
+--paging=never
+--theme="TwoDark"
+--map-syntax "*rc:INI"
+--map-syntax "*.conf:INI"
+--map-syntax "config:INI"
+--map-syntax "*.service:INI"

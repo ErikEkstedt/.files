@@ -1,0 +1,13 @@
+# vim:fdm=marker ft=tmux
+
+window_bg='#282828'
+window_status_bg='#282828'
+window_status_bg2='#3c3836'
+window_status_bg_curr='#665c54'
+side_color='#b8bb26'
+side_text='#282828'
+separator_color='#ABB2BF'
+other_text='#a89984'
+current_text='#ebdbb2'
+
+source-file $TMUXDOTDIR/statusline.theme
