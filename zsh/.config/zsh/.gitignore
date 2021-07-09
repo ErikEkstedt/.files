@@ -1,1 +1,3 @@
 plugins
+.zshcompdump
+.zsh_history
