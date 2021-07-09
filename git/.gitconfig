@@ -5,7 +5,7 @@ name = Erik
 
 [core]
 editor = nvim
-excludesfile = "~/.files/gitignore"
+; excludesfile = "~/.files/gitignore"
 
 [push]
 default = simple
