@@ -40,6 +40,7 @@ source $ZDOTDIR/ls-commands.zsh  # use ls or lcd + their aliases
 source $ZDOTDIR/plugin-functions.zsh # functions for handling zsh plugins
 source $ZDOTDIR/prompt.zsh
 source $ZDOTDIR/vim-mode.zsh  # vim-mode, keytimeout & cursor styles
+export TMUXDOTDIR=$HOME/.config/tmux
 
 if [[ -f ~/.fzf.zsh  ]]; then
     source ~/.fzf.zsh
@@ -64,7 +65,6 @@ alias rack='~/Rack/Rack'
 
 # Exports
 export DOTFILES=$HOME/.files
-export TMUXDOTDIR=$HOME/.config/tmux
 export COLORTERM="truecolor"
 export TERM="screen-256color"
 export EDITOR='nvim'
@@ -73,13 +73,9 @@ export MANPAGER='nvim +Man!'
 export PATH="$HOME/gems/bin:$PATH"  # Install Ruby Gems to ~/gems
 export PATH="$HOME/go/bin:$PATH"                                   
 export PATH="$HOME/Applications:$PATH"                                   
+export PATH="$HOME/npm-global/bin:$PATH"                                   
 
-# Slow startup time
-export NVM_DIR="$HOME/.nvm"                                        # NVM
-function source_nvm() {
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
-}
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-source_nvm
-source_conda
+
+# Slow startup time but necessary
+source_conda  # see conda.zsh

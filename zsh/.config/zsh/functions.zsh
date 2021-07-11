@@ -1,7 +1,7 @@
 # sourced from zshrc
 
 function g() {
-    la | grep -i $1
+    ls -a | grep -i $1
 }
 function print_path() {  #{{{
     function _print_path() {  #{{{

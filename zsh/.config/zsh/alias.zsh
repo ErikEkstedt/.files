@@ -51,7 +51,7 @@ alias tat=$DOTFILES/bin/tat  # Current path as new tmux session
 
 # nvim
 alias v="nvim"
-alias vf="nvim -c 'Telescope find_files'"
+alias vf="nvim -c 'Telescope find_files hidden=true'"
 
 # COuld be useful to not forget about
 # https://github.com/ssbc/patchwork
