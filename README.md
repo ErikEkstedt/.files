@@ -30,11 +30,12 @@ The settings are used on both Linux (KDE-neon/Ubuntu) and MacOS.
 cd ~ && git clone https://github.com/ErikEkstedt/.files.git
 ```
 
-2. Install stow
+2. Install packages
 ```bash
-sudo apt-get install stow
+xargs -a packages_linux.txt sudo apt-get install -y
 ```
-3. Install by symlink through `stow`
+
+3. Install by symlink through `stow` (`sudo apt-get install stow`)
 ```bash
 stow */  # Everything except README
 ```

@@ -1,0 +1,14 @@
+autoconf 
+build-essential
+curl 
+feh 
+gcc 
+git 
+htop
+stow
+wget 
+xclip 
+xdotool 
+xsel 
+zathura 
+zsh 
