@@ -3,7 +3,7 @@
 #
 # No need to let fzf installer put commands in zshrc file
 # This script is sourced from $HOME/.files/zsh/zshrc -> $HOME/.zshrc
-export FZF_DEFAULT_COMMAND='fd --color=always --type file'
+export FZF_DEFAULT_COMMAND='fd --color=always --type file --hidden'
 export FZF_DEFAULT_OPTS="--height 100% --reverse --ansi"
 
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
