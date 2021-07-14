@@ -30,6 +30,7 @@ return require('packer').startup(function(use)
 	use {'KabbAmine/vCoolor.vim', config=function() vim.g.vcoolor_map = ',co' end }  -- NON-LUA
 
 	-- Tools
+  use {"akinsho/nvim-toggleterm.lua", config=function() require('plugins.toggleterm') end}
 	use {'phaazon/hop.nvim', config = function() require('plugins.hop') end}
   -- use {"folke/which-key.nvim", config = function() require('plugins.whichkey') end}
 	use {'jpalardy/vim-slime', config=function() require('plugins.slime') end}  -- NON-LUA

@@ -20,9 +20,14 @@ vim.g.BROWSER	= 'brave-browser'
 
 -- Mappings Normal etc
 require('mappings')
+require('plugins.neuronCustom')
 
 -- Set Colorscheme
 vim.cmd('colorscheme onebuddy')
+-- Colorscheme clears hi for hop?
+vim.cmd("hi HopNextKey gui=bold guifg=cyan")
+vim.cmd("hi HopNextKey1 gui=bold guifg=cyan")
+vim.cmd("hi HopNextKey2 gui=bold guifg=#FF0088")
 -- vim.g.gruvbox_flat_style = "dark"
 -- vim.g.gruvbox_sidebars = { "qf", "vista_kind", "terminal", "packer" }
 -- vim.cmd('colorscheme gruvbox-flat')
