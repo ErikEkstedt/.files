@@ -39,18 +39,19 @@ return require('packer').startup(function(use)
   use {
     "folke/todo-comments.nvim",
     requires = "nvim-lua/plenary.nvim",
-    config = function()
-      require("todo-comments").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      }
-    end
+    config = function() require("todo-comments").setup {} end
   }
   use {
     "folke/zen-mode.nvim",
+    config = function() require("zen-mode").setup {} end
+  }
+  use {
+    "folke/twilight.nvim",
     config = function()
-      require("zen-mode").setup {
+      require("twilight").setup {
+        dimming = {
+          alpha=0.4
+        }
         -- your configuration comes here
         -- or leave it empty to use the default settings
         -- refer to the configuration section below
