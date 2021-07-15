@@ -42,7 +42,7 @@ vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 
 
 -- test leader mapping
-vim.api.nvim_set_keymap('n', '<Leader>t', ':echo "testMapping"<CR>', {noremap=true})
+-- vim.api.nvim_set_keymap('n', '<Leader>t', ':echo "testMapping"<CR>', {noremap=true})
 
 -- TRIALS
 vim.cmd([[map <expr> ' printf('`%c zz',getchar())]])  -- center screen when going to a mark

@@ -20,7 +20,7 @@ vim.g.BROWSER	= 'brave-browser'
 
 -- Mappings Normal etc
 require('mappings')
-require('plugins.neuronCustom')
+-- require('plugins.neuronCustom')
 
 -- Set Colorscheme
 vim.cmd('colorscheme onebuddy')

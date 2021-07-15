@@ -75,6 +75,10 @@ return require('packer').startup(function(use)
 
 	-- Fuzzy Finding
   -- use { 'camspiers/snap', rocks = {'fzy'}, config = function() require('plugins.snap') end }
+  use {'kyazdani42/nvim-tree.lua', config=function() 
+    vim.cmd('highlight link NvimTreeFolderIcon String') 
+    vim.api.nvim_set_keymap('n', '<leader>t', ':NvimTreeToggle<CR>', {noremap=true, silent=true})
+  end}
   use {
 		'nvim-telescope/telescope.nvim',
 		requires = {
