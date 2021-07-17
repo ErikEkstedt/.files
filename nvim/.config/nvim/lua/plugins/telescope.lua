@@ -41,6 +41,15 @@ require('telescope').setup{
     selection_strategy = "reset",
     sorting_strategy = "ascending",
     layout_strategy = "horizontal",
+    layout_config = {
+      height = 0.8,
+      width = 0.8,
+      preview_width = 0.5,
+      horizontal = {
+        preview_cutoff = 120,
+        prompt_position = "top"
+      },
+    },
     mappings = mappings,
     file_sorter =  require'telescope.sorters'.get_fuzzy_file,
     file_ignore_patterns = file_ignore_patterns,
@@ -57,11 +66,6 @@ require('telescope').setup{
     qflist_previewer = require'telescope.previewers'.qflist.new, -- For buffer previewer use `require'telescope.previewers'.vim_buffer_qflist.new`
     -- Developer configurations: Not meant for general override
     buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker,
-  },
-  layout_config = {
-    width = 0.75,
-    prompt_position = "top",
-    preview_cutoff = 120,
   },
 	extensions = {
 		fzy_native = {
@@ -85,7 +89,6 @@ require('telescope').load_extension('fzf_writer')
 
 
 local km = {noremap=true, silent=true}
-local t = "<cmd>lua require('telescope')"
 local bi = "<cmd>lua require('telescope.builtin')"
 
 -- FileFinding
