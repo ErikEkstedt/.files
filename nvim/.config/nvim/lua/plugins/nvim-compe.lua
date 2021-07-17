@@ -28,32 +28,33 @@ compe.setup {
   };
 }
 
-
--- https://github.com/neovim/neovim/blob/ca802046bf0667b211f72330619a18fec3fea5f0/runtime/lua/vim/lsp/protocol.lua#L66
-protocol.CompletionItemKind = {
-  ' Text';        -- = 1
-  'ƒ Method';      -- = 2;
-  'ƒ Function';    -- = 3; or 
-  ' Constructor'; -- = 4;
-  'ƒ Field';         -- = 5;
-  ' Variable';    -- = 6
-  ' Module';      -- = 9;
-  ' Property';    -- = 10;
-  ' Unit';        -- = 11;
-  ' Value';       -- = 12;
-  '了Enum';        -- = 13;
-  ' Keyword';     -- = 14;
-  '﬌ Snippet';     -- = 15;
-  ' Color';       -- = 16;
-  ' File';        -- = 17;
-  ' Reference';     -- = 18;
-  ' Folder';      -- = 19;
-  ' EnumMember';  -- = 20;
-  ' Constant';    -- = 21;
-  ' Struct';      -- = 22;
-  'ﯓ Event';         -- = 23;
-  ' Operator';      -- = 24;
-  ' TypeParameter'; -- = 25;
+-- symbols for autocomplete
+vim.lsp.protocol.CompletionItemKind = {
+  "  (Text) ",
+  "  (Method)",
+  "  (Function)",
+  "  (Constructor)",
+  " ﴲ (Field)",
+  "[](Variable)",
+  "  (Class)",
+  " ﰮ (Interface)",
+  "  (Module)",
+  " 襁(Property)",
+  "  (Unit)",
+  "  (Value)",
+  " 練(Enum)",
+  "  (Keyword)",
+  "  (Snippet)",
+  "  (Color)",
+  "  (File)",
+  "  (Reference)",
+  "  (Folder)",
+  "  (EnumMember)",
+  " ﲀ (Constant)",
+  " ﳤ (Struct)",
+  "  (Event)",
+  "  (Operator)",
+  "  (TypeParameter)",
 }
 
 vim.cmd([[

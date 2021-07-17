@@ -24,9 +24,26 @@ return require('packer').startup(function(use)
   use 'nvim-lua/plenary.nvim'
   use {'nvim-lua/popup.nvim', requires = 'nvim-lua/plenary.nvim'}
 
+  -- LSP
+  use {"kabouzeid/nvim-lspinstall"}
+  use {'neovim/nvim-lspconfig', config = function() require('plugins.lsp') end}
+  use {'hrsh7th/nvim-compe', config = function() require('plugins.nvim-compe') end }
+  use {'glepnir/lspsaga.nvim', config = function() require('plugins.lspsaga') end }
+  use {"ray-x/lsp_signature.nvim"}
+
+  -- Treesitter
+  use {'nvim-treesitter/nvim-treesitter', config=function() require('plugins.treesitter') end, run = ':TSUpdate'}
+  use 'nvim-treesitter/playground'
+
+  -- TODO
+  -- use "rafamadriz/friendly-snippets"
+  -- use "hrsh7th/vim-vsnip"
+	use 'SirVer/ultisnips'  -- NON-LUA
+	use 'honza/vim-snippets'  -- NON-LUA
+
 	-- Devicons/color
   use 'kyazdani42/nvim-web-devicons'
-	use 'norcalli/nvim-colorizer.lua'
+	use {'norcalli/nvim-colorizer.lua', config=function() require('colorizer').setup() end}
 	use {'KabbAmine/vCoolor.vim', config=function() vim.g.vcoolor_map = ',co' end }  -- NON-LUA
 
 	-- Tools
@@ -58,21 +75,6 @@ return require('packer').startup(function(use)
       }
     end
   }
-
-  -- LSP
-  use {'neovim/nvim-lspconfig', config = function() require('plugins.lsp') end }
-  use {'hrsh7th/nvim-compe', config = function() require('plugins.nvim-compe') end }
-  use {'glepnir/lspsaga.nvim', config = function() require('plugins.lspsaga') end }
-  use {'nvim-treesitter/nvim-treesitter', config=function() require('plugins.treesitter') end, run = ':TSUpdate'}
-  use {"ray-x/lsp_signature.nvim"}
-
-  use 'nvim-treesitter/playground'
-
-  -- TODO
-  -- use "rafamadriz/friendly-snippets"
-  -- use "hrsh7th/vim-vsnip"
-	use 'SirVer/ultisnips'  -- NON-LUA
-	use 'honza/vim-snippets'  -- NON-LUA
 
 	-- Fuzzy Finding
   -- use { 'camspiers/snap', rocks = {'fzy'}, config = function() require('plugins.snap') end }
@@ -120,8 +122,16 @@ return require('packer').startup(function(use)
 		requires = {'nvim-lua/plenary.nvim'},
     config = function() require('gitsigns').setup() end
   }
-  use {'vim-airline/vim-airline', config=function() require('plugins.airline') end}  -- NON-LUA
-  use 'vim-airline/vim-airline-themes'  -- NON-LUA
+  use {
+    'glepnir/galaxyline.nvim',
+      branch = 'main',
+      -- your statusline
+      config = function() require'plugins.galaxyline' end,
+      -- some optional icons
+      requires = {'kyazdani42/nvim-web-devicons', opt = true}
+  }
+  -- use {'vim-airline/vim-airline', config=function() require('plugins.airline') end}  -- NON-LUA
+  -- use 'vim-airline/vim-airline-themes'  -- NON-LUA
 
   -- Window movements
   use 'christoomey/vim-tmux-navigator'  -- NON-LUA
