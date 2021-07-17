@@ -116,7 +116,7 @@ table.insert(gls.left, {
       return '   '
     end,
     condition = condition.check_git_workspace,
-    separator = " ",
+    separator = "",
     separator_highlight = { "NONE", colors.alt_bg },
     highlight = { colors.orange, colors.alt_bg },
   },
