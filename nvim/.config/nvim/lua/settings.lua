@@ -46,3 +46,6 @@ vim.cmd([[au VimResized * exe "normal! \<c-w>="]])
 
 -- Highlight text when yank. Built in lua.
 vim.cmd([[au! TextYankPost * silent! lua vim.highlight.on_yank {higroup="DiffAdd", timeout=500}]])
+
+-- Remember line on exit/start
+vim.cmd([[ au! BufReadPost * if line("'\"") > 0 && line ("'\"") <= line("$") | exe "normal! g'\"" | endif ]])
