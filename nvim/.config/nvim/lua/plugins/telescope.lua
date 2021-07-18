@@ -51,7 +51,7 @@ require('telescope').setup{
       },
     },
     mappings = mappings,
-    file_sorter =  require'telescope.sorters'.get_fuzzy_file,
+    file_sorter =  require'telescope.sorters'.get_fzy_sorter,
     file_ignore_patterns = file_ignore_patterns,
     generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
     path_display = {'shorten'},
@@ -83,11 +83,11 @@ require('telescope').setup{
 	}
 }
 
-
 require('telescope').load_extension('fzy_native')
 require('telescope').load_extension('fzf_writer')
 
 
+-- MAPPINGS
 local km = {noremap=true, silent=true}
 local bi = "<cmd>lua require('telescope.builtin')"
 
