@@ -7,8 +7,6 @@ unsetopt BEEP
 setopt autocd               # .. is shortcut for cd .. (etc)
 setopt autoparamslash       # tab completing directory appends a slash
 setopt autopushd            # cd automatically pushes old dir onto dir stack
-setopt correct              # command auto-correction
-setopt correctall           # argument auto-correction
 setopt noflowcontrol        # disable start (C-s) and stop (C-q) characters
 setopt nonomatch            # unmatched patterns are left unchanged
 setopt ignoreeof            # prevent accidental C-d from exiting shell
