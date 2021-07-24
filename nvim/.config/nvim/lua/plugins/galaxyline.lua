@@ -1,14 +1,17 @@
 local gl = require('galaxyline')
 local gls = gl.section
 local condition = require "galaxyline.condition"
-gl.short_line_list = {'NvimTree','vista','dbui'}
+gl.short_line_list = {'NvimTree','vista','dbui', 'packer'}
+
 
 local colors = {
-  bg = "#282c34",
+  bg = "#383c44",
   fg_1 = "#abb2bf",
   fg_2 = "#828997",
   fg_3 = "#5c6370",
   fg_4 = "#4b5263",
+  bgInactive = "#242a30",
+  separator_fg = "#242a30",
   yellow = '#fabd2f',
   cyan = '#00FFFF',
   darkblue = '#081633',
@@ -21,6 +24,9 @@ local colors = {
   blue = "#61afef",
   red = '#ec5f67',
 }
+
+vim.cmd("hi StatusLine guibg=" .. colors.bgInactive)
+vim.cmd("hi StatusLineNC guibg=" .. colors.bgInactive)
 
 local buffer_not_empty = function()
   if vim.fn.empty(vim.fn.expand('%:t')) ~= 1 then
@@ -79,18 +85,9 @@ table.insert(gls.left, {
       end
       return ret
     end,
-    highlight = { colors.bg, colors.alt_bg },
-  },
-})
-
-table.insert(gls.left, {
-  Space = {
-    provider = function()
-      return " "
-    end,
     separator = " ",
-    separator_highlight = { "NONE", colors.alt_bg },
-    highlight = { colors.grey, colors.alt_bg },
+    separator_highlight = { "NONE", colors.bg },
+    highlight = { colors.bg, colors.bg },
   },
 })
 
@@ -117,8 +114,8 @@ table.insert(gls.left, {
     end,
     condition = condition.check_git_workspace,
     separator = "",
-    separator_highlight = { "NONE", colors.alt_bg },
-    highlight = { colors.orange, colors.alt_bg },
+    separator_highlight = { "NONE", colors.bg },
+    highlight = { colors.orange, colors.bg },
   },
 })
 
@@ -127,8 +124,8 @@ table.insert(gls.left, {
     provider = "GitBranch",
     condition = condition.check_git_workspace,
     separator = " ",
-    separator_highlight = { "NONE", colors.alt_bg },
-    highlight = { colors.orange, colors.alt_bg },
+    separator_highlight = { "NONE", colors.bg },
+    highlight = { colors.orange, colors.bg },
   },
 })
 
@@ -137,7 +134,7 @@ table.insert(gls.left, {
     provider = "DiffAdd",
     condition = condition.hide_in_width,
     icon = "  ",
-    highlight = { colors.green, colors.alt_bg },
+    highlight = { colors.green, colors.bg },
   },
 })
 
@@ -146,7 +143,7 @@ table.insert(gls.left, {
     provider = "DiffModified",
     condition = condition.hide_in_width,
     icon = " 柳",
-    highlight = { colors.blue, colors.alt_bg },
+    highlight = { colors.blue, colors.bg },
   },
 })
 
@@ -155,7 +152,7 @@ table.insert(gls.left, {
     provider = "DiffRemove",
     condition = condition.hide_in_width,
     icon = "  ",
-    highlight = { colors.red, colors.alt_bg },
+    highlight = { colors.red, colors.bg },
   },
 })
 
@@ -164,7 +161,7 @@ table.insert(gls.left, {
     provider = function()
       return " "
     end,
-    highlight = { colors.grey, colors.alt_bg },
+    highlight = { colors.grey, colors.bg },
   },
 })
 
@@ -266,7 +263,7 @@ table.insert(gls.right, {
   VirtualEnv = {
     provider = PythonEnv,
     event = "BufEnter",
-    highlight = { colors.green, colors.alt_bg },
+    highlight = { colors.green, colors.bg },
   },
 })
 
@@ -275,9 +272,9 @@ table.insert(gls.right, {
 table.insert(gls.right, {
   LineInfo = {
     provider = "LineColumn",
-    separator = "  ",
-    separator_highlight = { "NONE", colors.alt_bg },
-    highlight = { colors.grey, colors.alt_bg },
+    separator = " |",
+    separator_highlight = { colors.separator_fg, colors.bg },
+    highlight = { colors.grey, colors.bg },
   },
 })
 
@@ -287,9 +284,9 @@ table.insert(gls.right, {
       return "Spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth") .. " "
     end,
     condition = condition.hide_in_width,
-    separator = " ",
-    separator_highlight = { "NONE", colors.alt_bg },
-    highlight = { colors.grey, colors.alt_bg },
+    separator = "|",
+    separator_highlight = { colors.separator_fg, colors.bg },
+    highlight = { colors.grey, colors.bg },
   },
 })
 
@@ -297,20 +294,9 @@ table.insert(gls.right, {
   BufferType = {
     provider = "FileTypeName",
     condition = condition.hide_in_width,
-    separator = " ",
-    separator_highlight = { "NONE", colors.alt_bg },
-    highlight = { colors.alt_bg, colors.alt_bg },
-  },
-})
-
-table.insert(gls.right, {
-  Space = {
-    provider = function()
-      return " "
-    end,
-    separator = " ",
-    separator_highlight = { "NONE", colors.alt_bg },
-    highlight = { colors.grey, colors.alt_bg },
+    separator = "|",
+    separator_highlight = { colors.separator_fg, colors.bg },
+    highlight = { colors.grey, colors.bg },
   },
 })
 
@@ -318,35 +304,26 @@ table.insert(gls.right, {
   ScrollBar = {
     provider = "ScrollBar",
     highlight = { colors.green, colors.bg },
+    separator = " |",
+    separator_highlight = { colors.separator_fg, colors.bg },
   },
 })
-
--- table.insert(gls.right, {
---   FileEncode = {
---     provider = "FileEncode",
---     condition = condition.hide_in_width,
---     separator = " ",
---     separator_highlight = { "NONE", colors.alt_bg },
---     highlight = { colors.grey, colors.alt_bg },
---   },
--- })
 
 
 ---------------------------------------------------------------------
 -- Short
 table.insert(gls.short_line_left, {
-  BufferType = {
-    provider = "FileTypeName",
-    separator = " ",
-    separator_highlight = { "NONE", colors.blue },
-    highlight = { colors.blue, colors.bg },
+  SFileName = {
+    provider = "FileName",
+    condition = condition.buffer_not_empty,
+    highlight = { colors.blue, colors.bgInactive },
   },
 })
 
-table.insert(gls.short_line_left, {
-  SFileName = {
-    provider = "SFileName",
-    condition = condition.buffer_not_empty,
-    highlight = { colors.blue, colors.alt_bg },
-  },
-})
+-- table.insert(gls.short_line_right, {
+--   Space = {
+--     provider = "SFileName",
+--     condition = condition.buffer_not_empty,
+--     highlight = { colors.blue, colors.alt_bg },
+--   },
+-- })
