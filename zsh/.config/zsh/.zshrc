@@ -64,14 +64,13 @@ alias rack='~/Rack/Rack'
 # Exports
 export DOTFILES=$HOME/.files
 export COLORTERM="truecolor"
-export TERM="screen-256color"
 export EDITOR='nvim'
 export BROWSER="brave-browser"
 export MANPAGER='nvim +Man!'
 export PATH="$HOME/gems/bin:$PATH"  # Install Ruby Gems to ~/gems
 export PATH="$HOME/go/bin:$PATH"                                   
 export PATH="$HOME/Applications:$PATH"                                   
-export PATH="$HOME/npm-global/bin:$PATH"                                   
+export PATH="$HOME/.npm-global/bin:$PATH"                                   
 
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
