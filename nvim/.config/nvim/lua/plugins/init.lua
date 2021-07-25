@@ -208,13 +208,14 @@ return require("packer").startup(
       -- some optional icons
       requires = {"kyazdani42/nvim-web-devicons", opt = true}
     }
-    -- use {'vim-airline/vim-airline', config=function() require('plugins.airline') end}  -- NON-LUA
-    -- use 'vim-airline/vim-airline-themes'  -- NON-LUA
 
     -- Window movements
-    use {"christoomey/vim-tmux-navigator", config = function()
+    use {
+      "christoomey/vim-tmux-navigator",
+      config = function()
         require("plugins.tmux_navigator")
-      end} -- NON-LUA
+      end
+    }
 
     -- tpope
     use "tpope/vim-commentary" -- NON-LUA
