@@ -212,7 +212,9 @@ return require("packer").startup(
     -- use 'vim-airline/vim-airline-themes'  -- NON-LUA
 
     -- Window movements
-    use "christoomey/vim-tmux-navigator" -- NON-LUA
+    use {"christoomey/vim-tmux-navigator", config = function()
+        require("plugins.tmux_navigator")
+      end} -- NON-LUA
 
     -- tpope
     use "tpope/vim-commentary" -- NON-LUA
