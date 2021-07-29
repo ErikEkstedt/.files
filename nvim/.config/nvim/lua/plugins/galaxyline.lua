@@ -395,7 +395,6 @@ local function fill_side()
 end
 
 local function fill_name()
-  print("fill_name")
   local file = vim.fn.expand("%:t")
   if vim.fn.empty(file) == 1 then
     file = ""
