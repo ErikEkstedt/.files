@@ -34,4 +34,6 @@ setopt PROMPT_SUBST
 NEWLINE=$'\n'
 PROMPT="%{$fg[cyan]%}%3~%{$reset_color%}"
 PROMPT+="\$vcs_info_msg_0_ "
-PROMPT+="${NEWLINE}%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )%{$reset_color%}"
+PROMPT+=$'\n'
+# PROMPT+="%{$fg_bold[green]%}-> %{$reset_color%}"
+PROMPT+="%{$fg_bold[green]%}> %{$reset_color%}"

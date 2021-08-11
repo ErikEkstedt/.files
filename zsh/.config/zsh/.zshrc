@@ -16,18 +16,33 @@ setopt pushdsilent          # don't print dir stack after pushing/popping
 setopt extendedglob
 setopt RM_STAR_WAIT  # if you do a 'rm *', Zsh will give you a sanity check!
 
+# Plugins
+source $ZDOTDIR/plugin-functions.zsh # functions for handling zsh plugins
+zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
+zsh_add_plugin "zsh-users/zsh-autosuggestions"
+
 # Completions
-autoload -Uz compinit
+# This seems like a good resource: https://thevaluable.dev/zsh-completion-guide-examples/
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+# Highlight the current autocomplete option
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+# Highlights the common pattern from the completion query
+# zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==34=34}:${(s.:.)LS_COLORS}")';
+
 zmodload zsh/complist
-compinit
 _comp_options+=(globdots)		# Include hidden files.
+
+# Initialize the autocompletion
+autoload -Uz compinit && compinit -i
+
 
 # History
 HISTFILE=$ZDOTDIR/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
+
 
 # Source
 source $ZDOTDIR/alias.zsh  
@@ -35,7 +50,6 @@ source $ZDOTDIR/conda.zsh  # conda source
 source $ZDOTDIR/functions.zsh  # random functions
 source $ZDOTDIR/less-colors.zsh   # coloring for less pager
 source $ZDOTDIR/ls-commands.zsh  # use ls or lcd + their aliases
-source $ZDOTDIR/plugin-functions.zsh # functions for handling zsh plugins
 source $ZDOTDIR/prompt.zsh
 source $ZDOTDIR/vim-mode.zsh  # vim-mode, keytimeout & cursor styles
 export TMUXDOTDIR=$HOME/.config/tmux
@@ -54,9 +68,6 @@ if [ "$TMUX" = "" ]; then
   fi
 fi # }}}
 
-# Plugins
-zsh_add_plugin "zsh-users/zsh-autosuggestions"
-zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 
 # alias lf=lfcd
 alias rack='~/Rack/Rack'
