@@ -209,14 +209,6 @@ return require("packer").startup(
       requires = {"kyazdani42/nvim-web-devicons", opt = true}
     }
 
-    -- Window movements
-    use {
-      "christoomey/vim-tmux-navigator",
-      config = function()
-        require("plugins.tmux_navigator")
-      end
-    }
-
     -- tpope
     use "tpope/vim-commentary" -- NON-LUA
     use "tpope/vim-repeat" -- NON-LUA
