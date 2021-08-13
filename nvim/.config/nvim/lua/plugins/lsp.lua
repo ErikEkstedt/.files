@@ -1,17 +1,37 @@
 -- local conf = require('lspconfig')
 
+-- Highlight
+vim.highlight.create("LspDiagnosticsVirtualTextError", {guifg = "#804A54"}, false)
+vim.highlight.create("LspDiagnosticsVirtualTextWarning", {guifg = "#AE9021"}, false)
+vim.highlight.link("LspDiagnosticsVirtualTextInformation", "comment", true)
+vim.highlight.link("LspDiagnosticsVirtualTextHint", "comment", true)
+vim.highlight.link("LspDiagnosticsSignHint", "comment", true)
+
 -- Signs
 vim.fn.sign_define(
   "LspDiagnosticsSignError",
-  {text = "!", texthl = "LspDiagnosticsSignError", numhl = "LspDiagnosticsSignError"}
+  {text = "", texthl = "LspDiagnosticsSignError", numhl = "LspDiagnosticsSignError"}
 )
 vim.fn.sign_define(
   "LspDiagnosticsSignWarning",
-  {text = "?", texthl = "LspDiagnosticsSignWarning", numhl = "LspDiagnosticsSignWarning"}
+  {text = "", texthl = "LspDiagnosticsSignWarning", numhl = "LspDiagnosticsSignWarning"}
 )
-vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "I", texthl = "LspDiagnosticsSignInformation"})
-vim.fn.sign_define("LspDiagnosticsSignHint", {text = "", texthl = "LspDiagnosticsSignHint"})
+vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "", texthl = "LspDiagnosticsSignInformation"})
+vim.fn.sign_define("LspDiagnosticsSignHint", {text = "", texthl = "LspDiagnosticsSignHint"})
 
+-- diagnostics
+vim.lsp.handlers["textDocument/publishDiagnostics"] =
+  vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics,
+  {
+    underline = false,
+    virtual_text = {spacing = 4},
+    signs = true,
+    update_in_insert = false
+  }
+)
+
+-- Attach and Setup
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...)
     vim.api.nvim_buf_set_keymap(bufnr, ...)
