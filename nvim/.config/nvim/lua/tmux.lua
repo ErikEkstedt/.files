@@ -1,7 +1,7 @@
 -- Tmux Movement
 -- Moving from Tmuxinator vimscript
 -- https://github.com/christoomey/vim-tmux-navigator
---
+-- to -->
 -- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 -- SOURCE: https://github.com/nathom/tmux.nvim
 -- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -15,12 +15,12 @@ function Move(direction)
   if vim.fn.winnr() == win_num_before then
     -- If the command did nothing, that means the current split
     -- is at the edge and we need to select the tmux pane
-    tmux_move(direction)
+    MoveTmux(direction)
   end
 end
 
-function tmux_move(direction)
-  -- tmux select pane
+function MoveTmux(direction)
+  -- tmux selecttmux_move pane
   -- Convert from vim movement keys to Up, Left ... for tmux
   local tmux_map = {h = "L", j = "D", k = "U", l = "R"}
   local tmux_direction = tmux_map[direction]
