@@ -117,6 +117,12 @@ return require("packer").startup(
         require("plugins.kommentary")
       end
     }
+    use {
+      "windwp/nvim-autopairs",
+      config = function()
+        require("nvim-autopairs").setup {}
+      end
+    }
 
     -- Fuzzy Finding
     -- use { 'camspiers/snap', rocks = {'fzy'}, config = function() require('plugins.snap') end }
@@ -189,7 +195,6 @@ return require("packer").startup(
     -- use "hrsh7th/vim-vsnip"
     use "SirVer/ultisnips" -- NON-LUA
     use "honza/vim-snippets" -- NON-LUA
-    use "Raimondi/delimitMate" -- NON-LUA
     use "wellle/targets.vim" -- NON-LUA: ci' works on (, [, {, < on entire line
     use {"mg979/vim-visual-multi", branch = "master"} -- NON-LUA
     use {
