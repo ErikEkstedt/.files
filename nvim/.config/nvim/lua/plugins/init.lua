@@ -65,12 +65,6 @@ return require("packer").startup(
       end
     }
 
-    -- TODO
-    -- use "rafamadriz/friendly-snippets"
-    -- use "hrsh7th/vim-vsnip"
-    use "SirVer/ultisnips" -- NON-LUA
-    use "honza/vim-snippets" -- NON-LUA
-
     -- Devicons/color
     use "kyazdani42/nvim-web-devicons"
     use {
@@ -79,12 +73,6 @@ return require("packer").startup(
         require("colorizer").setup()
       end
     }
-    use {
-      "KabbAmine/vCoolor.vim",
-      config = function()
-        vim.g.vcoolor_map = ",co"
-      end
-    } -- NON-LUA
 
     -- Tools
     use {
@@ -100,14 +88,6 @@ return require("packer").startup(
       end
     }
     -- use {"folke/which-key.nvim", config = function() require('plugins.whichkey') end}
-    use {
-      "jpalardy/vim-slime",
-      config = function()
-        require("plugins.slime")
-      end
-    } -- NON-LUA
-    use {"mg979/vim-visual-multi", branch = "master"} -- NON-LUA
-    use "Raimondi/delimitMate" -- NON-LUA
     use {
       "folke/todo-comments.nvim",
       requires = "nvim-lua/plenary.nvim",
@@ -128,10 +108,13 @@ return require("packer").startup(
           dimming = {
             alpha = 0.4
           }
-          -- your configuration comes here
-          -- or leave it empty to use the default settings
-          -- refer to the configuration section below
         }
+      end
+    }
+    use {
+      "b3nj5m1n/kommentary",
+      config = function()
+        require("plugins.kommentary")
       end
     }
 
@@ -180,14 +163,6 @@ return require("packer").startup(
         require("plugins.neuron")
       end
     }
-    use {
-      "iamcco/markdown-preview.nvim",
-      run = "cd app && yarn install",
-      ft = "markdown",
-      config = function()
-        require("plugins.markdown-preview")
-      end
-    } -- NON-LUA
 
     -- StatusLine / Bufferline
     use {"akinsho/nvim-bufferline.lua", requires = "kyazdani42/nvim-web-devicons"}
@@ -201,21 +176,46 @@ return require("packer").startup(
     use {
       "glepnir/galaxyline.nvim",
       branch = "main",
-      -- your statusline
       config = function()
         require "plugins.galaxyline"
       end,
-      -- some optional icons
       requires = {"kyazdani42/nvim-web-devicons", opt = true}
     }
 
-    -- tpope
-    use "tpope/vim-commentary" -- NON-LUA
+    -- NOTE:
+    -- NON-LUA
+    -- --------------------------------
+    -- use "rafamadriz/friendly-snippets"
+    -- use "hrsh7th/vim-vsnip"
+    use "SirVer/ultisnips" -- NON-LUA
+    use "honza/vim-snippets" -- NON-LUA
+    use "Raimondi/delimitMate" -- NON-LUA
+    use "wellle/targets.vim" -- NON-LUA: ci' works on (, [, {, < on entire line
+    use {"mg979/vim-visual-multi", branch = "master"} -- NON-LUA
+    use {
+      "KabbAmine/vCoolor.vim",
+      config = function()
+        vim.g.vcoolor_map = ",co"
+      end
+    } -- NON-LUA
+    use {
+      "jpalardy/vim-slime",
+      config = function()
+        require("plugins.slime")
+      end
+    } -- NON-LUA
+    use {
+      "iamcco/markdown-preview.nvim",
+      run = "cd app && yarn install",
+      ft = "markdown",
+      config = function()
+        require("plugins.markdown-preview")
+      end
+    } -- NON-LUA
+
+    -- tpope: so excused
     use "tpope/vim-repeat" -- NON-LUA
     use "tpope/vim-surround" -- NON-LUA
-
-    -- ci' works on (, [, {, < on entire line
-    use "wellle/targets.vim" -- NON-LUA
 
     -- Colorschemes
     use "tjdevries/colorbuddy.vim"
