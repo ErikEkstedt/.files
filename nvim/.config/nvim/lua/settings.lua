@@ -4,7 +4,22 @@
 vim.opt.expandtab = true
 vim.opt.fileignorecase = true
 vim.opt.foldlevelstart = 99 -- 0: all fold, 99: no fold
+
+-- FOLDS
 vim.opt.foldmethod = "indent"
+-- If/when treesitter folding works well this should be
+-- in another file i.e. lua/folds.lua
+--
+-- vim.opt.foldmethod = "expr"
+-- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- function _G.custom_fold_text()
+--   local line_count = vim.v.foldend - vim.v.foldstart + 1
+--   local line = vim.fn.getline(vim.v.foldstart)
+--   line = string.gsub(line, "^ +", " ")
+--   return "-> " .. line .. ":" .. line_count .. " lines"
+-- end
+-- vim.opt.foldtext = "v:lua.custom_fold_text()"
+
 vim.opt.gdefault = true
 vim.opt.hidden = true
 vim.opt.ignorecase = true
