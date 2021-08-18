@@ -49,7 +49,6 @@ vim.cmd([[map <expr> ' printf('`%c zz',getchar())]]) -- center screen when going
 -- NORMAL
 vim.api.nvim_set_keymap("n", "vv", "V", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "V", "v$", {noremap = true, silent = true})
-vim.api.nvim_set_keymap("n", "Y", "y$", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<localleader>pa", '"+p', {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<C-y>", '"+yy', {noremap = true, silent = true})
 vim.api.nvim_set_keymap("x", "<C-y>", '"+yy', {noremap = true, silent = true})
