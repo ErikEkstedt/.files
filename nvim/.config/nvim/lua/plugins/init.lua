@@ -111,6 +111,7 @@ return require("packer").startup(
         }
       end
     }
+    use "JoosepAlviste/nvim-ts-context-commentstring"
     use {
       "b3nj5m1n/kommentary",
       config = function()
@@ -136,14 +137,13 @@ return require("packer").startup(
     use {
       "nvim-telescope/telescope.nvim",
       requires = {
-        "nvim-lua/plenary.nvim",
-        "nvim-telescope/telescope-fzf-writer.nvim",
-        "nvim-telescope/telescope-fzy-native.nvim"
+        "nvim-lua/plenary.nvim"
       },
       config = function()
         require("plugins.telescope")
       end
     }
+    use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
     use {
       "sudormrfbin/cheatsheet.nvim",
       -- optional
@@ -191,8 +191,6 @@ return require("packer").startup(
     -- NOTE:
     -- NON-LUA
     -- --------------------------------
-    -- use "rafamadriz/friendly-snippets"
-    -- use "hrsh7th/vim-vsnip"
     use "SirVer/ultisnips" -- NON-LUA
     use "honza/vim-snippets" -- NON-LUA
     use "wellle/targets.vim" -- NON-LUA: ci' works on (, [, {, < on entire line

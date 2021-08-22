@@ -16,24 +16,14 @@ local mappings = {
   }
 }
 
-local vimgrep_arguments = {
-  "rg",
-  "--color=never",
-  "--no-heading",
-  "--with-filename",
-  "--line-number",
-  "--column",
-  "--smart-case"
-}
-
 local file_ignore_patterns = {
-  "node_modules",
+  "node_modules/",
   ".git",
   "%.pt",
   "%.npy",
   "%.chpt",
   "%.ckpt",
-  "%data/%/",
+  "%.pdf",
   "%.zip",
   "%out.tfevents",
   "%.png",
@@ -46,7 +36,8 @@ local file_ignore_patterns = {
 
 require("telescope").setup {
   defaults = {
-    vimgrep_arguments = vimgrep_arguments,
+    mappings = mappings,
+    file_ignore_patterns = file_ignore_patterns,
     prompt_prefix = ">",
     selection_strategy = "reset",
     sorting_strategy = "ascending",
@@ -59,42 +50,19 @@ require("telescope").setup {
         preview_cutoff = 120,
         prompt_position = "top"
       }
-    },
-    mappings = mappings,
-    file_sorter = require "telescope.sorters".get_fzy_sorter,
-    file_ignore_patterns = file_ignore_patterns,
-    generic_sorter = require "telescope.sorters".get_generic_fuzzy_sorter,
-    path_display = {},
-    winblend = 0,
-    border = {},
-    borderchars = {"─", "│", "─", "│", "╭", "╮", "╯", "╰"},
-    color_devicons = true,
-    use_less = true,
-    set_env = {["COLORTERM"] = "truecolor"}, -- default { }, currently unsupported for shells like cmd.exe / powershell.exe
-    file_previewer = require "telescope.previewers".cat.new, -- For buffer previewer use `require'telescope.previewers'.vim_buffer_cat.new`
-    grep_previewer = require "telescope.previewers".vimgrep.new, -- For buffer previewer use `require'telescope.previewers'.vim_buffer_vimgrep.new`
-    qflist_previewer = require "telescope.previewers".qflist.new, -- For buffer previewer use `require'telescope.previewers'.vim_buffer_qflist.new`
-    -- Developer configurations: Not meant for general override
-    buffer_previewer_maker = require "telescope.previewers".buffer_previewer_maker
+    }
   },
   extensions = {
-    fzy_native = {
-      override_generic_sorter = false,
-      override_file_sorter = true
-    },
-    fzf_writer = {
-      minimum_grep_characters = 2,
-      minimum_files_characters = 3,
-      -- Disabled by default.
-      -- Will probably slow down some aspects of the sorter, but can make color highlights.
-      -- I will work on this more later.
-      use_highlighter = true
+    fzf = {
+      fuzzy = true, -- false will only do exact matching
+      override_generic_sorter = false, -- override the generic sorter
+      override_file_sorter = true, -- override the file sorter
+      case_mode = "smart_case" -- or "ignore_case" or "respect_case"
     }
   }
 }
 
-require("telescope").load_extension("fzy_native")
-require("telescope").load_extension("fzf_writer")
+require("telescope").load_extension("fzf")
 
 -- MAPPINGS
 local km = {noremap = true, silent = true}
@@ -106,6 +74,10 @@ vim.api.nvim_set_keymap("n", "<LocalLeader>fg", bi .. ".git_files()<cr>", km)
 vim.api.nvim_set_keymap("n", "<LocalLeader>fb", bi .. ".buffers()<cr>", km)
 vim.api.nvim_set_keymap("n", "<LocalLeader>fc", bi .. ".find_files{cwd='~/.files', hidden=true}<cr>", km)
 vim.api.nvim_set_keymap("n", "<LocalLeader>fl", bi .. ".current_buffer_fuzzy_find()<cr>", km)
+
+vim.api.nvim_set_keymap("n", "<LocalLeader>fw", bi .. ".live_grep()<cr>", km)
+-- vim.api.nvim_set_keymap("n", "<LocalLeader>fi", bi .. ".find_files{cwd='~', hidden=true}<cr>", km)
+-- vim.api.nvim_set_keymap("n", "<LocalLeader>fp", bi .. ".find_files{cwd='~/projects'}<cr>", km)
 
 -- Misc
 vim.api.nvim_set_keymap("n", "<LocalLeader>he", bi .. ".help_tags()<cr>", km)
