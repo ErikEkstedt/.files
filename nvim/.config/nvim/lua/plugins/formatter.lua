@@ -16,6 +16,15 @@ require("formatter").setup(
           }
         end
       },
+      json = {
+        function()
+          return {
+            exe = "prettier",
+            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote"},
+            stdin = true
+          }
+        end
+      },
       lua = {
         function()
           return {
@@ -47,3 +56,4 @@ augroup END
 ]],
   true
 )
+vim.api.nvim_set_keymap("n", "<Leader>f", ":Format<cr>", {noremap = true, silent = true})

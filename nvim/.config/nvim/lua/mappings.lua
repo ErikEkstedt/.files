@@ -116,7 +116,7 @@ vim.api.nvim_set_keymap("n", "g<space>", "f<space>a<CR><esc>", {noremap = true, 
 
 -- Folds
 vim.api.nvim_set_keymap("n", "ga", "zA", {noremap = true, silent = true})
-vim.api.nvim_set_keymap("n", "<Leader>f", "zazz", {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap("n", "<Leader>f", "zazz", {noremap = true, silent = true})
 
 -- INSERT
 
