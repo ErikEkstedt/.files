@@ -19,5 +19,5 @@ _darcs
 ^/LICENSE.*
 ^/COPYING
 
-possible_notes/
+possible_notes*
 packages_linux.txt
