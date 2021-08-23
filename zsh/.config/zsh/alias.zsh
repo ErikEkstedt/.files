@@ -1,7 +1,13 @@
 # Editing
-alias ez="v ~/.files/zsh/zshrc"
+alias ez="v ~/.files/zsh/.config/zsh/.zshrc"
+
+# nvim
+alias v="nvim"
+alias vf="nvim -c 'Telescope find_files hidden=true'"
+alias vno="nvim -c 'Telescope find_files hidden=true cwd=~/zettelkasten'"
 
 # Git
+alias lg="lazygit"
 alias gad="git add"
 alias gco="git commit -m"
 alias gdi="git diff"
@@ -23,6 +29,7 @@ alias gho="cd ~; clear; ls"
 alias gpr="cd ~/projects; clear; ls"
 alias ggr='cd "$(git rev-parse --show-toplevel)"; clear; ls'
 alias gro="cd /; clear; ls"
+alias gno="cd $HOME/zettelkasten"
 
 # commands
 alias cd..="cd .."
@@ -49,10 +56,6 @@ alias tat=$DOTFILES/bin/tat  # Current path as new tmux session
 # alias tspc="_tmux_send_keys_all_panes_"
 # alias theme="_tmux_theme"
 
-# nvim
-alias v="nvim"
-alias vf="nvim -c 'Telescope find_files hidden=true'"
-alias vno="nvim -c 'Telescope find_files hidden=true cwd=~/zettelkasten'"
 
 # COuld be useful to not forget about
 # https://github.com/ssbc/patchwork

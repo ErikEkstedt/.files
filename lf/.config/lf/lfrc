@@ -94,6 +94,7 @@ map X !$f
 # Movement
 map gho cd ~
 map gro cd /
+map gpr cd ~/projects
 map gfi cd ~/.files
 map gtu cd ~/TurnGPT
 map gbl cd ~/ErikEkstedt.github.io
