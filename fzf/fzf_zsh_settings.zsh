@@ -29,7 +29,7 @@ fzf-dir-change(){
     cd "$dir"
     unset dir # ensure this doesn't end up appearing in prompt expansion
     local ret=$?
-    zle fzf-redraw-prompt  # redraw prompt to update CWD
+    zle reset-prompt  # redraw prompt to update CWD
     return $ret
 }
 fzf-dir-change-projects(){ fzf-dir-change $HOME/projects }
