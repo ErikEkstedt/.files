@@ -15,6 +15,7 @@ alias gps="git push"
 alias gpl="git pull"
 alias gst="git status"
 alias gch="git checkout --"
+alias gpn="echo zettel;git -C ~/zettelkasten pull;echo .files;git -C ~/.files pull"
 
 # tree
 alias ldt="tree -d -L 2"
