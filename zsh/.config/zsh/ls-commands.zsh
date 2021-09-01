@@ -5,10 +5,9 @@ if [ -x "$(command -v lsd)" ]; then # if lsd exists
     alias ld="lsd -1d */"
     alias lla="lsd -la --group-dirs=first"
     alias la="lsd -1a --group-dirs=first"
-    alias ltr="lsd --tree --depth 2"
-    alias t1="clear; lsd --tree --depth 1 --group-dirs first"
-    alias t2="clear; lsd --tree --depth 2 --group-dirs first"
-    alias t3="clear; lsd --tree --depth 3 --group-dirs first"
+    alias t1="clear; lsd --tree --depth 1 --group-dirs first -I *pycache* -I runs* "
+    alias t2="clear; lsd --tree --depth 2 --group-dirs first -I *pycache* -I runs* "
+    alias t3="clear; lsd --tree --depth 3 --group-dirs first -I *pycache* -I runs* "
 else
     if [[ $(uname) == 'Darwin' ]]; then
         alias ll="gls -l --color"
