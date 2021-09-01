@@ -17,11 +17,10 @@ alias gst="git status"
 alias gch="git checkout --"
 alias gpn="echo zettel;git -C ~/zettelkasten pull;echo .files;git -C ~/.files pull"
 
-# tree
-alias ldt="tree -d -L 2"
-alias t1="clear; tree -L 1 --dirsfirst"
-alias t2="clear; tree -L 2 --dirsfirst"
-alias t3="clear; tree -L 3 --dirsfirst"
+# tree overwritten by lsd in ls-commands.zsh
+alias t1='clear; tree -L 1 --dirsfirst -I "*pycache*|runs*"'
+alias t2='clear; tree -L 2 --dirsfirst -I "*pycache*|runs*"'
+alias t3='clear; tree -L 3 --dirsfirst -I "*pycache*|runs*"'
 
 # Movement
 alias gfi="cd ~/.files; clear; ls"

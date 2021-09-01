@@ -96,7 +96,8 @@ map gho cd ~
 map gro cd /
 map gpr cd ~/projects
 map gfi cd ~/.files
-map gtu cd ~/TurnGPT
+map gca cd ~/.cache
+map gco cd ~/projects/ConvLM
 map gbl cd ~/ErikEkstedt.github.io
 map gpi cd ~/Pictures
 map gdw cd ~/Downloads
