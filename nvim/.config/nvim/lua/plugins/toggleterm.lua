@@ -10,8 +10,8 @@ local lazygit =
     direction = "float",
     float_opts = {
       border = "single",
-      height = math.floor(vim.o.lines * .8),
-      width = math.floor(vim.o.columns * .9)
+      height = math.floor(vim.o.lines * .8)
+      -- width = math.floor(vim.o.columns * .9)
     }
   }
 )
@@ -28,8 +28,8 @@ local lf =
     direction = "float",
     float_opts = {
       border = "single",
-      height = math.floor(vim.o.lines * .8),
-      width = math.floor(vim.o.columns * .8)
+      height = math.floor(vim.o.lines * .8)
+      -- width = math.floor(vim.o.columns * .8)
     }
   }
 )
