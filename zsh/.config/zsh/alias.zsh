@@ -15,7 +15,8 @@ alias gps="git push"
 alias gpl="git pull"
 alias gst="git status"
 alias gch="git checkout --"
-alias gpn="echo zettel;git -C ~/zettelkasten pull;echo .files;git -C ~/.files pull"
+alias gpn="echo zettel;git -C ~/zettelkasten pull"
+# alias gpn="echo zettel;git -C ~/zettelkasten pull;echo .files;git -C ~/.files pull"
 
 # tree overwritten by lsd in ls-commands.zsh
 alias t1='clear; tree -L 1 --dirsfirst -I "*pycache*|runs*"'
