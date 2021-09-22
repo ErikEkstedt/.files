@@ -2,7 +2,7 @@
 
 %if #{==:#{host},erik-KTH-Desktop}
 side_color='#285398'
-%elif #{==:#{host},erik-Desktop}
+%elif #{==:#{host},KTHBox}
 side_color='#f1049a'
 %elif #{==:#{host},tmh-deepspeech}
 side_color='#e75746'
