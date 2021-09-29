@@ -6,6 +6,7 @@ gcc
 git 
 htop
 stow
+tree
 wget 
 xclip 
 xdotool 
