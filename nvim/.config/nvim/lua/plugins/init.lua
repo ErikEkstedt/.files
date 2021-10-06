@@ -34,17 +34,25 @@ return require("packer").startup(
       end
     }
     use {
-      "hrsh7th/nvim-compe",
+      "hrsh7th/nvim-cmp",
+      requires = {
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-buffer",
+        "quangnguyen30192/cmp-nvim-ultisnips"
+      },
       config = function()
-        require("plugins.nvim-compe")
+        require("plugins.nvim-cmp")
       end
     }
-    use {
-      "glepnir/lspsaga.nvim",
-      config = function()
-        require("plugins.lspsaga")
-      end
-    }
+    -- use {
+    --   "glepnir/lspsaga.nvim",
+    --   requires = {
+    --     "neovim/nvim-lspconfig"
+    --   },
+    --   config = function()
+    --     require("plugins.lspsaga")
+    --   end
+    -- }
     use {"ray-x/lsp_signature.nvim"}
 
     -- Treesitter
