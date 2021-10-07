@@ -34,15 +34,16 @@ return require("packer").startup(
       end
     }
     use {
-      "hrsh7th/nvim-compe",
+      "hrsh7th/nvim-cmp",
+      requires = {
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-buffer",
+        "saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
+        "L3MON4D3/LuaSnip", -- Snippet engine
+        "rafamadriz/friendly-snippets" --snippet collections
+      },
       config = function()
-        require("plugins.nvim-compe")
-      end
-    }
-    use {
-      "glepnir/lspsaga.nvim",
-      config = function()
-        require("plugins.lspsaga")
+        require("plugins.nvim-cmp")
       end
     }
     use {"ray-x/lsp_signature.nvim"}
@@ -132,12 +133,17 @@ return require("packer").startup(
     }
 
     -- Fuzzy Finding
-    -- use { 'camspiers/snap', rocks = {'fzy'}, config = function() require('plugins.snap') end }
     use {
       "kyazdani42/nvim-tree.lua",
+      requires = "kyazdani42/nvim-web-devicons",
       config = function()
-        vim.cmd("highlight link NvimTreeFolderIcon String")
-        vim.api.nvim_set_keymap("n", "<leader>t", ":NvimTreeToggle<CR>", {noremap = true, silent = true})
+        require("plugins.nvim-tree")
+      end
+    }
+    use {
+      "kyazdani42/nvim-tree.lua",
+      requires = {"kyazdani42/nvim-web-devicons"},
+      config = function()
       end
     }
     use {
@@ -197,8 +203,6 @@ return require("packer").startup(
     -- NOTE:
     -- NON-LUA
     -- --------------------------------
-    use "SirVer/ultisnips" -- NON-LUA
-    use "honza/vim-snippets" -- NON-LUA
     use "wellle/targets.vim" -- NON-LUA: ci' works on (, [, {, < on entire line
     use {"mg979/vim-visual-multi", branch = "master"} -- NON-LUA
     use {

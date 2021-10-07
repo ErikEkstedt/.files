@@ -47,6 +47,7 @@ vim.opt.shortmess:append("m") -- Shortmess: help 'shortmess'. Vim default "filnx
 vim.opt.shortmess:append("x")
 vim.opt.shortmess:append("c")
 vim.go.t_Co = "256" -- support 256 color
+vim.opt.updatetime = 1000
 
 -- 'Sync' files between instances and ignore swap
 -- https://youtu.be/fm33-Pas7vI?t=193

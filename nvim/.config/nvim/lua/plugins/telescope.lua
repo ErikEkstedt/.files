@@ -1,20 +1,5 @@
 local actions = require("telescope.actions")
-
-local mappings = {
-  -- To disable a keymap, put [map] = false
-  i = {
-    ["<c-x>"] = false,
-    ["<c-v>"] = false,
-    ["<c-l>"] = actions.select_vertical,
-    ["<c-j>"] = actions.select_horizontal
-  },
-  n = {
-    ["<c-x>"] = false,
-    ["<c-v>"] = false,
-    ["<c-l>"] = actions.select_vertical,
-    ["<c-j>"] = actions.select_horizontal
-  }
-}
+local action_state = require("telescope.actions.state")
 
 local file_ignore_patterns = {
   "node_modules/",
@@ -32,6 +17,43 @@ local file_ignore_patterns = {
   "%.wav",
   "%.flac",
   "%.sph"
+}
+
+local function fzf_multi_select(prompt_bufnr)
+  local picker = action_state.get_current_picker(prompt_bufnr)
+  local num_selections = table.getn(picker:get_multi_selection())
+
+  if num_selections > 1 then
+    actions.send_selected_to_qflist(prompt_bufnr)
+    -- TODO: should open the first file, and qflist, but focus the first.
+    -- vim.cmd(":e!" .. picker:get_multi_selection()[1].value)
+    -- actions.select_default(prompt_bufnr)
+    actions.open_qflist()
+  else
+    -- actions.file_edit(prompt_bufnr)
+    actions.select_default(prompt_bufnr)
+  end
+end
+
+local mappings = {
+  -- To disable a keymap, put [map] = false
+  i = {
+    ["<c-x>"] = false,
+    ["<c-v>"] = false,
+    ["<C-q>"] = actions.close,
+    ["<c-l>"] = actions.select_vertical,
+    ["<c-j>"] = actions.select_horizontal,
+    ["<cr>"] = fzf_multi_select
+  },
+  n = {
+    ["q"] = actions.close,
+    ["<C-q>"] = actions.close,
+    ["<c-x>"] = false,
+    ["<c-v>"] = false,
+    ["<c-l>"] = actions.select_vertical,
+    ["<c-j>"] = actions.select_horizontal,
+    ["<cr>"] = fzf_multi_select
+  }
 }
 
 require("telescope").setup {
@@ -73,6 +95,8 @@ vim.api.nvim_set_keymap("n", "<LocalLeader>ff", bi .. ".find_files{hidden=true}<
 vim.api.nvim_set_keymap("n", "<LocalLeader>fg", bi .. ".git_files()<cr>", km)
 vim.api.nvim_set_keymap("n", "<LocalLeader>fb", bi .. ".buffers()<cr>", km)
 vim.api.nvim_set_keymap("n", "<LocalLeader>fc", bi .. ".find_files{cwd='~/.files', hidden=true}<cr>", km)
+vim.api.nvim_set_keymap("n", "<LocalLeader>fn", bi .. ".find_files{cwd='~/zettelkasten'}<cr>", km)
+vim.api.nvim_set_keymap("n", "gzz", bi .. ".find_files{cwd='~/zettelkasten'}<cr>", km)
 vim.api.nvim_set_keymap("n", "<LocalLeader>fl", bi .. ".current_buffer_fuzzy_find()<cr>", km)
 
 vim.api.nvim_set_keymap("n", "<LocalLeader>fw", bi .. ".live_grep()<cr>", km)
