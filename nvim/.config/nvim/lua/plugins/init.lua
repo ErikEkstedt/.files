@@ -124,6 +124,12 @@ return require("packer").startup(
         require("nvim-autopairs").setup {}
       end
     }
+    use {
+      "lukas-reineke/indent-blankline.nvim",
+      config = function()
+        require("plugins.indent-blankline")
+      end
+    }
 
     -- Fuzzy Finding
     -- use { 'camspiers/snap', rocks = {'fzy'}, config = function() require('plugins.snap') end }
