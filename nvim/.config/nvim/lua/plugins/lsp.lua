@@ -109,37 +109,6 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 -- Configure lua language server for neovim development
-local lua_settings = {
-  Lua = {
-    runtime = {
-      -- LuaJIT in the case of Neovim
-      version = "LuaJIT",
-      path = vim.split(package.path, ";")
-    },
-    diagnostics = {
-      -- Get the language server to recognize the `vim` global
-      globals = {"vim"}
-    },
-    workspace = {
-      -- Make the server aware of Neovim runtime files
-      library = {
-        [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-        [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
-      }
-    }
-  }
-}
-
--- config that activates keymaps and enables snippet support
--- local function make_config()
---   return {
---     -- enable snippet support
---     capabilities = capabilities,
---     -- map buffer local keybindings when the language server attaches
---     on_attach = on_attach
---   }
--- end
-
 -- lsp-install
 local function setup_servers()
   require "lspinstall".setup()
@@ -158,9 +127,37 @@ local function setup_servers()
 
     -- language specific config
     if server == "lua" then
-      config.settings = lua_settings
+      config.settings = {
+        Lua = {
+          runtime = {
+            -- LuaJIT in the case of Neovim
+            version = "LuaJIT",
+            path = vim.split(package.path, ";")
+          },
+          diagnostics = {
+            -- Get the language server to recognize the `vim` global
+            globals = {"vim"}
+          },
+          workspace = {
+            -- Make the server aware of Neovim runtime files
+            library = {
+              [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+              [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
+            }
+          }
+        }
+      }
     elseif server == "python" then
-      --[[
+      config.settings = {
+        python = {
+          analysis = {
+            useLibraryCodeForTypes = false,
+            diagnosticMode = "workspace",
+            autoSearchPaths = true
+          }
+        }
+      }
+    --[[
       **pyright was superslow and showed diagnostics on incorrect lines**
       **the settings below fixed**
 
@@ -171,17 +168,6 @@ local function setup_servers()
       !! WE RECOMMEND USING TYPE STUBS WHERE POSSIBLE.
       THE DEFAULT VALUE FOR THIS OPTION IS FALSE. !!
       --]]
-      config.settings = {
-        -- settings = {
-        python = {
-          analysis = {
-            useLibraryCodeForTypes = false,
-            diagnosticMode = "workspace",
-            autoSearchPaths = true
-          }
-        }
-        -- }
-      }
     end
 
     require "lspconfig"[server].setup(config)
