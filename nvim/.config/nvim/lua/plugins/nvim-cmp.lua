@@ -28,33 +28,7 @@ cmp.setup(
       ["<C-f>"] = cmp.mapping.scroll_docs(4),
       ["<C-e>"] = cmp.mapping.close(),
       ["<CR>"] = cmp.mapping.confirm({select = true}),
-      ["<localleader><localleader>"] = cmp.mapping.confirm({select = true}),
-      ["<Tab>"] = cmp.mapping(
-        function(fallback)
-          if vim.fn.pumvisible() == 1 then
-            feedkey("<C-n>")
-          elseif luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
-          elseif has_words_before() then
-            cmp.complete()
-          else
-            fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
-          end
-        end,
-        {"i", "s"}
-      ),
-      ["<S-Tab>"] = cmp.mapping(
-        function(fallback)
-          if vim.fn.pumvisible() == 1 then
-            feedkey("<C-p>")
-          elseif luasnip.jumpable(-1) then
-            luasnip.jump(-1)
-          else
-            fallback()
-          end
-        end,
-        {"i", "s"}
-      )
+      ["<localleader><localleader>"] = cmp.mapping.confirm({select = true})
     },
     sources = {
       {name = "nvim_lsp"},
@@ -81,7 +55,7 @@ require("nvim-autopairs.completion.cmp").setup(
   {
     map_cr = true, --  map <CR> on insert mode
     map_complete = true, -- it will auto insert `(` (map_char) after select function or method item
-    auto_select = true, -- automatically select the first item
+    auto_select = false, -- automatically select the first item
     insert = false, -- use insert confirm behavior instead of replace
     map_char = {
       -- modifies the function or method delimiter by filetypes
