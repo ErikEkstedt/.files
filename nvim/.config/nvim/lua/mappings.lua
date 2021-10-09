@@ -1,54 +1,9 @@
 -- MAPPINGS
 -- -- mapleader/localleader is set in init.lua
 
--- Smart tab: https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
-local t = function(str)
-  return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
-
-local check_back_space = function()
-  local col = vim.fn.col(".") - 1
-  if col == 0 or vim.fn.getline("."):sub(col, col):match("%s") then
-    return true
-  else
-    return false
-  end
-end
-
 -- test leader mapping
 -- vim.api.nvim_set_keymap('n', '<Leader>t', ':echo "testMapping"<CR>', {noremap=true})
 --
--- Use (s-)tab to:
---- move to prev/next item in completion menuone
---- jump to prev/next snippet's placeholder
-_G.tab_complete = function()
-  if vim.fn.pumvisible() == 1 then
-    return t "<C-n>"
-  elseif check_back_space() then
-    return t "<Tab>"
-  else
-    return vim.fn["compe#complete"]()
-  end
-end
-
-_G.s_tab_complete = function()
-  if vim.fn.pumvisible() == 1 then
-    return t "<C-p>"
-  else
-    return t "<S-Tab>"
-  end
-end
-_G.s_tab_i_complete = function()
-  if vim.fn.pumvisible() == 1 then
-    return t "<C-p>"
-  else
-    return t "<Esc><<I"
-  end
-end
-vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_i_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 
 -- TRIALS
 vim.cmd([[map <expr> ' printf('`%c zz',getchar())]]) -- center screen when going to a mark
@@ -78,6 +33,7 @@ vim.api.nvim_set_keymap("n", "<C-s>", ":w<CR>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<C-q>", ":q!<CR>", {noremap = true, silent = true})
 
 -- Move between splits
+-- see lua/plugins/tmux.lua
 vim.api.nvim_set_keymap("n", "<M-h>", "<cmd>lua require('tmux').move_left()<CR>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<M-j>", "<cmd>lua require('tmux').move_down()<CR>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<M-k>", "<cmd>lua require('tmux').move_up()<CR>", {noremap = true, silent = true})
@@ -130,8 +86,6 @@ vim.api.nvim_set_keymap("n", "ga", "zA", {noremap = true, silent = true})
 -- Visual
 vim.api.nvim_set_keymap("v", "<Leader>sl", 'y:@"<CR>', {noremap = true})
 vim.api.nvim_set_keymap("v", "<LocalLeader>sl", 'y:@"<CR>', {noremap = true})
-vim.api.nvim_set_keymap("v", "<Tab>", ">gv", {noremap = true})
-vim.api.nvim_set_keymap("v", "<S-Tab>", "<gv", {noremap = true})
 vim.api.nvim_set_keymap("v", "J", "}", {noremap = true})
 vim.api.nvim_set_keymap("v", "K", "{", {noremap = true})
 

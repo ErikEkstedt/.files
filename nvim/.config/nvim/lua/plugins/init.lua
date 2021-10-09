@@ -40,7 +40,8 @@ return require("packer").startup(
         "hrsh7th/cmp-buffer",
         "saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
         "L3MON4D3/LuaSnip", -- Snippet engine
-        "rafamadriz/friendly-snippets" --snippet collections
+        "rafamadriz/friendly-snippets", --snippet collections
+        "onsails/lspkind-nvim" -- Pretty symbols for lsp
       },
       config = function()
         require("plugins.nvim-cmp")

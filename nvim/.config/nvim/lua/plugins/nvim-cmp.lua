@@ -13,8 +13,11 @@ local has_words_before = function()
 end
 
 local feedkey = function(key)
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), "n", true)
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), "i", true)
 end
+
+vim.api.nvim_set_keymap("v", "<Tab>", ">gv", {noremap = true})
+vim.api.nvim_set_keymap("v", "<S-Tab>", "<gv", {noremap = true})
 
 cmp.setup(
   {
@@ -28,7 +31,41 @@ cmp.setup(
       ["<C-f>"] = cmp.mapping.scroll_docs(4),
       ["<C-e>"] = cmp.mapping.close(),
       ["<CR>"] = cmp.mapping.confirm({select = true}),
-      ["<localleader><localleader>"] = cmp.mapping.confirm({select = true})
+      ["<localleader><localleader>"] = cmp.mapping.confirm({select = true}),
+      ["<C-l>"] = cmp.mapping(
+        function(fallback)
+          if vim.fn.pumvisible() == 1 then
+            feedkey("<C-n>")
+          elseif luasnip.expand_or_jumpable() then
+            luasnip.expand_or_jump()
+          elseif has_words_before() then
+            cmp.complete()
+          else
+            fallback() -- The fallback function sends
+          end
+        end,
+        {"i", "s"}
+      ),
+      ["<Tab>"] = cmp.mapping(
+        function(fallback)
+          if vim.fn.pumvisible() == 1 or has_words_before() then
+            feedkey("<C-n>")
+          else
+            fallback() -- The fallback function sends a already mapped key.
+          end
+        end,
+        {"i", "s"}
+      ),
+      ["<S-Tab>"] = cmp.mapping(
+        function(_)
+          if vim.fn.pumvisible() == 1 or has_words_before() then
+            feedkey("<C-p>")
+          else
+            feedkey("<Esc><<I")
+          end
+        end,
+        {"i", "s"}
+      )
     },
     sources = {
       {name = "nvim_lsp"},
@@ -36,20 +73,10 @@ cmp.setup(
       {name = "buffer"}
     },
     formatting = {
-      format = function(entry, vim_item)
-        vim_item.menu =
-          ({
-          nvim_lsp = "[LSP]",
-          buffer = "[BFR]",
-          path = "[PTH]",
-          nvim_lua = "[LUA]"
-        })[entry.source.name]
-        return vim_item
-      end
+      format = require("lspkind").cmp_format({with_text = true, maxwidth = 100})
     }
   }
 )
-
 -- you need setup cmp first put this after cmp.setup()
 require("nvim-autopairs.completion.cmp").setup(
   {
@@ -64,32 +91,3 @@ require("nvim-autopairs.completion.cmp").setup(
     }
   }
 )
-
--- -- symbols for autocomplete
--- vim.lsp.protocol.CompletionItemKind = {
---   "  (Text) ",
---   "  (Method)",
---   "  (Function)",
---   "  (Constructor)",
---   " ﴲ (Field)",
---   "[](Variable)",
---   "  (Class)",
---   " ﰮ (Interface)",
---   "  (Module)",
---   " 襁(Property)",
---   "  (Unit)",
---   "  (Value)",
---   " 練(Enum)",
---   "  (Keyword)",
---   "  (Snippet)",
---   "  (Color)",
---   "  (File)",
---   "  (Reference)",
---   "  (Folder)",
---   "  (EnumMember)",
---   " ﲀ (Constant)",
---   " ﳤ (Struct)",
---   "  (Event)",
---   "  (Operator)",
---   "  (TypeParameter)"
--- }
