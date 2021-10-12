@@ -91,3 +91,23 @@ require("nvim-autopairs.completion.cmp").setup(
     }
   }
 )
+
+local s = luasnip.snippet
+local t = luasnip.text_node
+local i = luasnip.insert_node
+
+luasnip.snippets = {
+  python = {
+    luasnip.parser.parse_snippet("printshape", 'print("${1:x}: ", tuple(${1:x}.shape)'),
+    s(
+      "printdict",
+      {
+        t("for k, v in "),
+        i(1),
+        t({".items():", "\t"}),
+        t('print(f"{k}: {v}")')
+      }
+    ),
+    luasnip.parser.parse_snippet("fig", "fig, ax = plt.subplots(${1:1}, ${2:1})")
+  }
+}
