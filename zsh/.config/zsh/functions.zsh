@@ -49,6 +49,31 @@ vi-cmd-down-line-history() {
 }
 zle -N vi-cmd-down-line-history
 
+# Tmux
+function tns() {
+  _session_exists() {
+    tmux list-sessions | sed -E 's/:.*$//' | grep -q "^$session_name$"
+  }
+  _not_in_tmux() {
+    [ -z "$TMUX" ]
+  }
+
+  if [ -z $1 ]; then
+    session_name=$(basename "$PWD" | sed -E 's/[.]/DOT/g' | sed -E 's/DOTfiles/DOTFiles/g')
+  else
+    session_name=$1
+  fi
+
+  if _not_in_tmux; then
+    tmux new-session -As "$session_name"
+  else
+    if ! _session_exists; then
+      (TMUX='' tmux new-session -Ad -s "$session_name")
+    fi
+    tmux switch-client -t "$session_name"
+  fi
+}
+
 # Bindings
 bindkey -s '^S' '^Asudo ^E'
 bindkey -M vicmd H beginning-of-line

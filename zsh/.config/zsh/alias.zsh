@@ -52,9 +52,10 @@ alias messenger="_browser_tab --new-tab https://messenger.com"
 # Tmux
 alias tls="tmux list-sessions"
 alias tks="tmux kill-session -t"
-alias tns="tmux rename -t . " 
+alias trn="tmux rename -t . " 
 alias tkp="tmux kill-pane -t"
-alias tat=$DOTFILES/bin/tat  # Current path as new tmux session
+# alias tat=$DOTFILES/bin/tat  # Current path as new tmux session
+
 # alias tspc="_tmux_send_keys_all_panes_"
 # alias theme="_tmux_theme"
 
