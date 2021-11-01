@@ -240,5 +240,6 @@ return require("packer").startup(
     use "tanvirtin/monokai.nvim"
     use "bluz71/vim-nightfly-guicolors"
     use "eddyekofo94/gruvbox-flat.nvim"
+    use "olimorris/onedarkpro.nvim"
   end
 )
