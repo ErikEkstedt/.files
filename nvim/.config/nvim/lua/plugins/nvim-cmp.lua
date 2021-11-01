@@ -34,8 +34,8 @@ cmp.setup(
       ["<localleader><localleader>"] = cmp.mapping.confirm({select = true}),
       ["<C-l>"] = cmp.mapping(
         function(fallback)
-          if vim.fn.pumvisible() == 1 then
-            feedkey("<C-n>")
+          if cmp.visible() then
+            cmp.select_next_item()
           elseif luasnip.expand_or_jumpable() then
             luasnip.expand_or_jump()
           elseif has_words_before() then
@@ -46,52 +46,48 @@ cmp.setup(
         end,
         {"i", "s"}
       ),
-      ["<Tab>"] = cmp.mapping(
-        function(fallback)
-          if vim.fn.pumvisible() == 1 or has_words_before() then
-            feedkey("<C-n>")
-          else
-            fallback() -- The fallback function sends a already mapped key.
-          end
-        end,
-        {"i", "s"}
-      ),
-      ["<S-Tab>"] = cmp.mapping(
-        function(_)
-          if vim.fn.pumvisible() == 1 or has_words_before() then
-            feedkey("<C-p>")
-          else
-            feedkey("<Esc><<I")
-          end
-        end,
-        {"i", "s"}
-      )
+      ["<Tab>"] = function(fallback)
+        if cmp.visible() then
+          cmp.select_next_item()
+        else
+          fallback()
+        end
+      end,
+      ["<S-Tab>"] = function(fallback)
+        if cmp.visible() then
+          cmp.select_prev_item()
+        else
+          fallback()
+        end
+      end
     },
     sources = {
-      {name = "nvim_lsp"},
       {name = "luasnip"},
-      {name = "buffer"}
+      {name = "nvim_lua"},
+      {name = "nvim_lsp"},
+      {name = "path"},
+      {name = "cmdline"},
+      {name = "buffer", keyword_length = 5, max_item_count = 5}
     },
     formatting = {
-      format = require("lspkind").cmp_format({with_text = true, maxwidth = 100})
+      format = require("lspkind").cmp_format {
+        menu = {
+          luasnip = "[snip]",
+          nvim_lsp = "[LSP]",
+          nvim_lua = "[api]",
+          path = "[path]",
+          buffer = "[buf]"
+        },
+        with_text = true,
+        maxwidth = 100
+      }
+    },
+    experimental = {
+      native_menu = false,
+      ghost_text = true
     }
   }
 )
--- you need setup cmp first put this after cmp.setup()
-require("nvim-autopairs.completion.cmp").setup(
-  {
-    map_cr = true, --  map <CR> on insert mode
-    map_complete = true, -- it will auto insert `(` (map_char) after select function or method item
-    auto_select = false, -- automatically select the first item
-    insert = false, -- use insert confirm behavior instead of replace
-    map_char = {
-      -- modifies the function or method delimiter by filetypes
-      all = "(",
-      tex = "{"
-    }
-  }
-)
-
 local s = luasnip.snippet
 local t = luasnip.text_node
 local i = luasnip.insert_node
