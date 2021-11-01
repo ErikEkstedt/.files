@@ -23,6 +23,7 @@ require("mappings")
 
 -- Set Colorscheme
 require("colorbuddy").colorscheme("onebuddy")
+-- require("onedarkpro").load()
 
 -- Colorscheme clears hi for hop?
 vim.cmd("hi HopNextKey gui=bold guifg=cyan")
