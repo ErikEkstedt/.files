@@ -85,17 +85,20 @@ cmp.setup(
     experimental = {
       native_menu = false,
       ghost_text = true
+    },
+    documentation = {
+      winhighlight = "Normal:DocumentNormal,NormalNC:DocumentNC"
     }
   }
 )
-local s = luasnip.snippet
+local sn = luasnip.snippet
 local t = luasnip.text_node
 local i = luasnip.insert_node
 
 luasnip.snippets = {
   python = {
     luasnip.parser.parse_snippet("printshape", 'print("${1:x}: ", tuple(${1:x}.shape)'),
-    s(
+    sn(
       "printdict",
       {
         t("for k, v in "),
@@ -107,3 +110,18 @@ luasnip.snippets = {
     luasnip.parser.parse_snippet("fig", "fig, ax = plt.subplots(${1:1}, ${2:1})")
   }
 }
+-- nvim-cmp highlight groups.
+local Group = require("colorbuddy.group").Group
+local Color = require("colorbuddy.color").Color
+local g = require("colorbuddy.group").groups
+local s = require("colorbuddy.style").styles
+
+Group.new("DocumentNormal", Color.new("fgg", "#fafafa"), Color.new("bgg", "#000000"))
+Group.new("DocumentNc", Color.new("fgg", "#fafafa"), Color.new("bgg", "#000000"))
+Group.new("CmpItemAbbr", g.Comment)
+Group.new("CmpItemAbbrMatch", g.Normal, nil, s.bold)
+Group.new("CmpItemAbbrDeprecated", g.Error)
+-- Group.new("CmpItemAbbrMatchFuzzy", g.Error.fg:dark(), nil, s.italic)
+Group.new("CmpItemAbbrMatchFuzzy", g.Error)
+Group.new("CmpItemKind", g.Special.fg:dark())
+Group.new("CmpItemMenu", g.String)

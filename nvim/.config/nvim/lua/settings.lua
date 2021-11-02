@@ -6,7 +6,7 @@ vim.opt.fileignorecase = true
 vim.opt.foldlevelstart = 99 -- 0: all fold, 99: no fold
 
 -- FOLDS
-vim.opt.foldmethod = "indent"
+-- vim.opt.foldmethod = "indent"
 -- If/when treesitter folding works well this should be
 -- in another file i.e. lua/folds.lua
 --
@@ -19,6 +19,11 @@ vim.opt.foldmethod = "indent"
 --   return "-> " .. line .. ":" .. line_count .. " lines"
 -- end
 -- vim.opt.foldtext = "v:lua.custom_fold_text()"
+vim.o.foldtext =
+  [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+-- vim.o.foldmethod = "expr"
+vim.o.foldmethod = "indent"
 
 vim.opt.gdefault = true
 vim.opt.hidden = true
