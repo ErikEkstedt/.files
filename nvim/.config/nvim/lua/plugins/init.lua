@@ -40,6 +40,8 @@ return require("packer").startup(
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-cmdline",
+        "tzachar/cmp-fuzzy-path",
+        "tzachar/fuzzy.nvim",
         "saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
         "L3MON4D3/LuaSnip", -- Snippet engine
         "rafamadriz/friendly-snippets", --snippet collections
@@ -141,12 +143,6 @@ return require("packer").startup(
       requires = "kyazdani42/nvim-web-devicons",
       config = function()
         require("plugins.nvim-tree")
-      end
-    }
-    use {
-      "kyazdani42/nvim-tree.lua",
-      requires = {"kyazdani42/nvim-web-devicons"},
-      config = function()
       end
     }
     use {

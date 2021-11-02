@@ -66,6 +66,7 @@ cmp.setup(
       {name = "nvim_lua"},
       {name = "nvim_lsp"},
       {name = "path"},
+      {name = "fuzzy_path"},
       {name = "cmdline"},
       {name = "buffer", keyword_length = 5, max_item_count = 5}
     },
@@ -76,6 +77,7 @@ cmp.setup(
           nvim_lsp = "[LSP]",
           nvim_lua = "[api]",
           path = "[path]",
+          fzy_path = "[fz_path]",
           buffer = "[buf]"
         },
         with_text = true,
