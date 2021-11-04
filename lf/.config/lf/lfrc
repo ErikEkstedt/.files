@@ -105,6 +105,7 @@ map gdo cd ~/Documents
 
 map <c-t> fzf_jump
 map <c-b> fzf_cd_from_home
+map <c-o> fzf_cd_from_here
 map <c-n> fzf_cd_from_here
 map <c-f> fzf_jump
 # map <esc> quit  # quit all too often

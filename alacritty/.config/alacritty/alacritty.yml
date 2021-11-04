@@ -11,8 +11,8 @@ env:
   # Note that some xterm terminfo databases don't declare support for italics.
   # You can verify this by checking for the presence of `smso` and `sitm` in
   # `infocmp xterm-256color`.
-  # TERM: xterm-256color
-  TERM: tmux-256color
+  TERM: xterm-256color
+  # TERM: tmux-256color
 
 
 # When true, bold text is drawn using the bright variant of colors.
@@ -24,25 +24,37 @@ font:
   # The normal (roman) font face to use.
   normal:
     # family: DejaVuSansMono Nerd Font
-    family: FuraCode Nerd Font
+    # family: FuraCode Nerd Font
+    family: FiraCode NF
 
   # The bold font face
   bold:
     # family: DejaVuSansMono Nerd Font
-    family: FuraCode Nerd Font
+    # family: FuraCode Nerd Font
+    family: FiraCode NF
+    # style: Bold
 
   # The italic font face
   italic:
     # family: DejaVuSansMono Nerd Font
-    family: FuraCode Nerd Font
+    # family: FuraCode Nerd Font
+    family: FiraCode NF
 
   # Point size of the font
   size: 12.0
 
+cursor:
+  # Values for `style`:
+  # Cursor style
+  #   - ▇ Block
+  #   - _ Underline
+  #   - | Beam
+  style: Block
 
 import:
  - '~/.config/alacritty/onedark.yml'
- # - '~/.config/alacritty/bright.yml'
+ # - '~/.config/alacritty/gruvbox.yml'
+ # - '~/.config/alacritty/material.yml'
 
 # To completely disable the visual bell, set its duration to 0.
 bell:
