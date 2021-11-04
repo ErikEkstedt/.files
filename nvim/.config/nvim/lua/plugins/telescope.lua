@@ -95,6 +95,12 @@ vim.api.nvim_set_keymap("n", "<LocalLeader>ff", bi .. ".find_files{hidden=true}<
 vim.api.nvim_set_keymap("n", "<LocalLeader>fg", bi .. ".git_files()<cr>", km)
 vim.api.nvim_set_keymap("n", "<LocalLeader>fb", bi .. ".buffers()<cr>", km)
 vim.api.nvim_set_keymap("n", "<LocalLeader>fc", bi .. ".find_files{cwd='~/.files', hidden=true}<cr>", km)
+vim.api.nvim_set_keymap(
+  "n",
+  "<LocalLeader>fh",
+  bi .. ".find_files{cwd='~/.local/share/nvim/site/pack/packer', hidden=true}<cr>",
+  km
+)
 vim.api.nvim_set_keymap("n", "<LocalLeader>fn", bi .. ".find_files{cwd='~/zettelkasten'}<cr>", km)
 vim.api.nvim_set_keymap("n", "gzz", bi .. ".find_files{cwd='~/zettelkasten'}<cr>", km)
 vim.api.nvim_set_keymap("n", "<LocalLeader>fl", bi .. ".current_buffer_fuzzy_find()<cr>", km)

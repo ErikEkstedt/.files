@@ -19,6 +19,65 @@ end
 vim.api.nvim_set_keymap("v", "<Tab>", ">gv", {noremap = true})
 vim.api.nvim_set_keymap("v", "<S-Tab>", "<gv", {noremap = true})
 
+local mapping = {
+  ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+  ["<C-f>"] = cmp.mapping.scroll_docs(4),
+  ["<C-e>"] = cmp.mapping.close(),
+  ["<CR>"] = cmp.mapping.confirm({select = true}),
+  ["<localleader><localleader>"] = cmp.mapping.confirm({select = true}),
+  ["<C-l>"] = cmp.mapping(
+    function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      elseif has_words_before() then
+        cmp.complete()
+      else
+        fallback() -- The fallback function sends
+      end
+    end,
+    {"i", "s"}
+  ),
+  ["<Tab>"] = function(fallback)
+    if cmp.visible() then
+      cmp.select_next_item()
+    else
+      fallback()
+    end
+  end,
+  ["<S-Tab>"] = function(fallback)
+    if cmp.visible() then
+      cmp.select_prev_item()
+    else
+      fallback()
+    end
+  end
+}
+
+local sources = {
+  {name = "path"},
+  {name = "luasnip", keyword_length = 2},
+  {name = "nvim_lua"},
+  {name = "nvim_lsp", keyword_length = 3, max_item_count = 20},
+  {name = "cmdline"},
+  {name = "buffer", keyword_length = 5, max_item_count = 5}
+}
+
+local formatting = {
+  format = require("lspkind").cmp_format {
+    menu = {
+      path = "[path]",
+      luasnip = "[snip]",
+      nvim_lsp = "[LSP]",
+      nvim_lua = "[api]",
+      buffer = "[buf]"
+    },
+    with_text = true,
+    maxwidth = 100
+  }
+}
+
 cmp.setup(
   {
     snippet = {
@@ -26,64 +85,9 @@ cmp.setup(
         luasnip.lsp_expand(args.body)
       end
     },
-    mapping = {
-      ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-      ["<C-f>"] = cmp.mapping.scroll_docs(4),
-      ["<C-e>"] = cmp.mapping.close(),
-      ["<CR>"] = cmp.mapping.confirm({select = true}),
-      ["<localleader><localleader>"] = cmp.mapping.confirm({select = true}),
-      ["<C-l>"] = cmp.mapping(
-        function(fallback)
-          if cmp.visible() then
-            cmp.select_next_item()
-          elseif luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
-          elseif has_words_before() then
-            cmp.complete()
-          else
-            fallback() -- The fallback function sends
-          end
-        end,
-        {"i", "s"}
-      ),
-      ["<Tab>"] = function(fallback)
-        if cmp.visible() then
-          cmp.select_next_item()
-        else
-          fallback()
-        end
-      end,
-      ["<S-Tab>"] = function(fallback)
-        if cmp.visible() then
-          cmp.select_prev_item()
-        else
-          fallback()
-        end
-      end
-    },
-    sources = {
-      {name = "luasnip"},
-      {name = "nvim_lua"},
-      {name = "nvim_lsp"},
-      {name = "path"},
-      {name = "fuzzy_path"},
-      {name = "cmdline"},
-      {name = "buffer", keyword_length = 5, max_item_count = 5}
-    },
-    formatting = {
-      format = require("lspkind").cmp_format {
-        menu = {
-          luasnip = "[snip]",
-          nvim_lsp = "[LSP]",
-          nvim_lua = "[api]",
-          path = "[path]",
-          fzy_path = "[fz_path]",
-          buffer = "[buf]"
-        },
-        with_text = true,
-        maxwidth = 100
-      }
-    },
+    mapping = mapping,
+    sources = sources,
+    formatting = formatting,
     experimental = {
       native_menu = false,
       ghost_text = true
@@ -93,6 +97,7 @@ cmp.setup(
     }
   }
 )
+
 local sn = luasnip.snippet
 local t = luasnip.text_node
 local i = luasnip.insert_node
@@ -112,6 +117,7 @@ luasnip.snippets = {
     luasnip.parser.parse_snippet("fig", "fig, ax = plt.subplots(${1:1}, ${2:1})")
   }
 }
+
 -- nvim-cmp highlight groups.
 local Group = require("colorbuddy.group").Group
 local Color = require("colorbuddy.color").Color

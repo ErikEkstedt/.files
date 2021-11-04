@@ -40,8 +40,6 @@ return require("packer").startup(
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-cmdline",
-        "tzachar/cmp-fuzzy-path",
-        "tzachar/fuzzy.nvim",
         "saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
         "L3MON4D3/LuaSnip", -- Snippet engine
         "rafamadriz/friendly-snippets", --snippet collections
@@ -199,11 +197,35 @@ return require("packer").startup(
       requires = {"kyazdani42/nvim-web-devicons", opt = true}
     }
 
+    -- TODO: change directory?
+    use {
+      "glepnir/dashboard-nvim",
+      config = function()
+        -- vim.g.dashboard_change_to_dir = 1
+        -- vim.g.dashboard_change_to_vcs = 1
+        vim.g.dashboard_default_executive = "telescope"
+        vim.g.dashboard_custom_section = {
+          a = {description = {"  Recents                   SPC f o"}, command = "Telescope oldfiles"},
+          b = {description = {"  Find File                 SPC f f"}, command = "Telescope find_files"},
+          d = {description = {"洛 New File                  SPC f n"}, command = "DashboardNewFile"},
+          e = {description = {"  Bookmarks                 SPC b m"}, command = "Telescope marks"},
+          f = {description = {"  Load Last Session         SPC l  "}, command = "SessionLoad"}
+        }
+        vim.g.dashboard_disable_at_vimenter = 1
+      end
+    }
     -- NOTE:
     -- NON-LUA
     -- --------------------------------
     use "wellle/targets.vim" -- NON-LUA: ci' works on (, [, {, < on entire line
     use {"mg979/vim-visual-multi", branch = "master"} -- NON-LUA
+    -- use {
+    --   "mhinz/vim-startify",
+    --   config = function()
+    --     vim.g.startify_change_to_dir = 0
+    --     vim.g.startify_change_to_vcs_root = 1
+    --   end
+    -- }
     use {
       "KabbAmine/vCoolor.vim",
       config = function()
@@ -230,7 +252,12 @@ return require("packer").startup(
     use "tpope/vim-surround" -- NON-LUA
 
     -- Colorschemes
-    use "tjdevries/colorbuddy.vim"
+    use {
+      "tjdevries/colorbuddy.vim"
+      -- config = function()
+      --   require("plugins.colorbuddy")
+      -- end
+    }
     use "Th3Whit3Wolf/onebuddy"
     use "gruvbox-community/gruvbox"
     use "tjdevries/gruvbuddy.nvim"
