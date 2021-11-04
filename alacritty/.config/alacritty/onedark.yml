@@ -1,16 +1,9 @@
 colors:
-  # Default colors
   primary:
-    # background: '0x282c34'
     background: '#1F2123'
-    foreground: '#FFFFFF'
-    # foreground: '0xabb2bf'
-  # Normal colors
+    foreground: '#FEFEFE'
   normal:
-    # NOTE: Use '0x131613' for the `black` color if you'd like to see
-    # black text on the background.
-    # black:   '#282c34'
-    black:   '#000000'
+    black:   '#37393D'  # terminal comments/autocomplete
     red:     '#e06c75'
     green:   '#98c379'
     yellow:  '#d19a66'
@@ -18,6 +11,12 @@ colors:
     magenta: '#c678dd'
     cyan:    '#56b6c2'
     white:   '#dbe2ef'
-    # white: '#FFFFFF'
-
-      
+  bright:
+    black:   '#44474C'
+    red:     '#FF7B85'
+    green:   '#B1E38D'
+    yellow:  '#F0B175'
+    blue:    '#65B7FA'
+    magenta: '#E58BFF'
+    cyan:    '#6BE4F3'
+    white:   '#dbe2ef'
