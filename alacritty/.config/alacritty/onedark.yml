@@ -3,13 +3,13 @@ colors:
     background: '#1F2123'
     foreground: '#FEFEFE'
   normal:
-    black:   '#37393D'  # terminal comments/autocomplete
-    red:     '#e06c75'
-    green:   '#98c379'
-    yellow:  '#d19a66'
-    blue:    '#61afef'
-    magenta: '#c678dd'
-    cyan:    '#56b6c2'
+    black:   '#44474C'
+    red:     '#FF7B85'
+    green:   '#B1E38D'
+    yellow:  '#F0B175'
+    blue:    '#65B7FA'
+    magenta: '#E58BFF'
+    cyan:    '#6BE4F3'
     white:   '#dbe2ef'
   bright:
     black:   '#44474C'
