@@ -86,11 +86,15 @@ return require("packer").startup(
       end
     }
     use {
-      "phaazon/hop.nvim",
-      config = function()
-        require("plugins.hop")
-      end
+      "ggandor/lightspeed.nvim",
+      requires = "tpope/vim-repeat"
     }
+    -- use {
+    --   "phaazon/hop.nvim",
+    --   config = function()
+    --     require("plugins.hop")
+    --   end
+    -- }
     -- use {"folke/which-key.nvim", config = function() require('plugins.whichkey') end}
     use {
       "folke/todo-comments.nvim",
