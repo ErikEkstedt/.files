@@ -100,3 +100,6 @@ key_bindings:
   - { key: X,    mods: Alt, chars: "\x1bx"}
   - { key: Y,    mods: Alt, chars: "\x1by"}
   - { key: Z,    mods: Alt, chars: "\x1bz"}
+  # Make C-Q work as expected
+  # https://github.com/alacritty/alacritty/issues/1359
+  - { key: Q, mods: Control, chars: "\x11" }
