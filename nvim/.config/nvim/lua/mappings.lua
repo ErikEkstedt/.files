@@ -3,7 +3,6 @@
 
 -- test leader mapping
 -- vim.api.nvim_set_keymap('n', '<Leader>t', ':echo "testMapping"<CR>', {noremap=true})
---
 
 -- TRIALS
 vim.cmd([[map <expr> ' printf('`%c zz',getchar())]]) -- center screen when going to a mark
@@ -92,8 +91,8 @@ vim.api.nvim_set_keymap("v", "K", "{", {noremap = true})
 -- Selection
 vim.api.nvim_set_keymap("x", "L", "$", {noremap = true})
 vim.api.nvim_set_keymap("x", "H", "^", {noremap = true})
+vim.api.nvim_set_keymap("x", "J", "}", {noremap = true})
 vim.api.nvim_set_keymap("x", "K", "{", {noremap = true})
-vim.api.nvim_set_keymap("x", "H", "}", {noremap = true})
 
 -- Command
 vim.api.nvim_set_keymap("c", "<C-a>", "<Home>", {noremap = true})
