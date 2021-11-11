@@ -17,6 +17,7 @@ setopt extendedglob
 setopt RM_STAR_WAIT  # if you do a 'rm *', Zsh will give you a sanity check!
 
 # Plugins
+# export LANG="en_US.UTF-8" # set in .zprofile
 source $ZDOTDIR/plugin-functions.zsh # functions for handling zsh plugins
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
