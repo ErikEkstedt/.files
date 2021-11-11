@@ -21,7 +21,7 @@ Color.new("mono_2", "#828997")
 Color.new("mono_3", "#5c6370")
 Color.new("mono_4", "#4b5263")
 Color.new("hue_1", "#68D980")
-Color.new("hue_2", "#61afef")
+Color.new("hue_2", "#67BBFF")
 Color.new("hue_3", "#c678dd")
 Color.new("hue_4", "#A9D987")
 Color.new("hue_5", "#e06c75")
@@ -69,7 +69,7 @@ Color.new("White", "#fefefe")
 Color.new("Cyan", "#8abeb7")
 Color.new("DarkCyan", "#80a0ff")
 Color.new("Aqua", "#8ec07c")
-Color.new("pink", "#d291e4")
+Color.new("pink", "#ff80ff")
 
 -------------------------
 -- Vim Terminal Colors --
