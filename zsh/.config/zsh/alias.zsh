@@ -25,14 +25,14 @@ alias t2='clear; tree -L 2 --dirsfirst -I "*pycache*|runs*"'
 alias t3='clear; tree -L 3 --dirsfirst -I "*pycache*|runs*"'
 
 # Movement
-alias gfi="cd ~/.files; clear; ls"
-alias gdw="cd ~/Downloads; clear; la"
-alias gho="cd ~; clear; ls"
-alias gpr="cd ~/projects; clear; ls"
-alias ggr='cd "$(git rev-parse --show-toplevel)"; clear; ls'
+alias gfi="cd ~/.files; t1; git status"
+alias gdw="cd ~/Downloads; clear; ll"
+alias gho="cd ~; clear; ll"
+alias gpr="cd ~/projects; clear; ll"
+alias ggr='cd "$(git rev-parse --show-toplevel)"; t1; git status'
 alias gro="cd /; clear; ls"
 alias gno="cd $HOME/zettelkasten"
-alias gcl="cd $HOME/projects/ConvLM;t1"
+alias gcl="cd $HOME/projects/ConvLM;t1;git status"
 
 # commands
 alias cd..="cd .."
