@@ -59,7 +59,7 @@ local sources = {
   {name = "path"},
   {name = "luasnip", keyword_length = 2},
   {name = "nvim_lua"},
-  {name = "nvim_lsp", keyword_length = 3, max_item_count = 20},
+  {name = "nvim_lsp", keyword_length = 2, max_item_count = 20},
   {name = "cmdline"},
   {name = "buffer", keyword_length = 5, max_item_count = 5}
 }
@@ -67,11 +67,13 @@ local sources = {
 local formatting = {
   format = require("lspkind").cmp_format {
     menu = {
-      path = "[path]",
-      luasnip = "[snip]",
-      nvim_lsp = "[LSP]",
-      nvim_lua = "[api]",
-      buffer = "[buf]"
+      path = "ﱮ", -- [path]
+      luasnip = "", -- "[snip]",
+      nvim_lsp = "ﲳ",
+      nvim_lua = "", -- "[api]",
+      buffer = "﬘", -- buffer = "[buf]"
+      treesitter = "",
+      spell = "暈"
     },
     with_text = true,
     maxwidth = 100
@@ -93,7 +95,8 @@ cmp.setup(
       ghost_text = true
     },
     documentation = {
-      winhighlight = "Normal:DocumentNormal,NormalNC:DocumentNC"
+      border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"}
+      -- winhighlight = "Normal:DocumentNormal,NormalNC:DocumentNC"
     }
   }
 )
@@ -124,8 +127,8 @@ local Color = require("colorbuddy.color").Color
 local g = require("colorbuddy.group").groups
 local s = require("colorbuddy.style").styles
 
-Group.new("DocumentNormal", Color.new("fgg", "#fafafa"), Color.new("bgg", "#000000"))
-Group.new("DocumentNc", Color.new("fgg", "#fafafa"), Color.new("bgg", "#000000"))
+-- Group.new("DocumentNormal", Color.new("fgg", "#fafafa"), Color.new("bgg", "#000000"))
+-- Group.new("DocumentNc", Color.new("fgg", "#fafafa"), Color.new("bgg", "#000000"))
 Group.new("CmpItemAbbr", g.Comment)
 Group.new("CmpItemAbbrMatch", g.Normal, nil, s.bold)
 Group.new("CmpItemAbbrDeprecated", g.Error)

@@ -67,7 +67,6 @@ require("telescope").setup {
     layout_config = {
       height = 0.8,
       width = 0.8,
-      preview_width = 0.5,
       horizontal = {
         preview_cutoff = 120,
         prompt_position = "top"
@@ -89,28 +88,29 @@ require("telescope").load_extension("fzf")
 -- MAPPINGS
 local km = {noremap = true, silent = true}
 local bi = "<cmd>lua require('telescope.builtin')"
+local key_map = vim.api.nvim_set_keymap
 
 -- FileFinding
-vim.api.nvim_set_keymap("n", "<LocalLeader>ff", bi .. ".find_files{hidden=true}<cr>", km)
-vim.api.nvim_set_keymap("n", "<LocalLeader>fg", bi .. ".git_files()<cr>", km)
-vim.api.nvim_set_keymap("n", "<LocalLeader>fb", bi .. ".buffers()<cr>", km)
-vim.api.nvim_set_keymap("n", "<LocalLeader>fc", bi .. ".find_files{cwd='~/.files', hidden=true}<cr>", km)
-vim.api.nvim_set_keymap(
+key_map("n", "<LocalLeader>ff", bi .. ".find_files{hidden=true}<cr>", km)
+key_map("n", "<LocalLeader>fg", bi .. ".git_files()<cr>", km)
+-- key_map("n", "<LocalLeader>fb", bi .. ".buffers()<cr>", km)
+key_map(
   "n",
-  "<LocalLeader>fh",
-  bi .. ".find_files{cwd='~/.local/share/nvim/site/pack/packer', hidden=true}<cr>",
+  "<LocalLeader>fb",
+  [[<Cmd>lua require'telescope.builtin'.buffers({prompt_title = 'Find Buffer', results_title='Buffers', layout_strategy = 'vertical', layout_config = { width = 0.50, height = 0.55 }})<CR>]],
   km
 )
-vim.api.nvim_set_keymap("n", "<LocalLeader>fn", bi .. ".find_files{cwd='~/zettelkasten'}<cr>", km)
-vim.api.nvim_set_keymap("n", "gzz", bi .. ".find_files{cwd='~/zettelkasten'}<cr>", km)
-vim.api.nvim_set_keymap("n", "<LocalLeader>fl", bi .. ".current_buffer_fuzzy_find()<cr>", km)
-
-vim.api.nvim_set_keymap("n", "<LocalLeader>fw", bi .. ".live_grep()<cr>", km)
--- vim.api.nvim_set_keymap("n", "<LocalLeader>fi", bi .. ".find_files{cwd='~', hidden=true}<cr>", km)
--- vim.api.nvim_set_keymap("n", "<LocalLeader>fp", bi .. ".find_files{cwd='~/projects'}<cr>", km)
+key_map("n", "<LocalLeader>fc", bi .. ".find_files{cwd='~/.files', hidden=true}<cr>", km)
+key_map("n", "<LocalLeader>fh", bi .. ".find_files{cwd='~/.local/share/nvim/site/pack/packer', hidden=true}<cr>", km)
+key_map("n", "<LocalLeader>fn", bi .. ".find_files{cwd='~/zettelkasten'}<cr>", km)
+key_map("n", "gzz", bi .. ".find_files{cwd='~/zettelkasten'}<cr>", km)
+key_map("n", "<LocalLeader>fl", bi .. ".current_buffer_fuzzy_find()<cr>", km)
+key_map("n", "<LocalLeader>fw", bi .. ".live_grep()<cr>", km)
+-- key_map("n", "<LocalLeader>fi", bi .. ".find_files{cwd='~', hidden=true}<cr>", km)
+-- key_map("n", "<LocalLeader>fp", bi .. ".find_files{cwd='~/projects'}<cr>", km)
 
 -- Misc
-vim.api.nvim_set_keymap("n", "<LocalLeader>he", bi .. ".help_tags()<cr>", km)
-vim.api.nvim_set_keymap("n", "<LocalLeader>ma", bi .. ".keymaps()<cr>", km)
-vim.api.nvim_set_keymap("n", "<LocalLeader>hi", bi .. ".highlights()<cr>", km)
-vim.api.nvim_set_keymap("n", "<LocalLeader>cc", bi .. ".commands()<cr>", km)
+key_map("n", "<LocalLeader>he", bi .. ".help_tags()<cr>", km)
+key_map("n", "<LocalLeader>ma", bi .. ".keymaps()<cr>", km)
+key_map("n", "<LocalLeader>hi", bi .. ".highlights()<cr>", km)
+key_map("n", "<LocalLeader>cc", bi .. ".commands()<cr>", km)
