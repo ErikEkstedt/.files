@@ -3,6 +3,7 @@ local action_state = require("telescope.actions.state")
 
 local file_ignore_patterns = {
   "node_modules/",
+  "%.swp",
   ".git",
   "%.pt",
   "%.npy",
@@ -84,15 +85,29 @@ require("telescope").setup {
 }
 
 require("telescope").load_extension("fzf")
+-- require("telescope").extensions.notify.notify({})
 
 -- MAPPINGS
 local km = {noremap = true, silent = true}
 local bi = "<cmd>lua require('telescope.builtin')"
+local ex = "<cmd>lua require('telescope').extensions"
 local key_map = vim.api.nvim_set_keymap
 
 -- FileFinding
 key_map("n", "<LocalLeader>ff", bi .. ".find_files{hidden=true}<cr>", km)
 key_map("n", "<LocalLeader>fg", bi .. ".git_files()<cr>", km)
+key_map("n", "<LocalLeader>fc", bi .. ".find_files{cwd='~/.files', hidden=true}<cr>", km)
+
+key_map("n", "<space>x", ex .. ".notify.notify({})<cr>", km)
+key_map("n", "<space>c", bi .. ".find_files{cwd='~/.files', hidden=true}<cr>", km)
+key_map(
+  "n",
+  "<space>v",
+  bi .. '.find_files{opts={title="stdpath-data"}, cwd="' .. vim.fn.stdpath("data") .. '", hidden=true}<cr>',
+  km
+)
+key_map("n", "<space>z", bi .. ".find_files{cwd='~/zettelkasten'}<cr>", km)
+
 -- key_map("n", "<LocalLeader>fb", bi .. ".buffers()<cr>", km)
 key_map(
   "n",
@@ -100,12 +115,14 @@ key_map(
   [[<Cmd>lua require'telescope.builtin'.buffers({prompt_title = 'Find Buffer', results_title='Buffers', layout_strategy = 'vertical', layout_config = { width = 0.50, height = 0.55 }})<CR>]],
   km
 )
-key_map("n", "<LocalLeader>fc", bi .. ".find_files{cwd='~/.files', hidden=true}<cr>", km)
-key_map("n", "<LocalLeader>fh", bi .. ".find_files{cwd='~/.local/share/nvim/site/pack/packer', hidden=true}<cr>", km)
+
 key_map("n", "<LocalLeader>fn", bi .. ".find_files{cwd='~/zettelkasten'}<cr>", km)
 key_map("n", "gzz", bi .. ".find_files{cwd='~/zettelkasten'}<cr>", km)
+
 key_map("n", "<LocalLeader>fl", bi .. ".current_buffer_fuzzy_find()<cr>", km)
 key_map("n", "<LocalLeader>fw", bi .. ".live_grep()<cr>", km)
+
+key_map("n", "<LocalLeader>fh", bi .. ".find_files{cwd='~/.local/share/nvim/site/pack/packer', hidden=true}<cr>", km)
 -- key_map("n", "<LocalLeader>fi", bi .. ".find_files{cwd='~', hidden=true}<cr>", km)
 -- key_map("n", "<LocalLeader>fp", bi .. ".find_files{cwd='~/projects'}<cr>", km)
 

@@ -24,6 +24,25 @@ return require("packer").startup(
     -- Standard in many lua plugins. Contains functions you don't want to implement again...
     use "nvim-lua/plenary.nvim"
     use {"nvim-lua/popup.nvim", requires = "nvim-lua/plenary.nvim"}
+    use {
+      "rcarriga/nvim-notify",
+      config = function()
+        require("plugins.notify")
+      end
+    }
+
+    -- I want to use it but does not work with swap files
+    -- :help mksession
+    -- does not provide any useful information. It seems like mksession by
+    -- default uses 'cpo=aoO' in the saved session-file so when restoring
+    -- and a swap has been changed we get an error messsage and the restoration "fails"
+    -- or at least my custom shortmess are not longer set...
+    -- use {
+    --   "rmagatti/auto-session",
+    --   config = function()
+    --     require("plugins.auto_sessions")
+    --   end
+    -- }
 
     -- LSP
     use {"kabouzeid/nvim-lspinstall"}
@@ -31,6 +50,15 @@ return require("packer").startup(
       "neovim/nvim-lspconfig",
       config = function()
         require("plugins.lsp")
+      end
+    }
+
+    -- Snippets
+    -- Custom snippets through lua-code
+    use {
+      "L3MON4D3/LuaSnip", -- Snippet engine
+      config = function()
+        require("plugins.luasnip")
       end
     }
     use {
@@ -202,22 +230,22 @@ return require("packer").startup(
     }
 
     -- TODO: change directory?
-    use {
-      "glepnir/dashboard-nvim",
-      config = function()
-        -- vim.g.dashboard_change_to_dir = 1
-        -- vim.g.dashboard_change_to_vcs = 1
-        vim.g.dashboard_default_executive = "telescope"
-        vim.g.dashboard_custom_section = {
-          a = {description = {"  Recents                   SPC f o"}, command = "Telescope oldfiles"},
-          b = {description = {"  Find File                 SPC f f"}, command = "Telescope find_files"},
-          d = {description = {"洛 New File                  SPC f n"}, command = "DashboardNewFile"},
-          e = {description = {"  Bookmarks                 SPC b m"}, command = "Telescope marks"},
-          f = {description = {"  Load Last Session         SPC l  "}, command = "SessionLoad"}
-        }
-        vim.g.dashboard_disable_at_vimenter = 1
-      end
-    }
+    -- use {
+    --   "glepnir/dashboard-nvim",
+    --   config = function()
+    --     -- vim.g.dashboard_change_to_dir = 1
+    --     -- vim.g.dashboard_change_to_vcs = 1
+    --     vim.g.dashboard_default_executive = "telescope"
+    --     vim.g.dashboard_custom_section = {
+    --       a = {description = {"  Recents                   SPC f o"}, command = "Telescope oldfiles"},
+    --       b = {description = {"  Find File                 SPC f f"}, command = "Telescope find_files"},
+    --       d = {description = {"洛 New File                  SPC f n"}, command = "DashboardNewFile"},
+    --       e = {description = {"  Bookmarks                 SPC b m"}, command = "Telescope marks"},
+    --       f = {description = {"  Load Last Session         SPC l  "}, command = "SessionLoad"}
+    --     }
+    --     vim.g.dashboard_disable_at_vimenter = 1
+    --   end
+    -- }
     -- NOTE:
     -- NON-LUA
     -- --------------------------------

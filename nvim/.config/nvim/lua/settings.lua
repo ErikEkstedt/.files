@@ -48,19 +48,9 @@ vim.opt.wrap = false
 vim.opt.wrap = false
 vim.opt.number = false -- set numbered lines
 vim.opt.relativenumber = false -- set relative number
-vim.opt.shortmess:append("m") -- Shortmess: help 'shortmess'. Vim default "filnxtToOF"
-vim.opt.shortmess:append("x")
-vim.opt.shortmess:append("c")
 vim.go.t_Co = "256" -- support 256 color
 vim.opt.updatetime = 1000
-
--- 'Sync' files between instances and ignore swap
--- https://youtu.be/fm33-Pas7vI?t=193
--- autocmd on focus, checktime, autoread
--- vim.cmd('set shortmess+=A')   -- ignoire annoying swapfile messages.
-vim.opt.shortmess:append("A")
-vim.o.autoread = true
-vim.cmd([[au FocusGained * silent! checktime]])
+vim.o.sessionoptions = "buffers,folds,help,tabpages,winsize,resize,winpos,terminal"
 
 -- Automatically resize when vim changes
 vim.cmd([[au VimResized * exe "normal! \<c-w>="]])
@@ -70,3 +60,17 @@ vim.cmd([[au! TextYankPost * silent! lua vim.highlight.on_yank {higroup="DiffAdd
 
 -- Remember line on exit/start. :he last-jump-position
 vim.cmd([[ au! BufReadPost * if line("'\"") > 0 && line ("'\"") <= line("$") | exe "normal! g'\"zz" | endif ]])
+
+-- Shortmess
+vim.opt.shortmess:append("m") -- Shortmess: help 'shortmess'. Vim default "filnxtToOF"
+vim.opt.shortmess:append("x")
+vim.opt.shortmess:append("c")
+
+-- 'Sync' files between instances and ignore swap
+-- https://youtu.be/fm33-Pas7vI?t=193
+-- autocmd on focus, checktime, autoread
+-- vim.cmd('set shortmess+=A')   -- ignoire annoying swapfile messages.
+vim.opt.shortmess:append("A")
+vim.o.autoread = true
+
+vim.cmd([[au FocusGained * silent! checktime]])

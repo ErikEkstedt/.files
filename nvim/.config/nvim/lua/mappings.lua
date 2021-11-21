@@ -11,8 +11,20 @@ vim.cmd([[map <expr> ' printf('`%c zz',getchar())]]) -- center screen when going
 vim.api.nvim_set_keymap("n", "vv", "V", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "V", "v$", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<localleader>pa", '"+p', {noremap = true, silent = true})
-vim.api.nvim_set_keymap("n", "<C-y>", '"+yy', {noremap = true, silent = true})
-vim.api.nvim_set_keymap("x", "<C-y>", '"+yy', {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap("n", "<C-y>", '"+yy', {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap("x", "<C-y>", '"+yy', {noremap = true, silent = true})
+vim.api.nvim_set_keymap(
+  "n",
+  "<C-y>",
+  "<cmd>lua require('utils').yank_current_line()<cr>",
+  {noremap = true, silent = true}
+)
+vim.api.nvim_set_keymap(
+  "x",
+  "<C-y>",
+  "<cmd>lua require('utils').yank_current_line()<cr>",
+  {noremap = true, silent = true}
+)
 
 -- Sane wrap movement
 vim.api.nvim_set_keymap("n", "j", "gj", {noremap = true, silent = true})
@@ -30,6 +42,7 @@ nnoremap <expr> j (v:count > 5 ? "m'" . v:count : '') . 'j'
 -- save/quit
 vim.api.nvim_set_keymap("n", "<C-s>", ":w<CR>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<C-q>", ":q!<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<M-q>", ":qa!<CR>", {noremap = true, silent = true})
 
 -- Move between splits
 -- see lua/plugins/tmux.lua

@@ -1,4 +1,5 @@
 -- Init.lua
+-- options/settings
 
 -- set mapleader early prior to plugins
 vim.g.mapleader = " "
