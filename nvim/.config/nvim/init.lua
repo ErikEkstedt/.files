@@ -1,5 +1,6 @@
 -- Init.lua
 -- options/settings
+require("session").setup()
 
 -- set mapleader early prior to plugins
 vim.g.mapleader = " "

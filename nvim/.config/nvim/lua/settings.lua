@@ -50,7 +50,7 @@ vim.opt.number = false -- set numbered lines
 vim.opt.relativenumber = false -- set relative number
 vim.go.t_Co = "256" -- support 256 color
 vim.opt.updatetime = 1000
-vim.o.sessionoptions = "buffers,folds,help,tabpages,winsize,resize,winpos,terminal"
+vim.o.sessionoptions = "buffers,help,tabpages,winsize,resize,winpos,terminal"
 
 -- Automatically resize when vim changes
 vim.cmd([[au VimResized * exe "normal! \<c-w>="]])

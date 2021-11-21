@@ -53,18 +53,11 @@ return require("packer").startup(
       end
     }
 
-    -- Snippets
-    -- Custom snippets through lua-code
-    use {
-      "L3MON4D3/LuaSnip", -- Snippet engine
-      config = function()
-        require("plugins.luasnip")
-      end
-    }
     use {
       "hrsh7th/nvim-cmp",
       requires = {
         "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-nvim-lua",
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-cmdline",
@@ -75,6 +68,15 @@ return require("packer").startup(
       },
       config = function()
         require("plugins.nvim-cmp")
+      end
+    }
+    -- Snippets
+    -- Custom snippets through lua-code
+    use {
+      "L3MON4D3/LuaSnip", -- Snippet engine
+      requires = {"saadparwaiz1/cmp_luasnip"},
+      config = function()
+        require("plugins.luasnip")
       end
     }
     use {"ray-x/lsp_signature.nvim"}

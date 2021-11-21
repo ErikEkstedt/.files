@@ -1,8 +1,12 @@
-require("luasnip/loaders/from_vscode").load() -- required for luasnip + friendly-snippets
-local luasnip = require "luasnip"
+-- local luasnip = require "luasnip"
+local expand_or_jump = require("luasnip").expand_or_jump
+local expand_or_jumpable = require("luasnip").expand_or_jumpable
+local lsp_expand = require("luasnip").lsp_expand
 local cmp = require "cmp"
 
 vim.o.completeopt = "menu,menuone,noselect"
+vim.api.nvim_set_keymap("v", "<Tab>", ">gv", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("v", "<S-Tab>", "<gv", {noremap = true, silent = true})
 
 local has_words_before = function()
   if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
@@ -12,13 +16,6 @@ local has_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
-local feedkey = function(key)
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), "i", true)
-end
-
-vim.api.nvim_set_keymap("v", "<Tab>", ">gv", {noremap = true})
-vim.api.nvim_set_keymap("v", "<S-Tab>", "<gv", {noremap = true})
-
 local mapping = {
   ["<C-d>"] = cmp.mapping.scroll_docs(-4),
   ["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -27,10 +24,10 @@ local mapping = {
   ["<localleader><localleader>"] = cmp.mapping.confirm({select = true}),
   ["<C-l>"] = cmp.mapping(
     function(fallback)
-      if cmp.visible() then
+      if expand_or_jumpable() then
+        expand_or_jump()
+      elseif cmp.visible() then
         cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
       elseif has_words_before() then
         cmp.complete()
       else
@@ -56,8 +53,8 @@ local mapping = {
 }
 
 local sources = {
+  {name = "luasnip", keyword_length = 2, priority = 99},
   {name = "path"},
-  {name = "luasnip", keyword_length = 2},
   {name = "nvim_lua"},
   {name = "nvim_lsp", keyword_length = 2, max_item_count = 20},
   {name = "cmdline"},
@@ -84,7 +81,7 @@ cmp.setup(
   {
     snippet = {
       expand = function(args)
-        luasnip.lsp_expand(args.body)
+        lsp_expand(args.body)
       end
     },
     mapping = mapping,
@@ -95,40 +92,17 @@ cmp.setup(
       ghost_text = true
     },
     documentation = {
-      border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"}
-      -- winhighlight = "Normal:DocumentNormal,NormalNC:DocumentNC"
+      border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"},
+      winhighlight = "FloatBorder:DocumentNC,Normal:Normal"
     }
   }
 )
-
-local sn = luasnip.snippet
-local t = luasnip.text_node
-local i = luasnip.insert_node
-
-luasnip.snippets = {
-  python = {
-    luasnip.parser.parse_snippet("printshape", 'print("${1:x}: ", tuple(${1:x}.shape)'),
-    sn(
-      "printdict",
-      {
-        t("for k, v in "),
-        i(1),
-        t({".items():", "\t"}),
-        t('print(f"{k}: {v}")')
-      }
-    ),
-    luasnip.parser.parse_snippet("fig", "fig, ax = plt.subplots(${1:1}, ${2:1})")
-  }
-}
-
 -- nvim-cmp highlight groups.
+vim.cmd("hi DocumentNC guifg=#F70067")
+
 local Group = require("colorbuddy.group").Group
-local Color = require("colorbuddy.color").Color
 local g = require("colorbuddy.group").groups
 local s = require("colorbuddy.style").styles
-
--- Group.new("DocumentNormal", Color.new("fgg", "#fafafa"), Color.new("bgg", "#000000"))
--- Group.new("DocumentNc", Color.new("fgg", "#fafafa"), Color.new("bgg", "#000000"))
 Group.new("CmpItemAbbr", g.Comment)
 Group.new("CmpItemAbbrMatch", g.Normal, nil, s.bold)
 Group.new("CmpItemAbbrDeprecated", g.Error)
