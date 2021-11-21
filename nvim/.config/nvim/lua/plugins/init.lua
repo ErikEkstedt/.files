@@ -43,6 +43,7 @@ return require("packer").startup(
     --     require("plugins.auto_sessions")
     --   end
     -- }
+    -- Using custom session-plugin in `lua/session.lua` (dependencies plenary, notify)
 
     -- LSP
     use {"kabouzeid/nvim-lspinstall"}
@@ -119,13 +120,6 @@ return require("packer").startup(
       "ggandor/lightspeed.nvim",
       requires = "tpope/vim-repeat"
     }
-    -- use {
-    --   "phaazon/hop.nvim",
-    --   config = function()
-    --     require("plugins.hop")
-    --   end
-    -- }
-    -- use {"folke/which-key.nvim", config = function() require('plugins.whichkey') end}
     use {
       "folke/todo-comments.nvim",
       requires = "nvim-lua/plenary.nvim",
@@ -231,35 +225,10 @@ return require("packer").startup(
       requires = {"kyazdani42/nvim-web-devicons", opt = true}
     }
 
-    -- TODO: change directory?
-    -- use {
-    --   "glepnir/dashboard-nvim",
-    --   config = function()
-    --     -- vim.g.dashboard_change_to_dir = 1
-    --     -- vim.g.dashboard_change_to_vcs = 1
-    --     vim.g.dashboard_default_executive = "telescope"
-    --     vim.g.dashboard_custom_section = {
-    --       a = {description = {"  Recents                   SPC f o"}, command = "Telescope oldfiles"},
-    --       b = {description = {"  Find File                 SPC f f"}, command = "Telescope find_files"},
-    --       d = {description = {"洛 New File                  SPC f n"}, command = "DashboardNewFile"},
-    --       e = {description = {"  Bookmarks                 SPC b m"}, command = "Telescope marks"},
-    --       f = {description = {"  Load Last Session         SPC l  "}, command = "SessionLoad"}
-    --     }
-    --     vim.g.dashboard_disable_at_vimenter = 1
-    --   end
-    -- }
-    -- NOTE:
     -- NON-LUA
     -- --------------------------------
     use "wellle/targets.vim" -- NON-LUA: ci' works on (, [, {, < on entire line
     use {"mg979/vim-visual-multi", branch = "master"} -- NON-LUA
-    -- use {
-    --   "mhinz/vim-startify",
-    --   config = function()
-    --     vim.g.startify_change_to_dir = 0
-    --     vim.g.startify_change_to_vcs_root = 1
-    --   end
-    -- }
     use {
       "KabbAmine/vCoolor.vim",
       config = function()
