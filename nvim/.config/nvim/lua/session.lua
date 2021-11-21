@@ -68,7 +68,7 @@ end
 
 function M.setup(opts)
   -- update config
-  if not vim.F.if_nil then
+  if opts then
     for option, value in pairs(opts) do
       M.config[option] = value
     end
@@ -216,8 +216,15 @@ function M.SessionLoad()
   -- messy code to get the filepath
   -- Path can probably be used better
   local session_filename = M.dir_to_filename(session_cwd)
-  local sessions_root = Path:new(vim.fn.expand(config["root"]))
-  local session_filepath = sessions_root:joinpath(session_filename).filename .. config.ext
+  local session_root = Path:new(vim.fn.expand(config["root"]))
+
+  -- abort if session_root is not yet created
+  if not session_root:exists() then
+    return nil
+  end
+
+  -- if not sessions_root
+  local session_filepath = session_root:joinpath(session_filename).filename .. config.ext
   session_filepath = Path:new(session_filepath)
 
   -- abort if the file don't exist or isn't readable
@@ -247,7 +254,6 @@ function M.SessionList()
   -- list the sessions in config['root']
   -- Show the cwd path and/or the session_filepath
   local text = ""
-  -- local sessions = scan.scan_dir(config["root"], {hidden = true, depth = 1})
   for _, path in ipairs(scan.scan_dir(config["root"], {hidden = true, depth = 1})) do
     path = path:gsub(config["root"] .. "/", "")
     path = M.filename_to_dir(path)
@@ -294,5 +300,4 @@ end
 -- Extension
 -- autocomplete arguments to SessionLoad that searches the `session_root` and populates entries
 -- with their real path-names but then finds the corresponding session_path
-
 return M
