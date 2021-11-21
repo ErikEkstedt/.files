@@ -1,7 +1,13 @@
 local Job = require "plenary.job"
 local Path = require "plenary.path"
 local scan = require "plenary.scandir"
-local notify = require("notify")
+-- local notify = require("notify")
+
+local success, notify = pcall(require, "notify")
+
+if not success then
+  notify = nil
+end
 
 local global_variable_prefix = "session_"
 local default_session_root = vim.fn.stdpath("config") .. "/sessions"
