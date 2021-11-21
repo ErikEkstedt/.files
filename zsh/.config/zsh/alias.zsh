@@ -2,7 +2,8 @@
 alias ez="v ~/.files/zsh/.config/zsh/.zshrc"
 
 # nvim
-alias v="nvim -c 'SessionLoad'"
+alias v="nvim"
+alias vs="nvim -c 'SessionLoad'"
 alias vf="nvim -c 'Telescope find_files hidden=true'"
 alias vno="nvim -c 'Telescope find_files hidden=true cwd=~/zettelkasten'"
 
