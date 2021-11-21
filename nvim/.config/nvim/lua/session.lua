@@ -156,7 +156,7 @@ function M.swap_session_file_post_fix(filepath)
   Job:new(
     {
       command = "sed",
-      args = {"-i", "s/shortmess.aoO/shortmess=aoOA/g", filepath},
+      args = {"-in", "s/shortmess.aoO/shortmess=aoOA/g", filepath},
       on_stderr = function(j)
         notify("sed on_stderr" .. filepath, "error", {title = "Session sed", timeout = 1000})
       end
