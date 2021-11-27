@@ -1,35 +1,46 @@
 -- local luasnip = require "luasnip"
 local expand_or_jump = require("luasnip").expand_or_jump
-local expand_or_jumpable = require("luasnip").expand_or_jumpable
+local expand_or_jumpable = require("luasnip").expand_or_locally_jumpable
+local jump = require("luasnip").jump
 local lsp_expand = require("luasnip").lsp_expand
 local cmp = require "cmp"
 
 vim.o.completeopt = "menu,menuone,noselect"
-vim.api.nvim_set_keymap("v", "<Tab>", ">gv", {noremap = true, silent = true})
-vim.api.nvim_set_keymap("v", "<S-Tab>", "<gv", {noremap = true, silent = true})
 
-local has_words_before = function()
-  if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
-    return false
-  end
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
+-- local has_words_before = function()
+--   if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+--     return false
+--   end
+--   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+--   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+-- end
 
 local mapping = {
   ["<C-d>"] = cmp.mapping.scroll_docs(-4),
   ["<C-f>"] = cmp.mapping.scroll_docs(4),
   ["<C-e>"] = cmp.mapping.close(),
-  ["<CR>"] = cmp.mapping.confirm({select = true}),
+  ["<CR>"] = cmp.mapping(
+    {
+      i = cmp.mapping.confirm({select = true}),
+      c = cmp.mapping.confirm({select = false})
+    }
+  ),
+  -- ["<CR>"] = cmp.mapping.confirm({select = true}),
   ["<localleader><localleader>"] = cmp.mapping.confirm({select = true}),
-  ["<C-l>"] = cmp.mapping(
+  ["<C-k>"] = cmp.mapping(
     function(fallback)
       if expand_or_jumpable() then
         expand_or_jump()
-      elseif cmp.visible() then
-        cmp.select_next_item()
-      elseif has_words_before() then
-        cmp.complete()
+      else
+        fallback() -- The fallback function sends
+      end
+    end,
+    {"i", "s"}
+  ),
+  ["<C-j>"] = cmp.mapping(
+    function(fallback)
+      if expand_or_jumpable() then
+        jump(-1)
       else
         fallback() -- The fallback function sends
       end
@@ -51,7 +62,6 @@ local mapping = {
     end
   end
 }
-
 local sources = {
   {name = "luasnip", keyword_length = 2, priority = 99},
   {name = "path"},

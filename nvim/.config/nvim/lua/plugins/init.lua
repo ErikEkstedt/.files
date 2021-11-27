@@ -31,22 +31,8 @@ return require("packer").startup(
       end
     }
 
-    -- I want to use it but does not work with swap files
-    -- :help mksession
-    -- does not provide any useful information. It seems like mksession by
-    -- default uses 'cpo=aoO' in the saved session-file so when restoring
-    -- and a swap has been changed we get an error messsage and the restoration "fails"
-    -- or at least my custom shortmess are not longer set...
-    -- use {
-    --   "rmagatti/auto-session",
-    --   config = function()
-    --     require("plugins.auto_sessions")
-    --   end
-    -- }
-    -- Using custom session-plugin in `lua/session.lua` (dependencies plenary, notify)
-
     -- LSP
-    use {"kabouzeid/nvim-lspinstall"}
+    use {"williamboman/nvim-lsp-installer"}
     use {
       "neovim/nvim-lspconfig",
       config = function()
@@ -65,7 +51,8 @@ return require("packer").startup(
         "saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
         "L3MON4D3/LuaSnip", -- Snippet engine
         "rafamadriz/friendly-snippets", --snippet collections
-        "onsails/lspkind-nvim" -- Pretty symbols for lsp
+        "onsails/lspkind-nvim", -- Pretty symbols for lsp
+        "ray-x/lsp_signature.nvim"
       },
       config = function()
         require("plugins.nvim-cmp")
@@ -80,7 +67,6 @@ return require("packer").startup(
         require("plugins.luasnip")
       end
     }
-    use {"ray-x/lsp_signature.nvim"}
 
     -- Treesitter
     use {
@@ -162,7 +148,8 @@ return require("packer").startup(
         require("plugins.indent-blankline")
       end
     }
-
+    -- show registers in floating window
+    use "tversteeg/registers.nvim"
     -- Fuzzy Finding
     use {
       "kyazdani42/nvim-tree.lua",

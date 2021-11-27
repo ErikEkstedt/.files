@@ -10,7 +10,7 @@ local lazygit =
     direction = "float",
     float_opts = {
       border = "single",
-      height = math.floor(vim.o.lines * .8)
+      height = math.floor(vim.o.lines * .9)
       -- width = math.floor(vim.o.columns * .9)
     }
   }

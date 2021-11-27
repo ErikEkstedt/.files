@@ -5,14 +5,19 @@
 -- vim.api.nvim_set_keymap('n', '<Leader>t', ':echo "testMapping"<CR>', {noremap=true})
 
 -- TRIALS
-vim.cmd([[map <expr> ' printf('`%c zz',getchar())]]) -- center screen when going to a mark
+-- vim.cmd([[map <expr> ' printf('`%c zz',getchar())]]) -- center screen when going to a mark
+
+-- TAB
+vim.api.nvim_set_keymap("v", "<Tab>", ">gv", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("v", "<S-Tab>", "<gv", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<Tab>", "v>gv<esc>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<S-Tab>", "v<gv<esc>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("i", "<S-Tab>", "<esc><<I", {noremap = true, silent = true})
 
 -- NORMAL
 vim.api.nvim_set_keymap("n", "vv", "V", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "V", "v$", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<localleader>pa", '"+p', {noremap = true, silent = true})
--- vim.api.nvim_set_keymap("n", "<C-y>", '"+yy', {noremap = true, silent = true})
--- vim.api.nvim_set_keymap("x", "<C-y>", '"+yy', {noremap = true, silent = true})
 vim.api.nvim_set_keymap(
   "n",
   "<C-y>",
@@ -70,8 +75,8 @@ vim.api.nvim_set_keymap("n", "<C-Down>", ":resize +3<CR>", {noremap = true, sile
 vim.api.nvim_set_keymap("n", "<C-Up>", ":resize -3<CR>", {noremap = true, silent = true})
 
 -- Jumplist focus
-vim.api.nvim_set_keymap("n", "<C-o>", "<C-o>zz", {noremap = true, silent = true})
-vim.api.nvim_set_keymap("n", "<C-i>", "<C-i>zz", {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap("n", "<C-o>", "<C-o>zz", {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap("n", "<C-i>", "<C-i>zz", {noremap = true, silent = true})
 
 -- Goto next under cursor
 vim.api.nvim_set_keymap("n", "gn", "*zvzz", {noremap = true, silent = true})
