@@ -11,9 +11,44 @@ local c = ls.choice_node
 local d = ls.dynamic_node
 local fmt = require("luasnip.extras.fmt").fmt
 local events = require("luasnip.util.events")
+local get_docstring_arguments = require("treesitter_snippet").get_docstring_arguments
 
 local function copy(args)
   return args[1]
+end
+
+local function get_docstring(args, snip)
+  local docstring = {}
+  local ft = vim.api.nvim_buf_get_option(0, "ft")
+  -- local comment = vim.api.nvim_buf_get_option(0, "comments")
+  local data = get_docstring_arguments()
+
+  -- get start comments for specific lang
+  if ft == "lua" then
+    table.insert(docstring, "--[[")
+  elseif ft == "python" then
+    table.insert(docstring, '"""')
+  else
+    print("Not implemented for ft=" .. ft)
+    return nil
+  end
+
+  table.insert(docstring, "Name: " .. data["identifier"])
+  table.insert(docstring, "Args:")
+
+  for _, p in pairs(data["params"]) do
+    if p ~= "self" then
+      table.insert(docstring, "\t" .. p .. ":")
+    end
+  end
+
+  -- get end comments for specific lang
+  if ft == "lua" then
+    table.insert(docstring, "--]]")
+  elseif ft == "python" then
+    table.insert(docstring, '"""')
+  end
+  return docstring
 end
 
 -- I believe LuaSnip does not unlink a snippet
@@ -62,12 +97,14 @@ snippet_table.python = {
         print(f"{k}: {v}")
     ]]
   ),
-  ls.parser.parse_snippet("fig", "fig, ax = plt.subplots(${1:1}, ${2:1})")
+  ls.parser.parse_snippet("fig", "fig, ax = plt.subplots(${1:1}, ${2:1})"),
+  snippet("docstring", {f(get_docstring, {}), i(0)})
 }
 
 snippet_table.lua = {
   ls.parser.parse_snippet("dn", 'require("utils").DN(${1})'),
   ls.parser.parse_snippet("print", 'print("${1}: " .. vim.inspect(${1}))'),
+  snippet("docstring", {f(get_docstring, {}), i(0)}),
   snippet(
     "req",
     fmt(
