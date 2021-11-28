@@ -7,7 +7,6 @@ vim.g.maplocalleader = ","
 
 -- Load plugins (specific plugin settings lua/plugins/<plugName>.lua)
 require("plugins")
-require("plugins.nvim-bufferline") -- Error in packercompile
 
 -- options/settings
 require("settings")

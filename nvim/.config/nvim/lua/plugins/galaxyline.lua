@@ -58,15 +58,25 @@ local mode_color = {
   t = colors.blue
 }
 
+-- local alias = {
+--   n = "NORMAL",
+--   i = "INSERT",
+--   c = "COMMAND",
+--   v = "VISUAL",
+--   V = "VISUAL",
+--   R = "Replace",
+--   t = "Term",
+--   [""] = "V-BLOCK"
+-- }
 local alias = {
-  n = "NORMAL",
-  i = "INSERT",
-  c = "COMMAND",
-  v = "VISUAL",
-  V = "VISUAL",
-  R = "Replace",
-  t = "Term",
-  [""] = "V-BLOCK"
+  n = "N",
+  i = "I",
+  c = "C",
+  v = "V",
+  V = "V",
+  R = "R",
+  t = "T",
+  [""] = "VB"
 }
 
 table.insert(
@@ -75,15 +85,15 @@ table.insert(
     ViMode = {
       provider = function()
         -- auto change color according the vim mode
-        vim.api.nvim_command("hi GalaxyViMode guibg=" .. mode_color[vim.fn.mode()])
+        vim.api.nvim_command("hi GalaxyViMode guibg=" .. mode_color[vim.fn.mode()] .. " gui=bold")
         local tmp_alias = alias[vim.fn.mode()]
         if tmp_alias == nil then
           tmp_alias = vim.fn.mode()
         end
         local ret = "  " .. tmp_alias .. " "
-        if string.len(ret) < 10 then
-          ret = ret .. " "
-        end
+        -- if string.len(ret) < 10 then
+        --   ret = ret .. " "
+        -- end
         return ret
       end,
       separator = " ",
@@ -99,7 +109,8 @@ table.insert(
     FileIcon = {
       provider = "FileIcon",
       condition = buffer_not_empty,
-      highlight = {require("galaxyline.provider_fileinfo").get_file_icon_color, colors.bg}
+      -- highlight = {require("galaxyline.provider_fileinfo").get_file_icon_color, colors.bg}
+      highlight = {colors.blue, colors.bg}
     }
   }
 )
@@ -108,9 +119,19 @@ table.insert(
   gls.left,
   {
     FileName = {
-      provider = {"FileName"},
+      provider = function()
+        local ft = vim.api.nvim_buf_get_option(0, "ft")
+        if ft == "help" then
+          return "help/" .. vim.fn.expand("%:t")
+        end
+        local fp = vim.fn.expand("%")
+        local home = vim.fn.expand("$HOME")
+        fp = fp:gsub(home, "~")
+        return fp
+      end,
+      -- provider = {"FileName"},
       condition = buffer_not_empty,
-      highlight = {colors.magenta, colors.bg}
+      highlight = {colors.blue, colors.bg}
     }
   }
 )
@@ -125,7 +146,7 @@ table.insert(
       condition = condition.check_git_workspace,
       separator = "",
       separator_highlight = {"NONE", colors.bg},
-      highlight = {colors.orange, colors.bg}
+      highlight = {colors.magenta, colors.bg}
     }
   }
 )
@@ -138,7 +159,7 @@ table.insert(
       condition = condition.check_git_workspace,
       separator = " ",
       separator_highlight = {"NONE", colors.bg},
-      highlight = {colors.orange, colors.bg}
+      highlight = {colors.magenta, colors.bg}
     }
   }
 )
@@ -324,7 +345,10 @@ table.insert(
   {
     Tabstop = {
       provider = function()
-        return "Spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth") .. " "
+        local s = vim.api.nvim_buf_get_option(0, "shiftwidth")
+        local t = vim.api.nvim_buf_get_option(0, "tabstop")
+
+        return "S: " .. s .. " T: " .. t .. " "
       end,
       condition = condition.hide_in_width,
       separator = "|",
@@ -373,6 +397,8 @@ table.insert(
   {
     scroll = {
       provider = scrollbar,
+      -- highlight = "VertSplit",
+      highlight = {colors.blue, colors.bg},
       highlight = "VertSplit",
       separator = " |",
       separator_highlight = {colors.separator_fg, colors.bg}
