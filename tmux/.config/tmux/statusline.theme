@@ -10,9 +10,13 @@ side_color='#e75746'
 side_color='#e2b957'
 %endif
 
-sep_symbol_left=""
-sep_symbol_left_alt=""
-sep_symbol_right=""
+# sep_right=""
+# sep_symbol_left_alt=""
+# sep_left=""
+
+sep_right=""
+sep_symbol_left_alt=""
+sep_left=""
 
 
 set -g message-command-style "fg=$separator_color,bg=$window_status_bg2"
@@ -33,30 +37,31 @@ setw -g window-status-separator ""
 setw -g window-status-style "none,fg=$side_color,bg=$separator_color"
 
 # Left side ==========================================================================
-left1="#[fg=$side_text,bg=$side_color,bold] #S "
-left2="#[fg=$side_color,bg=$window_bg]"
-set -g status-left "$left1$left2"
+left0="#[fg=$side_color,bg=$window_bg]$sep_left"
+left1="#[fg=$side_text,bg=$side_color,bold]#S"
+left2="#[fg=$side_color,bg=$window_bg]$sep_right"
+set -g status-left "$left0$left1$left2 "
 
-other_start="#[fg=$window_bg,bg=$window_status_bg2]$sep_symbol_left"
+# Tabs =====================================================================
+# current tab
+cur_start="#[fg=$window_status_bg_curr,bg=$window_bg]"$sep_left
+cur_text="#[fg=$current_text,bg=$window_status_bg_curr,bold]#I:#W "
+cur_end="#[fg=$window_status_bg_curr,bg=$window_bg]"$sep_right
+setw -g window-status-current-format "$cur_start$cur_text$cur_end "
+
+# Other tabs
+other_start="#[fg=$window_status_bg2,bg=$window_bg]"$sep_left
 other_text="#[fg=$other_text,bg=$window_status_bg2]#I:#W " 
-other_end="#[fg=$window_status_bg2,bg=$window_bg]"
-setw -g window-status-format "$other_start $other_text $other_end"
+other_end="#[fg=$window_status_bg2,bg=$window_bg]$sep_right"
+setw -g window-status-format "$other_start$other_text$other_end "
 
-cur="#[fg=$window_bg,bg=$window_status_bg_curr]"
-cur2="#[fg=$current_text,bg=$window_status_bg_curr,bold]#I:#W "
-cur3="#[fg=$window_status_bg_curr,bg=$window_bg]"
-setw -g window-status-current-format "$cur $cur2 $cur3"
 
 
 # Right side =========================================================================
-# right1="#[fg=$window_status_bg2,bg=$window_bg]"
-# time_date=$sep_right"#[fg=$separator_color,bg=$window_status_bg2] %Y-%m-%d  %H:%M "
-# set -g status-right "#[fg=$window_status_bg2,bg=$window_bg]#[fg=$separator_color,bg=$window_status_bg2] %Y-%m-%d  %H:%M #[fg=$side_color,bg=$window_status_bg2,nobold,nounderscore,noitalics]#[fg=$window_status_bg,bg=$side_color,bold] #h "
-# sep_right_color="#[fg=$window_status_bg2,bg=$window_bg]"
-# sep_right=$sep_right_color$sep_symbol_right
-sep_right_most="#[fg=$side_color,bg=$window_bg]"$sep_symbol_right
-hostname=$sep_right_most"#[fg=$side_text,bg=$side_color,bold] #h "
-set -g status-right "$hostname"
+hostname_left="#[fg=$side_color,bg=$window_bg]"$sep_left
+hostname="#[fg=$side_text,bg=$side_color,bold] #h "
+hostname_right="#[fg=$side_color,bg=$window_bg]"$sep_right
+set -g status-right "$hostname_left$hostname$hostname_right"
 
 
 #D   Unique pane ID
