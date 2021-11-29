@@ -210,12 +210,11 @@ return require("packer").startup(
       end
     }
     use {
-      "glepnir/galaxyline.nvim",
-      branch = "main",
+      "nvim-lualine/lualine.nvim",
+      requires = {"kyazdani42/nvim-web-devicons", opt = true},
       config = function()
-        require "plugins.galaxyline"
-      end,
-      requires = {"kyazdani42/nvim-web-devicons", opt = true}
+        require("plugins.lualine")
+      end
     }
 
     -- NON-LUA
