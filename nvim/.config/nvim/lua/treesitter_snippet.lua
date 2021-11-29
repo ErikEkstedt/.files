@@ -1,5 +1,4 @@
 local ts_utils = require "nvim-treesitter.ts_utils"
-local DN = require("utils").DN
 
 local M = {}
 

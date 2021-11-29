@@ -3,6 +3,40 @@ local gls = gl.section
 local condition = require "galaxyline.condition"
 gl.short_line_list = {"NvimTree", "vista", "dbui", "packer"}
 
+local function split_string(inputstr, sep)
+  if sep == nil then
+    sep = "%s"
+  end
+  local t = {}
+  for str in string.gmatch(inputstr, "([^" .. sep .. "]+)") do
+    table.insert(t, str)
+  end
+  return t
+end
+
+local function join_string_table(inputstr, sep)
+  local out_string = ""
+  for index, value in ipairs(inputstr) do
+    if index == #inputstr then
+      out_string = out_string .. value
+    else
+      out_string = out_string .. value .. sep
+    end
+  end
+  return out_string
+end
+
+local function get_table_range(t, start, stop)
+  if stop <= 0 then
+    stop = #t
+  end
+  local l = {}
+  for i = start, stop do
+    table.insert(l, t[i])
+  end
+  return l
+end
+
 local colors = {
   bg = "#383c44",
   bgOne = "#303030",
@@ -124,9 +158,28 @@ table.insert(
         if ft == "help" then
           return "help/" .. vim.fn.expand("%:t")
         end
+        local width = vim.fn.winwidth(0)
+        local max = width - 65
         local fp = vim.fn.expand("%")
         local home = vim.fn.expand("$HOME")
         fp = fp:gsub(home, "~")
+
+        if #fp > max + 1 then
+          local split = split_string(fp, "/")
+          local i = 1
+          local tmp_split = get_table_range(split, i, -1)
+          local tmp = join_string_table(tmp_split, "/")
+          while #tmp >= max do
+            i = i + 1
+            tmp_split = get_table_range(split, i, -1)
+            tmp = join_string_table(tmp_split, "/")
+            if #tmp == 0 then
+              tmp = vim.fn.expand("%:t")
+              break
+            end
+          end
+          fp = tmp
+        end
         return fp
       end,
       -- provider = {"FileName"},
@@ -321,7 +374,8 @@ table.insert(
     VirtualEnv = {
       provider = PythonEnv,
       event = "BufEnter",
-      highlight = {colors.green, colors.bg}
+      highlight = {colors.green, colors.bg},
+      condition = condition.hide_in_width
     }
   }
 )
@@ -334,6 +388,7 @@ table.insert(
     LineInfo = {
       provider = "LineColumn",
       separator = " |",
+      condition = condition.hide_in_width,
       separator_highlight = {colors.separator_fg, colors.bg},
       highlight = {colors.grey, colors.bg}
     }
@@ -399,7 +454,7 @@ table.insert(
       provider = scrollbar,
       -- highlight = "VertSplit",
       highlight = {colors.blue, colors.bg},
-      highlight = "VertSplit",
+      condition = condition.hide_in_width,
       separator = " |",
       separator_highlight = {colors.separator_fg, colors.bg}
     }
