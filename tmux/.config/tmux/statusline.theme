@@ -1,5 +1,8 @@
-## Default
+# Statusline
+# Different themes sets the colors and at the end of the theme script they call this statusline script
 
+# Change main color (side color) dependent on the hostname
+# (to see a difference when working on servers)
 %if #{==:#{host},erik-KTH-Desktop}
 side_color='#285398'
 %elif #{==:#{host},KTHBox}
@@ -10,17 +13,11 @@ side_color='#e75746'
 side_color='#e2b957'
 %endif
 
-# sep_right=""
-# sep_symbol_left_alt=""
-# sep_left=""
 
-sep_right=""
-sep_symbol_left_alt=""
-sep_left=""
-
-
-set -g message-command-style "fg=$separator_color,bg=$window_status_bg2"
-set -g message-style "fg=$separator_color,bg=$window_status_bg2"
+# General settings
+hi_message="fg=$separator_color,bg=$window_status_bg2"
+set -g message-command-style $hi_message
+set -g message-style $hi_message
 set -g pane-active-border-style "fg=$side_color"
 set -g pane-border-style "fg=$window_status_bg2"
 
@@ -34,35 +31,47 @@ set -g status-style "none,bg=$window_bg"
 
 setw -g window-status-activity-style "none"
 setw -g window-status-separator ""
-setw -g window-status-style "none,fg=$side_color,bg=$separator_color"
+# setw -g window-status-style "none,fg=$side_color,bg=$separator_color"
+
+
+# Highlights: using colors and define fg, bg colors
+hi_side="#[fg=$side_color,bg=$window_bg]"
+hi_side_text="#[fg=$side_text,bg=$side_color,bold]"
+hi_tab_cur="#[fg=$window_status_bg_curr,bg=$window_bg]"
+hi_tab_cur_text="#[fg=$current_text,bg=$window_status_bg_curr,bold]"
+hi_tab="#[fg=$window_status_bg2,bg=$window_bg]"
+hi_tab_text="#[fg=$other_text,bg=$window_status_bg2]"
+
+# Separators
+sep_left=""
+sep_right=""
+sep_symbol_left_alt=""
 
 # Left side ==========================================================================
-left0="#[fg=$side_color,bg=$window_bg]$sep_left"
-left1="#[fg=$side_text,bg=$side_color,bold]#S"
-left2="#[fg=$side_color,bg=$window_bg]$sep_right"
-set -g status-left "$left0$left1$left2 "
-
-# Tabs =====================================================================
-# current tab
-cur_start="#[fg=$window_status_bg_curr,bg=$window_bg]"$sep_left
-cur_text="#[fg=$current_text,bg=$window_status_bg_curr,bold]#I:#W "
-cur_end="#[fg=$window_status_bg_curr,bg=$window_bg]"$sep_right
-setw -g window-status-current-format "$cur_start$cur_text$cur_end "
-
-# Other tabs
-other_start="#[fg=$window_status_bg2,bg=$window_bg]"$sep_left
-other_text="#[fg=$other_text,bg=$window_status_bg2]#I:#W " 
-other_end="#[fg=$window_status_bg2,bg=$window_bg]$sep_right"
-setw -g window-status-format "$other_start$other_text$other_end "
-
-
+ls_left=$hi_side$sep_left
+ls_text=$hi_side_text"#S"
+ls_right=$hi_side$sep_right
+set -g status-left $ls_left$ls_text$ls_right" "
 
 # Right side =========================================================================
-hostname_left="#[fg=$side_color,bg=$window_bg]"$sep_left
-hostname="#[fg=$side_text,bg=$side_color,bold] #h "
-hostname_right="#[fg=$side_color,bg=$window_bg]"$sep_right
-set -g status-right "$hostname_left$hostname$hostname_right"
+rs_left=$hi_side$sep_left
+rs_text=$hi_side_text"#h"
+rs_right=$hi_side$sep_right
+set -g status-right $rs_left$rs_text$rs_right
 
+
+# Tabs =====================================================================
+# Current tab
+tab_cur_left=$hi_tab_cur$sep_left
+tab_cur_text=$hi_tab_cur_text"#I:#W "
+tab_cur_right=$hi_tab_cur$sep_right" "
+setw -g window-status-current-format $tab_cur_left$tab_cur_text$tab_cur_right
+
+# Other tabs
+tab_left=$hi_tab$sep_left
+tab_text=$hi_tab_text"#I:#W " 
+tab_right=$hi_tab$sep_right" "
+setw -g window-status-format $tab_left$tab_text$tab_right
 
 #D   Unique pane ID
 #F   Window flags
