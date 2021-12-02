@@ -1,6 +1,9 @@
 local neuron = require "neuron"
 local neuronDir = "~/zettelkasten"
 local Job = require("plenary/job")
+local no = {noremap = true, silent = true}
+local keymap = vim.api.nvim_set_keymap
+local buf_keymap = vim.api.nvim_buf_set_keymap
 
 -- these are all the default values
 neuron.setup {
@@ -11,7 +14,8 @@ neuron.setup {
   leader = "gz" -- the leader key to for all mappings, remember with 'go zettel'
 }
 
-function open_obsidian()
+local M = {}
+function M.open_obsidian()
   Job:new {
     command = "Obsidian",
     cwd = neuronDir
@@ -19,7 +23,7 @@ function open_obsidian()
 end
 
 -- Create a new zettelkasten/neuron file with a custom filename
-function neuronNewCustom()
+function M.neuronNewCustom()
   local buf = vim.api.nvim_create_buf(false, true) -- create new emtpy buffer
   vim.api.nvim_buf_set_option(buf, "bufhidden", "wipe")
   vim.api.nvim_buf_set_lines(buf, 0, 1, false, {"Filename:"})
@@ -80,21 +84,24 @@ end
 
 -- MAPPINGS
 -- See repo: https://github.com/oberblastmeister/neuron.nvim
+-- " find the backlinks of the current note all the note that link this note
+buf_keymap(0, "n", "gzb", "<cmd>lua require'neuron/telescope'.find_backlinks()<CR>", no)
 -- " create a new note
--- nnoremap <buffer> gzn <cmd>lua require'neuron/cmd'.new_edit(require'neuron'/config.neuron_dir)<CR>
-vim.api.nvim_set_keymap(
-  "n",
-  "gzN",
-  string.format("<cmd>lua require'neuron/cmd'.new_edit( '%s' )<CR>", neuronDir),
-  {noremap = true, silent = true}
-)
-vim.api.nvim_set_keymap("n", "gzn", "<cmd>lua neuronNewCustom()<CR>", {noremap = true})
--- gzn -> lua/plugin/neuronCustom.lua
---
+keymap("n", "gzz", "<cmd>lua require('telescope.builtin').find_files{cwd='~/zettelkasten'}<cr>", no)
+keymap("n", "gzN", string.format("<cmd>lua require'neuron/cmd'.new_edit( '%s' )<CR>", neuronDir), no)
+-- " insert the id of the note that is found
+keymap("n", "gzl", "<cmd>lua require'neuron/telescope'.find_zettels {insert = true}<CR>", no)
+-- Server/GUI: start the neuron server and render markdown, auto reload on save
+keymap("n", "gzs", "<cmd>lua require'neuron'.rib {address = '127.0.0.1:8200', verbose = true}<CR>", no)
+
+-- Custom
+-- New note
+keymap("n", "gzn", "<cmd>lua require('plugins.neuron').neuronNewCustom()<CR>", {noremap = true})
+-- Start Obsidian from inside neovim
+keymap("n", "gzo", "<cmd>lua require('plugins.neuron').open_obsidian()<CR>", no)
 
 -- click enter on [[my_link]] or [[[my_link]]] to enter it
 -- vim.api.nvim_set_keymap("n", "<CR>", '<cmd>lua require"neuron".enter_link()<CR>', {noremap = true, silent = true})
-
 -- " find your notes, click enter to create the note if there are not notes that match
 -- vim.api.nvim_set_keymap(
 --   "n",
@@ -102,32 +109,4 @@ vim.api.nvim_set_keymap("n", "gzn", "<cmd>lua neuronNewCustom()<CR>", {noremap =
 --   '<cmd>lua require"neuron/telescope".find_zettels()<CR>',
 --   {noremap = true, silent = true}
 -- )
-
--- " insert the id of the note that is found
-vim.api.nvim_set_keymap(
-  "n",
-  "gzl",
-  "<cmd>lua require'neuron/telescope'.find_zettels {insert = true}<CR>",
-  {noremap = true, silent = true}
-)
-
--- " find the backlinks of the current note all the note that link this note
-vim.api.nvim_buf_set_keymap(
-  0,
-  "n",
-  "gzb",
-  "<cmd>lua require'neuron/telescope'.find_backlinks()<CR>",
-  {noremap = true, silent = true}
-)
-
--- Server/GUI
--- " start the neuron server and render markdown, auto reload on save
-vim.api.nvim_set_keymap(
-  "n",
-  "gzs",
-  "<cmd>lua require'neuron'.rib {address = '127.0.0.1:8200', verbose = true}<CR>",
-  {noremap = true, silent = true}
-)
-
--- Start Obsidian from inside neovim
-vim.api.nvim_set_keymap("n", "gzo", "<cmd>lua open_obsidian()<CR>", {noremap = true, silent = true})
+return M

@@ -31,6 +31,34 @@ return require("packer").startup(
       end
     }
 
+    -- Fuzzy Finding
+    use {
+      "nvim-telescope/telescope.nvim",
+      requires = {
+        "nvim-lua/plenary.nvim"
+      },
+      config = function()
+        require("plugins.telescope")
+      end
+    }
+    use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
+    use {
+      "sudormrfbin/cheatsheet.nvim",
+      -- optional
+      requires = {
+        {"nvim-telescope/telescope.nvim"},
+        {"nvim-lua/popup.nvim"},
+        {"nvim-lua/plenary.nvim"}
+      }
+    }
+    use "junegunn/fzf.vim" -- NON-LUA
+    use {
+      "junegunn/fzf",
+      run = function()
+        vim.fn["fzf#install"]()
+      end
+    } -- NON-LUA
+
     -- LSP
     use {"williamboman/nvim-lsp-installer"}
     use {
@@ -151,7 +179,6 @@ return require("packer").startup(
     }
     -- show registers in floating window
     use "tversteeg/registers.nvim"
-    -- Fuzzy Finding
     use {
       "kyazdani42/nvim-tree.lua",
       requires = "kyazdani42/nvim-web-devicons",
@@ -159,32 +186,6 @@ return require("packer").startup(
         require("plugins.nvim-tree")
       end
     }
-    use {
-      "nvim-telescope/telescope.nvim",
-      requires = {
-        "nvim-lua/plenary.nvim"
-      },
-      config = function()
-        require("plugins.telescope")
-      end
-    }
-    use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
-    use {
-      "sudormrfbin/cheatsheet.nvim",
-      -- optional
-      requires = {
-        {"nvim-telescope/telescope.nvim"},
-        {"nvim-lua/popup.nvim"},
-        {"nvim-lua/plenary.nvim"}
-      }
-    }
-    use "junegunn/fzf.vim" -- NON-LUA
-    use {
-      "junegunn/fzf",
-      run = function()
-        vim.fn["fzf#install"]()
-      end
-    } -- NON-LUA
 
     -- Notetaking
     use {
