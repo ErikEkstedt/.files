@@ -1,3 +1,7 @@
+local utils = require("utils")
+local Job = require "plenary.job"
+
+local M = {}
 local colors = {
   green = "#95E454",
   blue = "#61afef",
@@ -17,7 +21,6 @@ local colors = {
   color8 = "#f07178",
   color9 = "#3e4b59"
 }
-
 local theme = {
   visual = {
     a = {fg = colors.bg, bg = colors.orange, gui = "bold"},
@@ -99,17 +102,76 @@ local function env_cleanup(venv)
 end
 
 -- PythonEnv
+local function get_pyright_env()
+  local repo_root = utils.get_git_root()
+  if not repo_root then
+    return nil
+  end
+
+  local pyright_path = repo_root .. "/pyrightconfig.json"
+
+  local body, ret
+  Job:new(
+    {
+      command = "cat",
+      args = {pyright_path},
+      on_exit = function(j, return_val)
+        ret = return_val
+        body = j:result()
+      end
+    }
+  ):sync() -- or start()
+
+  if ret ~= 0 then
+    return nil
+  end
+
+  local env = nil
+  for _, field in pairs(body) do
+    field = field:gsub("%s+", "")
+    if string.match(field, '"venv"') ~= nil then
+      env = utils.split_string(field, ":")[2]
+      env = env:gsub('"', ""):gsub(",", "")
+    end
+  end
+
+  if not env then
+    return nil
+  end
+
+  return env
+end
+
 local PythonEnv = function()
-  if vim.bo.filetype == "python" then
-    local venv = os.getenv "CONDA_DEFAULT_ENV"
-    if venv ~= nil then
-      return "   (" .. env_cleanup(venv) .. ")"
-    end
-    venv = os.getenv "VIRTUAL_ENV"
-    if venv ~= nil then
-      return "   (" .. env_cleanup(venv) .. ")"
-    end
+  if not vim.bo.filetype == "python" then
     return ""
+  end
+  local filename = vim.api.nvim_buf_get_name(0)
+  local prefix = " "
+  local suffix = ""
+
+  -- cache: important to not call "cat on every statusupdate"
+  if M[filename] then
+    return prefix .. M[filename] .. suffix
+  end
+
+  local pyright = get_pyright_env()
+  if pyright then
+    M[filename] = pyright
+    return prefix .. pyright .. suffix
+  end
+
+  local venv = os.getenv "CONDA_DEFAULT_ENV"
+  if venv ~= nil then
+    venv = env_cleanup(venv)
+    M[filename] = venv
+    return prefix .. venv .. suffix
+  end
+  venv = os.getenv "VIRTUAL_ENV"
+  if venv ~= nil then
+    venv = env_cleanup(venv)
+    M[filename] = venv
+    return prefix .. venv .. suffix
   end
   return ""
 end
@@ -215,18 +277,16 @@ local sections = {
   },
   lualine_x = {
     {
-      PythonEnv,
-      separator = {left = ""}
-    },
-    {
-      get_lsp_client,
-      separator = {left = ""},
-      icon = " "
-    },
-    {
       "diagnostics",
-      sources = {"nvim_lsp"}
-    }
+      sources = {"nvim_lsp"},
+      diagnostics_color = {
+        error = {fg = colors.red},
+        warn = {fg = colors.orange},
+        hint = {fg = colors.orange}
+      }
+    },
+    {PythonEnv},
+    {get_lsp_client, icon = " "}
   },
   lualine_y = {
     {"filetype", separator = {left = ""}, padding = {left = 0, right = 1}}
@@ -241,7 +301,7 @@ require "lualine".setup {
   options = {
     icons_enabled = true,
     theme = theme,
-    component_separators = "|",
+    component_separators = "",
     section_separators = {left = "", right = ""},
     disabled_filetypes = {},
     always_divide_middle = true
@@ -252,3 +312,5 @@ require "lualine".setup {
   tabline = {},
   extensions = {}
 }
+
+return M

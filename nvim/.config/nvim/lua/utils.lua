@@ -4,6 +4,17 @@ local notify = require("notify")
 local M = {}
 
 -- Helpers
+
+function M.split_string(inputstr, sep)
+  if sep == nil then
+    sep = "%s"
+  end
+  local t = {}
+  for str in string.gmatch(inputstr, "([^" .. sep .. "]+)") do
+    table.insert(t, str)
+  end
+  return t
+end
 function M.get_uname()
   return vim.fn.system("uname"):gsub("\n", "")
 end
