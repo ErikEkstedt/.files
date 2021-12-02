@@ -22,14 +22,10 @@ vim.g.BROWSER = "brave-browser"
 require("mappings")
 
 -- Set Colorscheme
--- require("colorbuddy").setup()
--- BUG: why does everything break if I don't load a colorscheme?
 require("colorbuddy").colorscheme("one_dark_custom")
 
 -- Custom Session (mksession, Auto-Session, etc)
 require("session").setup()
-
-vim.cmd("hi! StatusLine guibg=NONE")
 
 -- Cursor i want reversed colors but need to check kitty/tmux etc
 -- vim.opt.guicursor = "n-v-c-sm:block-Cursor,i-ci-ve:ver25,r-cr-o:hor20"
