@@ -14,12 +14,12 @@ require("bufferline").setup {
     max_name_length = 25,
     max_prefix_length = 15,
     tab_size = 22,
-    diagnostics = "nvim_lsp",
+    -- diagnostics = "nvim_lsp",
     show_buffer_close_icons = true,
     show_close_icon = true,
     show_tab_indicators = false,
     separator_style = "thin",
-    enforce_regular_tabs = false,
+    enforce_regular_tabs = true,
     always_show_bufferline = true
   },
   -- TODO: Not working: see :help bufferline-offset

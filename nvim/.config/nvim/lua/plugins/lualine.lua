@@ -23,16 +23,10 @@ local colors = {
 }
 local theme = {
   visual = {
-    a = {fg = colors.bg, bg = colors.orange, gui = "bold"},
-    x = {fg = colors.orange, bg = colors.bg, gui = "bold"},
-    y = {fg = colors.orange, bg = colors.bg, gui = "bold"},
-    z = {fg = colors.orange, bg = colors.bg, gui = "bold"}
+    a = {fg = colors.bg, bg = colors.orange, gui = "bold"}
   },
   replace = {
-    a = {fg = colors.bg, bg = colors.red, gui = "bold"},
-    x = {fg = colors.red, bg = colors.bg, gui = "bold"},
-    y = {fg = colors.red, bg = colors.bg, gui = "bold"},
-    z = {fg = colors.red, bg = colors.bg, gui = "bold"}
+    a = {fg = colors.bg, bg = colors.red, gui = "bold"}
   },
   inactive = {
     a = {fg = colors.color4, bg = colors.bg_inactive},
@@ -51,10 +45,7 @@ local theme = {
     z = {fg = colors.blue, bg = colors.bg, gui = "bold"}
   },
   insert = {
-    a = {fg = colors.color2, bg = colors.green, gui = "bold"},
-    x = {fg = colors.green, bg = colors.bg, gui = "bold"},
-    y = {fg = colors.green, bg = colors.bg, gui = "bold"},
-    z = {fg = colors.green, bg = colors.bg, gui = "bold"}
+    a = {fg = colors.color2, bg = colors.green, gui = "bold"}
   }
 }
 
@@ -276,15 +267,7 @@ local sections = {
     }
   },
   lualine_x = {
-    {
-      "diagnostics",
-      sources = {"nvim_lsp"},
-      diagnostics_color = {
-        error = {fg = colors.red},
-        warn = {fg = colors.orange},
-        hint = {fg = colors.orange}
-      }
-    },
+    {"diagnostics", sources = {"nvim_lsp"}},
     {PythonEnv},
     {get_lsp_client, icon = " "}
   },
