@@ -38,6 +38,38 @@ Color.new("special_grey", "#3b4048")
 Color.new("visual_grey", "#3e4452")
 Color.new("pmenu", "#333841")
 
+Color.new("dError", "#e06c75")
+Color.new("dWarning", "#d19a66")
+Color.new("dInformation", "#2480D5")
+Color.new("dHint", "#A9D987")
+-----------------------------
+--     LSP Highlighting    --
+-----------------------------
+Group.new("DiagnosticError", c.dError, c.none, no)
+Group.new("DiagnosticWarning", c.dWarning, c.none, no)
+Group.new("DiagnosticInformation", c.dInformation, c.none, no)
+Group.new("DiagnosticHint", c.dHint, c.none, no)
+-- Group.new("DiagnosticDefaultError", c.dError, c.none, no)
+-- Group.new("DiagnosticDefaultWarning", c.dWarning, c.none, no)
+-- Group.new("DiagnosticDefaultInformation", c.dInformation, c.none, no)
+-- Group.new("DiagnosticDefaultHint", c.dHint, c.none, no)
+-- Group.new("DiagnosticVirtualTextError", c.hue_5, c.none, no)
+-- Group.new("DiagnosticVirtualTextWarning", c.hue_6_2, c.none, no)
+-- Group.new("DiagnosticVirtualTextInformation", c.hue_1, c.none, no)
+-- Group.new("DiagnosticVirtualTextHint", c.hue_4, c.none, no)
+-- Group.new("DiagnosticUnderlineError", c.hue_5, c.none, ul)
+-- Group.new("DiagnosticUnderlineWarning", c.hue_6_2, c.none, ul)
+-- Group.new("DiagnosticUnderlineInformation", c.hue_1, c.none, ul)
+-- Group.new("DiagnosticUnderlineHint", c.hue_4, c.none, ul)
+-- Group.new("DiagnosticFloatingError", c.hue_5, g.pmenu, ul)
+-- Group.new("DiagnosticFloatingWarning", c.hue_6_2, g.pmenu, ul)
+-- Group.new("DiagnosticFloatingInformation", c.hue_1, g.pmenu, ul)
+-- Group.new("DiagnosticFloatingHint", c.hue_4, g.pmenu, ul)
+-- Group.new("DiagnosticSignError", c.DiagnosticError, c.none, no)
+-- Group.new("DiagnosticSignWarning", c.DiagnosticWarning, c.none, no)
+-- Group.new("DiagnosticSignInformation", c.DiagnosticInformation, c.none, no)
+-- Group.new("DiagnosticSignHint", c.DiagnosticHint, c.none, no)
+
 local italics = (function()
   if vim.g.onebuddy_disable_italics ~= true then
     return i
@@ -49,8 +81,8 @@ end)()
 -------------------------
 -- Vim Primary Colors --
 -------------------------
-Color.new("Red", "#e88388")
-Color.new("DarkRed", "#e06c75")
+Color.new("Red", "#e06c75")
+Color.new("DarkRed", "#773B40")
 Color.new("Blue", "#61afef")
 Color.new("DarkBlue", "#528bff")
 Color.new("Green", "#98c379")
@@ -191,7 +223,6 @@ Group.new("Todo", c.hue_3, c.mono_3, no)
 -----------------------
 -- Diff Highlighting --
 -----------------------
-
 Group.new("DiffAdd", c.hue_4, c.visual_grey, no)
 Group.new("DiffChange", c.hue_6, c.visual_grey, no)
 Group.new("DiffDelete", c.hue_5, c.visual_grey, no)
@@ -569,29 +600,6 @@ Group.new("NERDTreeFile", c.mono_1, c.none, no)
 -- Coc.nvim Floating Background fix
 Group.new("CocFloating", c.mono_1, c.none, no)
 Group.new("NormalFloat", c.mono_1, c.pmenu, no)
------------------------------
---     LSP Highlighting    --
------------------------------
-Group.new("LspDiagnosticsDefaultError", c.hue_5, c.none, no)
-Group.new("LspDiagnosticsDefaultWarning", c.hue_6_2, c.none, no)
-Group.new("LspDiagnosticsDefaultInformation", c.hue_1, c.none, no)
-Group.new("LspDiagnosticsDefaultHint", c.hue_4, c.none, no)
-Group.new("LspDiagnosticsVirtualTextError", c.hue_5, c.none, no)
-Group.new("LspDiagnosticsVirtualTextWarning", c.hue_6_2, c.none, no)
-Group.new("LspDiagnosticsVirtualTextInformation", c.hue_1, c.none, no)
-Group.new("LspDiagnosticsVirtualTextHint", c.hue_4, c.none, no)
-Group.new("LspDiagnosticsUnderlineError", c.hue_5, c.none, ul)
-Group.new("LspDiagnosticsUnderlineWarning", c.hue_6_2, c.none, ul)
-Group.new("LspDiagnosticsUnderlineInformation", c.hue_1, c.none, ul)
-Group.new("LspDiagnosticsUnderlineHint", c.hue_4, c.none, ul)
-Group.new("LspDiagnosticsFloatingError", c.hue_5, g.pmenu, ul)
-Group.new("LspDiagnosticsFloatingWarning", c.hue_6_2, g.pmenu, ul)
-Group.new("LspDiagnosticsFloatingInformation", c.hue_1, g.pmenu, ul)
-Group.new("LspDiagnosticsFloatingHint", c.hue_4, g.pmenu, ul)
-Group.new("LspDiagnosticsSignError", c.hue_5, c.none, no)
-Group.new("LspDiagnosticsSignWarning", c.hue_6_2, c.none, no)
-Group.new("LspDiagnosticsSignInformation", c.hue_1, c.none, no)
-Group.new("LspDiagnosticsSignHint", c.hue_4, c.none, no)
 -----------------------------
 -- TreeSitter Highlighting --
 -----------------------------
