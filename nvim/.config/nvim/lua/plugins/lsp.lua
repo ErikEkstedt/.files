@@ -1,8 +1,7 @@
-local nvim_lsp = require("lspconfig")
 local lsp_installer = require("nvim-lsp-installer")
+
 -- https://github.com/neovim/nvim-lspconfig/wiki
 -- https://github.com/neovim/nvim-lspconfig/wiki/UI-customization
-
 vim.cmd [[autocmd ColorScheme * highlight NormalFloat guibg=#282C34]]
 vim.cmd [[autocmd ColorScheme * highlight FloatBorder guifg=white guibg=#282C34]]
 vim.api.nvim_command [[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]]
@@ -10,37 +9,20 @@ vim.api.nvim_command [[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_hig
 vim.api.nvim_command [[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]
 
 -----------------------------------------------------
--- diagnostics
------------------------------------------------------
-vim.lsp.handlers["textDocument/publishDiagnostics"] =
-  vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics,
-  {
-    virtual_text = {
-      prefix = "●",
-      spacing = 4,
-      source = "always" -- Or "if_many"
-    },
-    signs = true,
-    underline = false,
-    update_in_insert = false
-  }
-)
-
------------------------------------------------------
 -- Colors and Signs
 -----------------------------------------------------
 local signs = {
-  Error = {text = " ", color = "#84172B"},
-  Warn = {text = " ", color = "#A08F50"},
-  Hint = {text = " ", color = "#EF84FC"},
-  Info = {text = " ", color = "#80D5FF"}
+  Error = {text = " "},
+  Warn = {text = " "},
+  Hint = {text = " "},
+  Info = {text = " "}
 }
 
 for type, icon in pairs(signs) do
+  -- sign define DiagnosticSignError text=E texthl=DiagnosticSignError linehl= numhl=
   local hl = "DiagnosticSign" .. type
-  local hi = string.format("highlight %s guibg=NONE guifg=%s", "Diagnostic" .. type, icon.color)
-  vim.cmd(hi)
+  -- local hi = string.format("highlight %s guibg=NONE guifg=%s", "Diagnostic" .. type, icon.color)
+  -- vim.cmd(hi)
   vim.fn.sign_define(hl, {text = icon.text, texthl = hl, numhl = ""})
 end
 
@@ -98,11 +80,11 @@ local on_attach = function(client, bufnr)
   keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
   keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
   keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-  keymap("n", "gk", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
-  keymap("n", "gj", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
-  keymap("n", "<leader>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
+  keymap("n", "gk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
+  keymap("n", "gj", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+  keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.show_line_diagnostics()<CR>", opts)
   keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-  keymap("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+  keymap("n", "<leader>q", "<cmd>lua vim.diagnostic.set_loclist()<CR>", opts)
   keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
   keymap("n", "<leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
   keymap("n", "<leader>so", [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], opts)
