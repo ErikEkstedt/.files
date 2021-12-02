@@ -93,6 +93,7 @@ require("telescope").load_extension("fzf")
 -- MAPPINGS
 -- FileFinding
 key_map("n", prefix .. "ff", bi .. ".find_files{hidden=true}<cr>", km)
+key_map("n", "<LocalLeader>" .. "ff", bi .. ".find_files{hidden=true}<cr>", km)
 key_map("n", prefix .. "fg", bi .. ".git_files()<cr>", km)
 key_map("n", prefix .. "fc", bi .. ".find_files{cwd='~/.files', hidden=true}<cr>", km)
 key_map("n", prefix .. "fn", bi .. ".find_files{cwd='~/zettelkasten'}<cr>", km)
