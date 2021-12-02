@@ -65,7 +65,7 @@ return require("packer").startup(
       "neovim/nvim-lspconfig",
       config = function()
         require("diagnostic")
-        require("plugins.lsp")
+        require("lsp")
       end
     }
 
@@ -208,7 +208,7 @@ return require("packer").startup(
       "lewis6991/gitsigns.nvim",
       requires = {"nvim-lua/plenary.nvim"},
       config = function()
-        require("gitsigns").setup {keymaps = {}}
+        require("plugins.gitsigns")
       end
     }
     use {

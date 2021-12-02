@@ -8,7 +8,7 @@ local prefix = "<Space>"
 local file_ignore_patterns = {
   "node_modules/",
   "%.swp",
-  ".git",
+  "%.git",
   "%.pt",
   "%.npy",
   "%.chpt",
