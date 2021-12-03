@@ -4,7 +4,7 @@ local km = {noremap = true, silent = true}
 
 if vim.g.loaded_slime then
   buf_key_map(0, "n", "<CR>", "<Plug>SlimeParagraphSend", {silent = true})
-  buf_key_map(0, "x", "<CR>", "<Plug>SlimeParagraphSend", {silent = true})
+  buf_key_map(0, "x", "<CR>", "<Plug>SlimeRegionSend", {silent = true})
 end
 
 key_map("n", "<Space>al", "gg0v/if __name__<CR>k", km)
