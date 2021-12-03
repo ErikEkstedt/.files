@@ -15,7 +15,7 @@ side_color='#e2b957'
 
 
 # General settings
-hi_message="fg=$separator_color,bg=$window_status_bg2"
+hi_message="fg=$message_text,bg=$message_bg"
 set -g message-command-style $hi_message
 set -g message-style $hi_message
 set -g pane-active-border-style "fg=$side_color"
@@ -31,7 +31,6 @@ set -g status-style "none,bg=$window_bg"
 
 setw -g window-status-activity-style "none"
 setw -g window-status-separator ""
-# setw -g window-status-style "none,fg=$side_color,bg=$separator_color"
 
 
 # Highlights: using colors and define fg, bg colors
@@ -45,7 +44,6 @@ hi_tab_text="#[fg=$other_text,bg=$window_status_bg2]"
 # Separators
 sep_left=""
 sep_right=""
-sep_symbol_left_alt=""
 
 # Left side ==========================================================================
 ls_left=$hi_side$sep_left

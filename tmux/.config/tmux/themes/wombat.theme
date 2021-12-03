@@ -2,30 +2,13 @@
 
 window_bg='#222222'
 window_status_bg='#282828'
-
 window_status_bg2='#3c3836'
-other_text='#a89984'
-
 window_status_bg_curr='#8ac6f2'
-current_text=$window_bg
-
 side_color='#95e454'
 side_text='#282828'
-
-
-separator_color='#ABB2BF'
-# Color.new('white',     '#f6f3e8')
-# Color.new('red',       '#f08080')
-# Color.new('pink',      '#f080b8')
-# Color.new('yellow',    '#f8fe7a')
-# Color.new('blue',      '#8ac6f2')
-# Color.new('aqua',      '#93a2cc')
-# Color.new('cyan',      '#53dccd')
-# Color.new('purple',    '#a7a7d1')
-# Color.new('violet',    '#b294bb')
-# Color.new('orange',    '#de935f')
-# Color.new('brown',     '#a3685a')
-# Color.new('seagreen',  '#698b69')
-# Color.new('turquoise', '#698b69')
+current_text=$window_bg
+other_text='#a89984'
+message_text='#ABB2BF'
+message_bg=$window_status_bg2
 
 source-file $TMUXDOTDIR/statusline.theme

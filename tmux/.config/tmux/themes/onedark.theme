@@ -7,8 +7,9 @@ window_status_bg2='#3E4452'
 window_status_bg_curr='#4d5569'
 side_color='#98C379'
 side_text='#090909'
-separator_color='#ABB2BF'
-other_text='#ABB2BF'
 current_text='#ffffff'
+other_text='#ABB2BF'
+message_text='#ABB2BF'
+message_bg=$window_status_bg2
 
 source-file $TMUXDOTDIR/statusline.theme
