@@ -15,6 +15,14 @@ local sto = s.standout
 local no = s.NONE
 local v = vim
 
+local italics = (function()
+  if vim.g.onebuddy_disable_italics ~= true then
+    return i
+  else
+    return no
+  end
+end)()
+
 v.g.colors_name = "one_dark_custom"
 Color.new("mono_1", "#FEFEFE")
 Color.new("mono_2", "#828997")
@@ -52,14 +60,6 @@ Color.new("dError", "#e06c75")
 Color.new("dWarning", "#d19a66")
 Color.new("dInformation", "#2480D5")
 Color.new("dHint", "#A9D987")
-
-local italics = (function()
-  if vim.g.onebuddy_disable_italics ~= true then
-    return i
-  else
-    return no
-  end
-end)()
 
 -------------------------
 -- Vim Primary Colors --
@@ -116,7 +116,6 @@ Group.new("DiagnosticInformation", c.dInformation, c.none, no)
 Group.new("DiagnosticHint", c.dHint, c.none, no)
 
 Group.new("FloatBorder", c.cRedBright, c.none, no)
-
 Group.new("NormalFloat", c.mono_1, c.none, no)
 
 -----------------------
@@ -455,21 +454,21 @@ Group.new("jsonStringSQError", c.hue_5, c.none, r)
 Group.new("jsonSemicolonError", c.hue_5, c.none, r)
 
 -- Markdown
+Group.new("markdownBold", c.Yellow, c.none, b)
+Group.new("markdownCode", c.cGreen, c.none, no)
+Group.new("markdownCodeBlock", c.cGreen, c.none, no)
+Group.new("markdownCodeDelimiter", c.cGreen, c.none, no)
+Group.new("markdownH1", c.cBlue, c.none, b)
+Group.new("markdownH2", c.cBlue, c.none, b)
+Group.new("markdownH3", c.cBlue, c.none, b)
+Group.new("markdownH4", c.cBlue, c.none, no)
+Group.new("markdownH5", c.cBlue, c.none, no)
+Group.new("markdownH6", c.cBlue, c.none, no)
+Group.new("markdownHeadingDelimiter", c.cGreen, c.none, no)
+Group.new("markdownLinkText", c.cGreen, c.none, no)
+Group.new("markdownItalic", c.hue_6, c.none, italics)
+Group.new("markdownListMarker", c.hue_5, c.none, b)
 Group.new("markdownUrl", c.mono_3, c.none, no)
-Group.new("markdownBold", c.hue_6, c.none, b)
-Group.new("markdownItalic", c.hue_6, c.none, b)
-Group.new("markdownCode", c.hue_4, c.none, no)
-Group.new("markdownCodeBlock", c.hue_5, c.none, no)
-Group.new("markdownCodeDelimiter", c.hue_4, c.none, no)
-Group.new("markdownHeadingDelimiter", c.hue_5_2, c.none, no)
-Group.new("markdownH1", c.hue_5, c.none, no)
-Group.new("markdownH2", c.hue_5, c.none, no)
-Group.new("markdownH3", c.hue_5, c.none, no)
-Group.new("markdownH3", c.hue_5, c.none, no)
-Group.new("markdownH4", c.hue_5, c.none, no)
-Group.new("markdownH5", c.hue_5, c.none, no)
-Group.new("markdownH6", c.hue_5, c.none, no)
-Group.new("markdownListMarker", c.hue_5, c.none, no)
 
 -- PHP
 Group.new("phpClass", c.hue_6_2, c.none, no)
