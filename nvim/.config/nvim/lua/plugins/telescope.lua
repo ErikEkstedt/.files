@@ -92,34 +92,39 @@ require("telescope").load_extension("fzf")
 
 -- MAPPINGS
 -- FileFinding
-key_map("n", prefix .. "ff", bi .. ".find_files{hidden=true}<cr>", km)
 key_map("n", "<LocalLeader>" .. "ff", bi .. ".find_files{hidden=true}<cr>", km)
-key_map("n", prefix .. "fg", bi .. ".git_files()<cr>", km)
 key_map("n", prefix .. "fc", bi .. ".find_files{cwd='~/.files', hidden=true}<cr>", km)
-key_map("n", prefix .. "fn", bi .. ".find_files{cwd='~/zettelkasten'}<cr>", km)
+key_map("n", prefix .. "co", bi .. ".commands()<cr>", km)
+key_map("n", prefix .. "ff", bi .. ".find_files{hidden=true}<cr>", km)
+key_map("n", prefix .. "fg", bi .. ".git_files()<cr>", km)
 key_map("n", prefix .. "fl", bi .. ".current_buffer_fuzzy_find()<cr>", km)
+key_map("n", prefix .. "fn", bi .. ".find_files{cwd='~/zettelkasten'}<cr>", km)
 key_map("n", prefix .. "fw", bi .. ".live_grep()<cr>", km)
-key_map("n", prefix .. "fh", bi .. ".find_files{cwd='~/.local/share/nvim/site/pack/packer', hidden=true}<cr>", km)
-key_map("n", prefix .. "x", ex .. ".notify.notify({})<cr>", km)
-key_map("n", prefix .. "c", bi .. ".find_files{cwd='~/.files', hidden=true}<cr>", km)
 key_map("n", prefix .. "he", bi .. ".help_tags()<cr>", km)
-key_map("n", prefix .. "ma", bi .. ".keymaps()<cr>", km)
 key_map("n", prefix .. "hi", bi .. ".highlights()<cr>", km)
-key_map("n", prefix .. "cc", bi .. ".commands()<cr>", km)
-key_map("n", prefix .. "z", bi .. ".find_files{cwd='~/zettelkasten'}<cr>", km)
--- key_map("n", prefix .. "fb", bi .. ".buffers()<cr>", km)
-key_map(
-  "n",
-  prefix .. "v",
-  bi .. '.find_files{opts={title="stdpath-data"}, cwd="' .. vim.fn.stdpath("data") .. '", hidden=true}<cr>',
-  km
-)
+key_map("n", prefix .. "ma", bi .. ".keymaps()<cr>", km)
+key_map("n", prefix .. "fx", ex .. ".notify.notify({})<cr>", km)
+key_map("n", prefix .. "fz", bi .. ".find_files{cwd='~/zettelkasten'}<cr>", km)
 key_map(
   "n",
   prefix .. "fb",
   [[<Cmd>lua require'telescope.builtin'.buffers({prompt_title = 'Find Buffer', results_title='Buffers', layout_strategy = 'vertical', layout_config = { width = 0.50, height = 0.55 }})<CR>]],
   km
 )
+key_map(
+  "n",
+  prefix .. "fv",
+  bi ..
+    ".find_files{cwd='~/.local/share/nvim/site/pack/packer', hidden=true, file_ignore_patterns={'%.swp', '.git'}}<cr>",
+  km
+)
+-- key_map("n", prefix .. "fb", bi .. ".buffers()<cr>", km)
+-- key_map(
+--   "n",
+--   prefix .. "fv",
+--   bi .. '.find_files{opts={title="stdpath-data"}, cwd="' .. vim.fn.stdpath("data") .. '", hidden=true}<cr>',
+--   km
+-- )
 -- handled by fzf for non-lagishness
 -- key_map("n", prefix .. "fi", bi .. ".find_files{cwd='~', hidden=true}<cr>", km)
 -- key_map("n", prefix .. "fp", bi .. ".find_files{cwd='~/projects'}<cr>", km)

@@ -1,2 +1,3 @@
--- nnoremap <buffer> <CR> <C-]>
-vim.api.nvim_buf_set_keymap("n", "<CR>", "<C-]>", {noremap = true, silent = true})
+-- Setting this here makes the syntax and correct position on entry (on help) go away...
+-- vim.api.nvim_buf_set_keymap("n", "<CR>", "<C-]>", {noremap = true, silent = true})
+-- print("help ftplugin")

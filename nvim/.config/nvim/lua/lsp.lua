@@ -1,4 +1,8 @@
 local lsp_installer = require("nvim-lsp-installer")
+local bufkeymap = vim.api.nvim_buf_set_keymap
+local CmdLspBuf = "<Cmd>lua vim.lsp.buf"
+local CmdDiagnostic = "<cmd>lua vim.diagnostic"
+local nosil = {noremap = true, silent = true}
 
 -- https://github.com/neovim/nvim-lspconfig/wiki
 -- https://github.com/neovim/nvim-lspconfig/wiki/UI-customization
@@ -66,34 +70,27 @@ local on_attach = function(client, bufnr)
   require("lsp_signature").on_attach()
 
   -- Mappings.
-  local opts = {noremap = true, silent = true}
-
-  -- Set keymaps in the Buffer: nufnr
-  local function keymap(...)
-    vim.api.nvim_buf_set_keymap(bufnr, ...)
-  end
-
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-  keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-  keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-  keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-  keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-  keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-  keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-  keymap("n", "gk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
-  keymap("n", "gj", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
-  keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.show_line_diagnostics()<CR>", opts)
-  keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-  keymap("n", "<leader>q", "<cmd>lua vim.diagnostic.set_loclist()<CR>", opts)
-  keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-  keymap("n", "<leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
-  keymap("n", "<leader>so", [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], opts)
+  bufkeymap(bufnr, "n", "gd", CmdLspBuf .. ".definition()<CR>", nosil)
+  bufkeymap(bufnr, "n", "gD", CmdLspBuf .. ".declaration()<CR>", nosil)
+  bufkeymap(bufnr, "n", "gi", CmdLspBuf .. ".implementation()<CR>", nosil)
+  bufkeymap(bufnr, "n", "gr", CmdLspBuf .. ".references()<CR>", nosil)
+  bufkeymap(bufnr, "n", "K", CmdLspBuf .. ".hover()<CR>", nosil)
+  bufkeymap(bufnr, "n", "<C-k>", CmdLspBuf .. ".signature_help()<CR>", nosil)
+  bufkeymap(bufnr, "n", "<leader>e", CmdLspBuf .. "tic.show_line_diagnostics()<CR>", nosil)
+  bufkeymap(bufnr, "n", "<leader>ca", CmdLspBuf .. ".code_action()<CR>", nosil)
+  bufkeymap(bufnr, "n", "<leader>q", CmdLspBuf .. "tic.set_loclist()<CR>", nosil)
+  bufkeymap(bufnr, "n", "<leader>rn", CmdLspBuf .. ".rename()<CR>", nosil)
+  bufkeymap(bufnr, "n", "gk", CmdDiagnostic .. ".goto_prev()<CR>", nosil)
+  bufkeymap(bufnr, "n", "gj", CmdDiagnostic .. ".goto_next()<CR>", nosil)
+  bufkeymap(bufnr, "n", "<leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", nosil)
+  bufkeymap(bufnr, "n", "<leader>so", [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], nosil)
 
   -- Set some keybinds conditional on server capabilities
   if client.resolved_capabilities.document_formatting then
-    keymap("n", "<space>fo", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+    bufkeymap(bufnr, "n", "<space>fo", CmdLspBuf .. ".formatting()<CR>", nosil)
   elseif client.resolved_capabilities.document_range_formatting then
-    keymap("n", "<space>fr", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+    bufkeymap(bufnr, "n", "<space>fr", CmdLspBuf .. ".range_formatting()<CR>", nosil)
   end
 end
 

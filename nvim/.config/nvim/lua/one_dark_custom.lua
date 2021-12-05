@@ -38,37 +38,20 @@ Color.new("special_grey", "#3b4048")
 Color.new("visual_grey", "#3e4452")
 Color.new("pmenu", "#333841")
 
+-- Custom
+Color.new("cBlack", "#1F2123")
+Color.new("cBlue", "#2480D5")
+Color.new("cGreen", "#A9D987")
+Color.new("cOrange", "#d19a66")
+Color.new("cRed", "#e06c75")
+Color.new("cRedBright", "#F70067")
+Color.new("cYellow", "#e5c07b")
+
+Color.new("customSpell", "#E19BA0")
 Color.new("dError", "#e06c75")
 Color.new("dWarning", "#d19a66")
 Color.new("dInformation", "#2480D5")
 Color.new("dHint", "#A9D987")
------------------------------
---     LSP Highlighting    --
------------------------------
-Group.new("DiagnosticError", c.dError, c.none, no)
-Group.new("DiagnosticWarning", c.dWarning, c.none, no)
-Group.new("DiagnosticInformation", c.dInformation, c.none, no)
-Group.new("DiagnosticHint", c.dHint, c.none, no)
--- Group.new("DiagnosticDefaultError", c.dError, c.none, no)
--- Group.new("DiagnosticDefaultWarning", c.dWarning, c.none, no)
--- Group.new("DiagnosticDefaultInformation", c.dInformation, c.none, no)
--- Group.new("DiagnosticDefaultHint", c.dHint, c.none, no)
--- Group.new("DiagnosticVirtualTextError", c.hue_5, c.none, no)
--- Group.new("DiagnosticVirtualTextWarning", c.hue_6_2, c.none, no)
--- Group.new("DiagnosticVirtualTextInformation", c.hue_1, c.none, no)
--- Group.new("DiagnosticVirtualTextHint", c.hue_4, c.none, no)
--- Group.new("DiagnosticUnderlineError", c.hue_5, c.none, ul)
--- Group.new("DiagnosticUnderlineWarning", c.hue_6_2, c.none, ul)
--- Group.new("DiagnosticUnderlineInformation", c.hue_1, c.none, ul)
--- Group.new("DiagnosticUnderlineHint", c.hue_4, c.none, ul)
--- Group.new("DiagnosticFloatingError", c.hue_5, g.pmenu, ul)
--- Group.new("DiagnosticFloatingWarning", c.hue_6_2, g.pmenu, ul)
--- Group.new("DiagnosticFloatingInformation", c.hue_1, g.pmenu, ul)
--- Group.new("DiagnosticFloatingHint", c.hue_4, g.pmenu, ul)
--- Group.new("DiagnosticSignError", c.DiagnosticError, c.none, no)
--- Group.new("DiagnosticSignWarning", c.DiagnosticWarning, c.none, no)
--- Group.new("DiagnosticSignInformation", c.DiagnosticInformation, c.none, no)
--- Group.new("DiagnosticSignHint", c.DiagnosticHint, c.none, no)
 
 local italics = (function()
   if vim.g.onebuddy_disable_italics ~= true then
@@ -124,10 +107,29 @@ v.g.terminal_color_14 = "#65c2cd"
 v.g.terminal_color_7 = "#e3e5e9"
 v.g.terminal_color_15 = "#e3e5e9"
 
+-----------------------------
+--     LSP Highlighting    --
+-----------------------------
+Group.new("DiagnosticError", c.dError, c.none, no)
+Group.new("DiagnosticWarning", c.dWarning, c.none, no)
+Group.new("DiagnosticInformation", c.dInformation, c.none, no)
+Group.new("DiagnosticHint", c.dHint, c.none, no)
+
+Group.new("FloatBorder", c.cRedBright, c.none, no)
+
+Group.new("NormalFloat", c.mono_1, c.none, no)
+
+-----------------------
+--     WHICH KEY     --
+-----------------------
+Group.new("WhichKey", c.cBlue, c.none, b)
+Group.new("WhichKeyFloat", c.White, c.cBlack, no)
+Group.new("WhichKeyGroup", c.cYellow, c.none, b)
+Group.new("WhichKeyDesc", c.dHint, c.none, no)
+
 ----------------------
 -- Vim Editor Color --
 ----------------------
-
 Group.new("Normal", c.mono_1, c.syntax_bg, no)
 Group.new("bold", c.none, c.none, b)
 Group.new("ColorColumn", c.none, c.syntax_cursor, no)
@@ -536,7 +538,7 @@ Group.new("rubyStringDelimiter", c.hue_4, c.none, no)
 Group.new("rubySymbol", c.hue_1, c.none, no)
 
 -- Spelling
-Group.new("SpellBad", c.mono_3, c.none, uc)
+Group.new("SpellBad", c.customSpell, c.none, uc)
 Group.new("SpellLocal", c.mono_3, c.none, uc)
 Group.new("SpellCap", c.mono_3, c.none, uc)
 Group.new("SpellRare", c.mono_3, c.none, uc)
@@ -599,7 +601,7 @@ Group.new("NERDTreeFile", c.mono_1, c.none, no)
 
 -- Coc.nvim Floating Background fix
 Group.new("CocFloating", c.mono_1, c.none, no)
-Group.new("NormalFloat", c.mono_1, c.pmenu, no)
+-- Group.new("NormalFloat", c.mono_1, c.pmenu, no)
 -----------------------------
 -- TreeSitter Highlighting --
 -----------------------------

@@ -30,7 +30,12 @@ return require("packer").startup(
         require("plugins.notify")
       end
     }
-
+    use {
+      "folke/which-key.nvim",
+      config = function()
+        require("plugins.which_key")
+      end
+    }
     -- Fuzzy Finding
     use {
       "nvim-telescope/telescope.nvim",
@@ -178,7 +183,6 @@ return require("packer").startup(
       end
     }
     -- show registers in floating window
-    use "tversteeg/registers.nvim"
     use {
       "kyazdani42/nvim-tree.lua",
       requires = "kyazdani42/nvim-web-devicons",
@@ -237,8 +241,7 @@ return require("packer").startup(
     } -- NON-LUA
     use {
       "iamcco/markdown-preview.nvim",
-      run = "cd app && yarn install",
-      ft = "markdown",
+      run = [[sh -c 'cd app && yarn install']],
       config = function()
         require("plugins.markdown-preview")
       end
