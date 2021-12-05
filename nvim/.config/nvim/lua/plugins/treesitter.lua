@@ -4,13 +4,11 @@ treesitter.setup {
   ensure_installed = {
     "c",
     "cpp",
-    "dart",
     "go",
     "html",
     "java",
     "javascript",
     "python",
-    "ruby",
     "rust",
     "typescript",
     "lua"
@@ -18,6 +16,9 @@ treesitter.setup {
   highlight = {
     enable = true
   },
+  context_commentstring = {
+    enable = true
+  }
   -- incremental_selection = {
   --   enable = true,
   --   keymaps = {
@@ -27,18 +28,5 @@ treesitter.setup {
   --     node_decremental = "<C-g><C-k>"
   --   }
   -- },
-  context_commentstring = {
-    enable = true,
-    enable_autocmd = false,
-    config = {
-      javascript = {
-        __default = "// %s",
-        jsx_element = "{/* %s */}",
-        jsx_fragment = "{/* %s */}",
-        jsx_attribute = "// %s",
-        comment = "// %s"
-      }
-    }
-  }
   -- indent = {enable = true}
 }
