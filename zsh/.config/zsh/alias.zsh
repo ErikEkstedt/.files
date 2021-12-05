@@ -27,7 +27,7 @@ alias t3='clear; tree -L 3 --dirsfirst -I "*pycache*|runs*"'
 # Movement
 alias gfi="cd ~/.files; t1; git status"
 alias gv="cd ~/.files/nvim/.config/nvim; t1; git status"
-alias gvi="cd ~/.files/nvim/.config/nvim; t1; git status"
+alias gvi="cd ~/.files/nvim/.config/nvim; t1; git status ."
 alias gdw="cd ~/Downloads; clear; ll"
 alias gho="cd ~; clear; ll"
 alias gpr="cd ~/projects; clear; ll"
