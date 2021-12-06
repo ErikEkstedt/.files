@@ -46,6 +46,7 @@ return require("packer").startup(
         require("plugins.telescope")
       end
     }
+    use "dhruvmanila/telescope-bookmarks.nvim"
     use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
     use {
       "sudormrfbin/cheatsheet.nvim",

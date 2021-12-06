@@ -84,11 +84,18 @@ require("telescope").setup {
       override_generic_sorter = true, -- override the generic sorter
       override_file_sorter = true, -- override the file sorter
       case_mode = "smart_case" -- or "ignore_case" or "respect_case"
+    },
+    bookmarks = {
+      -- Available: 'brave', 'google_chrome', 'safari', 'firefox', 'firefox_dev'
+      selected_browser = "brave",
+      -- Either provide a shell command to open the URL
+      url_open_command = "xdg-open"
     }
   }
 }
 
 require("telescope").load_extension("fzf")
+require("telescope").load_extension("bookmarks")
 
 -- MAPPINGS
 -- FileFinding
@@ -118,6 +125,7 @@ key_map(
     ".find_files{cwd='~/.local/share/nvim/site/pack/packer', hidden=true, file_ignore_patterns={'%.swp', '.git'}}<cr>",
   km
 )
+key_map("n", prefix .. "o", ex .. ".bookmarks.bookmarks()<cr>", km)
 -- key_map("n", prefix .. "fb", bi .. ".buffers()<cr>", km)
 -- key_map(
 --   "n",

@@ -55,7 +55,7 @@ Color.new("cOrange", "#d19a66")
 Color.new("cRed", "#e06c75")
 Color.new("cRedBright", "#F70067")
 Color.new("cYellow", "#e5c07b")
-
+Color.new("cPink", "#ff2f87")
 Color.new("customSpell", "#E19BA0")
 Color.new("dError", "#e06c75")
 Color.new("dWarning", "#d19a66")
@@ -126,6 +126,13 @@ Group.new("WhichKey", c.cBlue, c.none, b)
 Group.new("WhichKeyFloat", c.White, c.cBlack, no)
 Group.new("WhichKeyGroup", c.cYellow, c.none, b)
 Group.new("WhichKeyDesc", c.dHint, c.none, no)
+
+-----------------------
+--    LightSpeed     --
+-----------------------
+Group.new("LightSpeedLabel", c.cGreen, c.none, b)
+Group.new("LightSpeedShortcut", c.cPink, c.none, b)
+Group.new("LightSpeedLabelOverlapped", c.White, c.Green, no)
 
 ----------------------
 -- Vim Editor Color --

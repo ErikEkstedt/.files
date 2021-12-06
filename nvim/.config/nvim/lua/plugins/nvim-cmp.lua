@@ -25,8 +25,12 @@ local mapping = {
       c = cmp.mapping.confirm({select = false})
     }
   ),
-  -- ["<CR>"] = cmp.mapping.confirm({select = true}),
-  ["<localleader><localleader>"] = cmp.mapping.confirm({select = true}),
+  ["<localleader><localleader>"] = cmp.mapping(
+    {
+      i = cmp.mapping.confirm({select = true}),
+      c = cmp.mapping.confirm({select = false})
+    }
+  ),
   ["<C-k>"] = cmp.mapping(
     function(fallback)
       if expand_or_jumpable() then
