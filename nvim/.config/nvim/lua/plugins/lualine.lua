@@ -196,7 +196,7 @@ local inactive_different = {
       "diagnostics",
       separator = {left = ""},
       left_padding = 2,
-      sources = {"nvim_lsp"}
+      sources = {"nvim_diagnostic"}
     }
   },
   lualine_y = {
@@ -267,7 +267,7 @@ local sections = {
     }
   },
   lualine_x = {
-    {"diagnostics", sources = {"nvim_lsp"}},
+    {"diagnostics", sources = {"nvim_diagnostic"}},
     {PythonEnv},
     {get_lsp_client, icon = " "}
   },
