@@ -8,8 +8,8 @@ local no = {noremap = true}
 -- TAB
 keymap("v", "<Tab>", ">gv", nosil)
 keymap("v", "<S-Tab>", "<gv", nosil)
-keymap("n", "<Tab>", "v>gv<esc>", nosil)
-keymap("n", "<S-Tab>", "v<gv<esc>", nosil)
+-- keymap("n", "<Tab>", "v>gv<esc>", nosil)
+-- keymap("n", "<S-Tab>", "v<gv<esc>", nosil)
 keymap("i", "<S-Tab>", "<esc><<I", nosil)
 
 -- NORMAL
