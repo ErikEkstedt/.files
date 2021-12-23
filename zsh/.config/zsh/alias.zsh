@@ -55,7 +55,8 @@ alias messenger="_browser_tab --new-tab https://messenger.com"
 # Tmux
 alias tls="tmux list-sessions"
 alias tks="tmux kill-session -t"
-alias trn="tmux rename -t . " 
+alias trw="tmux rename-window"
+alias trs="tmux rename -t . "
 alias tkp="tmux kill-pane -t"
 # alias tat=$DOTFILES/bin/tat  # Current path as new tmux session
 
@@ -66,7 +67,7 @@ alias tkp="tmux kill-pane -t"
 # COuld be useful to not forget about
 # https://github.com/ssbc/patchwork
 # alias patchwork="cd ~/patchwork && npm start"
-# alias rack='~/Rack/Rack'
+alias rack='cd ~/Rack2Free && ./Rack'
 # alias _diskspace="du -sk * | sort -nr | head -10"
 # alias ducks='du -cks -- * | sort -rn | head'
 # alias nvr="$HOME/miniconda3/envs/neovim3/bin/nvr"

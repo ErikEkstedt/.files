@@ -1,6 +1,7 @@
 local fill = "#050505"
 local bg = "#151515"
-local sbg = "#505050"
+-- local sbg = "#303030"
+local sbg = "none"
 
 require("bufferline").setup {
   options = {

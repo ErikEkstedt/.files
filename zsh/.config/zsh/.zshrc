@@ -70,9 +70,6 @@ if [ "$TMUX" = "" ]; then
 fi # }}}
 
 
-# alias lf=lfcd
-alias rack='~/Rack/Rack'
-
 # Exports
 export DOTFILES=$HOME/.files
 export COLORTERM="truecolor"
