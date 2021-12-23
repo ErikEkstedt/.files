@@ -79,10 +79,17 @@ export COLORTERM="truecolor"
 export EDITOR='nvim'
 export BROWSER="brave-browser"
 export MANPAGER='nvim +Man!'
+
+# Path
+export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="$HOME/gems/bin:$PATH"  # Install Ruby Gems to ~/gems
 export PATH="$HOME/go/bin:$PATH"                                   
 export PATH="$HOME/Applications:$PATH"                                   
 export PATH="$HOME/.npm-global/bin:$PATH"                                   
+export PATH="$HOME/.rbenv/shims:$PATH"
+
+# initialize rbenv
+# eval "$(rbenv init - zsh)"
 
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
