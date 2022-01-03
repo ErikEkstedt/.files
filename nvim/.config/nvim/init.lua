@@ -20,7 +20,8 @@ require("settings")
 require("mappings")
 
 -- Set Colorscheme
-require("colorbuddy").colorscheme("one_dark_custom")
+-- require("colorbuddy").colorscheme("one_dark_custom")
+require("colorbuddy").colorscheme("colors.one_dark")
 
 -- Custom Session (mksession, Auto-Session, etc)
 require("session").setup()
