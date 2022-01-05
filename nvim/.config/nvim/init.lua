@@ -23,8 +23,17 @@ require("mappings")
 -- require("colorbuddy").colorscheme("one_dark_custom")
 require("colorbuddy").colorscheme("colors.one_dark")
 
--- Custom Session (mksession, Auto-Session, etc)
+-- Custom "plugins"
+-- Session (mksession, Auto-Session, etc)
 require("session").setup()
+
+-- Zoom
+vim.api.nvim_set_keymap(
+  "n",
+  "<Space>z",
+  "<cmd>lua require('zoom').maximize_current_split()<CR>",
+  {noremap = true, silent = true}
+)
 
 -- Cursor i want reversed colors but need to check kitty/tmux etc
 -- vim.opt.guicursor = "n-v-c-sm:block-Cursor,i-ci-ve:ver25,r-cr-o:hor20"
