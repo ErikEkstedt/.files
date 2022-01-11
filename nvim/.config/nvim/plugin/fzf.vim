@@ -36,7 +36,7 @@ command! -bang -nargs=* Rg
 
 
 " Ony using these because moving to telescope.nvim but it is slow for large directories
-nnoremap <LocalLeader>fp :FZFFiles ~/projects<CR>
-nnoremap <LocalLeader>fi :FZFFiles ~<CR>
+nnoremap <Space>fp :FZFFiles ~/projects<CR>
+nnoremap <Space>fi :FZFFiles ~<CR>
 imap <c-x><c-f> <plug>(fzf-complete-path)
 " nnoremap <LocalLeader>fw :FZFRg<CR>
