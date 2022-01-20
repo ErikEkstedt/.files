@@ -11,6 +11,8 @@ side_color='#f1049a'
 side_color='#e75746'
 %elif #{==:#{host},deepvoice}
 side_color='#e2b957'
+%elif #{==:#{host},deepsleep}
+side_color='#57E2BD'
 %endif
 
 
