@@ -53,14 +53,36 @@ vim.opt.updatetime = 1000
 vim.o.sessionoptions = "buffers,help,tabpages,winsize,winpos,terminal"
 
 -- Automatically resize when vim changes
-vim.cmd([[au VimResized * exe "normal! \<c-w>="]])
+vim.api.nvim_create_autocmd("VimResized", {command = [[exe "normal! \<c-w>="]]})
 
 -- Highlight text when yank. Built in lua.
-vim.cmd([[au! TextYankPost * silent! lua vim.highlight.on_yank {higroup="DiffAdd", timeout=500}]])
+-- vim.cmd([[au! TextYankPost * silent! lua vim.highlight.on_yank {higroup="DiffAdd", timeout=500}]])
+vim.api.nvim_create_autocmd(
+  "TextYankPost",
+  {
+    command = [[silent! lua vim.highlight.on_yank {higroup="DiffAdd", timeout=500}]]
+  }
+)
 
 -- Remember line on exit/start. :he last-jump-position
-vim.cmd([[ au! BufReadPost * if line("'\"") > 0 && line ("'\"") <= line("$") | exe "normal! g'\"zz" | endif ]])
+vim.api.nvim_create_autocmd(
+  "BufReadPost",
+  {command = [[if line("'\"") > 0 && line ("'\"") <= line("$") | exe "normal! g'\"zz" | endif ]]}
+)
 
+--global statusline
+vim.api.nvim_create_autocmd("VimEnter", {command = [[set laststatus=3]], once = true})
+vim.opt.fillchars = {
+  horiz = "━",
+  horizup = "┻",
+  horizdown = "┳",
+  vert = "┃",
+  vertleft = "┫",
+  vertright = "┣",
+  verthoriz = "╋"
+}
+
+-- vim.opt.laststatus = 3
 -- Shortmess
 vim.opt.shortmess:append("m") -- Shortmess: help 'shortmess'. Vim default "filnxtToOF"
 vim.opt.shortmess:append("x")
