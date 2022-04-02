@@ -75,20 +75,54 @@ local sources = {
   {name = "buffer", keyword_length = 5, max_item_count = 5}
 }
 
+local kind_icons = {
+  Text = "",
+  Method = "",
+  Function = "",
+  Constructor = "",
+  Field = "ﰠ",
+  Variable = "",
+  Class = "",
+  Interface = "",
+  Module = "",
+  Property = "",
+  Unit = "",
+  Value = "",
+  Enum = "",
+  Keyword = "",
+  Snippet = "",
+  Color = "",
+  File = "",
+  Reference = "",
+  Folder = "",
+  EnumMember = "",
+  Constant = "",
+  Struct = "פּ",
+  Event = "",
+  Operator = "",
+  TypeParameter = ""
+}
+
 local formatting = {
-  format = require("lspkind").cmp_format {
-    menu = {
+  fields = {"kind", "abbr", "menu"},
+  format = function(entry, vim_item)
+    -- Kind icons
+    -- vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+    vim_item.kind = string.format("%s", kind_icons[vim_item.kind]) -- This concatonates the icons with the name of the item kind
+    -- Source
+    vim_item.menu =
+      ({
       path = "ﱮ", -- [path]
       luasnip = "", -- "[snip]",
       nvim_lsp = "ﲳ",
       nvim_lua = "", -- "[api]",
       buffer = "﬘", -- buffer = "[buf]"
       treesitter = "",
-      spell = "暈"
-    },
-    with_text = true,
-    maxwidth = 100
-  }
+      spell = "暈",
+      latex_symbols = "[LaTeX]"
+    })[entry.source.name]
+    return vim_item
+  end
 }
 
 cmp.setup(

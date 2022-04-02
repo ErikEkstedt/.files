@@ -8,9 +8,15 @@ local nosil = {noremap = true, silent = true}
 -- https://github.com/neovim/nvim-lspconfig/wiki/UI-customization
 vim.cmd [[autocmd ColorScheme * highlight NormalFloat guibg=#282C34]]
 vim.cmd [[autocmd ColorScheme * highlight FloatBorder guifg=white guibg=#282C34]]
-vim.api.nvim_command [[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]]
-vim.api.nvim_command [[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]]
-vim.api.nvim_command [[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]
+
+-- Find better way to add autocommands for the specific "filetype"/file-pattern in one line
+vim.api.nvim_command [[autocmd CursorHold  *.lua lua vim.lsp.buf.document_highlight()]]
+vim.api.nvim_command [[autocmd CursorHoldI *.lua lua vim.lsp.buf.document_highlight()]]
+vim.api.nvim_command [[autocmd CursorMoved *.lua lua vim.lsp.buf.clear_references()]]
+
+vim.api.nvim_command [[autocmd CursorHold  *.py lua vim.lsp.buf.document_highlight()]]
+vim.api.nvim_command [[autocmd CursorHoldI *.py lua vim.lsp.buf.document_highlight()]]
+vim.api.nvim_command [[autocmd CursorMoved *.py lua vim.lsp.buf.clear_references()]]
 
 -----------------------------------------------------
 -- Colors and Signs
