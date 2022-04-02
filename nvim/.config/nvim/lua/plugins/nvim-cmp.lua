@@ -1,8 +1,4 @@
--- local luasnip = require "luasnip"
-local expand_or_jump = require("luasnip").expand_or_jump
-local expand_or_jumpable = require("luasnip").expand_or_locally_jumpable
-local jump = require("luasnip").jump
-local lsp_expand = require("luasnip").lsp_expand
+local ls = require("luasnip")
 local cmp = require "cmp"
 
 vim.o.completeopt = "menu,menuone,noselect"
@@ -33,8 +29,8 @@ local mapping = {
   ),
   ["<C-k>"] = cmp.mapping(
     function(fallback)
-      if expand_or_jumpable() then
-        expand_or_jump()
+      if ls.expand_or_locally_jumpable() then
+        ls.expand_or_jump()
       else
         fallback() -- The fallback function sends
       end
@@ -43,8 +39,8 @@ local mapping = {
   ),
   ["<C-j>"] = cmp.mapping(
     function(fallback)
-      if expand_or_jumpable() then
-        jump(-1)
+      if ls.expand_or_locally_jumpable() then
+        ls.jump(-1)
       else
         fallback() -- The fallback function sends
       end
@@ -129,7 +125,7 @@ cmp.setup(
   {
     snippet = {
       expand = function(args)
-        lsp_expand(args.body)
+        ls.lsp_expand(args.body)
       end
     },
     mapping = mapping,
@@ -156,5 +152,6 @@ Group.new("CmpItemAbbrMatch", g.Normal, nil, s.bold)
 Group.new("CmpItemAbbrDeprecated", g.Error)
 -- Group.new("CmpItemAbbrMatchFuzzy", g.Error.fg:dark(), nil, s.italic)
 Group.new("CmpItemAbbrMatchFuzzy", g.Error)
-Group.new("CmpItemKind", g.Special.fg:dark())
+-- Group.new("CmpItemKind", g.Special.fg:dark())
+Group.new("CmpItemKind", g.tsstrong)
 Group.new("CmpItemMenu", g.String)
