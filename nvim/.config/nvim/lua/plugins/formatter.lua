@@ -56,4 +56,4 @@ augroup END
 ]],
   true
 )
-vim.api.nvim_set_keymap("n", "<Leader>f", ":Format<cr>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<Leader>fo", ":Format<cr>", {noremap = true, silent = true})

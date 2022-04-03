@@ -1,8 +1,13 @@
 local lsp_installer = require("nvim-lsp-installer")
+local notify = require("notify")
 local bufkeymap = vim.api.nvim_buf_set_keymap
 local CmdLspBuf = "<Cmd>lua vim.lsp.buf"
 local CmdDiagnostic = "<cmd>lua vim.diagnostic"
 local nosil = {noremap = true, silent = true}
+
+-- Python, pyright
+local venvPath = vim.fn.expand("$HOME/miniconda3/envs")
+local pythonPath = vim.fn.expand("$HOME/miniconda3/bin/python")
 
 -- https://github.com/neovim/nvim-lspconfig/wiki
 -- https://github.com/neovim/nvim-lspconfig/wiki/UI-customization
@@ -18,6 +23,7 @@ vim.api.nvim_command [[autocmd CursorHold  *.py lua vim.lsp.buf.document_highlig
 vim.api.nvim_command [[autocmd CursorHoldI *.py lua vim.lsp.buf.document_highlight()]]
 vim.api.nvim_command [[autocmd CursorMoved *.py lua vim.lsp.buf.clear_references()]]
 
+-- vim.lsp.set_log_level("debug")
 -----------------------------------------------------
 -- Colors and Signs
 -----------------------------------------------------
@@ -58,6 +64,23 @@ for type, color in pairs(doc_highlight) do
   vim.cmd(hi)
 end
 
+-- Use nvim-notify to display LSP messages
+vim.lsp.handlers["window/showMessage"] = function(_, result, ctx)
+  local client = vim.lsp.get_client_by_id(ctx.client_id)
+  local lvl = ({"ERROR", "WARN", "INFO", "DEBUG"})[result.type]
+  notify(
+    {result.message},
+    lvl,
+    {
+      title = "LSP | " .. client.name,
+      timeout = 10000,
+      keep = function()
+        return lvl == "ERROR" or lvl == "WARN"
+      end
+    }
+  )
+end
+
 -----------------------------------------------------
 -- nvim-cmp supports additional completion capabilities
 -----------------------------------------------------
@@ -65,15 +88,15 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 -----------------------------------------------------
--- Attach and Setup
+-- Attach
 -----------------------------------------------------
 local on_attach = function(client, bufnr)
+  -- shows which field you are currently on when writing function args
+  require("lsp_signature").on_attach()
+
   -- Show borders
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {border = border})
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {border = border})
-
-  -- shows which field you are currently on when writing function args
-  require("lsp_signature").on_attach()
 
   -- Mappings.
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
@@ -141,8 +164,10 @@ lsp_installer.on_server_ready(
           analysis = {
             useLibraryCodeForTypes = false,
             diagnosticMode = "workspace",
-            autoSearchPaths = true
-          }
+            autoSearchPaths = false
+          },
+          venvPath = venvPath,
+          pythonPath = pythonPath
         }
       }
     --[[

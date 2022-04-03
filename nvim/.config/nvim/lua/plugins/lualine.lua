@@ -261,15 +261,15 @@ local sections = {
     {
       "filename",
       file_status = true, -- displays file status (readonly status, modified status)
-      path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
-      shorting_target = 40 -- Shortens path to leave 40 space in the window
+      path = 2 -- 0 = just filename, 1 = relative path, 2 = absolute path
+      -- shorting_target = 40 -- Shortens path to leave 40 space in the window
       -- for other components. Terrible name any suggestions?
     }
   },
   lualine_x = {
     {"diagnostics", sources = {"nvim_diagnostic"}},
     {PythonEnv},
-    {get_lsp_client, icon = " "}
+    {get_lsp_client, icon = ""}
   },
   lualine_y = {
     {"filetype", separator = {left = ""}, padding = {left = 0, right = 1}}
