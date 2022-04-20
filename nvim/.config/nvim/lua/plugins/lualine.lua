@@ -261,9 +261,8 @@ local sections = {
     {
       "filename",
       file_status = true, -- displays file status (readonly status, modified status)
-      path = 2 -- 0 = just filename, 1 = relative path, 2 = absolute path
-      -- shorting_target = 40 -- Shortens path to leave 40 space in the window
-      -- for other components. Terrible name any suggestions?
+      path = 2, -- 0 = just filename, 1 = relative path, 2 = absolute path
+      shorting_target = 5
     }
   },
   lualine_x = {
@@ -287,7 +286,8 @@ require "lualine".setup {
     component_separators = "",
     section_separators = {left = "", right = ""},
     disabled_filetypes = {},
-    always_divide_middle = true
+    always_divide_middle = false,
+    globalstatus = true
   },
   sections = sections,
   inactive_sections = inactive_different,
