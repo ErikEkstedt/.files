@@ -247,6 +247,15 @@ return require("packer").startup(
         require("plugins.markdown-preview")
       end
     } -- NON-LUA
+    -- use {
+    --   "iamcco/markdown-preview.nvim",
+    --   run = "cd app && yarn install",
+    --   config = function()
+    --     require("plugins.markdown-preview")
+    --   end
+    --   -- cmd = "MarkdownPreview,
+    -- }
+    -- use {"davidgranstrom/nvim-markdown-preview"}
 
     -- tpope: so excused
     use "tpope/vim-repeat" -- NON-LUA
