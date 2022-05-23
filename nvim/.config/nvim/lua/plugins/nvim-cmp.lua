@@ -135,9 +135,11 @@ cmp.setup(
       native_menu = false,
       ghost_text = true
     },
-    documentation = {
-      border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"},
-      winhighlight = "FloatBorder:DocumentNC,Normal:Normal"
+    window = {
+      documentation = {
+        border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"},
+        winhighlight = "FloatBorder:DocumentNC,Normal:Normal"
+      }
     }
   }
 )

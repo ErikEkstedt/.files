@@ -89,6 +89,11 @@ ls.add_snippets(
     ls.parser.parse_snippet("printshape", 'print("${1}: ", tuple(${1}.shape))'),
     ls.parser.parse_snippet("printdict", 'for k, v in ${1}.items():\n\tprint(f"{k}: {v}")'),
     ls.parser.parse_snippet("fig", "fig, ax = plt.subplots(${1:1}, ${2:1})"),
+    ls.parser.parse_snippet("import torch", [[
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+]]),
     snippet("docstring", {f(get_docstring, {}), i(0)}),
     ls.parser.parse_snippet(
       "printdictshape",
