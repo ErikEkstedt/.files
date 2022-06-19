@@ -34,7 +34,7 @@ alias gpr="cd ~/projects; clear; ll"
 alias ggr='cd "$(git rev-parse --show-toplevel)"; t1; git status'
 alias gro="cd /; clear; ls"
 alias gno="cd $HOME/zettelkasten"
-alias gcl="cd $HOME/projects/CCConv;t1"
+alias gcl="cd $HOME/projects/CCConv/conv_ssl;t1;git status"
 
 # commands
 alias cd..="cd .."
