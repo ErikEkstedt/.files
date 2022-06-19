@@ -116,9 +116,15 @@ local on_attach = function(client, bufnr)
   bufkeymap(bufnr, "n", "<leader>so", [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], nosil)
 
   -- Set some keybinds conditional on server capabilities
-  if client.resolved_capabilities.document_formatting then
+  -- [LSP] Accessing client.resolved_capabilities is deprecated, update your plugins or configuration to access
+  -- client.server_capabilities instead.
+  -- The new key/value pairs in server_capabilities directly match those defined in the language server protocol
+
+  -- if client.resolved_capabilities.document_formatting then
+  if client.server_capabilities.document_formatting then
+    -- elseif client.resolved_capabilities.document_range_formatting then
     bufkeymap(bufnr, "n", "<space>fo", CmdLspBuf .. ".formatting()<CR>", nosil)
-  elseif client.resolved_capabilities.document_range_formatting then
+  elseif client.server_capabilities.document_range_formatting then
     bufkeymap(bufnr, "n", "<space>fr", CmdLspBuf .. ".range_formatting()<CR>", nosil)
   end
 end
