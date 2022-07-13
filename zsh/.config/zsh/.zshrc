@@ -85,6 +85,8 @@ export PATH="$HOME/Applications:$PATH"
 export PATH="$HOME/.npm-global/bin:$PATH"                                   
 export PATH="$HOME/.rbenv/shims:$PATH"
 
+export GEM_HOME="$HOME/gems"
+
 # initialize rbenv
 # eval "$(rbenv init - zsh)"
 

@@ -131,6 +131,14 @@ return require("packer").startup(
     }
 
     -- Tools
+    use(
+      {
+        "kylechui/nvim-surround",
+        config = function()
+          require("nvim-surround").setup({})
+        end
+      }
+    )
     use {
       "akinsho/nvim-toggleterm.lua",
       config = function()
@@ -226,7 +234,6 @@ return require("packer").startup(
     }
 
     -- NON-LUA
-    -- --------------------------------
     use "wellle/targets.vim" -- NON-LUA: ci' works on (, [, {, < on entire line
     use {"mg979/vim-visual-multi", branch = "master"} -- NON-LUA
     use {
@@ -241,13 +248,6 @@ return require("packer").startup(
         require("plugins.slime")
       end
     } -- NON-LUA
-    -- use {
-    --   "iamcco/markdown-preview.nvim",
-    --   run = [[sh -c 'cd app && yarn install']],
-    --   config = function()
-    --     require("plugins.markdown-preview")
-    --   end
-    -- } -- NON-LUA
     use(
       {
         "iamcco/markdown-preview.nvim",
@@ -255,20 +255,11 @@ return require("packer").startup(
           vim.fn["mkdp#util#install"]()
         end
       }
-    )
-    -- use {
-    --   "iamcco/markdown-preview.nvim",
-    --   run = "cd app && yarn install",
-    --   config = function()
-    --     require("plugins.markdown-preview")
-    --   end
-    --   -- cmd = "MarkdownPreview,
-    -- }
-    -- use {"davidgranstrom/nvim-markdown-preview"}
+    ) -- NON-LUA
 
     -- tpope: so excused
     use "tpope/vim-repeat" -- NON-LUA
-    use "tpope/vim-surround" -- NON-LUA
+    -- use "tpope/vim-surround" -- NON-LUA
 
     -- Colorschemes
     use {
