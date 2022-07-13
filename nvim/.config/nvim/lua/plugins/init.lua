@@ -131,6 +131,14 @@ return require("packer").startup(
     }
 
     -- Tools
+    use(
+      {
+        "kylechui/nvim-surround",
+        config = function()
+          require("nvim-surround").setup({})
+        end
+      }
+    )
     use {
       "akinsho/nvim-toggleterm.lua",
       config = function()
@@ -255,7 +263,7 @@ return require("packer").startup(
 
     -- tpope: so excused
     use "tpope/vim-repeat" -- NON-LUA
-    use "tpope/vim-surround" -- NON-LUA
+    -- use "tpope/vim-surround" -- NON-LUA
 
     -- Colorschemes
     use {

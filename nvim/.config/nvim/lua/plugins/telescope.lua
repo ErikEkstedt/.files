@@ -1,9 +1,11 @@
+local telescope = require("telescope")
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
+
 local km = {noremap = true, silent = true}
+local key_map = vim.api.nvim_set_keymap
 local bi = "<cmd>lua require('telescope.builtin')"
 local ex = "<cmd>lua require('telescope').extensions"
-local key_map = vim.api.nvim_set_keymap
 local prefix = "<Space>"
 local file_ignore_patterns = {
   "node_modules/",
@@ -61,7 +63,7 @@ local mappings = {
   }
 }
 
-require("telescope").setup {
+telescope.setup {
   defaults = {
     mappings = mappings,
     file_ignore_patterns = file_ignore_patterns,
@@ -94,8 +96,8 @@ require("telescope").setup {
   }
 }
 
-require("telescope").load_extension("fzf")
-require("telescope").load_extension("bookmarks")
+telescope.load_extension("fzf")
+telescope.load_extension("bookmarks")
 
 -- MAPPINGS
 -- FileFinding
