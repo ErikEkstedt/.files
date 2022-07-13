@@ -241,13 +241,21 @@ return require("packer").startup(
         require("plugins.slime")
       end
     } -- NON-LUA
-    use {
-      "iamcco/markdown-preview.nvim",
-      run = [[sh -c 'cd app && yarn install']],
-      config = function()
-        require("plugins.markdown-preview")
-      end
-    } -- NON-LUA
+    -- use {
+    --   "iamcco/markdown-preview.nvim",
+    --   run = [[sh -c 'cd app && yarn install']],
+    --   config = function()
+    --     require("plugins.markdown-preview")
+    --   end
+    -- } -- NON-LUA
+    use(
+      {
+        "iamcco/markdown-preview.nvim",
+        run = function()
+          vim.fn["mkdp#util#install"]()
+        end
+      }
+    )
     -- use {
     --   "iamcco/markdown-preview.nvim",
     --   run = "cd app && yarn install",
