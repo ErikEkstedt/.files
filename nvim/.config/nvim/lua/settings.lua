@@ -3,13 +3,12 @@
 -- new option settings: https://github.com/neovim/neovim/pull/13479
 vim.opt.expandtab = true
 vim.opt.fileignorecase = true
-vim.opt.foldlevelstart = 99 -- 0: all fold, 99: no fold
 
+---------------------------------------------------------
 -- FOLDS
--- vim.opt.foldmethod = "indent"
+---------------------------------------------------------
 -- If/when treesitter folding works well this should be
 -- in another file i.e. lua/folds.lua
---
 -- vim.opt.foldmethod = "expr"
 -- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 -- function _G.custom_fold_text()
@@ -21,16 +20,18 @@ vim.opt.foldlevelstart = 99 -- 0: all fold, 99: no fold
 -- vim.opt.foldtext = "v:lua.custom_fold_text()"
 vim.o.foldtext =
   [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
-vim.o.foldexpr = "nvim_treesitter#foldexpr()"
--- vim.o.foldmethod = "expr"
+-- vim.o.foldcolumn = "1"
+vim.o.foldlevelstart = 99 -- 0: all fold, 99: no fold
 vim.o.foldmethod = "indent"
+vim.o.foldenable = true
+
+vim.opt.pb = 0 -- transparency for popup, (default: 0)
 
 vim.opt.gdefault = true
 vim.opt.hidden = true
 vim.opt.ignorecase = true
 vim.opt.inccommand = "nosplit" -- show incremental changes for |:substitute|, |:smagic|, |:snomagic|. |hl-Substitute|
 vim.opt.mouse = "a" -- mouse functionality (default: empty)
-vim.opt.pb = 20 -- transparency for popup, (default: 0)
 vim.opt.scrolloff = 3 -- visual rows above and below cursor
 vim.opt.shiftwidth = 2
 vim.opt.showmode = false -- no extra --Insert--, --Replace-- etc

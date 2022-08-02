@@ -137,6 +137,13 @@ Group.new("LightSpeedLabelOverlapped", c.White, c.Green, no)
 ----------------------
 -- Vim Editor Color --
 ----------------------
+
+-- PMENU
+Group.new("PMenu", c.none, c.pmenu, no)
+Group.new("PMenuSel", c.none, c.mono_4, no)
+Group.new("PMenuSbar", c.none, c.mono_3, no)
+Group.new("PMenuThumb", c.none, c.mono_1, no)
+
 Group.new("Normal", c.mono_1, c.syntax_bg, no)
 Group.new("bold", c.none, c.none, b)
 Group.new("ColorColumn", c.none, c.syntax_cursor, no)
@@ -158,10 +165,7 @@ Group.new("Italic", c.none, c.none, italics)
 Group.new("ModeMsg", c.mono_1, c.none, no)
 Group.new("MoreMsg", c.mono_1, c.none, no)
 Group.new("NonText", c.mono_3, c.none, no)
-Group.new("PMenu", c.none, c.pmenu, no)
-Group.new("PMenuSel", c.none, c.mono_4, no)
-Group.new("PMenuSbar", c.none, c.mono_3, no)
-Group.new("PMenuThumb", c.none, c.mono_1, no)
+
 Group.new("Question", c.hue_2, c.none, no)
 Group.new("Search", c.mono_3, c.hue_6_2, no)
 Group.new("SpecialKey", c.special_grey, c.none, no)

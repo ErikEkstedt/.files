@@ -1,5 +1,8 @@
 local ls = require("luasnip")
 local cmp = require "cmp"
+local Group = require("colorbuddy.group").Group
+local g = require("colorbuddy.group").groups
+local s = require("colorbuddy.style").styles
 
 vim.o.completeopt = "menu,menuone,noselect"
 
@@ -62,13 +65,14 @@ local mapping = {
     end
   end
 }
+
 local sources = {
   {name = "luasnip", keyword_length = 2, priority = 99},
   {name = "path"},
   {name = "nvim_lua"},
   {name = "nvim_lsp", keyword_length = 2, max_item_count = 20},
   {name = "cmdline"},
-  {name = "buffer", keyword_length = 5, max_item_count = 5}
+  {name = "buffer", keyword_length = 2, max_item_count = 10}
 }
 
 local kind_icons = {
@@ -146,9 +150,6 @@ cmp.setup(
 -- nvim-cmp highlight groups.
 vim.cmd("hi DocumentNC guifg=#F70067")
 
-local Group = require("colorbuddy.group").Group
-local g = require("colorbuddy.group").groups
-local s = require("colorbuddy.style").styles
 Group.new("CmpItemAbbr", g.Comment)
 Group.new("CmpItemAbbrMatch", g.Normal, nil, s.bold)
 Group.new("CmpItemAbbrDeprecated", g.Error)
