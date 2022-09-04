@@ -3,3 +3,4 @@ plugins
 .zsh_history
 .zprofile
 .zcompdump
+.zcompcache
