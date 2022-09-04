@@ -1,5 +1,6 @@
 # Editing
 alias ez="v ~/.files/zsh/.config/zsh/.zshrc"
+alias htop="TERM=xterm htop"
 
 # nvim
 alias v="nvim"

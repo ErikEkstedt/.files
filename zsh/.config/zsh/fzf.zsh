@@ -1,15 +1,26 @@
 # FZF Settings 
+# https://github.com/junegunn/fzf
 #
+# Install:
+#   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf 
+#   ~/.fzf/install
 #
-# No need to let fzf installer put commands in zshrc file
+# Upgrade:
+#   git: cd ~/.fzf && git pull && ./install
+#   brew: brew update; brew upgrade fzf
+#
+# Notes:
+# Don't let fzf installer put commands in zshrc file
 # This script is sourced from $HOME/.files/zsh/zshrc -> $HOME/.zshrc
+#
+
 export FZF_DEFAULT_COMMAND='fd --color=always --type file --hidden'
 export FZF_DEFAULT_OPTS="--height 100% --reverse --ansi"
 
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="--preview 'bat --color always {}'"
 
-export FZF_ALT_C_COMMAND='fd --type d --hidden --follow -E .git/ -E node_modules/ --color=always'
+export FZF_ALT_C_COMMAND='fd --type d -E .git/ -E node_modules/ --color=always'
 export FZF_ALT_C_OPTS="--preview 'tree -L 1 -C {} | head -300' "
 
 export FZF_CTRL_R_OPTS="--reverse"
@@ -32,14 +43,6 @@ fzf-dir-change(){
     zle reset-prompt  # redraw prompt to update CWD
     return $ret
 }
-fzf-dir-change-projects(){ fzf-dir-change $HOME/projects }
-fzf-dir-change-home(){ fzf-dir-change $HOME }
-fzf-dir-change-dot(){ fzf-dir-change $HOME/.files }
-fzf-dir-change-cwd(){ fzf-dir-change . }
-zle -N fzf-dir-change-projects
-zle -N fzf-dir-change-home
-zle -N fzf-dir-change-dot
-zle -N fzf-dir-change-cwd
 
 fzf_tmux_kill_sessions() {
     # TODO
@@ -64,13 +67,11 @@ fkill() {
     fi
 }
 
-# Bindings
-bindkey '^P' fzf-dir-change-projects
-bindkey '^B' fzf-dir-change-home
-bindkey '^Y' fzf-dir-change-dot
-bindkey '^O' fzf-dir-change-cwd
-bindkey '^F' fzf-file-widget
-bindkey -M vicmd '^P' fzf-dir-change-projects
-bindkey -M vicmd '^B' fzf-dir-change-home
-bindkey -M vicmd '^Y' fzf-dir-change-dot
-bindkey -M vicmd '^O' fzf-dir-change-cwd
+fzf-dir-change-projects(){ fzf-dir-change $HOME/projects }
+fzf-dir-change-home(){ fzf-dir-change $HOME }
+fzf-dir-change-dot(){ fzf-dir-change $HOME/.files }
+fzf-dir-change-cwd(){ fzf-dir-change . }
+zle -N fzf-dir-change-projects
+zle -N fzf-dir-change-home
+zle -N fzf-dir-change-dot
+zle -N fzf-dir-change-cwd

@@ -73,10 +73,3 @@ function tns() {
     tmux switch-client -t "$session_name"
   fi
 }
-
-# Bindings
-bindkey -s '^S' '^Asudo ^E'
-bindkey -M vicmd H beginning-of-line
-bindkey -M vicmd L end-of-line
-bindkey -M vicmd J vi-cmd-down-line-history
-bindkey -M vicmd K vi-cmd-up-line-history

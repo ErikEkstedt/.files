@@ -16,6 +16,23 @@ setopt pushdsilent          # don't print dir stack after pushing/popping
 setopt extendedglob
 setopt RM_STAR_WAIT  # if you do a 'rm *', Zsh will give you a sanity check!
 
+# Exports
+export DOTFILES=$HOME/.files
+export COLORTERM="truecolor"
+export EDITOR='nvim'
+export BROWSER="brave-browser"
+export MANPAGER='nvim +Man!'
+
+# Path
+export PATH="$HOME/.npm-global/bin:$PATH"                                   
+export PATH="$HOME/.rbenv/shims:$PATH"
+export PATH="$HOME/Applications:$PATH"                                   
+export PATH="$HOME/gems/bin:$PATH"  # Install Ruby Gems to ~/gems
+export PATH="$HOME/go/bin:$PATH"                                   
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export GEM_HOME="$HOME/gems"
+
+
 # Plugins
 # export LANG="en_US.UTF-8" # set in .zprofile
 source $ZDOTDIR/plugin-functions.zsh # functions for handling zsh plugins
@@ -44,7 +61,6 @@ HISTFILE=$ZDOTDIR/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
 
-
 # Source
 source $ZDOTDIR/alias.zsh  
 source $ZDOTDIR/conda.zsh  # conda source
@@ -53,14 +69,16 @@ source $ZDOTDIR/less-colors.zsh   # coloring for less pager
 source $ZDOTDIR/ls-commands.zsh  # use ls or lcd + their aliases
 source $ZDOTDIR/prompt.zsh
 source $ZDOTDIR/vim-mode.zsh  # vim-mode, keytimeout & cursor styles
-export TMUXDOTDIR=$HOME/.config/tmux
 
 if [[ -f ~/.fzf.zsh  ]]; then
     source ~/.fzf.zsh
-    source ~/.files/fzf/fzf_zsh_settings.zsh
+    source $ZDOTDIR/fzf.zsh  # vim-mode, keytimeout & cursor styles
 fi
 
+source $ZDOTDIR/key-bindings.zsh
+
 # TMUX  {{{
+export TMUXDOTDIR=$HOME/.config/tmux
 if [ "$TMUX" = "" ]; then
   if tmux has-session -t=Terminal 2> /dev/null; then
     tmux attach -t Terminal
@@ -69,28 +87,13 @@ if [ "$TMUX" = "" ]; then
   fi
 fi # }}}
 
-
-# Exports
-export DOTFILES=$HOME/.files
-export COLORTERM="truecolor"
-export EDITOR='nvim'
-export BROWSER="brave-browser"
-export MANPAGER='nvim +Man!'
-
-# Path
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-export PATH="$HOME/gems/bin:$PATH"  # Install Ruby Gems to ~/gems
-export PATH="$HOME/go/bin:$PATH"                                   
-export PATH="$HOME/Applications:$PATH"                                   
-export PATH="$HOME/.npm-global/bin:$PATH"                                   
-export PATH="$HOME/.rbenv/shims:$PATH"
-
-export GEM_HOME="$HOME/gems"
-
 # initialize rbenv
 # eval "$(rbenv init - zsh)"
 
-if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+# added by Nix installer
+if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
+  . $HOME/.nix-profile/etc/profile.d/nix.sh; 
+fi
 
 # Slow startup time but necessary
 source_conda  # see conda.zsh
