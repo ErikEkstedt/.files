@@ -21,70 +21,70 @@ require("bufferline").setup {
     show_tab_indicators = false,
     separator_style = "thin",
     enforce_regular_tabs = true,
-    always_show_bufferline = true
-  },
-  -- TODO: Not working: see :help bufferline-offset
-  offsets = {
-    {
-      filetype = "NvimTree",
-      text = function()
-        return vim.fn.getcwd()
-      end,
-      highlight = "Directory",
-      text_align = "left"
+    always_show_bufferline = true,
+    offsets = {
+      {
+        filetype = "NvimTree",
+        text = function()
+          return vim.fn.getcwd()
+        end,
+        highlight = "Directory",
+        text_align = "left"
+      }
+    },
+    highlights = {
+      -- Selected
+      tab_selected = {gb = sbg},
+      buffer_selected = {gb = sbg},
+      close_button_selected = {gb = sbg},
+      separator_selected = {gb = sbg},
+      indicator_selected = {fg = "#00b5ff", gb = sbg},
+      modified_selected = {gb = sbg},
+      -- Others
+      fill = {gb = fill},
+      background = {gb = bg},
+      tab = {gb = bg},
+      tab_close = {gb = bg},
+      buffer_visible = {gb = bg},
+      close_button = {gb = bg},
+      close_button_visible = {gb = bg},
+      duplicate = {gb = bg},
+      modified = {gb = bg},
+      modified_visible = {gb = bg},
+      separator = {gb = fill},
+      pick = {fg = "#fff755", gui = "bold"},
+      -- lsp selected
+      diagnostic_selected = {gb = sbg},
+      hint_selected = {gb = sbg},
+      hint_diagnostic_selected = {gb = sbg},
+      info_selected = {gb = sbg},
+      info_diagnostic_selected = {gb = sbg},
+      warning_selected = {gb = sbg},
+      warning_diagnostic_selected = {gb = sbg},
+      error_selected = {gb = sbg},
+      error_diagnostic_selected = {gb = sbg},
+      -- lsp other
+      diagnostic = {gb = bg},
+      diagnostic_visible = {gb = bg},
+      hint = {gb = bg},
+      hint_visible = {gb = bg},
+      hint_diagnostic = {gb = bg},
+      hint_diagnostic_visible = {gb = bg},
+      info = {gb = bg},
+      info_visible = {gb = bg},
+      info_diagnostic = {gb = bg},
+      info_diagnostic_visible = {gb = bg},
+      warning = {gb = bg},
+      warning_visible = {gb = bg},
+      warning_diagnostic = {gb = bg},
+      warning_diagnostic_visible = {gb = bg},
+      error = {gb = bg},
+      error_visible = {gb = bg},
+      error_diagnostic = {gb = bg},
+      error_diagnostic_visible = {gb = bg}
     }
-  },
-  highlights = {
-    -- Selected
-    tab_selected = {guibg = sbg},
-    buffer_selected = {guibg = sbg},
-    close_button_selected = {guibg = sbg},
-    separator_selected = {guibg = sbg},
-    indicator_selected = {guifg = "#00b5ff", guibg = sbg},
-    modified_selected = {guibg = sbg},
-    -- Others
-    fill = {guibg = fill},
-    background = {guibg = bg},
-    tab = {guibg = bg},
-    tab_close = {guibg = bg},
-    buffer_visible = {guibg = bg},
-    close_button = {guibg = bg},
-    close_button_visible = {guibg = bg},
-    duplicate = {guibg = bg},
-    modified = {guibg = bg},
-    modified_visible = {guibg = bg},
-    separator = {guibg = fill},
-    pick = {guifg = "#fff755", gui = "bold"},
-    -- lsp selected
-    diagnostic_selected = {guibg = sbg},
-    hint_selected = {guibg = sbg},
-    hint_diagnostic_selected = {guibg = sbg},
-    info_selected = {guibg = sbg},
-    info_diagnostic_selected = {guibg = sbg},
-    warning_selected = {guibg = sbg},
-    warning_diagnostic_selected = {guibg = sbg},
-    error_selected = {guibg = sbg},
-    error_diagnostic_selected = {guibg = sbg},
-    -- lsp other
-    diagnostic = {guibg = bg},
-    diagnostic_visible = {guibg = bg},
-    hint = {guibg = bg},
-    hint_visible = {guibg = bg},
-    hint_diagnostic = {guibg = bg},
-    hint_diagnostic_visible = {guibg = bg},
-    info = {guibg = bg},
-    info_visible = {guibg = bg},
-    info_diagnostic = {guibg = bg},
-    info_diagnostic_visible = {guibg = bg},
-    warning = {guibg = bg},
-    warning_visible = {guibg = bg},
-    warning_diagnostic = {guibg = bg},
-    warning_diagnostic_visible = {guibg = bg},
-    error = {guibg = bg},
-    error_visible = {guibg = bg},
-    error_diagnostic = {guibg = bg},
-    error_diagnostic_visible = {guibg = bg}
   }
+  -- TODO: Not working: see :help bufferline-offset
 }
 
 vim.api.nvim_set_keymap("n", "<Space>m", ":BufferLinePick<CR>", {noremap = true, silent = true})
