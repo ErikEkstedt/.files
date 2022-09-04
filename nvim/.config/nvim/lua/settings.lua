@@ -26,6 +26,7 @@ vim.o.foldmethod = "indent"
 vim.o.foldenable = true
 
 vim.opt.pb = 0 -- transparency for popup, (default: 0)
+vim.opt.cursorline = true
 
 vim.opt.gdefault = true
 vim.opt.hidden = true
