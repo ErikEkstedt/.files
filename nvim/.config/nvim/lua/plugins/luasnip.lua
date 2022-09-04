@@ -11,7 +11,7 @@ local f = ls.function_node
 -- local d = ls.dynamic_node
 local fmt = require("luasnip.extras.fmt").fmt
 -- local events = require("luasnip.util.events")
-local get_docstring_arguments = require("treesitter_snippet").get_docstring_arguments
+local get_docstring_arguments = require("custom.treesitter_snippet").get_docstring_arguments
 
 local function copy(args)
   return args[1]

@@ -1,27 +1,27 @@
 -- MAPPINGS
-local keymap = vim.api.nvim_set_keymap
-local nosil = {noremap = true, silent = true}
+local map = vim.api.nvim_set_keymap
+local ns = {noremap = true, silent = true}
 local no = {noremap = true}
 
 -- mapleader/localleader is set in init.lua
 
 -- TAB
-keymap("v", "<Tab>", ">gv", nosil)
-keymap("v", "<S-Tab>", "<gv", nosil)
+map("v", "<Tab>", ">gv", ns)
+map("v", "<S-Tab>", "<gv", ns)
 -- keymap("n", "<Tab>", "v>gv<esc>", nosil)
 -- keymap("n", "<S-Tab>", "v<gv<esc>", nosil)
-keymap("i", "<S-Tab>", "<esc><<I", nosil)
+map("i", "<S-Tab>", "<esc><<I", ns)
 
 -- NORMAL
-keymap("n", "vv", "V", nosil)
-keymap("n", "V", "v$", nosil)
-keymap("n", "<localleader>pa", '"+p', nosil)
-keymap("n", "<C-y>", "<cmd>lua require('utils').yank_current_line()<cr>", nosil)
-keymap("x", "<C-y>", "<cmd>lua require('utils').yank_current_line()<cr>", nosil)
+map("n", "vv", "V", ns)
+map("n", "V", "v$", ns)
+map("n", "<localleader>pa", '"+p', ns)
+map("n", "<C-y>", "<cmd>lua require('utils').yank_current_line()<cr>", ns)
+map("x", "<C-y>", "<cmd>lua require('utils').yank_current_line()<cr>", ns)
 
 -- Sane wrap movement
-keymap("n", "j", "gj", nosil)
-keymap("n", "k", "gk", nosil)
+map("n", "j", "gj", ns)
+map("n", "k", "gk", ns)
 
 -- Jumplist fix (wincent)
 -- Store relative line number jumps in the jumplist if they exceed a threshold.
@@ -33,72 +33,75 @@ nnoremap <expr> j (v:count > 5 ? "m'" . v:count : '') . 'j'
 )
 
 -- save/quit
-keymap("n", "<C-s>", ":w<CR>", nosil)
-keymap("n", "<C-q>", ":q!<CR>", nosil)
-keymap("n", "<M-q>", ":qa!<CR>", nosil)
+map("n", "<C-s>", ":w<CR>", ns)
+map("n", "<C-q>", ":q!<CR>", ns)
+map("n", "<M-q>", ":qa!<CR>", ns)
 
 -- Move between splits
 -- see lua/plugins/tmux.lua
-keymap("n", "<M-h>", "<cmd>lua require('tmux').move_left()<CR>", nosil)
-keymap("n", "<M-j>", "<cmd>lua require('tmux').move_down()<CR>", nosil)
-keymap("n", "<M-k>", "<cmd>lua require('tmux').move_up()<CR>", nosil)
-keymap("n", "<M-l>", "<cmd>lua require('tmux').move_right()<CR>", nosil)
+map("n", "<M-h>", "<cmd>lua require('custom.tmux').move_left()<CR>", ns)
+map("n", "<M-j>", "<cmd>lua require('custom.tmux').move_down()<CR>", ns)
+map("n", "<M-k>", "<cmd>lua require('custom.tmux').move_up()<CR>", ns)
+map("n", "<M-l>", "<cmd>lua require('custom.tmux').move_right()<CR>", ns)
 
 -- Move end/start of line
-keymap("n", "L", "$", nosil)
-keymap("n", "H", "^", nosil)
+map("n", "L", "$", ns)
+map("n", "H", "^", ns)
 
 -- Buffer movement
-keymap("n", "<Leader>b", ":bp<CR>", nosil)
-keymap("n", "<Leader>n", ":bn<CR>", nosil)
-keymap("n", "<Leader>B", ":bf<CR>", nosil)
-keymap("n", "<Leader>N", ":bl<CR>", nosil)
-keymap("n", "<Leader><Leader>", ":b#<CR>", nosil)
-keymap("n", "<Leader>D", ":bd<CR>", nosil)
+map("n", "<Leader>b", ":bp<CR>", ns)
+map("n", "<Leader>n", ":bn<CR>", ns)
+map("n", "<Leader>B", ":bf<CR>", ns)
+map("n", "<Leader>N", ":bl<CR>", ns)
+map("n", "<Leader><Leader>", ":b#<CR>", ns)
+map("n", "<Leader>D", ":bd<CR>", ns)
 
 -- Resize
-keymap("n", "<C-Left>", ":vertical resize -3<CR>", nosil)
-keymap("n", "<C-Right>", ":vertical resize +3<CR>", nosil)
-keymap("n", "<C-Down>", ":resize +3<CR>", nosil)
-keymap("n", "<C-Up>", ":resize -3<CR>", nosil)
+map("n", "<C-Left>", ":vertical resize -3<CR>", ns)
+map("n", "<C-Right>", ":vertical resize +3<CR>", ns)
+map("n", "<C-Down>", ":resize +3<CR>", ns)
+map("n", "<C-Up>", ":resize -3<CR>", ns)
 
 -- Jumplist focus
 -- keymap("n", "<C-o>", "<C-o>zz", nosil)
 -- keymap("n", "<C-i>", "<C-i>zz", nosil)
 
 -- Goto next under cursor
-keymap("n", "gn", "*zvzz", nosil)
-keymap("n", "gN", "#zvzz", nosil)
+map("n", "gn", "*zvzz", ns)
+map("n", "gN", "#zvzz", ns)
 
 -- */# stays on current word
-keymap("n", "*", "*<C-o>", nosil)
-keymap("n", "#", "#<C-o>", nosil)
+map("n", "*", "*<C-o>", ns)
+map("n", "#", "#<C-o>", ns)
 
 -- Toggle highlight
-keymap("n", "<Leader>ss", ":set hlsearch!<CR>", nosil)
+map("n", "<Leader>ss", ":set hlsearch!<CR>", ns)
 
 -- split lines at ',', ';', ' '
-keymap("n", "gl", "f, a<CR><esc>", nosil)
-keymap("n", "gL", "f;a<CR><esc>", nosil)
-keymap("n", "g<space>", "f<space>a<CR><esc>", nosil)
+map("n", "gl", "f, a<CR><esc>", ns)
+map("n", "gL", "f;a<CR><esc>", ns)
+map("n", "g<space>", "f<space>a<CR><esc>", ns)
 
 -- Folds
-keymap("n", "ga", "zA", nosil)
+map("n", "ga", "zA", ns)
 -- keymap("n", "<Leader>f", "zazz", nosil)
 
 -- INSERT
 
 -- Visual
-keymap("v", "<Leader>sl", 'y:@"<CR>', no)
-keymap("v", "<LocalLeader>sl", 'y:@"<CR>', no)
-keymap("v", "J", "}", no)
-keymap("v", "K", "{", no)
+map("v", "<Leader>sl", 'y:@"<CR>', no)
+map("v", "<LocalLeader>sl", 'y:@"<CR>', no)
+map("v", "J", "}", no)
+map("v", "K", "{", no)
 
 -- Selection
-keymap("x", "L", "$", no)
-keymap("x", "H", "^", no)
-keymap("x", "J", "}", no)
-keymap("x", "K", "{", no)
+map("x", "L", "$", no)
+map("x", "H", "^", no)
+map("x", "J", "}", no)
+map("x", "K", "{", no)
 
 -- Command
-keymap("c", "<C-a>", "<Home>", no)
+map("c", "<C-a>", "<Home>", no)
+
+-- Zoom
+map("n", "<Space>z", "<cmd>lua require('custom.zoom').maximize_current_split()<CR>", ns)

@@ -1,9 +1,9 @@
 local lsp_installer = require("nvim-lsp-installer")
 local notify = require("notify")
-local bufkeymap = vim.api.nvim_buf_set_keymap
+local map = vim.api.nvim_buf_set_keymap
 local CmdLspBuf = "<Cmd>lua vim.lsp.buf"
 local CmdDiagnostic = "<cmd>lua vim.diagnostic"
-local nosil = {noremap = true, silent = true}
+local ns = {noremap = true, silent = true}
 
 -- Python, pyright
 local venvPath = vim.fn.expand("$HOME/miniconda3/envs")
@@ -100,20 +100,20 @@ local on_attach = function(client, bufnr)
 
   -- Mappings.
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-  bufkeymap(bufnr, "n", "gd", CmdLspBuf .. ".definition()<CR>", nosil)
-  bufkeymap(bufnr, "n", "gD", CmdLspBuf .. ".declaration()<CR>", nosil)
-  bufkeymap(bufnr, "n", "gi", CmdLspBuf .. ".implementation()<CR>", nosil)
-  bufkeymap(bufnr, "n", "gr", CmdLspBuf .. ".references()<CR>", nosil)
-  bufkeymap(bufnr, "n", "K", CmdLspBuf .. ".hover()<CR>", nosil)
-  bufkeymap(bufnr, "n", "<C-k>", CmdLspBuf .. ".signature_help()<CR>", nosil)
-  bufkeymap(bufnr, "n", "<leader>e", CmdLspBuf .. "tic.show_line_diagnostics()<CR>", nosil)
-  bufkeymap(bufnr, "n", "<leader>ca", CmdLspBuf .. ".code_action()<CR>", nosil)
-  bufkeymap(bufnr, "n", "<leader>q", CmdLspBuf .. "tic.set_loclist()<CR>", nosil)
-  bufkeymap(bufnr, "n", "<leader>rn", CmdLspBuf .. ".rename()<CR>", nosil)
-  bufkeymap(bufnr, "n", "gk", CmdDiagnostic .. ".goto_prev()<CR>", nosil)
-  bufkeymap(bufnr, "n", "gj", CmdDiagnostic .. ".goto_next()<CR>", nosil)
-  bufkeymap(bufnr, "n", "<leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", nosil)
-  bufkeymap(bufnr, "n", "<leader>so", [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], nosil)
+  map(bufnr, "n", "gd", CmdLspBuf .. ".definition()<CR>", ns)
+  map(bufnr, "n", "gD", CmdLspBuf .. ".declaration()<CR>", ns)
+  map(bufnr, "n", "gi", CmdLspBuf .. ".implementation()<CR>", ns)
+  map(bufnr, "n", "gr", CmdLspBuf .. ".references()<CR>", ns)
+  map(bufnr, "n", "gk", CmdDiagnostic .. ".goto_prev()<CR>", ns)
+  map(bufnr, "n", "gj", CmdDiagnostic .. ".goto_next()<CR>", ns)
+  map(bufnr, "n", "K", CmdLspBuf .. ".hover()<CR>", ns)
+  map(bufnr, "n", "<C-k>", CmdLspBuf .. ".signature_help()<CR>", ns)
+  map(bufnr, "n", "<leader>e", CmdLspBuf .. "tic.show_line_diagnostics()<CR>", ns)
+  map(bufnr, "n", "<leader>ca", CmdLspBuf .. ".code_action()<CR>", ns)
+  map(bufnr, "n", "<leader>q", CmdLspBuf .. "tic.set_loclist()<CR>", ns)
+  map(bufnr, "n", "<leader>rn", CmdLspBuf .. ".rename()<CR>", ns)
+  map(bufnr, "n", "<leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", ns)
+  map(bufnr, "n", "<leader>so", [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], ns)
 
   -- Set some keybinds conditional on server capabilities
   -- [LSP] Accessing client.resolved_capabilities is deprecated, update your plugins or configuration to access
@@ -123,9 +123,9 @@ local on_attach = function(client, bufnr)
   -- if client.resolved_capabilities.document_formatting then
   if client.server_capabilities.document_formatting then
     -- elseif client.resolved_capabilities.document_range_formatting then
-    bufkeymap(bufnr, "n", "<space>fo", CmdLspBuf .. ".formatting()<CR>", nosil)
+    map(bufnr, "n", "<space>fo", CmdLspBuf .. ".formatting()<CR>", ns)
   elseif client.server_capabilities.document_range_formatting then
-    bufkeymap(bufnr, "n", "<space>fr", CmdLspBuf .. ".range_formatting()<CR>", nosil)
+    map(bufnr, "n", "<space>fr", CmdLspBuf .. ".range_formatting()<CR>", ns)
   end
 end
 

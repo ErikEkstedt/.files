@@ -3,10 +3,10 @@ let s:save_cpo = &cpo " save user coptions
 set cpo&vim " reset them to defaults
 
 
-let LuaSessionSave = luaeval('require("session").SessionSave')
-let LuaSessionLoad = luaeval('require("session").SessionLoad')
-let LuaSessionOnVimLeave = luaeval('require("session").SessionOnVimLeave')
-let LuaSessionOnVimEnter = luaeval('require("session").SessionOnVimEnter')
+let LuaSessionSave = luaeval('require("custom.session").SessionSave')
+let LuaSessionLoad = luaeval('require("custom.session").SessionLoad')
+let LuaSessionOnVimLeave = luaeval('require("custom.session").SessionOnVimLeave')
+let LuaSessionOnVimEnter = luaeval('require("custom.session").SessionOnVimEnter')
 
 command! -nargs=* SessionSave call LuaSessionSave(expand('<args>'))
 command! -nargs=* SessionLoad call LuaSessionLoad(expand('<args>'))
