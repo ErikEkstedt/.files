@@ -8,6 +8,7 @@ treesitter.setup {
     "javascript",
     "json",
     "lua",
+    "markdown",
     "python",
     "typescript",
     "vim",

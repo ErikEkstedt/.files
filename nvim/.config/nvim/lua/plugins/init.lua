@@ -64,6 +64,20 @@ return require("packer").startup(
         vim.fn["fzf#install"]()
       end
     } -- NON-LUA
+    use {
+      "wincent/command-t",
+      run = "cd lua/wincent/commandt/lib && make",
+      setup = function()
+        vim.g.CommandTPreferredImplementation = "lua"
+      end,
+      config = function()
+        require("wincent.commandt").setup(
+          {
+            always_show_dot_files = true
+          }
+        )
+      end
+    }
 
     -- LSP
     use {"williamboman/nvim-lsp-installer"}
