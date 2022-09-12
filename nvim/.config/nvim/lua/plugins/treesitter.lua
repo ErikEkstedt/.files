@@ -2,11 +2,16 @@ local treesitter = require "nvim-treesitter.configs"
 
 treesitter.setup {
   ensure_installed = {
+    "bash",
+    "css",
     "html",
     "javascript",
+    "json",
     "lua",
     "python",
-    "typescript"
+    "typescript",
+    "vim",
+    "yaml"
     -- "c",
     -- "cpp",
     -- "go",
