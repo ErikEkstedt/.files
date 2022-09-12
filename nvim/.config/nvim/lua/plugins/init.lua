@@ -74,7 +74,6 @@ return require("packer").startup(
         require("lsp")
       end
     }
-
     use {
       "hrsh7th/nvim-cmp",
       requires = {
@@ -93,6 +92,7 @@ return require("packer").startup(
         require("plugins.nvim-cmp")
       end
     }
+    use "fladson/vim-kitty"
     -- Snippets
     -- Custom snippets through lua-code
     use {
