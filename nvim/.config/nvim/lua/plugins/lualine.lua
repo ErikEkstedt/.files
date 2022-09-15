@@ -122,7 +122,7 @@ local function get_pyright_env()
     field = field:gsub("%s+", "")
     if string.match(field, '"venv"') ~= nil then
       env = utils.split_string(field, ":")[2]
-      env = env:gsub('"', ""):gsub(",", "")
+      env = env:gsub('"', ""):gsub(",", ""):gsub("}", "")
     end
   end
 
