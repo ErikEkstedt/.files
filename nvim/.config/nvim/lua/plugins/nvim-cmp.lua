@@ -1,18 +1,9 @@
 local ls = require("luasnip")
 local cmp = require "cmp"
-local Group = require("colorbuddy.group").Group
-local g = require("colorbuddy.group").groups
-local s = require("colorbuddy.style").styles
 
 vim.o.completeopt = "menu,menuone,noselect"
 
--- local has_words_before = function()
---   if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
---     return false
---   end
---   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
---   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
--- end
+local cmp_theme = "left" -- 'left', 'vscode'
 
 local mapping = {
   ["<C-d>"] = cmp.mapping.scroll_docs(-4),
@@ -67,12 +58,12 @@ local mapping = {
 }
 
 local sources = {
-  {name = "luasnip", keyword_length = 2, priority = 99},
-  {name = "path"},
+  {name = "buffer", max_item_count = 5},
+  -- {name = "cmdline"},
+  {name = "luasnip"},
+  {name = "nvim_lsp"},
   {name = "nvim_lua"},
-  {name = "nvim_lsp", keyword_length = 2, max_item_count = 20},
-  {name = "cmdline"},
-  {name = "buffer", keyword_length = 2, max_item_count = 10}
+  {name = "path"}
 }
 
 local kind_icons = {
@@ -103,11 +94,38 @@ local kind_icons = {
   TypeParameter = ""
 }
 
-local formatting = {
-  fields = {"kind", "abbr", "menu"},
+local kind_icons_vscode = {
+  Text = "  ",
+  Method = "  ",
+  Function = "  ",
+  Constructor = "  ",
+  Field = "  ",
+  Variable = "  ",
+  Class = "  ",
+  Interface = "  ",
+  Module = "  ",
+  Property = "  ",
+  Unit = "  ",
+  Value = "  ",
+  Enum = "  ",
+  Keyword = "  ",
+  Snippet = "  ",
+  Color = "  ",
+  File = "  ",
+  Reference = "  ",
+  Folder = "  ",
+  EnumMember = "  ",
+  Constant = "  ",
+  Struct = "  ",
+  Event = "  ",
+  Operator = "  ",
+  TypeParameter = "  "
+}
+
+local fmt = {
+  fields = {"abbr", "kind", "menu"},
   format = function(entry, vim_item)
     -- Kind icons
-    -- vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
     vim_item.kind = string.format("%s", kind_icons[vim_item.kind]) -- This concatonates the icons with the name of the item kind
     -- Source
     vim_item.menu =
@@ -125,8 +143,99 @@ local formatting = {
   end
 }
 
+local fmt_vscode = {
+  fields = {"abbr", "kind", "menu"},
+  format = function(_, vim_item)
+    vim_item.kind = (kind_icons_vscode[vim_item.kind] or "") .. vim_item.kind
+    return vim_item
+  end
+}
+
+local fmt_left = {
+  fields = {"kind", "abbr", "menu"},
+  format = function(entry, vim_item)
+    local kind = require("lspkind").cmp_format({mode = "symbol_text", maxwidth = 50})(entry, vim_item)
+    local strings = vim.split(kind.kind, "%s", {trimempty = true})
+    kind.kind = " " .. strings[1] .. " "
+    kind.menu = "    (" .. strings[2] .. ")"
+
+    return kind
+  end
+}
+
+-- Highlight
+vim.cmd("hi DocumentNC guifg=#F70067")
+local highlights = {
+  CmpItemAbbrDeprecated = {fg = "#7E8294", bg = "NONE", fmt = "strikethrough"},
+  CmpItemAbbrMatch = {fg = "#82AAFF", bg = "NONE", fmt = "bold"},
+  CmpItemAbbrMatchFuzzy = {fg = "#82AAFF", bg = "NONE", fmt = "bold"},
+  CmpItemMenu = {fg = "#C792EA", bg = "NONE", fmt = "italic"},
+  CmpItemKindField = {fg = "#EED8DA", bg = "#B5585F"},
+  CmpItemKindProperty = {fg = "#EED8DA", bg = "#B5585F"},
+  CmpItemKindEvent = {fg = "#EED8DA", bg = "#B5585F"},
+  CmpItemKindText = {fg = "#C3E88D", bg = "#9FBD73"},
+  CmpItemKindEnum = {fg = "#C3E88D", bg = "#9FBD73"},
+  CmpItemKindKeyword = {fg = "#C3E88D", bg = "#9FBD73"},
+  CmpItemKindConstant = {fg = "#FFE082", bg = "#D4BB6C"},
+  CmpItemKindConstructor = {fg = "#FFE082", bg = "#D4BB6C"},
+  CmpItemKindReference = {fg = "#FFE082", bg = "#D4BB6C"},
+  CmpItemKindFunction = {fg = "#EADFF0", bg = "#A377BF"},
+  CmpItemKindStruct = {fg = "#EADFF0", bg = "#A377BF"},
+  CmpItemKindClass = {fg = "#EADFF0", bg = "#A377BF"},
+  CmpItemKindModule = {fg = "#EADFF0", bg = "#A377BF"},
+  CmpItemKindOperator = {fg = "#EADFF0", bg = "#A377BF"},
+  CmpItemKindVariable = {fg = "#C5CDD9", bg = "#7E8294"},
+  CmpItemKindFile = {fg = "#C5CDD9", bg = "#7E8294"},
+  CmpItemKindUnit = {fg = "#F5EBD9", bg = "#D4A959"},
+  CmpItemKindSnippet = {fg = "#F5EBD9", bg = "#D4A959"},
+  CmpItemKindFolder = {fg = "#F5EBD9", bg = "#D4A959"},
+  CmpItemKindMethod = {fg = "#DDE5F5", bg = "#6C8ED4"},
+  CmpItemKindValue = {fg = "#DDE5F5", bg = "#6C8ED4"},
+  CmpItemKindEnumMember = {fg = "#DDE5F5", bg = "#6C8ED4"},
+  CmpItemKindInterface = {fg = "#D8EEEB", bg = "#58B5A8"},
+  CmpItemKindColor = {fg = "#D8EEEB", bg = "#58B5A8"},
+  CmpItemKindTypeParameter = {fg = "#D8EEEB", bg = "#58B5A8"}
+}
+
+local highlights_vscode = {
+  CmpItemAbbrDeprecated = {bg = "NONE", fg = "#808080", fmt = "strikethrough"},
+  CmpItemAbbrMatch = {bg = "NONE", fg = "#569CD6"},
+  CmpItemAbbrMatchFuzzy = {bg = "NONE", fg = "#569CD6"},
+  CmpItemKindVariable = {bg = "NONE", fg = "#9CDCFE"},
+  CmpItemKindInterface = {bg = "NONE", fg = "#9CDCFE"},
+  CmpItemKindText = {bg = "NONE", fg = "#9CDCFE"},
+  CmpItemKindFunction = {bg = "NONE", fg = "#C586C0"},
+  CmpItemKindMethod = {bg = "NONE", fg = "#C586C0"},
+  CmpItemKindKeyword = {bg = "NONE", fg = "#D4D4D4"},
+  CmpItemKindProperty = {bg = "NONE", fg = "#D4D4D4"},
+  CmpItemKindUnit = {bg = "NONE", fg = "#D4D4D4"}
+}
+
+-- THEME settings
+local col_offset = 0
+local side_padding = 1
+if cmp_theme == "vscode" then
+  highlights = highlights_vscode
+  fmt = fmt_vscode
+  print("CMP: VSCODE")
+elseif cmp_theme == "left" then
+  fmt = fmt_left
+  col_offset = -3
+  side_padding = 0
+  print("CMP: LEFT")
+end
+
+for type, color in pairs(highlights) do
+  local hi = string.format("highlight! %s guibg=%s guifg=%s", type, color.bg, color.fg)
+  if color.fmt then
+    hi = hi .. " gui=" .. color.fmt
+  end
+  vim.cmd(hi)
+end
+
 cmp.setup(
   {
+    completion = {keyword_length = 2},
     snippet = {
       expand = function(args)
         ls.lsp_expand(args.body)
@@ -134,12 +243,16 @@ cmp.setup(
     },
     mapping = mapping,
     sources = sources,
-    formatting = formatting,
+    formatting = fmt,
     experimental = {
       native_menu = false,
       ghost_text = true
     },
     window = {
+      completion = {
+        col_offset = col_offset,
+        side_padding = side_padding
+      },
       documentation = {
         border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"},
         winhighlight = "FloatBorder:DocumentNC,Normal:Normal"
@@ -147,14 +260,3 @@ cmp.setup(
     }
   }
 )
--- nvim-cmp highlight groups.
-vim.cmd("hi DocumentNC guifg=#F70067")
-
-Group.new("CmpItemAbbr", g.Comment)
-Group.new("CmpItemAbbrMatch", g.Normal, nil, s.bold)
-Group.new("CmpItemAbbrDeprecated", g.Error)
--- Group.new("CmpItemAbbrMatchFuzzy", g.Error.fg:dark(), nil, s.italic)
-Group.new("CmpItemAbbrMatchFuzzy", g.Error)
--- Group.new("CmpItemKind", g.Special.fg:dark())
-Group.new("CmpItemKind", g.tsstrong)
-Group.new("CmpItemMenu", g.String)

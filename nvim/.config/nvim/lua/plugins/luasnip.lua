@@ -1,5 +1,5 @@
 require("luasnip/loaders/from_vscode").lazy_load() -- required for luasnip + friendly-snippets
-local ls = require "luasnip"
+local ls = require("luasnip")
 local types = require("luasnip.util.types")
 local snippet = ls.snippet
 -- local sn = ls.snippet_node
