@@ -1,12 +1,8 @@
 local telescope = require("telescope")
+local builtin = require("telescope.builtin")
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
 
-local km = {noremap = true, silent = true}
-local key_map = vim.api.nvim_set_keymap
-local bi = "<cmd>lua require('telescope.builtin')"
-local ex = "<cmd>lua require('telescope').extensions"
-local prefix = "<Space>"
 local file_ignore_patterns = {
   "node_modules/",
   "%.swp",
@@ -43,7 +39,6 @@ local function fzf_multi_select(prompt_bufnr)
 end
 
 local mappings = {
-  -- To disable a keymap, put [map] = false
   i = {
     ["<c-x>"] = false,
     ["<c-v>"] = false,
@@ -100,6 +95,12 @@ telescope.load_extension("fzf")
 telescope.load_extension("bookmarks")
 
 -- MAPPINGS
+local km = {noremap = true, silent = true}
+local key_map = vim.keymap.set
+local bi = "<cmd>lua require('telescope.builtin')"
+local ex = "<cmd>lua require('telescope').extensions"
+local prefix = "<Space>"
+
 -- FileFinding
 key_map("n", prefix .. "ff", bi .. ".find_files{hidden=true}<cr>", km)
 key_map("n", prefix .. "fc", bi .. ".find_files{cwd='~/.files', hidden=true}<cr>", km)
@@ -107,27 +108,49 @@ key_map("n", prefix .. "co", bi .. ".commands()<cr>", km)
 key_map("n", prefix .. "fg", bi .. ".git_files()<cr>", km)
 key_map("n", prefix .. "fs", bi .. ".git_status()<cr>", km)
 key_map("n", prefix .. "fl", bi .. ".current_buffer_fuzzy_find()<cr>", km)
-key_map("n", prefix .. "fn", bi .. ".find_files{cwd='~/zettelkasten'}<cr>", km)
 key_map("n", prefix .. "fw", bi .. ".live_grep()<cr>", km)
 key_map("n", prefix .. "he", bi .. ".help_tags()<cr>", km)
 key_map("n", prefix .. "hi", bi .. ".highlights()<cr>", km)
 key_map("n", prefix .. "ma", bi .. ".keymaps()<cr>", km)
-key_map("n", prefix .. "fx", ex .. ".notify.notify({})<cr>", km)
 key_map("n", prefix .. "fz", bi .. ".find_files{cwd='~/zettelkasten'}<cr>", km)
+key_map("n", prefix .. "fx", ex .. ".notify.notify({})<cr>", km)
+key_map("n", prefix .. "o", ex .. ".bookmarks.bookmarks()<cr>", km)
+-- key_map("n", prefix .. "fn", bi .. ".find_files{cwd='~/zettelkasten'}<cr>", km)
+key_map(
+  "n",
+  prefix .. "fn",
+  function()
+    builtin.find_files {search_dirs = {"~/zettelkasten"}}
+  end,
+  km
+)
 key_map(
   "n",
   prefix .. "fb",
-  [[<Cmd>lua require'telescope.builtin'.buffers({prompt_title = 'Find Buffer', results_title='Buffers', layout_strategy = 'vertical', layout_config = { width = 0.50, height = 0.55 }})<CR>]],
+  function()
+    builtin.buffers(
+      {
+        prompt_title = "Find Buffer",
+        results_title = "Buffers",
+        layout_strategy = "vertical",
+        layout_config = {width = 0.50, height = 0.75}
+      }
+    )
+  end,
   km
 )
 key_map(
   "n",
   prefix .. "fv",
-  bi ..
-    ".find_files{cwd='~/.local/share/nvim/site/pack/packer', hidden=true, file_ignore_patterns={'%.swp', '.git'}}<cr>",
+  function()
+    builtin.find_files {
+      cwd = "~/.local/share/nvim/site/pack/packer",
+      hidden = true,
+      file_ignore_patterns = {"%.swp", ".git"}
+    }
+  end,
   km
 )
-key_map("n", prefix .. "o", ex .. ".bookmarks.bookmarks()<cr>", km)
 -- key_map("n", prefix .. "fb", bi .. ".buffers()<cr>", km)
 -- key_map(
 --   "n",
