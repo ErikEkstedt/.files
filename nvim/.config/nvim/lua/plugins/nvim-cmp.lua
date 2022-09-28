@@ -60,8 +60,8 @@ local mapping = {
 local sources = {
   {name = "buffer", max_item_count = 5},
   -- {name = "cmdline"},
-  {name = "luasnip"},
-  {name = "nvim_lsp"},
+  {name = "luasnip", priority = 10},
+  {name = "nvim_lsp", priority = 5},
   {name = "nvim_lua"},
   {name = "path"}
 }

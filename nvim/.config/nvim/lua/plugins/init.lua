@@ -144,6 +144,15 @@ return require("packer").startup(
       end
     }
 
+    -- Mini: https://github.com/echasnovski/mini.nvim
+    use {
+      "echasnovski/mini.nvim",
+      config = function()
+        -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-align.md
+        require("mini.align").setup({mappings = {start = "<space>a"}})
+        require("mini.trailspace").setup()
+      end
+    }
     -- Tools
     use(
       {
@@ -159,9 +168,52 @@ return require("packer").startup(
         require("plugins.toggleterm")
       end
     }
+
+    -- use {
+    --   "ggandor/lightspeed.nvim",
+    --   requires = "tpope/vim-repeat"
+    -- }
     use {
-      "ggandor/lightspeed.nvim",
-      requires = "tpope/vim-repeat"
+      "phaazon/hop.nvim",
+      branch = "v2", -- optional but strongly recommended
+      config = function()
+        local hop = require("hop")
+        local HintDirection = require("hop.hint").HintDirection
+        require("hop").setup({})
+
+        vim.keymap.set(
+          "n",
+          "<space>j",
+          function()
+            hop.hint_lines_skip_whitespace({direction = HintDirection.AFTER_CURSOR})
+          end,
+          {}
+        )
+        vim.keymap.set(
+          "n",
+          "<space>k",
+          function()
+            hop.hint_lines_skip_whitespace({direction = HintDirection.BEFORE_CURSOR})
+          end,
+          {}
+        )
+        vim.keymap.set(
+          "n",
+          "<space>h",
+          function()
+            hop.hint_words({direction = HintDirection.BEFORE_CURSOR})
+          end,
+          {}
+        )
+        vim.keymap.set(
+          "n",
+          "<space>l",
+          function()
+            hop.hint_words({direction = HintDirection.AFTER_CURSOR})
+          end,
+          {}
+        )
+      end
     }
     use {
       "folke/todo-comments.nvim",
