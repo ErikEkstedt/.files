@@ -74,9 +74,6 @@ map("n", "gN", "#zvzz", ns)
 map("n", "*", "*<C-o>", ns)
 map("n", "#", "#<C-o>", ns)
 
--- Toggle highlight
-map("n", "<Leader>ss", ":set hlsearch!<CR>", ns)
-
 -- split lines at ',', ';', ' '
 map("n", "gl", "f, a<CR><esc>", ns)
 map("n", "gL", "f;a<CR><esc>", ns)
