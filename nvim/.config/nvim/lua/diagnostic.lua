@@ -15,3 +15,17 @@ vim.diagnostic.config(
     float = {border = "single"}
   }
 )
+
+-----------------------------------------------------
+-- Colors and Signs
+-----------------------------------------------------
+local signs = {
+  Error = {text = " "},
+  Warn = {text = " "},
+  Hint = {text = " "},
+  Info = {text = " "}
+}
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, {text = icon.text, texthl = hl, numhl = ""})
+end

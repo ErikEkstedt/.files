@@ -30,12 +30,6 @@ return require("packer").startup(
         require("plugins.notify")
       end
     }
-    use {
-      "folke/which-key.nvim",
-      config = function()
-        require("plugins.which_key")
-      end
-    }
     -- Fuzzy Finding
     use {
       "nvim-telescope/telescope.nvim",
@@ -80,14 +74,32 @@ return require("packer").startup(
     }
 
     -- LSP
-    use {"williamboman/nvim-lsp-installer"}
+    use "neovim/nvim-lspconfig"
+    use "williamboman/mason.nvim"
     use {
-      "neovim/nvim-lspconfig",
+      "williamboman/mason-lspconfig.nvim",
       config = function()
         require("diagnostic")
         require("lsp")
       end
     }
+    -- Treesitter
+    use {
+      "nvim-treesitter/nvim-treesitter",
+      config = function()
+        require("plugins.treesitter")
+      end,
+      run = ":TSUpdate"
+    }
+    use "nvim-treesitter/playground"
+    -- Formatter
+    use {
+      "mhartington/formatter.nvim",
+      config = function()
+        require("plugins.formatter")
+      end
+    }
+    -- CMP
     use {
       "hrsh7th/nvim-cmp",
       requires = {
@@ -114,24 +126,6 @@ return require("packer").startup(
       requires = {"saadparwaiz1/cmp_luasnip"},
       config = function()
         require("plugins.luasnip")
-      end
-    }
-
-    -- Treesitter
-    use {
-      "nvim-treesitter/nvim-treesitter",
-      config = function()
-        require("plugins.treesitter")
-      end,
-      run = ":TSUpdate"
-    }
-    use "nvim-treesitter/playground"
-
-    -- Formatter
-    use {
-      "mhartington/formatter.nvim",
-      config = function()
-        require("plugins.formatter")
       end
     }
 
@@ -215,6 +209,8 @@ return require("packer").startup(
         )
       end
     }
+
+    -- FOLKE
     use {
       "folke/todo-comments.nvim",
       requires = "nvim-lua/plenary.nvim",
@@ -239,6 +235,13 @@ return require("packer").startup(
         }
       end
     }
+    use {
+      "folke/which-key.nvim",
+      config = function()
+        require("plugins.which_key")
+      end
+    }
+
     use "JoosepAlviste/nvim-ts-context-commentstring"
     use {
       "numToStr/Comment.nvim",

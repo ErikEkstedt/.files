@@ -24,13 +24,8 @@ map("n", "j", "gj", ns)
 map("n", "k", "gk", ns)
 
 -- Jumplist fix (wincent)
--- Store relative line number jumps in the jumplist if they exceed a threshold.
-vim.cmd(
-  [[
-nnoremap <expr> k (v:count > 5 ? "m'" . v:count : '') . 'k'
-nnoremap <expr> j (v:count > 5 ? "m'" . v:count : '') . 'j'
-]]
-)
+map("n", "k", [[(v:count > 5 ? "m'" . v:count : '') . 'k']], {expr = true, noremap = true, silent = true})
+map("n", "j", [[(v:count > 5 ? "m'" . v:count : '') . 'j']], {expr = true, noremap = true, silent = true})
 
 -- save/quit
 map("n", "<C-s>", ":w<CR>", ns)
