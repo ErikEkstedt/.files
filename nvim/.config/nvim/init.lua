@@ -9,6 +9,8 @@ vim.g.BROWSER = "brave-browser"
 -- set mapleader early prior to plugins
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
+vim.g.ts_highlight_lua = true
+vim.g.minimal_plugin = false  -- used in plugins/init.lua
 
 -- Load plugins (specific plugin settings lua/plugins/<plugName>.lua)
 require("plugins")

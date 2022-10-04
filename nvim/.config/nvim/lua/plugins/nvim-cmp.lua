@@ -217,12 +217,10 @@ local side_padding = 1
 if cmp_theme == "vscode" then
   highlights = highlights_vscode
   fmt = fmt_vscode
-  print("CMP: VSCODE")
 elseif cmp_theme == "left" then
   fmt = fmt_left
   col_offset = -3
   side_padding = 0
-  print("CMP: LEFT")
 end
 
 for type, color in pairs(highlights) do

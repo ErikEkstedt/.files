@@ -1,21 +1,26 @@
 -- Install packer if not yet installed
-local execute = vim.api.nvim_command
 local fn = vim.fn
-
 local install_path = fn.stdpath("data") .. "/site/pack/packer/opt/packer.nvim"
 
+-- print("minimal plugins: " .. vim.inspect(vim.g.minimal_plugin))
+
 if fn.empty(fn.glob(install_path)) > 0 then
-  execute("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
-  execute "packadd packer.nvim"
+  fn.system({"git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path})
+  vim.cmd [[packadd packer.nvim]]
+  print("Bootstrapped Packer...")
 end
 
-vim.cmd("autocmd BufWritePost plugins/init.lua PackerCompile") -- Auto compile when there are changes in plugins.lua
+vim.cmd(
+  [[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins/init.lua source <afile> | PackerCompile
+  augroup end
+]]
+)
 
 -- Only required if you have packer configured as `opt`
-vim.cmd([[packadd packer.nvim]])
--- Only if your version of Neovim doesn't have https://github.com/neovim/neovim/pull/12632 merged
--- vim._update_package_paths()
-
+vim.cmd [[packadd packer.nvim]]
 return require("packer").startup(
   function(use)
     -- Packer can manage itself
@@ -30,6 +35,53 @@ return require("packer").startup(
         require("plugins.notify")
       end
     }
+
+    -- LSP, Treesitter, Snippets
+    use "neovim/nvim-lspconfig"
+    use "williamboman/mason.nvim"
+    use {
+      "williamboman/mason-lspconfig.nvim",
+      config = function()
+        require("diagnostic")
+        require("lsp")
+      end
+    }
+    use {
+      "nvim-treesitter/nvim-treesitter",
+      requires = {},
+      config = function()
+        require("plugins.treesitter")
+      end,
+      run = ":TSUpdate"
+    }
+    use "JoosepAlviste/nvim-ts-context-commentstring"
+    use "nvim-treesitter/playground"
+    use {
+      "hrsh7th/nvim-cmp",
+      requires = {
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-nvim-lua",
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-path",
+        "hrsh7th/cmp-cmdline",
+        "saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
+        "L3MON4D3/LuaSnip", -- Snippet engine
+        "rafamadriz/friendly-snippets", --snippet collections
+        "onsails/lspkind-nvim", -- Pretty symbols for lsp
+        "ray-x/lsp_signature.nvim"
+      },
+      config = function()
+        require("plugins.nvim-cmp")
+      end
+    }
+    use {
+      "L3MON4D3/LuaSnip", -- Snippet engine
+      requires = {"saadparwaiz1/cmp_luasnip"},
+      config = function()
+        require("plugins.luasnip")
+      end
+    }
+
     -- Fuzzy Finding
     use {
       "nvim-telescope/telescope.nvim",
@@ -58,85 +110,6 @@ return require("packer").startup(
         vim.fn["fzf#install"]()
       end
     } -- NON-LUA
-    use {
-      "wincent/command-t",
-      run = "cd lua/wincent/commandt/lib && make",
-      setup = function()
-        vim.g.CommandTPreferredImplementation = "lua"
-      end,
-      config = function()
-        require("wincent.commandt").setup(
-          {
-            always_show_dot_files = true
-          }
-        )
-      end
-    }
-
-    -- LSP
-    use "neovim/nvim-lspconfig"
-    use "williamboman/mason.nvim"
-    use {
-      "williamboman/mason-lspconfig.nvim",
-      config = function()
-        require("diagnostic")
-        require("lsp")
-      end
-    }
-    -- Treesitter
-    use {
-      "nvim-treesitter/nvim-treesitter",
-      config = function()
-        require("plugins.treesitter")
-      end,
-      run = ":TSUpdate"
-    }
-    use "nvim-treesitter/playground"
-    -- Formatter
-    use {
-      "mhartington/formatter.nvim",
-      config = function()
-        require("plugins.formatter")
-      end
-    }
-    -- CMP
-    use {
-      "hrsh7th/nvim-cmp",
-      requires = {
-        "hrsh7th/cmp-nvim-lsp",
-        "hrsh7th/cmp-nvim-lua",
-        "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-path",
-        "hrsh7th/cmp-cmdline",
-        "saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
-        "L3MON4D3/LuaSnip", -- Snippet engine
-        "rafamadriz/friendly-snippets", --snippet collections
-        "onsails/lspkind-nvim", -- Pretty symbols for lsp
-        "ray-x/lsp_signature.nvim"
-      },
-      config = function()
-        require("plugins.nvim-cmp")
-      end
-    }
-    use "fladson/vim-kitty"
-    -- Snippets
-    -- Custom snippets through lua-code
-    use {
-      "L3MON4D3/LuaSnip", -- Snippet engine
-      requires = {"saadparwaiz1/cmp_luasnip"},
-      config = function()
-        require("plugins.luasnip")
-      end
-    }
-
-    -- Devicons/color
-    use "kyazdani42/nvim-web-devicons"
-    use {
-      "norcalli/nvim-colorizer.lua",
-      config = function()
-        require("colorizer").setup()
-      end
-    }
 
     -- Mini: https://github.com/echasnovski/mini.nvim
     use {
@@ -145,137 +118,27 @@ return require("packer").startup(
         -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-align.md
         require("mini.align").setup({mappings = {start = "<space>a"}})
         require("mini.trailspace").setup()
+        require("mini.pairs").setup()
+        -- require("mini.surround").setup()
       end
     }
-    -- Tools
     use(
       {
         "kylechui/nvim-surround",
+        tag = "*", -- Use for stability; omit to use `main` branch for the latest features
         config = function()
           require("nvim-surround").setup({})
         end
       }
     )
-    use {
-      "akinsho/nvim-toggleterm.lua",
-      config = function()
-        require("plugins.toggleterm")
-      end
-    }
 
-    -- use {
-    --   "ggandor/lightspeed.nvim",
-    --   requires = "tpope/vim-repeat"
-    -- }
+    -- Devicons/color
+    use "kyazdani42/nvim-web-devicons"
     use {
-      "phaazon/hop.nvim",
-      branch = "v2", -- optional but strongly recommended
+      "lewis6991/gitsigns.nvim",
+      requires = {"nvim-lua/plenary.nvim"},
       config = function()
-        local hop = require("hop")
-        local HintDirection = require("hop.hint").HintDirection
-        require("hop").setup({})
-
-        vim.keymap.set(
-          "n",
-          "<space>j",
-          function()
-            hop.hint_lines_skip_whitespace({direction = HintDirection.AFTER_CURSOR})
-          end,
-          {}
-        )
-        vim.keymap.set(
-          "n",
-          "<space>k",
-          function()
-            hop.hint_lines_skip_whitespace({direction = HintDirection.BEFORE_CURSOR})
-          end,
-          {}
-        )
-        vim.keymap.set(
-          "n",
-          "<space>h",
-          function()
-            hop.hint_words({direction = HintDirection.BEFORE_CURSOR})
-          end,
-          {}
-        )
-        vim.keymap.set(
-          "n",
-          "<space>l",
-          function()
-            hop.hint_words({direction = HintDirection.AFTER_CURSOR})
-          end,
-          {}
-        )
-      end
-    }
-
-    -- FOLKE
-    use {
-      "folke/todo-comments.nvim",
-      requires = "nvim-lua/plenary.nvim",
-      config = function()
-        require("todo-comments").setup {}
-        vim.api.nvim_set_keymap("n", "<leader>ft", ":TodoTelescope<cr>", {noremap = true, silent = true})
-      end
-    }
-    use {
-      "folke/zen-mode.nvim",
-      config = function()
-        require("zen-mode").setup {}
-      end
-    }
-    use {
-      "folke/twilight.nvim",
-      config = function()
-        require("twilight").setup {
-          dimming = {
-            alpha = 0.4
-          }
-        }
-      end
-    }
-    use {
-      "folke/which-key.nvim",
-      config = function()
-        require("plugins.which_key")
-      end
-    }
-
-    use "JoosepAlviste/nvim-ts-context-commentstring"
-    use {
-      "numToStr/Comment.nvim",
-      config = function()
-        require("plugins.comment")
-      end
-    }
-    use {
-      "windwp/nvim-autopairs",
-      config = function()
-        require("nvim-autopairs").setup {}
-      end
-    }
-    use {
-      "lukas-reineke/indent-blankline.nvim",
-      config = function()
-        require("plugins.indent-blankline")
-      end
-    }
-    -- show registers in floating window
-    use {
-      "kyazdani42/nvim-tree.lua",
-      requires = "kyazdani42/nvim-web-devicons",
-      config = function()
-        require("plugins.nvim-tree")
-      end
-    }
-
-    -- Notetaking
-    use {
-      "oberblastmeister/neuron.nvim",
-      branch = "unstable",
-      config = function()
-        require("plugins.neuron")
+        require("plugins.gitsigns")
       end
     }
 
@@ -288,13 +151,6 @@ return require("packer").startup(
       end
     }
     use {
-      "lewis6991/gitsigns.nvim",
-      requires = {"nvim-lua/plenary.nvim"},
-      config = function()
-        require("plugins.gitsigns")
-      end
-    }
-    use {
       "nvim-lualine/lualine.nvim",
       requires = {"kyazdani42/nvim-web-devicons", opt = true},
       config = function()
@@ -302,48 +158,167 @@ return require("packer").startup(
       end
     }
 
-    -- NON-LUA
-    use "wellle/targets.vim" -- NON-LUA: ci' works on (, [, {, < on entire line
-    use {"mg979/vim-visual-multi", branch = "master"} -- NON-LUA
     use {
-      "KabbAmine/vCoolor.vim",
+      "folke/todo-comments.nvim",
+      requires = "nvim-lua/plenary.nvim",
       config = function()
-        vim.g.vcoolor_map = ",co"
+        require("todo-comments").setup {}
+        vim.api.nvim_set_keymap("n", "<leader>ft", ":TodoTelescope<cr>", {noremap = true, silent = true})
       end
-    } -- NON-LUA
+    }
     use {
-      "jpalardy/vim-slime",
+      "folke/which-key.nvim",
       config = function()
-        require("plugins.slime")
+        require("plugins.which_key")
       end
-    } -- NON-LUA
-    use(
-      {
-        "iamcco/markdown-preview.nvim",
-        run = function()
-          vim.fn["mkdp#util#install"]()
-        end
-      }
-    ) -- NON-LUA
+    }
+    use {
+      "numToStr/Comment.nvim",
+      config = function()
+        require("plugins.comment")
+      end
+    }
 
-    -- tpope: so excused
     use "tpope/vim-repeat" -- NON-LUA
-    -- use "tpope/vim-surround" -- NON-LUA
 
     -- Colorschemes
-    use {
-      "tjdevries/colorbuddy.vim"
-      -- config = function()
-      --   require("plugins.colorbuddy")
-      -- end
-    }
+    use "tjdevries/colorbuddy.vim"
     use "Th3Whit3Wolf/onebuddy"
     use "gruvbox-community/gruvbox"
-    use "tjdevries/gruvbuddy.nvim"
     use "PHSix/nvim-hybrid"
     use "tanvirtin/monokai.nvim"
     use "bluz71/vim-nightfly-guicolors"
-    use "eddyekofo94/gruvbox-flat.nvim"
     use "olimorris/onedarkpro.nvim"
+
+    if (not vim.g.minimal_plugin) then
+      -- Formatter
+      use {
+        "mhartington/formatter.nvim",
+        config = function()
+          require("plugins.formatter")
+        end
+      }
+      use "fladson/vim-kitty"
+      use {
+        "norcalli/nvim-colorizer.lua",
+        config = function()
+          require("colorizer").setup()
+        end
+      }
+      use {
+        "akinsho/nvim-toggleterm.lua",
+        config = function()
+          require("plugins.toggleterm")
+        end
+      }
+      use {
+        "lukas-reineke/indent-blankline.nvim",
+        config = function()
+          require("plugins.indent-blankline")
+        end
+      }
+      use {
+        "kyazdani42/nvim-tree.lua",
+        requires = "kyazdani42/nvim-web-devicons",
+        config = function()
+          require("plugins.nvim-tree")
+        end
+      }
+
+      -- Notetaking
+      use {
+        "oberblastmeister/neuron.nvim",
+        branch = "unstable",
+        config = function()
+          require("plugins.neuron")
+        end
+      }
+      -- use {
+      --   "wincent/command-t",
+      --   run = "cd lua/wincent/commandt/lib && make",
+      --   setup = function()
+      --     vim.g.CommandTPreferredImplementation = "lua"
+      --   end,
+      --   config = function()
+      --     require("wincent.commandt").setup(
+      --       {
+      --         always_show_dot_files = true
+      --       }
+      --     )
+      --   end
+      -- }
+
+      -- use {
+      --   "ggandor/lightspeed.nvim",
+      --   requires = "tpope/vim-repeat"
+      -- }
+      use {
+        "phaazon/hop.nvim",
+        branch = "v2", -- optional but strongly recommended
+        config = function()
+          local hop = require("hop")
+          local HintDirection = require("hop.hint").HintDirection
+          require("hop").setup({})
+
+          vim.keymap.set(
+            "n",
+            "<space>j",
+            function()
+              hop.hint_lines_skip_whitespace({direction = HintDirection.AFTER_CURSOR})
+            end,
+            {}
+          )
+          vim.keymap.set(
+            "n",
+            "<space>k",
+            function()
+              hop.hint_lines_skip_whitespace({direction = HintDirection.BEFORE_CURSOR})
+            end,
+            {}
+          )
+          vim.keymap.set(
+            "n",
+            "<space>h",
+            function()
+              hop.hint_words({direction = HintDirection.BEFORE_CURSOR})
+            end,
+            {}
+          )
+          vim.keymap.set(
+            "n",
+            "<space>l",
+            function()
+              hop.hint_words({direction = HintDirection.AFTER_CURSOR})
+            end,
+            {}
+          )
+        end
+      }
+      -- NON-LUA
+      use "wellle/targets.vim" -- NON-LUA: ci' works on (, [, {, < on entire line
+      use {"mg979/vim-visual-multi", branch = "master"} -- NON-LUA
+      use {
+        "KabbAmine/vCoolor.vim",
+        config = function()
+          vim.g.vcoolor_map = ",co"
+        end
+      } -- NON-LUA
+      use {
+        "jpalardy/vim-slime",
+        config = function()
+          require("plugins.slime")
+        end
+      } -- NON-LUA
+      use(
+        {
+          "iamcco/markdown-preview.nvim",
+          run = function()
+            vim.fn["mkdp#util#install"]()
+          end
+        }
+      ) -- NON-LUA
+    else
+      print("MINIMAL PLUGIN SETUP")
+    end
   end
 )
