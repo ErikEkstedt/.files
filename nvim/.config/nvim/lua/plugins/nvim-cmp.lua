@@ -21,7 +21,7 @@ local mapping = {
       c = cmp.mapping.confirm({select = false})
     }
   ),
-  ["<C-k>"] = cmp.mapping(
+  ["<C-l>"] = cmp.mapping(
     function(fallback)
       if ls.expand_or_locally_jumpable() then
         ls.expand_or_jump()
@@ -31,7 +31,7 @@ local mapping = {
     end,
     {"i", "s"}
   ),
-  ["<C-j>"] = cmp.mapping(
+  ["<C-h>"] = cmp.mapping(
     function(fallback)
       if ls.expand_or_locally_jumpable() then
         ls.jump(-1)
@@ -58,10 +58,10 @@ local mapping = {
 }
 
 local sources = {
-  {name = "buffer", max_item_count = 5},
+  {name = "buffer", max_item_count = 1},
   -- {name = "cmdline"},
-  {name = "luasnip", priority = 10},
-  {name = "nvim_lsp", priority = 5},
+  {name = "luasnip", priority = 2},
+  {name = "nvim_lsp", priority = 2},
   {name = "nvim_lua"},
   {name = "path"}
 }

@@ -4,6 +4,13 @@
 -- Maintainer:   Th3Whit3Wolf <the.white.wolf.is.1337@gmail.com>
 -- Website:      httpc.//github.com/Th3Whit3Wolf/onebuddy
 -- License:      MIT
+local status, n = pcall(require, "colorbuddy")
+if (not status) then
+  return
+end
+
+print("Loaded one_dark_custom")
+
 local Color, c, Group, g, s = require("colorbuddy").setup()
 local b = s.bold
 local i = s.italic
@@ -59,8 +66,12 @@ Color.new("cRedBright", "#F70067")
 Color.new("cYellow", "#e5c07b")
 Color.new("cPink", "#ff2f87")
 Color.new("customSpell", "#E19BA0")
-Color.new("dError", "#e06c75")
-Color.new("dWarning", "#d19a66")
+
+-------------------------
+-- Diagnostic  Colors --
+-------------------------
+Color.new("dError", "#630900")
+Color.new("dWarning", "#E97E19")
 Color.new("dInformation", "#2480D5")
 Color.new("dHint", "#A9D987")
 
