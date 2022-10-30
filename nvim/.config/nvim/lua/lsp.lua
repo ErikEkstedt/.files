@@ -23,6 +23,7 @@ mason_lspconfig.setup(
     automatic_installation = true,
     ensure_installed = {
       "bashls",
+      "cssls",
       "html",
       "pyright",
       "sumneko_lua",
@@ -93,7 +94,7 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 -----------------------------------------------------
 -- Attach
 -----------------------------------------------------
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 local CmdLspBuf = "<Cmd>lua vim.lsp.buf"
 local CmdDiagnostic = "<cmd>lua vim.diagnostic"
 local ns = { noremap = true, silent = true }
