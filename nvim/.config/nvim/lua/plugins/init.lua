@@ -45,16 +45,21 @@ return require("packer").startup(
           require("lsp")
         end
       }
+      -- Treesitter
+      -- Mostly used for syntax, tshighlightundercursor
       use {
         "nvim-treesitter/nvim-treesitter",
-        requires = {},
+        requires = {
+          "nvim-treesitter/playground",
+          "nvim-treesitter/nvim-treesitter-context",
+          "nvim-treesitter/nvim-treesitter-textobjects"
+        },
         config = function()
           require("plugins.treesitter")
         end,
         run = ":TSUpdate"
       }
       use "JoosepAlviste/nvim-ts-context-commentstring"
-      use "nvim-treesitter/playground"
       use {
         "hrsh7th/nvim-cmp",
         requires = {

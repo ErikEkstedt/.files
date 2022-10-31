@@ -19,7 +19,7 @@ vim.opt.fileignorecase = true
 -- end
 -- vim.opt.foldtext = "v:lua.custom_fold_text()"
 vim.o.foldtext =
-  [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
+[[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
 -- vim.o.foldcolumn = "1"
 vim.o.foldlevelstart = 99 -- 0: all fold, 99: no fold
 vim.o.foldmethod = "indent"
@@ -55,7 +55,7 @@ vim.opt.updatetime = 1000
 vim.o.sessionoptions = "buffers,help,tabpages,winsize,winpos,terminal"
 
 -- Automatically resize when vim changes
-vim.api.nvim_create_autocmd("VimResized", {command = [[exe "normal! \<c-w>="]]})
+vim.api.nvim_create_autocmd("VimResized", { command = [[exe "normal! \<c-w>="]] })
 
 -- Highlight text when yank. Built in lua.
 -- vim.cmd([[au! TextYankPost * silent! lua vim.highlight.on_yank {higroup="DiffAdd", timeout=500}]])
@@ -69,11 +69,11 @@ vim.api.nvim_create_autocmd(
 -- Remember line on exit/start. :he last-jump-position
 vim.api.nvim_create_autocmd(
   "BufReadPost",
-  {command = [[if line("'\"") > 0 && line ("'\"") <= line("$") | exe "normal! g'\"zz" | endif ]]}
+  { command = [[if line("'\"") > 0 && line ("'\"") <= line("$") | exe "normal! g'\"zz" | endif ]] }
 )
 
 --global statusline
-vim.api.nvim_create_autocmd("VimEnter", {command = [[set laststatus=3]], once = true})
+vim.api.nvim_create_autocmd("VimEnter", { command = [[set laststatus=3]], once = true })
 vim.opt.fillchars = {
   horiz = "━",
   horizup = "┻",
