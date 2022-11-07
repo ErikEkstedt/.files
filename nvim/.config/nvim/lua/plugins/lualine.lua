@@ -23,29 +23,29 @@ local colors = {
 }
 local theme = {
   visual = {
-    a = {fg = colors.bg, bg = colors.orange, gui = "bold"}
+    a = { fg = colors.bg, bg = colors.orange, gui = "bold" }
   },
   replace = {
-    a = {fg = colors.bg, bg = colors.red, gui = "bold"}
+    a = { fg = colors.bg, bg = colors.red, gui = "bold" }
   },
   inactive = {
-    a = {fg = colors.color4, bg = colors.bg_inactive},
-    b = {fg = colors.color4, bg = colors.bg_inactive},
-    c = {fg = colors.color4, bg = colors.bg_inactive},
-    x = {fg = colors.color4, bg = colors.bg_inactive},
-    y = {fg = colors.color4, bg = colors.bg_inactive},
-    z = {fg = colors.color4, bg = colors.bg_inactive}
+    a = { fg = colors.color4, bg = colors.bg_inactive },
+    b = { fg = colors.color4, bg = colors.bg_inactive },
+    c = { fg = colors.color4, bg = colors.bg_inactive },
+    x = { fg = colors.color4, bg = colors.bg_inactive },
+    y = { fg = colors.color4, bg = colors.bg_inactive },
+    z = { fg = colors.color4, bg = colors.bg_inactive }
   },
   normal = {
-    a = {fg = colors.black, bg = colors.blue, gui = "bold"},
-    b = {fg = colors.magenta, bg = colors.bg, gui = "bold"},
-    c = {fg = colors.blue, bg = colors.bg2, gui = "bold"},
-    x = {fg = colors.green, bg = colors.bg2, gui = "bold"},
-    y = {fg = colors.blue, bg = colors.bg, gui = "bold"},
-    z = {fg = colors.blue, bg = colors.bg, gui = "bold"}
+    a = { fg = colors.black, bg = colors.blue, gui = "bold" },
+    b = { fg = colors.magenta, bg = colors.bg, gui = "bold" },
+    c = { fg = colors.blue, bg = colors.bg2, gui = "bold" },
+    x = { fg = colors.green, bg = colors.bg2, gui = "bold" },
+    y = { fg = colors.blue, bg = colors.bg, gui = "bold" },
+    z = { fg = colors.blue, bg = colors.bg, gui = "bold" }
   },
   insert = {
-    a = {fg = colors.color2, bg = colors.green, gui = "bold"}
+    a = { fg = colors.color2, bg = colors.green, gui = "bold" }
   }
 }
 
@@ -105,7 +105,7 @@ local function get_pyright_env()
   Job:new(
     {
       command = "cat",
-      args = {pyright_path},
+      args = { pyright_path },
       on_exit = function(j, return_val)
         ret = return_val
         body = j:result()
@@ -175,8 +175,8 @@ local inactive_different = {
       function()
         return " "
       end,
-      separator = {left = ""},
-      padding = {right = 0, left = 0}
+      separator = { left = "" },
+      padding = { right = 0, left = 0 }
     }
   },
   lualine_b = {},
@@ -194,9 +194,9 @@ local inactive_different = {
   lualine_x = {
     {
       "diagnostics",
-      separator = {left = ""},
+      separator = { left = "" },
       left_padding = 2,
-      sources = {"nvim_diagnostic"}
+      sources = { "nvim_diagnostic" }
     }
   },
   lualine_y = {
@@ -208,12 +208,12 @@ local inactive_different = {
         removed = "  "
       },
       padding = 0,
-      separator = {right = ""}
+      separator = { right = "" }
     },
     {
       "branch",
       icon = "",
-      padding = {left = 1, right = 0},
+      padding = { left = 1, right = 0 },
       separator = ""
     }
   },
@@ -222,8 +222,8 @@ local inactive_different = {
       function()
         return " "
       end,
-      separator = {right = ""},
-      padding = {right = 0, left = 0}
+      separator = { right = "" },
+      padding = { right = 0, left = 0 }
     }
   }
 }
@@ -235,16 +235,16 @@ local sections = {
       -- fmt = function(str)
       --   return str:sub(1, 1)
       -- end,
-      separator = {left = "", right = ""},
-      padding = {left = 0, right = 0}
+      separator = { left = "", right = "" },
+      padding = { left = 0, right = 0 }
     }
   },
   lualine_b = {
     {
       "branch",
       icon = "",
-      padding = {left = 1, right = 1},
-      separator = {right = ""}
+      padding = { left = 1, right = 1 },
+      separator = { right = "" }
     },
     {
       "diff",
@@ -254,7 +254,7 @@ local sections = {
         removed = "  "
       },
       padding = 0,
-      separator = {right = ""}
+      separator = { right = "" }
     }
   },
   lualine_c = {
@@ -266,16 +266,16 @@ local sections = {
     }
   },
   lualine_x = {
-    {"diagnostics", sources = {"nvim_diagnostic"}},
-    {PythonEnv},
-    {get_lsp_client, icon = ""}
+    { "diagnostics", sources = { "nvim_diagnostic" } },
+    { PythonEnv },
+    { get_lsp_client, icon = "" }
   },
   lualine_y = {
-    {"filetype", separator = {left = ""}, padding = {left = 0, right = 1}}
+    { "filetype", separator = { left = "" }, padding = { left = 0, right = 1 } }
   },
   lualine_z = {
-    {"location", separator = {right = ""}, padding = 0},
-    {"progress", separator = {right = ""}, padding = 0}
+    { "location", separator = { right = "" }, padding = 0 },
+    { "progress", separator = { right = "" }, padding = 0 }
   }
 }
 
@@ -284,7 +284,7 @@ require "lualine".setup {
     icons_enabled = true,
     theme = theme,
     component_separators = "",
-    section_separators = {left = "", right = ""},
+    section_separators = { left = "", right = "" },
     disabled_filetypes = {},
     always_divide_middle = false,
     globalstatus = true

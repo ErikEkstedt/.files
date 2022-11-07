@@ -136,32 +136,6 @@ return require("packer").startup(
         }
       )
 
-      -- Devicons/color
-      use "kyazdani42/nvim-web-devicons"
-      use {
-        "lewis6991/gitsigns.nvim",
-        requires = { "nvim-lua/plenary.nvim" },
-        config = function()
-          require("plugins.gitsigns")
-        end
-      }
-
-      -- StatusLine / Bufferline
-      use {
-        "akinsho/nvim-bufferline.lua",
-        requires = "kyazdani42/nvim-web-devicons",
-        config = function()
-          require("plugins.nvim-bufferline")
-        end
-      }
-      use {
-        "nvim-lualine/lualine.nvim",
-        requires = { "kyazdani42/nvim-web-devicons", opt = true },
-        config = function()
-          require("plugins.lualine")
-        end
-      }
-
       use {
         "folke/todo-comments.nvim",
         requires = "nvim-lua/plenary.nvim",
@@ -182,18 +156,41 @@ return require("packer").startup(
           require("plugins.comment")
         end
       }
-
       use "tpope/vim-repeat" -- NON-LUA
+
+      -- StatusLine / Bufferline
+      use {
+        "akinsho/nvim-bufferline.lua",
+        requires = "kyazdani42/nvim-web-devicons",
+        config = function()
+          require("plugins.nvim-bufferline")
+        end
+      }
+      use {
+        "nvim-lualine/lualine.nvim",
+        requires = { "kyazdani42/nvim-web-devicons", opt = true },
+        config = function()
+          require("plugins.lualine")
+        end
+      }
+      -- Devicons/color
+      use "kyazdani42/nvim-web-devicons"
+      use {
+        "lewis6991/gitsigns.nvim",
+        requires = { "nvim-lua/plenary.nvim" },
+        config = function()
+          require("plugins.gitsigns")
+        end
+      }
 
       -- Colorschemes
       use "tjdevries/colorbuddy.vim"
       -- use "Th3Whit3Wolf/onebuddy"
-      -- use "gruvbox-community/gruvbox"
       -- use "PHSix/nvim-hybrid"
       use "tanvirtin/monokai.nvim"
       -- use "bluz71/vim-nightfly-guicolors"
       -- use "olimorris/onedarkpro.nvim"
-      use { "ellisonleao/gruvbox.nvim" }
+      use "ellisonleao/gruvbox.nvim"
       use "rebelot/kanagawa.nvim"
 
       if (not vim.g.minimal_plugin) then

@@ -14,6 +14,9 @@ vim.g.minimal_plugin = false -- used in plugins/init.lua
 -- Load plugins (specific plugin settings lua/plugins/<plugName>.lua)
 require("plugins")
 
+-- Custom "plugins"
+require("custom.session").setup() -- Session (mksession, Auto-Session, etc)
+
 -- options/settings
 require("settings")
 
@@ -22,9 +25,5 @@ require("mappings")
 
 -- Set Colorscheme
 require("theme")
-
--- Custom "plugins"
--- Session (mksession, Auto-Session, etc)
-require("custom.session").setup()
 -- Cursor i want reversed colors but need to check kitty/tmux etc
 -- vim.opt.guicursor = "n-v-c-sm:block-Cursor,i-ci-ve:ver25,r-cr-o:hor20"

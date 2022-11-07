@@ -83,7 +83,9 @@ local function apply_gruvbox()
         DiagnosticSignInfo = { bg = "NONE" },
         DiagnosticSignHint = { bg = "NONE" },
         Folded = { bg = "NONE" },
-        FoldColumns = { bg = "NONE" }
+        FoldColumns = { bg = "NONE" },
+        Type = { fg = "#fabd2f", bold = true }
+        -- Typedef = { bold = true }
       }
     }
   )
