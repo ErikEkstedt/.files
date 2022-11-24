@@ -185,6 +185,7 @@ return require("packer").startup(
 
       -- Colorschemes
       use "tjdevries/colorbuddy.vim"
+      use "sam4llis/nvim-tundra"
       -- use "Th3Whit3Wolf/onebuddy"
       -- use "PHSix/nvim-hybrid"
       use "tanvirtin/monokai.nvim"

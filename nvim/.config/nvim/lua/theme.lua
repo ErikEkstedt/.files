@@ -92,6 +92,8 @@ local function apply_gruvbox()
   vim.cmd([[colorscheme gruvbox]])
 end
 
-apply_gruvbox()
+-- apply_gruvbox()
 -- apply_kanagawa()
 -- apply_monokai()
+vim.opt.background = "dark"
+vim.cmd("colorscheme tundra")
