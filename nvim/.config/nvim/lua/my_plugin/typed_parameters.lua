@@ -1,3 +1,13 @@
+local run_formatter = function(text)
+  local j =
+  require("plenary.job"):new {
+    command = "python",
+    args = { "lua/my_plugin/stdin_to_stdout.py" },
+    writer = { text }
+  }
+  return j:sync()
+end
+
 local params_ts_query = vim.treesitter.parse_query("python", [[ 
 (function_definition
   (parameters) @param
@@ -29,19 +39,14 @@ local format_params = function(bufnr)
     if name == "param" then
       -- { start_row, start_col, end_row, end_col}
       local range = { node:range() }
-      -- vim.notify(vim.inspect(range))
-
       local text = vim.treesitter.get_node_text(node, bufnr)
 
       -- check if params are not empty
       if text ~= "()" then
-        -- vim.notify(vim.inspect(text))
-
         -- we simply uppercase to see effect
-        local formatted = string.upper(text)
-
-        -- vim.notify(vim.inspect(formatted))
-        -- vim.notify(vim.inspect(range))
+        -- local formatted = string.upper(text)
+        local formatted = run_formatter(text)
+        vim.notify(vim.inspect(formatted))
 
         -- Insert the changes to be made in a reverted list
         table.insert(changes, 1, { range = range, formatted = formatted })
@@ -61,7 +66,7 @@ local format_params = function(bufnr)
       change.range[2],
       change.range[3],
       change.range[4],
-      { change.formatted }
+      change.formatted
     )
   end
 end
