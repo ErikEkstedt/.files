@@ -45,21 +45,7 @@ return require("packer").startup(
           require("lsp")
         end
       }
-      -- Treesitter
-      -- Mostly used for syntax, tshighlightundercursor
-      use {
-        "nvim-treesitter/nvim-treesitter",
-        requires = {
-          "nvim-treesitter/playground",
-          "nvim-treesitter/nvim-treesitter-context",
-          "nvim-treesitter/nvim-treesitter-textobjects"
-        },
-        config = function()
-          require("plugins.treesitter")
-        end,
-        run = ":TSUpdate"
-      }
-      use "JoosepAlviste/nvim-ts-context-commentstring"
+      -- Autocomplete
       use {
         "hrsh7th/nvim-cmp",
         requires = {
@@ -76,28 +62,40 @@ return require("packer").startup(
         },
         config = function()
           require("plugins.nvim-cmp")
-        end
-      }
-      use {
-        "L3MON4D3/LuaSnip", -- Snippet engine
-        requires = { "saadparwaiz1/cmp_luasnip" },
-        config = function()
           require("plugins.luasnip")
         end
       }
+
+      -- Treesitter
+      -- Mostly used for syntax, tshighlightundercursor
+      use {
+        "nvim-treesitter/nvim-treesitter",
+        requires = {
+          "nvim-treesitter/playground",
+          -- "nvim-treesitter/nvim-treesitter-context",
+          "nvim-treesitter/nvim-treesitter-textobjects"
+        },
+        config = function()
+          require("plugins.treesitter")
+        end,
+        run = ":TSUpdate"
+      }
+      use "JoosepAlviste/nvim-ts-context-commentstring"
 
       -- Fuzzy Finding
       use {
         "nvim-telescope/telescope.nvim",
         requires = {
-          "nvim-lua/plenary.nvim"
+          "nvim-lua/plenary.nvim",
+          "nvim-telescope/telescope-fzf-native.nvim",
+          "dhruvmanila/telescope-bookmarks.nvim"
         },
         config = function()
           require("plugins.telescope")
         end
       }
-      use "dhruvmanila/telescope-bookmarks.nvim"
-      use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
+      use { "mbbill/undotree" }
+
       use {
         "sudormrfbin/cheatsheet.nvim",
         -- optional
@@ -237,20 +235,6 @@ return require("packer").startup(
             require("plugins.neuron")
           end
         }
-        -- use {
-        --   "wincent/command-t",
-        --   run = "cd lua/wincent/commandt/lib && make",
-        --   setup = function()
-        --     vim.g.CommandTPreferredImplementation = "lua"
-        --   end,
-        --   config = function()
-        --     require("wincent.commandt").setup(
-        --       {
-        --         always_show_dot_files = true
-        --       }
-        --     )
-        --   end
-        -- }
 
         -- use {
         --   "ggandor/lightspeed.nvim",

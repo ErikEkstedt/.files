@@ -167,6 +167,17 @@ local PythonEnv = function()
   return ""
 end
 
+local function get_filepath()
+  local filename = vim.api.nvim_buf_get_name(0)
+  local home = vim.fn.expand("$HOME")
+
+  if filename.match(filename, home) then
+    filename = filename.gsub(filename, home .. "/", "")
+    filename = filename.gsub(filename, "/(%w+)/.config/(%w+)", "/%1")
+  end
+  return filename
+end
+
 ---------------------------------------------------
 -- Sections
 local inactive_different = {
@@ -258,12 +269,13 @@ local sections = {
     }
   },
   lualine_c = {
-    {
-      "filename",
-      file_status = true, -- displays file status (readonly status, modified status)
-      path = 2, -- 0 = just filename, 1 = relative path, 2 = absolute path
-      shorting_target = 5
-    }
+    -- {
+    --   "filename",
+    --   file_status = true, -- displays file status (readonly status, modified status)
+    --   path = 2, -- 0 = just filename, 1 = relative path, 2 = absolute path
+    --   shorting_target = 5
+    -- },
+    { get_filepath }
   },
   lualine_x = {
     { "diagnostics", sources = { "nvim_diagnostic" } },

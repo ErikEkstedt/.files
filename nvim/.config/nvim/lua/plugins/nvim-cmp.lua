@@ -11,14 +11,14 @@ local mapping = {
   ["<C-e>"] = cmp.mapping.close(),
   ["<CR>"] = cmp.mapping(
     {
-      i = cmp.mapping.confirm({select = true}),
-      c = cmp.mapping.confirm({select = false})
+      i = cmp.mapping.confirm({ select = true }),
+      c = cmp.mapping.confirm({ select = false })
     }
   ),
   ["<localleader><localleader>"] = cmp.mapping(
     {
-      i = cmp.mapping.confirm({select = true}),
-      c = cmp.mapping.confirm({select = false})
+      i = cmp.mapping.confirm({ select = true }),
+      c = cmp.mapping.confirm({ select = false })
     }
   ),
   ["<C-l>"] = cmp.mapping(
@@ -29,7 +29,7 @@ local mapping = {
         fallback() -- The fallback function sends
       end
     end,
-    {"i", "s"}
+    { "i", "s" }
   ),
   ["<C-h>"] = cmp.mapping(
     function(fallback)
@@ -39,7 +39,7 @@ local mapping = {
         fallback() -- The fallback function sends
       end
     end,
-    {"i", "s"}
+    { "i", "s" }
   ),
   ["<Tab>"] = function(fallback)
     if cmp.visible() then
@@ -55,15 +55,6 @@ local mapping = {
       fallback()
     end
   end
-}
-
-local sources = {
-  {name = "buffer", max_item_count = 1},
-  -- {name = "cmdline"},
-  {name = "luasnip", priority = 2},
-  {name = "nvim_lsp", priority = 2},
-  {name = "nvim_lua"},
-  {name = "path"}
 }
 
 local kind_icons = {
@@ -123,13 +114,13 @@ local kind_icons_vscode = {
 }
 
 local fmt = {
-  fields = {"abbr", "kind", "menu"},
+  fields = { "abbr", "kind", "menu" },
   format = function(entry, vim_item)
     -- Kind icons
     vim_item.kind = string.format("%s", kind_icons[vim_item.kind]) -- This concatonates the icons with the name of the item kind
     -- Source
     vim_item.menu =
-      ({
+    ({
       path = "ﱮ", -- [path]
       luasnip = "", -- "[snip]",
       nvim_lsp = "ﲳ",
@@ -144,7 +135,7 @@ local fmt = {
 }
 
 local fmt_vscode = {
-  fields = {"abbr", "kind", "menu"},
+  fields = { "abbr", "kind", "menu" },
   format = function(_, vim_item)
     vim_item.kind = (kind_icons_vscode[vim_item.kind] or "") .. vim_item.kind
     return vim_item
@@ -152,63 +143,78 @@ local fmt_vscode = {
 }
 
 local fmt_left = {
-  fields = {"kind", "abbr", "menu"},
+  fields = { "kind", "abbr", "menu" },
   format = function(entry, vim_item)
-    local kind = require("lspkind").cmp_format({mode = "symbol_text", maxwidth = 50})(entry, vim_item)
-    local strings = vim.split(kind.kind, "%s", {trimempty = true})
-    kind.kind = " " .. strings[1] .. " "
-    kind.menu = "    (" .. strings[2] .. ")"
-
-    return kind
+    local item =
+    require("lspkind").cmp_format(
+      {
+        mode = "symbol_text",
+        menu = ({
+          path = "ﱮ", -- [path]
+          buffer = "[BUF]",
+          nvim_lsp = "[LSP]",
+          luasnip = "[Snip]",
+          nvim_lua = "[LUA]",
+          latex_symbols = "[Latex]"
+        }),
+        maxwidth = 50
+      }
+    )(entry, vim_item)
+    local strings = vim.split(item.kind, "%s", { trimempty = true })
+    item.kind = " " .. strings[1] .. " "
+    item.menu = item.menu .. " (" .. strings[2] .. ")"
+    return item
   end
 }
 
 -- Highlight
 vim.cmd("hi DocumentNC guifg=#F70067")
 local highlights = {
-  CmpItemAbbrDeprecated = {fg = "#7E8294", bg = "NONE", fmt = "strikethrough"},
-  CmpItemAbbrMatch = {fg = "#82AAFF", bg = "NONE", fmt = "bold"},
-  CmpItemAbbrMatchFuzzy = {fg = "#82AAFF", bg = "NONE", fmt = "bold"},
-  CmpItemMenu = {fg = "#C792EA", bg = "NONE", fmt = "italic"},
-  CmpItemKindField = {fg = "#EED8DA", bg = "#B5585F"},
-  CmpItemKindProperty = {fg = "#EED8DA", bg = "#B5585F"},
-  CmpItemKindEvent = {fg = "#EED8DA", bg = "#B5585F"},
-  CmpItemKindText = {fg = "#C3E88D", bg = "#9FBD73"},
-  CmpItemKindEnum = {fg = "#C3E88D", bg = "#9FBD73"},
-  CmpItemKindKeyword = {fg = "#C3E88D", bg = "#9FBD73"},
-  CmpItemKindConstant = {fg = "#FFE082", bg = "#D4BB6C"},
-  CmpItemKindConstructor = {fg = "#FFE082", bg = "#D4BB6C"},
-  CmpItemKindReference = {fg = "#FFE082", bg = "#D4BB6C"},
-  CmpItemKindFunction = {fg = "#EADFF0", bg = "#A377BF"},
-  CmpItemKindStruct = {fg = "#EADFF0", bg = "#A377BF"},
-  CmpItemKindClass = {fg = "#EADFF0", bg = "#A377BF"},
-  CmpItemKindModule = {fg = "#EADFF0", bg = "#A377BF"},
-  CmpItemKindOperator = {fg = "#EADFF0", bg = "#A377BF"},
-  CmpItemKindVariable = {fg = "#C5CDD9", bg = "#7E8294"},
-  CmpItemKindFile = {fg = "#C5CDD9", bg = "#7E8294"},
-  CmpItemKindUnit = {fg = "#F5EBD9", bg = "#D4A959"},
-  CmpItemKindSnippet = {fg = "#F5EBD9", bg = "#D4A959"},
-  CmpItemKindFolder = {fg = "#F5EBD9", bg = "#D4A959"},
-  CmpItemKindMethod = {fg = "#DDE5F5", bg = "#6C8ED4"},
-  CmpItemKindValue = {fg = "#DDE5F5", bg = "#6C8ED4"},
-  CmpItemKindEnumMember = {fg = "#DDE5F5", bg = "#6C8ED4"},
-  CmpItemKindInterface = {fg = "#D8EEEB", bg = "#58B5A8"},
-  CmpItemKindColor = {fg = "#D8EEEB", bg = "#58B5A8"},
-  CmpItemKindTypeParameter = {fg = "#D8EEEB", bg = "#58B5A8"}
+  CmpItemAbbrDeprecated = { fg = "#7E8294", bg = "NONE", fmt = "strikethrough" },
+  CmpItemAbbrMatch = { fg = "#82AAFF", bg = "NONE", fmt = "bold" },
+  CmpItemAbbrMatchFuzzy = { fg = "#82AAFF", bg = "NONE", fmt = "bold" },
+  -- CmpItemMenu = { fg = "#C792EA", bg = "NONE", fmt = "italic" },
+  -- CmpItemMenu = { fg = "#F5EBD9", bg = "NONE" },
+  CmpItemMenu = { fg = "#7E8294", bg = "NONE" },
+  CmpItemKindField = { fg = "#EED8DA", bg = "#B5585F" },
+  CmpItemKindProperty = { fg = "#EED8DA", bg = "#B5585F" },
+  CmpItemKindEvent = { fg = "#EED8DA", bg = "#B5585F" },
+  CmpItemKindText = { fg = "#C3E88D", bg = "#9FBD73" },
+  CmpItemKindEnum = { fg = "#C3E88D", bg = "#9FBD73" },
+  CmpItemKindKeyword = { fg = "#C3E88D", bg = "#9FBD73" },
+  CmpItemKindConstant = { fg = "#FFE082", bg = "#D4BB6C" },
+  CmpItemKindConstructor = { fg = "#FFE082", bg = "#D4BB6C" },
+  CmpItemKindReference = { fg = "#FFE082", bg = "#D4BB6C" },
+  CmpItemKindFunction = { fg = "#EADFF0", bg = "#A377BF" },
+  CmpItemKindStruct = { fg = "#EADFF0", bg = "#A377BF" },
+  CmpItemKindClass = { fg = "#EADFF0", bg = "#A377BF" },
+  CmpItemKindModule = { fg = "#EADFF0", bg = "#A377BF" },
+  CmpItemKindOperator = { fg = "#EADFF0", bg = "#A377BF" },
+  CmpItemKindVariable = { fg = "#C5CDD9", bg = "#7E8294" },
+  CmpItemKindFile = { fg = "#C5CDD9", bg = "#7E8294" },
+  CmpItemKindUnit = { fg = "#F5EBD9", bg = "#D4A959" },
+  CmpItemKindSnippet = { fg = "#F5EBD9", bg = "#D4A959" },
+  CmpItemKindFolder = { fg = "#F5EBD9", bg = "#D4A959" },
+  CmpItemKindMethod = { fg = "#DDE5F5", bg = "#6C8ED4" },
+  CmpItemKindValue = { fg = "#DDE5F5", bg = "#6C8ED4" },
+  CmpItemKindEnumMember = { fg = "#DDE5F5", bg = "#6C8ED4" },
+  CmpItemKindInterface = { fg = "#D8EEEB", bg = "#58B5A8" },
+  CmpItemKindColor = { fg = "#D8EEEB", bg = "#58B5A8" },
+  CmpItemKindTypeParameter = { fg = "#D8EEEB", bg = "#58B5A8" }
 }
 
 local highlights_vscode = {
-  CmpItemAbbrDeprecated = {bg = "NONE", fg = "#808080", fmt = "strikethrough"},
-  CmpItemAbbrMatch = {bg = "NONE", fg = "#569CD6"},
-  CmpItemAbbrMatchFuzzy = {bg = "NONE", fg = "#569CD6"},
-  CmpItemKindVariable = {bg = "NONE", fg = "#9CDCFE"},
-  CmpItemKindInterface = {bg = "NONE", fg = "#9CDCFE"},
-  CmpItemKindText = {bg = "NONE", fg = "#9CDCFE"},
-  CmpItemKindFunction = {bg = "NONE", fg = "#C586C0"},
-  CmpItemKindMethod = {bg = "NONE", fg = "#C586C0"},
-  CmpItemKindKeyword = {bg = "NONE", fg = "#D4D4D4"},
-  CmpItemKindProperty = {bg = "NONE", fg = "#D4D4D4"},
-  CmpItemKindUnit = {bg = "NONE", fg = "#D4D4D4"}
+  CmpItemAbbrDeprecated = { bg = "NONE", fg = "#808080", fmt = "strikethrough" },
+  CmpItemAbbrMatch = { bg = "NONE", fg = "#569CD6" },
+  CmpItemAbbrMatchFuzzy = { bg = "NONE", fg = "#569CD6" },
+  CmpItemKindVariable = { bg = "NONE", fg = "#9CDCFE" },
+  CmpItemKindInterface = { bg = "NONE", fg = "#9CDCFE" },
+  CmpItemKindText = { bg = "NONE", fg = "#9CDCFE" },
+  CmpItemKindFunction = { bg = "NONE", fg = "#C586C0" },
+  CmpItemKindMethod = { bg = "NONE", fg = "#C586C0" },
+  CmpItemKindKeyword = { bg = "NONE", fg = "#D4D4D4" },
+  CmpItemKindProperty = { bg = "NONE", fg = "#D4D4D4" },
+  CmpItemKindUnit = { bg = "NONE", fg = "#D4D4D4" }
 }
 
 -- THEME settings
@@ -219,6 +225,20 @@ if cmp_theme == "vscode" then
   fmt = fmt_vscode
 elseif cmp_theme == "left" then
   fmt = fmt_left
+  -- fmt = {
+  --   format = require("lspkind").cmp_format(
+  --     {
+  --       mode = "symbol_text",
+  --       menu = ({
+  --         buffer = "[BUF]",
+  --         nvim_lsp = "[LSP]",
+  --         luasnip = "[Snip]",
+  --         nvim_lua = "[LUA]",
+  --         latex_symbols = "[Latex]"
+  --       })
+  --     }
+  --   )
+  -- }
   col_offset = -3
   side_padding = 0
 end
@@ -233,14 +253,20 @@ end
 
 cmp.setup(
   {
-    completion = {keyword_length = 2},
+    completion = { keyword_length = 2 },
     snippet = {
       expand = function(args)
         ls.lsp_expand(args.body)
       end
     },
     mapping = mapping,
-    sources = sources,
+    sources = {
+      { name = "buffer", max_item_count = 2 },
+      { name = "luasnip", priority = 10 },
+      { name = "nvim_lsp", priority = 10, max_item_count = 10 },
+      { name = "nvim_lua", max_item_count = 5 },
+      { name = "path", max_item_count = 5 }
+    },
     formatting = fmt,
     experimental = {
       native_menu = false,
@@ -252,7 +278,7 @@ cmp.setup(
         side_padding = side_padding
       },
       documentation = {
-        border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"},
+        border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
         winhighlight = "FloatBorder:DocumentNC,Normal:Normal"
       }
     }

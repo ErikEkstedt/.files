@@ -16,6 +16,7 @@ treesitter.setup {
   ensure_installed = {
     "bash",
     "css",
+    "help",
     "html",
     "javascript",
     "json",
@@ -24,12 +25,8 @@ treesitter.setup {
     "python",
     "typescript",
     "vim",
-    "yaml"
-    -- "c",
-    -- "cpp",
-    -- "go",
-    -- "java",
-    -- "rust",
+    "yaml",
+    "rust"
   },
   highlight = {
     enable = true
@@ -52,12 +49,14 @@ treesitter.setup {
   textobjects = {
     move = {
       enable = true,
-      set_jumps = true, -- whether to set jumps in the jumplist
+      set_jumps = true,
       goto_previous_start = {
-        ["[["] = "@class.outer"
+        ["(("] = "@class.outer",
+        ["{{"] = "@function.outer"
       },
       goto_next_start = {
-        ["]]"] = { query = "@class.outer", desc = "Next class start" }
+        ["))"] = { query = "@class.outer", desc = "Next class start" },
+        ["}}"] = { query = "@function.outer", desc = "Next func start" }
       }
     }
   },

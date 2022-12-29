@@ -1,7 +1,7 @@
 -- MAPPINGS
-local map = vim.api.nvim_set_keymap
-local ns = {noremap = true, silent = true}
-local no = {noremap = true}
+local map = vim.keymap.set
+local ns = { noremap = true, silent = true }
+local no = { noremap = true }
 
 -- mapleader/localleader is set in init.lua
 
@@ -20,12 +20,15 @@ map("n", "<C-y>", "<cmd>lua require('utils').yank_current_line()<cr>", ns)
 map("x", "<C-y>", "<cmd>lua require('utils').yank_current_line()<cr>", ns)
 
 -- Sane wrap movement
-map("n", "j", "gj", ns)
-map("n", "k", "gk", ns)
+-- map("n", "j", "gj", ns)
+-- map("n", "k", "gk", ns)
+
+-- when combining lines "J" the cursor stays at position (instead of going to end of line)
+map("n", "J", "mzJ`z", ns)
 
 -- Jumplist fix (wincent)
-map("n", "k", [[(v:count > 5 ? "m'" . v:count : '') . 'k']], {expr = true, noremap = true, silent = true})
-map("n", "j", [[(v:count > 5 ? "m'" . v:count : '') . 'j']], {expr = true, noremap = true, silent = true})
+map("n", "k", [[(v:count > 5 ? "m'" . v:count : '') . 'k']], { expr = true, noremap = true, silent = true })
+map("n", "j", [[(v:count > 5 ? "m'" . v:count : '') . 'j']], { expr = true, noremap = true, silent = true })
 
 -- save/quit
 map("n", "<C-s>", ":w<CR>", ns)
@@ -60,6 +63,8 @@ map("n", "<C-Up>", ":resize -3<CR>", ns)
 -- Jumplist focus
 -- keymap("n", "<C-o>", "<C-o>zz", nosil)
 -- keymap("n", "<C-i>", "<C-i>zz", nosil)
+map("n", "<C-d>", "<C-d>zz", ns)
+map("n", "<C-u>", "<C-u>zz", ns)
 
 -- Goto next under cursor
 map("n", "gn", "*zvzz", ns)

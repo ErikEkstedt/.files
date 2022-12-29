@@ -1,163 +1,265 @@
 local telescope = require("telescope")
+local pickers = require("telescope.pickers")
+local finders = require("telescope.finders")
 local builtin = require("telescope.builtin")
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
 
+-- I want one function to call when I need to find any (not media or weird) files
+-- I want the more specific functions called in a specific directories
+
 local file_ignore_patterns = {
   "node_modules/",
-  "%.swp",
+  "%.flac",
   "%.git",
+  "%.jpeg",
+  "%.mp3",
+  "%.png",
+  "%.sph",
+  "%.swp",
+  "%.wav",
+  "%.zip",
   "%.pt",
   "%.npy",
   "%.chpt",
   "%.ckpt",
   "%.pdf",
-  "%.zip",
   "%out.tfevents",
-  "%.png",
-  "%.jpeg",
-  "%.mp3",
-  "%.wav",
-  "%.flac",
-  "%.sph"
+  "%.ana",
+  "%.trn",
+  "%.txo",
+  "%.xml",
+  "%.text",
+  "%.json",
+  "%.csv",
+  "%.txt",
+  "%.TextGrid" -- new
 }
+-- }
+--
+-- TODO: add a mapping to search all kinds of files..
+-- local function fzf_multi_select(prompt_bufnr)
+--   local picker = action_state.get_current_picker(prompt_bufnr)
+--   local num_selections = #picker:get_multi_selection()
+--
+--   if num_selections > 1 then
+--     actions.send_selected_to_qflist(prompt_bufnr)
+--     -- TODO: should open the first file, and qflist, but focus the first.
+--     -- vim.cmd(":e!" .. picker:get_multi_selection()[1].value)
+--     -- actions.select_default(prompt_bufnr)
+--     actions.open_qflist()
+--   else
+--     -- actions.file_edit(prompt_bufnr)
+--     actions.select_default(prompt_bufnr)
+--   end
+-- end
 
-local function fzf_multi_select(prompt_bufnr)
-  local picker = action_state.get_current_picker(prompt_bufnr)
-  local num_selections = #picker:get_multi_selection()
+-- TODO: Good snippets from telescope.nvim - wiki
+--local previewers = require("telescope.previewers")
 
-  if num_selections > 1 then
-    actions.send_selected_to_qflist(prompt_bufnr)
-    -- TODO: should open the first file, and qflist, but focus the first.
-    -- vim.cmd(":e!" .. picker:get_multi_selection()[1].value)
-    -- actions.select_default(prompt_bufnr)
-    actions.open_qflist()
-  else
-    -- actions.file_edit(prompt_bufnr)
-    actions.select_default(prompt_bufnr)
-  end
-end
-
-local mappings = {
-  i = {
-    ["<c-x>"] = false,
-    ["<c-v>"] = false,
-    ["<C-q>"] = actions.close,
-    ["<c-l>"] = actions.select_vertical,
-    ["<c-j>"] = actions.select_horizontal,
-    ["<cr>"] = fzf_multi_select
-  },
-  n = {
-    ["q"] = actions.close,
-    ["<C-q>"] = actions.close,
-    ["<c-x>"] = false,
-    ["<c-v>"] = false,
-    ["<c-l>"] = actions.select_vertical,
-    ["<c-j>"] = actions.select_horizontal,
-    ["<cr>"] = fzf_multi_select
-  }
-}
+-------------------------------------------------
+-- Diable highlighting for certain files
+-- local _bad = { ".*%.csv", ".*%.lua" } -- Put all filetypes that slow you down in this array
+-- local bad_files = function(filepath)
+--   for _, v in ipairs(_bad) do
+--     if filepath:match(v) then
+--       return false
+--     end
+--   end
+--
+--   return true
+-- end
+--
+-- local new_maker = function(filepath, bufnr, opts)
+--   opts = opts or {}
+--   if opts.use_ft_detect == nil then opts.use_ft_detect = true end
+--   opts.use_ft_detect = opts.use_ft_detect == false and false or bad_files(filepath)
+--   previewers.buffer_previewer_maker(filepath, bufnr, opts)
+-- end
+-------------------------------------------------
+-- Ignoire files bigger than threshold
+-- local new_maker = function(filepath, bufnr, opts)
+--   opts = opts or {}
+--
+--   filepath = vim.fn.expand(filepath)
+--   vim.loop.fs_stat(
+--     filepath,
+--     function(_, stat)
+--       if not stat then
+--         return
+--       end
+--       if stat.size > 100000 then
+--         return
+--       else
+--         previewers.buffer_previewer_maker(filepath, bufnr, opts)
+--       end
+--     end
+--   )
+-- end
 
 telescope.setup {
   defaults = {
-    mappings = mappings,
-    file_ignore_patterns = file_ignore_patterns,
     prompt_prefix = ">",
-    selection_strategy = "reset",
+    color_devicons = true,
+    file_previewer = require("telescope.previewers").vim_buffer_bat,
+    grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+    qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
+    file_ignore_patterns = file_ignore_patterns,
     sorting_strategy = "ascending",
-    layout_strategy = "horizontal",
     layout_config = {
-      height = 0.8,
-      width = 0.8,
       horizontal = {
-        preview_cutoff = 120,
+        prompt_position = "top"
+      }
+    },
+    pickers = {
+      find_files = {
+        find_command = { "fd", "--type", "f" }
+      }
+    },
+    mappings = {
+      i = {
+        ["<c-x>"] = false,
+        ["<c-v>"] = false,
+        ["<c-l>"] = actions.select_vertical,
+        ["<c-j>"] = actions.select_horizontal,
+        ["<C-q>"] = actions.send_to_qflist,
+        ["<cr>"] = actions.select_default
+      },
+      n = {
+        ["q"] = actions.close,
+        ["<c-x>"] = false,
+        ["<c-v>"] = false,
+        ["<c-l>"] = actions.select_vertical,
+        ["<c-j>"] = actions.select_horizontal,
+        ["<C-q>"] = actions.close,
+        ["<cr>"] = actions.select_default
+      }
+    }
+  }
+  -- extensions = {
+  --   fzf = {
+  --     fuzzy = true, -- false will only do exact matching
+  --     override_generic_sorter = true, -- override the generic sorter
+  --     override_file_sorter = true, -- override the file sorter
+  --     case_mode = "smart_case" -- or "ignore_case" or "respect_case"
+  --   },
+  --   bookmarks = {
+  --     -- Available: 'brave', 'google_chrome', 'safari', 'firefox', 'firefox_dev'
+  --     selected_browser = "brave",
+  --     -- Either provide a shell command to open the URL
+  --     url_open_command = "xdg-open"
+  --   }
+  -- }
+}
+
+-- Enable telescope fzf native, if installed
+pcall(require("telescope").load_extension, "fzf")
+
+-- telescope.load_extension("bookmarks")
+
+local function search_dotfiles()
+  builtin.find_files(
+    {
+      prompt_title = "< DotFiles >",
+      cwd = vim.env.DOTFILES,
+      hidden = true
+    }
+  )
+end
+
+local function search_notes()
+  builtin.find_files(
+    {
+      prompt_title = "< Notes >",
+      cwd = "~/zettelkasten",
+      hidden = false
+    }
+  )
+end
+
+local function search_projects()
+  builtin.find_files(
+    {
+      prompt_title = "< CCConv >",
+      cwd = "~/projects/CCConv",
+      hidden = true
+    }
+  )
+end
+
+local function search_buffers()
+  builtin.buffers(
+    {
+      prompt_title = "< Buffers >",
+      results_title = "Buffers",
+      layout_strategy = "vertical",
+      layout_config = {
+        mirror = true,
         prompt_position = "top"
       }
     }
-  },
-  extensions = {
-    fzf = {
-      fuzzy = true, -- false will only do exact matching
-      override_generic_sorter = true, -- override the generic sorter
-      override_file_sorter = true, -- override the file sorter
-      case_mode = "smart_case" -- or "ignore_case" or "respect_case"
-    },
-    bookmarks = {
-      -- Available: 'brave', 'google_chrome', 'safari', 'firefox', 'firefox_dev'
-      selected_browser = "brave",
-      -- Either provide a shell command to open the URL
-      url_open_command = "xdg-open"
-    }
-  }
-}
+  )
+end
 
-telescope.load_extension("fzf")
-telescope.load_extension("bookmarks")
+local function search_cwd()
+  local cwd = vim.loop.cwd():gsub(vim.env.HOME, "")
+  builtin.find_files(
+    {
+      prompt_title = "<" .. cwd .. ">",
+      results_title = "Files",
+      hidden = false
+    }
+  )
+end
+
+local function search_home()
+  builtin.find_files(
+    {
+      prompt_title = "< Home >",
+      cwd = "~/",
+      find_command = {
+        "fd",
+        "--type",
+        "file",
+        "--follow",
+        "--no-ignore",
+        "--hidden",
+        "--strip-cwd-prefix",
+        "-E .git",
+        "-E node_modules",
+        '-E "data/**/*.json"',
+        '-E "__pycache*"',
+        '-E "*.text" -E "*.txt" -E "*.xml" -E "*.csv" -E "*.json"',
+        '-E "*.out.tfevents*" -E "*.chkpt" -E "*.ckpt" -E "*.so"',
+        '-E "*.png" -E "*.gif" -E "*.jpg" -E ".jpeg" -E "*.svg"',
+        '-E "*.wav" -E "*.sph" -E "*.mp3" -E "*.mp4" -E "*.flac"',
+        '-E "*.pt" -E "*.npy" -E "*.zip"',
+        '-E "*.spl" -E "*.sug"'
+      },
+      hidden = true
+    }
+  )
+end
 
 -- MAPPINGS
-local km = {noremap = true, silent = true}
-local key_map = vim.keymap.set
-local bi = "<cmd>lua require('telescope.builtin')"
-local ex = "<cmd>lua require('telescope').extensions"
 local prefix = "<Space>"
+local km = { noremap = true, silent = true }
+local key_map = vim.keymap.set
+key_map("n", prefix .. "ff", search_cwd, km)
+key_map("n", prefix .. "fcc", search_dotfiles, km)
+key_map("n", prefix .. "fb", search_buffers, km)
+key_map("n", prefix .. "fp", search_projects, km)
+key_map("n", prefix .. "fi", search_home, km)
+key_map("n", prefix .. "fn", search_notes, km)
 
--- FileFinding
-key_map("n", prefix .. "ff", bi .. ".find_files{hidden=true}<cr>", km)
-key_map("n", prefix .. "fc", bi .. ".find_files{cwd='~/.files', hidden=true}<cr>", km)
-key_map("n", prefix .. "co", bi .. ".commands()<cr>", km)
-key_map("n", prefix .. "fg", bi .. ".git_files()<cr>", km)
-key_map("n", prefix .. "fs", bi .. ".git_status()<cr>", km)
-key_map("n", prefix .. "fl", bi .. ".current_buffer_fuzzy_find()<cr>", km)
-key_map("n", prefix .. "fw", bi .. ".live_grep()<cr>", km)
-key_map("n", prefix .. "fhe", bi .. ".help_tags()<cr>", km)
-key_map("n", prefix .. "fhi", bi .. ".highlights()<cr>", km)
-key_map("n", prefix .. "ma", bi .. ".keymaps()<cr>", km)
-key_map("n", prefix .. "fz", bi .. ".find_files{cwd='~/zettelkasten'}<cr>", km)
-key_map("n", prefix .. "fx", ex .. ".notify.notify({})<cr>", km)
-key_map("n", prefix .. "o", ex .. ".bookmarks.bookmarks()<cr>", km)
--- key_map("n", prefix .. "fn", bi .. ".find_files{cwd='~/zettelkasten'}<cr>", km)
-key_map(
-  "n",
-  prefix .. "fn",
-  function()
-    builtin.find_files {search_dirs = {"~/zettelkasten"}}
-  end,
-  km
-)
-key_map(
-  "n",
-  prefix .. "fb",
-  function()
-    builtin.buffers(
-      {
-        prompt_title = "Find Buffer",
-        results_title = "Buffers",
-        layout_strategy = "vertical",
-        layout_config = {width = 0.50, height = 0.75}
-      }
-    )
-  end,
-  km
-)
-key_map(
-  "n",
-  prefix .. "fv",
-  function()
-    builtin.find_files {
-      cwd = "~/.local/share/nvim/site/pack/packer",
-      hidden = true,
-      file_ignore_patterns = {"%.swp", ".git"}
-    }
-  end,
-  km
-)
--- key_map("n", prefix .. "fb", bi .. ".buffers()<cr>", km)
--- key_map(
---   "n",
---   prefix .. "fv",
---   bi .. '.find_files{opts={title="stdpath-data"}, cwd="' .. vim.fn.stdpath("data") .. '", hidden=true}<cr>',
---   km
--- )
+-- builtin
+key_map("n", prefix .. "fd", builtin.oldfiles, km)
+key_map("n", prefix .. "fw", builtin.live_grep, km)
+key_map("n", prefix .. "fco", builtin.commands, km)
+key_map("n", prefix .. "fhe", builtin.help_tags, km)
+key_map("n", prefix .. "fhi", builtin.highlights, km)
+key_map("n", prefix .. "fma", builtin.keymaps, km)
+
 -- handled by fzf for non-lagishness
 -- key_map("n", prefix .. "fi", bi .. ".find_files{cwd='~', hidden=true}<cr>", km)
 -- key_map("n", prefix .. "fp", bi .. ".find_files{cwd='~/projects'}<cr>", km)

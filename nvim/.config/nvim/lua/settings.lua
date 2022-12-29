@@ -21,7 +21,7 @@ vim.opt.fileignorecase = true
 vim.o.foldtext =
 [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
 -- vim.o.foldcolumn = "1"
-vim.o.foldlevelstart = 99 -- 0: all fold, 99: no fold
+vim.o.foldlevelstart = -1 -- 0: all fold, 99: no fold
 vim.o.foldmethod = "indent"
 vim.o.foldenable = true
 
@@ -33,25 +33,35 @@ vim.opt.hidden = true
 vim.opt.ignorecase = true
 vim.opt.inccommand = "nosplit" -- show incremental changes for |:substitute|, |:smagic|, |:snomagic|. |hl-Substitute|
 vim.opt.mouse = "a" -- mouse functionality (default: empty)
-vim.opt.scrolloff = 3 -- visual rows above and below cursor
-vim.opt.shiftwidth = 2
+vim.opt.scrolloff = 8 -- visual rows above and below cursor
 vim.opt.showmode = false -- no extra --Insert--, --Replace-- etc
 vim.opt.sidescrolloff = 5 -- visual columns on sides of cursor
 vim.opt.signcolumn = "yes"
 vim.opt.smartcase = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+
+vim.opt.expandtab = true
 vim.opt.tabstop = 2
-vim.opt.termguicolors = true -- Enable true color support.
-vim.opt.timeoutlen = 300
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
+
+-- undotree
 vim.opt.undofile = true -- Undo: keep undo persistent over buffer quits
-vim.opt.virtualedit = "block" -- onemore 'block' makes it possible to edit empty space in visualblock set cursorline
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+-- vim.opt.swapfile = false -- Undo: keep undo persistent over buffer quits
+-- vim.opt.backup = false
+
 vim.opt.wrap = false
-vim.opt.wrap = false
-vim.opt.number = false -- set numbered lines
-vim.opt.relativenumber = false -- set relative number
+vim.opt.number = true -- set numbered lines
+vim.opt.relativenumber = true -- set relative number
+
+vim.opt.termguicolors = true -- Enable true color support.
 vim.go.t_Co = "256" -- support 256 color
-vim.opt.updatetime = 1000
+
+vim.opt.timeoutlen = 300
+vim.opt.updatetime = 100
+vim.opt.virtualedit = "block" -- onemore 'block' makes it possible to edit empty space in visualblock set cursorline
 vim.o.sessionoptions = "buffers,help,tabpages,winsize,winpos,terminal"
 
 -- Automatically resize when vim changes
