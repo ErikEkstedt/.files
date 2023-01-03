@@ -22,19 +22,21 @@ local file_ignore_patterns = {
   "%.pt",
   "%.npy",
   "%.chpt",
-  "%.ckpt",
   "%.pdf",
   "%out.tfevents",
   "%.ana",
   "%.trn",
   "%.txo",
   "%.xml",
+  "%.txt",
   "%.text",
   "%.json",
   "%.csv",
-  "%.txt",
   "%.TextGrid" -- new
 }
+
+local fd_find_command = { "fd", "--type", "file", "-E", "*.txt", "-E", "*.text", "-E", "*.csv", "--strip-cwd-prefix" }
+
 -- }
 --
 -- TODO: add a mapping to search all kinds of files..
@@ -111,11 +113,6 @@ telescope.setup {
         prompt_position = "top"
       }
     },
-    pickers = {
-      find_files = {
-        find_command = { "fd", "--type", "f" }
-      }
-    },
     mappings = {
       i = {
         ["<c-x>"] = false,
@@ -134,22 +131,22 @@ telescope.setup {
         ["<C-q>"] = actions.close,
         ["<cr>"] = actions.select_default
       }
+    },
+    extensions = {
+      fzf = {
+        fuzzy = true, -- false will only do exact matching
+        override_generic_sorter = true, -- override the generic sorter
+        override_file_sorter = true, -- override the file sorter
+        case_mode = "smart_case" -- or "ignore_case" or "respect_case"
+      }
+      -- bookmarks = {
+      --   -- Available: 'brave', 'google_chrome', 'safari', 'firefox', 'firefox_dev'
+      --   selected_browser = "brave",
+      --   -- Either provide a shell command to open the URL
+      --   url_open_command = "xdg-open"
+      -- }
     }
   }
-  -- extensions = {
-  --   fzf = {
-  --     fuzzy = true, -- false will only do exact matching
-  --     override_generic_sorter = true, -- override the generic sorter
-  --     override_file_sorter = true, -- override the file sorter
-  --     case_mode = "smart_case" -- or "ignore_case" or "respect_case"
-  --   },
-  --   bookmarks = {
-  --     -- Available: 'brave', 'google_chrome', 'safari', 'firefox', 'firefox_dev'
-  --     selected_browser = "brave",
-  --     -- Either provide a shell command to open the URL
-  --     url_open_command = "xdg-open"
-  --   }
-  -- }
 }
 
 -- Enable telescope fzf native, if installed
@@ -162,7 +159,8 @@ local function search_dotfiles()
     {
       prompt_title = "< DotFiles >",
       cwd = vim.env.DOTFILES,
-      hidden = true
+      hidden = true,
+      find_command = fd_find_command
     }
   )
 end
@@ -182,7 +180,8 @@ local function search_projects()
     {
       prompt_title = "< CCConv >",
       cwd = "~/projects/CCConv",
-      hidden = true
+      hidden = true,
+      find_command = fd_find_command
     }
   )
 end
@@ -207,7 +206,8 @@ local function search_cwd()
     {
       prompt_title = "<" .. cwd .. ">",
       results_title = "Files",
-      hidden = false
+      hidden = false,
+      find_command = fd_find_command
     }
   )
 end
@@ -225,16 +225,60 @@ local function search_home()
         "--no-ignore",
         "--hidden",
         "--strip-cwd-prefix",
-        "-E .git",
-        "-E node_modules",
-        '-E "data/**/*.json"',
-        '-E "__pycache*"',
-        '-E "*.text" -E "*.txt" -E "*.xml" -E "*.csv" -E "*.json"',
-        '-E "*.out.tfevents*" -E "*.chkpt" -E "*.ckpt" -E "*.so"',
-        '-E "*.png" -E "*.gif" -E "*.jpg" -E ".jpeg" -E "*.svg"',
-        '-E "*.wav" -E "*.sph" -E "*.mp3" -E "*.mp4" -E "*.flac"',
-        '-E "*.pt" -E "*.npy" -E "*.zip"',
-        '-E "*.spl" -E "*.sug"'
+        "-E",
+        ".git",
+        "-E",
+        "node_modules",
+        "-E",
+        "__pycache*",
+        "-E",
+        "*.text",
+        "-E",
+        "*.txt",
+        "-E",
+        "*.xml",
+        "-E",
+        "*.csv",
+        "-E",
+        "*.json",
+        "-E",
+        "*.png",
+        "-E",
+        "*.gif",
+        "-E",
+        "*.jpg",
+        "-E",
+        ".jpeg",
+        "-E",
+        "*.svg",
+        "-E",
+        "*.wav",
+        "-E",
+        "*.out.tfevents*",
+        "-E",
+        "*.pt",
+        "-E",
+        "*.spl",
+        "-E",
+        "*.sph",
+        "-E",
+        "*.chkpt",
+        "-E",
+        "*.npy",
+        "-E",
+        "*.sug",
+        "-E",
+        "*.mp3",
+        "-E",
+        "*.ckpt",
+        "-E",
+        "*.zip",
+        "-E",
+        "*.mp4",
+        "-E",
+        "*.so",
+        "-E",
+        "*.flac"
       },
       hidden = true
     }
