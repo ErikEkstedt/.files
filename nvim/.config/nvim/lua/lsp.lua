@@ -26,6 +26,7 @@ mason_lspconfig.setup(
       "cssls",
       "html",
       "pyright",
+      "prismals",
       "sumneko_lua",
       "tsserver",
       "tailwindcss",
