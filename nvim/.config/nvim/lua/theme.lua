@@ -100,6 +100,12 @@ end
 local function apply_material()
   -- https://github.com/marko-cerovac/material.nvim
   vim.g.material_style = "darker"
+  require("material").setup {
+    custom_highlights = {
+      GitSignsAdd = { fg = "#c3e88d" },
+      DiffDelete = { fg = "#f07178" }
+    }
+  }
   vim.cmd "colorscheme material"
 end
 
