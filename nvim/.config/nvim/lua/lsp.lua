@@ -101,7 +101,7 @@ local CmdDiagnostic = "<cmd>lua vim.diagnostic"
 local ns = { noremap = true, silent = true }
 local on_attach = function(client, bufnr)
   -- shows which field you are currently on when writing function args
-  require("lsp_signature").on_attach()
+  -- require("lsp_signature").on_attach()
 
   -- Mappings.
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
