@@ -120,7 +120,7 @@ return require("packer").startup(
           -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-align.md
           require("mini.align").setup({ mappings = { start = "<space>a" } })
           require("mini.trailspace").setup()
-          require("mini.pairs").setup()
+          -- require("mini.pairs").setup()
           -- require("mini.surround").setup()
         end
       }
@@ -133,6 +133,12 @@ return require("packer").startup(
           end
         }
       )
+      use {
+        "windwp/nvim-autopairs",
+        config = function()
+          require("nvim-autopairs").setup {}
+        end
+      }
 
       use {
         "folke/todo-comments.nvim",
