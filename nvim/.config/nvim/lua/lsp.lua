@@ -1,7 +1,7 @@
-local notify = require("notify")
 local mason_lspconfig = require("mason-lspconfig")
 local lspconfig = require("lspconfig")
 local map = vim.api.nvim_buf_set_keymap
+
 -- Python, pyright
 local venvPath = vim.fn.expand("$HOME/miniconda3/envs")
 local pythonPath = vim.fn.expand("$HOME/miniconda3/bin/python")
@@ -16,25 +16,6 @@ local border = {
   { "╰", "FloatBorder" },
   { "│", "FloatBorder" }
 }
-
-require("mason").setup()
-mason_lspconfig.setup(
-  {
-    automatic_installation = true,
-    ensure_installed = {
-      "bashls",
-      "cssls",
-      "html",
-      "pyright",
-      "prismals",
-      "sumneko_lua",
-      "tsserver",
-      "tailwindcss",
-      "vimls",
-      "yamlls"
-    }
-  }
-)
 
 local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
 local enable_format_on_save = function(_, bufnr)
@@ -78,7 +59,6 @@ end
 --     }
 --   )
 -- end
-
 -- Show borders
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border })
@@ -100,8 +80,22 @@ local CmdLspBuf = "<Cmd>lua vim.lsp.buf"
 local CmdDiagnostic = "<cmd>lua vim.diagnostic"
 local ns = { noremap = true, silent = true }
 local on_attach = function(client, bufnr)
+  -- https://github.com/ray-x/lsp_signature.nvim#full-configuration-with-default-values
   -- shows which field you are currently on when writing function args
-  -- require("lsp_signature").on_attach()
+  require("lsp_signature").on_attach(
+    {
+      bind = true, -- This is mandatory, otherwise border config won't get registered.
+      doc_lines = 80,
+      max_height = 40,
+      max_width = 80,
+      wrap = true,
+      timer_interval = 100,
+      handler_opts = {
+        border = "rounded"
+      }
+    },
+    bufnr
+  )
 
   -- Mappings.
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
@@ -115,6 +109,7 @@ local on_attach = function(client, bufnr)
   map(bufnr, "n", "<C-k>", CmdLspBuf .. ".signature_help()<CR>", ns)
   map(bufnr, "n", "<leader>e", CmdLspBuf .. "tic.show_line_diagnostics()<CR>", ns)
   map(bufnr, "n", "<leader>ca", CmdLspBuf .. ".code_action()<CR>", ns)
+  map(bufnr, "n", "<leader>ca", "<cmd>CodeActionMenu<CR>", ns)
   map(bufnr, "n", "<leader>q", CmdLspBuf .. "tic.set_loclist()<CR>", ns)
   map(bufnr, "n", "<leader>rn", CmdLspBuf .. ".rename()<CR>", ns)
   map(bufnr, "n", "<leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", ns)
@@ -123,7 +118,32 @@ local on_attach = function(client, bufnr)
   enable_format_on_save(client, bufnr)
 end
 
-require("mason-lspconfig").setup_handlers(
+-- https://github.com/kosayoda/nvim-lightbulb#configuration
+-- Show a lightbulb on a line (when the cursor is there) where a code-action is available
+require("nvim-lightbulb").setup(
+  {
+    autocmd = { enabled = true }
+  }
+)
+require("mason").setup()
+mason_lspconfig.setup(
+  {
+    automatic_installation = true,
+    ensure_installed = {
+      "bashls",
+      "cssls",
+      "html",
+      "pyright",
+      "prismals",
+      "sumneko_lua",
+      "tsserver",
+      "tailwindcss",
+      "vimls",
+      "yamlls"
+    }
+  }
+)
+mason_lspconfig.setup_handlers(
   {
     function(server_name) -- default handler (optional)
       local opts = { autostart = true, on_attach = on_attach, capabilities = capabilities }

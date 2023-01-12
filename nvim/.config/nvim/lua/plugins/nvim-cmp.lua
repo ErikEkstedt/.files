@@ -162,7 +162,9 @@ local fmt_left = {
     )(entry, vim_item)
     local strings = vim.split(item.kind, "%s", { trimempty = true })
     item.kind = " " .. strings[1] .. " "
-    item.menu = item.menu .. " (" .. strings[2] .. ")"
+    if #strings > 1 then
+      item.menu = item.menu .. " (" .. strings[2] .. ")"
+    end
     return item
   end
 }
@@ -263,7 +265,7 @@ cmp.setup(
     sources = {
       { name = "buffer", max_item_count = 2 },
       { name = "luasnip", priority = 10 },
-      { name = "nvim_lsp", priority = 10, max_item_count = 10 },
+      { name = "nvim_lsp", priority = 10, max_item_count = 50 },
       { name = "nvim_lua", max_item_count = 5 },
       { name = "path", max_item_count = 5 }
     },

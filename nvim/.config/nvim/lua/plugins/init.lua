@@ -38,13 +38,19 @@ return require("packer").startup(
       -- LSP, Treesitter, Snippets
       use "neovim/nvim-lspconfig"
       use "williamboman/mason.nvim"
+      use({ "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" })
       use {
         "williamboman/mason-lspconfig.nvim",
+        requires = {
+          "ray-x/lsp_signature.nvim",
+          "kosayoda/nvim-lightbulb"
+        },
         config = function()
           require("diagnostic")
           require("lsp")
         end
       }
+
       -- Autocomplete
       use {
         "hrsh7th/nvim-cmp",
@@ -57,8 +63,7 @@ return require("packer").startup(
           "saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
           "L3MON4D3/LuaSnip", -- Snippet engine
           "rafamadriz/friendly-snippets", --snippet collections
-          "onsails/lspkind-nvim", -- Pretty symbols for lsp
-          "ray-x/lsp_signature.nvim"
+          "onsails/lspkind-nvim" -- Pretty symbols for lsp
         },
         config = function()
           require("plugins.nvim-cmp")
@@ -190,6 +195,7 @@ return require("packer").startup(
       -- Colorschemes
       use "tjdevries/colorbuddy.vim"
       use "sam4llis/nvim-tundra"
+      use "marko-cerovac/material.nvim"
       -- use "Th3Whit3Wolf/onebuddy"
       -- use "PHSix/nvim-hybrid"
       use "tanvirtin/monokai.nvim"
