@@ -103,7 +103,8 @@ local function apply_material()
   require("material").setup {
     custom_highlights = {
       GitSignsAdd = { fg = "#c3e88d" },
-      DiffDelete = { fg = "#f07178" }
+      DiffDelete = { fg = "#f07178" },
+      Normal = { fg = "#C6D6DE", bg = "#212121" }
     }
   }
   vim.cmd "colorscheme material"
