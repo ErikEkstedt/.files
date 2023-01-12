@@ -23,6 +23,7 @@ treesitter.setup {
     "lua",
     "markdown",
     "python",
+    "prisma",
     "typescript",
     "vim",
     "yaml",
