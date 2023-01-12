@@ -11,7 +11,7 @@ require("formatter").setup(
         function()
           return {
             exe = "prettier",
-            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote"},
+            args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote" },
             stdin = true
           }
         end
@@ -20,7 +20,7 @@ require("formatter").setup(
         function()
           return {
             exe = "prettier",
-            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote"},
+            args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote" },
             stdin = true
           }
         end
@@ -29,7 +29,16 @@ require("formatter").setup(
         function()
           return {
             exe = "prettier",
-            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote"},
+            args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote" },
+            stdin = true
+          }
+        end
+      },
+      typescriptreact = {
+        function()
+          return {
+            exe = "prettier",
+            args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote" },
             stdin = true
           }
         end
@@ -38,7 +47,7 @@ require("formatter").setup(
         function()
           return {
             exe = "prettier",
-            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote"},
+            args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote" },
             stdin = true
           }
         end
@@ -47,7 +56,7 @@ require("formatter").setup(
         function()
           return {
             exe = "prettier",
-            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote"},
+            args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote" },
             stdin = true
           }
         end
@@ -56,7 +65,7 @@ require("formatter").setup(
         function()
           return {
             exe = "prettier",
-            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
+            args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0) },
             stdin = true
           }
         end
@@ -65,7 +74,7 @@ require("formatter").setup(
         function()
           return {
             exe = "luafmt",
-            args = {"--indent-count", 2, "--stdin"},
+            args = { "--indent-count", 2, "--stdin" },
             stdin = true
           }
         end
@@ -74,7 +83,7 @@ require("formatter").setup(
         function()
           return {
             exe = vim.g.python_host_bin .. "/black",
-            args = {"-"},
+            args = { "-" },
             stdin = true
           }
         end
@@ -87,9 +96,9 @@ vim.api.nvim_exec(
   [[
 augroup FormatAutogroup
   autocmd!
-  autocmd BufWritePost *.js,*.jsx,*.tsx,*.html,*.lua,*.py FormatWrite
+  autocmd BufWritePost *.ts,*.js,*.jsx,*.tsx,*.html,*.lua,*.py FormatWrite
 augroup END
-]],
+]] ,
   true
 )
-vim.api.nvim_set_keymap("n", "<Leader>fo", ":Format<cr>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<Leader>fo", ":Format<cr>", { noremap = true, silent = true })
