@@ -104,7 +104,10 @@ local function apply_material()
     custom_highlights = {
       GitSignsAdd = { fg = "#c3e88d" },
       DiffDelete = { fg = "#f07178" },
-      Normal = { fg = "#C6D6DE", bg = "#212121" }
+      Normal = { fg = "#C6D6DE", bg = "#212121" },
+      PmenuSel = { fg = "#FFFFFF", bg = "NONE", bold = true },
+      ["@variable.builtin"] = { bold = true },
+      ["@constant.builtin"] = { fg = "#ffcb6b", bold = true }
     }
   }
   vim.cmd "colorscheme material"
