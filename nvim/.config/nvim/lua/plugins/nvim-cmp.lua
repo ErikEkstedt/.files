@@ -157,7 +157,8 @@ local fmt_left = {
           nvim_lua = "[LUA]",
           latex_symbols = "[Latex]"
         }),
-        maxwidth = 50
+        maxwidth = 50,
+        before = require("tailwindcss-colorizer-cmp").formatter
       }
     )(entry, vim_item)
     local strings = vim.split(item.kind, "%s", { trimempty = true })
@@ -270,6 +271,7 @@ cmp.setup(
       { name = "path", max_item_count = 5 }
     },
     formatting = fmt,
+    performance = { debounce = 200, throttle = 50, fetching_timeout = 100 },
     experimental = {
       native_menu = false,
       ghost_text = true

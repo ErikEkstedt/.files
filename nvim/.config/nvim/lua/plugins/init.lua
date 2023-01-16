@@ -70,6 +70,20 @@ return require("packer").startup(
           require("plugins.luasnip")
         end
       }
+      -- Tailwindcss colors in cmp auto-complete
+      use(
+        {
+          "roobert/tailwindcss-colorizer-cmp.nvim",
+          -- optionally, override the default options:
+          config = function()
+            require("tailwindcss-colorizer-cmp").setup(
+              {
+                color_square_width = 1
+              }
+            )
+          end
+        }
+      )
 
       -- Treesitter
       -- Mostly used for syntax, tshighlightundercursor
@@ -214,11 +228,20 @@ return require("packer").startup(
         }
         use "fladson/vim-kitty"
         use {
-          "norcalli/nvim-colorizer.lua",
+          "NvChad/nvim-colorizer.lua",
           config = function()
-            require("colorizer").setup()
+            require("colorizer").setup(
+              {
+                RGB = true, -- #RGB hex codes
+                RRGGBB = true, -- #RRGGBB hex codes
+                names = true, -- "Name" codes like Blue or blue
+                mode = "background", -- Set the display mode.
+                tailwind = true -- Enable tailwind colors
+              }
+            )
           end
         }
+
         use {
           "akinsho/nvim-toggleterm.lua",
           config = function()
