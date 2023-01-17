@@ -35,7 +35,7 @@ return require("packer").startup(
         end
       }
 
-      -- LSP, Treesitter, Snippets
+      -- LSP
       use "neovim/nvim-lspconfig"
       use "williamboman/mason.nvim"
       use({ "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" })
@@ -91,8 +91,8 @@ return require("packer").startup(
         "nvim-treesitter/nvim-treesitter",
         requires = {
           "nvim-treesitter/playground",
-          -- "nvim-treesitter/nvim-treesitter-context",
           "nvim-treesitter/nvim-treesitter-textobjects"
+          -- "nvim-treesitter/nvim-treesitter-context",
         },
         config = function()
           require("plugins.treesitter")
@@ -100,6 +100,35 @@ return require("packer").startup(
         run = ":TSUpdate"
       }
       use "JoosepAlviste/nvim-ts-context-commentstring"
+      use {
+        "windwp/nvim-ts-autotag",
+        config = function()
+          require("nvim-ts-autotag").setup(
+            {
+              autotag = { enable = true },
+              filetypes = {
+                "html",
+                "htmldjango",
+                "javascript",
+                "javascriptreact",
+                "jsx",
+                "typescript",
+                "typescriptreact",
+                "tsx",
+                "rescript",
+                "svelte",
+                "vue",
+                "xml",
+                "php",
+                "markdown",
+                "glimmer",
+                "handlebars",
+                "hbs"
+              }
+            }
+          )
+        end
+      }
 
       -- Fuzzy Finding
       use {
