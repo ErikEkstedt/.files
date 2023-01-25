@@ -21,7 +21,7 @@ local mapping = {
       c = cmp.mapping.confirm({ select = false })
     }
   ),
-  ["<C-l>"] = cmp.mapping(
+  ["<C-n>"] = cmp.mapping(
     function(fallback)
       if ls.expand_or_locally_jumpable() then
         ls.expand_or_jump()
@@ -31,7 +31,7 @@ local mapping = {
     end,
     { "i", "s" }
   ),
-  ["<C-h>"] = cmp.mapping(
+  ["<C-p>"] = cmp.mapping(
     function(fallback)
       if ls.expand_or_locally_jumpable() then
         ls.jump(-1)

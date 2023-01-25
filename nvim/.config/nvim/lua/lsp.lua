@@ -17,20 +17,20 @@ local border = {
   { "│", "FloatBorder" }
 }
 
-local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
-local enable_format_on_save = function(_, bufnr)
-  vim.api.nvim_clear_autocmds({ group = augroup_format, buffer = bufnr })
-  vim.api.nvim_create_autocmd(
-    "BufWritePre",
-    {
-      group = augroup_format,
-      buffer = bufnr,
-      callback = function()
-        vim.lsp.buf.format({ bufnr = bufnr })
-      end
-    }
-  )
-end
+-- local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
+-- local enable_format_on_save = function(_, bufnr)
+--   vim.api.nvim_clear_autocmds({ group = augroup_format, buffer = bufnr })
+--   vim.api.nvim_create_autocmd(
+--     "BufWritePre",
+--     {
+--       group = augroup_format,
+--       buffer = bufnr,
+--       callback = function()
+--         vim.lsp.buf.format({ bufnr = bufnr })
+--       end
+--     }
+--   )
+-- end
 
 -- Document Highlights
 local doc_highlight = {
@@ -115,7 +115,8 @@ local on_attach = function(client, bufnr)
   map(bufnr, "n", "<leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", ns)
   map(bufnr, "n", "<leader>so", [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], ns)
 
-  enable_format_on_save(client, bufnr)
+  -- format with lsp
+  -- enable_format_on_save(client, bufnr)
 end
 
 -- https://github.com/kosayoda/nvim-lightbulb#configuration
@@ -133,7 +134,9 @@ mason_lspconfig.setup(
       "bashls",
       "cssls",
       "html",
-      "pyright",
+      -- "pyright",
+      -- "ruff_lsp",
+      "pylsp",
       "prismals",
       "sumneko_lua",
       "tsserver",
@@ -147,11 +150,15 @@ mason_lspconfig.setup_handlers(
   {
     function(server_name) -- default handler (optional)
       local opts = { autostart = true, on_attach = on_attach, capabilities = capabilities }
+
+      -- Could not get these settings to take effect (i.e. plugins.ruff)
+      -- However installing ruff :PylspInstall pyls-ruff works
+      -- https://github.com/williamboman/mason-lspconfig.nvim/blob/main/lua/mason-lspconfig/server_configurations/pylsp/README.md
       if server_name == "sumneko_lua" then
         opts.settings = {
           Lua = {
             diagnostics = {
-              globals = { "vim" }
+              globals = { "vim", "print" }
             },
             workspace = {
               library = {
@@ -167,16 +174,20 @@ mason_lspconfig.setup_handlers(
             lint = { unknownAtRules = "ignore" }
           }
         }
+      elseif server_name == "ruff_lsp" then
+        opts.settings = {
+          root_dir = [[root_pattern(".git")]]
+        }
       elseif server_name == "pyright" then
         opts.settings = {
           python = {
-            analysis = {
-              useLibraryCodeForTypes = false,
-              diagnosticMode = "workspace",
-              autoSearchPaths = false
-            },
             venvPath = venvPath,
             pythonPath = pythonPath
+            -- analysis = {
+            --   useLibraryCodeForTypes = false,
+            --   diagnosticMode = "workspace",
+            --   autoSearchPaths = false
+            -- }
           }
         }
       end
