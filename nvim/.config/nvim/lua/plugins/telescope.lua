@@ -23,6 +23,7 @@ local file_ignore_patterns = {
   "%.npy",
   "%.chpt",
   "%.pdf",
+  "%.pkl",
   "%out.tfevents",
   "%.ana",
   "%.trn",
@@ -35,7 +36,7 @@ local file_ignore_patterns = {
   "%.TextGrid" -- new
 }
 
-local fd_find_command = { "fd", "--type", "file", "-E", "*.txt", "-E", "*.text", "-E", "*.csv", "--strip-cwd-prefix" }
+local fd_find_command = {"fd", "--type", "file", "-E", "*.txt", "-E", "*.text", "-E", "*.csv", "--strip-cwd-prefix"}
 
 -- }
 --
@@ -287,7 +288,7 @@ end
 
 -- MAPPINGS
 local prefix = "<Space>"
-local km = { noremap = true, silent = true }
+local km = {noremap = true, silent = true}
 local key_map = vim.keymap.set
 key_map("n", prefix .. "ff", search_cwd, km)
 key_map("n", prefix .. "fcc", search_dotfiles, km)
