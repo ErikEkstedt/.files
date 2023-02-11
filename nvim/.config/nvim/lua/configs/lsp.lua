@@ -57,50 +57,33 @@ end
 -- end
 -- Show borders
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {border = border})
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {border = border})
--- vim.lsp.handlers["textDocument/publishDiagnostics"] =
---   vim.lsp.with(
---   vim.lsp.diagnostic.on_publish_diagnostics,
---   {
---     underline = true,
---     update_in_insert = false,
---     virtual_text = {spacing = 4, prefix = "●"},
---     severity_sort = true
---   }
--- )
+vim.lsp.handlers["textDocument/signatureHelp"] =
+  vim.lsp.with(vim.lsp.handlers.signature_help, {border = border, anchor = "SW"})
 -----------------------------------------------------
 -- Attach
 -----------------------------------------------------
 local CmdLspBuf = "<Cmd>lua vim.lsp.buf"
-local CmdDiagnostic = "<cmd>lua vim.diagnostic"
 local ns = {noremap = true, silent = true}
 
-local on_attach = function(client, bufnr)
-  -- https://github.com/ray-x/lsp_signature.nvim#full-configuration-with-default-values
-  -- shows which field you are currently on when writing function args
-  require("lsp_signature").on_attach(
-    {
-      bind = true, -- This is mandatory, otherwise border config won't get registered.
-      doc_lines = 80,
-      max_height = 40,
-      max_width = 80,
-      wrap = true,
-      timer_interval = 100,
-      handler_opts = {
-        border = "rounded"
-      }
-    },
-    bufnr
-  )
+local lspSignatureOpts = {
+  bind = true, -- This is mandatory, otherwise border config won't get registered.
+  doc_lines = 80,
+  max_height = 40,
+  max_width = 80,
+  wrap = true,
+  timer_interval = 100,
+  handler_opts = {
+    border = "rounded"
+  }
+}
 
+local on_attach = function(client, bufnr)
   -- Mappings.
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
   map(bufnr, "n", "gd", CmdLspBuf .. ".definition()<CR>", ns)
   map(bufnr, "n", "gD", CmdLspBuf .. ".declaration()<CR>", ns)
   map(bufnr, "n", "gi", CmdLspBuf .. ".implementation()<CR>", ns)
   map(bufnr, "n", "gr", CmdLspBuf .. ".references()<CR>", ns)
-  map(bufnr, "n", "gk", CmdDiagnostic .. ".goto_prev()<CR>", ns)
-  map(bufnr, "n", "gj", CmdDiagnostic .. ".goto_next()<CR>", ns)
   map(bufnr, "n", "K", CmdLspBuf .. ".hover()<CR>", ns)
   map(bufnr, "n", "<C-k>", CmdLspBuf .. ".signature_help()<CR>", ns)
   map(bufnr, "n", "<leader>e", CmdLspBuf .. "tic.show_line_diagnostics()<CR>", ns)
@@ -110,6 +93,10 @@ local on_attach = function(client, bufnr)
   map(bufnr, "n", "<leader>rn", CmdLspBuf .. ".rename()<CR>", ns)
   map(bufnr, "n", "<leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", ns)
   map(bufnr, "n", "<leader>so", [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], ns)
+
+  -- https://github.com/ray-x/lsp_signature.nvim#full-configuration-with-default-values
+  -- shows which field you are currently on when writing function args
+  require("lsp_signature").on_attach(lspSignatureOpts, bufnr)
 
   -- format with lsp
   -- enable_format_on_save(client, bufnr)
@@ -161,41 +148,9 @@ mason_lspconfig.setup_handlers(
         flags = lsp_flags,
         capabilities = capabilities
       }
-
-      -- Could not get these settings to take effect (i.e. plugins.ruff)
-      -- However installing ruff :PylspInstall pyls-ruff works
-      -- https://github.com/williamboman/mason-lspconfig.nvim/blob/main/lua/mason-lspconfig/server_configurations/pylsp/README.md
-      -- if server_name == "sumneko_lua" then
-      --   -- opts.settings = {
-      --   --   Lua = {
-      --   --     diagnostics = {
-      --   --       globals = {"vim", "print"}
-      --   --     },
-      --   --     workspace = {
-      --   --       library = {
-      --   --         [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-      --   --         [vim.fn.stdpath "config" .. "/lua"] = true
-      --   --       }
-      --   --     }
-      --   --   }
-      --   -- }
-      -- elseif server_name == "cssls" then
-      --   -- elseif server_name == "ruff_lsp" then
-      --   --   opts.settings = {
-      --   --     root_dir = [[root_pattern(".git")]]
-      --   --   }
-      --   opts.settings = {
-      --     css = {
-      --       lint = {unknownAtRules = "ignore"}
-      --     }
-      --   }
-      -- print(server_name)
-      -- print(vim.inspect(opts))
-      -- print("Implicit: " .. server_name)
       lspconfig[server_name].setup(opts)
     end,
     ["sumneko_lua"] = function(server_name)
-      -- print("Explicit: " .. server_name)
       lspconfig[server_name].setup(
         {
           on_attach = on_attach,
@@ -218,16 +173,14 @@ mason_lspconfig.setup_handlers(
       )
     end,
     ["pyright"] = function(server_name)
-      -- print("Explicit: " .. server_name .. '------------')
       lspconfig[server_name].setup(
         {
-          on_attach = function(client, bufnr)
-            print("No on attach")
-          end,
-          capabilities = {},
           flags = lsp_flags,
           settings = {
-            disableLanguageServices = true, -- using pylsp + ruff instead [TRYING]
+            pyright = {
+              disableLanguageServices = true,
+              disableOrganizeImports = true
+            },
             python = {
               venvPath = vim.fn.expand("$HOME/miniconda3/envs"),
               pythonPath = vim.g.python3_host_prog,
@@ -238,6 +191,28 @@ mason_lspconfig.setup_handlers(
               }
             }
           }
+        }
+      )
+    end,
+    ["ruff_lsp"] = function(server_name)
+      lspconfig[server_name].setup(
+        {
+          on_attach = on_attach,
+          flags = lsp_flags,
+          capabilities = capabilities,
+          settings = {
+            root_dir = [[root_pattern(".git")]]
+          }
+        }
+      )
+    end,
+    ["cssls"] = function(server_name)
+      lspconfig[server_name].setup(
+        {
+          on_attach = on_attach,
+          flags = lsp_flags,
+          capabilities = capabilities,
+          settings = {css = {lint = {unknownAtRules = "ignore"}}}
         }
       )
     end

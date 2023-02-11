@@ -1,6 +1,6 @@
 -- :he vim.diagnostic
 -----------------------------------------------------
--- diagnostics
+-- Diagnostics
 -----------------------------------------------------
 vim.diagnostic.config(
   {
@@ -15,6 +15,14 @@ vim.diagnostic.config(
     float = {border = "single"}
   }
 )
+
+-----------------------------------------------------
+-- Mappings
+-----------------------------------------------------
+local CmdDiagnostic = "<cmd>lua vim.diagnostic"
+local ns = {noremap = true, silent = true}
+vim.api.nvim_set_keymap("n", "gk", CmdDiagnostic .. ".goto_prev()<CR>", ns)
+vim.api.nvim_set_keymap("n", "gj", CmdDiagnostic .. ".goto_next()<CR>", ns)
 
 -----------------------------------------------------
 -- Colors and Signs
