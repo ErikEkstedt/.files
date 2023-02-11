@@ -2,19 +2,15 @@ local mason_lspconfig = require("mason-lspconfig")
 local lspconfig = require("lspconfig")
 local map = vim.api.nvim_buf_set_keymap
 
--- Python, pyright
-local venvPath = vim.fn.expand("$HOME/miniconda3/envs")
-local pythonPath = vim.fn.expand("$HOME/miniconda3/bin/python")
-
 local border = {
-  { "╭", "FloatBorder" },
-  { "─", "FloatBorder" },
-  { "╮", "FloatBorder" },
-  { "│", "FloatBorder" },
-  { "╯", "FloatBorder" },
-  { "─", "FloatBorder" },
-  { "╰", "FloatBorder" },
-  { "│", "FloatBorder" }
+  {"╭", "FloatBorder"},
+  {"─", "FloatBorder"},
+  {"╮", "FloatBorder"},
+  {"│", "FloatBorder"},
+  {"╯", "FloatBorder"},
+  {"─", "FloatBorder"},
+  {"╰", "FloatBorder"},
+  {"│", "FloatBorder"}
 }
 
 -- local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
@@ -60,8 +56,8 @@ end
 --   )
 -- end
 -- Show borders
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border })
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {border = border})
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {border = border})
 -- vim.lsp.handlers["textDocument/publishDiagnostics"] =
 --   vim.lsp.with(
 --   vim.lsp.diagnostic.on_publish_diagnostics,
@@ -75,10 +71,10 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 -----------------------------------------------------
 -- Attach
 -----------------------------------------------------
-local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 local CmdLspBuf = "<Cmd>lua vim.lsp.buf"
 local CmdDiagnostic = "<cmd>lua vim.diagnostic"
-local ns = { noremap = true, silent = true }
+local ns = {noremap = true, silent = true}
+
 local on_attach = function(client, bufnr)
   -- https://github.com/ray-x/lsp_signature.nvim#full-configuration-with-default-values
   -- shows which field you are currently on when writing function args
@@ -123,7 +119,7 @@ end
 -- Show a lightbulb on a line (when the cursor is there) where a code-action is available
 require("nvim-lightbulb").setup(
   {
-    autocmd = { enabled = true }
+    autocmd = {enabled = true}
   }
 )
 require("mason").setup()
@@ -134,9 +130,9 @@ mason_lspconfig.setup(
       "bashls",
       "cssls",
       "html",
-      -- "pyright",
+      "pyright",
       -- "ruff_lsp",
-      "pylsp",
+      -- "pylsp",
       "prismals",
       "sumneko_lua",
       "tsserver",
@@ -146,52 +142,104 @@ mason_lspconfig.setup(
     }
   }
 )
+
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local lsp_flags = {debounce_text_changes = 150}
+
+-- :h mason-lspconfig-automatic-server-setup
+-- The first entry (without a key) will be the default handler
+-- and will be called for each installed server that doesn't have
+-- a dedicated handler.
+-- Next, you can provide a dedicated handler for specific servers.
+-- For example, a handler override for the `rust_analyzer`:
 mason_lspconfig.setup_handlers(
   {
     function(server_name) -- default handler (optional)
-      local opts = { autostart = true, on_attach = on_attach, capabilities = capabilities }
+      local opts = {
+        autostart = true,
+        on_attach = on_attach,
+        flags = lsp_flags,
+        capabilities = capabilities
+      }
 
       -- Could not get these settings to take effect (i.e. plugins.ruff)
       -- However installing ruff :PylspInstall pyls-ruff works
       -- https://github.com/williamboman/mason-lspconfig.nvim/blob/main/lua/mason-lspconfig/server_configurations/pylsp/README.md
-      if server_name == "sumneko_lua" then
-        opts.settings = {
-          Lua = {
-            diagnostics = {
-              globals = { "vim", "print" }
-            },
-            workspace = {
-              library = {
-                [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-                [vim.fn.stdpath "config" .. "/lua"] = true
+      -- if server_name == "sumneko_lua" then
+      --   -- opts.settings = {
+      --   --   Lua = {
+      --   --     diagnostics = {
+      --   --       globals = {"vim", "print"}
+      --   --     },
+      --   --     workspace = {
+      --   --       library = {
+      --   --         [vim.fn.expand "$VIMRUNTIME/lua"] = true,
+      --   --         [vim.fn.stdpath "config" .. "/lua"] = true
+      --   --       }
+      --   --     }
+      --   --   }
+      --   -- }
+      -- elseif server_name == "cssls" then
+      --   -- elseif server_name == "ruff_lsp" then
+      --   --   opts.settings = {
+      --   --     root_dir = [[root_pattern(".git")]]
+      --   --   }
+      --   opts.settings = {
+      --     css = {
+      --       lint = {unknownAtRules = "ignore"}
+      --     }
+      --   }
+      -- print(server_name)
+      -- print(vim.inspect(opts))
+      print("Implicit: " .. server_name)
+      lspconfig[server_name].setup(opts)
+    end,
+    ["sumneko_lua"] = function(server_name)
+      print("Explicit: " .. server_name)
+      lspconfig[server_name].setup(
+        {
+          on_attach = on_attach,
+          flags = lsp_flags,
+          capabilities = capabilities,
+          settings = {
+            Lua = {
+              diagnostics = {
+                globals = {"vim", "print"}
+              },
+              workspace = {
+                library = {
+                  [vim.fn.expand "$VIMRUNTIME/lua"] = true,
+                  [vim.fn.stdpath "config" .. "/lua"] = true
+                }
               }
             }
           }
         }
-      elseif server_name == "cssls" then
-        opts.settings = {
-          css = {
-            lint = { unknownAtRules = "ignore" }
+      )
+    end,
+    ["pyright"] = function(server_name)
+      print("Explicit: " .. server_name)
+      lspconfig[server_name].setup(
+        {
+          on_attach = function(client, bufnr)
+            print("No on attach")
+          end,
+          capabilities = {},
+          flags = lsp_flags,
+          settings = {
+            disableLanguageServices = true, -- using pylsp + ruff instead [TRYING]
+            python = {
+              venvPath = vim.fn.expand("$HOME/miniconda3/envs"),
+              pythonPath = vim.g.python3_host_prog,
+              analysis = {
+                useLibraryCodeForTypes = false,
+                diagnosticMode = "openFilesOnly",
+                autoSearchPaths = false
+              }
+            }
           }
         }
-      elseif server_name == "ruff_lsp" then
-        opts.settings = {
-          root_dir = [[root_pattern(".git")]]
-        }
-      elseif server_name == "pyright" then
-        opts.settings = {
-          python = {
-            venvPath = venvPath,
-            pythonPath = pythonPath
-            -- analysis = {
-            --   useLibraryCodeForTypes = false,
-            --   diagnosticMode = "workspace",
-            --   autoSearchPaths = false
-            -- }
-          }
-        }
-      end
-      lspconfig[server_name].setup(opts)
+      )
     end
   }
 )

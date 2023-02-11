@@ -3,7 +3,7 @@ local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/opt/packer.nvim"
 
 if fn.empty(fn.glob(install_path)) > 0 then
-  fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+  fn.system({"git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path})
   vim.cmd [[packadd packer.nvim]]
   print("Bootstrapped Packer...")
 end
@@ -27,7 +27,7 @@ return require("packer").startup(
 
       -- Standard in many lua plugins. Contains functions you don't want to implement again...
       use "nvim-lua/plenary.nvim"
-      use { "nvim-lua/popup.nvim", requires = "nvim-lua/plenary.nvim" }
+      use {"nvim-lua/popup.nvim", requires = "nvim-lua/plenary.nvim"}
       use {
         "rcarriga/nvim-notify",
         config = function()
@@ -38,7 +38,7 @@ return require("packer").startup(
       -- LSP
       use "neovim/nvim-lspconfig"
       use "williamboman/mason.nvim"
-      use({ "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" })
+      use({"weilbith/nvim-code-action-menu", cmd = "CodeActionMenu"})
       use {
         "williamboman/mason-lspconfig.nvim",
         requires = {
@@ -59,7 +59,7 @@ return require("packer").startup(
           "hrsh7th/cmp-nvim-lua",
           "hrsh7th/cmp-buffer",
           "hrsh7th/cmp-path",
-          "hrsh7th/cmp-cmdline",
+          -- "hrsh7th/cmp-cmdline",
           "saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
           "L3MON4D3/LuaSnip", -- Snippet engine
           "rafamadriz/friendly-snippets", --snippet collections
@@ -105,7 +105,7 @@ return require("packer").startup(
         config = function()
           require("nvim-ts-autotag").setup(
             {
-              autotag = { enable = true },
+              autotag = {enable = true},
               filetypes = {
                 "html",
                 "htmldjango",
@@ -142,15 +142,15 @@ return require("packer").startup(
           require("plugins.telescope")
         end
       }
-      use { "mbbill/undotree" }
+      use {"mbbill/undotree"}
 
       use {
         "sudormrfbin/cheatsheet.nvim",
         -- optional
         requires = {
-          { "nvim-telescope/telescope.nvim" },
-          { "nvim-lua/popup.nvim" },
-          { "nvim-lua/plenary.nvim" }
+          {"nvim-telescope/telescope.nvim"},
+          {"nvim-lua/popup.nvim"},
+          {"nvim-lua/plenary.nvim"}
         }
       }
       use "junegunn/fzf.vim" -- NON-LUA
@@ -166,7 +166,7 @@ return require("packer").startup(
         "echasnovski/mini.nvim",
         config = function()
           -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-align.md
-          require("mini.align").setup({ mappings = { start = "<space>a" } })
+          require("mini.align").setup({mappings = {start = "<space>a"}})
           require("mini.trailspace").setup()
           -- require("mini.pairs").setup()
           -- require("mini.surround").setup()
@@ -193,7 +193,7 @@ return require("packer").startup(
         requires = "nvim-lua/plenary.nvim",
         config = function()
           require("todo-comments").setup {}
-          vim.api.nvim_set_keymap("n", "<leader>ft", ":TodoTelescope<cr>", { noremap = true, silent = true })
+          vim.api.nvim_set_keymap("n", "<leader>ft", ":TodoTelescope<cr>", {noremap = true, silent = true})
         end
       }
       use {
@@ -220,7 +220,7 @@ return require("packer").startup(
       }
       use {
         "nvim-lualine/lualine.nvim",
-        requires = { "kyazdani42/nvim-web-devicons", opt = true },
+        requires = {"kyazdani42/nvim-web-devicons", opt = true},
         config = function()
           require("plugins.lualine")
         end
@@ -229,7 +229,7 @@ return require("packer").startup(
       use "kyazdani42/nvim-web-devicons"
       use {
         "lewis6991/gitsigns.nvim",
-        requires = { "nvim-lua/plenary.nvim" },
+        requires = {"nvim-lua/plenary.nvim"},
         config = function()
           require("plugins.gitsigns")
         end
@@ -346,7 +346,7 @@ return require("packer").startup(
               "n",
               "<space>j",
               function()
-                hop.hint_lines_skip_whitespace({ direction = HintDirection.AFTER_CURSOR })
+                hop.hint_lines_skip_whitespace({direction = HintDirection.AFTER_CURSOR})
               end,
               {}
             )
@@ -354,7 +354,7 @@ return require("packer").startup(
               "n",
               "<space>k",
               function()
-                hop.hint_lines_skip_whitespace({ direction = HintDirection.BEFORE_CURSOR })
+                hop.hint_lines_skip_whitespace({direction = HintDirection.BEFORE_CURSOR})
               end,
               {}
             )
@@ -362,7 +362,7 @@ return require("packer").startup(
               "n",
               "<space>h",
               function()
-                hop.hint_words({ direction = HintDirection.BEFORE_CURSOR })
+                hop.hint_words({direction = HintDirection.BEFORE_CURSOR})
               end,
               {}
             )
@@ -370,7 +370,7 @@ return require("packer").startup(
               "n",
               "<space>l",
               function()
-                hop.hint_words({ direction = HintDirection.AFTER_CURSOR })
+                hop.hint_words({direction = HintDirection.AFTER_CURSOR})
               end,
               {}
             )
@@ -378,7 +378,7 @@ return require("packer").startup(
         }
         -- NON-LUA
         use "wellle/targets.vim" -- NON-LUA: ci' works on (), [], {}, < on entire line
-        use { "mg979/vim-visual-multi", branch = "master" } -- NON-LUA
+        use {"mg979/vim-visual-multi", branch = "master"} -- NON-LUA
         use {
           "KabbAmine/vCoolor.vim",
           config = function()
@@ -407,17 +407,17 @@ return require("packer").startup(
       display = {
         open_fn = function()
           local result, win, buf =
-          require("packer.util").float(
+            require("packer.util").float(
             {
               border = {
-                { "╭", "FloatBorder" },
-                { "─", "FloatBorder" },
-                { "╮", "FloatBorder" },
-                { "│", "FloatBorder" },
-                { "╯", "FloatBorder" },
-                { "─", "FloatBorder" },
-                { "╰", "FloatBorder" },
-                { "│", "FloatBorder" }
+                {"╭", "FloatBorder"},
+                {"─", "FloatBorder"},
+                {"╮", "FloatBorder"},
+                {"│", "FloatBorder"},
+                {"╯", "FloatBorder"},
+                {"─", "FloatBorder"},
+                {"╰", "FloatBorder"},
+                {"│", "FloatBorder"}
               }
             }
           )
