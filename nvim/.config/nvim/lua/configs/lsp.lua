@@ -39,22 +39,6 @@ for type, color in pairs(doc_highlight) do
   vim.cmd(hi)
 end
 
--- Use nvim-notify to display LSP messages
--- vim.lsp.handlers["window/showMessage"] = function(_, result, ctx)
---   local client = vim.lsp.get_client_by_id(ctx.client_id)
---   local lvl = ({"ERROR", "WARN", "INFO", "DEBUG"})[result.type]
---   notify(
---     {result.message},
---     lvl,
---     {
---       title = "LSP | " .. client.name,
---       timeout = 5000,
---       keep = function()
---         return lvl == "ERROR" or lvl == "WARN"
---       end
---     }
---   )
--- end
 -- Show borders
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {border = border})
 vim.lsp.handlers["textDocument/signatureHelp"] =
@@ -119,7 +103,7 @@ mason_lspconfig.setup(
       "html",
       "pyright",
       -- "ruff_lsp",
-      -- "pylsp",
+      "pylsp",
       "prismals",
       "sumneko_lua",
       "tsserver",

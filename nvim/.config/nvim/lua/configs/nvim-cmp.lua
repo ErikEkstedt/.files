@@ -171,7 +171,6 @@ local fmt_left = {
 }
 
 -- Highlight
-vim.cmd("hi DocumentNC guifg=#F70067")
 local highlights = {
   CmpItemAbbrDeprecated = {fg = "#7E8294", bg = "NONE", fmt = "strikethrough"},
   CmpItemAbbrMatch = {fg = "#82AAFF", bg = "NONE", fmt = "bold"},
@@ -254,6 +253,7 @@ for type, color in pairs(highlights) do
   vim.cmd(hi)
 end
 
+vim.cmd("hi DocumentNC guifg=#F70067")
 cmp.setup(
   {
     completion = {keyword_length = 1},
