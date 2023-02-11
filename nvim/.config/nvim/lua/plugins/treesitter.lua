@@ -4,7 +4,7 @@ return {
     "nvim-treesitter/playground",
     "nvim-treesitter/nvim-treesitter-textobjects"
   },
-  config = function ()
+  config = function()
     require("nvim-treesitter.configs").setup {
       ensure_installed = {
         "bash",
@@ -15,12 +15,14 @@ return {
         "json",
         "lua",
         "markdown",
-        "python",
+        "markdown_inline",
         "prisma",
+        "python",
+        "regex",
+        "rust",
         "typescript",
         "vim",
-        "yaml",
-        "rust"
+        "yaml"
       },
       highlight = {
         enable = true
@@ -49,16 +51,16 @@ return {
             ["{{"] = "@function.outer"
           },
           goto_next_start = {
-            ["))"] = { query = "@class.outer", desc = "Next class start" },
-            ["}}"] = { query = "@function.outer", desc = "Next func start" }
+            ["))"] = {query = "@class.outer", desc = "Next class start"},
+            ["}}"] = {query = "@function.outer", desc = "Next func start"}
           }
         }
       },
-      playground = { enable = true },
+      playground = {enable = true},
       query_linter = {
         enable = true,
         use_virtual_text = true,
-        lint_events = { "BufWrite", "CursorHold" }
+        lint_events = {"BufWrite", "CursorHold"}
       }
       -- Treesitter indent always keep to fail, working mostly in python so use indentmethod
       -- indent = {enable = true}
