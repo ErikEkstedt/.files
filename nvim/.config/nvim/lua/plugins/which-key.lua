@@ -6,25 +6,25 @@ return {
     -- Telescope
     wk.register(
       {
-        c = {
-          o = "Commands"
-        },
         f = {
           name = "Fuzzy",
           b = "Buffers",
-          c = "DotFiles",
+          c = {
+            c = "DotFiles",
+            o = "Commands"
+          },
           f = "files",
           g = "Git",
+          h = {
+            e = "Help",
+            i = "Highlights"
+          },
           v = "PluginsInstallation",
           l = "BufferLines",
           n = "Notes",
           w = "Grep",
           x = "Notify",
           z = "Notes"
-        },
-        h = {
-          e = "Help",
-          i = "Highlights"
         },
         m = {a = "Mappings"}
       },
@@ -35,12 +35,15 @@ return {
     -- Misc
     wk.register(
       {
-        g = "LazyGit",
+        g = {
+          g = "LazyGit"
+        },
         t = "NvimTree",
         u = "LFPopUp"
       },
       {prefix = "<leader>"}
     )
+
     -- Movement
     wk.register(
       {
@@ -48,17 +51,35 @@ return {
         B = "BufferFirst",
         n = "BufferNext",
         N = "BufferEnd",
+        h = "HopLeft",
+        l = "HopRight",
+        j = "HopDown",
+        k = "HopUp",
         ["<space>"] = "BufferLast"
       },
       {prefix = "<leader>"}
     )
 
+    -- Diagnostics
+    wk.register(
+      {
+        d = {
+          name = "Diagnostics",
+          d = "DiagnosticShowLineDiagnostics",
+          q = "DiagnosticSetLocList",
+          j = "DiagnositcDown",
+          k = "DiagnositcUp"
+        },
+        r = {n = "LSPRename"},
+        s = {o = "LSPSymbols"},
+        w = {l = "LSPInspectWorkspace"}
+      },
+      {prefix = "<leader>"}
+    )
     -- LSP
     wk.register(
       {
         c = {a = "CodeAction"},
-        e = "DiagnosticShowLine",
-        q = "DiagnosticSetLocList",
         r = {n = "LSPRename"},
         s = {o = "LSPSymbols"},
         w = {l = "LSPInspectWorkspace"}
@@ -71,8 +92,6 @@ return {
           D = "LSPDeclaration",
           d = "LSPDefinition",
           i = "LSPImplementation",
-          j = "DiagnositcDown",
-          k = "DiagnositcUp",
           r = "LSPReferences"
         },
         K = "LSPHover"

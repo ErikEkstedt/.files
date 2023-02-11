@@ -60,7 +60,6 @@ local lspSignatureOpts = {
     border = "rounded"
   }
 }
-
 local on_attach = function(client, bufnr)
   -- Mappings.
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
@@ -70,10 +69,8 @@ local on_attach = function(client, bufnr)
   map(bufnr, "n", "gr", CmdLspBuf .. ".references()<CR>", ns)
   map(bufnr, "n", "K", CmdLspBuf .. ".hover()<CR>", ns)
   map(bufnr, "n", "<C-k>", CmdLspBuf .. ".signature_help()<CR>", ns)
-  map(bufnr, "n", "<leader>e", CmdLspBuf .. "tic.show_line_diagnostics()<CR>", ns)
-  map(bufnr, "n", "<leader>ca", CmdLspBuf .. ".code_action()<CR>", ns)
-  map(bufnr, "n", "<leader>ca", "<cmd>CodeActionMenu<CR>", ns)
-  map(bufnr, "n", "<leader>q", CmdLspBuf .. "tic.set_loclist()<CR>", ns)
+  -- map(bufnr, "n", "<leader>ca", CmdLspBuf .. ".code_action()<CR>", ns)
+  map(bufnr, "n", "<leader>ca", "<cmd>CodeActionMenu<CR>", ns) -- nvim-code-action-menu
   map(bufnr, "n", "<leader>rn", CmdLspBuf .. ".rename()<CR>", ns)
   map(bufnr, "n", "<leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", ns)
   map(bufnr, "n", "<leader>so", [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], ns)

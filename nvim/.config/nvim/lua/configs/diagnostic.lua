@@ -21,8 +21,10 @@ vim.diagnostic.config(
 -----------------------------------------------------
 local CmdDiagnostic = "<cmd>lua vim.diagnostic"
 local ns = {noremap = true, silent = true}
-vim.api.nvim_set_keymap("n", "gk", CmdDiagnostic .. ".goto_prev()<CR>", ns)
-vim.api.nvim_set_keymap("n", "gj", CmdDiagnostic .. ".goto_next()<CR>", ns)
+vim.api.nvim_set_keymap("n", "<leader>dk", CmdDiagnostic .. ".goto_prev()<CR>", ns)
+vim.api.nvim_set_keymap("n", "<leader>dj", CmdDiagnostic .. ".goto_next()<CR>", ns)
+vim.api.nvim_set_keymap("n", "<leader>dd", CmdDiagnostic .. ".open_float()<CR>", ns)
+vim.api.nvim_set_keymap("n", "<leader>dq", CmdDiagnostic .. ".setloclist()<CR>", ns)
 
 -----------------------------------------------------
 -- Colors and Signs
