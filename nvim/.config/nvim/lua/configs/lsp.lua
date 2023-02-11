@@ -191,11 +191,11 @@ mason_lspconfig.setup_handlers(
       --   }
       -- print(server_name)
       -- print(vim.inspect(opts))
-      print("Implicit: " .. server_name)
+      -- print("Implicit: " .. server_name)
       lspconfig[server_name].setup(opts)
     end,
     ["sumneko_lua"] = function(server_name)
-      print("Explicit: " .. server_name)
+      -- print("Explicit: " .. server_name)
       lspconfig[server_name].setup(
         {
           on_attach = on_attach,
@@ -218,7 +218,7 @@ mason_lspconfig.setup_handlers(
       )
     end,
     ["pyright"] = function(server_name)
-      print("Explicit: " .. server_name)
+      -- print("Explicit: " .. server_name .. '------------')
       lspconfig[server_name].setup(
         {
           on_attach = function(client, bufnr)

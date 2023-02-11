@@ -21,7 +21,7 @@ vim.opt.fileignorecase = true
 vim.o.foldtext =
 [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
 -- vim.o.foldcolumn = "1"
-vim.o.foldlevelstart = -1 -- 0: all fold, 99: no fold
+vim.o.foldlevelstart = 99 -- 0: all fold, 99: no fold
 vim.o.foldmethod = "indent"
 vim.o.foldenable = true
 

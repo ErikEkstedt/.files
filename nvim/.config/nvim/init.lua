@@ -11,17 +11,32 @@ vim.g.maplocalleader = ","
 vim.g.ts_highlight_lua = true
 vim.g.minimal_plugin = false -- used in plugins/init.lua
 
--- Load plugins (specific plugin settings lua/plugins/<plugName>.lua)
-require("plugins")
-
--- Custom "plugins"
-require("custom.session").setup() -- Session (mksession, Auto-Session, etc)
-
 -- options/settings
 require("settings")
 
+-- Warning: setup leader keys prior to this (happens in init.lua)
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system(
+    {
+      "git",
+      "clone",
+      "--filter=blob:none",
+      "https://github.com/folke/lazy.nvim.git",
+      "--branch=stable", -- latest stable release
+      lazypath
+    }
+  )
+end
+vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup("plugins", {ui = {border = "single"}})
+
 -- Mappings Normal etc
 require("mappings")
+
+-- -- Custom "plugins"
+require("custom.session").setup() -- Session (mksession, Auto-Session, etc)
 
 -- Set Colorscheme
 require("theme")

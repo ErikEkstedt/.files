@@ -2,3 +2,4 @@ plugin/packer_compiled.lua
 sessions/
 spell/*.spl
 wip/
+lazy-lock.json

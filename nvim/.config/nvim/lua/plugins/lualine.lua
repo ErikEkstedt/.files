@@ -1,6 +1,3 @@
-local utils = require("utils")
-local Job = require "plenary.job"
-
 local M = {}
 local colors = {
   green = "#95E454",
@@ -23,29 +20,29 @@ local colors = {
 }
 local theme = {
   visual = {
-    a = { fg = colors.bg, bg = colors.orange, gui = "bold" }
+    a = {fg = colors.bg, bg = colors.orange, gui = "bold"}
   },
   replace = {
-    a = { fg = colors.bg, bg = colors.red, gui = "bold" }
+    a = {fg = colors.bg, bg = colors.red, gui = "bold"}
   },
   inactive = {
-    a = { fg = colors.color4, bg = colors.bg_inactive },
-    b = { fg = colors.color4, bg = colors.bg_inactive },
-    c = { fg = colors.color4, bg = colors.bg_inactive },
-    x = { fg = colors.color4, bg = colors.bg_inactive },
-    y = { fg = colors.color4, bg = colors.bg_inactive },
-    z = { fg = colors.color4, bg = colors.bg_inactive }
+    a = {fg = colors.color4, bg = colors.bg_inactive},
+    b = {fg = colors.color4, bg = colors.bg_inactive},
+    c = {fg = colors.color4, bg = colors.bg_inactive},
+    x = {fg = colors.color4, bg = colors.bg_inactive},
+    y = {fg = colors.color4, bg = colors.bg_inactive},
+    z = {fg = colors.color4, bg = colors.bg_inactive}
   },
   normal = {
-    a = { fg = colors.black, bg = colors.blue, gui = "bold" },
-    b = { fg = colors.magenta, bg = colors.bg, gui = "bold" },
-    c = { fg = colors.blue, bg = colors.bg2, gui = "bold" },
-    x = { fg = colors.green, bg = colors.bg2, gui = "bold" },
-    y = { fg = colors.blue, bg = colors.bg, gui = "bold" },
-    z = { fg = colors.blue, bg = colors.bg, gui = "bold" }
+    a = {fg = colors.black, bg = colors.blue, gui = "bold"},
+    b = {fg = colors.magenta, bg = colors.bg, gui = "bold"},
+    c = {fg = colors.blue, bg = colors.bg2, gui = "bold"},
+    x = {fg = colors.green, bg = colors.bg2, gui = "bold"},
+    y = {fg = colors.blue, bg = colors.bg, gui = "bold"},
+    z = {fg = colors.blue, bg = colors.bg, gui = "bold"}
   },
   insert = {
-    a = { fg = colors.color2, bg = colors.green, gui = "bold" }
+    a = {fg = colors.color2, bg = colors.green, gui = "bold"}
   }
 }
 
@@ -94,6 +91,7 @@ end
 
 -- PythonEnv
 local function get_pyright_env()
+  local utils = require("utils")
   local repo_root = utils.get_git_root()
   if not repo_root then
     return nil
@@ -102,10 +100,10 @@ local function get_pyright_env()
   local pyright_path = repo_root .. "/pyrightconfig.json"
 
   local body, ret
-  Job:new(
+  require("plenary.job"):new(
     {
       command = "cat",
-      args = { pyright_path },
+      args = {pyright_path},
       on_exit = function(j, return_val)
         ret = return_val
         body = j:result()
@@ -167,145 +165,71 @@ local PythonEnv = function()
   return ""
 end
 
-local function get_filepath()
-  local filename = vim.api.nvim_buf_get_name(0)
-  local home = vim.fn.expand("$HOME")
-
-  if filename.match(filename, home) then
-    filename = filename.gsub(filename, home .. "/", "")
-    filename = filename.gsub(filename, "/(%w+)/.config/(%w+)", "/%1")
+-- Lazy
+return {
+  "nvim-lualine/lualine.nvim",
+  dependencies = {
+    "kyazdani42/nvim-web-devicons",
+    "rcarriga/nvim-notify"
+  },
+  config = function()
+    require "lualine".setup {
+      options = {
+        icons_enabled = true,
+        theme = theme,
+        component_separators = "",
+        section_separators = {left = "", right = ""},
+        disabled_filetypes = {},
+        always_divide_middle = false,
+        globalstatus = true
+      },
+      -- sections = sections,
+      sections = {
+        lualine_a = {
+          {
+            "mode",
+            separator = {left = "", right = ""},
+            padding = {left = 0, right = 0}
+          }
+        },
+        lualine_b = {
+          {
+            "branch",
+            icon = "",
+            padding = {left = 1, right = 1},
+            separator = {right = ""}
+          },
+          {
+            "diff",
+            symbols = {
+              added = "  ",
+              modified = " 柳",
+              removed = "  "
+            },
+            padding = 0,
+            separator = {right = ""}
+          }
+        },
+        lualine_c = {
+          {
+            "filename",
+            path = 3,
+            shortening_target = 100
+          }
+        },
+        lualine_x = {
+          {"diagnostics", separator = {right = ""}},
+          {PythonEnv},
+          {get_lsp_client, icon = ""}
+        },
+        lualine_y = {
+          {"filetype", separator = {left = ""}, padding = {left = 0, right = 1}}
+        },
+        lualine_z = {
+          {"location", separator = {right = ""}, padding = 0},
+          {"progress", separator = {right = ""}, padding = 0}
+        }
+      }
+    }
   end
-  return filename
-end
-
----------------------------------------------------
--- Sections
-local inactive_different = {
-  lualine_a = {
-    {
-      function()
-        return " "
-      end,
-      separator = { left = "" },
-      padding = { right = 0, left = 0 }
-    }
-  },
-  lualine_b = {},
-  lualine_c = {
-    {
-      "filename",
-      path = 2,
-      fmt = function(str)
-        local ret = "↑ " .. str .. " ↑"
-        return ret
-      end,
-      shortening_target = 100
-    }
-  },
-  lualine_x = {
-    {
-      "diagnostics",
-      separator = { left = "" },
-      left_padding = 2,
-      sources = { "nvim_diagnostic" }
-    }
-  },
-  lualine_y = {
-    {
-      "diff",
-      symbols = {
-        added = "  ",
-        modified = " 柳",
-        removed = "  "
-      },
-      padding = 0,
-      separator = { right = "" }
-    },
-    {
-      "branch",
-      icon = "",
-      padding = { left = 1, right = 0 },
-      separator = ""
-    }
-  },
-  lualine_z = {
-    {
-      function()
-        return " "
-      end,
-      separator = { right = "" },
-      padding = { right = 0, left = 0 }
-    }
-  }
 }
-
-local sections = {
-  lualine_a = {
-    {
-      "mode",
-      -- fmt = function(str)
-      --   return str:sub(1, 1)
-      -- end,
-      separator = { left = "", right = "" },
-      padding = { left = 0, right = 0 }
-    }
-  },
-  lualine_b = {
-    {
-      "branch",
-      icon = "",
-      padding = { left = 1, right = 1 },
-      separator = { right = "" }
-    },
-    {
-      "diff",
-      symbols = {
-        added = "  ",
-        modified = " 柳",
-        removed = "  "
-      },
-      padding = 0,
-      separator = { right = "" }
-    }
-  },
-  lualine_c = {
-    -- {
-    --   "filename",
-    --   file_status = true, -- displays file status (readonly status, modified status)
-    --   path = 2, -- 0 = just filename, 1 = relative path, 2 = absolute path
-    --   shorting_target = 5
-    -- },
-    { get_filepath }
-  },
-  lualine_x = {
-    { "diagnostics", sources = { "nvim_diagnostic" } },
-    { PythonEnv },
-    { get_lsp_client, icon = "" }
-  },
-  lualine_y = {
-    { "filetype", separator = { left = "" }, padding = { left = 0, right = 1 } }
-  },
-  lualine_z = {
-    { "location", separator = { right = "" }, padding = 0 },
-    { "progress", separator = { right = "" }, padding = 0 }
-  }
-}
-
-require "lualine".setup {
-  options = {
-    icons_enabled = true,
-    theme = theme,
-    component_separators = "",
-    section_separators = { left = "", right = "" },
-    disabled_filetypes = {},
-    always_divide_middle = false,
-    globalstatus = true
-  },
-  sections = sections,
-  inactive_sections = inactive_different,
-  -- inactive_sections = sections,
-  tabline = {},
-  extensions = {}
-}
-
-return M

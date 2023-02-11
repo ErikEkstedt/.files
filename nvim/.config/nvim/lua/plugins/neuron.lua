@@ -1,22 +1,11 @@
-local neuron = require "neuron"
 local neuronDir = "~/zettelkasten"
-local Job = require("plenary/job")
 local no = {noremap = true, silent = true}
 local keymap = vim.api.nvim_set_keymap
 local buf_keymap = vim.api.nvim_buf_set_keymap
 
--- these are all the default values
-neuron.setup {
-  virtual_titles = true,
-  mappings = false,
-  run = nil, -- function to run when in neuron dir
-  neuron_dir = neuronDir, -- the directory of all of your notes, expanded by default (currently supports only one directory for notes, find a way to detect neuron.dhall to use any directory)
-  leader = "gz" -- the leader key to for all mappings, remember with 'go zettel'
-}
-
 local M = {}
 function M.open_obsidian()
-  Job:new {
+  require("plenary/job"):new {
     command = "Obsidian",
     cwd = neuronDir
   }:start()
@@ -64,7 +53,7 @@ function M.neuronNewCustom()
     vim.api.nvim_win_close(win, true)
 
     -- Create the neuron with the provided filename
-    Job:new {
+    require("plenary/job"):new {
       command = "neuron",
       args = {"new", filename},
       cwd = neuronDir,
@@ -109,4 +98,19 @@ keymap("n", "gzo", "<cmd>lua require('plugins.neuron').open_obsidian()<CR>", no)
 --   '<cmd>lua require"neuron/telescope".find_zettels()<CR>',
 --   {noremap = true, silent = true}
 -- )
-return M
+--
+-- return M
+
+return {
+  "oberblastmeister/neuron.nvim",
+  config = function()
+    -- these are all the default values
+    require("neuron").setup {
+      virtual_titles = true,
+      mappings = false,
+      run = nil, -- function to run when in neuron dir
+      neuron_dir = neuronDir, -- the directory of all of your notes, expanded by default (currently supports only one directory for notes, find a way to detect neuron.dhall to use any directory)
+      leader = "gz" -- the leader key to for all mappings, remember with 'go zettel'
+    }
+  end
+}
