@@ -199,16 +199,3 @@ mason_lspconfig.setup_handlers(
     end
   }
 )
-
------------------------------------------------------
--- nvim-cmp supports additional completion capabilities
------------------------------------------------------
--- util.default_config =
---   vim.tbl_extend(
---   "force",
---   util.default_config,
---   {
---     autostart = true,
---     capabilities = capabilities
---   }
--- )
