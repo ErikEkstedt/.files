@@ -9,7 +9,6 @@ vim.g.BROWSER = "brave-browser"
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 vim.g.ts_highlight_lua = true
-vim.g.minimal_plugin = false -- used in plugins/init.lua
 
 -- options/settings
 require("settings")

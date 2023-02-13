@@ -1,81 +1,88 @@
 local highlights = function()
   local fg = "#ffffff"
   local bg = "#303030"
+  local sbg = "#454545"
+  -- local sbg = "#355535"
   local text = "#717171"
   local sep = "#515151"
+
   return {
     background = {
       bg = bg,
       fg = text
     },
-    buffer_selected = {
-      bg = bg,
-      fg = fg,
-      bold = true
-    },
-    separator = {
-      bg = bg,
-      fg = sep
-    },
-    separator_visible = {
-      bg = bg,
-      fg = sep
-    },
-    separator_selected = {
-      bg = bg,
-      fg = sep,
-      bold = true
-    },
-    buffer_visible = {
-      bg = bg
-    },
-    close_button = {
-      bg = bg
-    },
-    close_button_selected = {
+    diagnostic = {
       bg = bg
     },
     duplicate = {
       bg = bg
     },
-    duplicate_selected = {
-      bg = bg,
-      fg = fg,
-      bold = true
-    },
-    duplicate_visible = {
+    close_button = {
       bg = bg
-    },
-    diagnostic = {
-      bg = bg
-    },
-    diagnostic_selected = {
-      bg = bg
-    },
-    indicator_visible = {
-      bg = bg
-    },
-    indicator_selected = {
-      bg = bg,
-      fg = fg
     },
     modified = {
       bg = bg
     },
-    modified_selected = {
-      bg = bg
+    separator = {
+      bg = bg,
+      fg = sep
+    },
+    pick = {
+      bg = bg,
+      fg = "#c3e88d"
     },
     offset_separator = {
       bg = bg,
       fg = fg
     },
+    -- SELECTED
+    indicator_selected = {
+      bg = sbg,
+      fg = fg
+    },
+    buffer_selected = {
+      bg = sbg,
+      fg = fg,
+      bold = true
+    },
+    close_button_selected = {
+      bg = sbg
+    },
+    diagnostic_selected = {
+      bg = sbg
+    },
+    modified_selected = {
+      bg = sbg
+    },
+    separator_selected = {
+      bg = sbg,
+      fg = sep
+    },
+    duplicate_selected = {
+      bg = sbg,
+      fg = fg,
+      bold = true
+    },
     pick_selected = {
       bg = bg,
       fg = "#c3e88d"
     },
-    pick = {
+    -- Visible
+    close_button_visible = {
+      bg = bg
+    },
+    separator_visible = {
       bg = bg,
-      fg = "#c3e88d"
+      fg = sep
+    },
+    buffer_visible = {
+      bg = bg
+    },
+    duplicate_visible = {
+      bg = bg
+    },
+    indicator_visible = {
+      bg = bg
     }
   }
 end
