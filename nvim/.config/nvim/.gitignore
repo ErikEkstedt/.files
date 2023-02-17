@@ -3,3 +3,4 @@ sessions/
 spell/*.spl
 wip/
 lazy-lock.json
+.luarc.json
