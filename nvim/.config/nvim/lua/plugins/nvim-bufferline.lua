@@ -24,14 +24,18 @@ local highlights = function()
       bg = bg
     },
     separator = {
-      bg = bg,
-      fg = sep
+      bg = "#212121",
+      fg = "#212121"
+      -- bg = bg,
+      -- fg = sep
     },
     pick = {
       bg = bg,
       fg = "#c3e88d"
     },
     offset_separator = {
+      -- bg = "black",
+      -- fg = "black"
       bg = bg,
       fg = fg
     },

@@ -32,12 +32,12 @@ local function apply_monokai()
     },
     custom_hlgroups = {
       -- TSVariable = {fg = palette.green},
-      TSParameter = { fg = palette.green },
-      include = { fg = palette.pink, style = "bold" },
-      keyword = { fg = palette.pink, style = "bold" },
-      type = { fg = palette.aqua, style = "bold" },
+      TSParameter = {fg = palette.green},
+      include = {fg = palette.pink, style = "bold"},
+      keyword = {fg = palette.pink, style = "bold"},
+      type = {fg = palette.aqua, style = "bold"},
       -- TSField = {fg = palette.aqua},
-      DiffChange = { bg = "NONE" }
+      DiffChange = {bg = "NONE"}
     }
   }
 end
@@ -46,19 +46,19 @@ local function apply_kanagawa()
   require("kanagawa").setup(
     {
       undercurl = true, -- enable undercurls
-      commentStyle = { italic = true },
+      commentStyle = {italic = true},
       functionStyle = {},
-      keywordStyle = { italic = true },
-      statementStyle = { bold = true },
-      typeStyle = { bold = true },
-      variablebuiltinStyle = { italic = true },
+      keywordStyle = {italic = true},
+      statementStyle = {bold = true},
+      typeStyle = {bold = true},
+      variablebuiltinStyle = {italic = true},
       specialReturn = true, -- special highlight for the return keyword
       specialException = true, -- special highlight for exception handling keywords
       transparent = false, -- do not set background color
       dimInactive = true, -- dim inactive window `:h hl-NormalNC`
       globalStatus = true, -- adjust window separators highlight for laststatus=3
       terminalColors = true, -- define vim.g.terminal_color_{0,17}
-      colors = { carpYellow = "#FECC66" },
+      colors = {carpYellow = "#FECC66"},
       overrides = {},
       theme = "default" -- Load "default" theme or the experimental "light" theme
     }
@@ -72,19 +72,19 @@ local function apply_gruvbox()
   require("gruvbox").setup(
     {
       overrides = {
-        SignColumn = { bg = "NONE" },
-        PMenu = { bg = "NONE" },
-        DiffAdd = { bg = "NONE" },
-        GitSignsChange = { bg = "NONE" },
-        GitSignsAdd = { bg = "NONE" },
-        GitSignsDelete = { bg = "NONE" },
-        DiagnosticSignError = { bg = "NONE" },
-        DiagnosticSignWarn = { bg = "NONE" },
-        DiagnosticSignInfo = { bg = "NONE" },
-        DiagnosticSignHint = { bg = "NONE" },
-        Folded = { bg = "NONE" },
-        FoldColumns = { bg = "NONE" },
-        Type = { fg = "#fabd2f", bold = true }
+        SignColumn = {bg = "NONE"},
+        PMenu = {bg = "NONE"},
+        DiffAdd = {bg = "NONE"},
+        GitSignsChange = {bg = "NONE"},
+        GitSignsAdd = {bg = "NONE"},
+        GitSignsDelete = {bg = "NONE"},
+        DiagnosticSignError = {bg = "NONE"},
+        DiagnosticSignWarn = {bg = "NONE"},
+        DiagnosticSignInfo = {bg = "NONE"},
+        DiagnosticSignHint = {bg = "NONE"},
+        Folded = {bg = "NONE"},
+        FoldColumns = {bg = "NONE"},
+        Type = {fg = "#fabd2f", bold = true}
         -- Typedef = { bold = true }
       }
     }
@@ -102,12 +102,18 @@ local function apply_material()
   vim.g.material_style = "darker"
   require("material").setup {
     custom_highlights = {
-      GitSignsAdd = { fg = "#c3e88d" },
-      DiffDelete = { fg = "#f07178" },
-      Normal = { fg = "#C6D6DE", bg = "#212121" },
-      PmenuSel = { fg = "#FFFFFF", bg = "NONE", bold = true },
-      ["@variable.builtin"] = { bold = true },
-      ["@constant.builtin"] = { fg = "#ffcb6b", bold = true }
+      GitSignsAdd = {fg = "#c3e88d"},
+      DiffDelete = {fg = "#f07178"},
+      Normal = {fg = "#C6D6DE", bg = "#212121"},
+      PmenuSel = {fg = "#FFFFFF", bg = "NONE", bold = true},
+      ["@variable.builtin"] = {bold = true},
+      ["@constant.builtin"] = {fg = "#ffcb6b", bold = true},
+      typescriptTernaryOp = {link = "NvimOperator"},
+      typescriptBinaryOp = {link = "NvimOperator"},
+      typescriptVariable = {link = "@keyword"},
+      typescriptGlobal = {link = "@constant.builtin"},
+      htmlTag = {link = "@function"},
+      htmlTagName = {link = "@function"}
     }
   }
   vim.cmd "colorscheme material"
