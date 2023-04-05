@@ -2,7 +2,8 @@ return {
   "nvim-treesitter/nvim-treesitter",
   dependencies = {
     "nvim-treesitter/playground",
-    "nvim-treesitter/nvim-treesitter-textobjects"
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    "windwp/nvim-ts-autotag"
   },
   config = function()
     require("nvim-treesitter.configs").setup {
@@ -25,6 +26,9 @@ return {
         "yaml"
       },
       highlight = {
+        enable = true
+      },
+      autotag = {
         enable = true
       },
       context_commentstring = {

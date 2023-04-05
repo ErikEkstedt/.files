@@ -108,6 +108,7 @@ local function apply_material()
       PmenuSel = {fg = "#FFFFFF", bg = "NONE", bold = true},
       ["@variable.builtin"] = {bold = true},
       ["@constant.builtin"] = {fg = "#ffcb6b", bold = true},
+      ["@tag"] = {fg = "#89DDFF"},
       typescriptTernaryOp = {link = "NvimOperator"},
       typescriptBinaryOp = {link = "NvimOperator"},
       typescriptVariable = {link = "@keyword"},
