@@ -1,6 +1,6 @@
 return {
   "L3MON4D3/LuaSnip",
-  config = function ()
+  config = function()
     require("luasnip/loaders/from_vscode").lazy_load() -- required for luasnip + friendly-snippets
     local ls = require("luasnip")
     local types = require("luasnip.util.types")
@@ -14,11 +14,15 @@ return {
         ls.parser.parse_snippet("printshape", 'print("${1}: ", tuple(${1}.shape))'),
         ls.parser.parse_snippet("printdict", 'for k, v in ${1}.items():\n\tprint(f"{k}: {v}")'),
         ls.parser.parse_snippet("fig", "fig, ax = plt.subplots(${1:1}, ${2:1})"),
-        ls.parser.parse_snippet("import torch", [[
+        ls.parser.parse_snippet("ifmain", 'if __name__ == "__main__":'),
+        ls.parser.parse_snippet(
+          "import torch",
+          [[
     import torch
     import torch.nn as nn
     import torch.nn.functional as F
-    ]]   ),
+    ]]
+        ),
         ls.parser.parse_snippet(
           "printdictshape",
           [[for k, v in ${1}.items():
@@ -44,10 +48,10 @@ return {
               f(
                 function(args)
                   local text = args[1][1] or ""
-                  local split = vim.split(text, ".", { plain = true })
+                  local split = vim.split(text, ".", {plain = true})
                   return split[#split]
                 end,
-                { 1 }
+                {1}
               ),
               i(1)
             }
@@ -63,13 +67,13 @@ return {
           [types.choiceNode] = {
             active = {
               -- virt_text = {{"●", "Statement"}}
-              virt_text = { { "", "Statement" } }
+              virt_text = {{"", "Statement"}}
             }
           },
           [types.insertNode] = {
             active = {
               -- virt_text = {{"●", "Character"}}
-              virt_text = { { "", "Character" } }
+              virt_text = {{"", "Character"}}
             }
           }
         }

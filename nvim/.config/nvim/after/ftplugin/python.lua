@@ -8,4 +8,4 @@ if vim.g.loaded_slime then
 end
 
 key_map("n", "<Space>al", "gg0v/if __name__<CR>k", km)
-key_map("n", "gm", "/if __name__<CR>j", km)
+key_map("n", "gm", "/if __name__<CR>:nohl<CR>j", km)
