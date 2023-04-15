@@ -33,11 +33,17 @@ set filesep "\n"  # default already
 set scrolloff 10  # leave some space at the top and the bottom of the screen
 set drawbox       # borders
 set incsearch     #  boolean  (default off)
-set preview true
 set dircounts   # what does this do?
-set previewer ~/.config/lf/preview.sh
 set hidden
 # set icons           #  boolean  (default off)
+
+# Preview
+set preview true
+set previewer ~/.config/lf/preview.sh
+# set previewer ctpv
+# set cleaner ctpvclear
+# &ctpv -s $id
+# &ctpvquit $id
 
 # make sure trash folder exists
 %mkdir -p ~/.trash
@@ -94,11 +100,12 @@ map X !$f
 # Movement
 map gho cd ~
 map gro cd /
-map gpr cd ~/projects
 map gfi cd ~/.files
+map gvi cd ~/.files/nvim/.config/nvim
 map gca cd ~/.cache
-map gcl cd ~/projects/ConvLM
-map gbl cd ~/ErikEkstedt.github.io
+map gpr cd ~/projects
+map gcl cd ~/projects/CCConv
+map gda cd ~/projects/data
 map gpi cd ~/Pictures
 map gdw cd ~/Downloads
 map gdo cd ~/Documents
