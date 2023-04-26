@@ -60,20 +60,29 @@ local lspSignatureOpts = {
     border = "rounded"
   }
 }
+
+local telescope = require("telescope")
 local on_attach = function(client, bufnr)
   -- Mappings.
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
   map(bufnr, "n", "gd", CmdLspBuf .. ".definition()<CR>", ns)
   map(bufnr, "n", "gD", CmdLspBuf .. ".declaration()<CR>", ns)
   map(bufnr, "n", "gi", CmdLspBuf .. ".implementation()<CR>", ns)
-  map(bufnr, "n", "gr", CmdLspBuf .. ".references()<CR>", ns)
+  -- map(bufnr, "n", "gr", CmdLspBuf .. ".references()<CR>", ns)
+  map(
+    bufnr,
+    "n",
+    "gr",
+    "<cmd>lua require('telescope.builtin').lsp_references({layout_strategy='center', layout_config={width=0.9}})<CR>",
+    ns
+  )
   map(bufnr, "n", "K", CmdLspBuf .. ".hover()<CR>", ns)
   map(bufnr, "n", "<C-k>", CmdLspBuf .. ".signature_help()<CR>", ns)
   -- map(bufnr, "n", "<leader>ca", CmdLspBuf .. ".code_action()<CR>", ns)
   map(bufnr, "n", "<leader>ca", "<cmd>CodeActionMenu<CR>", ns) -- nvim-code-action-menu
   map(bufnr, "n", "<leader>rn", CmdLspBuf .. ".rename()<CR>", ns)
   map(bufnr, "n", "<leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", ns)
-  map(bufnr, "n", "<leader>so", [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], ns)
+  map(bufnr, "n", "<leader>so", "<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>", ns)
 
   -- https://github.com/ray-x/lsp_signature.nvim#full-configuration-with-default-values
   -- shows which field you are currently on when writing function args
@@ -137,27 +146,26 @@ mason_lspconfig.setup_handlers(
           on_attach = on_attach,
           flags = lsp_flags,
           capabilities = capabilities,
-  	  settings = {
-  	    Lua = {
-  	      runtime = {
-  	        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-  	        version = 'LuaJIT',
-  	      },
-  	      diagnostics = {
-  	        -- Get the language server to recognize the `vim` global
-  	        globals = {'vim'},
-  	      },
-  	      workspace = {
-  	        -- Make the server aware of Neovim runtime files
-  	        library = vim.api.nvim_get_runtime_file("", true),
-  	      },
-  	      -- Do not send telemetry data containing a randomized but unique identifier
-  	      telemetry = {
-  	        enable = false,
-  	      },
-  	    },
-  	  },
-
+          settings = {
+            Lua = {
+              runtime = {
+                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                version = "LuaJIT"
+              },
+              diagnostics = {
+                -- Get the language server to recognize the `vim` global
+                globals = {"vim"}
+              },
+              workspace = {
+                -- Make the server aware of Neovim runtime files
+                library = vim.api.nvim_get_runtime_file("", true)
+              },
+              -- Do not send telemetry data containing a randomized but unique identifier
+              telemetry = {
+                enable = false
+              }
+            }
+          }
         }
       )
     end,
