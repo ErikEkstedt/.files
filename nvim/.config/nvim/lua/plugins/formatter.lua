@@ -90,6 +90,11 @@ return {
                 stdin = true
               }
             end
+          },
+          prisma = {
+            function()
+              vim.lsp.buf.format()
+            end
           }
         }
       }
