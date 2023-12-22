@@ -1,9 +1,0 @@
-#!/usr/bin/env xdg-open
-[Desktop Entry]
-Version=1.0
-Terminal=false
-Type=Application
-Name=Calendar
-Exec=/opt/google/chrome/google-chrome -new-window --app=https://calendar.google.com 
-Icon=/home/erik/.files/icons/calendar-icon.png
-NoDisplay=true

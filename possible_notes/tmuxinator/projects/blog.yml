@@ -1,6 +1,0 @@
-name: Blog
-root: ~/ErikEkstedt.github.io
-windows:
-    - Code:
-    - Server:
-        - jekyll serve -D

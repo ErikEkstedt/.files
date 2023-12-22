@@ -1,6 +1,0 @@
-# /home/erik/.config/tmuxinator/dropdown.yml
-
-name: DropDown
-root: ~/
-windows:
-    - Term:

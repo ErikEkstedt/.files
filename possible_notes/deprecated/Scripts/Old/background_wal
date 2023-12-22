@@ -1,4 +1,0 @@
-#!/bin/sh
-F=$PWD/$1
-cp $F ~/.config/wall.png && feh --bg-scale $F &
-wal -i $F -a 70

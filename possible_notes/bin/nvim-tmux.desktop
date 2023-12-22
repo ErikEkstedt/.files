@@ -1,7 +1,0 @@
-#!/usr/bin/env xdg-open
-[Desktop Entry]
-Name=Neovim
-Exec=/home/erik/.files/bin/nvim-tmux.sh
-Terminal=false
-Type=Application
-Icon=nvim

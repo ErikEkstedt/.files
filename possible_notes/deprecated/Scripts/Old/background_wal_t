@@ -1,5 +1,0 @@
-#!/bin/bash
-F=$PWD/$1
-cp $F ~/.config/wall.png && feh --bg-scale $F &
-WAL=$(which wal)
-$WAL -i $F -a $2
