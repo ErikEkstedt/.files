@@ -75,3 +75,13 @@ zle -N fzf-dir-change-projects
 zle -N fzf-dir-change-home
 zle -N fzf-dir-change-dot
 zle -N fzf-dir-change-cwd
+
+bindkey '^P' fzf-dir-change-projects
+bindkey '^B' fzf-dir-change-home
+bindkey '^Y' fzf-dir-change-dot
+bindkey '^O' fzf-dir-change-cwd
+bindkey '^F' fzf-file-widget
+bindkey -M vicmd '^P' fzf-dir-change-projects
+bindkey -M vicmd '^B' fzf-dir-change-home
+bindkey -M vicmd '^Y' fzf-dir-change-dot
+bindkey -M vicmd '^O' fzf-dir-change-cwd

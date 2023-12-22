@@ -2,6 +2,21 @@
 bindkey -v
 export KEYTIMEOUT=1
 
+
+# Movement
+vi-cmd-up-line-history() {
+  zle vi-cmd-mode
+  zle up-line-or-history
+}
+zle -N vi-cmd-up-line-history
+
+vi-cmd-down-line-history() {
+  zle vi-cmd-mode
+  zle down-line-or-history
+}
+zle -N vi-cmd-down-line-history
+
+
 # otherwise the text written before vi-mode can't be deleted
 bindkey -v '^?' backward-delete-char
 
