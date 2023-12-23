@@ -1,6 +1,8 @@
-plugin/packer_compiled.lua
-sessions/
-spell/*.spl
-wip/
-lazy-lock.json
-.luarc.json
+tt.*
+.tests
+doc/tags
+debug
+.repro
+foo.*
+*.log
+data
