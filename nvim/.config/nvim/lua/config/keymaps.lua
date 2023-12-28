@@ -5,6 +5,9 @@
 local tmux = require("custom.tmux")
 local ns = { noremap = true, silent = true }
 
+-- Delete lazyvim keymaps
+vim.keymap.del("n", "<Leader>fn") -- create new file -> fno/fnw find notes
+
 -- Tmux movement
 vim.keymap.set("n", "<C-w>z", tmux.zoom, ns)
 vim.keymap.set("n", "<M-h>", tmux.move_left, ns)
