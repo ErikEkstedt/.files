@@ -55,3 +55,8 @@ vim.keymap.set("n", "<Leader>D", ":bd<CR>", ns)
 
 -- Fold
 vim.keymap.set("n", "<Leader>z", "za", ns)
+
+-- TAB
+vim.keymap.set("v", "<Tab>", ">gv", ns)
+vim.keymap.set("v", "<S-Tab>", "<gv", ns)
+vim.keymap.set("i", "<S-Tab>", "<esc><<I", ns)
