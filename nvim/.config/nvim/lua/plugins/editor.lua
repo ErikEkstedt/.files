@@ -1,5 +1,12 @@
 local Util = require("lazyvim.util")
 
+local function search_root()
+  require("telescope.builtin").find_files({
+    cwd = require("lazy.core.config").options.root,
+  })
+end
+
+-- TODO: This file should probably be renamed to telescope.lua
 return {
   {
     "telescope.nvim",
@@ -7,12 +14,25 @@ return {
       {
         "nvim-telescope/telescope-fzf-native.nvim",
         build = "make",
+        config = function()
+          require("telescope").load_extension("fzf")
+        end,
       },
     },
     keys = {
       { "<leader><leader>", false },
       {
-
+        "<leader>fw",
+        require("telescope.builtin").live_grep,
+      },
+      {
+        "<leader>fk",
+        function()
+          require("telescope.builtin").keymaps()
+        end,
+        desc = "Find Plugin File",
+      },
+      {
         "<leader>fP",
         function()
           require("telescope.builtin").find_files({
@@ -32,6 +52,16 @@ return {
         desc = "Find Plugin File",
       },
       {
+        "<leader>FF", -- TEMPROREAY
+        function()
+          require("telescope.builtin").find_files({
+            cwd = "$HOME/files_old",
+            hidden = true,
+          })
+        end,
+        desc = "Find Plugin File",
+      },
+      {
         "<leader>fp",
         function()
           require("telescope.builtin").find_files({
@@ -39,6 +69,29 @@ return {
           })
         end,
         desc = "Find Plugin File",
+      },
+      {
+        "<leader>fhe",
+        function()
+          local builtin = require("telescope.builtin")
+          builtin.help_tags()
+        end,
+        desc = "Lists available help tags and opens a new window with the relevant help info on <cr>",
+      },
+      {
+        "<leader>fhi",
+        function()
+          local builtin = require("telescope.builtin")
+          builtin.highlights()
+        end,
+      },
+      {
+        "<leader>fw",
+        function()
+          local builtin = require("telescope.builtin")
+          builtin.live_grep()
+        end,
+        desc = "Search for a string in your current working directory and get results live as you type, respects .gitignore",
       },
     },
     opts = function()
@@ -64,6 +117,7 @@ return {
       return {
         defaults = {
           prompt_prefix = " ",
+          color_devicons = true,
           selection_caret = " ",
           -- open files in the first window that is an actual file.
           -- use the current window if no other window is available.
