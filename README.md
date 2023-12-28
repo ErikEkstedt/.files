@@ -26,3 +26,5 @@ stow zsh
 
 1. Generate ssh keys
   - `ssh-keygen -t rsa -b 4096`
+2. Set the http git repo to ssh
+  - `git remote set-url origin git@github.com:ErikEkstedt/.files.git`
