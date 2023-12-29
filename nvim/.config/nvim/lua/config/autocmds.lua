@@ -10,3 +10,12 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt.conceallevel = 0
   end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "python" },
+  callback = function()
+    local km = { noremap = true, silent = true }
+    vim.keymap.set("n", "<Space>al", "gg0v/if __name__<CR>k", km)
+    vim.keymap.set("n", "gm", "/if __name__<CR>:nohl<CR>j", km)
+  end,
+})
