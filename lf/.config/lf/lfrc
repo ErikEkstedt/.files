@@ -1,5 +1,4 @@
 # lf
-
 # https://godoc.org/github.com/gokcehan/lf
 
 ########################################################################################
@@ -35,15 +34,11 @@ set drawbox       # borders
 set incsearch     #  boolean  (default off)
 set dircounts   # what does this do?
 set hidden
-# set icons           #  boolean  (default off)
+set icons           #  boolean  (default off)
 
 # Preview
 set preview true
 set previewer ~/.config/lf/preview.sh
-# set previewer ctpv
-# set cleaner ctpvclear
-# &ctpv -s $id
-# &ctpvquit $id
 
 # make sure trash folder exists
 %mkdir -p ~/.trash
@@ -53,7 +48,7 @@ set previewer ~/.config/lf/preview.sh
 # MAPPINGS
 ########################################################################################
 
-map D
+map D 
 map c
 map d
 map gh
@@ -66,10 +61,10 @@ map w
 map y
 
 # map - ~/.config/lf/draw_img.sh $f
-map n !nvim -c NV 
+map n !nvim -c NV
 map v !nvim -c Files
 map o open
-map <enter> open 
+map <enter> open
 map D delete
 map dd cut
 map dD delete
@@ -80,7 +75,7 @@ map I push r<home>
 map A rename
 map mkdir push %mkdir<space>
 map cc clear
-map bulk bulk-rename 
+map bulk bulk-rename
 
 # map yd % echo -n $PWD | pbcopy
 # map yp % echo -n $f | pbcopy
@@ -101,6 +96,7 @@ map X !$f
 map gho cd ~
 map gro cd /
 map gfi cd ~/.files
+map gco cd ~/.config
 map gvi cd ~/.files/nvim/.config/nvim
 map gca cd ~/.cache
 map gpr cd ~/projects
@@ -194,6 +190,7 @@ cmd delete ${{
     read ans
     [ $ans = "y" ] && rm -rf $fx
 }}
+
 cmd open ${{
     case $(file --mime-type $f -b) in
         text/*) $EDITOR $fx;;
@@ -233,6 +230,7 @@ cmd zip ${{
     rm -rf $1
 }}
 
+
 ########################################################################################
 # FZF 
 ########################################################################################
@@ -242,7 +240,7 @@ cmd fzf_jump ${{
    if [ -f "$res" ]; then
      cmd="select"
    elif [ -d "$res" ]; then
-     cmd="cd"                                                       
+     cmd="cd"
    fi
 lf -remote "send $id $cmd \"$res\""
 }}
