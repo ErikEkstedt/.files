@@ -96,6 +96,16 @@ return {
             prompt_position = "top",
           },
         },
+        mappings = {
+          i = {
+            ["<c-l>"] = require("telescope.actions").select_vertical,
+            ["<c-j>"] = require("telescope.actions").select_horizontal,
+          },
+          n = {
+            ["<c-l>"] = require("telescope.actions").select_vertical,
+            ["<c-j>"] = require("telescope.actions").select_horizontal,
+          },
+        },
       },
     },
   },
