@@ -57,9 +57,22 @@ export ZSH="$HOME/.config/zsh"
 # Alias
 ##################################################################
 alias v="nvim"
+alias vf="fd --hidden | fzf-tmux -p | xargs nvim"
+# alias vf="nvim -c 'Telescope find_files hidden=true'"
 alias lg="lazygit"
-alias gfi="$HOME/.files"
+alias ipy="ipython"
 
+alias gfi="$HOME/.files;ll"
+alias gpr="$HOME/projects;ll"
+
+alias gst="git status"
+alias gch="git checkout --"
+alias gpl="git pull"
+alias gps="git push"
+alias gco="git commit -m"
+
+
+# Colors LS_COLORS and EXA_COLORS
 # Better ls-commands (assuming exa is installed)
 if [ -x "$(command -v exa)" ]; then # if lsd exists
     alias ls="exa --icons --group-directories-first"
@@ -123,7 +136,8 @@ function so() {
   local env
   # source_conda
   if [ -z "$1" ]; then
-    env=$(ls $HOME/miniconda3/envs | fzf)
+    # The '\ls' is to avoid an alias
+    env=$(\ls $HOME/miniconda3/envs | fzf)
     # source activate "$1"
   else
     env=$1
@@ -155,6 +169,6 @@ function g() {
 
 source_conda
 
-# fnm
+# FNM: Fast Node Manager
 export PATH="/Users/erik/Library/Application Support/fnm:$PATH"
 eval "`fnm env`"
