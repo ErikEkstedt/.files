@@ -126,6 +126,13 @@ return {
     },
   },
   {
+    "echasnovski/mini.indentscope",
+    enabled = false,
+    opts = {
+      draw = { delay = 100 },
+    },
+  },
+  {
     "akinsho/bufferline.nvim",
     opts = {
       options = {
