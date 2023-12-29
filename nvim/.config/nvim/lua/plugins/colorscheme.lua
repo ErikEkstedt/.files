@@ -29,7 +29,7 @@ local gruvbox = {
 
 local kanagawa = {
   "rebelot/kanagawa.nvim",
-  -- priority = 1000,
+  priority = 1000,
   config = function()
     -- Default options:
     require("kanagawa").setup({
@@ -39,11 +39,13 @@ local kanagawa = {
       keywordStyle = { italic = true },
       statementStyle = { bold = true },
       transparent = true, -- do not set background color
+      dimInactive = true,
       overrides = function(colors)
         return {
           TelescopeBorder = { bg = "none" },
-          Folded = { bg = "none" },
-          CursorLine = { bg = colors.theme.ui.bg },
+          Folded = { link = "Directory" },
+          CursorLine = { bg = colors.theme.ui.bg_sel },
+          WinSeparator = { fg = "#AAAAAA" },
         }
       end,
       colors = {
