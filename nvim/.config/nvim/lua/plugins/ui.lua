@@ -134,9 +134,16 @@ return {
   },
   {
     "akinsho/bufferline.nvim",
+    keys = {
+      { "<leader>bl", false },
+      { "<leader>br", false },
+      { "<leader>bL", "<Cmd>BufferLineCloseRight<CR>", desc = "Delete buffers to the right" },
+      { "<leader>bH", "<Cmd>BufferLineCloseLeft<CR>", desc = "Delete buffers to the left" },
+    },
     opts = {
       options = {
         always_show_bufferline = true,
+        diagnostics = false,
         indicator = { style = "underline" },
         close_icon = "",
         buffer_close_icon = "",
