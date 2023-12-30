@@ -1,4 +1,8 @@
 # vim: ft=zsh
+# Profiling (simple): uncomment here and at end of file
+# zmodload zsh/zprof
+# SOURCE: https://www.youtube.com/watch?v=cYmKRCUn96I
+
 # some useful options (man zshoptions)
 # https://github.com/wincent/wincent/blob/fe798113ffb7c616cb7c332c91eaffd62e781048/roles/dotfiles/files/.zshrc#L43-L123
 
@@ -24,7 +28,7 @@ export BROWSER="brave-browser"
 export MANPAGER='nvim +Man!'
 
 # Path
-export PATH="$HOME/.npm-global/bin:$PATH"                                   
+# export PATH="$HOME/.npm-global/bin:$PATH"                                   
 export PATH="$HOME/.rbenv/shims:$PATH"
 export PATH="$HOME/Applications:$PATH"                                   
 export PATH="$HOME/gems/bin:$PATH"  # Install Ruby Gems to ~/gems
@@ -95,5 +99,14 @@ if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
   . $HOME/.nix-profile/etc/profile.d/nix.sh; 
 fi
 
+
 # Slow startup time but necessary
 source_conda  # see conda.zsh
+
+# Added by nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Uncomment to dump performance log
+# zprof > /tmp/foo
