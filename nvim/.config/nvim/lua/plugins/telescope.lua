@@ -80,6 +80,13 @@ return {
         end,
       },
       {
+        "<leader>fma",
+        function()
+          local builtin = require("telescope.builtin")
+          builtin.man_pages()
+        end,
+      },
+      {
         "<leader>fw",
         function()
           local builtin = require("telescope.builtin")
