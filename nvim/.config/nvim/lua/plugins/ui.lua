@@ -1,5 +1,16 @@
 local M = {}
 
+local logo = [[
+ ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗
+ ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║
+ ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║
+ ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║
+ ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║
+ ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝
+]]
+
+logo = string.rep("\n", 8) .. logo .. "\n\n"
+
 local get_lsp_client = function(msg)
   msg = msg or "LSP Inactive"
   local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
@@ -167,6 +178,52 @@ return {
             end,
           },
           { get_lsp_client, icon = "" },
+        },
+      },
+    },
+  },
+  {
+    "nvimdev/dashboard-nvim",
+    opts = {
+      config = {
+        header = vim.split(logo, "\n"),
+        center = {
+          {
+            action = "Telescope find_files hidden=true",
+            desc = " Find file",
+            icon = " ",
+            key = "f",
+          },
+          {
+            action = "ene | startinsert",
+            desc = " New file",
+            icon = " ",
+            key = "n",
+          },
+          {
+            action = "Telescope oldfiles",
+            desc = " Recent files",
+            icon = " ",
+            key = "r",
+          },
+          {
+            action = "Telescope live_grep",
+            desc = " Find text",
+            icon = " ",
+            key = "g",
+          },
+          {
+            action = 'lua require("persistence").load()',
+            desc = " Restore Session",
+            icon = " ",
+            key = "s",
+          },
+          {
+            action = "qa",
+            desc = " Quit",
+            icon = " ",
+            key = "q",
+          },
         },
       },
     },
