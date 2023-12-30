@@ -9,5 +9,8 @@ vim.g.python_host_bin = vim.fn.expand("$HOME/miniconda3/envs/neovim3/bin")
 -- vim.opt/vim.o
 vim.o.sessionoptions = "buffers,help,tabpages,winsize,winpos,terminal"
 
+vim.o.foldtext =
+  [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
+
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])

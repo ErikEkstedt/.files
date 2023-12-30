@@ -43,7 +43,7 @@ local kanagawa = {
       overrides = function(colors)
         return {
           TelescopeBorder = { bg = "none" },
-          Folded = { link = "Directory" },
+          Folded = { link = "NonText" },
           CursorLine = { bg = colors.theme.ui.bg_sel },
           WinSeparator = { fg = "#AAAAAA" },
         }
