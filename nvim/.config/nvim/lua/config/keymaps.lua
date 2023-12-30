@@ -18,7 +18,7 @@ vim.keymap.set("n", "<M-l>", tmux.move_right, ns)
 -- General
 vim.keymap.set("n", "<C-q>", "<cmd>q<CR>", ns)
 vim.keymap.set("n", "<M-q>", "<cmd>qa!<CR>", ns)
-vim.keymap.set("n", "ga", "za", ns)
+vim.keymap.set("n", "ga", "zA", ns)
 
 -- Diagnostics
 vim.keymap.set("n", "<leader>dd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
