@@ -127,9 +127,14 @@ return {
   },
   {
     "echasnovski/mini.indentscope",
-    enabled = false,
+    enabled = true,
     opts = {
-      draw = { delay = 100 },
+      draw = {
+        delay = 100,
+        animation = function()
+          return 0
+        end,
+      },
     },
   },
   {
