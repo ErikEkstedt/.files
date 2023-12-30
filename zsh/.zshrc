@@ -52,7 +52,6 @@ export BROWSER="brave-browser"
 export MANPAGER='nvim +Man!'
 export ZSH="$HOME/.config/zsh"
 
-
 ##################################################################
 # Alias
 ##################################################################
@@ -168,6 +167,11 @@ function g() {
 # fi
 
 source_conda
+
+# Rust
+export PATH="$HOME/.cargo/bin:$PATH"
+export CARGO_HOME="$HOME/.cargo"
+
 
 # FNM: Fast Node Manager
 export PATH="/Users/erik/Library/Application Support/fnm:$PATH"
