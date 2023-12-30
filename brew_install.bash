@@ -1,13 +1,15 @@
 apps=(
-	"fzf"
 	"bat"
 	"exa"
-	"tmux"
+	"fd"
+	"fzf"
 	"htop"
 	"jesseduffield/lazygit/lazygit"
-	"stow"
+	"lf"
 	"ripgrep"
-	"fd"
+	"stow"
+	"tmux"
+	"wget"
 )
 
 # Loop through the list and install each application
