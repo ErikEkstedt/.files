@@ -1,10 +1,8 @@
 local neuronDir = "~/zettelkasten"
-local no = {noremap = true, silent = true}
-local keymap = vim.api.nvim_set_keymap
-local buf_keymap = vim.api.nvim_buf_set_keymap
 
-local M = {}
-function M.open_obsidian()
+local telescope = require("telescope")
+
+local function open_obsidian()
   require("plenary/job"):new {
     command = "Obsidian",
     cwd = neuronDir
@@ -12,7 +10,8 @@ function M.open_obsidian()
 end
 
 -- Create a new zettelkasten/neuron file with a custom filename
-function M.neuronNewCustom()
+local function neuronNewCustom()
+  print("HELLO")
   local buf = vim.api.nvim_create_buf(false, true) -- create new emtpy buffer
   vim.api.nvim_buf_set_option(buf, "bufhidden", "wipe")
   vim.api.nvim_buf_set_lines(buf, 0, 1, false, {"Filename:"})
@@ -74,9 +73,13 @@ end
 -- MAPPINGS
 -- See repo: https://github.com/oberblastmeister/neuron.nvim
 -- " find the backlinks of the current note all the note that link this note
+local no = {noremap = true, silent = true}
+local keymap = vim.keymap.set
+local buf_keymap = vim.api.nvim_buf_set_keymap
+
 buf_keymap(0, "n", "gzb", "<cmd>lua require'neuron/telescope'.find_backlinks()<CR>", no)
 -- " create a new note
-keymap("n", "gzz", "<cmd>lua require('telescope.builtin').find_files{cwd='~/zettelkasten'}<cr>", no)
+-- keymap("n", "gzz", "<cmd>lua require('telescope.builtin').find_files{cwd='~/zettelkasten'}<cr>", no)
 keymap("n", "gzN", string.format("<cmd>lua require'neuron/cmd'.new_edit( '%s' )<CR>", neuronDir), no)
 -- " insert the id of the note that is found
 keymap("n", "gzl", "<cmd>lua require'neuron/telescope'.find_zettels {insert = true}<CR>", no)
@@ -85,9 +88,10 @@ keymap("n", "gzs", "<cmd>lua require'neuron'.rib {address = '127.0.0.1:8200', ve
 
 -- Custom
 -- New note
-keymap("n", "gzn", "<cmd>lua require('plugins.neuron').neuronNewCustom()<CR>", {noremap = true})
+-- keymap("n", "gzn", "<cmd>lua require('plugins.neuron').neuronNewCustom()<CR>", {noremap = true})
+keymap("n", "gzn", neuronNewCustom, no)
 -- Start Obsidian from inside neovim
-keymap("n", "gzo", "<cmd>lua require('plugins.neuron').open_obsidian()<CR>", no)
+keymap("n", "gzo", open_obsidian, no)
 
 -- click enter on [[my_link]] or [[[my_link]]] to enter it
 -- vim.api.nvim_set_keymap("n", "<CR>", '<cmd>lua require"neuron".enter_link()<CR>', {noremap = true, silent = true})

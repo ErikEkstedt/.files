@@ -32,7 +32,7 @@ vim.api.nvim_set_keymap("n", "<leader>dq", CmdDiagnostic .. ".setloclist()<CR>",
 local signs = {
   Error = {text = " "},
   Warn = {text = " "},
-  Hint = {text = " "},
+  Hint = {text = "➡"},
   Info = {text = " "}
 }
 for type, icon in pairs(signs) do

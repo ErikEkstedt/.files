@@ -154,7 +154,7 @@ local fmt_left = {
           buffer = "[BUF]",
           nvim_lsp = "[LSP]",
           luasnip = "[Snip]",
-          nvim_lua = "[LUA]",
+          nvim_lua = " ",
           latex_symbols = "[Latex]"
         }),
         maxwidth = 50,
@@ -264,13 +264,26 @@ cmp.setup(
     },
     mapping = mapping,
     sources = {
-      {name = "buffer", max_item_count = 2},
+      {name = "buffer", max_item_count = 5},
       {name = "luasnip", priority = 10},
-      {name = "nvim_lsp", priority = 10, max_item_count = 50},
-      {name = "nvim_lua", max_item_count = 5},
-      {name = "path", max_item_count = 5}
+      {name = "nvim_lsp", priority = 10, max_item_count = 10},
+      {name = "nvim_lua", max_item_count = 10},
+      {name = "path", max_item_count = 10}
     },
     formatting = fmt,
+    -- performance.debounce
+    --   `number`
+    --   Sets debounce time
+    --   This is the interval used to group up completions from different sources
+    --   for filtering and displaying.
+    -- performance.throttle
+    --   `number`
+    --   Sets throttle time
+    --   This is used to delay filtering and displaying completions.
+    -- performance.fetching_timeout
+    --   `number`
+    --   Sets the timeout of candidate fetching process.
+    --   The nvim-cmp will wait to display the most prioritized source.
     performance = {debounce = 200, throttle = 50, fetching_timeout = 100},
     experimental = {
       native_menu = false,

@@ -1,4 +1,5 @@
 return {
   "weilbith/nvim-code-action-menu",
-  cmd = "CodeActionMenu"
+  cmd = "CodeActionMenu",
+  dependencies = {"kosayoda/nvim-lightbulb"}
 }

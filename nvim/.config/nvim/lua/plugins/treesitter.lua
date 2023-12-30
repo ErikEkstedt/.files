@@ -26,17 +26,18 @@ return {
         "yaml"
       },
       highlight = {
-        enable = true
+        enable = true,
+        additional_vim_regex_highlighting = false
       },
-      autotag = {
-        enable = true
-      },
-      context_commentstring = {
-        enable = true
-      },
-      indent = {
-        enable = true
-      },
+      -- autotag = {
+      --   enable = true
+      -- },
+      -- context_commentstring = {
+      --   enable = true
+      -- },
+      -- indent = {
+      --   enable = true
+      -- },
       incremental_selection = {
         enable = true,
         keymaps = {

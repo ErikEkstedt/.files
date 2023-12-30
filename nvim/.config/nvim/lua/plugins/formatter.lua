@@ -103,7 +103,7 @@ return {
       [[
     augroup FormatAutogroup
       autocmd!
-      autocmd BufWritePost *.ts,*.js,*.jsx,*.tsx,*.html,*.lua,*.py FormatWrite
+      autocmd BufWritePost *.ts,*.js,*.jsx,*.tsx,*.html,*.lua,*.py,*.prisma FormatWrite
     augroup END
     ]],
       true
