@@ -17,6 +17,9 @@ setopt RM_STAR_WAIT  # if you do a 'rm *', Zsh will give you a sanity check!
 
 zmodload zsh/zprof
 
+# Detect the operating system
+os_type="$(uname -s)"
+
 ##################################################################
 # Plugins
 ##################################################################
@@ -61,14 +64,19 @@ alias vf="fd --hidden | fzf-tmux -p | xargs nvim"
 alias lg="lazygit"
 alias ipy="ipython"
 
+# Movement
 alias gfi="$HOME/.files;ll"
 alias gpr="$HOME/projects;ll"
+alias gdw="$HOME/Downloads;ll"
+alias gdo="$HOME/Documents;ll"
+alias gco="$HOME/.config;ll"
 
+# Git
 alias gst="git status"
 alias gch="git checkout --"
 alias gpl="git pull"
 alias gps="git push"
-alias gco="git commit -m"
+# alias gco="git commit -m"
 
 
 # Colors LS_COLORS and EXA_COLORS
@@ -174,5 +182,10 @@ export CARGO_HOME="$HOME/.cargo"
 
 
 # FNM: Fast Node Manager
-export PATH="/Users/erik/Library/Application Support/fnm:$PATH"
-eval "`fnm env`"
+if [[ "$os_type" == "Darwin" ]]; then
+  export PATH="$HOME/Library/Application Support/fnm:$PATH"
+  eval "`fnm env`"
+elif [[ "$os_type" == "Linux" ]]; then
+else
+  echo "Unknown operating system."
+fi
