@@ -149,10 +149,8 @@ return {
   {
     "williamboman/mason.nvim",
     opts = function(_, opts)
-      table.insert(opts.ensure_installed, "stylua")
-      table.insert(opts.ensure_installed, "shfmt")
       table.insert(opts.ensure_installed, "pyright")
-      table.insert(opts.ensure_installed, "ruff-lsp")
+      -- table.insert(opts.ensure_installed, "pylyzer")
     end,
     ui = {
       border = "rounded",
@@ -163,57 +161,83 @@ return {
       },
     },
   },
+  -- {
+  --   "nvimtools/none-ls.nvim",
+  --   optional = false,
+  --   opts = function(_, opts)
+  --     local nls = require("null-ls")
+  --     opts.sources = opts.sources or {}
+  --     table.insert(opts.sources, nls.builtins.formatting.black)
+  --   end,
+  -- },
+  -- {
+  --   "stevearc/conform.nvim",
+  --   optional = true,
+  --   opts = {
+  --     formatters_by_ft = {
+  --       ["python"] = { "black" },
+  --     },
+  --   },
+  -- },
   {
     "neovim/nvim-lspconfig",
     opts = {
+      diagnostics = {
+        virtual_text = {
+          prefix = "icons",
+        },
+      },
       servers = {
+        -- Pylyzer is fast but don't support .venv/conda environments
+        -- pylyzer = {
+        --   python = {
+        --     checkOnType = false,
+        --     diagnostics = true,
+        --     inlayHints = true,
+        --     smartCompletion = true,
+        --   },
+        -- },
         pyright = {
           settings = {
-            pyright = {
-              disableLanguageServices = true,
-              disableOrganizeImports = true,
-            },
             python = {
               venvPath = vim.fn.expand("$HOME/miniconda3/envs"),
               pythonPath = vim.g.python3_host_prog,
-              analysis = {
-                useLibraryCodeForTypes = false,
-                diagnosticMode = "openFilesOnly",
-                autoSearchPaths = false,
-              },
             },
           },
         },
-        ruff_lsp = {
-          settings = {
-            root_dir = [[root_pattern(".git")]],
-          },
-          keys = {
-            {
-              "<leader>co",
-              function()
-                vim.lsp.buf.code_action({
-                  apply = true,
-                  context = {
-                    only = { "source.organizeImports" },
-                    diagnostics = {},
-                  },
-                })
-              end,
-              desc = "Organize Imports",
-            },
-          },
-        },
-      },
-      setup = {
-        ruff_lsp = function()
-          require("lazyvim.util").lsp.on_attach(function(client, _)
-            if client.name == "ruff_lsp" then
-              -- Disable hover in favor of Pyright
-              client.server_capabilities.hoverProvider = false
-            end
-          end)
-        end,
+        -- ruff_lsp = function()
+        --   return {}
+        -- end,
+        --   ruff_lsp = {
+        --     settings = {
+        --       root_dir = [[root_pattern(".git")]],
+        --     },
+        --     keys = {
+        --       {
+        --         "<leader>co",
+        --         function()
+        --           vim.lsp.buf.code_action({
+        --             apply = true,
+        --             context = {
+        --               only = { "source.organizeImports" },
+        --               diagnostics = {},
+        --             },
+        --           })
+        --         end,
+        --         desc = "Organize Imports",
+        --       },
+        --     },
+        --   },
+        -- },
+        -- setup = {
+        --   ruff_lsp = function()
+        --     require("lazyvim.util").lsp.on_attach(function(client, _)
+        --       if client.name == "ruff_lsp" then
+        --         -- Disable hover in favor of Pyright
+        --         client.server_capabilities.hoverProvider = false
+        --       end
+        --     end)
+        --   end,
       },
     },
   },
