@@ -1,7 +1,6 @@
 #!/bin/bash
 
 fonts_list=(
-	font-fira-mono-nerd-font
 	font-dejavu-sans-mono-nerd-font
 	font-fira-code-nerd-font
 	font-iosevka-nerd-font
