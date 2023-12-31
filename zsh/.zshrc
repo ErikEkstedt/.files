@@ -184,8 +184,9 @@ export CARGO_HOME="$HOME/.cargo"
 # FNM: Fast Node Manager
 if [[ "$os_type" == "Darwin" ]]; then
   export PATH="$HOME/Library/Application Support/fnm:$PATH"
-  eval "`fnm env`"
 elif [[ "$os_type" == "Linux" ]]; then
+  export PATH="/home/erik/.local/share/fnm:$PATH"
 else
   echo "Unknown operating system."
 fi
+eval "`fnm env`"
