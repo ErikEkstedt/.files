@@ -157,6 +157,11 @@ return {
       { "<leader>bH", "<Cmd>BufferLineCloseLeft<CR>", desc = "Delete buffers to the left" },
     },
     opts = {
+      highlights = function()
+        return {
+          fill = { bg = "#181820" },
+        }
+      end,
       options = {
         always_show_bufferline = true,
         diagnostics = false,

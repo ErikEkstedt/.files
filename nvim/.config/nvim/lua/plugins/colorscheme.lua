@@ -46,6 +46,8 @@ local kanagawa = {
           Folded = { link = "NonText" },
           CursorLine = { bg = colors.theme.ui.bg_sel },
           WinSeparator = { fg = "#AAAAAA" },
+          DiagnosticError = { fg = "#D55555" },
+          DiagnosticSignError = { fg = "#D55555" },
         }
       end,
       colors = {
