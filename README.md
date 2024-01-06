@@ -38,6 +38,24 @@ stow zsh
 
 ## Information
 
+### Notes
+
+- Keymaps
+  - `<Space>fno`: search filenames
+  - `<Space>fnw`: search words (grep)
+  - `<Space>fnn`: Create new note
+    - [ ] Open Telescope file selection in notes directory
+    - If title does not exist -> Create a note `:ObsidianNewNote {title from telescope}`
+  - `<Space>fnd`: Create new Daily note
+  - title
+  - words
+  - tags
+- Commands
+  - `:ObsidianYesterday`
+    - Open yesterdays note or create new if does not exist.
+- Create a link
+- Insert a link
+
 #### Vscode
 
 ```bash
