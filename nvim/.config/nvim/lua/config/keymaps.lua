@@ -1,33 +1,89 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
+-- Tmux Movement
+-- Moving from Tmuxinator vimscript
+-- https://github.com/christoomey/vim-tmux-navigator
+-- to -->
+-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+-- SOURCE: https://github.com/nathom/tmux.nvim
+-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-local tmux = require("custom.tmux")
+local M = {}
+
+function Move(direction)
+  -- Try to move to vim split
+  local win_num_before = vim.fn.winnr()
+  vim.cmd([[execute "wincmd ]] .. direction .. [["]])
+  if vim.fn.winnr() == win_num_before then
+    -- If the command did nothing, that means the current split
+    -- is at the edge and we need to select the tmux pane
+    MoveTmux(direction)
+  end
+end
+
+function MoveTmux(direction)
+  -- tmux selecttmux_move pane
+  -- Convert from vim movement keys to Up, Left ... for tmux
+  local tmux_map = { h = "L", j = "D", k = "U", l = "R" }
+  local tmux_direction = tmux_map[direction]
+  vim.cmd([[silent exec "!tmux selectp -]] .. tmux_direction .. [["]])
+end
+
+function M.move_left()
+  Move("h")
+end
+
+function M.move_down()
+  Move("j")
+end
+
+function M.move_right()
+  Move("l")
+end
+
+function M.move_up()
+  Move("k")
+end
+
+function M.zoom()
+  local cur_win = vim.api.nvim_get_current_win()
+  vim.api.nvim_set_var("non_float_total", 0)
+  vim.cmd("windo if &buftype != 'nofile' | let g:non_float_total += 1 | endif")
+  vim.api.nvim_set_current_win(cur_win)
+  if vim.api.nvim_get_var("non_float_total") == 1 then
+    if vim.fn.tabpagenr("$") == 1 then
+      return
+    end
+    local last_cursor = vim.api.nvim_win_get_cursor(0)
+    local cur_buf = vim.api.nvim_get_current_buf()
+    vim.cmd("tabclose")
+    if vim.api.nvim_get_current_buf() == cur_buf then
+      vim.api.nvim_win_set_cursor(0, last_cursor)
+    end
+  else
+    local last_cursor = vim.api.nvim_win_get_cursor(0)
+    vim.cmd("tabedit %:p")
+    vim.api.nvim_win_set_cursor(0, last_cursor)
+  end
+end
+
 local ns = { noremap = true, silent = true }
 
--- Delete lazyvim keymaps
-vim.keymap.del("n", "<Leader>fn") -- create new file -> fno/fnw find notes
+
 
 -- Tmux movement
-vim.keymap.set("n", "<C-w>z", tmux.zoom, ns)
-vim.keymap.set("n", "<M-h>", tmux.move_left, ns)
-vim.keymap.set("n", "<M-j>", tmux.move_down, ns)
-vim.keymap.set("n", "<M-k>", tmux.move_up, ns)
-vim.keymap.set("n", "<M-l>", tmux.move_right, ns)
+vim.keymap.set("n", "<C-w>z", M.zoom, ns)
+vim.keymap.set("n", "<M-h>", M.move_left, ns)
+vim.keymap.set("n", "<M-j>", M.move_down, ns)
+vim.keymap.set("n", "<M-k>", M.move_up, ns)
+vim.keymap.set("n", "<M-l>", M.move_right, ns)
 
 -- General
+vim.keymap.set("n", "<C-s>", "<cmd>w<CR>", ns)
 vim.keymap.set("n", "<C-q>", "<cmd>q<CR>", ns)
 vim.keymap.set("n", "<M-q>", "<cmd>qa!<CR>", ns)
 vim.keymap.set("n", "ga", "zA", ns)
 
--- Diagnostics
-vim.keymap.set("n", "<leader>dd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
-vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_next, { desc = "Next Diagnostics" })
-vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev, { desc = "Prev Diagnostics" })
 
 -- Move end/start of line
-vim.keymap.del("n", "<S-h>")
-vim.keymap.del("n", "<S-l>")
 vim.keymap.set("n", "L", "$", ns)
 vim.keymap.set("n", "H", "^", ns)
 
@@ -49,7 +105,6 @@ vim.keymap.set("n", "<Leader>n", ":bnext<CR>", ns)
 vim.keymap.set("n", "<Leader>N", ":bl<CR>", ns)
 vim.keymap.set("n", "<Leader>p", ":bprev<CR>", ns)
 vim.keymap.set("n", "<Leader>P", ":bf<CR>", ns)
-vim.keymap.del("n", "<Leader>bb")
 vim.keymap.set("n", "<Leader>bb", ":bprev<CR>", ns)
 vim.keymap.set("n", "<Leader>D", ":bd<CR>", ns)
 

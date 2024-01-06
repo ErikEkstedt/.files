@@ -1,3 +1,16 @@
+local M = {}
+
+local logo = [[
+ ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗
+ ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║
+ ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║
+ ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║
+ ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║
+ ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝
+]]
+
+logo = string.rep("\n", 8) .. logo .. "\n\n"
+
 local get_lsp_client = function(msg)
   msg = msg or "LSP Inactive"
   local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
@@ -118,6 +131,47 @@ end
 
 return {
   {
+    "rcarriga/nvim-notify",
+    opts = {
+      timeout = 5000,
+    },
+  },
+  {
+    "echasnovski/mini.indentscope",
+    enabled = true,
+    opts = {
+      draw = {
+        delay = 100,
+        animation = function()
+          return 0
+        end,
+      },
+    },
+  },
+  {
+    "akinsho/bufferline.nvim",
+    keys = {
+      { "<leader>bl", false },
+      { "<leader>br", false },
+      { "<leader>bL", "<Cmd>BufferLineCloseRight<CR>", desc = "Delete buffers to the right" },
+      { "<leader>bH", "<Cmd>BufferLineCloseLeft<CR>", desc = "Delete buffers to the left" },
+    },
+    opts = {
+      highlights = function()
+        return {
+          fill = { bg = "#181820" },
+        }
+      end,
+      options = {
+        always_show_bufferline = true,
+        diagnostics = false,
+        indicator = { style = "underline" },
+        close_icon = "",
+        buffer_close_icon = "",
+      },
+    },
+  },
+  {
     "nvim-lualine/lualine.nvim",
     opts = {
       -- options = {
@@ -134,6 +188,52 @@ return {
             end,
           },
           { get_lsp_client, icon = "" },
+        },
+      },
+    },
+  },
+  {
+    "nvimdev/dashboard-nvim",
+    opts = {
+      config = {
+        header = vim.split(logo, "\n"),
+        center = {
+          {
+            action = "Telescope find_files hidden=true",
+            desc = " Find file",
+            icon = " ",
+            key = "f",
+          },
+          {
+            action = "ene | startinsert",
+            desc = " New file",
+            icon = " ",
+            key = "n",
+          },
+          {
+            action = "Telescope oldfiles",
+            desc = " Recent files",
+            icon = " ",
+            key = "r",
+          },
+          {
+            action = "Telescope live_grep",
+            desc = " Find text",
+            icon = " ",
+            key = "g",
+          },
+          {
+            action = 'lua require("persistence").load()',
+            desc = " Restore Session",
+            icon = " ",
+            key = "s",
+          },
+          {
+            action = "qa",
+            desc = " Quit",
+            icon = " ",
+            key = "q",
+          },
         },
       },
     },
