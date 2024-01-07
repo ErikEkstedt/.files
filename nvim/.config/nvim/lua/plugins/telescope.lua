@@ -67,8 +67,7 @@ return {
       {
         "<leader>fhe",
         function()
-          local builtin = require("telescope.builtin")
-          builtin.help_tags()
+          require("telescope.builtin").help_tags()
         end,
         desc = "Lists available help tags and opens a new window with the relevant help info on <cr>",
       },

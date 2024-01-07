@@ -12,6 +12,7 @@ local gruvbox = {
   "ellisonleao/gruvbox.nvim",
   dependencies = { "rcarriga/nvim-notify" },
   priority = 1000,
+  lazy = true,
   config = function()
     require("gruvbox").setup({
       transparent_mode = true,
@@ -30,6 +31,7 @@ local gruvbox = {
 local kanagawa = {
   "rebelot/kanagawa.nvim",
   priority = 1000,
+  lazy = false,
   config = function()
     -- Default options:
     require("kanagawa").setup({
@@ -60,16 +62,6 @@ local kanagawa = {
         },
       },
       theme = "wave", -- Load "wave" theme when 'background' option is not set
-      -- background = { -- map the value of 'background' option to a theme
-      --   dark = "dragon", -- try "dragon" !
-      --   light = "lotus",
-      -- },
-      -- functionStyle = {},
-      -- typeStyle = {},
-      -- dimInactive = false, -- dim inactive window `:h hl-NormalNC`
-      -- overrides = function(colors) -- add/modify highlights
-      --   return {}
-      -- end,
     })
 
     require("lualine").setup({ options = { theme = "kanagawa" } })
