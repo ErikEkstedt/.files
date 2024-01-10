@@ -1,5 +1,5 @@
-vim.g.python3_host_prog = vim.fn.expand("$HOME/miniconda3/envs/neovim3/bin/python")
-vim.g.python_host_bin = vim.fn.expand("$HOME/miniconda3/envs/neovim3/bin")
+vim.g.python3_host_prog = vim.fn.expand("$HOME/miniconda3/bin/python")
+vim.g.python_host_bin = vim.fn.expand("$HOME/miniconda3/bin")
 
 -- set mapleader early prior to plugins
 vim.g.mapleader = " "
@@ -27,6 +27,6 @@ require("lazy").setup("plugins", {
       -- install missing plugins on startup. This doesn't increase startup time.
       missing = true,
       -- try to load one of these colorschemes when starting an installation during startup
-      colorscheme = { "kanagawa" },
+      colorscheme = { "kanagawa", "habamax" },
     },
 })
