@@ -1,239 +1,328 @@
+-- Use LspAttach autocommand to only map the following keys
+-- after the language server attaches to the current buffer
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+  callback = function(ev)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+
+    -- Buffer local mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    local opts = { buffer = ev.buf }
+    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+    vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+    vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
+    vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
+    vim.keymap.set("n", "<space>wl", function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, opts)
+    vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
+    vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
+    vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
+    vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+
+    vim.keymap.set("n", "<space>f", function()
+      vim.lsp.buf.format({ async = true })
+    end, opts)
+  end,
+})
+
 return {
-{
-  "neovim/nvim-lspconfig",
-  event = {"LazyFile"},
-  dependencies = {
-    { "folke/neoconf.nvim", cmd = "Neoconf", config = false, dependencies = { "nvim-lspconfig" } },
-    { "folke/neodev.nvim", opts = {} },
-    "mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
-  },
-  ---@class PluginLspOpts
-  opts = {
-    -- options for vim.diagnostic.config()
-    diagnostics = {
-      underline = true,
-      update_in_insert = false,
-      virtual_text = {
-        spacing = 4,
-        source = "if_many",
-        prefix = "●",
-        -- this will set set the prefix to a function that returns the diagnostics icon based on the severity
-        -- this only works on a recent 0.10.0 build. Will be set to "●" when not supported
-        -- prefix = "icons",
-      },
-      severity_sort = true,
+  { "folke/neodev.nvim", opts = {} },
+  {
+    "williamboman/mason.nvim",
+    -- cmd = "Mason",
+    build = ":MasonUpdate",
+    dependencies = {
+      "neovim/nvim-lspconfig",
+      "williamboman/mason-lspconfig.nvim",
     },
-    -- Enable this to enable the builtin LSP inlay hints on Neovim >= 0.10.0
-    -- Be aware that you also will need to properly configure your LSP server to
-    -- provide the inlay hints.
-    inlay_hints = {
-      enabled = false,
-    },
-    -- add any global capabilities here
-    capabilities = {},
-    -- options for vim.lsp.buf.format
-    -- `bufnr` and `filter` is handled by the LazyVim formatter,
-    -- but can be also overridden when specified
-    format = {
-      formatting_options = nil,
-      timeout_ms = nil,
-    },
-    -- LSP Server Settings
-    ---@type lspconfig.options
-    servers = {
-      lua_ls = {
-        -- mason = false, -- set to false if you don't want this server to be installed with mason
-        -- Use this to add any additional keymaps
-        -- for specific lsp servers
-        ---@type LazyKeysSpec[]
-        -- keys = {},
-        settings = {
-          Lua = {
-            workspace = {
-              checkThirdParty = false,
+    config = function()
+      require("mason").setup({
+        ensure_installed = {
+          "bashls",
+          "cssls",
+          "html",
+          "lua_ls",
+          "prismals",
+          "pyright",
+          "shfmt",
+          "stylua",
+          "tailwindcss",
+          "tsserver",
+          "vimls",
+          "yamlls",
+        },
+      })
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+      require("mason-lspconfig").setup()
+      require("mason-lspconfig").setup_handlers({
+        -- The first entry (without a key) will be the default handler
+        -- and will be called for each installed server that doesn't have
+        -- a dedicated handler.
+        function(server_name) -- default handler (optional)
+          require("lspconfig")[server_name].setup({
+            capabilities = capabilities,
+          })
+        end,
+        -- Next, you can provide a dedicated handler for specific servers.
+        -- For example, a handler override for the `rust_analyzer`:
+        ["pyright"] = function(server_name)
+          require("lspconfig")[server_name].setup({
+            capabilities = capabilities,
+            settings = {
+              python = {
+                venvPath = vim.fn.expand("$HOME/miniconda3/envs"),
+                pythonPath = vim.g.python3_host_prog,
+              },
             },
-            completion = {
-              callSnippet = "Replace",
+          })
+        end,
+        ["lua_ls"] = function(server_name)
+          require("lspconfig")[server_name].setup({
+            --on_attach = on_attach,
+            --flags = lsp_flags,
+            capabilities = capabilities,
+            settings = {
+              Lua = {
+                runtime = {
+                  -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                  version = "LuaJIT",
+                },
+                diagnostics = {
+                  -- Get the language server to recognize the `vim` global
+                  globals = { "vim" },
+                },
+                workspace = {
+                  -- Make the server aware of Neovim runtime files
+                  library = vim.api.nvim_get_runtime_file("", true),
+                },
+                -- Do not send telemetry data containing a randomized but unique identifier
+                telemetry = {
+                  enable = false,
+                },
+              },
+            },
+          })
+        end,
+      })
+    end,
+  },
+  {
+    "hrsh7th/nvim-cmp",
+    version = false, -- last release is way too old
+    event = "InsertEnter",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "saadparwaiz1/cmp_luasnip",
+      "L3MON4D3/LuaSnip",
+      "zbirenbaum/copilot-cmp",
+    },
+    config = function()
+      vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
+      local cmp = require("cmp")
+      local defaults = require("cmp.config.default")()
+      local luasnip = require("luasnip")
+
+      local has_words_before = function()
+        unpack = unpack or table.unpack
+        local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+        return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+      end
+
+      require("copilot_cmp").setup()
+      require("cmp").setup({
+        completion = {
+          completeopt = "menu,menuone,noinsert,noselect",
+        },
+        snippet = {
+          expand = function(args)
+            require("luasnip").lsp_expand(args.body)
+          end,
+        },
+        mapping = cmp.mapping.preset.insert({
+          ["<C-l>"] = cmp.mapping(function(fallback)
+            if luasnip.expand_or_jumpable() then
+              -- expand the snippet if available or jump to the next snippet location
+              luasnip.expand_or_jump()
+            elseif cmp.visible() then
+              -- otherwise function as the enter key and select
+              cmp.confirm({ select = true })
+            else
+              fallback()
+            end
+          end, { "i", "s" }),
+          ["<C-h>"] = cmp.mapping(function(fallback)
+            if luasnip.expand_or_jumpable(-1) then
+              luasnip.expand_or_jump(-1)
+            else
+              fallback()
+            end
+          end, { "i", "s" }),
+          ["<Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              if #cmp.get_entries() == 1 then
+                cmp.confirm({ select = true })
+              elseif luasnip.expand_or_jumpable() then
+                luasnip.expand_or_jump()
+              elseif has_words_before() then
+                cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+              else
+                cmp.select_next_item()
+              end
+            elseif has_words_before() then
+              cmp.complete()
+              if #cmp.get_entries() == 1 then
+                cmp.confirm({ select = true })
+              end
+            else
+              fallback()
+            end
+          end, { "i", "s" }),
+          -- ["<Tab>"] = cmp.mapping(function(fallback)
+          --   if cmp.visible() then
+          --     cmp.select_next_item()
+          --     -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
+          --     -- this way you will only jump inside the snippet region
+          --   elseif luasnip.expand_or_jumpable() then
+          --     luasnip.expand_or_jump()
+          --   elseif has_words_before() then
+          --     cmp.complete()
+          --   else
+          --     fallback()
+          --   end
+          -- end, { "i", "s" }),
+          ["<S-Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_prev_item()
+            elseif luasnip.jumpable(-1) then
+              luasnip.jump(-1)
+            else
+              fallback()
+            end
+          end, { "i", "s" }),
+          ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+          ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+          ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+          ["<C-f>"] = cmp.mapping.scroll_docs(4),
+          ["<C-Space>"] = cmp.mapping.complete(),
+          ["<C-e>"] = cmp.mapping.abort(),
+          ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+          ["<S-CR>"] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+          }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+          ["<C-CR>"] = function(fallback)
+            cmp.abort()
+            fallback()
+          end,
+        }),
+        sources = cmp.config.sources({
+          { name = "nvim_lsp", group_index = 1 },
+          { name = "copilot", group_index = 1 },
+          { name = "luasnip" },
+          { name = "path" },
+          { name = "buffer" },
+        }),
+        formatting = {
+          format = function(_, item)
+            local icons = require("config.icons").icons.kinds
+            if icons[item.kind] then
+              item.kind = icons[item.kind] .. item.kind
+            end
+            return item
+          end,
+        },
+        experimental = {
+          ghost_text = {
+            hl_group = "CmpGhostText",
+          },
+        },
+        sorting = {
+          priority_weight = 2,
+          comparators = {
+            require("copilot_cmp.comparators").prioritize,
+
+            -- Below is the default comparitor list and order for nvim-cmp
+            cmp.config.compare.offset,
+            -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
+            cmp.config.compare.exact,
+            cmp.config.compare.score,
+            cmp.config.compare.recently_used,
+            cmp.config.compare.locality,
+            cmp.config.compare.kind,
+            cmp.config.compare.sort_text,
+            cmp.config.compare.length,
+            cmp.config.compare.order,
+          },
+        },
+      })
+    end,
+  },
+  {
+    "zbirenbaum/copilot.lua",
+    event = { "InsertEnter" },
+    build = ":Copilot auth",
+    opts = {
+      suggestion = {
+        enabled = false,
+        auto_trigger = true,
+        debounce = 75,
+        keymap = {
+          accept = "<C-l>",
+        },
+      },
+      panel = { enabled = false },
+      filetypes = {
+        markdown = true,
+        help = true,
+      },
+    },
+  },
+  {
+    "L3MON4D3/LuaSnip",
+    dependencies = {
+      "rafamadriz/friendly-snippets",
+    },
+    keys = function()
+      return {}
+    end,
+    config = function()
+      require("luasnip/loaders/from_vscode").lazy_load() -- required for luasnip + friendly-snippets
+      local ls = require("luasnip")
+      local types = require("luasnip.util.types")
+      -- local snippet = ls.snippet
+      -- local i = ls.insert_node
+      -- local f = ls.function_node
+      -- local fmt = require("luasnip.extras.fmt").fmt
+      ls.add_snippets("python", {
+        ls.parser.parse_snippet("printshape", 'print("${1}: ", tuple(${1}.shape))'),
+        ls.parser.parse_snippet("printdict", 'for k, v in ${1}.items():\n\tprint(f"{k}: {v}")'),
+        ls.parser.parse_snippet("fig", "fig, ax = plt.subplots(${1:1}, ${2:1})"),
+        ls.parser.parse_snippet("ifmain", 'if __name__ == "__main__":'),
+      })
+      ls.config.setup({
+        region_check_events = "InsertEnter",
+        delete_check_events = "TextChanged,InsertLeave",
+        ext_opts = {
+          [types.choiceNode] = {
+            active = {
+              virt_text = { { "", "Statement" } },
+            },
+          },
+          [types.insertNode] = {
+            active = {
+              virt_text = { { "", "Character" } },
             },
           },
         },
-      },
-    },
-    -- you can do any additional lsp server setup here
-    -- return true if you don't want this server to be setup with lspconfig
-    ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
-    setup = {
-      -- example to setup with typescript.nvim
-      -- tsserver = function(_, opts)
-      --   require("typescript").setup({ server = opts })
-      --   return true
-      -- end,
-      -- Specify * to use this function as a fallback for any server
-      -- ["*"] = function(server, opts) end,
-    },
+      })
+    end,
   },
-  ---@param opts PluginLspOpts
-  config = function(_, opts)
-    if Util.has("neoconf.nvim") then
-      local plugin = require("lazy.core.config").spec.plugins["neoconf.nvim"]
-      require("neoconf").setup(require("lazy.core.plugin").values(plugin, "opts", false))
-    end
-
-    -- setup autoformat
-    Util.format.register(Util.lsp.formatter())
-
-    -- deprectaed options
-    if opts.autoformat ~= nil then
-      vim.g.autoformat = opts.autoformat
-      Util.deprecate("nvim-lspconfig.opts.autoformat", "vim.g.autoformat")
-    end
-
-    -- setup keymaps
-    Util.lsp.on_attach(function(client, buffer)
-      require("lazyvim.plugins.lsp.keymaps").on_attach(client, buffer)
-    end)
-
-    local register_capability = vim.lsp.handlers["client/registerCapability"]
-
-    vim.lsp.handlers["client/registerCapability"] = function(err, res, ctx)
-      local ret = register_capability(err, res, ctx)
-      local client_id = ctx.client_id
-      ---@type lsp.Client
-      local client = vim.lsp.get_client_by_id(client_id)
-      local buffer = vim.api.nvim_get_current_buf()
-      require("lazyvim.plugins.lsp.keymaps").on_attach(client, buffer)
-      return ret
-    end
-
-    -- diagnostics
-    for name, icon in pairs(require("lazyvim.config").icons.diagnostics) do
-      name = "DiagnosticSign" .. name
-      vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
-    end
-
-    if opts.inlay_hints.enabled then
-      Util.lsp.on_attach(function(client, buffer)
-        if client.supports_method("textDocument/inlayHint") then
-          Util.toggle.inlay_hints(buffer, true)
-        end
-      end)
-    end
-
-    if type(opts.diagnostics.virtual_text) == "table" and opts.diagnostics.virtual_text.prefix == "icons" then
-      opts.diagnostics.virtual_text.prefix = vim.fn.has("nvim-0.10.0") == 0 and "●"
-        or function(diagnostic)
-          local icons = require("lazyvim.config").icons.diagnostics
-          for d, icon in pairs(icons) do
-            if diagnostic.severity == vim.diagnostic.severity[d:upper()] then
-              return icon
-            end
-          end
-        end
-    end
-
-    vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
-
-    local servers = opts.servers
-    local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-    local capabilities = vim.tbl_deep_extend(
-      "force",
-      {},
-      vim.lsp.protocol.make_client_capabilities(),
-      has_cmp and cmp_nvim_lsp.default_capabilities() or {},
-      opts.capabilities or {}
-    )
-
-    local function setup(server)
-      local server_opts = vim.tbl_deep_extend("force", {
-        capabilities = vim.deepcopy(capabilities),
-      }, servers[server] or {})
-
-      if opts.setup[server] then
-        if opts.setup[server](server, server_opts) then
-          return
-        end
-      elseif opts.setup["*"] then
-        if opts.setup["*"](server, server_opts) then
-          return
-        end
-      end
-      require("lspconfig")[server].setup(server_opts)
-    end
-
-    -- get all the servers that are available through mason-lspconfig
-    local have_mason, mlsp = pcall(require, "mason-lspconfig")
-    local all_mslp_servers = {}
-    if have_mason then
-      all_mslp_servers = vim.tbl_keys(require("mason-lspconfig.mappings.server").lspconfig_to_package)
-    end
-
-    local ensure_installed = {} ---@type string[]
-    for server, server_opts in pairs(servers) do
-      if server_opts then
-        server_opts = server_opts == true and {} or server_opts
-        -- run manual setup if mason=false or if this is a server that cannot be installed with mason-lspconfig
-        if server_opts.mason == false or not vim.tbl_contains(all_mslp_servers, server) then
-          setup(server)
-        else
-          ensure_installed[#ensure_installed + 1] = server
-        end
-      end
-    end
-
-    if have_mason then
-      mlsp.setup({ ensure_installed = ensure_installed, handlers = { setup } })
-    end
-
-    if Util.lsp.get_config("denols") and Util.lsp.get_config("tsserver") then
-      local is_deno = require("lspconfig.util").root_pattern("deno.json", "deno.jsonc")
-      Util.lsp.disable("tsserver", is_deno)
-      Util.lsp.disable("denols", function(root_dir)
-        return not is_deno(root_dir)
-      end)
-    end
-  end,
-},
-{ "folke/neoconf.nvim", cmd = "Neoconf", config = false, dependencies = { "nvim-lspconfig" } },
-{ "nvim-lspconfig" },
-{
-  "williamboman/mason.nvim",
-  cmd = "Mason",
-  keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
-  build = ":MasonUpdate",
-  opts = {
-    ensure_installed = {
-      "stylua",
-      "shfmt",
-      -- "flake8",
-    },
-  },
-  ---@param opts MasonSettings | {ensure_installed: string[]}
-  config = function(_, opts)
-    require("mason").setup(opts)
-    local mr = require("mason-registry")
-    mr:on("package:install:success", function()
-      vim.defer_fn(function()
-        -- trigger FileType event to possibly load this newly installed LSP server
-        require("lazy.core.handler.event").trigger({
-          event = "FileType",
-          buf = vim.api.nvim_get_current_buf(),
-        })
-      end, 100)
-    end)
-    local function ensure_installed()
-      for _, tool in ipairs(opts.ensure_installed) do
-        local p = mr.get_package(tool)
-        if not p:is_installed() then
-          p:install()
-        end
-      end
-    end
-    if mr.refresh then
-      mr.refresh(ensure_installed)
-    else
-      ensure_installed()
-    end
-  end,
-}
 }

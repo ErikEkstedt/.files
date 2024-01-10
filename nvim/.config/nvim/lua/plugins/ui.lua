@@ -120,11 +120,11 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     opts = {
-      -- options = {
-      --   theme = "kanagawa",
-      --   globalstatus = true,
-      --   disabled_filetypes = { statusline = { "dashboard", "alpha", "starter" } },
-      -- },
+      options = {
+        theme = "kanagawa",
+        globalstatus = true,
+        disabled_filetypes = { statusline = { "dashboard", "alpha", "starter" } },
+      },
       sections = {
         lualine_y = {
           {
@@ -137,5 +137,93 @@ return {
         },
       },
     },
+  },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    event = "VeryLazy",
+    opts = {
+      indent = {
+        char = "│",
+        tab_char = "│",
+      },
+      scope = { enabled = false },
+      exclude = {
+        filetypes = {
+          "help",
+          "alpha",
+          "dashboard",
+          "neo-tree",
+          "Trouble",
+          "trouble",
+          "lazy",
+          "mason",
+          "notify",
+          "toggleterm",
+          "lazyterm",
+        },
+      },
+    },
+    main = "ibl",
+  },
+  {
+    "echasnovski/mini.indentscope",
+    version = false, -- wait till new 0.7.0 release to put it back on semver
+    event = "VeryLazy",
+    opts = {
+      -- symbol = "▏",
+      symbol = "│",
+      options = { try_as_border = true },
+      draw = {
+        delay = 100,
+        animation = function()
+          return 0
+        end,
+      },
+    },
+    init = function()
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = {
+          "help",
+          "alpha",
+          "dashboard",
+          "neo-tree",
+          "Trouble",
+          "trouble",
+          "lazy",
+          "mason",
+          "notify",
+          "toggleterm",
+          "lazyterm",
+        },
+        callback = function()
+          vim.b.miniindentscope_disable = true
+        end,
+      })
+    end,
+  },
+  {
+    "akinsho/bufferline.nvim",
+    event = "VeryLazy",
+    keys = {
+      { "<leader>bL", "<Cmd>BufferLineCloseRight<CR>", desc = "Delete buffers to the right" },
+      { "<leader>bH", "<Cmd>BufferLineCloseLeft<CR>", desc = "Delete buffers to the left" },
+    },
+    config = function()
+      require("bufferline").setup({
+        options = {
+          always_show_bufferline = true,
+          diagnostics = false,
+          indicator = { style = "underline" },
+        },
+      })
+      -- -- Fix bufferline when restoring a session
+      -- vim.api.nvim_create_autocmd("BufAdd", {
+      --   callback = function()
+      --     vim.schedule(function()
+      --       pcall(nvim_bufferline)
+      --     end)
+      --   end,
+      -- })
+    end,
   },
 }
