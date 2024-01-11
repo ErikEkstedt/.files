@@ -210,20 +210,60 @@ return {
     },
     config = function()
       require("bufferline").setup({
+        highlights = {
+          fill = {
+            bg = "#000000",
+          },
+          separator = {
+            fg = "#000000",
+          },
+          separator_visible = {
+            fg = "#000000",
+          },
+          separator_selected = {
+            fg = "#000000",
+            bg = "#504F6B",
+          },
+          buffer_selected = {
+            fg = "#FEFEFE",
+            bg = "#504F6B",
+            bold = true,
+          },
+          close_button_selected = {
+            bg = "#504F6B",
+          },
+          modified_selected = {
+            bg = "#504F6B",
+          },
+          duplicate_selected = {
+            fg = "#FEFEFE",
+            bg = "#504F6B",
+          },
+        },
         options = {
           always_show_bufferline = true,
           diagnostics = false,
-          indicator = { style = "underline" },
+          themable = true,
+          -- indicator = { style = "bold" },
+          separator_style = "slant",
+          name_formatter = function(buf) -- buf contains:
+            return buf.name
+            -- name                | str        | the basename of the active file
+            -- path                | str        | the full path of the active file
+            -- bufnr (buffer only) | int        | the number of the active buffer
+            -- buffers (tabs only) | table(int) | the numbers of the buffers in the tab
+            -- tabnr (tabs only)   | int        | the "handle" of the tab, can be converted to its ordinal number using: `vim.api.nvim_tabpage_get_number(buf.tabnr)`
+          end,
+          offsets = {
+            {
+              filetype = "neo-tree",
+              text = "Neo-tree",
+              highlight = "Directory",
+              text_align = "left",
+            },
+          },
         },
       })
-      -- -- Fix bufferline when restoring a session
-      -- vim.api.nvim_create_autocmd("BufAdd", {
-      --   callback = function()
-      --     vim.schedule(function()
-      --       pcall(nvim_bufferline)
-      --     end)
-      --   end,
-      -- })
     end,
   },
 }
