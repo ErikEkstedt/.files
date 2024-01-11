@@ -19,7 +19,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "<space>wl", function()
       print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, opts)
-    vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
+    -- vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
     vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
     vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
     vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
@@ -123,6 +123,7 @@ return {
       "saadparwaiz1/cmp_luasnip",
       "L3MON4D3/LuaSnip",
       "zbirenbaum/copilot-cmp",
+      { "roobert/tailwindcss-colorizer-cmp.nvim", config = true },
     },
     config = function()
       vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
@@ -231,12 +232,13 @@ return {
           { name = "buffer" },
         }),
         formatting = {
-          format = function(_, item)
+          format = function(entry, item)
             local icons = require("config.icons").icons.kinds
             if icons[item.kind] then
               item.kind = icons[item.kind] .. item.kind
             end
-            return item
+            return require("tailwindcss-colorizer-cmp").formatter(entry, item)
+            -- return item
           end,
         },
         experimental = {

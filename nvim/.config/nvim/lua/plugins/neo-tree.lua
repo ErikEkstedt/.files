@@ -2,6 +2,7 @@ return {
   {
     "nvim-neo-tree/neo-tree.nvim",
     dependencies = {
+      { "nvim-tree/nvim-web-devicons", lazy = true },
       { "MunifTanjim/nui.nvim", lazy = true },
     },
     cmd = "Neotree",

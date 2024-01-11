@@ -31,10 +31,26 @@ return {
         },
         formatters_by_ft = {
           lua = { "stylua" },
+          sh = { "shfmt" },
           -- Conform will run multiple formatters sequentially
           python = { "black" },
           -- Use a sub-list to run only the first available formatter
-          javascript = { { "prettierd", "prettier" } },
+          javascript = { "prettier" },
+          javascriptreact = { "prettier" },
+          typescript = { "prettier" },
+          typescriptreact = { "prettier" },
+          vue = { "prettier" },
+          css = { "prettier" },
+          scss = { "prettier" },
+          less = { "prettier" },
+          html = { "prettier" },
+          json = { "prettier" },
+          jsonc = { "prettier" },
+          yaml = { "prettier" },
+          markdown = { "prettier" },
+          ["markdown.mdx"] = { "prettier" },
+          ["graphql"] = { "prettier" },
+          ["handlebars"] = { "prettier" },
         },
       })
     end,

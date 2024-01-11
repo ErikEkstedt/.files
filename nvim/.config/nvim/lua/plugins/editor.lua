@@ -43,6 +43,13 @@ return {
         desc = "Search Files ",
       },
       {
+        "<leader>fF",
+        function()
+          require("telescope.builtin").find_files()
+        end,
+        desc = "Search Files ",
+      },
+      {
         "<leader>fhe",
         function()
           require("telescope.builtin").help_tags()
@@ -62,6 +69,13 @@ return {
           require("telescope.builtin").live_grep()
         end,
         desc = "Grep",
+      },
+      {
+        "<leader>fk",
+        function()
+          require("telescope.builtin").keymaps()
+        end,
+        desc = "Mappings",
       },
     },
     config = function()
