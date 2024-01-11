@@ -18,12 +18,12 @@
 
 local kanagawa = {
   "rebelot/kanagawa.nvim",
-  lazy=false,
+  lazy = false,
   priority = 1000,
   config = function()
     -- Default options:
     require("kanagawa").setup({
-      compile = false, -- enable compiling the colorscheme
+      compile = false,  -- enable compiling the colorscheme
       undercurl = true, -- enable undercurls
       commentStyle = { italic = true },
       keywordStyle = { italic = true },
@@ -35,9 +35,11 @@ local kanagawa = {
           TelescopeBorder = { bg = "none" },
           Folded = { link = "NonText" },
           CursorLine = { bg = colors.theme.ui.bg_sel },
-          WinSeparator = { fg = "#AAAAAA" },
+          WinSeparator = { fg = "#999999" },
           DiagnosticError = { fg = "#D55555" },
           DiagnosticSignError = { fg = "#D55555" },
+          Pmenu = { bg = "#242430" },
+          PmenuSel = { bg = "#46445E" },
         }
       end,
       colors = {
@@ -59,4 +61,3 @@ local kanagawa = {
 return {
   kanagawa,
 }
-

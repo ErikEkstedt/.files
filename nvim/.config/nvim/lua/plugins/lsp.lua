@@ -170,13 +170,13 @@ return {
             if cmp.visible() then
               if #cmp.get_entries() == 1 then
                 cmp.confirm({ select = true })
-              elseif luasnip.expand_or_jumpable() then
-                luasnip.expand_or_jump()
-              elseif has_words_before() then
-                cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
               else
                 cmp.select_next_item()
               end
+            elseif luasnip.expand_or_jumpable() then
+              luasnip.expand_or_jump()
+            elseif has_words_before() then
+              cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
             elseif has_words_before() then
               cmp.complete()
               if #cmp.get_entries() == 1 then

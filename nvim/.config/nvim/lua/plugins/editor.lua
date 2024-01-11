@@ -57,6 +57,13 @@ return {
         desc = "Search Help ",
       },
       {
+        "<leader>fhi",
+        function()
+          require("telescope.builtin").highlights()
+        end,
+        desc = "Search Highlight",
+      },
+      {
         "<leader>fc",
         function()
           require("telescope.builtin").find_files({cwd='$HOME/.files', hidden=true})
