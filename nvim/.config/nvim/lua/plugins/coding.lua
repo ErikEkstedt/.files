@@ -14,7 +14,7 @@ return {
     "KabbAmine/vCoolor.vim",
     config = function()
       vim.g.vcoolor_disable_mappings = 1
-      vim.keymap.set("n", "<space>cc", ":VCoolor<CR>", { noremap = true, silent = true })
+      vim.keymap.set("n", "<space>cc", ":VCoolor<CR>", { silent = true, desc="Pick colors" })
     end,
   },
 }
