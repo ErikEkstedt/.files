@@ -65,9 +65,7 @@ function M.zoom()
   end
 end
 
-local ns = { noremap = true, silent = true }
-
-
+local ns = { silent = true }
 
 -- Tmux movement
 vim.keymap.set("n", "<C-w>z", M.zoom, ns)
@@ -81,7 +79,9 @@ vim.keymap.set("n", "<C-s>", "<cmd>w<CR>", ns)
 vim.keymap.set("n", "<C-q>", "<cmd>q<CR>", ns)
 vim.keymap.set("n", "<M-q>", "<cmd>qa!<CR>", ns)
 vim.keymap.set("n", "ga", "zA", ns)
-
+vim.keymap.set({"n", "x"}, "<C-Y>", function()
+  vim.api.nvim_command('normal! "+yy')
+end, ns)
 
 -- Move end/start of line
 vim.keymap.set("n", "L", "$", ns)
