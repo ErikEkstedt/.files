@@ -50,6 +50,7 @@ return {
           "markdown",
           "markdown_inline",
           "python",
+          "prisma",
           "query",
           "regex",
           "toml",

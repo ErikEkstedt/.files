@@ -209,35 +209,37 @@ return {
       { "<leader>bH", "<Cmd>BufferLineCloseLeft<CR>", desc = "Delete buffers to the left" },
     },
     config = function()
+      local bg = "#131318"
+      local bga = "#2C2B3A"
       require("bufferline").setup({
         highlights = {
           fill = {
-            bg = "#000000",
+            bg = bg,
           },
           separator = {
-            fg = "#000000",
+            fg = bg,
           },
           separator_visible = {
-            fg = "#000000",
+            fg = bg,
           },
           separator_selected = {
-            fg = "#000000",
-            bg = "#504F6B",
+            fg = bg,
+            bg = bga,
           },
           buffer_selected = {
             fg = "#FEFEFE",
-            bg = "#504F6B",
+            bg = bga,
             bold = true,
           },
           close_button_selected = {
-            bg = "#504F6B",
+            bg = bga,
           },
           modified_selected = {
-            bg = "#504F6B",
+            bg = bga,
           },
           duplicate_selected = {
             fg = "#FEFEFE",
-            bg = "#504F6B",
+            bg = bga,
           },
         },
         options = {
@@ -246,14 +248,7 @@ return {
           themable = true,
           -- indicator = { style = "bold" },
           separator_style = "slant",
-          name_formatter = function(buf) -- buf contains:
-            return buf.name
-            -- name                | str        | the basename of the active file
-            -- path                | str        | the full path of the active file
-            -- bufnr (buffer only) | int        | the number of the active buffer
-            -- buffers (tabs only) | table(int) | the numbers of the buffers in the tab
-            -- tabnr (tabs only)   | int        | the "handle" of the tab, can be converted to its ordinal number using: `vim.api.nvim_tabpage_get_number(buf.tabnr)`
-          end,
+          truncate_names=true,
           offsets = {
             {
               filetype = "neo-tree",

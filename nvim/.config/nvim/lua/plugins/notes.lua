@@ -10,38 +10,58 @@ return {
       "hrsh7th/nvim-cmp",
       "nvim-telescope/telescope.nvim",
     },
+    cmd = {
+      "ObsidianSearch",
+      "ObsidianNew",
+      "ObsidianToday",
+      "ObsidianOpen",
+      "ObsidianFollowLink",
+    },
     keys = {
       { "<space>fno", "<cmd>:ObsidianSearch<CR>" },
       { "<space>fnn", "<cmd>:ObsidianNew<CR>" },
       { "<space>fnd", "<cmd>:ObsidianToday<CR>" },
       { "<space>oo", "<cmd>:ObsidianOpen<CR>" },
-    },
-    opts = {
-      workspaces = {
-        {
-          name = "Notes",
-          path = NOTE_ROOT,
-        },
-      },
-      daily_notes = {
-        -- Optional, if you keep daily notes in a separate directory.
-        folder = NOTE_ROOT .. "/daily",
-        -- Optional, if you want to change the date format for the ID of daily notes.
-        date_format = "%Y-%m-%d",
-        -- Optional, if you want to change the date format of the default alias of daily notes.
-        alias_format = "%B %-d, %Y",
-        -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
-        template = nil,
+      {
+        "gf",
+        function()
+          if require("obsidian").util.cursor_on_markdown_link() then
+            return "<cmd>ObsidianFollowLink<CR>"
+          else
+            return "gf"
+          end
+        end,
+        desc = "goto file (obsidian passthrough)",
+        expr = true,
       },
     },
-    config = function(opts)
+    opts = {},
+    config = function()
       vim.api.nvim_create_autocmd("FileType", {
         pattern = { "markdown", "md" },
         callback = function()
           vim.wo.conceallevel = 2
         end,
       })
-      require("obsidian").setup(opts.opts)
+
+      require("obsidian").setup({
+        workspaces = {
+          {
+            name = "Notes",
+            path = NOTE_ROOT,
+          },
+        },
+        daily_notes = {
+          -- Optional, if you keep daily notes in a separate directory.
+          folder = "/daily",
+          -- Optional, if you want to change the date format for the ID of daily notes.
+          date_format = "%Y-%m-%d",
+          -- Optional, if you want to change the date format of the default alias of daily notes.
+          alias_format = "%B %-d, %Y",
+          -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
+          template = nil,
+        },
+      })
     end,
   },
 }
