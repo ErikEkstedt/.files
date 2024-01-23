@@ -58,9 +58,14 @@ export ZSH="$HOME/.config/zsh"
 ##################################################################
 # Alias
 ##################################################################
+nvimload() {
+  nvim -c "lua require('persistence').load()"
+}
+
 alias v="nvim"
-alias vf="fd --hidden | fzf-tmux -p | xargs nvim"
-# alias vf="nvim -c 'Telescope find_files hidden=true'"
+alias vs=nvimload
+alias vf="nvim -c 'Telescope find_files hidden=true'"
+alias vn="nvim -c 'ObsidianToday'"
 alias lg="lazygit"
 alias ipy="ipython"
 
