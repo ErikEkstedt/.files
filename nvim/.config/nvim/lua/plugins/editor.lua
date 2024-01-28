@@ -13,9 +13,9 @@ local function project_files()
   end
 
   if is_inside_work_tree[cwd] then
-    require('telescope.builtin').git_files(opts)
+    require("telescope.builtin").git_files(opts)
   else
-    require('telescope.builtin').builtin.find_files(opts)
+    require("telescope.builtin").builtin.find_files(opts)
   end
 end
 
@@ -43,7 +43,7 @@ return {
         desc = "Search Files ",
       },
       {
-        "<leader>fF",
+        "<leader>FF",
         function()
           require("telescope.builtin").find_files()
         end,
@@ -66,7 +66,7 @@ return {
       {
         "<leader>fc",
         function()
-          require("telescope.builtin").find_files({cwd='$HOME/.files', hidden=true})
+          require("telescope.builtin").find_files({ cwd = "$HOME/.files", hidden = true })
         end,
         desc = "Search DotFiles ",
       },

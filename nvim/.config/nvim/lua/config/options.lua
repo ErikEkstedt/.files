@@ -32,8 +32,10 @@ vim.opt.splitkeep = "screen"
 vim.opt.splitright = true -- Put new windows right of current
 vim.opt.tabstop = 2 -- Number of spaces tabs count for
 vim.opt.termguicolors = true -- True color support
-vim.opt.wrap = false
-vim.opt.foldtext = [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
+vim.opt.foldtext =
+  [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
+vim.opt.wrap = true
+vim.opt.linebreak = true
 
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])
