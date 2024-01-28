@@ -26,6 +26,12 @@ bindkey -M menuselect '^k' vi-up-line-or-history
 bindkey -M menuselect '^l' vi-forward-char
 bindkey -M menuselect '^j' vi-down-line-or-history
 
+# Movement
+bindkey -M vicmd H beginning-of-line
+bindkey -M vicmd L end-of-line
+bindkey -M vicmd J vi-cmd-down-line-history
+bindkey -M vicmd K vi-cmd-up-line-history
+
 # Change cursor shape for different vi modes.
 # Set cursor style (DECSCUSR), VT520.
 # 0  ⇒  blinking block.
