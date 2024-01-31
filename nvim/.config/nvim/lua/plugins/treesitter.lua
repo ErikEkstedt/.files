@@ -3,7 +3,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     version = false, -- last release is way too old and doesn't work on Windows
     build = ":TSUpdate",
-    cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
+    -- cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
     dependencies = {
       {
         "nvim-treesitter/nvim-treesitter-textobjects",
@@ -31,54 +31,116 @@ return {
         end,
       },
     },
-    opts = {
-      {
-        highlight = { enable = true },
-        indent = { enable = false },
+    config = function()
+      require("ts_context_commentstring").setup({})
+      vim.g.skip_ts_context_commentstring_module = true
+      require("nvim-treesitter.configs").setup({
         ensure_installed = {
           "bash",
-          "c",
-          "diff",
+          "css",
           "html",
           "javascript",
-          "jsdoc",
           "json",
-          "jsonc",
           "lua",
-          "luadoc",
-          "luap",
           "markdown",
           "markdown_inline",
-          "python",
           "prisma",
-          "query",
+          "python",
           "regex",
-          "toml",
-          "tsx",
+          "rust",
           "typescript",
           "vim",
-          "vimdoc",
           "yaml",
+        },
+        highlight = {
+          enable = true,
+        },
+        autotag = {
+          enable = true,
+        },
+        indent = {
+          enable = true,
         },
         incremental_selection = {
           enable = true,
           keymaps = {
-            init_selection = "<C-space>",
-            node_incremental = "<C-space>",
-            scope_incremental = false,
-            node_decremental = "<bs>",
+            init_selection = "gnn",
+            node_incremental = "<c-g><c-g>",
+            node_decremental = "<c-g><c-f>",
+            scope_incremental = "grm",
           },
         },
         textobjects = {
           move = {
             enable = true,
-            goto_next_start = { ["]f"] = "@function.outer", ["]c"] = "@class.outer" },
-            goto_next_end = { ["]F"] = "@function.outer", ["]C"] = "@class.outer" },
-            goto_previous_start = { ["[f"] = "@function.outer", ["[c"] = "@class.outer" },
-            goto_previous_end = { ["[F"] = "@function.outer", ["[C"] = "@class.outer" },
+            set_jumps = true,
+            goto_previous_start = {
+              ["(("] = "@class.outer",
+              ["{{"] = "@function.outer",
+            },
+            goto_next_start = {
+              ["))"] = { query = "@class.outer", desc = "Next class start" },
+              ["}}"] = { query = "@function.outer", desc = "Next func start" },
+            },
           },
         },
-      },
-    },
+        playground = { enable = true },
+        query_linter = {
+          enable = true,
+          use_virtual_text = true,
+          lint_events = { "BufWrite", "CursorHold" },
+        },
+        -- Treesitter indent always keep to fail, working mostly in python so use indentmethod
+        -- indent = {enable = true}
+      })
+    end,
+    -- opts = {
+    --   auto_install = true,
+    --   highlight = { enable = true },
+    --   indent = { enable = false },
+    --   ensure_installed = {
+    --     "bash",
+    --     "c",
+    --     "diff",
+    --     "html",
+    --     "javascript",
+    --     "jsdoc",
+    --     "json",
+    --     "jsonc",
+    --     "lua",
+    --     "luadoc",
+    --     "luap",
+    --     "markdown",
+    --     "markdown_inline",
+    --     "python",
+    --     "prisma",
+    --     "query",
+    --     "regex",
+    --     "toml",
+    --     "tsx",
+    --     "typescript",
+    --     "vim",
+    --     "vimdoc",
+    --     "yaml",
+    --   },
+    --   incremental_selection = {
+    --     enable = false,
+    --     keymaps = {
+    --       init_selection = "<C-space>",
+    --       node_incremental = "<C-space>",
+    --       scope_incremental = false,
+    --       node_decremental = "<bs>",
+    --     },
+    --   },
+    --   textobjects = {
+    --     move = {
+    --       enable = true,
+    --       goto_next_start = { ["]f"] = "@function.outer", ["]c"] = "@class.outer" },
+    --       goto_next_end = { ["]F"] = "@function.outer", ["]C"] = "@class.outer" },
+    --       goto_previous_start = { ["[f"] = "@function.outer", ["[c"] = "@class.outer" },
+    --       goto_previous_end = { ["[F"] = "@function.outer", ["[C"] = "@class.outer" },
+    --     },
+    --   },
+    -- },
   },
 }

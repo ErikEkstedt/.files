@@ -18,10 +18,10 @@ return {
       "ObsidianFollowLink",
     },
     keys = {
-      { "<space>fno", "<cmd>:ObsidianSearch<CR>" },
-      { "<space>fnn", "<cmd>:ObsidianNew<CR>" },
-      { "<space>fnd", "<cmd>:ObsidianToday<CR>" },
-      { "<space>oo", "<cmd>:ObsidianOpen<CR>" },
+      { "<space>fno", "<cmd>:ObsidianSearch<CR>", desc = "Notes Search" },
+      { "<space>fnn", "<cmd>:ObsidianNew<CR>", desc = "Notes New" },
+      { "<space>fnd", "<cmd>:ObsidianToday<CR>", desc = "Notes Today" },
+      { "<space>oo", "<cmd>:ObsidianOpen<CR>", desc = "Open Obsidian" },
       {
         "gf",
         function()
@@ -35,7 +35,6 @@ return {
         expr = true,
       },
     },
-    opts = {},
     config = function()
       vim.api.nvim_create_autocmd("FileType", {
         pattern = { "markdown", "md" },
@@ -43,7 +42,6 @@ return {
           vim.wo.conceallevel = 2
         end,
       })
-
       require("obsidian").setup({
         workspaces = {
           {

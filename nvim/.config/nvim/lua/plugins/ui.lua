@@ -233,8 +233,9 @@ return {
     "akinsho/bufferline.nvim",
     event = "VeryLazy",
     keys = {
-      { "<leader>bL", "<Cmd>BufferLineCloseRight<CR>", desc = "Delete buffers to the right" },
-      { "<leader>bH", "<Cmd>BufferLineCloseLeft<CR>", desc = "Delete buffers to the left" },
+      { "<leader>bL", "<Cmd>BufferLineCloseRight<CR>", desc = "Buffer delete to the right" },
+      { "<leader>bH", "<Cmd>BufferLineCloseLeft<CR>", desc = "Buffer delete to the left" },
+      { "<leader>bp", "<Cmd>BufferLinePick<CR>", desc = "Buffer Picker" },
     },
     config = function()
       local bg = "#131318"

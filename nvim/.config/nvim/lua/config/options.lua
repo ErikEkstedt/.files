@@ -37,6 +37,8 @@ vim.opt.foldtext =
 vim.opt.wrap = true
 vim.opt.linebreak = true
 
+vim.opt.timeoutlen = 400 -- Time in milliseconds to wait for a mapped sequence to complete.
+
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])
 

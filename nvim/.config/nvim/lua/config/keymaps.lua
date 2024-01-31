@@ -74,18 +74,31 @@ vim.keymap.set("n", "<M-j>", M.move_down, ns)
 vim.keymap.set("n", "<M-k>", M.move_up, ns)
 vim.keymap.set("n", "<M-l>", M.move_right, ns)
 
+-- Resize
+
+-- Resize
+vim.keymap.set("n", "<C-Left>", ":vertical resize -3<CR>", ns)
+vim.keymap.set("n", "<C-Right>", ":vertical resize +3<CR>", ns)
+vim.keymap.set("n", "<C-Down>", ":resize +3<CR>", ns)
+vim.keymap.set("n", "<C-Up>", ":resize -3<CR>", ns)
+
 -- General
 vim.keymap.set("n", "<C-s>", "<cmd>w<CR>", ns)
 vim.keymap.set("n", "<C-q>", "<cmd>q<CR>", ns)
 vim.keymap.set("n", "<M-q>", "<cmd>qa!<CR>", ns)
 vim.keymap.set("n", "ga", "zA", ns)
-vim.keymap.set({"n", "x"}, "<C-Y>", function()
+vim.keymap.set({ "n", "x" }, "<C-Y>", function()
   vim.api.nvim_command('normal! "+yy')
 end, ns)
+vim.keymap.set("n", "<leader>wr", ":set nowrap!<CR>", ns)
 
 -- Move end/start of line
 vim.keymap.set("n", "L", "$", ns)
 vim.keymap.set("n", "H", "^", ns)
+vim.keymap.set("x", "L", "$", ns)
+vim.keymap.set("x", "H", "^", ns)
+vim.keymap.set("x", "J", "}", ns)
+vim.keymap.set("x", "K", "{", ns)
 
 -- Goto next under cursor
 vim.keymap.set("n", "gn", "*zvzz", ns)

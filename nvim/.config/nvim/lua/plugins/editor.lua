@@ -43,6 +43,13 @@ return {
         desc = "Search Files ",
       },
       {
+        "<leader>fb",
+        function()
+          require("telescope.builtin").buffers()
+        end,
+        desc = "Search Files ",
+      },
+      {
         "<leader>FF",
         function()
           require("telescope.builtin").find_files()
