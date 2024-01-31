@@ -28,6 +28,7 @@ os_type="$(uname -s)"
 plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-syntax-highlighting"
 plug "mafredri/zsh-async"
+# plug "jeffreytse/zsh-vi-mode"  -- maybe but not now
 
 ##################################################################
 # Completions
@@ -54,6 +55,7 @@ export EDITOR='nvim'
 export BROWSER="brave-browser"
 export MANPAGER='nvim +Man!'
 export ZSH="$HOME/.config/zsh"
+export PATH="$HOME/Applications:$PATH"
 
 ##################################################################
 # Alias
@@ -101,18 +103,6 @@ fi
 
 
 ##################################################################
-# Source files
-##################################################################
-source $ZSH/prompt.zsh
-source $ZSH/vim-mode.zsh  # vim-mode, keytimeout & cursor styles
-if [ -x "$(command -v fzf)" ]; then # if lsd exists
-  if [ -f $HOME/.fzf.zsh ]; then
-    source $HOME/.fzf.zsh
-    source $ZSH/fzf.zsh
-  fi
-fi
-
-##################################################################
 # Tmux
 ##################################################################
 export TMUXDOTDIR=$HOME/.config/tmux
@@ -123,6 +113,16 @@ if [ "$TMUX" = "" ]; then
     tmux new-session -s Terminal
   fi
 fi # }}}
+
+##################################################################
+# Source files
+##################################################################
+source $ZSH/prompt.zsh
+source $ZSH/vim-mode.zsh  # vim-mode, keytimeout & cursor styles
+if [ -f $HOME/.fzf.zsh ]; then
+  source $HOME/.fzf.zsh
+  source $ZSH/fzf.zsh
+fi
 
 
 ##################################################################
