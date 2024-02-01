@@ -126,4 +126,65 @@ return {
       })
     end,
   },
+  {
+    "ThePrimeagen/harpoon",
+    dependencies = { "nvim-lua/plenary.nvim", "rcarriga/nvim-notify" },
+    keys = {
+      {
+        "<leader>hh",
+        function()
+          require("harpoon.ui").toggle_quick_menu()
+        end,
+        desc = "Harpoon Toggle UI",
+      },
+      {
+        "<leader>ha",
+        function()
+          require("harpoon.mark").add_file()
+          -- get the filename for the current buffer
+          local filename = vim.fn.expand("%:p")
+          vim.notify("Harpoon: " .. filename, vim.log.levels.INFO)
+        end,
+        desc = "Harpoon add file",
+      },
+      {
+        "<leader>1",
+        function()
+          require("harpoon.ui").nav_file(1)
+        end,
+        desc = "Harpoon goto 1",
+      },
+      {
+        "<leader>2",
+        function()
+          require("harpoon.ui").nav_file(2)
+        end,
+        desc = "Harpoon goto 2",
+      },
+      {
+        "<leader>3",
+        function()
+          require("harpoon.ui").nav_file(3)
+        end,
+        desc = "Harpoon goto 3",
+      },
+      {
+        "<leader>hn",
+        function()
+          require("harpoon.ui").nav_next()
+        end,
+        desc = "Harpoon goto next",
+      },
+      {
+        "<leader>hp",
+        function()
+          require("harpoon.ui").nav_prev()
+        end,
+        desc = "Harpoon goto prev",
+      },
+    },
+    config = function()
+      require("harpoon").setup()
+    end,
+  },
 }

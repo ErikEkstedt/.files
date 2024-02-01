@@ -34,7 +34,7 @@ vim.opt.tabstop = 2 -- Number of spaces tabs count for
 vim.opt.termguicolors = true -- True color support
 vim.opt.foldtext =
   [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
-vim.opt.wrap = true
+vim.opt.wrap = false
 vim.opt.linebreak = true
 
 vim.opt.timeoutlen = 400 -- Time in milliseconds to wait for a mapped sequence to complete.
