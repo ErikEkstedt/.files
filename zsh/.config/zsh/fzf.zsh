@@ -1,8 +1,8 @@
-# FZF Settings 
+# FZF Settings
 # https://github.com/junegunn/fzf
 #
 # Install:
-#   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf 
+#   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 #   ~/.fzf/install
 #
 # Upgrade:
@@ -20,7 +20,7 @@ export FZF_DEFAULT_OPTS="--height 100% --reverse --ansi"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="--preview 'bat --color always {}'"
 
-export FZF_ALT_C_COMMAND='fd --type d -E .git/ -E node_modules/ --color=always'
+export FZF_ALT_C_COMMAND='fd --hidden --type d -E .git/ -E node_modules/ --color=always'
 export FZF_ALT_C_OPTS="--preview 'tree -L 1 -C {} | head -300' "
 
 export FZF_CTRL_R_OPTS="--reverse"
