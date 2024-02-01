@@ -62,6 +62,9 @@ local kanagawa = {
           ["@comment.danger"] = { link = "@text.danger" },
           ["@diff.plus"] = { link = "@text.diff.add" },
           ["@diff.minus"] = { link = "@text.diff.delete" },
+          -- ZSH
+          zshFunction = { link = "Function" },
+          zshVariableDef = { link = "Variable" },
         }
       end,
       colors = {
