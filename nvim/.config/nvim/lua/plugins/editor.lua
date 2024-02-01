@@ -20,16 +20,16 @@ local function project_files()
 end
 
 return {
+  { "mbbill/undotree" },
+  { "wellle/targets.vim" },
   {
     "nvim-telescope/telescope.nvim",
     dependencies = {
       { "nvim-lua/plenary.nvim" },
+      { "tsakirist/telescope-lazy.nvim" },
       {
         "nvim-telescope/telescope-fzf-native.nvim",
-        build = "make",
-        config = function()
-          require("telescope").load_extension("fzf")
-        end,
+        build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
       },
     },
     cmd = "Telescope",
@@ -123,7 +123,17 @@ return {
             },
           },
         },
+        extensions = {
+          fuzzy = true,
+          override_generic_sorter = true,
+          override_file_sorter = true,
+          case_mode = "smart_case",
+        },
       })
+
+      -- Extensions
+      require("telescope").load_extension("fzf")
+      require("telescope").load_extension("lazy")
     end,
   },
   {
@@ -185,6 +195,28 @@ return {
     },
     config = function()
       require("harpoon").setup()
+    end,
+  },
+  {
+    "phaazon/hop.nvim",
+    branch = "v2", -- optional but strongly recommended
+    config = function()
+      local hop = require("hop")
+      local HintDirection = require("hop.hint").HintDirection
+      vim.keymap.set("n", "<space>j", function()
+        hop.hint_lines_skip_whitespace({ direction = HintDirection.AFTER_CURSOR })
+      end, {})
+      vim.keymap.set("n", "<space>k", function()
+        hop.hint_lines_skip_whitespace({ direction = HintDirection.BEFORE_CURSOR })
+      end, {})
+      vim.keymap.set("n", "<space>h", function()
+        hop.hint_words({ direction = HintDirection.BEFORE_CURSOR })
+      end, {})
+      vim.keymap.set("n", "<space>l", function()
+        hop.hint_words({ direction = HintDirection.AFTER_CURSOR })
+      end, {})
+
+      require("hop").setup({})
     end,
   },
 }

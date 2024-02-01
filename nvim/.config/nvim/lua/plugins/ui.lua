@@ -1,3 +1,4 @@
+local M = {}
 local get_lsp_client = function(msg)
   msg = msg or "LSP Inactive"
   local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
@@ -117,6 +118,20 @@ local function get_python_env()
 end
 
 return {
+  {
+    "j-hui/fidget.nvim",
+    event = "BufEnter",
+    config = function()
+      require("fidget").setup({
+        -- progress = {
+        --   display = {
+        --     progress_icon = { pattern = "line", period = 1 },
+        --   },
+        -- },
+      })
+    end,
+  },
+  { "stevearc/dressing.nvim" },
   {
     "nvim-lualine/lualine.nvim",
     opts = {

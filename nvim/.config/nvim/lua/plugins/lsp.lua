@@ -23,10 +23,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
     vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
     vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-
-    vim.keymap.set("n", "<space>f", function()
-      vim.lsp.buf.format({ async = true })
-    end, opts)
   end,
 })
 
@@ -39,9 +35,17 @@ return {
     dependencies = {
       "neovim/nvim-lspconfig",
       "williamboman/mason-lspconfig.nvim",
+      "hrsh7th/cmp-nvim-lsp",
+      "ray-x/lsp_signature.nvim",
     },
     config = function()
       require("mason").setup({
+        ui = { border = "rounded" },
+      })
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      -- local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+      require("mason-lspconfig").setup({
         automatic_installation = true,
         ensure_installed = {
           "bashls",
@@ -58,9 +62,21 @@ return {
           "yamlls",
         },
       })
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-      require("mason-lspconfig").setup()
+      -- LSP settings (for overriding per client)
+      -- hover: K -> shows hover info
+      -- Signature_help: <C-k> -> shows signature help
+      -- Noice.nvim
+      -- noice.nvim  ERROR `vim.lsp.handlers["textDocument/signatureHelp"]` has been overwritten by another plugin?
+      -- Either disable the other plugin or set `config.lsp.signature.enabled = false` in your **Noice** config.
+      local handlers = {
+        ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single", title = " hover " }),
+        ["textDocument/signatureHelp"] = vim.lsp.with(
+          vim.lsp.handlers.signature_help,
+          { border = "single", title = " signature " }
+        ),
+      }
+
       require("mason-lspconfig").setup_handlers({
         -- The first entry (without a key) will be the default handler
         -- and will be called for each installed server that doesn't have
@@ -68,13 +84,14 @@ return {
         function(server_name) -- default handler (optional)
           require("lspconfig")[server_name].setup({
             capabilities = capabilities,
+            handlers = handlers,
           })
         end,
         -- Next, you can provide a dedicated handler for specific servers.
-        -- For example, a handler override for the `rust_analyzer`:
         ["pyright"] = function(server_name)
           require("lspconfig")[server_name].setup({
             capabilities = capabilities,
+            handlers = handlers,
             settings = {
               python = {
                 venvPath = vim.fn.expand("$HOME/miniconda3/envs"),
@@ -88,6 +105,7 @@ return {
             --on_attach = on_attach,
             --flags = lsp_flags,
             capabilities = capabilities,
+            handlers = handlers,
             settings = {
               Lua = {
                 runtime = {
@@ -108,9 +126,37 @@ return {
                 },
               },
             },
+            on_init = function(client)
+              local path = client.workspace_folders[1].name
+              if not vim.loop.fs_stat(path .. "/.luarc.json") and not vim.loop.fs_stat(path .. "/.luarc.jsonc") then
+                client.config.settings = vim.tbl_deep_extend("force", client.config.settings, {
+                  Lua = {
+                    runtime = {
+                      -- Tell the language server which version of Lua you're using
+                      -- (most likely LuaJIT in the case of Neovim)
+                      version = "LuaJIT",
+                    },
+                    -- Make the server aware of Neovim runtime files
+                    workspace = {
+                      checkThirdParty = false,
+                      library = {
+                        vim.env.VIMRUNTIME,
+                        -- "${3rd}/luv/library"
+                        -- "${3rd}/busted/library",
+                      },
+                      -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
+                      -- library = vim.api.nvim_get_runtime_file("", true)
+                    },
+                  },
+                })
+                client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+              end
+              return true
+            end,
           })
         end,
       })
+      require("lsp_signature").setup({ hint_enable = false })
     end,
   },
   {
@@ -121,15 +167,14 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
+      "FelipeLema/cmp-async-path",
       "saadparwaiz1/cmp_luasnip",
       "L3MON4D3/LuaSnip",
       "zbirenbaum/copilot-cmp",
       { "roobert/tailwindcss-colorizer-cmp.nvim", config = true },
     },
     config = function()
-      vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
       local cmp = require("cmp")
-      local defaults = require("cmp.config.default")()
       local luasnip = require("luasnip")
 
       local has_words_before = function()
@@ -226,10 +271,10 @@ return {
           end,
         }),
         sources = cmp.config.sources({
-          { name = "nvim_lsp", group_index = 1 },
-          { name = "copilot", group_index = 1 },
+          { name = "nvim_lsp", priority = 100 },
+          { name = "copilot", priority = 100 },
+          { name = "async_path" },
           { name = "luasnip" },
-          { name = "path" },
           { name = "buffer" },
         }),
         formatting = {
@@ -247,25 +292,10 @@ return {
             hl_group = "CmpGhostText",
           },
         },
-        sorting = {
-          priority_weight = 2,
-          comparators = {
-            require("copilot_cmp.comparators").prioritize,
-
-            -- Below is the default comparitor list and order for nvim-cmp
-            cmp.config.compare.offset,
-            -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
-            cmp.config.compare.exact,
-            cmp.config.compare.score,
-            cmp.config.compare.recently_used,
-            cmp.config.compare.locality,
-            cmp.config.compare.kind,
-            cmp.config.compare.sort_text,
-            cmp.config.compare.length,
-            cmp.config.compare.order,
-          },
-        },
       })
+    end,
+    init = function()
+      vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
     end,
   },
   {

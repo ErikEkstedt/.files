@@ -10,6 +10,26 @@ for type, icon in pairs(require("config.icons").icons.diagnostics) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
+-- Configure diagostics border
+vim.diagnostic.config({
+  float = {
+    border = "rounded",
+  },
+})
+
+-- You will likely want to reduce updatetime which affects CursorHold
+-- note: this setting is global and should be set only once
+-- vim.o.updatetime = 250
+vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+  group = vim.api.nvim_create_augroup("float_diagnostic", { clear = true }),
+  callback = function()
+    local mode = vim.fn.mode()
+    if mode ~= "i" then
+      vim.diagnostic.open_float(nil, { focus = false })
+    end
+  end,
+})
+
 return {
   {
     "folke/trouble.nvim",
