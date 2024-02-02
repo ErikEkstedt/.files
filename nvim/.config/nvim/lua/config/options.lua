@@ -32,15 +32,23 @@ vim.opt.splitkeep = "screen"
 vim.opt.splitright = true -- Put new windows right of current
 vim.opt.tabstop = 2 -- Number of spaces tabs count for
 vim.opt.termguicolors = true -- True color support
-vim.opt.foldtext =
-  [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
 vim.opt.wrap = false
 vim.opt.linebreak = true
+
+-- FOLDS
+-- vim.opt.foldtext =
+--   [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
+-- Using UFO.nvim: https://github.com/kevinhwang91/nvim-ufo
+vim.o.foldcolumn = "0" -- '0' is not bad
+vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
+vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 
 -- If this many milliseconds nothing is typed the swap file will be written to disk
 -- (see |crash-recovery|).
 -- Also used for the |CursorHold| autocommand event.
-vim.opt.updatetime = 300
+vim.opt.updatetime = 500
 
 -- Time in milliseconds to wait for a mapped sequence to complete.
 vim.opt.timeoutlen = 400

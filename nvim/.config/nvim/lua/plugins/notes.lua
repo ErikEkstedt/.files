@@ -18,10 +18,10 @@ return {
       "ObsidianFollowLink",
     },
     keys = {
-      { "<space>fno", "<cmd>:ObsidianSearch<CR>", desc = "Notes Search" },
-      { "<space>fnn", "<cmd>:ObsidianNew<CR>", desc = "Notes New" },
-      { "<space>fnd", "<cmd>:ObsidianToday<CR>", desc = "Notes Today" },
-      { "<space>oo", "<cmd>:ObsidianOpen<CR>", desc = "Open Obsidian" },
+      { "<space>fno", "<cmd>ObsidianSearch<CR>", desc = "Notes Search" },
+      { "<space>fnn", "<cmd>ObsidianNew<CR>", desc = "Notes New" },
+      { "<space>fnd", "<cmd>ObsidianToday<CR>", desc = "Notes Today" },
+      { "<space>oo", "<cmd>ObsidianOpen<CR>", desc = "Open Obsidian" },
       {
         "gf",
         function()

@@ -117,6 +117,106 @@ local function get_python_env()
   return ""
 end
 
+local mini_indentscope = {
+  "echasnovski/mini.indentscope",
+  version = false, -- wait till new 0.7.0 release to put it back on semver
+  event = "VeryLazy",
+  opts = {
+    -- symbol = "▏",
+    symbol = "│",
+    options = { try_as_border = true },
+    draw = {
+      delay = 100,
+      animation = function()
+        return 0
+      end,
+    },
+  },
+  init = function()
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = {
+        "help",
+        "alpha",
+        "dashboard",
+        "neo-tree",
+        "Trouble",
+        "trouble",
+        "lazy",
+        "mason",
+        "notify",
+        "toggleterm",
+        "lazyterm",
+      },
+      callback = function()
+        vim.b.miniindentscope_disable = true
+      end,
+    })
+  end,
+}
+
+-- local bufferline =
+
+local barbar = {
+  "romgrk/barbar.nvim",
+  dependencies = {
+    "lewis6991/gitsigns.nvim", -- OPTIONAL: for git status
+    "nvim-tree/nvim-web-devicons", -- OPTIONAL: for file icons
+  },
+  version = "^1.0.0", -- optional: only update when a new 1.x version is released
+  event = "VeryLazy",
+  init = function()
+    vim.g.barbar_auto_setup = false
+  end,
+  keys = {
+    { "<leader>nn", "<Cmd>BufferNext<cr>", desc = "Buffer next", { silent = true } },
+    { "<leader>bb", "<Cmd>BufferPrevious<cr>", desc = "Buffer prev", { silent = true } },
+    { "<leader>pp", "<Cmd>BufferPrevious<cr>", desc = "Buffer prev", { silent = true } },
+    { "<leader>bp", "<Cmd>BufferPick<cr>", desc = "Buffer prev", { silent = true } },
+    { "<leader>bL", "<Cmd>BufferCloseBuffersRight<CR>", desc = "Buffer delete to the right" },
+    { "<leader>bH", "<Cmd>BufferCloseBuffersLeft<CR>", desc = "Buffer delete to the left" },
+  },
+  config = function()
+    require("barbar").setup({
+      auto_hide = false,
+      -- Set the filetypes which barbar will offset itself for
+      sidebar_filetypes = {
+        NvimTree = true,
+        undotree = { text = "undotree" },
+        ["neo-tree"] = { event = "BufWipeout" },
+        Outline = { event = "BufWinLeave", text = "symbols-outline" },
+      },
+      highlight_alternate = false,
+      icons = {
+        separator = { left = "│", right = "" },
+        separator_at_end = false,
+      },
+    })
+
+    if vim.g.colors_name == "material" then
+      -- local colors = require("material.colors")
+      -- vim.cmd("hi link BufferCurrent Normal")
+      -- vim.cmd("hi link BufferCurrentSign Statement")
+      print("Update highlight")
+
+      vim.api.nvim_set_hl(0, "BufferCurrent", { link = "BufferVisible" })
+      vim.api.nvim_set_hl(0, "BufferCurrentSign", { link = "Statement" })
+      vim.cmd("hi BufferCurrentIcon guibg=NONE")
+      -- vim.api.nvim_set_hl(0, "BufferDefaultIcon", { link = "Statement" })
+
+      vim.api.nvim_set_hl(0, "BufferInactive", { link = "Comment" })
+      vim.api.nvim_set_hl(0, "BufferInactiveSign", { link = "Comment" })
+      -- vim.api.nvim_set_hl(0, "BufferCurrentSign", { fg = colors.main.white, bg = colors.editor.bg })
+      -- vim.api.nvim_set_hl(0, "BufferDefaultIcon", { fg = colors.main.white, bg = colors.editor.bg })
+
+      -- vim.cmd("hi link BufferVisible Comment")
+      -- vim.cmd("hi link BufferInactive Comment")
+      -- vim.cmd("hi link BufferCurrentSign Statement")
+      -- vim.cmd("hi link BufferInactive Comment")
+      -- vim.cmd("hi BufferInactiveSign guibg=NONE guifg=NONE")
+    end
+  end,
+}
+
 return {
   {
     "j-hui/fidget.nvim",
@@ -136,7 +236,7 @@ return {
     "nvim-lualine/lualine.nvim",
     opts = {
       options = {
-        theme = "kanagawa",
+        theme = "auto",
         globalstatus = true,
         disabled_filetypes = { statusline = { "dashboard", "alpha", "starter" } },
       },
@@ -180,70 +280,7 @@ return {
       },
     },
     main = "ibl",
-    -- config = function(opts)
-    --   local highlight = {
-    --     "RainbowRed",
-    --     "RainbowYellow",
-    --     "RainbowBlue",
-    --     "RainbowOrange",
-    --     "RainbowGreen",
-    --     "RainbowViolet",
-    --     "RainbowCyan",
-    --   }
-    --
-    --   local hooks = require("ibl.hooks")
-    --   -- create the highlight groups in the highlight setup hook, so they are reset
-    --   -- every time the colorscheme changes
-    --   hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-    --     vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
-    --     vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#E5C07B" })
-    --     vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF" })
-    --     vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#D19A66" })
-    --     vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
-    --     vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
-    --     vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
-    --   end)
-    --   print(vim.inspect(opts.opts))
-    --   opts.opts.indent.highlight = highlight
-    --   require("ibl").setup(opts.opts)
-    -- end,
   },
-  -- {
-  --   "echasnovski/mini.indentscope",
-  --   version = false, -- wait till new 0.7.0 release to put it back on semver
-  --   event = "VeryLazy",
-  --   opts = {
-  --     -- symbol = "▏",
-  --     symbol = "│",
-  --     options = { try_as_border = true },
-  --     draw = {
-  --       delay = 100,
-  --       animation = function()
-  --         return 0
-  --       end,
-  --     },
-  --   },
-  --   init = function()
-  --     vim.api.nvim_create_autocmd("FileType", {
-  --       pattern = {
-  --         "help",
-  --         "alpha",
-  --         "dashboard",
-  --         "neo-tree",
-  --         "Trouble",
-  --         "trouble",
-  --         "lazy",
-  --         "mason",
-  --         "notify",
-  --         "toggleterm",
-  --         "lazyterm",
-  --       },
-  --       callback = function()
-  --         vim.b.miniindentscope_disable = true
-  --       end,
-  --     })
-  --   end,
-  -- },
   {
     "akinsho/bufferline.nvim",
     event = "VeryLazy",
@@ -253,8 +290,15 @@ return {
       { "<leader>bp", "<Cmd>BufferLinePick<CR>", desc = "Buffer Picker" },
     },
     config = function()
-      local bg = "#131318"
+      local bg = "NONE"
       local bga = "#2C2B3A"
+
+      if vim.g.colors_name == "material" then
+        local colors = require("material.colors")
+        bg = colors.editor.bg
+        bga = colors.editor.bg
+      end
+
       require("bufferline").setup({
         highlights = {
           fill = {
@@ -290,8 +334,11 @@ return {
           always_show_bufferline = true,
           diagnostics = false,
           themable = true,
-          -- indicator = { style = "bold" },
-          separator_style = "slant",
+          indicator = {
+            icon = "▎", -- this should be omitted if indicator style is not 'icon'
+            style = "icon",
+          },
+          separator_style = "thin",
           truncate_names = true,
           offsets = {
             {
@@ -303,6 +350,28 @@ return {
           },
         },
       })
+    end,
+  },
+  {
+    "kevinhwang91/nvim-ufo",
+    dependencies = "kevinhwang91/promise-async",
+    lazy = false,
+    keys = {
+      {
+        "zR",
+        function()
+          require("ufo").openAllFolds()
+        end,
+      },
+      {
+        "zM",
+        function()
+          require("ufo").closeAllFolds()
+        end,
+      },
+    },
+    config = function()
+      require("ufo").setup()
     end,
   },
 }

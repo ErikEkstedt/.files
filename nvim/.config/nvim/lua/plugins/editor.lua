@@ -78,6 +78,13 @@ return {
         desc = "Search DotFiles ",
       },
       {
+        "<leader>fp",
+        function()
+          require("telescope.builtin").find_files({ cwd = "$HOME/projects", hidden = true })
+        end,
+        desc = "Search ProjectFiles ",
+      },
+      {
         "<leader>fw",
         function()
           require("telescope.builtin").live_grep()

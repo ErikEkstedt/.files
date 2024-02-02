@@ -114,12 +114,13 @@ vim.keymap.set("n", "gl", "f, a<CR><esc>", ns)
 
 -- Buffers
 vim.keymap.set("n", "<Leader><Leader>", ":b#<CR>", ns)
-vim.keymap.set("n", "<Leader>n", ":bnext<CR>", ns)
-vim.keymap.set("n", "<Leader>N", ":bl<CR>", ns)
-vim.keymap.set("n", "<Leader>p", ":bprev<CR>", ns)
-vim.keymap.set("n", "<Leader>P", ":bf<CR>", ns)
-vim.keymap.set("n", "<Leader>bb", ":bprev<CR>", ns)
 vim.keymap.set("n", "<Leader>D", ":bd<CR>", ns)
+vim.keymap.set("n", "<Leader>bb", ":bp<CR>", ns)
+vim.keymap.set("n", "<Leader>pp", ":bp<CR>", ns)
+vim.keymap.set("n", "<Leader>nn", ":bn<CR>", ns)
+vim.keymap.set("n", "<Leader>P", ":bf<CR>", ns)
+vim.keymap.set("n", "<Leader>B", ":bf<CR>", ns)
+vim.keymap.set("n", "<Leader>N", ":bl<CR>", ns)
 
 -- Fold
 vim.keymap.set("n", "<Leader>z", "za", ns)

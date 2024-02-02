@@ -83,7 +83,41 @@ local kanagawa = {
   end,
 }
 
+local material = {
+  "marko-cerovac/material.nvim",
+  lazy = false,
+  priority = 1000,
+  config = function()
+    require("material").setup({
+      styles = {
+        comments = { italic = true },
+        keywords = { bold = true },
+        functions = { bold = true },
+      },
+      plugins = {
+        "fidget",
+        "gitsigns",
+        "harpoon",
+        "hop",
+        "neo-tree",
+        "noice",
+        "nvim-cmp",
+        "trouble",
+        "which-key",
+      },
+      lualine_style = "default",
+      custom_highlights = {
+        -- Folded = { bg = "NONE" },
+        -- FoldColumns = { bg = "NONE" },
+      },
+    })
+    vim.g.material_style = "darker"
+    vim.cmd([[colorscheme material]])
+  end,
+}
+
 return {
-  kanagawa,
+  -- kanagawa,
   -- gruvbox,
+  material,
 }

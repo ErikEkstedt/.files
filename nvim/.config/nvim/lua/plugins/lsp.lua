@@ -54,8 +54,6 @@ return {
           "lua_ls",
           "prismals",
           "pyright",
-          "shfmt",
-          "stylua",
           "tailwindcss",
           "tsserver",
           "vimls",
@@ -223,11 +221,11 @@ return {
               luasnip.expand_or_jump()
             elseif has_words_before() then
               cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-            elseif has_words_before() then
-              cmp.complete()
-              if #cmp.get_entries() == 1 then
-                cmp.confirm({ select = true })
-              end
+            -- elseif has_words_before() then
+            --   cmp.complete()
+            --   if #cmp.get_entries() == 1 then
+            --     cmp.confirm({ select = true })
+            --   end
             else
               fallback()
             end
@@ -271,9 +269,10 @@ return {
           end,
         }),
         sources = cmp.config.sources({
-          { name = "nvim_lsp", priority = 100 },
-          { name = "copilot", priority = 100 },
-          { name = "async_path" },
+          { name = "nvim_lsp" },
+          { name = "copilot" },
+          { name = "path" },
+          -- { name = "async_path" },
           { name = "luasnip" },
           { name = "buffer" },
         }),
