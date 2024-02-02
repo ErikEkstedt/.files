@@ -89,6 +89,12 @@ local material = {
   priority = 1000,
   config = function()
     require("material").setup({
+      contrast = {
+        terminal = true,
+        sidebars = true,
+        floating_windows = true,
+        non_current_windows = true,
+      },
       styles = {
         comments = { italic = true },
         keywords = { bold = true },

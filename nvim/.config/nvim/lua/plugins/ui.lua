@@ -292,11 +292,14 @@ return {
     config = function()
       local bg = "NONE"
       local bga = "#2C2B3A"
+      local indicator = "#FFFFFF"
 
       if vim.g.colors_name == "material" then
         local colors = require("material.colors")
         bg = colors.editor.bg
         bga = colors.editor.bg
+
+        indicator = colors.main.blue
       end
 
       require("bufferline").setup({
@@ -309,6 +312,12 @@ return {
           },
           separator_visible = {
             fg = bg,
+          },
+          indicator_visible = {
+            fg = indicator,
+          },
+          indicator_selected = {
+            fg = indicator,
           },
           separator_selected = {
             fg = bg,
@@ -335,7 +344,7 @@ return {
           diagnostics = false,
           themable = true,
           indicator = {
-            icon = "▎", -- this should be omitted if indicator style is not 'icon'
+            icon = "│", -- this should be omitted if indicator style is not 'icon'
             style = "icon",
           },
           separator_style = "thin",
