@@ -87,6 +87,16 @@ local material = {
   "marko-cerovac/material.nvim",
   lazy = false,
   priority = 1000,
+  keys = {
+    {
+      "<leader>tc",
+      function()
+        require("material.functions").find_style()
+        vim.notify(vim.g.material_style)
+      end,
+      { silent = true },
+    },
+  },
   config = function()
     require("material").setup({
       contrast = {
