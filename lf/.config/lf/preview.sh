@@ -7,5 +7,8 @@ case "$1" in
 *.7z) 7z l "$1" ;;
 *.pdf) pdftotext "$1" - ;;
 *.wav) sox --i "$1" ;;
+*.bin) echo "binary file: $1" ;;
+*.AppImage) echo "appimage" ;;
+*.appimage) echo "appimage" ;;
 *) bat --color always "$1" ;;
 esac

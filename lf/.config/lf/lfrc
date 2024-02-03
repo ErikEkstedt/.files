@@ -19,8 +19,8 @@
 ########################################################################################
 ## SETTINGS
 ########################################################################################
-# zsh does not split words by default as described **here7**, 
-# which makes it difficult to work with $fs and $fx variables, 
+# zsh does not split words by default as described **here7**,
+# which makes it difficult to work with $fs and $fx variables,
 # but a compatibility option named shwordsplit is provided for this purpose.
 
 $EDITOR nvim
@@ -48,7 +48,7 @@ set previewer ~/.config/lf/preview.sh
 # MAPPINGS
 ########################################################################################
 
-map D 
+map D
 map c
 map d
 map gh
@@ -230,9 +230,18 @@ cmd zip ${{
     rm -rf $1
 }}
 
+cmd toggle_preview %{{
+    if [ "$lf_preview" = "true" ]; then
+        lf -remote "send $id :set preview false; set ratios 1:5"
+    else
+        lf -remote "send $id :set preview true; set ratios 1:2:3"
+    fi
+}}
+
+map zp toggle_preview
 
 ########################################################################################
-# FZF 
+# FZF
 ########################################################################################
 
 cmd fzf_jump ${{
