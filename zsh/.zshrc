@@ -49,13 +49,18 @@ autoload -Uz compinit && compinit -i
 ##################################################################
 # Exports
 ##################################################################
+export ZSH="$HOME/.config/zsh"
 export DOTFILES=$HOME/.files
 export COLORTERM="truecolor"
 export EDITOR='nvim'
 export BROWSER="brave-browser"
 export MANPAGER='nvim +Man!'
-export ZSH="$HOME/.config/zsh"
 export PATH="$HOME/Applications:$PATH"
+
+# History
+HISTFILE=$ZSH/.zsh_history
+HISTSIZE=1000000
+SAVEHIST=1000000
 
 ##################################################################
 # Alias
