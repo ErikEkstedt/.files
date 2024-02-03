@@ -57,10 +57,11 @@ ex      01;32   # EXEC
 fi      00      # FILE
 
 *.py    32
-*.ts    32
-*.js    32
-*.tsx   32
-*.jsx   32
+*.lua   36
+*.ts    36
+*.js    36
+*.tsx   36
+*.jsx   36
 *.css   33
 *.ico   33
 *.md    33
