@@ -13,7 +13,6 @@ return {
       desc = "Format buffer",
     },
   },
-  -- Everything in opts will be passed to setup()
   opts = {
     -- TODO: prettier over tsserver?
     formatters_by_ft = {
@@ -38,7 +37,8 @@ return {
       ["_"] = { "trim_whitespace" },
     },
     -- Set up format-on-save
-    format_on_save = { timeout_ms = 500, lsp_fallback = true },
+    -- timeout_ms must be 1000 on laptop fro prettier not to timeout
+    format_on_save = { timeout_ms = 1500, lsp_fallback = true },
     formatters = {
       shfmt = {
         prepend_args = { "-i", "2" },
