@@ -1,3 +1,4 @@
+# vim: ft=tmux
 # Statusline
 # Different themes sets the colors and at the end of the theme script they call this statusline script
 
@@ -69,7 +70,7 @@ setw -g window-status-current-format $tab_cur_left$tab_cur_text$tab_cur_right
 
 # Other tabs
 tab_left=$hi_tab$sep_left
-tab_text=$hi_tab_text"#I:#W " 
+tab_text=$hi_tab_text"#I:#W "
 tab_right=$hi_tab$sep_right" "
 setw -g window-status-format $tab_left$tab_text$tab_right
 
