@@ -83,6 +83,44 @@ local kanagawa = {
   end,
 }
 
+-- Material ---------------------------------------------------------------
+-- white      = "#EEFFFF",
+-- gray       = "#717CB4",
+-- black      = "#000000",
+-- red        = "#F07178",
+-- green      = "#C3E88D",
+-- yellow     = "#FFCB6B",
+-- blue       = "#82AAFF",
+-- paleblue   = "#B0C9FF",
+-- cyan       = "#89DDFF",
+-- purple     = "#C792EA",
+-- orange     = "#F78C6C",
+-- pink       = "#FF9CAC",
+-- darkred    = "#DC6068",
+-- darkgreen  = "#ABCF76",
+-- darkyellow = "#E6B455",
+-- darkblue   = "#6E98EB",
+-- darkcyan   = "#71C6E7",
+-- darkpurple = "#B480D6",
+-- darkorange = "#E2795B",
+
+-- -- Darker theme style with high contrast
+-- colors.editor.line_numbers = "#5C5C5C"
+-- colors.syntax.comments     = "#757575"
+-- colors.editor.line_numbers = "#424242"
+-- colors.syntax.comments     = "#515151"
+-- colors.editor.bg        = "#212121"
+-- colors.editor.bg_alt    = "#1A1A1A"
+-- colors.editor.fg        = "#B0BEC5"
+-- colors.editor.fg_dark   = "#8C8B8B"
+-- colors.editor.selection = "#404040"
+-- colors.editor.contrast  = "#1A1A1A"
+-- colors.editor.active    = "#323232"
+-- colors.editor.border    = "#343434"
+-- colors.editor.highlight = "#3F3F3F"
+-- colors.editor.disabled  = "#474747"
+-- colors.editor.accent    = "#FF9800"
+
 local material = {
   "marko-cerovac/material.nvim",
   lazy = false,
@@ -123,8 +161,13 @@ local material = {
       },
       lualine_style = "default",
       custom_highlights = {
-        -- Folded = { bg = "NONE" },
-        -- FoldColumns = { bg = "NONE" },
+        ["@type.builtin"] = { fg = "#FFCB6B" },
+        ["@variable.builtin.python"] = { fg = "#ABCF76", bold = true },
+        ["@variable.parameter.python"] = { fg = "#B0C9FF" },
+        ["@variable.attribute.python"] = { fg = "#E6B455" },
+        ["@tag"] = { fg = "#89DDFF" },
+        DiagnosticHint = { link = "Comment" },
+        DiagnosticError = { fg = "#A04B47" },
       },
     })
     vim.g.material_style = "darker"

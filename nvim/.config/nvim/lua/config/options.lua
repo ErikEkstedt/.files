@@ -34,6 +34,7 @@ vim.opt.tabstop = 2 -- Number of spaces tabs count for
 vim.opt.termguicolors = true -- True color support
 vim.opt.wrap = false
 vim.opt.linebreak = true
+vim.opt.virtualedit = "block"
 
 -- FOLDS
 -- vim.opt.foldtext =
