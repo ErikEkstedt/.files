@@ -9,7 +9,10 @@ $git_branch\
 $git_commit\
 $git_status\
 $git_metrics\
-$conda
+$conda\
+$python\
+$nodejs\
+$lua
 $character
 """
 
@@ -31,9 +34,9 @@ ignore_base = false
 success_symbol = "[>](bold green)"
 error_symbol = "[>](bold red)"
 vicmd_symbol = "[>](bold yellow)"
-vicmd_replace_one_symbol = "[r](bold)"
-vimcmd_replace_symbol = "[R](bold)"
-vimcmd_visual_symbol = "[V](bold)"
+# vimcmd_replace_one_symbol = "[r](bold)"
+# vimcmd_replace_symbol = "[R](bold)"
+# vimcmd_visual_symbol = "[V](bold)"
 
 [directory]
 truncation_length = 5
@@ -69,3 +72,14 @@ tag_symbol = ' 🏷 '
 ssh_only = false
 format = '[$ssh_symbol](bold blue)[@$hostname](purple) '
 trim_at = '.companyname.com'
+
+[lua]
+format = '[$symbol]($style) '
+symbol = " " # '🌙 '
+style = 'bold blue'
+
+[python]
+symbol = " "
+style = "bold yellow"
+version_format = "v${major}.${minor}"
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
