@@ -165,8 +165,10 @@ local material = {
         ["@variable.builtin.python"] = { fg = "#ABCF76", bold = true },
         ["@variable.parameter.python"] = { fg = "#B0C9FF" },
         ["@variable.attribute.python"] = { fg = "#E6B455" },
+        ["@variable.tsx"] = { link = "Normal" },
+        ["@lsp.type.parameter.javascript"] = { fg = "#71C6E7" },
         ["@tag"] = { fg = "#89DDFF" },
-        DiagnosticHint = { link = "Comment" },
+        DiagnosticHint = { fg = "#757575" },
         DiagnosticError = { fg = "#A04B47" },
       },
     })
