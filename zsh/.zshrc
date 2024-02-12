@@ -75,6 +75,8 @@ alias vf="nvim -c 'Telescope find_files hidden=true'"
 alias vn="nvim -c 'ObsidianToday'"
 alias lg="lazygit"
 alias ipy="ipython"
+alias wnvi="watch -n 1 nvidia-smi"
+alias wnvi2="watch -n 1 nvidia-smi --query-gpu=index,memory.used,memory.total,power.draw --format=csv"
 
 # Movement
 alias gfi="$HOME/.files;ll"
@@ -122,7 +124,7 @@ fi # }}}
 ##################################################################
 # Source files
 ##################################################################
-source $ZSH/prompt.zsh
+# source $ZSH/prompt.zsh
 source $ZSH/vim-mode.zsh  # vim-mode, keytimeout & cursor styles
 if [ -f $HOME/.fzf.zsh ]; then
   source $HOME/.fzf.zsh
@@ -148,6 +150,23 @@ function source_conda() {
   fi
   unset __conda_setup
 }
+source_conda
+# WARNING: if you use startship prompt don't use condas prompt info:
+# `conda config --set changeps1 False`
+
+# Conda is so slow to source!! we want to do it async
+# This does not work...
+# if [ -f "$ZAP_PLUGIN_DIR/zsh-async/async.zsh" ]; then
+#   source "$ZAP_PLUGIN_DIR/zsh-async/async.zsh"
+#   # function foo() { print hello }
+#   function completed_callback() {
+#     zle reset-prompt
+#   }
+#   async_init
+#   async_start_worker my_worker -n
+#   async_register_callback my_worker completed_callback
+#   async_job my_worker source_conda
+# fi
 
 function so() {
   local env
@@ -164,6 +183,7 @@ function so() {
 alias sod="conda deactivate"
 zle -N so
 
+
 ##################################################################
 # Functions
 ##################################################################
@@ -171,20 +191,6 @@ function g() {
     ls -a | grep -i $1
 }
 
-# This does not work...
-# if [ -f "$ZAP_PLUGIN_DIR/zsh-async/async.zsh" ]; then
-#   source "$ZAP_PLUGIN_DIR/zsh-async/async.zsh"
-#   # function foo() { print hello }
-#   function completed_callback() {
-#     zle reset-prompt
-#   }
-#   async_init
-#   async_start_worker my_worker -n
-#   async_register_callback my_worker completed_callback
-#   async_job my_worker source_conda
-# fi
-
-source_conda
 
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -206,3 +212,6 @@ if [ -f '/Users/erik/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/erik/googl
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/erik/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/erik/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Starship fast, cross-shell, prompt
+eval "$(starship init zsh)"

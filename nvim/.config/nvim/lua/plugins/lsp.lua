@@ -169,7 +169,16 @@ return {
       "saadparwaiz1/cmp_luasnip",
       "L3MON4D3/LuaSnip",
       "zbirenbaum/copilot-cmp",
-      { "roobert/tailwindcss-colorizer-cmp.nvim", config = true },
+      -- { "roobert/tailwindcss-colorizer-cmp.nvim", config = true },
+      {
+        "roobert/tailwindcss-colorizer-cmp.nvim",
+        -- optionally, override the default options:
+        config = function()
+          require("tailwindcss-colorizer-cmp").setup({
+            color_square_width = 2,
+          })
+        end,
+      },
     },
     config = function()
       local cmp = require("cmp")
