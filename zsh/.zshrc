@@ -33,6 +33,9 @@ plug "mafredri/zsh-async"
 ##################################################################
 # Completions
 ##################################################################
+# FNM completions: https://github.com/Schniz/fnm/issues/171
+fpath+=~/.zfunc
+
 # This seems like a good resource: https://thevaluable.dev/zsh-completion-guide-examples/
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
@@ -92,6 +95,8 @@ alias gpl="git pull"
 alias gps="git push"
 # alias gco="git commit -m"
 
+# Tmux
+alias tkp="tmux kill-pane -t"
 
 # Colors LS_COLORS and EXA_COLORS
 # Better ls-commands (assuming exa is installed)
@@ -99,7 +104,7 @@ if [ -x "$(command -v exa)" ]; then # if lsd exists
     alias ls="exa --icons --group-directories-first"
     alias ll="exa -l --icons --group-directories-first"
     alias la="exa -la --icons --group-directories-first"
-    alias tree="exa -T --icons --group-directories-first"
+    alias tree="exa -T --icons --group-directories-first -I '__pycache*|*.egg*'"
     alias t1="exa -T --icons --group-directories-first -L 1"
     alias t2="exa -T --icons --group-directories-first -L 2"
 else
@@ -137,15 +142,16 @@ fi
 ##################################################################
 #!! Contents within this block are managed by 'conda init' !!
 # Make sure you use double qutoes with $HOME
+# create a function to enable the option to run after startup for faster shell start
 function source_conda() {
   __conda_setup="$("$HOME/miniconda3/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
   if [ $? -eq 0 ]; then
       eval "$__conda_setup"
   else
       if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
-          . "$HOME/miniconda3/etc/profile.d/conda.sh"
+        . "$HOME/miniconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
       else
-          export PATH="/Users/erik/miniconda3/bin:$PATH"
+        export PATH="$HOME/miniconda3/bin:$PATH"  # commented out by conda initialize
       fi
   fi
   unset __conda_setup
@@ -196,12 +202,15 @@ function g() {
 export PATH="$HOME/.cargo/bin:$PATH"
 export CARGO_HOME="$HOME/.cargo"
 
+# GO
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/go/bin
 
 # FNM: Fast Node Manager
 if [[ "$os_type" == "Darwin" ]]; then
   export PATH="$HOME/Library/Application Support/fnm:$PATH"
 elif [[ "$os_type" == "Linux" ]]; then
-  export PATH="/home/erik/.local/share/fnm:$PATH"
+  export PATH="$HOME/.local/share/fnm:$PATH"
 else
   echo "Unknown operating system."
 fi
@@ -212,6 +221,11 @@ if [ -f '/Users/erik/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/erik/googl
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/erik/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/erik/google-cloud-sdk/completion.zsh.inc'; fi
+
+
+# fnm
+export PATH="/home/erik/.local/share/fnm:$PATH"
+eval "`fnm env`"
 
 # Starship fast, cross-shell, prompt
 eval "$(starship init zsh)"
