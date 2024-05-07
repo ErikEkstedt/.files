@@ -3,7 +3,7 @@
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-vim.g.python2_host_prog = vim.fn.expand("$HOME/miniconda2/bin/python")
+-- vim.g.python2_host_prog = vim.fn.expand("$HOME/miniconda2/bin/python")
 vim.g.python_host_bin = vim.fn.expand("$HOME/miniconda3/bin")
 
 -- [[ Setting options ]]
@@ -1762,8 +1762,8 @@ require("lazy").setup({
   },
   {
     "mg979/vim-visual-multi",
+    init = function() end,
     config = function()
-      vim.g.VM_default_mappings = 0
       vim.g.VM_maps = {
         ["Find Under"] = "<C-n>", -- replace C-n
         -- ["Find Subword Under"] = "<C-n>", -- replace visual C-n
@@ -1772,6 +1772,47 @@ require("lazy").setup({
         -- ["Select Cursor Right"] = "<C-C>", -- start selecting down
         -- ["Select Cursor Left"] = "<M-C-l>", -- start selecting up
       }
+    end,
+  },
+  {
+    "chipsenkbeil/distant.nvim",
+    branch = "v0.3",
+    config = function()
+      require("distant"):setup({
+        servers = {
+          ["*"] = {
+            launch = {
+              default = {
+                username = "erik",
+              },
+            },
+          },
+        },
+        lsp = {
+          ["pyright"] = {
+            cmd = { "pyright-langserver", "--stdio" },
+            filetypes = { "python" },
+            root_dir = function(fname)
+              local root_files = {
+                "pyrightconfig.json",
+                "requirements.txt",
+                "setup.py",
+                "pyproject.toml",
+                "setup.cfg",
+                ".git",
+                "Pipfile",
+              }
+              return require("lspconfig.util").root_pattern(unpack(root_files))(fname)
+            end,
+            settings = {
+              python = {
+                venvPath = vim.fn.expand("$HOME/miniconda3/envs"),
+                pythonPath = vim.g.python3_host_prog,
+              },
+            },
+          },
+        },
+      })
     end,
   },
   -- {
